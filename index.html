@@ -969,6 +969,25 @@
   .glossary-item dt{font-family:'Cormorant Garamond', serif; font-size:1.25rem; font-weight:700;}
   .glossary-item dd{margin:2px 0 0; color:var(--ink-soft); line-height:1.6;}
 
+  /* ---------- Book reader ---------- */
+  .g-read{align-self:flex-start; font-size:0.7rem; font-weight:600; padding:2px 8px; border-radius:10px; background:color-mix(in srgb, var(--indigo) 16%, transparent); color:var(--ink);}
+  .bk-banner{gap:10px;}
+  .bk-actions{display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
+  .bk-credit-line{font-size:0.88rem; color:var(--ink-soft); font-style:italic; margin:-6px 0 16px;}
+  .bb-heading-row{display:flex; align-items:baseline; gap:10px;}
+  .bk-find{width:100%; max-width:420px; margin:0 0 12px; font-family:'Source Serif 4', serif; font-size:0.95rem; padding:9px 12px; border-radius:12px; border:1px solid var(--line); background:var(--parchment-light); color:var(--ink);}
+  .bk-toc{list-style:none; margin:0; padding:0; columns:2 320px; column-gap:24px;}
+  .bk-toc li{break-inside:avoid; margin:0 0 4px;}
+  .bk-toc button{display:block; width:100%; text-align:left; padding:7px 10px; border-radius:10px; border:1px solid transparent; background:none; color:var(--ink); font-family:'Source Serif 4', serif; font-size:0.95rem; line-height:1.35; cursor:pointer;}
+  .bk-toc button:hover{border-color:var(--line); background:var(--parchment-light);}
+  .bk-toc button.here{border-color:var(--gold); background:color-mix(in srgb, var(--gold) 10%, transparent);}
+  .bk-sel{max-width:min(52vw, 420px);}
+  .bk-title{font-size:calc(1.6rem * var(--br-size, 1)); line-height:1.2; margin:4px 0 18px;}
+  .bk-text p{margin:0 0 0.95em; text-align:left; hyphens:auto;}
+  .bk-text .bk-verse{padding-left:1.2em;}
+  .bk-sub{font-family:'Cormorant Garamond', serif; font-size:1.25em; margin:1.4em 0 0.6em; color:var(--ink);}
+  .bk-quote{margin:0 0 1em 1em; padding-left:14px; border-left:3px solid var(--line); color:var(--ink-soft);}
+  .bk-fn{font-size:0.8em; line-height:1.55; color:var(--ink-soft); margin:0 0 0.6em !important;}
   /* ---------- Bible reader ---------- */
   .bible-top{display:grid; gap:12px; padding:18px 20px; margin-bottom:24px; border:1px solid var(--line); border-radius:18px; background:var(--parchment-light);}
   .bible-go label{display:block; font-family:'Cormorant Garamond', serif; font-size:1.35rem; font-weight:700; margin-bottom:8px;}
@@ -4666,10 +4685,10 @@ const SEED_DATA = [
     link:'https://www.gutenberg.org/ebooks/1653' },
   { id:'b3', category:'book', title:'Introduction to the Devout Life', author:'St. Francis de Sales, 1609', tags:['classic','laity','spirituality'],
     content:'Written for laypeople rather than clergy or religious, this work argues that a devout life is attainable within ordinary secular circumstances — in marriage, work, and daily routine. Its warm, practical tone made it enormously influential in shaping a spirituality accessible outside the monastery.',
-    link:'https://www.gutenberg.org/ebooks/2716' },
+    link:'https://www.ccel.org/ccel/desales/devout_life' },
   { id:'b4', category:'book', title:'Story of a Soul', author:'St. Thérèse of Lisieux, 1898', tags:['classic','autobiography','little way'],
     content:'The spiritual autobiography of St. Thérèse of Lisieux, compiled from manuscripts written at the request of her Carmelite superiors and published after her death. It presents her "Little Way" of spiritual childhood and has become one of the best-selling religious texts of the modern era.',
-    link:'https://www.gutenberg.org/ebooks/23997' },
+    link:'https://www.gutenberg.org/ebooks/16772' },
   { id:'b5', category:'book', title:'Summa Theologica', author:'St. Thomas Aquinas, 1265\u20131274', tags:['reference','philosophy','theology'],
     content:'An unfinished but monumental synthesis of Catholic theology, structured as a series of questions and articles addressing God, creation, morality, Christ, and the sacraments, each weighing objections against a reasoned response. It remains the central reference work of scholastic theology.',
     link:'https://www.newadvent.org/summa/' },
@@ -5258,6 +5277,82 @@ const SEED_DATA = [
     link:'https://www.newadvent.org/fathers/0717.htm' },
   { id:'b231', category:'book', title:'The Divine Liturgy of St. John Chrysostom', author:'Byzantine tradition, attributed to St. John Chrysostom', tags:['liturgy','eastern','eucharist'],
     content:'The eucharistic liturgy celebrated on most days of the year in the Byzantine Churches, Catholic and Orthodox, and named after the great Archbishop of Constantinople.\n\nIts prayers, litanies, and hymns, including the Cherubic Hymn and "We have seen the true Light," have nourished Eastern Christians for more than a thousand years.' },
+  { id:'b232', category:'book', title:'Barlaam and Ioasaph', author:'attributed to St. John Damascene, Greek version c. 11th century', tags:['eastern','saints','story'],
+    content:'A beloved Christian romance in which the Indian prince Ioasaph, kept from all knowledge of suffering by his father, is converted by the hermit Barlaam through a series of parables. The story is a Christian retelling of the legend of the Buddha. It was long credited to St. John Damascene, though many scholars now link the Greek version to St. Euthymius of Athos. Barlaam and Ioasaph came to be venerated as saints in both East and West. Translated by G. R. Woodward and H. Mattingly (1914).', link:'https://www.gutenberg.org/ebooks/749' },
+  { id:'b233', category:'book', title:'On Holy Images', author:'St. John Damascene, c. 730', tags:['eastern','icons','church fathers'],
+    content:'Three treatises written against the iconoclasts, who were destroying icons in the Byzantine Empire. St. John explains why Christians may honor images: because the invisible God became visible in Christ, his human face can be portrayed, and honor given to an image passes to the one it represents. Translated by Mary H. Allies (1898).', link:'https://www.gutenberg.org/ebooks/49917' },
+  { id:'b234', category:'book', title:'The Life of St. Columba', author:'anonymous, 19th century', tags:['saints','ireland','scotland'],
+    content:'A short devotional life of St. Columba (Colmcille), the Irish abbot who founded the monastery of Iona and brought the Gospel to the Picts of Scotland, drawing on the early accounts of his prophecies, miracles, and visions.', link:'https://www.gutenberg.org/ebooks/38682' },
+  { id:'b235', category:'book', title:'The Letters of St. Ambrose', author:'St. Ambrose of Milan, 4th century', tags:['church fathers','letters','milan'],
+    content:'The letters of the great bishop of Milan, written to emperors, bishops, and friends. They include his firm stand against Emperor Theodosius after the massacre at Thessalonica, his defense of the Church’s basilicas against the Arian empress, and pastoral counsel on Scripture and the Christian life. From the Oxford Library of the Fathers (1881).', link:'https://www.gutenberg.org/ebooks/58783' },
+  { id:'b236', category:'book', title:'Leaves from St. John Chrysostom', author:'St. John Chrysostom, 4th century', tags:['church fathers','preaching','eastern'],
+    content:'A selection from the sermons and letters of the "golden-mouthed" archbishop of Constantinople, introduced by a sketch of his life and exile. Translated by Mary H. Allies (1889).', link:'https://www.gutenberg.org/ebooks/62447' },
+  { id:'b237', category:'book', title:'The Writings of Clement of Alexandria', author:'Clement of Alexandria, c. 195–215', tags:['church fathers','philosophy','alexandria'],
+    content:'The works of the great teacher of the catechetical school of Alexandria: the Exhortation to the Heathen, which invites pagans to Christ the true Word; The Instructor, a guide to Christian conduct; and the Stromata, or Miscellanies, on faith and true knowledge. Translated by William Wilson (1867–1869).', link:'https://www.gutenberg.org/ebooks/71937' },
+  { id:'b238', category:'book', title:'The Life of St. Malachy', author:'St. Bernard of Clairvaux, c. 1149', tags:['saints','ireland','cistercian'],
+    content:'St. Bernard’s life of his friend St. Malachy, the archbishop of Armagh who reformed the Church in Ireland and died in Bernard’s arms at Clairvaux in 1148. Translated with notes by H. J. Lawlor (1920).', link:'https://www.gutenberg.org/ebooks/25761' },
+  { id:'b239', category:'book', title:'On Union with God', author:'attributed to St. Albert the Great', tags:['spiritual life','prayer','mysticism'],
+    content:'A short treatise on detachment, recollection, and resting the mind in God alone. It has long been printed under the name of St. Albert the Great, though scholars now think it was written later, probably by the Benedictine John of Kastl around 1400. Translated by a Benedictine of Princethorpe Priory.', link:'https://www.gutenberg.org/ebooks/36402' },
+  { id:'b240', category:'book', title:'On Prayer and the Contemplative Life', author:'St. Thomas Aquinas, c. 1270', tags:['prayer','theology','dominican'],
+    content:'The questions of the Summa Theologica on religion, devotion, prayer, and the active and contemplative lives, gathered into one book. St. Thomas explains what prayer is, why we pray when God already knows our needs, and why contemplation is the highest human activity. Translated by Hugh Pope, O.P. (1914).', link:'https://www.gutenberg.org/ebooks/22295' },
+  { id:'b241', category:'book', title:'Letters of St. Catherine of Siena', author:'St. Catherine of Siena, 1370s', tags:['letters','mysticism','italy'],
+    content:'Letters dictated by St. Catherine to popes, rulers, soldiers, prisoners, and her spiritual family, burning with love for Christ and the Church and urging Pope Gregory XI to return from Avignon to Rome. Translated by Vida D. Scudder (1905).', link:'https://www.gutenberg.org/ebooks/7403' },
+  { id:'b242', category:'book', title:'Ten Reasons', author:'St. Edmund Campion, 1581', tags:['apologetics','martyrs','england'],
+    content:'The Jesuit martyr’s challenge to the Protestant scholars of England, printed on a secret press and left on the benches of the university church at Oxford on commencement day in 1581. In ten short arguments from Scripture, the Fathers, councils, and history, Campion invites them to a public debate on the Catholic faith. He was captured weeks later and executed at Tyburn.', link:'https://www.gutenberg.org/ebooks/13133' },
+  { id:'b243', category:'book', title:'The Faith of Our Fathers', author:'Cardinal James Gibbons, 1876', tags:['apologetics','catechesis','united states'],
+    content:'A plain and friendly explanation of Catholic belief written for American Protestants by the archbishop of Baltimore. It covers the Church, the papacy, the saints, the sacraments, and purgatory, and became one of the best-selling Catholic books in American history.', link:'https://www.gutenberg.org/ebooks/27435' },
+  { id:'b244', category:'book', title:'Paradoxes of Catholicism', author:'Robert Hugh Benson, 1913', tags:['apologetics','essays'],
+    content:'Short meditations on the apparent contradictions of the Church, which is both human and divine, rich and poor, at peace and at war, showing how the paradoxes of Christ himself are lived out in his Body.', link:'https://www.gutenberg.org/ebooks/16309' },
+  { id:'b245', category:'book', title:'Come Rack! Come Rope!', author:'Robert Hugh Benson, 1912', tags:['novel','martyrs','england'],
+    content:'A historical novel of the Elizabethan persecution in Derbyshire, where young Robin Audrey and Marjorie Manners give up their hopes of marriage so that Robin can become a priest in a land where saying Mass is punished by death.', link:'https://www.gutenberg.org/ebooks/15992' },
+  { id:'b246', category:'book', title:'The King’s Achievement', author:'Robert Hugh Benson, 1905', tags:['novel','england','monasticism'],
+    content:'A novel of the dissolution of the monasteries under Henry VIII, following two brothers, one in Thomas Cromwell’s service and one a monk of Lewes, with St. Thomas More among its characters.', link:'https://www.gutenberg.org/ebooks/16375' },
+  { id:'b247', category:'book', title:'The Dawn of All', author:'Robert Hugh Benson, 1911', tags:['novel','future'],
+    content:'A companion to Lord of the World. Where that novel imagined the world turning away from Christ, this one imagines a future in which the Church has regained the allegiance of the nations, and asks what such a world would demand of its people.', link:'https://www.gutenberg.org/ebooks/11626' },
+  { id:'b248', category:'book', title:'Loss and Gain', author:'St. John Henry Newman, 1848', tags:['novel','conversion','oxford'],
+    content:'Newman’s novel about Charles Reding, an Oxford undergraduate who, amid the debates of the Oxford Movement, slowly finds his way to the Catholic Church at great personal cost. Written soon after Newman’s own conversion.', link:'https://www.gutenberg.org/ebooks/24574' },
+  { id:'b249', category:'book', title:'Trees and Other Poems', author:'Joyce Kilmer, 1914', tags:['poetry','united states'],
+    content:'The collection that contains Kilmer’s famous "Trees," along with poems of faith, family, and city life by the American Catholic poet who was killed in the First World War in 1918.', link:'https://www.gutenberg.org/ebooks/263' },
+  { id:'b250', category:'book', title:'Dreams and Images: An Anthology of Catholic Poets', author:'edited by Joyce Kilmer, 1917', tags:['poetry','anthology'],
+    content:'Joyce Kilmer’s anthology of Catholic poetry in English, from Francis Thompson, Alice Meynell, Gerard Manley Hopkins, and Hilaire Belloc to Irish and American poets of his own day.', link:'https://www.gutenberg.org/ebooks/66094' },
+  { id:'b251', category:'book', title:'Poems of Alice Meynell', author:'Alice Meynell, 1893', tags:['poetry','england'],
+    content:'Poems by the English Catholic poet and essayist Alice Meynell, including her famous sonnet "Renouncement," marked by restraint, tenderness, and faith.', link:'https://www.gutenberg.org/ebooks/1186' },
+  { id:'b252', category:'book', title:'The Fourteen Holy Helpers', author:'compiled by Fr. Bonaventure Hammer, O.F.M., 1909', tags:['saints','prayers','novenas'],
+    content:'Instructions, novenas, and prayers in honor of Mary, Help of Christians, and the Fourteen Holy Helpers, with a life of each of these saints who were invoked together in medieval Germany for help in particular needs.', link:'https://www.gutenberg.org/ebooks/33596' },
+  { id:'b253', category:'book', title:'Thoughts and Counsels of the Saints', author:'compiled by Fr. Bonaventure Hammer, O.F.M.', tags:['devotional','saints','daily'],
+    content:'A short saying from a saint for every day of the year, gathered from the Fathers, the Doctors, and the great spiritual writers.', link:'https://www.gutenberg.org/ebooks/33649' },
+  { id:'b254', category:'book', title:'General Catholic Devotions', author:'compiled by Fr. Bonaventure Hammer, O.F.M., 1908', tags:['prayers','devotional'],
+    content:'A prayer book of morning and evening prayers, prayers at Mass, for confession and Communion, and devotions through the year.', link:'https://www.gutenberg.org/ebooks/33676' },
+  { id:'b255', category:'book', title:'Maxims and Counsels of St. Francis de Sales', author:'St. Francis de Sales, arranged for every day of the year', tags:['devotional','daily','spiritual life'],
+    content:'Short sayings from the writings of St. Francis de Sales, one for each day, full of his gentleness and good sense. Translated by Ella McMahon.', link:'https://www.gutenberg.org/ebooks/73661' },
+  { id:'b256', category:'book', title:'The Spirit of St. Francis de Sales', author:'Jean-Pierre Camus, 1639–1641', tags:['spiritual life','saints'],
+    content:'The bishop of Belley, a close friend of St. Francis de Sales, records his conversations, sayings, and example on prayer, patience, humility, charity, and the care of souls.', link:'https://www.gutenberg.org/ebooks/9184' },
+  { id:'b257', category:'book', title:'Mater Christi: Meditations on Our Lady', author:'Mother St. Paul, 1911', tags:['marian','meditations'],
+    content:'Meditations on the life and mysteries of the Blessed Virgin Mary, from the Immaculate Conception to the Assumption, for prayer through the year.', link:'https://www.gutenberg.org/ebooks/38965' },
+  { id:'b258', category:'book', title:'The Dolorous Passion of Our Lord Jesus Christ', author:'from the meditations of Bl. Anne Catherine Emmerich, 1833', tags:['passion','mysticism','meditations'],
+    content:'A vivid account of the Passion of Christ drawn from the visions of Bl. Anne Catherine Emmerich, as written down by the poet Clemens Brentano. It has fed the devotion of many readers, though scholars note that Brentano shaped and added to what he recorded, and the Church did not consider the visions in her beatification.', link:'https://www.gutenberg.org/ebooks/10866' },
+  { id:'b259', category:'book', title:'The Miraculous Medal', author:'Fr. Jean-Marie Aladel, C.M.', tags:['marian','apparitions','medal'],
+    content:'The story of the apparitions of Our Lady to St. Catherine Labouré in Paris in 1830 and of the spread of the Miraculous Medal, written by the Vincentian priest who was her confessor.', link:'https://www.gutenberg.org/ebooks/44231' },
+  { id:'b260', category:'book', title:'Life of St. Vincent de Paul', author:'F. A. Forbes, 1919', tags:['saints','charity','biography'],
+    content:'A short, lively life of St. Vincent de Paul, from his capture by pirates and slavery in Tunis to his founding of the Congregation of the Mission and the Daughters of Charity.', link:'https://www.gutenberg.org/ebooks/27706' },
+  { id:'b261', category:'book', title:'Saint Athanasius: The Father of Orthodoxy', author:'F. A. Forbes, 1919', tags:['saints','church fathers','biography'],
+    content:'A short life of the bishop of Alexandria who defended the divinity of Christ against Arius at Nicaea and through five exiles.', link:'https://www.gutenberg.org/ebooks/27707' },
+  { id:'b262', category:'book', title:'Life of St. Rita of Cascia', author:'Fr. Richard Connolly, O.S.A., 1903', tags:['saints','biography','augustinian'],
+    content:'The life of St. Rita, wife, mother, widow, and Augustinian nun, with the traditions of her childhood bees, her difficult marriage, the thorn wound on her forehead, and the roses of Cascia. From the Italian.', link:'https://www.gutenberg.org/ebooks/52481' },
+  { id:'b263', category:'book', title:'The Catholic Church and History', author:'Hilaire Belloc, 1926', tags:['history','apologetics'],
+    content:'A short book on how the Church should be understood by a historian: not as one institution among many, but as the continuous life of a single society through the centuries.', link:'https://www.gutenberg.org/ebooks/78085' },
+  { id:'b264', category:'book', title:'The Path to Rome', author:'Hilaire Belloc, 1902', tags:['pilgrimage','travel'],
+    content:'Belloc’s famous account of his pilgrimage on foot from Toul in France over the Alps to Rome, full of humor, digressions, sketches, and reflections on faith and Europe.', link:'https://www.gutenberg.org/ebooks/7373' },
+  { id:'b265', category:'book', title:'Protestantism and Catholicity Compared', author:'Jaime Balmes, 1842–1844', tags:['history','apologetics','spain'],
+    content:'The Spanish priest-philosopher’s answer to the claim that the Reformation was the source of European civilization, examining what the Church did for liberty, the family, the poor, and learning.', link:'https://www.gutenberg.org/ebooks/50436' },
+  { id:'b266', category:'book', title:'English Monastic Life', author:'Cardinal Francis Aidan Gasquet, 1904', tags:['monasticism','history','england'],
+    content:'A portrait of daily life in the English monasteries before the dissolution: the buildings, the officials, the hours of prayer, and the work of the monks and nuns.', link:'https://www.gutenberg.org/ebooks/42614' },
+  { id:'b267', category:'book', title:'The Complete Manual of Catholic Piety', author:'Fr. William Gahan, O.S.A.', tags:['prayers','devotional'],
+    content:'A classic Catholic prayer book of the late eighteenth and nineteenth centuries, with daily prayers, devotions for Mass and the sacraments, litanies, and prayers for the feasts of the year.', link:'https://www.gutenberg.org/ebooks/62988' },
+  { id:'b268', category:'book', title:'The Cell of Self-Knowledge', author:'seven early English mystical treatises, printed 1521', tags:['mysticism','england','spiritual life'],
+    content:'Seven short devotional treatises first printed by Henry Pepwell in 1521, including passages from St. Catherine of Siena, Walter Hilton, the author of The Cloud of Unknowing, and Margery Kempe. Edited by Edmund Gardner (1910).', link:'https://www.gutenberg.org/ebooks/4544' },
+  { id:'b269', category:'book', title:'The Wisdom of Father Brown', author:'G.K. Chesterton, 1914', tags:['fiction','mystery'],
+    content:'The second collection of stories about Chesterton’s priest-detective, who solves crimes through his knowledge of human nature and sin, gained from years in the confessional.', link:'https://www.gutenberg.org/ebooks/223' },
   { id:'h50', category:'history', title:'Our Lady of the Pillar', author:'c. 40 (tradition)', year:40, era:'apostolic', tags:['marian','apparition','spain','tradition'],
     content:'According to an ancient Spanish tradition, the Virgin Mary appeared to St. James the Greater while he was discouraged by his slow progress preaching in Spain. She was said to be standing on a pillar of jasper by the Ebro River at Zaragoza. She encouraged him and asked for a church to be built there.\n\nIf the tradition is true, this would be the only apparition during Mary’s earthly life. The Basilica of Our Lady of the Pillar still enshrines the pillar, and her feast on October 12 is Spain’s national day of Hispanic heritage.' },
   { id:'h51', category:'history', title:'Our Lady of Walsingham', author:'1061', year:1061, era:'medieval', tags:['marian','apparition','england','pilgrimage'],
@@ -6540,7 +6635,7 @@ function render(){
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
       community:renderCommunity, resources:renderResources,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
-      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
+      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
       'hub-pray':() => renderHub('pray'), 'hub-library':() => renderHub('library'), 'hub-learn':() => renderHub('learn'), 'hub-history':() => renderHub('history')
     };
     const needsNoSearch = new Set(['home', 'daily', 'theology', 'hub-pray', 'hub-library', 'hub-learn']);
@@ -6550,7 +6645,8 @@ function render(){
     }
   }
 
-  const entries = currentEntries();
+  let entries = currentEntries();
+  if(activeCategory === 'book' && booksReadableOnly && !searching) entries = entries.filter(e => BOOK_TEXTS[e.id]);
   entryListEl.innerHTML = '';
 
   if(activeCategory === 'all' && !searching){
@@ -6574,6 +6670,7 @@ function render(){
     if(activeCategory === 'prayer'){ renderPrayers(entries); return; }
     if(activeCategory === 'bible'){ renderBible(entries); return; }
     if(activeCategory === 'book'){
+      entryListEl.appendChild(buildBookBanner());
       entryListEl.appendChild(buildViewToggle(activeCategory));
       if(store.get('view.' + activeCategory, 'grid') === 'grid'){ renderGallery(entries, activeCategory); return; }
     }
@@ -6621,6 +6718,22 @@ function renderRows(entries, container){
   });
 }
 
+/* ---------- Books you can read on the site ---------- */
+let booksReadableOnly = false;
+function buildBookBanner(){
+  const recent = store.get('book.recent', null), rb = recent && BOOK_BY_SLUG[recent.slug], re = rb && bookEntry(rb);
+  const box = document.createElement('section');
+  box.className = 'bible-top bk-banner';
+  box.innerHTML = `
+    <p class="bible-about"><b>${Object.keys(BOOK_TEXTS).length} of these books can be read right here</b>, in public-domain editions, one short section at a time. Look for the “Read on Sanctify” mark.</p>
+    <div class="bk-actions">
+      ${re ? `<button class="btn quiet" data-route="library/books/${rb.slug}/${recent.section}">Continue reading <b>${escapeHtml(re.title)}</b> →</button>` : ''}
+      <button class="patron-chip bk-only${booksReadableOnly ? ' active' : ''}" aria-pressed="${booksReadableOnly}">Show only books to read here</button>
+    </div>`;
+  box.querySelector('.bk-only').addEventListener('click', () => { booksReadableOnly = !booksReadableOnly; render(); });
+  return box;
+}
+
 /* ---------- Gallery layouts (Saints, Books) ---------- */
 function buildViewToggle(cat){
   const current = store.get('view.' + cat, 'grid');
@@ -6658,7 +6771,7 @@ function renderGallery(entries, cat, container){
       card.innerHTML = `
         <div class="saint-portrait shape-book g-cover" data-sid="${e.id}">${fauxCover(e)}</div>
         <span class="g-title">${escapeHtml(e.title)}</span>
-        <span class="g-meta">${escapeHtml((e.author || '').split(',')[0])}</span>`;
+        <span class="g-meta">${escapeHtml((e.author || '').split(',')[0])}</span>${BOOK_TEXTS[e.id] ? '<span class="g-read">Read on Sanctify</span>' : ''}`;
     } else {
       card.innerHTML = `
         <div class="saint-portrait g-portrait" data-sid="${e.id}">${portraitPlaceholder(e.title)}</div>
@@ -10919,6 +11032,180 @@ document.addEventListener('keydown', ev => {
 });
 
 /* =========================================================
+   THE BOOK READER: public-domain books, one short section at a time
+   ========================================================= */
+// books/<book>/index.txt lists the section titles; books/<book>/<n>.txt holds the section title, then one block per
+// line: a paragraph, "## heading", "^ note", or "> quotation". A tab inside a block is a line break (poetry).
+const BOOK_TEXTS = {   // library entry -> [address, edition]
+  b1:['confessions', 'Translated by E. B. Pusey (1838)'], b2:['imitation-of-christ', 'Translated by William Benham (1874)'],
+  b4:['story-of-a-soul', 'Translated by Thomas N. Taylor (1912)'], b5:['summa-theologica', 'Translated by the Fathers of the English Dominican Province (1911–1925)'],
+  b6:['rule-of-st-benedict', 'Translated by Boniface Verheyen (1906)'], b9:['city-of-god', 'Translated by Marcus Dods (1871)'],
+  b11:['practice-of-the-presence-of-god', '1895 English translation'], b12:['pensees', 'Translated by C. Kegan Paul (1885)'],
+  b14:['orthodoxy', 'First published 1908'], b21:['consolation-of-philosophy', 'Translated by H. R. James (1897)'],
+  b22:['ecclesiastical-history', 'Translated by A. M. Sellar (1907)'], b25:['divine-comedy', 'Translated by Henry Wadsworth Longfellow (1867)'],
+  b28:['revelations-of-divine-love', 'Edited by Grace Warrack (1901)'], b29:['spiritual-exercises', 'Edited by Charles Coppens (1880s)'],
+  b34:['glories-of-mary', '19th-century English translation'], b35:['abandonment-to-divine-providence', 'Translated by Ella McMahon (1887)'],
+  b36:['the-betrothed', '1844 English translation'], b37:['fabiola', 'First published 1854'],
+  b38:['apologia-pro-vita-sua', 'First published 1864'], b40:['heretics', 'First published 1905'],
+  b41:['lord-of-the-world', 'First published 1907'], b43:['the-everlasting-man', 'First published 1925'],
+  b65:['utopia', 'Translated by Ralph Robinson, edited by Henry Morley'], b66:['dialogue-of-comfort', 'Edited by Monica Stevens, with modernized spelling'],
+  b67:['life-of-st-teresa', 'Translated by David Lewis (1870)'], b69:['autobiography-of-st-ignatius', 'Translated by J. F. X. O’Conor (1900)'],
+  b73:['development-of-christian-doctrine', 'First published 1845'], b74:['idea-of-a-university', 'First published 1852'],
+  b75:['dream-of-gerontius', 'First published 1865'], b76:['hound-of-heaven', 'First published 1890'],
+  b77:['quo-vadis', 'Translated by Jeremiah Curtin (1896)'], b78:['innocence-of-father-brown', 'First published 1911'],
+  b80:['poems-of-gerard-manley-hopkins', 'Edited by Robert Bridges (1918)'], b82:['st-francis-of-assisi', 'First published 1923'],
+  b114:['grammar-of-assent', 'First published 1870'], b115:['baltimore-catechism', 'Baltimore Catechism No. 2, 1891 edition'],
+  b133:['europe-and-the-faith', 'First published 1920'], b146:['death-comes-for-the-archbishop', 'First published 1927'],
+  b161:['the-ball-and-the-cross', 'First published 1909'], b162:['catholic-church-and-conversion', 'First published 1926'],
+  b232:['barlaam-and-ioasaph', 'Translated by G. R. Woodward and H. Mattingly (1914)'], b233:['on-holy-images', 'Translated by Mary H. Allies (1898)'],
+  b234:['life-of-st-columba', 'An anonymous nineteenth-century life'], b235:['letters-of-st-ambrose', 'From the Oxford Library of the Fathers (1881)'],
+  b236:['leaves-from-st-john-chrysostom', 'Translated by Mary H. Allies (1889)'], b237:['writings-of-clement-of-alexandria', 'Translated by William Wilson (1867–1869)'],
+  b238:['life-of-st-malachy', 'Translated by H. J. Lawlor (1920)'], b239:['on-union-with-god', 'Translated by a Benedictine of Princethorpe Priory'],
+  b240:['on-prayer-and-the-contemplative-life', 'Translated by Hugh Pope, O.P. (1914)'], b241:['letters-of-st-catherine-of-siena', 'Translated by Vida D. Scudder (1905)'],
+  b242:['ten-reasons', 'English translation (1914)'], b243:['faith-of-our-fathers', 'First published 1876'],
+  b244:['paradoxes-of-catholicism', 'First published 1913'], b245:['come-rack-come-rope', 'First published 1912'],
+  b246:['the-kings-achievement', 'First published 1905'], b247:['the-dawn-of-all', 'First published 1911'],
+  b248:['loss-and-gain', 'First published 1848'], b249:['trees-and-other-poems', 'First published 1914'],
+  b250:['dreams-and-images', 'First published 1917'], b251:['poems-of-alice-meynell', 'First published 1893'],
+  b252:['fourteen-holy-helpers', 'Compiled by Bonaventure Hammer, O.F.M. (1909)'], b253:['thoughts-and-counsels-of-the-saints', 'Compiled by Bonaventure Hammer, O.F.M.'],
+  b254:['general-catholic-devotions', 'Compiled by Bonaventure Hammer, O.F.M. (1908)'], b255:['maxims-of-st-francis-de-sales', 'Translated by Ella McMahon'],
+  b256:['spirit-of-st-francis-de-sales', 'English translation'], b257:['mater-christi', 'First published 1911'],
+  b258:['dolorous-passion', 'English translation'], b259:['the-miraculous-medal', 'English translation'],
+  b260:['life-of-st-vincent-de-paul', 'First published 1919'], b261:['saint-athanasius', 'First published 1919'],
+  b262:['life-of-st-rita', 'Translated from the Italian by Richard Connolly, O.S.A. (1903)'], b263:['catholic-church-and-history', 'First published 1926'],
+  b264:['the-path-to-rome', 'First published 1902'], b265:['protestantism-and-catholicity', 'English translation'],
+  b266:['english-monastic-life', 'First published 1904'], b267:['manual-of-catholic-piety', 'A Catholic prayer book of the nineteenth century'],
+  b268:['the-cell-of-self-knowledge', 'Edited by Edmund Gardner (1910)'], b269:['wisdom-of-father-brown', 'First published 1914']
+};
+const BOOK_BY_SLUG = Object.fromEntries(Object.entries(BOOK_TEXTS).map(([id, [slug, credit]]) => [slug, { id, slug, credit }]));
+const BOOK_ROUTE = /^library\/books\/([a-z0-9-]+)(?:\/(\d+))?$/;
+let bookRef = null;
+
+async function bookIndex(slug){
+  return (await bibleFetchText(`books/${slug}/index.txt`)).replace(/\r?\n$/, '').split(/\r?\n/);
+}
+async function bookSection(slug, n){
+  const lines = (await bibleFetchText(`books/${slug}/${n}.txt`)).replace(/\r?\n$/, '').split(/\r?\n/);
+  return { title:lines[0], blocks:lines.slice(1) };
+}
+function bookBlocksHtml(blocks){
+  const text = t => escapeHtml(t).replace(/\t/g, '<br>');
+  return blocks.map(b => {
+    if(!b) return '';
+    if(b.startsWith('## ')) return `<h4 class="bk-sub">${text(b.slice(3))}</h4>`;
+    if(b.startsWith('^ ')) return `<p class="bk-fn">${text(b.slice(2))}</p>`;
+    if(b.startsWith('> ')) return `<blockquote class="bk-quote">${text(b.slice(2))}</blockquote>`;
+    return `<p${b.includes('\t') ? ' class="bk-verse"' : ''}>${text(b)}</p>`;
+  }).join('');
+}
+const bookEntry = book => library.find(e => e.id === book.id);
+const bookShortAuthor = e => (e.author || '').split(',')[0];
+
+function renderBookReader(){
+  const ref = bookRef || {};
+  const book = BOOK_BY_SLUG[ref.slug];
+  if(!book){ navigate('library/books'); return; }
+  const entry = bookEntry(book);
+  if(!ref.section){ renderBookContents(book, entry); return; }
+  const n = ref.section;
+  sectionTitleEl.textContent = entry.title;
+  sectionDescEl.textContent = bookShortAuthor(entry);
+  document.getElementById('sectionEyebrow').insertAdjacentHTML('beforeend', `<span aria-hidden="true">›</span><button data-route="library/books/${book.slug}">${escapeHtml(entry.title)}</button>`);
+  store.set('book.recent', { slug:book.slug, section:n });
+  store.set('book.at.' + book.slug, n);
+  const size = store.get('bible.size', 2);
+  entryListEl.innerHTML = `
+    <div class="br bk" style="--br-size:${BIBLE_SIZES[size] || 1.08}">
+      <div class="br-tools">
+        <div class="br-pick">
+          <button class="br-arrow bk-prev" disabled aria-label="Previous section">‹</button>
+          <select class="br-book bk-sel" aria-label="Section"><option>Section ${n}</option></select>
+          <button class="br-arrow bk-next" disabled aria-label="Next section">›</button>
+        </div>
+        <div class="br-opts">
+          <button class="br-opt" data-size="-1" aria-label="Smaller text">A−</button>
+          <button class="br-opt" data-size="1" aria-label="Larger text">A+</button>
+        </div>
+      </div>
+      <article class="br-page bk-page">
+        <h3 class="bk-title"></h3>
+        <div class="bk-text" aria-live="polite"><p class="br-loading">Opening…</p></div>
+      </article>
+      <nav class="br-foot"><span></span><span></span></nav>
+      <p class="br-credit">${escapeHtml(book.credit)}. In the public domain.</p>
+    </div>`;
+  const root = entryListEl.querySelector('.bk');
+  root.querySelectorAll('[data-size]').forEach(b => b.addEventListener('click', () => {
+    const s = Math.max(0, Math.min(BIBLE_SIZES.length - 1, store.get('bible.size', 2) + Number(b.dataset.size)));
+    store.set('bible.size', s);
+    root.style.setProperty('--br-size', BIBLE_SIZES[s]);
+  }));
+  const still = () => currentRoute === 'library/books/read' && bookRef && bookRef.slug === book.slug && bookRef.section === n;
+  bookIndex(book.slug).then(titles => {
+    if(!still()) return;
+    const sel = root.querySelector('.bk-sel');
+    sel.innerHTML = titles.map((t, i) => `<option value="${i + 1}"${i + 1 === n ? ' selected' : ''}>${escapeHtml(t.length > 70 ? t.slice(0, 68) + '…' : t)}</option>`).join('');
+    sel.addEventListener('change', () => navigate(`library/books/${book.slug}/${sel.value}`));
+    const go = (btn, to) => { if(to >= 1 && to <= titles.length){ btn.disabled = false; btn.dataset.route = `library/books/${book.slug}/${to}`; } };
+    go(root.querySelector('.bk-prev'), n - 1);
+    go(root.querySelector('.bk-next'), n + 1);
+    const step = (to, dir) => to >= 1 && to <= titles.length
+      ? `<button class="br-step br-${dir}" data-route="library/books/${book.slug}/${to}">${dir === 'prev' ? '‹ ' : ''}<span>${escapeHtml(titles[to - 1].length > 48 ? titles[to - 1].slice(0, 46) + '…' : titles[to - 1])}</span>${dir === 'next' ? ' ›' : ''}</button>`
+      : `<span>${dir === 'next' ? '<button class="br-step" data-route="library/books/' + book.slug + '">Back to the contents</button>' : ''}</span>`;
+    root.querySelector('.br-foot').innerHTML = step(n - 1, 'prev') + step(n + 1, 'next');
+  }).catch(() => {});
+  bookSection(book.slug, n).then(sec => {
+    if(!still()) return;
+    root.querySelector('.bk-title').textContent = sec.title;
+    document.title = `${sec.title} — ${entry.title} — Sanctify`;
+    root.querySelector('.bk-text').innerHTML = bookBlocksHtml(sec.blocks);
+  }).catch(() => {
+    root.querySelector('.bk-text').innerHTML = `<p class="br-loading">This section could not be loaded. Check your connection and <button class="text-link" data-route="library/books/${book.slug}/${n}">try again</button>.</p>`;
+  });
+}
+
+function renderBookContents(book, entry){
+  sectionTitleEl.textContent = entry.title;
+  sectionDescEl.textContent = entry.author || '';
+  document.title = `${entry.title} — Sanctify`;
+  const at = store.get('book.at.' + book.slug, 0);
+  entryListEl.innerHTML = `
+    <div class="bb">
+      <p class="bb-intro">${escapeHtml(entry.content)}</p>
+      <p class="bk-credit-line">${escapeHtml(book.credit)}.</p>
+      <div class="bk-actions">
+        <button class="btn" data-route="library/books/${book.slug}/1">Begin reading →</button>
+        ${at > 1 ? `<button class="btn quiet" data-route="library/books/${book.slug}/${at}">Continue where you left off</button>` : ''}
+      </div>
+      <div class="bb-heading-row"><h3 class="bb-heading">Contents</h3><span class="view-count bk-count"></span></div>
+      <div class="bk-toc-wrap"><p class="br-loading">Loading the contents…</p></div>
+    </div>`;
+  bookIndex(book.slug).then(titles => {
+    if(currentRoute !== 'library/books/read' || !bookRef || bookRef.slug !== book.slug || bookRef.section) return;
+    entryListEl.querySelector('.bk-count').textContent = `${titles.length} ${titles.length === 1 ? 'section' : 'sections'}`;
+    const wrap = entryListEl.querySelector('.bk-toc-wrap');
+    wrap.innerHTML = (titles.length > 30 ? `<input class="bk-find" type="search" placeholder="Find a chapter…" aria-label="Find a chapter">` : '') +
+      `<ol class="bk-toc">${titles.map((t, i) => `<li><button data-route="library/books/${book.slug}/${i + 1}"${i + 1 === at ? ' class="here"' : ''}>${escapeHtml(t)}</button></li>`).join('')}</ol>`;
+    const find = wrap.querySelector('.bk-find');
+    if(find) find.addEventListener('input', () => {
+      const q = find.value.trim().toLowerCase();
+      wrap.querySelectorAll('.bk-toc li').forEach(li => { li.hidden = !!q && !li.textContent.toLowerCase().includes(q); });
+    });
+  }).catch(() => {
+    entryListEl.querySelector('.bk-toc-wrap').innerHTML = '<p class="br-loading">The contents could not be loaded. Check your connection and try again.</p>';
+  });
+}
+
+// Arrow keys turn the page in books too
+document.addEventListener('keydown', ev => {
+  if(currentRoute !== 'library/books/read' || !bookRef || !bookRef.section || ev.altKey || ev.ctrlKey || ev.metaKey) return;
+  if((ev.target.closest && ev.target.closest('input, select, textarea, [contenteditable]')) || readOverlay.classList.contains('open')) return;
+  if(ev.key !== 'ArrowLeft' && ev.key !== 'ArrowRight') return;
+  const btn = entryListEl.querySelector(ev.key === 'ArrowLeft' ? '.bk-prev' : '.bk-next');
+  if(btn && !btn.disabled) navigate(btn.dataset.route);
+});
+
+/* =========================================================
    READ ALOUD: the browser's own voice reads prayers and entries
    ========================================================= */
 const canSpeak = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
@@ -12451,6 +12738,7 @@ const SECTIONS = {
   book:{ name:'Books', group:'Library', icon:'book', color:'var(--indigo)' },
   bible:{ name:'The Bible', group:'Library', icon:'bible', color:'var(--teal)' },
   biblereader:{ name:'The Bible', group:'Library', icon:'bible', color:'var(--teal)' },
+  bookreader:{ name:'Books', group:'Library', icon:'book', color:'var(--indigo)' },
   all:{ name:'Browse Everything', group:'Library', icon:'all', color:'var(--ink-soft)' },
   rosary:{ name:'The Holy Rosary', group:'Pray', icon:'rosary', color:'var(--rose)' },
   stations:{ name:'Stations of the Cross', group:'Pray', icon:'stations', color:'var(--wine)' },
@@ -12850,6 +13138,7 @@ const ROUTES = {
   'library':                     { cat:'hub-library' },
   'library/bible':               { cat:'bible', parent:'library' },
   'library/bible/read':          { cat:'biblereader', parent:'library/bible', name:'The Bible' },
+  'library/books/read':          { cat:'bookreader', parent:'library/books', name:'Books' },
   'library/books':               { cat:'book', parent:'library' },
   'library/plans':               { cat:'plan', parent:'library' },
   'library/resources':           { cat:'resources', parent:'library' },
@@ -12896,7 +13185,7 @@ function routeName(route){
 // Accepts #/pray/rosary, and older links like #saint or #rosary
 function routeFromHash(){
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
-  if(ROUTES[h] || POST_ROUTE.test(h) || BIBLE_ROUTE.test(h)) return h;
+  if(ROUTES[h] || POST_ROUTE.test(h) || BIBLE_ROUTE.test(h) || BOOK_ROUTE.test(h)) return h;
   if(ROUTE_ALIASES[h]) return h;   // applyRoute moves it to the new address
   if(CAT_ROUTE[h]) return CAT_ROUTE[h];
   return 'home';
@@ -12912,7 +13201,9 @@ function applyRoute(path){
   forumThreadId = post ? Number(post[1]) : null;
   const bib = BIBLE_ROUTE.exec(path);
   bibleRef = bib ? { slug:bib[1], chapter:Number(bib[2]) || 0, verse:Number(bib[3]) || 0, verseEnd:Number(bib[4]) || 0 } : null;
-  let route = post ? 'community/post' : bib ? 'library/bible/read' : path;
+  const bk = BOOK_ROUTE.exec(path);
+  bookRef = bk ? { slug:bk[1], section:Number(bk[2]) || 0 } : null;
+  let route = post ? 'community/post' : bib ? 'library/bible/read' : bk ? 'library/books/read' : path;
   if(!ROUTES[route]) route = path = 'home';
   const r = ROUTES[route];
   currentRoute = route;
@@ -13093,6 +13384,10 @@ function openReadModal(id){
 
   const linkBox = document.getElementById('readLinkBox');
   linkBox.innerHTML = e.link ? `<a href="${escapeHtml(e.link)}" target="_blank" rel="noopener">View source / full text ↗</a>` : '';
+  if(e.category === 'book' && BOOK_TEXTS[e.id]){
+    linkBox.innerHTML = `<button class="btn" data-route="library/books/${BOOK_TEXTS[e.id][0]}">Read it here</button>` + (e.link ? ` <a href="${escapeHtml(e.link)}" target="_blank" rel="noopener">Source ↗</a>` : '');
+    linkBox.querySelector('button').addEventListener('click', () => readOverlay.classList.remove('open'));
+  }
   const bibleBook = e.category === 'bible' && BIBLE_BOOKS.find(x => x[1] === e.id);
   if(bibleBook){
     linkBox.innerHTML = `<button class="btn" data-route="library/bible/${bibleBook[0]}/1">Read ${escapeHtml(e.title)} here</button>`;
