@@ -969,6 +969,55 @@
   .glossary-item dt{font-family:'Cormorant Garamond', serif; font-size:1.25rem; font-weight:700;}
   .glossary-item dd{margin:2px 0 0; color:var(--ink-soft); line-height:1.6;}
 
+  /* ---------- Bible reader ---------- */
+  .bible-top{display:grid; gap:12px; padding:18px 20px; margin-bottom:24px; border:1px solid var(--line); border-radius:18px; background:var(--parchment-light);}
+  .bible-go label{display:block; font-family:'Cormorant Garamond', serif; font-size:1.35rem; font-weight:700; margin-bottom:8px;}
+  .bible-go-row{display:flex; gap:8px;}
+  .bible-go input{flex:1; min-width:0; font-family:'Source Serif 4', serif; font-size:1rem; padding:10px 12px; border-radius:12px; border:1px solid var(--line); background:var(--parchment); color:var(--ink);}
+  .bible-go-err{margin:8px 0 0; color:var(--wine); font-size:0.9rem;}
+  .bible-continue{justify-self:start;}
+  .bible-about{margin:0; font-size:0.88rem; color:var(--ink-soft);}
+  .br{max-width:740px; margin:0 auto;}
+  .br-tools{position:sticky; top:66px; z-index:6; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:8px; padding:10px 0; background:var(--parchment); border-bottom:1px solid var(--line);}
+  .br-pick, .br-opts{display:flex; gap:6px; align-items:center; min-width:0;}
+  .br-pick select{font-family:'Source Serif 4', serif; font-size:0.95rem; padding:7px 8px; border-radius:10px; border:1px solid var(--line); background:var(--parchment-light); color:var(--ink); min-width:0;}
+  .br-book{max-width:44vw;}
+  .br-arrow, .br-opt{min-width:36px; height:36px; padding:0 10px; border-radius:10px; border:1px solid var(--line); background:var(--parchment-light); color:var(--ink); font-family:'Source Serif 4', serif; font-size:0.92rem; cursor:pointer;}
+  .br-arrow{font-size:1.35rem; line-height:1; padding:0 8px;}
+  .br-arrow:disabled{opacity:0.35; cursor:default;}
+  .br-opt[aria-pressed="true"]{background:var(--teal); border-color:var(--teal); color:var(--parchment-light);}
+  .br-step:hover, .br-arrow:hover:not(:disabled), .br-opt:hover, .bb-ch:hover{border-color:var(--gold);}
+  .br-page{font-family:'Source Serif 4', serif; font-size:calc(1.06rem * var(--br-size, 1)); line-height:1.78; color:var(--ink); padding:22px 0 6px;}
+  .br-summary{font-style:italic; color:var(--ink-soft); font-size:0.9em; line-height:1.6; margin:0 0 20px; padding-left:14px; border-left:3px solid var(--gold);}
+  .br-summary:empty{display:none;}
+  .br-v{margin:0 0 0.45em -8px; padding:2px 8px; border-radius:8px; cursor:pointer; transition:background 0.15s;}
+  .br-v sup{font-family:'Source Serif 4', serif; font-size:0.6em; font-weight:700; color:var(--gold); margin-right:0.4em; vertical-align:0.5em; font-variant-numeric:tabular-nums;}
+  .br-v:hover{background:color-mix(in srgb, var(--gold) 8%, transparent);}
+  .br-v.hl{background:color-mix(in srgb, var(--gold) 20%, transparent);}
+  .br-v.sel{background:color-mix(in srgb, var(--teal) 18%, transparent); box-shadow:inset 3px 0 0 var(--teal);}
+  .br-note{margin:-0.15em 0 0.9em 1.1em; padding:8px 12px; font-size:0.82em; line-height:1.6; color:var(--ink-soft); background:var(--parchment-light); border-left:2px solid var(--gold); border-radius:0 8px 8px 0;}
+  .br-note b{color:var(--ink); font-weight:600;}
+  .br-loading{color:var(--ink-soft); font-style:italic;}
+  .br-foot{display:flex; justify-content:space-between; gap:10px; margin:28px 0 6px; padding-top:16px; border-top:1px solid var(--line);}
+  .br-step{font-family:'Source Serif 4', serif; font-size:0.95rem; padding:10px 16px; border-radius:12px; border:1px solid var(--line); background:var(--parchment-light); color:var(--ink); cursor:pointer;}
+  .br-credit{font-size:0.78rem; color:var(--ink-soft); text-align:center; margin:18px 0 80px;}
+  .br-copybar{position:fixed; left:50%; bottom:18px; transform:translateX(-50%); z-index:40; display:flex; align-items:center; gap:8px; padding:8px 8px 8px 16px; border-radius:999px; background:var(--parchment-light); border:1px solid var(--line); box-shadow:0 8px 24px rgba(0,0,0,0.2); max-width:calc(100vw - 24px);}
+  .br-copybar[hidden]{display:none;}
+  .br-copyref{font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0;}
+  .br-copybar .btn{padding:6px 12px; font-size:0.84rem; white-space:nowrap;}
+  .br-x{border:none; background:none; font-size:1.3rem; line-height:1; cursor:pointer; color:var(--ink-soft); padding:0 6px;}
+  .bb{max-width:820px;}
+  .bb-intro{font-size:1.05rem; line-height:1.7; margin:0 0 18px;}
+  .bb-heading{font-size:1.35rem; margin:28px 0 10px;}
+  .bb-chapters{display:grid; grid-template-columns:repeat(auto-fill, minmax(52px, 1fr)); gap:8px;}
+  .bb-ch{height:46px; border-radius:12px; border:1px solid var(--line); background:var(--parchment-light); color:var(--ink); font-family:'Source Serif 4', serif; font-size:1rem; cursor:pointer;}
+  @media (max-width:600px){
+    .br-tools{position:static;}
+    .br-opts .br-opt{min-width:34px; padding:0 8px;}
+    .br-step{flex:1; text-align:center; padding:10px 8px;}
+    .br-copybar{left:12px; right:12px; transform:none; border-radius:16px;}
+    .br-copybar .btn{padding:6px 9px;}
+  }
   /* ---------- Find your patron saint ---------- */
   .pf{max-width:1240px;}
   .pf-layout{display:grid; grid-template-columns:minmax(0, 1.25fr) minmax(320px, 1fr); gap:26px; align-items:start;}
@@ -2335,7 +2384,7 @@ const CAT_DESC = {
   history: 'Two thousand years of councils, missions, apparitions, and renewals, from Pentecost to the present day.',
   theology: 'What the Church believes and why: the core teachings of the faith, with Scripture, the Catechism, and answers to common objections.',
   book: 'Spiritual classics and reference works, with summaries and links.',
-  bible: 'All 73 books of the Catholic canon, with study notes and links to read the full text.',
+  bible: 'All 73 books of the Catholic canon to read right here, in the Douay-Rheims translation, with Bishop Challoner’s notes.',
   calendar: 'Solemnities, feast days, novenas, and seasons of the liturgical year.',
   rosary: 'Pray the Rosary step by step, with the mysteries for each day of the week.',
   shop: 'A few reputable retailers for rosaries, icons, statues, and other Catholic goods.',
@@ -6491,7 +6540,7 @@ function render(){
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
       community:renderCommunity, resources:renderResources,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
-      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
+      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
       'hub-pray':() => renderHub('pray'), 'hub-library':() => renderHub('library'), 'hub-learn':() => renderHub('learn'), 'hub-history':() => renderHub('history')
     };
     const needsNoSearch = new Set(['home', 'daily', 'theology', 'hub-pray', 'hub-library', 'hub-learn']);
@@ -6630,6 +6679,24 @@ const BIBLE_SECTIONS = [
   ['New Testament', [['New Testament, Gospel', 'The Gospels'], ['New Testament, History', 'Acts of the Apostles'], ['New Testament, Pauline Epistle', 'Letters of St. Paul'], ['New Testament, Epistle', 'Letter to the Hebrews'], ['New Testament, Catholic Epistle', 'Catholic Letters'], ['New Testament, Apocalyptic', 'Revelation']]]
 ];
 function renderBible(entries){
+  const last = store.get('bible.last', null), lastBook = last && BIBLE_BY_SLUG[last.slug];
+  const top = document.createElement('section');
+  top.className = 'bible-top';
+  top.innerHTML = `
+    <form class="bible-go" role="search">
+      <label for="bibleGo">Go to a passage</label>
+      <div class="bible-go-row"><input id="bibleGo" type="text" autocomplete="off" enterkeyhint="go" placeholder="John 3:16, Psalm 22, 1 Cor 13"><button class="btn" type="submit">Read</button></div>
+      <p class="bible-go-err" hidden>Sanctify couldn’t find that book. Try a name like “Genesis,” “Matthew 5,” or “Rom 8:28.”</p>
+    </form>
+    ${lastBook ? `<button class="btn quiet bible-continue" data-route="library/bible/${last.slug}/${last.chapter}">Continue reading <b>${escapeHtml(bibleChapterName(lastBook, last.chapter))}</b> →</button>` : ''}
+    <p class="bible-about">The complete Douay-Rheims Bible, all 73 books, to read right here. Each chapter loads on its own, usually just 1 to 3 KB, and stays on your device for the next time.</p>`;
+  top.querySelector('form').addEventListener('submit', ev => {
+    ev.preventDefault();
+    const ref = parseBibleRef(top.querySelector('input').value);
+    top.querySelector('.bible-go-err').hidden = !!ref;
+    if(ref) navigate(bibleRoute(ref));
+  });
+  entryListEl.appendChild(top);
   BIBLE_SECTIONS.forEach(([testament, parts]) => {
     const inTestament = entries.filter(e => (e.author || '').startsWith(testament));
     const sec = document.createElement('section');
@@ -6646,7 +6713,8 @@ function renderBible(entries){
         const t = document.createElement('button');
         t.className = 'bible-tile';
         t.innerHTML = `<span class="bt-title">${escapeHtml(b.title)}</span><span class="bt-note">${escapeHtml(excerptOf(b.content, 90))}</span>`;
-        t.addEventListener('click', () => openReadModal(b.id));
+        const book = BIBLE_BOOKS.find(x => x[1] === b.id);
+        t.addEventListener('click', () => book ? navigate('library/bible/' + book[0]) : openReadModal(b.id));
         tiles.appendChild(t);
       });
       sec.appendChild(group);
@@ -10586,6 +10654,271 @@ function renderPfResults(){
 }
 
 /* =========================================================
+   THE BIBLE READER: the Douay-Rheims text, one small chapter file at a time
+   ========================================================= */
+// bible/<book>/<chapter>.txt holds Challoner's chapter summary on the first line (starting with * when the chapter
+// has notes), then one verse per line. bible/<book>/<chapter>.notes.txt holds "<verse>\t<note>" lines.
+const BIBLE_BOOKS = [   // [address, entry id, name, Douay-Rheims name, chapters], in the order of the Catholic canon
+  ['genesis', 'bib1', 'Genesis', 'Genesis', 50], ['exodus', 'bib2', 'Exodus', 'Exodus', 40], ['leviticus', 'bib3', 'Leviticus', 'Leviticus', 27], ['numbers', 'bib4', 'Numbers', 'Numbers', 36],
+  ['deuteronomy', 'bib5', 'Deuteronomy', 'Deuteronomy', 34], ['joshua', 'bib6', 'Joshua', 'Josue', 24], ['judges', 'bib7', 'Judges', 'Judges', 21], ['ruth', 'bib8', 'Ruth', 'Ruth', 4],
+  ['1-samuel', 'bib9', '1 Samuel', '1 Kings', 31], ['2-samuel', 'bib10', '2 Samuel', '2 Kings', 24], ['1-kings', 'bib11', '1 Kings', '3 Kings', 22], ['2-kings', 'bib12', '2 Kings', '4 Kings', 25],
+  ['1-chronicles', 'bib13', '1 Chronicles', '1 Paralipomenon', 29], ['2-chronicles', 'bib14', '2 Chronicles', '2 Paralipomenon', 36], ['ezra', 'bib15', 'Ezra', '1 Esdras', 10], ['nehemiah', 'bib16', 'Nehemiah', '2 Esdras', 13],
+  ['tobit', 'bib17', 'Tobit', 'Tobias', 14], ['judith', 'bib18', 'Judith', 'Judith', 16], ['esther', 'bib19', 'Esther', 'Esther', 16], ['1-maccabees', 'bib20', '1 Maccabees', '1 Machabees', 16],
+  ['2-maccabees', 'bib21', '2 Maccabees', '2 Machabees', 15], ['job', 'bib22', 'Job', 'Job', 42], ['psalms', 'bib23', 'Psalms', 'Psalms', 150], ['proverbs', 'bib24', 'Proverbs', 'Proverbs', 31],
+  ['ecclesiastes', 'bib25', 'Ecclesiastes', 'Ecclesiastes', 12], ['song-of-songs', 'bib26', 'Song of Songs', 'Canticle of Canticles', 8], ['wisdom', 'bib27', 'Wisdom', 'Wisdom', 19], ['sirach', 'bib28', 'Sirach', 'Ecclesiasticus', 51],
+  ['isaiah', 'bib29', 'Isaiah', 'Isaias', 66], ['jeremiah', 'bib30', 'Jeremiah', 'Jeremias', 52], ['lamentations', 'bib31', 'Lamentations', 'Lamentations', 5], ['baruch', 'bib32', 'Baruch', 'Baruch', 6],
+  ['ezekiel', 'bib33', 'Ezekiel', 'Ezechiel', 48], ['daniel', 'bib34', 'Daniel', 'Daniel', 14], ['hosea', 'bib35', 'Hosea', 'Osee', 14], ['joel', 'bib36', 'Joel', 'Joel', 3],
+  ['amos', 'bib37', 'Amos', 'Amos', 9], ['obadiah', 'bib38', 'Obadiah', 'Abdias', 1], ['jonah', 'bib39', 'Jonah', 'Jonas', 4], ['micah', 'bib40', 'Micah', 'Micheas', 7],
+  ['nahum', 'bib41', 'Nahum', 'Nahum', 3], ['habakkuk', 'bib42', 'Habakkuk', 'Habacuc', 3], ['zephaniah', 'bib43', 'Zephaniah', 'Sophonias', 3], ['haggai', 'bib44', 'Haggai', 'Aggeus', 2],
+  ['zechariah', 'bib45', 'Zechariah', 'Zacharias', 14], ['malachi', 'bib46', 'Malachi', 'Malachias', 4], ['matthew', 'bib47', 'Matthew', 'Matthew', 28], ['mark', 'bib48', 'Mark', 'Mark', 16],
+  ['luke', 'bib49', 'Luke', 'Luke', 24], ['john', 'bib50', 'John', 'John', 21], ['acts', 'bib51', 'Acts of the Apostles', 'Acts', 28], ['romans', 'bib52', 'Romans', 'Romans', 16],
+  ['1-corinthians', 'bib53', '1 Corinthians', '1 Corinthians', 16], ['2-corinthians', 'bib54', '2 Corinthians', '2 Corinthians', 13], ['galatians', 'bib55', 'Galatians', 'Galatians', 6], ['ephesians', 'bib56', 'Ephesians', 'Ephesians', 6],
+  ['philippians', 'bib57', 'Philippians', 'Philippians', 4], ['colossians', 'bib58', 'Colossians', 'Colossians', 4], ['1-thessalonians', 'bib59', '1 Thessalonians', '1 Thessalonians', 5], ['2-thessalonians', 'bib60', '2 Thessalonians', '2 Thessalonians', 3],
+  ['1-timothy', 'bib61', '1 Timothy', '1 Timothy', 6], ['2-timothy', 'bib62', '2 Timothy', '2 Timothy', 4], ['titus', 'bib63', 'Titus', 'Titus', 3], ['philemon', 'bib64', 'Philemon', 'Philemon', 1],
+  ['hebrews', 'bib65', 'Hebrews', 'Hebrews', 13], ['james', 'bib66', 'James', 'James', 5], ['1-peter', 'bib67', '1 Peter', '1 Peter', 5], ['2-peter', 'bib68', '2 Peter', '2 Peter', 3],
+  ['1-john', 'bib69', '1 John', '1 John', 5], ['2-john', 'bib70', '2 John', '2 John', 1], ['3-john', 'bib71', '3 John', '3 John', 1], ['jude', 'bib72', 'Jude', 'Jude', 1],
+  ['revelation', 'bib73', 'Revelation', 'Apocalypse', 22]
+];
+const BIBLE_BY_SLUG = Object.fromEntries(BIBLE_BOOKS.map(b => [b[0], b]));
+const BIBLE_ROUTE = /^library\/bible\/([a-z0-9-]+)(?:\/(\d+)(?:\/(\d+)(?:-(\d+))?)?)?$/;
+let bibleRef = null;
+const bibleMemo = new Map();
+
+function bibleFetchText(path){
+  if(!bibleMemo.has(path)){
+    bibleMemo.set(path, fetch(path).then(r => { if(!r.ok) throw new Error(r.status); return r.text(); })
+      .catch(err => { bibleMemo.delete(path); throw err; }));
+  }
+  return bibleMemo.get(path);
+}
+async function bibleChapter(slug, n){
+  const lines = (await bibleFetchText(`bible/${slug}/${n}.txt`)).replace(/\n$/, '').split('\n');
+  const head = lines[0] || '';
+  return { hasNotes:head.startsWith('*'), summary:head.replace(/^\*/, ''), verses:lines.slice(1) };
+}
+async function bibleNotes(slug, n){
+  const notes = {};
+  (await bibleFetchText(`bible/${slug}/${n}.notes.txt`)).split('\n').forEach(line => {
+    const tab = line.indexOf('\t');
+    if(tab > 0) (notes[line.slice(0, tab)] = notes[line.slice(0, tab)] || []).push(line.slice(tab + 1));
+  });
+  return notes;
+}
+
+// Psalms follow the Vulgate numbering; this gives the number used by most modern Bibles
+function hebrewPsalm(n){
+  if(n <= 8 || n >= 148) return String(n);
+  if(n === 9) return '9–10';
+  if(n <= 112 || (n >= 116 && n <= 145)) return String(n + 1);
+  return { 113:'114–115', 114:'116:1–9', 115:'116:10–19', 146:'147:1–11', 147:'147:12–20' }[n];
+}
+const bibleChapterName = (book, n) => book[0] === 'psalms' ? `Psalm ${n}` : `${book[2]} ${n}`;
+
+// "John 3:16", "jn 3 16-18", "1 Cor 13", "Psalm 22", "3 Kings 19", "Apocalypse 21"
+const BIBLE_ABBR = { gen:'genesis', gn:'genesis', ex:'exodus', exod:'exodus', lev:'leviticus', lv:'leviticus', num:'numbers', nm:'numbers',
+  deut:'deuteronomy', dt:'deuteronomy', josh:'joshua', jos:'joshua', judg:'judges', jgs:'judges', ru:'ruth', '1sam':'1-samuel', '1sm':'1-samuel',
+  '2sam':'2-samuel', '2sm':'2-samuel', '1kgs':'1-kings', '2kgs':'2-kings', '1chr':'1-chronicles', '2chr':'2-chronicles', ezr:'ezra', neh:'nehemiah',
+  tob:'tobit', tb:'tobit', jdt:'judith', est:'esther', '1mac':'1-maccabees', '1macc':'1-maccabees', '2mac':'2-maccabees', '2macc':'2-maccabees',
+  jb:'job', ps:'psalms', pss:'psalms', psalm:'psalms', prov:'proverbs', prv:'proverbs', eccl:'ecclesiastes', qoh:'ecclesiastes', song:'song-of-songs',
+  sg:'song-of-songs', sos:'song-of-songs', songofsolomon:'song-of-songs', wis:'wisdom', ws:'wisdom', sir:'sirach', ecclus:'sirach', is:'isaiah',
+  isa:'isaiah', jer:'jeremiah', lam:'lamentations', bar:'baruch', ezek:'ezekiel', ez:'ezekiel', dan:'daniel', dn:'daniel', hos:'hosea', jl:'joel',
+  am:'amos', ob:'obadiah', obad:'obadiah', jon:'jonah', mic:'micah', mi:'micah', na:'nahum', nah:'nahum', hab:'habakkuk', zeph:'zephaniah',
+  zep:'zephaniah', hag:'haggai', hg:'haggai', zech:'zechariah', zec:'zechariah', mal:'malachi', mt:'matthew', matt:'matthew', mk:'mark', mrk:'mark',
+  lk:'luke', jn:'john', jhn:'john', rom:'romans', rm:'romans', '1cor':'1-corinthians', '2cor':'2-corinthians', gal:'galatians', eph:'ephesians',
+  phil:'philippians', col:'colossians', '1thess':'1-thessalonians', '1thes':'1-thessalonians', '2thess':'2-thessalonians', '2thes':'2-thessalonians',
+  '1tim':'1-timothy', '2tim':'2-timothy', ti:'titus', tit:'titus', phlm:'philemon', philem:'philemon', heb:'hebrews', jas:'james', '1pet':'1-peter',
+  '1pt':'1-peter', '2pet':'2-peter', '2pt':'2-peter', '1jn':'1-john', '2jn':'2-john', '3jn':'3-john', rev:'revelation', rv:'revelation',
+  apoc:'revelation', revelations:'revelation' };
+const bibleKey = s => s.toLowerCase().replace(/\./g, ' ').trim().replace(/^(first|i)\s+/, '1').replace(/^(second|ii)\s+/, '2')
+  .replace(/^(third|iii)\s+/, '3').replace(/^(fourth|iv)\s+/, '4').replace(/^(the\s+)?(book|gospel|letter|epistle)\s+of\s+(st\s+|saint\s+)?/, '').replace(/[^a-z0-9]/g, '');
+const BIBLE_NAMES = (() => {
+  const m = {};
+  BIBLE_BOOKS.forEach(b => { m[bibleKey(b[2])] = b[0]; });
+  BIBLE_BOOKS.forEach(b => { const k = bibleKey(b[3]); if(!(k in m)) m[k] = b[0]; });   // Douay names such as 3 Kings and Osee
+  Object.entries(BIBLE_ABBR).forEach(([k, v]) => { if(!(k in m)) m[k] = v; });
+  return m;
+})();
+function parseBibleRef(text){
+  const m = /^\s*(.+?)\s*(\d+)?(?:\s*[:., ]\s*(\d+)(?:\s*[-–]\s*(\d+))?)?\s*$/.exec(text || '');
+  if(!m) return null;
+  const key = bibleKey(m[1]);
+  if(!key) return null;
+  let slug = BIBLE_NAMES[key];
+  if(!slug){
+    const hit = BIBLE_BOOKS.find(b => bibleKey(b[2]).startsWith(key) || bibleKey(b[3]).startsWith(key));
+    slug = hit && hit[0];
+  }
+  if(!slug) return null;
+  const book = BIBLE_BY_SLUG[slug];
+  const chapter = m[2] ? Math.min(Math.max(1, +m[2]), book[4]) : (book[4] === 1 ? 1 : 0);
+  return { slug, chapter, verse:m[3] ? +m[3] : 0, verseEnd:m[4] ? +m[4] : 0 };
+}
+const bibleRoute = r => `library/bible/${r.slug}` + (r.chapter ? `/${r.chapter}` + (r.verse ? `/${r.verse}` + (r.verseEnd > r.verse ? `-${r.verseEnd}` : '') : '') : '');
+
+const BIBLE_SIZES = [0.94, 1, 1.08, 1.17, 1.28, 1.4];
+function bibleNeighbor(book, chapter, step){
+  let i = BIBLE_BOOKS.indexOf(book), c = chapter + step;
+  if(c < 1){ i--; if(i < 0) return null; c = BIBLE_BOOKS[i][4]; }
+  else if(c > book[4]){ i++; if(i >= BIBLE_BOOKS.length) return null; c = 1; }
+  return { book:BIBLE_BOOKS[i], chapter:c };
+}
+
+function renderBibleReader(){
+  const ref = bibleRef || {};
+  const book = BIBLE_BY_SLUG[ref.slug];
+  if(!book){ navigate('library/bible'); return; }
+  const entry = library.find(e => e.id === book[1]);
+  const crumbs = document.getElementById('sectionEyebrow');
+  if(!ref.chapter){ renderBibleBook(book, entry); return; }
+  const n = ref.chapter;
+  sectionTitleEl.textContent = bibleChapterName(book, n);
+  sectionDescEl.textContent = book[0] === 'psalms' && hebrewPsalm(n) !== String(n)
+    ? `Psalm ${hebrewPsalm(n)} in most modern Bibles. The Douay-Rheims follows the numbering of the Latin Vulgate.`
+    : book[3] !== book[2] ? `Called ${book[3]} in the Douay-Rheims Bible.` : 'The Douay-Rheims Bible.';
+  crumbs.insertAdjacentHTML('beforeend', `<span aria-hidden="true">›</span><button data-route="library/bible/${book[0]}">${escapeHtml(book[2])}</button>`);
+  document.title = `${bibleChapterName(book, n)} — Sanctify`;
+  store.set('bible.last', { slug:book[0], chapter:n });
+
+  const prev = bibleNeighbor(book, n, -1), next = bibleNeighbor(book, n, 1);
+  const size = store.get('bible.size', 2), notesOn = !!store.get('bible.notes', false);
+  const navBtn = (to, dir) => to
+    ? `<button class="br-step br-${dir}" data-route="library/bible/${to.book[0]}/${to.chapter}">${dir === 'prev' ? '‹ ' : ''}<span>${escapeHtml(bibleChapterName(to.book, to.chapter))}</span>${dir === 'next' ? ' ›' : ''}</button>`
+    : '<span></span>';
+  entryListEl.innerHTML = `
+    <div class="br" style="--br-size:${BIBLE_SIZES[size] || 1.08}">
+      <div class="br-tools">
+        <div class="br-pick">
+          <button class="br-arrow" ${prev ? `data-route="library/bible/${prev.book[0]}/${prev.chapter}"` : 'disabled'} aria-label="Previous chapter">‹</button>
+          <select class="br-book" aria-label="Book">${BIBLE_BOOKS.map(b => `<option value="${b[0]}"${b === book ? ' selected' : ''}>${escapeHtml(b[2])}</option>`).join('')}</select>
+          <select class="br-chap" aria-label="Chapter">${Array.from({ length:book[4] }, (_, i) => `<option value="${i + 1}"${i + 1 === n ? ' selected' : ''}>${i + 1}</option>`).join('')}</select>
+          <button class="br-arrow" ${next ? `data-route="library/bible/${next.book[0]}/${next.chapter}"` : 'disabled'} aria-label="Next chapter">›</button>
+        </div>
+        <div class="br-opts">
+          <button class="br-opt" data-size="-1" aria-label="Smaller text">A−</button>
+          <button class="br-opt" data-size="1" aria-label="Larger text">A+</button>
+          <button class="br-opt br-notes-btn" aria-pressed="${notesOn}" title="Bishop Challoner’s notes">Notes</button>
+        </div>
+      </div>
+      <article class="br-page">
+        <p class="br-summary"></p>
+        <div class="br-text" aria-live="polite"><p class="br-loading">Opening ${escapeHtml(bibleChapterName(book, n))}…</p></div>
+      </article>
+      <nav class="br-foot">${navBtn(prev, 'prev')}${navBtn(next, 'next')}</nav>
+      <p class="br-credit">Douay-Rheims Bible, Challoner revision (1749–1752), in the public domain.</p>
+      <div class="br-copybar" hidden><span class="br-copyref"></span><button class="btn quiet" data-copy="text">Copy verses</button><button class="btn quiet" data-copy="link">Copy link</button><button class="br-x" aria-label="Clear selection">×</button></div>
+    </div>`;
+  const root = entryListEl.querySelector('.br');
+  root.querySelector('.br-book').addEventListener('change', ev => navigate(`library/bible/${ev.target.value}/1`));
+  root.querySelector('.br-chap').addEventListener('change', ev => navigate(`library/bible/${book[0]}/${ev.target.value}`));
+  root.querySelectorAll('[data-size]').forEach(b => b.addEventListener('click', () => {
+    const s = Math.max(0, Math.min(BIBLE_SIZES.length - 1, store.get('bible.size', 2) + Number(b.dataset.size)));
+    store.set('bible.size', s);
+    root.style.setProperty('--br-size', BIBLE_SIZES[s]);
+  }));
+
+  const textEl = root.querySelector('.br-text');
+  const selected = new Set();
+  const copybar = root.querySelector('.br-copybar');
+  const rangeLabel = () => {
+    const v = [...selected].sort((a, b) => a - b), parts = [];
+    for(let i = 0; i < v.length; i++){
+      let j = i;
+      while(j + 1 < v.length && v[j + 1] === v[j] + 1) j++;
+      parts.push(j > i ? `${v[i]}–${v[j]}` : String(v[i]));
+      i = j;
+    }
+    return `${bibleChapterName(book, n)}:${parts.join(', ')}`;
+  };
+  const updateBar = () => {
+    copybar.hidden = !selected.size;
+    if(selected.size) copybar.querySelector('.br-copyref').textContent = rangeLabel();
+  };
+  textEl.addEventListener('click', ev => {
+    const v = ev.target.closest('.br-v');
+    if(!v || ev.target.closest('a')) return;
+    const num = Number(v.dataset.v);
+    selected.has(num) ? selected.delete(num) : selected.add(num);
+    v.classList.toggle('sel', selected.has(num));
+    updateBar();
+  });
+  copybar.querySelector('.br-x').addEventListener('click', () => { selected.clear(); textEl.querySelectorAll('.sel').forEach(x => x.classList.remove('sel')); updateBar(); });
+  copybar.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {
+    const v = [...selected].sort((a, b) => a - b);
+    const lo = v[0], hi = v[v.length - 1];
+    const text = b.dataset.copy === 'link'
+      ? location.origin + location.pathname + '#/' + bibleRoute({ slug:book[0], chapter:n, verse:lo, verseEnd:hi })
+      : v.map(x => textEl.querySelector(`.br-v[data-v="${x}"] .br-vt`).textContent).join(' ') + ` (${rangeLabel()}, Douay-Rheims)`;
+    try{ await navigator.clipboard.writeText(text); b.textContent = 'Copied'; }catch(e){ b.textContent = 'Could not copy'; }
+    setTimeout(() => { b.textContent = b.dataset.copy === 'link' ? 'Copy link' : 'Copy verses'; }, 1600);
+  }));
+
+  const notesBtn = root.querySelector('.br-notes-btn');
+  let chapterData = null;
+  const showNotes = async () => {
+    textEl.querySelectorAll('.br-note').forEach(x => x.remove());
+    if(!store.get('bible.notes', false) || !chapterData || !chapterData.hasNotes) return;
+    try{
+      const notes = await bibleNotes(book[0], n);
+      if(currentRoute !== 'library/bible/read' || bibleRef.slug !== book[0] || bibleRef.chapter !== n) return;
+      Object.entries(notes).forEach(([v, list]) => {
+        const after = textEl.querySelector(`.br-v[data-v="${v}"]`);
+        if(!after) return;
+        after.insertAdjacentHTML('afterend', list.map(t => {
+          const m = /^(.{1,120}?)\.\.\.\.\s*(.*)$/.exec(t);
+          return `<aside class="br-note">${m ? `<b>${escapeHtml(m[1].replace(/[\s,;:]*$/, '').replace(/([A-Za-z0-9’'"])$/, '$1.'))}</b> ${escapeHtml(m[2])}` : escapeHtml(t)}</aside>`;
+        }).join(''));
+      });
+    }catch(e){}
+  };
+  notesBtn.addEventListener('click', () => {
+    const on = !store.get('bible.notes', false);
+    store.set('bible.notes', on);
+    notesBtn.setAttribute('aria-pressed', on);
+    showNotes();
+  });
+
+  bibleChapter(book[0], n).then(data => {
+    if(currentRoute !== 'library/bible/read' || bibleRef.slug !== book[0] || bibleRef.chapter !== n) return;
+    chapterData = data;
+    root.querySelector('.br-summary').textContent = data.summary;
+    notesBtn.hidden = !data.hasNotes;
+    textEl.innerHTML = data.verses.map((t, i) => t ? `<p class="br-v" id="v${i + 1}" data-v="${i + 1}"><sup>${i + 1}</sup><span class="br-vt">${escapeHtml(t)}</span></p>` : '').join('');
+    if(ref.verse){
+      const hi = Math.max(ref.verse, ref.verseEnd || 0);
+      for(let v = ref.verse; v <= hi; v++){ const el = textEl.querySelector(`.br-v[data-v="${v}"]`); if(el) el.classList.add('hl'); }
+      const first = textEl.querySelector(`.br-v[data-v="${ref.verse}"]`);
+      if(first) requestAnimationFrame(() => first.scrollIntoView({ block:'center' }));
+    }
+    showNotes();
+  }).catch(() => {
+    textEl.innerHTML = `<p class="br-loading">This chapter could not be loaded. Check your connection and <button class="text-link" data-route="${bibleRoute(ref)}">try again</button>.</p>`;
+  });
+}
+
+function renderBibleBook(book, entry){
+  sectionTitleEl.textContent = book[2];
+  sectionDescEl.textContent = book[3] !== book[2] ? `Called ${book[3]} in the Douay-Rheims Bible.` : (entry ? entry.author.replace(/,\s*/, ' · ') : '');
+  document.title = `${book[2]} — Sanctify`;
+  entryListEl.innerHTML = `
+    <div class="bb">
+      ${entry ? `<p class="bb-intro">${escapeHtml(entry.content)}</p>` : ''}
+      <button class="btn bb-start" data-route="library/bible/${book[0]}/1">Begin reading ${escapeHtml(book[0] === 'psalms' ? 'the Psalms' : book[2])} →</button>
+      <h3 class="bb-heading">${book[0] === 'psalms' ? 'Psalms' : 'Chapters'}</h3>
+      <div class="bb-chapters">${Array.from({ length:book[4] }, (_, i) => `<button class="bb-ch" data-route="library/bible/${book[0]}/${i + 1}">${i + 1}</button>`).join('')}</div>
+      ${book[0] === 'psalms' ? '<p class="shop-note">The Psalms follow the numbering of the Latin Vulgate, usually one lower than in modern Bibles from Psalm 10 to 147. Each psalm shows its modern number too.</p>' : ''}
+    </div>`;
+}
+
+// Arrow keys turn the page
+document.addEventListener('keydown', ev => {
+  if(currentRoute !== 'library/bible/read' || !bibleRef || !bibleRef.chapter || ev.altKey || ev.ctrlKey || ev.metaKey) return;
+  if((ev.target.closest && ev.target.closest('input, select, textarea, [contenteditable]')) || readOverlay.classList.contains('open')) return;
+  if(ev.key !== 'ArrowLeft' && ev.key !== 'ArrowRight') return;
+  const to = bibleNeighbor(BIBLE_BY_SLUG[bibleRef.slug], bibleRef.chapter, ev.key === 'ArrowLeft' ? -1 : 1);
+  if(to) navigate(`library/bible/${to.book[0]}/${to.chapter}`);
+});
+
+/* =========================================================
    READ ALOUD: the browser's own voice reads prayers and entries
    ========================================================= */
 const canSpeak = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
@@ -12117,6 +12450,7 @@ const SECTIONS = {
   history:{ name:'Church History', group:'Library', icon:'history', color:'var(--green)' },
   book:{ name:'Books', group:'Library', icon:'book', color:'var(--indigo)' },
   bible:{ name:'The Bible', group:'Library', icon:'bible', color:'var(--teal)' },
+  biblereader:{ name:'The Bible', group:'Library', icon:'bible', color:'var(--teal)' },
   all:{ name:'Browse Everything', group:'Library', icon:'all', color:'var(--ink-soft)' },
   rosary:{ name:'The Holy Rosary', group:'Pray', icon:'rosary', color:'var(--rose)' },
   stations:{ name:'Stations of the Cross', group:'Pray', icon:'stations', color:'var(--wine)' },
@@ -12196,7 +12530,7 @@ const HUBS = {
     intro:'All 73 books of the Catholic Bible, the books that formed the saints, plans for reading Scripture, and trusted places to go deeper.',
     cards:() => [
       { route:'library/bible', big:true, kicker:'The Word of God', title:'The Bible',
-        desc:'All 73 books of the Catholic canon, grouped by section, with study notes and links to the full text.',
+        desc:'Read all 73 books of the Catholic canon right here in the Douay-Rheims, chapter by chapter, with Bishop Challoner’s notes.',
         links:[['Reading Plans', 'library/plans']], meta:'73 books', cta:'Open the Bible' },
       { route:'library/books', desc:'Spiritual classics, the Church Fathers, Church documents, and great Catholic literature, with summaries and links to read.', meta:`${countOf('book')} books` },
       { route:'library/plans', desc:'Read the Gospels in 30 days, the New Testament in 90, or the whole Bible in a year.', meta:'4 plans' },
@@ -12515,6 +12849,7 @@ const ROUTES = {
   'pray/tracker':                { cat:'tracker', parent:'pray' },
   'library':                     { cat:'hub-library' },
   'library/bible':               { cat:'bible', parent:'library' },
+  'library/bible/read':          { cat:'biblereader', parent:'library/bible', name:'The Bible' },
   'library/books':               { cat:'book', parent:'library' },
   'library/plans':               { cat:'plan', parent:'library' },
   'library/resources':           { cat:'resources', parent:'library' },
@@ -12561,7 +12896,7 @@ function routeName(route){
 // Accepts #/pray/rosary, and older links like #saint or #rosary
 function routeFromHash(){
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
-  if(ROUTES[h] || POST_ROUTE.test(h)) return h;
+  if(ROUTES[h] || POST_ROUTE.test(h) || BIBLE_ROUTE.test(h)) return h;
   if(ROUTE_ALIASES[h]) return h;   // applyRoute moves it to the new address
   if(CAT_ROUTE[h]) return CAT_ROUTE[h];
   return 'home';
@@ -12575,7 +12910,9 @@ function applyRoute(path){
   }
   const post = POST_ROUTE.exec(path);
   forumThreadId = post ? Number(post[1]) : null;
-  let route = post ? 'community/post' : path;
+  const bib = BIBLE_ROUTE.exec(path);
+  bibleRef = bib ? { slug:bib[1], chapter:Number(bib[2]) || 0, verse:Number(bib[3]) || 0, verseEnd:Number(bib[4]) || 0 } : null;
+  let route = post ? 'community/post' : bib ? 'library/bible/read' : path;
   if(!ROUTES[route]) route = path = 'home';
   const r = ROUTES[route];
   currentRoute = route;
@@ -12756,6 +13093,11 @@ function openReadModal(id){
 
   const linkBox = document.getElementById('readLinkBox');
   linkBox.innerHTML = e.link ? `<a href="${escapeHtml(e.link)}" target="_blank" rel="noopener">View source / full text ↗</a>` : '';
+  const bibleBook = e.category === 'bible' && BIBLE_BOOKS.find(x => x[1] === e.id);
+  if(bibleBook){
+    linkBox.innerHTML = `<button class="btn" data-route="library/bible/${bibleBook[0]}/1">Read ${escapeHtml(e.title)} here</button>`;
+    linkBox.querySelector('button').addEventListener('click', () => readOverlay.classList.remove('open'));
+  }
   if(card){
     linkBox.innerHTML = `<button class="btn quiet" id="printCardBtn">Print this card</button>`;
     document.getElementById('printCardBtn').addEventListener('click', () => window.print());
