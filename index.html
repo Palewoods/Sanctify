@@ -372,14 +372,18 @@
 
   body{
     margin:0;
-    background:
-      radial-gradient(ellipse at top, rgba(255,255,255,0.15), transparent 60%),
-      radial-gradient(ellipse at bottom, rgba(0,0,0,0.08), transparent 65%),
-      var(--parchment);
+    background:var(--parchment);
     color:var(--ink);
     font-family:'Source Serif 4', Georgia, serif;
     line-height:1.5;
     min-height:100vh;
+  }
+
+  :root[data-glow] body{
+    background:
+      radial-gradient(ellipse at top, rgba(255,255,255,0.15), transparent 60%),
+      radial-gradient(ellipse at bottom, rgba(0,0,0,0.08), transparent 65%),
+      var(--parchment);
   }
 
   h1,h2,h3, .display{
@@ -1683,10 +1687,13 @@
   .home-hero{
     position:relative; overflow:hidden; display:grid; grid-template-columns:minmax(0, 1fr) 230px; gap:24px; align-items:center;
     padding:34px 36px; border-radius:18px; border:1px solid var(--line);
+    background:linear-gradient(135deg, var(--parchment-light), color-mix(in srgb, var(--season) 10%, var(--parchment-light)));
+    box-shadow:0 1px 3px rgba(var(--ink-rgb),0.06);
+  }
+  :root[data-glow] .home-hero{
     background:
       radial-gradient(ellipse at 85% 50%, color-mix(in srgb, var(--gold) 20%, transparent), transparent 60%),
       linear-gradient(135deg, var(--parchment-light), color-mix(in srgb, var(--season) 10%, var(--parchment-light)));
-    box-shadow:0 1px 3px rgba(var(--ink-rgb),0.06);
   }
   .home-hero::before{content:''; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--season);}
   .hero-date{display:flex; flex-wrap:wrap; align-items:center; gap:10px; font-size:0.9rem; color:var(--ink-soft); font-weight:500;}
@@ -2059,9 +2066,10 @@
   .path-card .daily-kicker{color:var(--tile-color);}
 
   /* ---------- Closing verse bands ---------- */
+  :root[data-glow] .home-verse, :root[data-glow] .hub-verse{background:radial-gradient(ellipse at center, color-mix(in srgb, var(--gold) 14%, transparent), transparent 70%), var(--parchment-light);}
   .home-verse, .hub-verse{
     text-align:center; padding:56px 24px; border-radius:24px; border:1px solid var(--line);
-    background:radial-gradient(ellipse at center, color-mix(in srgb, var(--gold) 14%, transparent), transparent 70%), var(--parchment-light);
+    background:var(--parchment-light);
   }
   .home-verse blockquote, .hub-verse blockquote{margin:0 auto 10px; max-width:30ch; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(1.6rem, 3vw, 2.3rem); line-height:1.3;}
   .home-verse cite, .hub-verse cite{display:block; font-style:normal; font-size:0.8rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-soft);}
@@ -2232,6 +2240,7 @@
     }
     document.documentElement.setAttribute('data-theme', t);
     if(['dark','candlelight','liturgical-dark','midnight','stained-glass','compline','cathedral','byzantine','sacred-heart','stella-maris','hermitage','ember','tenebrae','obsidian','mono-dark','graphite','athos','lapis','gilded','ravenna','guadalupe','porphyry'].indexOf(t) >= 0) document.documentElement.setAttribute('data-mode', 'dark');
+    if(localStorage.getItem('sanctify.glow') === '1') document.documentElement.setAttribute('data-glow', '');
     if(localStorage.getItem('sanctify.shine') === '1' && ['ivory','manuscript','cathedral','byzantine','sacred-heart','obsidian','athos','lapis','gilded','ravenna','guadalupe','porphyry','sistine','vatican','kyiv'].indexOf(t) >= 0) document.documentElement.setAttribute('data-shine', '');
     var size = JSON.parse(localStorage.getItem('sanctify.textsize') || '"md"');
     if(size === 'lg' || size === 'xl') document.documentElement.setAttribute('data-textsize', size);
@@ -8664,6 +8673,14 @@ function applyTheme(key, save){
 }
 
 // Gold shine: an optional metallic sheen on titles and cards, only on themes with gold in them
+function glowWanted(){ try{ return localStorage.getItem('sanctify.glow') === '1'; }catch(e){ return false; } }
+function applyGlow(){
+  const on = glowWanted();
+  if(on) document.documentElement.setAttribute('data-glow', '');
+  else document.documentElement.removeAttribute('data-glow');
+  const sw = document.getElementById('glowSwitch');
+  if(sw) sw.setAttribute('aria-checked', String(on));
+}
 function shineWanted(){ try{ return localStorage.getItem('sanctify.shine') === '1'; }catch(e){ return false; } }
 function applyShine(){
   const key = document.documentElement.getAttribute('data-theme'), allowed = GOLD_THEMES.has(key), on = allowed && shineWanted();
@@ -8690,13 +8707,21 @@ const themeOption = t => `
     <span class="theme-check">✓</span>
   </button>`;
 themeMenu.innerHTML = `<div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">✦ Gold shine</span><span class="shine-row-note" id="shineNote"></span></span><button type="button" class="shine-switch" id="shineSwitch" role="switch" aria-checked="false" aria-label="Gold shine"></button></div>`
+  + `<div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">Background glow</span><span class="shine-row-note">Soft light behind pages and banners</span></span><button type="button" class="shine-switch" id="glowSwitch" role="switch" aria-checked="false" aria-label="Background glow"></button></div>`
   + `<div class="theme-menu-label">Light themes</div>` + THEMES.filter(t => t.mode === 'light').map(themeOption).join('')
   + `<div class="theme-menu-label theme-menu-sep">Dark themes</div>` + THEMES.filter(t => t.mode === 'dark').map(themeOption).join('');
 applyShine();
+applyGlow();
 
 themeToggleBtn.innerHTML = PALETTE_ICON;
 themeToggleBtn.addEventListener('click', e => { e.stopPropagation(); setThemeMenuOpen(themeMenu.hidden); });
 themeMenu.addEventListener('click', e => {
+  if(e.target.closest('#glowSwitch')){
+    e.stopPropagation();
+    try{ localStorage.setItem('sanctify.glow', glowWanted() ? '0' : '1'); }catch(err){}
+    applyGlow();
+    return;
+  }
   if(e.target.closest('#shineSwitch')){
     e.stopPropagation();
     try{ localStorage.setItem('sanctify.shine', shineWanted() ? '0' : '1'); }catch(err){}
