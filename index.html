@@ -10692,13 +10692,13 @@ function bibleFetchText(path){
   return bibleMemo.get(path);
 }
 async function bibleChapter(slug, n){
-  const lines = (await bibleFetchText(`bible/${slug}/${n}.txt`)).replace(/\n$/, '').split('\n');
+  const lines = (await bibleFetchText(`bible/${slug}/${n}.txt`)).replace(/\r?\n$/, '').split(/\r?\n/);
   const head = lines[0] || '';
   return { hasNotes:head.startsWith('*'), summary:head.replace(/^\*/, ''), verses:lines.slice(1) };
 }
 async function bibleNotes(slug, n){
   const notes = {};
-  (await bibleFetchText(`bible/${slug}/${n}.notes.txt`)).split('\n').forEach(line => {
+  (await bibleFetchText(`bible/${slug}/${n}.notes.txt`)).split(/\r?\n/).forEach(line => {
     const tab = line.indexOf('\t');
     if(tab > 0) (notes[line.slice(0, tab)] = notes[line.slice(0, tab)] || []).push(line.slice(tab + 1));
   });
