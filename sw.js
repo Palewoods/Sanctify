@@ -1,7 +1,7 @@
 // Sanctify service worker: lets the site open offline after a first visit.
 // Pages are fetched network-first (so updates appear right away) and fall back
 // to the cached copy when offline. Icons and fonts are served from cache.
-const VERSION = 'sanctify-v21';   // bump when icons or other cached files change
+const VERSION = 'sanctify-v22';   // bump when icons or other cached files change
 const PRECACHE = [
   './',
   'index.html',

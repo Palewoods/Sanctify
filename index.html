@@ -970,24 +970,50 @@
   .glossary-item dd{margin:2px 0 0; color:var(--ink-soft); line-height:1.6;}
 
   /* ---------- Find your patron saint ---------- */
-  .pf{max-width:980px;}
-  .pf-form{padding:20px 22px; border-radius:20px; border:1px solid var(--line); background:var(--parchment-light);}
-  .pf-intro{margin:0 0 16px; color:var(--ink-soft);}
-  .pf-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:14px 18px; margin-bottom:6px;}
+  .pf{max-width:1240px;}
+  .pf-layout{display:grid; grid-template-columns:minmax(0, 1.25fr) minmax(320px, 1fr); gap:26px; align-items:start;}
+  .pf-form{display:flex; flex-direction:column; gap:12px; min-width:0;}
+  .pf-sec{padding:16px 20px; border-radius:18px; border:1px solid var(--line); background:var(--parchment-light);}
+  .pf-sec summary{display:flex; align-items:baseline; gap:10px; cursor:pointer; list-style:none;}
+  .pf-sec summary::-webkit-details-marker{display:none;}
+  .pf-sec summary::after{content:'▾'; margin-left:auto; color:var(--gold); transition:transform 0.2s;}
+  .pf-sec:not([open]) summary::after{transform:rotate(-90deg);}
+  .pf-sec-title{font-family:'Cormorant Garamond', serif; font-size:1.35rem; font-weight:700; color:var(--ink);}
+  .pf-count{font-size:0.78rem; font-weight:600; color:var(--wine);}
+  .pf-hint{margin:4px 0 10px; font-size:0.88rem; color:var(--ink-soft);}
+  .pf-group{margin-top:10px;}
+  .pf-group h4{margin:0 0 6px; font-family:'Source Serif 4', serif; font-size:0.74rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft);}
+  .pf-chips{display:flex; flex-wrap:wrap; gap:6px;}
+  .pf-chip.active::before{content:'✓ ';}
+  .pf-about-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px 18px; margin-top:10px;}
   .pf-q{display:flex; flex-direction:column; gap:6px; font-weight:600; font-size:0.92rem;}
-  .pf-q select{font-family:'Source Serif 4', serif; font-size:0.95rem; font-weight:400; padding:9px 10px; border-radius:10px; border:1px solid var(--line); background:var(--parchment); color:var(--ink); min-width:0;}
+  .pf-q select, .pf-q input{font-family:'Source Serif 4', serif; font-size:0.95rem; font-weight:400; padding:9px 10px; border-radius:10px; border:1px solid var(--line); background:var(--parchment); color:var(--ink); min-width:0;}
   .pf-row{display:flex; gap:8px;}
   .pf-row select:first-child{flex:2;} .pf-row select:last-child{flex:1;}
-  .pf-heading{font-size:1.4rem; margin:26px 0 12px;}
-  .pf-empty{margin:22px 0; color:var(--ink-soft); font-style:italic;}
-  .pf-results{display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:12px;}
-  .pf-card{display:flex; gap:14px; align-items:flex-start; text-align:left; cursor:pointer; padding:14px; border-radius:16px; border:1px solid var(--line); background:var(--parchment-light); color:var(--ink); font-family:'Source Serif 4', serif;}
+  .pf-reset{align-self:flex-start; margin:4px 0 0 4px;}
+  .pf-side{position:sticky; top:84px; max-height:calc(100vh - 100px); overflow:auto; padding:4px 4px 12px; scroll-margin-top:80px;}
+  .pf-side-head{display:flex; align-items:baseline; gap:10px; margin-bottom:12px;}
+  .pf-heading{font-size:1.5rem; margin:0;}
+  .pf-total{font-size:0.85rem; color:var(--ink-soft);}
+  .pf-empty{margin:10px 0; color:var(--ink-soft); font-style:italic;}
+  .pf-results{display:grid; grid-template-columns:1fr; gap:10px;}
+  .pf-card{display:flex; gap:14px; align-items:flex-start; text-align:left; cursor:pointer; padding:12px 14px; border-radius:16px; border:1px solid var(--line); background:var(--parchment-light); color:var(--ink); font-family:'Source Serif 4', serif;}
   .pf-card:hover{border-color:var(--gold);}
-  .pf-card .saint-portrait{flex:0 0 64px; width:64px; height:80px;}
-  .pf-card-body{display:flex; flex-direction:column; gap:4px; min-width:0;}
-  .pf-card-title{font-family:'Cormorant Garamond', serif; font-size:1.25rem; font-weight:700; line-height:1.15;}
+  .pf-card .saint-portrait{flex:0 0 60px; width:60px; height:76px;}
+  .pf-card-body{display:flex; flex-direction:column; gap:3px; min-width:0;}
+  .pf-card-title{font-family:'Cormorant Garamond', serif; font-size:1.22rem; font-weight:700; line-height:1.15;}
   .pf-why{display:flex; flex-wrap:wrap; gap:4px; margin-top:4px;}
   .pf-why .patron-tag{font-size:0.72rem;}
+  .pf-more{margin-top:12px; width:100%;}
+  .pf-jump{display:none;}
+  @media (max-width:900px){
+    .pf-layout{grid-template-columns:1fr;}
+    .pf-side{position:static; max-height:none; overflow:visible;}
+    .pf-jump{display:block; position:fixed; left:50%; bottom:18px; transform:translateX(-50%); z-index:30; padding:11px 22px; border-radius:999px; border:none; cursor:pointer;
+      background:var(--wine); color:var(--parchment-light); font-family:'Source Serif 4', serif; font-size:0.95rem; font-weight:600; box-shadow:0 6px 18px rgba(0,0,0,0.25); transition:opacity 0.2s;}
+    .pf-jump[hidden], .pf-jump.away{opacity:0; pointer-events:none;}
+    .pf-sec{padding:14px 16px;}
+  }
   .sf-quiz-link{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin:-6px 0 18px; padding:12px 16px; border-radius:14px;
     background:color-mix(in srgb, var(--gold) 10%, var(--parchment-light)); border:1px dashed color-mix(in srgb, var(--gold) 50%, var(--line));}
 
@@ -2301,7 +2327,7 @@ const CAT_DESC = {
   easternchurches: 'The twenty-three Eastern Catholic Churches, in full communion with Rome: their traditions, leaders, and lands.',
   glossary: 'Clear, short definitions of the words of the Catholic faith, from Absolution to the Vulgate.',
   quotes: 'The words of the saints, from the Church Fathers to our own day, each with its source. Search them, browse by theme, and share your favorites.',
-  patronfinder: 'A few quick questions to suggest saints for your birthday, your work, and the needs on your heart.',
+  patronfinder: 'Pick as many answers as you like: your name, your work, your needs, and what you love in a saint. Sanctify suggests friends in heaven who fit.',
   resources: 'Trusted places to keep learning about the faith: Church documents, Scripture and prayer, podcasts, video, courses, and more.',
   community: 'Share prayer requests, ask questions about the faith, and talk about the saints and good books with other Sanctify members.',
   'forum-new': 'Start a new conversation in the Community.',
@@ -4326,6 +4352,75 @@ const SEED_DATA = [
   { id:'s605', category:'saint', title:'St. Philaret the Merciful', author:'702–792, feast day December 1', tags:['laymen','charity','fathers'],
     content:'Philaret was a wealthy landowner of Paphlagonia, in present-day Turkey, who gave so generously to the poor that he gave away nearly everything he owned, trusting that God would provide.\n\nAccording to his Life, his granddaughter Maria was chosen as the bride of the emperor Constantine VI, and his family’s fortunes were restored. He continued to give alms until his death.',
     intercession:'St. Philaret, pray for us. Make us generous to the poor. Amen.' },
+  { id:'s606', category:'saint', title:'St. Drogo', author:'1105–1186, feast day April 16', tags:['shepherds','hermit','penitents'],
+    content:'Drogo was a Flemish nobleman who, as a young man, gave away his inheritance and became a penitent pilgrim, traveling to Rome many times. He later worked as a shepherd.\n\nAfter an illness left him badly disfigured, he lived for decades as a recluse in a small cell built against the church at Sebourg, receiving Holy Communion through a window and living on very little. He is the patron of shepherds, of coffee house owners, and of those who are mocked for their appearance.',
+    intercession:'St. Drogo, pray for us. Help us to see beyond appearances to the beauty of every soul. Amen.' },
+  { id:'s607', category:'saint', title:'St. Notburga', author:'c. 1265–1313, feast day September 13', tags:['servants','farm workers','austria'],
+    content:'Notburga was a peasant girl of the Tyrol who worked as a kitchen maid and later as a farm servant. She gave her own food to the poor, and when her employer forbade it, she was dismissed for a time.\n\nAccording to a well-known story, when a farmer ordered her to keep working on a Saturday evening after the bell for Sunday had rung, she threw her sickle into the air and it hung there. She is the patron of servants, farm workers, and the Tyrol.',
+    intercession:'St. Notburga, pray for us. Bless all who work hard for others, and help us keep the Lord’s Day holy. Amen.' },
+  { id:'s608', category:'saint', title:'St. Eustace', author:'d. c. 118, feast day September 20', tags:['martyr','soldiers','holy helpers'],
+    content:'According to tradition, Eustace was a Roman general named Placidus. While hunting, he saw a stag with a crucifix shining between its antlers and heard Christ calling him. He was baptized with his wife and sons.\n\nHe lost his wealth and his family was scattered, but they were reunited, and under Hadrian they were martyred together for refusing to sacrifice to idols. He is one of the Fourteen Holy Helpers and the patron of hunters and of all who face adversity.',
+    intercession:'St. Eustace, pray for us. Help us to stay faithful when trials come. Amen.' },
+  { id:'s609', category:'saint', title:'St. Honoratus of Amiens', author:'d. c. 600, feast day May 16', tags:['bishop','bakers','france'],
+    content:'Honoratus (Honoré) was a bishop of Amiens in northern France. A legend tells that when news of his election reached his old nurse, she said she would believe it when the baker’s peel in her hand took root, and it grew into a mulberry tree.\n\nHe is the patron of bakers and pastry chefs. The Rue Saint-Honoré in Paris and the Saint-Honoré cake are named after him.',
+    intercession:'St. Honoratus, pray for us. Bless all who make our daily bread. Amen.' },
+  { id:'s610', category:'saint', title:'St. Lydia of Thyatira', author:'1st century, feast day August 3', tags:['new testament','businesswomen','converts'],
+    content:'Lydia was a businesswoman from Thyatira who sold purple cloth in the city of Philippi. When St. Paul preached by the riverside, the Lord opened her heart to his message, and she and her household were baptized (Acts 16).\n\nShe was the first recorded convert in Europe, and she welcomed Paul and his companions into her home, which became a meeting place for the young church. She is the patron of dyers and of businesswomen.',
+    intercession:'St. Lydia, pray for us. Open our hearts to the Word of God and our homes to others. Amen.' },
+  { id:'s611', category:'saint', title:'St. Fabiola', author:'d. 399, feast day December 27', tags:['widows','hospitals','penitents'],
+    content:'Fabiola was a wealthy Roman noblewoman who divorced a cruel and abusive husband and remarried. After her second husband died, she did public penance before the Church at the Lateran Basilica.\n\nShe used her fortune to found what is often called the first public hospital in Rome, where she cared for the sick herself. St. Jerome, her friend, wrote of her generosity. She is the patron of the divorced, of difficult marriages, and of victims of abuse.',
+    intercession:'St. Fabiola, pray for us. Heal the wounded, and give new beginnings to those whose marriages have suffered. Amen.' },
+  { id:'s612', category:'saint', title:'St. Medard', author:'c. 456–545, feast day June 8', tags:['bishop','weather','farmers'],
+    content:'Medard was a bishop of Noyon and Tournai in Gaul, known for his kindness to the poor. A legend says that as a boy he was sheltered from a rainstorm by an eagle hovering over his head.\n\nHe is invoked for good weather and is the patron of farmers and vineyards. An old French proverb says that if it rains on St. Medard’s Day, it will rain for forty days.',
+    intercession:'St. Medard, pray for us. Bless our crops and our harvests. Amen.' },
+  { id:'s613', category:'saint', title:'St. Dorothy of Caesarea', author:'d. c. 311, feast day February 6', tags:['martyr','virgin','gardeners'],
+    content:'Dorothy was a young Christian of Caesarea in Cappadocia, martyred during the persecution of Diocletian. A famous legend says that as she was led to execution, a lawyer named Theophilus mocked her, asking her to send him fruit from the garden of paradise.\n\nAfter her death, a child brought him a basket of roses and apples, and he was converted and later martyred himself. She is the patron of gardeners, florists, and brides.',
+    intercession:'St. Dorothy, pray for us. Let our lives bear flowers and fruit for heaven. Amen.' },
+  { id:'s614', category:'saint', title:'St. Gummarus', author:'717–774, feast day October 11', tags:['marriage','hermit','belgium'],
+    content:'Gummarus (Gommaire) was a courtier in the service of Pepin the Short. He married a noblewoman who proved harsh and quarrelsome, especially toward their servants, and he bore it with great patience, quietly making amends to those she wronged.\n\nIn later life he lived as a hermit, and the town of Lier in Belgium grew up around his hermitage. He is the patron of difficult marriages and separated spouses.',
+    intercession:'St. Gummarus, pray for us. Give patience and peace to those in difficult marriages. Amen.' },
+  { id:'s615', category:'saint', title:'Sts. Adrian and Natalia', author:'d. c. 306, feast day September 8 (East: August 26)', tags:['martyrs','soldiers','married couples'],
+    content:'Adrian was a pagan officer at Nicomedia. While overseeing the torture of Christians, he was so moved by their courage that he declared himself a Christian and was imprisoned with them.\n\nHis wife Natalia, a secret Christian, encouraged him in prison and stayed with him as he was martyred. She later died in peace and is honored with him as a martyr. He is a patron of soldiers, butchers, and guards.',
+    intercession:'Sts. Adrian and Natalia, pray for us. Help husbands and wives to lead each other to heaven. Amen.' },
+  { id:'s616', category:'saint', title:'St. Ubald of Gubbio', author:'1084–1160, feast day May 16', tags:['bishop','peacemaker','italy'],
+    content:'Ubald Baldassini was bishop of Gubbio in Umbria, a gentle and patient pastor who reformed his clergy and made peace among quarreling citizens.\n\nIn 1155, when the army of Emperor Frederick Barbarossa threatened Gubbio, Ubald went out to meet the emperor and persuaded him to spare the city. Gubbio still honors him every May 15 with the famous Festa dei Ceri. He is the patron of Gubbio.',
+    intercession:'St. Ubald, pray for us. Make us peacemakers in our homes and cities. Amen.' },
+  { id:'s617', category:'saint', title:'St. Emygdius', author:'d. c. 303, feast day August 5', tags:['bishop','martyr','earthquakes'],
+    content:'Emygdius was a bishop of Ascoli Piceno in central Italy, martyred during the persecution of Diocletian.\n\nWhen a great earthquake struck the region in 1703 and Ascoli was spared, the people credited his prayers. Since then he has been invoked as a protector against earthquakes, and many cities in earthquake zones have placed themselves under his patronage.',
+    intercession:'St. Emygdius, pray for us. Protect us from earthquakes and every disaster. Amen.' },
+  { id:'s618', category:'saint', title:'St. Bavo of Ghent', author:'c. 589–659, feast day October 1', tags:['converts','hermit','belgium'],
+    content:'Bavo was a wealthy and worldly nobleman in what is now Belgium. After the death of his wife, he was converted by the preaching of St. Amand, gave away his riches to the poor, and entered the monastery at Ghent.\n\nHe later lived as a hermit in great penance. He is the patron of Ghent and Haarlem, whose cathedrals bear his name.',
+    intercession:'St. Bavo, pray for us. Help us turn away from worldly things to the love of God. Amen.' },
+  { id:'s619', category:'saint', title:'St. Odile of Alsace', author:'c. 662–720, feast day December 13', tags:['abbess','blind','france'],
+    content:'Odile was born blind to an Alsatian duke who rejected her because of it. She was raised in a convent, and tradition says she received her sight when she was baptized.\n\nShe later reconciled with her father and founded an abbey on a mountain in the Vosges, now called Mont Sainte-Odile, and a hospice for the sick and the poor below it. She is the patron of Alsace and of the blind.',
+    intercession:'St. Odile, pray for us. Give light to our eyes and to our souls. Amen.' },
+  { id:'s620', category:'saint', title:'St. Oswald of Northumbria', author:'c. 604–642, feast day August 5', tags:['king','england','martyr'],
+    content:'Oswald was a prince of Northumbria who, in exile, was baptized by the monks of Iona. When he returned to claim his kingdom, he set up a wooden cross before the battle of Heavenfield and prayed with his army before winning the victory.\n\nAs king he invited St. Aidan to evangelize his people and sometimes translated Aidan’s sermons himself. He was killed in battle against the pagan King Penda in 642 and was venerated as a martyr.',
+    intercession:'St. Oswald, pray for us. Make us bold to raise the cross of Christ. Amen.' },
+  { id:'s621', category:'saint', title:'St. Wiborada', author:'d. 926, feast day May 2', tags:['anchoress','martyr','librarians'],
+    content:'Wiborada was a Swabian noblewoman who lived as an anchoress, walled into a cell next to a church at St. Gallen, giving counsel through a window.\n\nShe foresaw the attack of Hungarian raiders in 926 and warned the monks of St. Gall, who hid their books and escaped. She refused to leave her cell and was killed. In 1047 she became the first woman formally canonized by a pope. She is the patron of libraries and librarians.',
+    intercession:'St. Wiborada, pray for us. Protect books, libraries, and all who love learning. Amen.' },
+  { id:'s622', category:'saint', title:'St. Benno of Meissen', author:'c. 1010–1106, feast day June 16', tags:['bishop','germany','fishermen'],
+    content:'Benno was bishop of Meissen in Saxony during the conflict between Pope Gregory VII and Emperor Henry IV, and he suffered imprisonment and exile for siding with the pope.\n\nA legend says that before going into exile he threw the keys of his cathedral into the Elbe, and on his return they were found in a fish. His relics rest in Munich, and he is the patron of Munich and of fishermen.',
+    intercession:'St. Benno, pray for us. Keep us faithful to the Church in times of conflict. Amen.' },
+  { id:'s623', category:'saint', title:'St. Goar', author:'d. c. 575, feast day July 6', tags:['hermit','hospitality','germany'],
+    content:'Goar was a priest from Aquitaine who settled as a hermit on the banks of the Rhine, where travelers and boatmen faced a dangerous stretch of river.\n\nHe welcomed everyone into his home, fed them, and cared for them. The town of St. Goar grew up at the site. He is the patron of innkeepers, potters, and boatmen.',
+    intercession:'St. Goar, pray for us. Make us generous in welcoming others. Amen.' },
+  { id:'s624', category:'saint', title:'St. Gertrude of Nivelles', author:'626–659, feast day March 17', tags:['abbess','travelers','gardeners'],
+    content:'Gertrude was the daughter of the Frankish nobleman Pepin of Landen and St. Itta. Refusing marriage, she became abbess of the monastery her mother founded at Nivelles, in present-day Belgium, when she was about twenty.\n\nShe gave hospitality to pilgrims and Irish missionary monks and was devoted to study of the Scriptures. She is the patron of travelers and gardeners, and in modern times she has been called the patron of cats.',
+    intercession:'St. Gertrude, pray for us. Bless all travelers and give them a safe welcome. Amen.' },
+  { id:'s626', category:'saint', title:'St. Benedict the Moor', author:'1526–1589, feast day April 4', tags:['franciscan','cooks','africa'],
+    content:'Benedict was born near Messina in Sicily to parents who had been brought from Africa as slaves. Freed as a young man, he endured ridicule for his color, joined a community of hermits, and later became a Franciscan lay brother in Palermo, where he worked as a cook.\n\nThough he could not read, his wisdom was so great that he was elected superior of the friary. He was canonized in 1807 and is a patron of Palermo and of African Americans.',
+    intercession:'St. Benedict the Moor, pray for us. Heal the wounds of racism and help us see Christ in one another. Amen.' },
+  { id:'s627', category:'saint', title:'St. Bona of Pisa', author:'c. 1156–1207, feast day May 29', tags:['pilgrims','travelers','italy'],
+    content:'Bona was a young woman of Pisa who, from childhood, longed to visit the holy places. She made a pilgrimage to Jerusalem, where she was captured by pirates and later ransomed, and she went on to make many pilgrimages to Rome and to Santiago de Compostela.\n\nShe became a guide for other pilgrims on the long and dangerous road. In 1962 Pope St. John XXIII named her patron of flight attendants. She is also a patron of travelers and of Pisa.',
+    intercession:'St. Bona, pray for us. Protect all who travel, and keep our hearts on the road to heaven. Amen.' },
+  { id:'s628', category:'saint', title:'St. Julian the Hospitaller', author:'legendary, feast day February 12', tags:['penitents','hospitality','travelers'],
+    content:'St. Julian is known only from a medieval legend. It tells of a nobleman who, through a terrible mistake, killed his own parents. In penance he and his wife built a hospice beside a river, where he ferried travelers across and cared for the poor and the sick.\n\nOne night he gave his own bed to a leper, who revealed himself as Christ and told him he was forgiven. He is the patron of innkeepers, ferrymen, and travelers.',
+    intercession:'St. Julian, pray for us. Help us to welcome Christ in every guest. Amen.' },
+  { id:'s629', category:'saint', title:'St. Expeditus', author:'early centuries, feast day April 19', tags:['martyr','urgent causes','soldiers'],
+    content:'Expeditus is listed among martyrs of Melitene in Armenia, but almost nothing is known of his life. A popular story tells that when he decided to become a Christian, the devil appeared as a crow crying "cras," Latin for "tomorrow." Expeditus stamped on it and said "hodie," "today."\n\nHe is popularly invoked in urgent needs and by those tempted to put off conversion or their duties.',
+    intercession:'St. Expeditus, pray for us. Help us not to put off until tomorrow what God asks of us today. Amen.' },
   { id:'t58', category:'theology', group:'belief', art:'eastcross', title:'The Eastern Catholic Churches', author:'Catechism of the Catholic Church 1200–1209; Second Vatican Council, Orientalium Ecclesiarum', ccc:'1200–1209', tags:['eastern','church','liturgy'],
     content:'The Catholic Church is a communion of twenty-four Churches “of their own law” (sui iuris): the Latin Church and twenty-three Eastern Catholic Churches, each with its own liturgy, theology, spirituality, and discipline, all in full communion with the Bishop of Rome.\n\nThey belong to five great traditions: the Byzantine (fourteen Churches, including the Ukrainian, Ruthenian, Melkite, and Romanian), the Alexandrian (Coptic, Ethiopian, Eritrean), the Antiochene (Maronite, Syriac, Syro-Malankara), the Armenian, and the Chaldean or East Syriac (Chaldean and Syro-Malabar). The Second Vatican Council taught that their traditions are the heritage of the whole Church and must be preserved and treasured.',
     scripture:['John 17:20–21', 'Ephesians 4:4–6'],
@@ -5974,96 +6069,97 @@ const SAINT_META = {
   s472:'fathers 410 pr mo', s473:'early 707 bi mo', s474:'reform 1704 bi sc', s475:'modern 1915 bi ma', s476:'revolution 1855 pr mo ma sc', s477:'medieval 1055 mo sc', s478:'modern 1949 bi ma mi', s479:'modern 1947 bi ma', s480:'modern 1950 bi ma sc', s481:'modern 1973 bi ma', s482:'modern 1964 bi ma te', s483:'modern 1941 pr mo ma', s484:'modern 1941 pr mo ma', s485:'modern 1941 pr mo ma', s486:'modern 1946 pr mo ma', s487:'modern 1949 pr ma pa', s488:'modern 1951 pr ma', s489:'modern 1952 nu ma', s490:'modern 1963 pr ma mi', s491:'modern 1953 pr ma',
   s492:'medieval 1305 pr mo', s493:'medieval 1256 fo la mo', s494:'medieval 1240 pr mo', s495:'medieval 1213 pr fo sc', s496:'medieval 1265 mo pr', s497:'renaissance 1341 nu fo', s498:'medieval 1285 pr mo me', s499:'medieval 1252 pr mo ma', s500:'renaissance 1317 nu my', s501:'medieval 1270 nu ro', s502:'medieval 1292 ro nu', s503:'renaissance 1308 nu my', s504:'renaissance 1309 la pa my', s505:'medieval 1298 nu my', s506:'medieval 1258 nu my', s507:'medieval 1027 mo fo', s508:'medieval 1073 mo fo', s509:'medieval 1134 mo fo', s510:'medieval 1167 mo sc', s511:'medieval 1109 mo', s512:'medieval 1049 mo', s513:'medieval 1081 pr', s514:'medieval 1095 ro so', s515:'medieval 1086 ro ma', s516:'medieval 1160 ro ma', s517:'reform 1657 pr mo ma mi', s518:'reform 1546 pr mo fo', s519:'reform 1621 mo yo', s520:'reform 1617 mo wo pa', s521:'reform 1595 pr mo ma sc', s522:'reform 1615 pr mo ma', s523:'reform 1587 mo wo', s524:'reform 1592 mo wo', s525:'renaissance 1463 mo mi me', s526:'renaissance 1510 la me my pa', s527:'reform 1590 nu my', s528:'reform 1607 nu my', s529:'revolution 1727 nu my', s530:'reform 1601 yo la wo', s531:'reform 1680 pr fo', s532:'reform 1539 pr fo me', s533:'reform 1610 pr mo mi', s534:'reform 1645 mo wo', s535:'reform 1581 pr mo mi',
   s536:'reform 1620 nu fo te', s537:'modern 1874 nu fo mi', s538:'revolution 1730 la wo', s539:'revolution 1840 pr', s540:'revolution 1832 la wo my', s541:'reform 1626 la fo me', s542:'modern 1900 pr ma', s543:'modern 1891 pr ma', s544:'modern 1928 pr ma', s545:'modern 1870 pr mo my', s546:'modern 1935 pr mi ma', s547:'revolution 1852 pr fo', s548:'modern 1971 la yo', s549:'modern 1907 la pa ma', s550:'modern 1887 ro pa', s551:'modern 1947 pr ma', s552:'modern 1878 bi', s553:'modern 1876 pr', s554:'revolution 1813 la pa sc fo', s555:'revolution 1774 nu my', s556:'martyrs 250 yo ma', s557:'martyrs 260 yo ma', s558:'fathers 383 ma', s559:'martyrs 286 la ma', s560:'martyrs 292 yo ma', s561:'martyrs 287 yo ma', s562:'martyrs 303 la ma', s563:'early 650 mo', s564:'fathers 500 mo', s565:'early 588 bi', s566:'early 550 mo mi', s567:'early 600 mo', s568:'early 634 bi mo', s569:'early 633 bi mi', s570:'early 636 ro nu', s571:'early 800 bi', s572:'medieval 1197 bi sc', s573:'early 710 nu mi', s574:'modern 1887 la yo ma', s575:'revolution 1848 la wo pa', s576:'modern 1939 nu ma', s577:'modern 1903 pr mo', s578:'reform 1647 pr mi ma', s579:'revolution 1786 pr fo', s580:'revolution 1751 nu fo te', s581:'revolution 1796 nu fo', s582:'revolution 1828 pr fo',
-  s583:'revolution 1874 la pa ma', s584:'early 840 bi mi sc', s585:'early 830 mo mi sc', s586:'early 754 so mo', s587:'early 815 ro pa', s588:'fathers 348 bi sc', s589:'martyrs 150 ma', s590:'fathers 520 mo sc te', s591:'fathers 540 mo', s592:'fathers 400 mo sc', s593:'martyrs 301 nu ma', s594:'modern 1865 bi mo', s595:'fathers 450 bi sc', s596:'early 810 nu sc', s597:'martyrs 250 yo ma', s598:'fathers 347 bi mi', s599:'martyrs 170 bi', s600:'modern 1875 pr mo fo', s601:'martyrs 130 pa yo ma', s602:'early 830 nu my', s603:'martyrs 284 nu ma', s604:'fathers 500 mo pr', s605:'early 702 la pa'
+  s583:'revolution 1874 la pa ma', s584:'early 840 bi mi sc', s585:'early 830 mo mi sc', s586:'early 754 so mo', s587:'early 815 ro pa', s588:'fathers 348 bi sc', s589:'martyrs 150 ma', s590:'fathers 520 mo sc te', s591:'fathers 540 mo', s592:'fathers 400 mo sc', s593:'martyrs 301 nu ma', s594:'modern 1865 bi mo', s595:'fathers 450 bi sc', s596:'early 810 nu sc', s597:'martyrs 250 yo ma', s598:'fathers 347 bi mi', s599:'martyrs 170 bi', s600:'modern 1875 pr mo fo', s601:'martyrs 130 pa yo ma', s602:'early 830 nu my', s603:'martyrs 284 nu ma', s604:'fathers 500 mo pr', s605:'early 702 la pa',
+  s606:'medieval 1105 la mo wo', s607:'medieval 1265 la wo', s608:'martyrs 100 so pa ma', s609:'fathers 560 bi', s610:'apostolic 50 la wo', s611:'fathers 360 la pa me', s612:'fathers 456 bi', s613:'martyrs 290 yo ma', s614:'early 717 la pa mo', s615:'martyrs 280 so pa ma', s616:'medieval 1084 bi', s617:'martyrs 270 bi ma', s618:'early 589 mo pa', s619:'early 662 nu fo', s620:'early 604 ro so ma', s621:'early 880 nu ma', s622:'medieval 1010 bi', s623:'fathers 500 pr mo', s624:'early 626 nu', s626:'reform 1526 mo wo', s627:'medieval 1156 la', s628:'medieval 1000 la pa', s629:'martyrs 300 so ma'
 };
 // What each saint is a patron of (traditional and official patronages; not every saint has one)
 const SAINT_PATRONS = {
-  s1:'animals, ecology, merchants, Italy', s2:'missions, missionaries, florists, the sick, France', s3:'theologians, printers, brewers',
-  s4:'students, schools, universities, theologians, philosophers', s5:'headache sufferers, the sick, people ridiculed for their piety, Spain',
-  s6:'France, soldiers, prisoners', s7:'popes, fishermen, the universal Church, Rome', s8:'missionaries, evangelists, writers, Rome',
-  s9:'friendship, authors, theologians, Asia Minor', s10:'converts, penitents, women, perfumers, hairdressers',
-  s11:'the universal Church, fathers, workers, carpenters, immigrants, a happy death', s12:'grandmothers, mothers, women in labor, Quebec',
-  s13:'Europe, monks, students, farmers, protection from poison', s14:'Ireland, engineers, protection from snakes',
-  s15:'lost items, the poor, travelers, Portugal', s16:'desperate causes, lost causes, hospitals', s17:'children, sailors, the falsely accused, Russia',
-  s18:'England, soldiers, scouts', s19:'athletes, soldiers, protection from plague', s20:'mothers, wives, difficult marriages, conversion of children',
-  s21:'librarians, translators, Scripture scholars', s22:'beekeepers, learning, Milan', s23:'soldiers, retreats, the Society of Jesus',
-  s24:'missions, missionaries, India, Japan', s25:'parish priests, confessors', s26:'civil defense volunteers, adolescents, stress relief',
+  s1:'animals, ecology, merchants, Italy, ecologists, Assisi', s2:'missions, missionaries, florists, the sick, France, tuberculosis patients, the loss of parents', s3:'theologians, printers, brewers, converts',
+  s4:'students, schools, universities, theologians, philosophers, booksellers, scholars', s5:'headache sufferers, the sick, people ridiculed for their piety, Spain',
+  s6:'France, soldiers, prisoners', s7:'popes, fishermen, the universal Church, Rome, locksmiths, net makers', s8:'missionaries, evangelists, writers, Rome, tentmakers, journalists, Malta',
+  s9:'friendship, authors, theologians, Asia Minor, publishers, booksellers', s10:'converts, penitents, women, perfumers, hairdressers',
+  s11:'the universal Church, fathers, workers, carpenters, immigrants, a happy death, Canada, families, the dying, house hunters', s12:'grandmothers, mothers, women in labor, Quebec, Brittany, homemakers, those hoping for children',
+  s13:'Europe, monks, students, farmers, protection from poison, spelunkers, the dying, protection from temptation', s14:'Ireland, engineers, protection from snakes, Nigeria, New York',
+  s15:'lost items, the poor, travelers, Portugal, Lisbon, Padua, amputees, the elderly, sailors', s16:'desperate causes, lost causes, hospitals, impossible causes', s17:'children, sailors, the falsely accused, Russia, pawnbrokers, merchants, students, brides, Greece',
+  s18:'England, soldiers, scouts, Georgia, Catalonia, Portugal, farmers, knights', s19:'athletes, soldiers, protection from plague, archers, police officers, Rio de Janeiro', s20:'mothers, wives, difficult marriages, conversion of children, alcoholics, patience',
+  s21:'librarians, translators, Scripture scholars, students', s22:'beekeepers, learning, Milan', s23:'soldiers, retreats, the Society of Jesus, the Basque Country',
+  s24:'missions, missionaries, India, Japan, Navarre, Goa', s25:'parish priests, confessors, priests', s26:'civil defense volunteers, adolescents, stress relief',
   s27:'prisoners, families, journalists, drug addicts, the pro-life movement', s28:'devotion to Divine Mercy', s29:'World Youth Day, families, young Catholics',
-  s30:'the poor, missionaries, Kolkata', s31:'impossible causes, difficult marriages, abuse victims, widows', s32:'the sick, Lourdes, people ridiculed for their faith',
-  s33:'Italy, Europe, nurses, firefighters, the sick', s34:'Catholic schools, widows', s35:'astronomers, the Dominican Republic',
+  s30:'the poor, missionaries, Kolkata, the dying, the sick', s31:'impossible causes, difficult marriages, abuse victims, widows, the sick', s32:'the sick, Lourdes, people ridiculed for their faith',
+  s33:'Italy, Europe, nurses, firefighters, the sick, protection from fire, miscarriage', s34:'Catholic schools, widows', s35:'astronomers, the Dominican Republic',
   s36:'charitable societies, the poor, volunteers', s37:'Latin America, Peru, gardeners, florists', s38:'mixed-race people, barbers, public health workers, social justice',
-  s39:'ecology, the environment, Native Americans', s40:'police officers, soldiers, paramedics, the sick, a holy death', s41:'the blind, eye trouble, Syracuse',
-  s42:'young girls, chastity, gardeners, engaged couples', s43:'musicians, singers, poets', s44:'travelers, drivers, children',
-  s45:'love, engaged couples, happy marriages, beekeepers', s46:'throat ailments, wool combers, animals', s47:'miners, artillerymen, firefighters, protection from sudden death',
-  s48:'animals, gravediggers, skin diseases, basket makers', s49:'mothers, physicians, unborn children', s50:'the sick',
-  s51:'people with leprosy, outcasts, people with HIV/AIDS, Hawaii', s52:'Sudan, survivors of human trafficking', s53:'immigrants, hospital administrators',
-  s54:'young people, students, editors, apprentices, magicians', s55:'Europe, Sweden, widows', s56:'musicians, writers, linguists',
-  s57:'Rome, joy, comedians', s58:'catechists, seminarians, bishops', s59:'enslaved people, Colombia, African Americans, interracial justice',
-  s60:'confessors, moral theologians, vocations', s61:'farmers, rural communities, day laborers, Madrid', s62:'domestic workers, maids, waiters, lost keys',
-  s63:'baptism, converts, monks, Quebec', s64:'grandfathers, fathers', s65:'deacons, stonemasons, bricklayers',
-  s66:'Scotland, Russia, Greece, fishermen, singers', s67:'Spain, pilgrims, veterinarians, laborers', s68:'India, architects, builders, people who doubt',
-  s69:'Armenia, tanners, plasterers', s70:'accountants, bankers, tax collectors', s71:'Venice, Egypt, lawyers, notaries',
-  s72:'physicians, artists, surgeons', s73:'Cyprus, peacemakers', s74:'the Church in the eastern Mediterranean, throat diseases',
-  s75:'earache sufferers, Smyrna', s76:'philosophers, apologists', s77:'Lyon, catechists', s78:'mothers, expectant mothers, prisoners',
-  s79:'breast cancer patients, nurses, bell founders, Sicily, protection from fire', s80:'cooks, the poor, librarians, comedians, deacons',
-  s81:'North Africa, Algeria', s82:'archaeologists, converts, difficult marriages, empresses', s83:'theologians, Alexandria',
-  s84:'spiritual directors, hymn writers, poets', s85:'soldiers, the poor, beggars, winemakers, France', s86:'hospital administrators, monks, reformers',
-  s87:'poets, theologians', s88:'preachers, orators, Constantinople', s89:'Alexandria, theologians', s91:'Paris, France',
-  s92:'Ireland, dairy workers, babies, midwives, poets', s93:'nuns, education, protection from storms', s94:'Ireland, Scotland, poets, bookbinders',
-  s95:'musicians, singers, teachers, popes', s96:'the internet, computer users, students', s97:'mental illness, anxiety, depression, runaways',
-  s98:'historians, scholars, English writers', s99:'Germany, brewers, tailors', s100:'Europe, Slavic peoples, ecumenism',
-  s101:'the Czech Republic, Bohemia, brewers', s102:'Calabria, the Carthusians', s103:'Scotland, queens, mothers, large families, widows',
-  s105:'safe childbirth, Magdeburg', s106:'beekeepers, candle makers, Gibraltar, the Cistercians', s107:'secular clergy, Portsmouth',
-  s108:'television, eye disease, goldsmiths, embroiderers', s109:'bakers, nurses, the homeless, widows, Franciscan tertiaries',
-  s110:'France, kings, Franciscan tertiaries', s111:'theologians, bowel disorders', s112:'scientists, natural sciences, students, philosophers',
-  s113:'cancer patients, the sick', s114:'drivers, widows, Benedictine oblates', s115:'indigenous peoples',
-  s116:'lawyers, statesmen, politicians, adopted children', s118:'mystics, contemplatives, Spanish poets', s119:'catechists, canon lawyers',
-  s120:'hospitals, nurses, the sick, physicians', s121:'young students, Christian youth, people with AIDS, caregivers',
-  s122:'writers, journalists, the deaf, educators', s123:'widows, parents separated from their children', s124:'Japan',
-  s125:'the Philippines, Filipino youth, overseas Filipino workers, altar servers', s126:'students, test takers, aviators, astronauts',
+  s39:'ecology, the environment, Native Americans, exiles, orphans, people ridiculed for their faith', s40:'police officers, soldiers, paramedics, the sick, a holy death, grocers, mariners, Germany, Brussels', s41:'the blind, eye trouble, Syracuse, writers, glaziers',
+  s42:'young girls, chastity, gardeners, engaged couples, rape victims, Girl Scouts', s43:'musicians, singers, poets, composers, organ builders', s44:'travelers, drivers, children, motorists, boatmen, transportation workers, bachelors',
+  s45:'love, engaged couples, happy marriages, beekeepers, those with epilepsy', s46:'throat ailments, wool combers, animals, veterinarians, wild animals, Dubrovnik', s47:'miners, artillerymen, firefighters, protection from sudden death, architects, mathematicians, geologists',
+  s48:'animals, gravediggers, skin diseases, basket makers, butchers, domestic animals, hermits', s49:'mothers, physicians, unborn children', s50:'the sick',
+  s51:'people with leprosy, outcasts, people with HIV/AIDS, Hawaii', s52:'Sudan, survivors of human trafficking', s53:'immigrants, hospital administrators, migrants',
+  s54:'young people, students, editors, apprentices, magicians, publishers, juvenile delinquents', s55:'Europe, Sweden, widows', s56:'musicians, writers, linguists',
+  s57:'Rome, joy, comedians, humorists', s58:'catechists, seminarians, bishops, Lombardy', s59:'enslaved people, Colombia, African Americans, interracial justice',
+  s60:'confessors, moral theologians, vocations, arthritis sufferers, the scrupulous', s61:'farmers, rural communities, day laborers, Madrid', s62:'domestic workers, maids, waiters, lost keys, servants',
+  s63:'baptism, converts, monks, Quebec, Puerto Rico, Florence', s64:'grandfathers, fathers, grandparents, married couples', s65:'deacons, stonemasons, bricklayers',
+  s66:'Scotland, Russia, Greece, fishermen, singers, Romania, Ukraine, Barbados', s67:'Spain, pilgrims, veterinarians, laborers', s68:'India, architects, builders, people who doubt, construction workers, Sri Lanka',
+  s69:'Armenia, tanners, plasterers, butchers, bookbinders, leatherworkers', s70:'accountants, bankers, tax collectors, customs officers, Salerno', s71:'Venice, Egypt, lawyers, notaries, glaziers',
+  s72:'physicians, artists, surgeons, painters, bachelors', s73:'Cyprus, peacemakers, Antioch', s74:'the Church in the eastern Mediterranean, throat diseases',
+  s75:'earache sufferers, Smyrna', s76:'philosophers, apologists', s77:'Lyon, catechists', s78:'mothers, expectant mothers, prisoners, Carthage',
+  s79:'breast cancer patients, nurses, bell founders, Sicily, protection from fire', s80:'cooks, the poor, librarians, comedians, deacons, chefs, tanners, Rome',
+  s81:'North Africa, Algeria', s82:'archaeologists, converts, difficult marriages, empresses, divorced people', s83:'theologians, Alexandria',
+  s84:'spiritual directors, hymn writers, poets', s85:'soldiers, the poor, beggars, winemakers, France, horses, innkeepers, tailors, Buenos Aires', s86:'hospital administrators, monks, reformers, Cappadocia, education',
+  s87:'poets, theologians', s88:'preachers, orators, Constantinople, lecturers, speakers, those with epilepsy', s89:'Alexandria, theologians', s91:'Paris, France, the French police, protection from disasters',
+  s92:'Ireland, dairy workers, babies, midwives, poets, cattle, travelers, scholars', s93:'nuns, education, protection from storms, Benedictine nuns', s94:'Ireland, Scotland, poets, bookbinders',
+  s95:'musicians, singers, teachers, popes, scholars, gout sufferers', s96:'the internet, computer users, students', s97:'mental illness, anxiety, depression, runaways, therapists, Geel',
+  s98:'historians, scholars, English writers', s99:'Germany, brewers, tailors, the Netherlands', s100:'Europe, Slavic peoples, ecumenism',
+  s101:'the Czech Republic, Bohemia, brewers, Prague', s102:'Calabria, the Carthusians', s103:'Scotland, queens, mothers, large families, widows, the death of children',
+  s105:'safe childbirth, Magdeburg, Bohemia, peace', s106:'beekeepers, candle makers, Gibraltar, the Cistercians, Burgundy', s107:'secular clergy, Portsmouth',
+  s108:'television, eye disease, goldsmiths, embroiderers, laundry workers, needleworkers, good weather', s109:'bakers, nurses, the homeless, widows, Franciscan tertiaries, Catholic charities, beggars, hospitals',
+  s110:'France, kings, Franciscan tertiaries, St. Louis, barbers, builders', s111:'theologians, bowel disorders', s112:'scientists, natural sciences, students, philosophers',
+  s113:'cancer patients, the sick, foot ailments', s114:'drivers, widows, Benedictine oblates', s115:'indigenous peoples, Mexico',
+  s116:'lawyers, statesmen, politicians, adopted children, civil servants, stepparents, widowers, large families', s118:'mystics, contemplatives, Spanish poets', s119:'catechists, canon lawyers',
+  s120:'hospitals, nurses, the sick, physicians', s121:'young students, Christian youth, people with AIDS, caregivers, teenagers, Catholic youth',
+  s122:'writers, journalists, the deaf, educators, the Catholic press, authors', s123:'widows, parents separated from their children', s124:'Japan',
+  s125:'the Philippines, Filipino youth, overseas Filipino workers, altar servers', s126:'students, test takers, aviators, astronauts, pilots, those with learning difficulties',
   s127:'Canada, North America', s128:'devotion to the Sacred Heart, polio patients, the loss of parents',
-  s130:'expectant mothers, childbirth, unborn children, the falsely accused', s131:'California, vocations', s132:'the homeless, beggars, pilgrims, the mentally ill',
-  s133:'Catholic education, immigrants', s135:'Korea, Korean clergy', s136:'African Catholic youth, converts, Uganda', s138:'married couples, parents',
+  s130:'expectant mothers, childbirth, unborn children, the falsely accused, women hoping to conceive, good confessions', s131:'California, vocations', s132:'the homeless, beggars, pilgrims, the mentally ill',
+  s133:'Catholic education, immigrants, Philadelphia', s135:'Korea, Korean clergy', s136:'African Catholic youth, converts, Uganda', s138:'married couples, parents',
   s139:'Lebanon, the sick', s140:'people with leprosy, outcasts, Hawaii', s141:'first communicants, pilgrims', s142:'racial justice, philanthropists',
-  s143:'young girls, teenagers, rape victims, purity, forgiveness', s144:'pharmacists, students, those struggling with temptation', s145:'Australia',
+  s143:'young girls, teenagers, rape victims, purity, forgiveness, youth', s144:'pharmacists, students, those struggling with temptation', s145:'Australia',
   s146:'physicians', s147:'children, the sick', s148:'Europe, converts from Judaism, those who have lost parents',
   s149:'young people, students, mountaineers', s150:'the Italian Army, Christian unity', s151:'ordinary work, people with diabetes',
   s153:'El Salvador, persecuted Christians', s154:'the internet, computer programmers, young people',
-  s155:'messengers, communications workers, broadcasters, postal workers', s156:'travelers, the sick, physicians, the blind, happy meetings',
+  s155:'messengers, communications workers, broadcasters, postal workers, diplomats, stamp collectors, telecommunications workers', s156:'travelers, the sick, physicians, the blind, happy meetings, nurses, young people, lovers',
   s157:'alcoholics, carpenters, tailors', s158:'Uruguay, pastry chefs, hatters', s159:'pharmacists, fullers, Uruguay',
-  s160:'tanners, sawyers, lumberjacks', s161:'those with stomach ailments', s162:'cooks, servers, homemakers, hospitality',
-  s163:'mariners, stonecutters, marble workers', s164:'physicians, surgeons, pharmacists, dentists',
-  s165:'philosophers, students, librarians, unmarried women, wheelwrights', s166:'children, keeping promises', s167:'firefighters, chimney sweeps, Upper Austria',
+  s160:'tanners, sawyers, lumberjacks', s161:'those with stomach ailments', s162:'cooks, servers, homemakers, hospitality, housekeepers, dietitians',
+  s163:'mariners, stonecutters, marble workers', s164:'physicians, surgeons, pharmacists, dentists, barbers, chemists',
+  s165:'philosophers, students, librarians, unmarried women, wheelwrights, lawyers, preachers, millers, spinners', s166:'children, keeping promises', s167:'firefighters, chimney sweeps, Upper Austria, soapmakers, Linz, Poland',
   s168:'soldiers, infantrymen, swordsmiths', s169:'Naples, blood banks, protection from volcanic eruptions', s170:'dentists, toothache sufferers',
   s171:'France, Paris, headache sufferers', s172:'Poitiers, protection from snakes', s176:'nonviolence', s177:'widows', s178:'protection from fever',
-  s179:'Wales, poets', s180:'England', s181:'motorcyclists, Ireland', s182:'learning, culture, poetry', s183:'Northumbria',
-  s184:'pharmacists, icon painters, theology students', s185:'Hungary, kings, masons', s186:'kings, difficult marriages, separated spouses',
-  s188:'Silesia, brides, orphans', s189:'Seville, engineers, rulers, the poor', s190:'canon lawyers, lawyers',
+  s179:'Wales, poets', s180:'England, Canterbury', s181:'motorcyclists, Ireland', s182:'learning, culture, poetry', s183:'Northumbria, shepherds, sailors, Durham',
+  s184:'pharmacists, icon painters, theology students', s185:'Hungary, kings, masons', s186:'kings, difficult marriages, separated spouses, England',
+  s188:'Silesia, brides, orphans, Poland, duchesses', s189:'Seville, engineers, rulers, the poor', s190:'canon lawyers, lawyers',
   s191:'the West Indies, nuns, the souls in purgatory', s192:'builders, plumbers, Valencia', s193:'advertisers, public relations, gambling addicts, chest problems',
   s194:'military chaplains, jurists', s195:'Lithuania, Poland, princes, young people', s196:'Switzerland, peace',
   s197:'the sick, disabled people, the loss of parents', s198:'hospitals, nurses, firefighters, the sick, heart patients, booksellers, printers',
-  s200:'students, novices, young people, broken bones', s202:'converts, businesswomen', s203:'catechists, the Catholic press, Germany',
+  s200:'students, novices, young people, broken bones', s202:'converts, businesswomen, York', s203:'catechists, the Catholic press, Germany',
   s204:'native rights, Latin American bishops, Peru', s205:'social workers, widows, the sick, orphans', s206:'Filipino youth, catechists, overseas Filipino workers',
   s207:'teachers, educators', s211:'Oceania', s212:'choirboys, juvenile delinquents, the falsely accused, expectant mothers',
   s213:'students, young people, seminarians, Abruzzo', s214:'weavers, savings, the Catholic press', s218:'the sick, the loss of parents',
   s220:'Chile, young people, the sick', s221:'Mexican youth, persecuted Christians', s222:'cancer patients, confessors', s223:'journalists, Frisia',
-  s224:'Bahia, the sick', s225:'China', s226:'Vietnam', s228:'difficult marriages, widows', s230:'the elderly, the destitute', s231:'the sick, bodily ills',
+  s224:'Bahia, the sick', s225:'China', s226:'Vietnam', s228:'difficult marriages, widows', s230:'the elderly, the destitute, the poor', s231:'the sick, bodily ills',
   s232:'Sri Lanka', s233:'Crete', s234:'funeral directors, undertakers, pallbearers', s236:'prisoners, death-row inmates, repentant thieves',
   s237:'photographers, laundry workers', s238:'expectant mothers, those hoping for children', s243:'horses, prison guards',
-  s244:'winemakers, vinegar makers, Lisbon', s245:'refugees, converts, torture victims', s246:'dancers, actors, comedians, those with epilepsy, Prague',
-  s247:'childbirth, expectant mothers, nurses', s248:'sailors, those with abdominal pain', s249:'weavers, martyrs',
+  s244:'winemakers, vinegar makers, Lisbon, roofers, Portugal', s245:'refugees, converts, torture victims, St Albans', s246:'dancers, actors, comedians, those with epilepsy, Prague, dogs, protection from oversleeping',
+  s247:'childbirth, expectant mothers, nurses, the dying, kidney disease', s248:'sailors, those with abdominal pain', s249:'weavers, martyrs',
   s251:'penitent women, those struggling with chastity', s255:'queens, brides, widows, adopted children, parents of difficult children',
-  s257:'sailors, mariners, travelers', s258:'Northumbria, firefighters', s259:'Dublin, blackbirds', s260:'the Netherlands, Luxembourg, those with epilepsy',
-  s261:'sailors, farmers, those caught in storms', s262:'hunters, foresters, mathematicians, opticians, metalworkers', s263:'kings, East Anglia',
+  s257:'sailors, mariners, travelers, boatmen, divers', s258:'Northumbria, firefighters', s259:'Dublin, blackbirds', s260:'the Netherlands, Luxembourg, those with epilepsy',
+  s261:'sailors, farmers, those caught in storms, coughs, famine', s262:'hunters, foresters, mathematicians, opticians, metalworkers', s263:'kings, East Anglia',
   s264:'goldsmiths, blacksmiths, locksmiths, musicians', s265:'Bohemia, grandmothers, converts', s266:'widows, converts',
   s267:'Bohemia, Poland, Hungary, Prussia', s268:'converts, kings, Ukraine', s269:'Norway, kings, carvers', s270:'Benedictine oblates, the childless, the disabled, kings',
   s272:'sick children, swans, shoemakers', s273:'business people, tailors, clothworkers', s274:'Poland, those in danger of drowning', s275:'Bohemia',
   s276:'exiles, people rejected by religious orders, florists, Viterbo', s277:'single mothers, the homeless, reformed sinners, midwives',
-  s278:'dogs, plague victims, surgeons, invalids, the falsely accused', s279:'peace, difficult marriages, Franciscan tertiaries',
+  s278:'dogs, plague victims, surgeons, invalids, the falsely accused, knee problems, bachelors, Montpellier', s279:'peace, difficult marriages, Franciscan tertiaries',
   s280:'Bohemia, confessors, bridges, the seal of confession, protection from floods', s281:'queens, united Europe, Poland',
   s282:'ice skaters, the chronically ill', s283:'expectant mothers, women hoping to conceive, sick children', s284:'sailors, navigators, Calabria',
-  s285:'Poland, Lithuania, students, professors', s286:'job seekers, the unemployed, Argentina', s287:'orphans, abandoned children',
-  s288:'protection from earthquakes', s289:'Brazil, night watchmen', s290:'illusionists, escape artists, carpenters', s291:'lawyers',
+  s285:'Poland, Lithuania, students, professors', s286:'job seekers, the unemployed, Argentina, workers', s287:'orphans, abandoned children',
+  s288:'protection from earthquakes, Gandía', s289:'Brazil, night watchmen', s290:'illusionists, escape artists, carpenters', s291:'lawyers',
   s292:'Ukraine, Christian unity', s293:'Brindisi', s294:'Christian schools, schoolchildren, teachers', s295:'Ecuador, Quito',
   s297:'peace and reconciliation in Ireland', s298:'parish missions', s299:'Vienna, bakers', s302:'prisoners, prison chaplains, those condemned to death',
   s305:'porters, receptionists', s312:'young people, people with diabetes', s313:'Chile, the poor, social workers',
@@ -6076,7 +6172,9 @@ const SAINT_PATRONS = {
   s406:'Thessalonica, soldiers', s407:'physicians, midwives, the sick', s408:'the poor, the Knights Hospitaller',
   s492:'souls in purgatory, mothers, sick animals', s494:'expectant mothers, midwives, childbirth', s513:'mountaineers, skiers, travelers in the Alps', s515:'Denmark', s516:'Sweden', s517:'Poland', s519:'altar servers, young people', s524:'Eucharistic congresses and associations', s530:'abuse victims, the sick, shepherdesses', s535:'Colombia',
   s536:'Canada, teachers', s541:'Guatemala, the Canary Islands, the homeless', s542:'migrants', s543:'Mexico', s545:'the sick, porters', s547:'the Knights of Columbus, fathers', s548:'young people, the sick', s549:'conscientious objectors', s550:'peace, statesmen', s551:'Solidarity, workers, Poland', s554:'the Society of St. Vincent de Paul', s556:'young people, babies, infants', s557:'altar servers, first communicants', s558:'schoolgirls, Cologne', s559:'shoemakers, cobblers, leatherworkers', s560:'Mérida, Spain', s562:'actors, comedians, clowns', s563:'the disabled, beggars, blacksmiths', s564:'prisoners, women in labor', s565:'goldsmiths, metalworkers, coin collectors', s567:'gardeners, cab drivers', s570:'throat ailments, Ely', s573:'Benedictine women', s574:'the Congo, catechists', s578:'Portugal, India',
-  s583:'Podlasie, Greek Catholics of Poland', s584:'Macedonia, Bulgaria, teachers', s586:'soldiers', s587:'widows, rulers', s588:'Armenia, translators', s589:'the blind, eye ailments', s592:'hermits', s593:'Armenia, virgins', s597:'gardeners, vinedressers, winegrowers', s598:'Gaza', s600:'Lebanon, the mentally ill', s601:'mothers, widows', s603:'nuns', s605:'the poor, almsgivers'
+  s583:'Podlasie, Greek Catholics of Poland', s584:'Macedonia, Bulgaria, teachers', s586:'soldiers', s587:'widows, rulers', s588:'Armenia, translators', s589:'the blind, eye ailments', s592:'hermits', s593:'Armenia, virgins', s597:'gardeners, vinedressers, winegrowers', s598:'Gaza', s600:'Lebanon, the mentally ill', s601:'mothers, widows', s603:'nuns', s605:'the poor, almsgivers',
+  s606:'shepherds, coffee house owners, people ridiculed for their appearance', s607:'servants, farm workers, domestic workers, the Tyrol', s608:'hunters, firefighters, those facing adversity', s609:'bakers, pastry chefs', s610:'dyers, businesswomen, merchants', s611:'divorced people, difficult marriages, abuse victims, widows, nurses', s612:'farmers, vineyards, good weather', s613:'gardeners, florists, brides, newlyweds', s614:'difficult marriages, separated spouses, woodcutters', s615:'soldiers, butchers, prison guards, married couples', s616:'Gubbio, peacemakers', s617:'protection from earthquakes', s618:'Ghent, Haarlem, converts', s619:'Alsace, the blind, eye ailments', s620:'Northumbria, soldiers', s621:'libraries, librarians, book lovers', s622:'Munich, Bavaria, fishermen', s623:'innkeepers, potters, boatmen, hospitality', s624:'travelers, gardeners, cats, pilgrims', s626:'African Americans, Palermo, cooks', s627:'flight attendants, travelers, pilgrims, Pisa', s628:'innkeepers, ferrymen, travelers, hospitality', s629:'urgent causes, procrastinators',
+  s209:'perseverance', s235:'the sick, Larnaca', s239:'married couples', s241:'earache sufferers, cattle', s256:'Poitiers', s319:'servant girls, Lyon', s389:'church musicians, choirs', s400:'Ukraine, Russia', s431:'the Carmelites', s433:'musicians, poets', s434:'the elderly', s435:'eye ailments', s440:'students', s442:'soldiers, Syria', s443:'soldiers, recruits', s447:'shepherds, Cyprus', s449:'beggars, pilgrims', s450:'weavers', s458:'widows', s472:'the Maronite Church', s493:'captives, prisoners, the Mercedarians', s495:'captives, the Trinitarians', s496:'the Carmelites', s502:'salt miners, Poland, Lithuania', s504:'widows, the death of children', s508:'foresters, park rangers', s510:'friendship', s514:'Hungary, soldiers', s520:'porters', s525:'San Diego', s526:'difficult marriages, widows, brides', s537:'indigenous peoples', s561:'prisoners, pilgrims', s572:'coachmen, Sussex'
 };
 SEED_DATA.forEach(e => { if(SAINT_PATRONS[e.id]) e.patron = SAINT_PATRONS[e.id]; });
 const SAINT_ERAS = [
@@ -7450,7 +7548,8 @@ const SAINT_WIKI = {
   'St. Canute of Denmark':'Canute IV of Denmark', 'St. Eric of Sweden':'Eric IX of Sweden', 'St. Robert Southwell':'Robert Southwell (priest)', 'St. Catherine de’ Ricci':'Catherine de\' Ricci', 'St. Mary Magdalene de’ Pazzi':'Mary Magdalene de\' Pazzi',
   'St. Mama Antula':'María Antonia de Paz y Figueroa', 'St. Narcisa de Jesús':'Narcisa de Jesús', 'St. Pedro de San José Betancur':'Peter of Saint Joseph de Betancur', 'St. Toribio Romo':'Toribio Romo González', 'Bl. Miguel Pro':'Miguel Pro', 'Bl. Rutilio Grande':'Rutilio Grande', 'Bl. Solanus Casey':'Solanus Casey', 'Bl. Stanley Rother':'Stanley Rother', 'Bl. Michael McGivney':'Michael J. McGivney', 'Bl. Chiara Badano':'Chiara Badano', 'Bl. Franz Jägerstätter':'Franz Jägerstätter', 'Bl. Karl of Austria':'Charles I of Austria', 'Bl. Jerzy Popiełuszko':'Jerzy Popiełuszko', 'Bl. Clemens August von Galen':'Clemens August Graf von Galen', 'Bl. Rupert Mayer':'Rupert Mayer', 'Bl. Frédéric Ozanam':'Frédéric Ozanam', 'Bl. Anne Catherine Emmerich':'Anne Catherine Emmerich', 'St. Ursula':'Saint Ursula', 'Sts. Crispin and Crispinian':'Saints Crispin and Crispinian', 'St. Faith of Agen':'Saint Faith', 'St. Giles':'Saint Giles', 'St. Leonard of Noblac':'Leonard of Noblac', 'St. Chad':'Chad of Mercia', 'St. Wilfrid':'Wilfrid', 'St. Etheldreda':'Æthelthryth', 'St. Swithun':'Swithun', 'St. Lioba':'Leoba', 'Bl. Isidore Bakanja':'Isidore Bakanja', 'Bl. Clementine Anuarite Nengapeta':'Marie-Clémentine Anuarite Nengapeta', 'Bl. Cyprian Michael Iwene Tansi':'Cyprian Michael Iwene Tansi', 'St. Gaspar del Bufalo':'Gaspar del Bufalo', 'St. Julie Billiart':'Julie Billiart', 'St. Mary Euphrasia Pelletier':'Mary Euphrasia Pelletier', 'St. Leonard Murialdo':'Leonardo Murialdo', 'St. Marguerite Bourgeoys':'Marguerite Bourgeoys', 'St. Laura Montoya':'Laura Montoya', 'St. José Gabriel Brochero':'Jose Gabriel del Rosario Brochero', 'St. John de Britto':'John de Britto', 'St. Philomena':'Philomena', 'St. Tarcisius':'Tarcisius', 'St. Eulalia of Mérida':'Eulalia of Mérida', 'St. Genesius of Rome':'Genesius of Rome', 'St. Eligius':'Saint Eligius', 'St. Gall':'Saint Gall', 'St. Fiacre':'Saint Fiacre', 'St. Richard of Chichester':'Richard of Chichester',
   'St. Ladislaus of Hungary':'Ladislaus I of Hungary',
-  'Bl. Martyrs of Pratulin':'Martyrs of Pratulin', 'St. Clement of Ohrid':'Clement of Ohrid', 'St. Naum of Ohrid':'Saint Naum', 'St. Joannicius the Great':'Joannicius the Great', 'St. Theodora the Empress':'Theodora (wife of Theophilos)', 'St. Isaac the Great of Armenia':'Isaac of Armenia', 'St. Paraskevi of Rome':'Paraskevi of Rome', 'St. Dorotheus of Gaza':'Dorotheus of Gaza', 'Sts. Barsanuphius and John':'Barsanuphius of Gaza', 'St. Nilus of Sinai':'Nilus of Sinai', 'Sts. Hripsime and Companions':'Hripsime', 'Ven. Andrey Sheptytsky':'Andrey Sheptytsky', 'St. Diadochus of Photice':'Diadochos of Photiki', 'St. Kassia':'Kassia', 'St. Tryphon':'Tryphon, Respicius, and Nympha', 'St. Porphyrius of Gaza':'Saint Porphyrius', 'St. Abercius of Hierapolis':'Abercius', 'Bl. Jacques Haddad':'Jacques Ghazir Haddad', 'Sts. Sophia, Faith, Hope, and Charity':'Saints Faith, Hope and Charity', 'St. Irene of Chrysovalantou':'Irene of Cappadocia', 'St. Febronia of Nisibis':'Febronia of Nisibis', 'St. Zosimas of Palestine':'Zosimas of Palestine', 'St. Philaret the Merciful':'Saint Philaretos'
+  'Bl. Martyrs of Pratulin':'Martyrs of Pratulin', 'St. Clement of Ohrid':'Clement of Ohrid', 'St. Naum of Ohrid':'Saint Naum', 'St. Joannicius the Great':'Joannicius the Great', 'St. Theodora the Empress':'Theodora (wife of Theophilos)', 'St. Isaac the Great of Armenia':'Isaac of Armenia', 'St. Paraskevi of Rome':'Paraskevi of Rome', 'St. Dorotheus of Gaza':'Dorotheus of Gaza', 'Sts. Barsanuphius and John':'Barsanuphius of Gaza', 'St. Nilus of Sinai':'Nilus of Sinai', 'Sts. Hripsime and Companions':'Hripsime', 'Ven. Andrey Sheptytsky':'Andrey Sheptytsky', 'St. Diadochus of Photice':'Diadochos of Photiki', 'St. Kassia':'Kassia', 'St. Tryphon':'Tryphon, Respicius, and Nympha', 'St. Porphyrius of Gaza':'Saint Porphyrius', 'St. Abercius of Hierapolis':'Abercius', 'Bl. Jacques Haddad':'Jacques Ghazir Haddad', 'Sts. Sophia, Faith, Hope, and Charity':'Saints Faith, Hope and Charity', 'St. Irene of Chrysovalantou':'Irene of Cappadocia', 'St. Febronia of Nisibis':'Febronia of Nisibis', 'St. Zosimas of Palestine':'Zosimas of Palestine', 'St. Philaret the Merciful':'Saint Philaretos',
+  'St. Drogo':'Saint Drogo', 'St. Notburga':'Notburga', 'St. Eustace':'Saint Eustace', 'St. Honoratus of Amiens':'Honoratus of Amiens', 'St. Lydia of Thyatira':'Lydia of Thyatira', 'St. Fabiola':'Saint Fabiola', 'St. Medard':'Medardus', 'St. Dorothy of Caesarea':'Dorothea of Caesarea', 'St. Gummarus':'Gummarus', 'Sts. Adrian and Natalia':'Adrian and Natalia', 'St. Ubald of Gubbio':'Ubald', 'St. Emygdius':'Emygdius', 'St. Bavo of Ghent':'Bavo of Ghent', 'St. Odile of Alsace':'Odile of Alsace', 'St. Oswald of Northumbria':'Oswald of Northumbria', 'St. Wiborada':'Wiborada', 'St. Benno of Meissen':'Benno of Meissen', 'St. Goar':'Goar of Aquitaine', 'St. Gertrude of Nivelles':'Gertrude of Nivelles', 'St. Benedict the Moor':'Benedict the Moor', 'St. Bona of Pisa':'Bona of Pisa', 'St. Julian the Hospitaller':'Julian the Hospitaller', 'St. Expeditus':'Expeditus'
 };
 // Wikipedia articles used for pictures of books and Church history events (first match with an image wins)
 const ENTRY_WIKI = {
@@ -10045,91 +10144,362 @@ function renderGlossary(){
 /* =========================================================
    FIND YOUR PATRON SAINT: a few questions, a few suggestions
    ========================================================= */
-const PF_WORK = [   // [key, label, patronage keywords, walk of life, "patron of" wording]
-  ['student', 'A student', 'student|school|universit|test takers', 'yo', 'students'], ['teacher', 'A teacher', 'teacher|educat|school', 'te', 'teachers'],
-  ['health', 'A doctor, nurse, or caregiver', 'physician|nurse|surgeon|pharmacist|hospital|caregiver', 'me', 'the medical professions'], ['parent', 'A mother or father', 'mother|father|parent|famil', 'pa', 'parents and families'],
-  ['service', 'A soldier, officer, or firefighter', 'soldier|police|firefighter|military|paramedic', 'so', 'those who protect others'], ['trades', 'A worker or tradesperson', 'worker|laborer|carpenter|builder|mason|smith|baker|cook', 'wo', 'workers and craftsmen'],
-  ['arts', 'An artist or musician', 'music|singer|artist|poet|dancer|actor', '', 'artists and musicians'], ['writer', 'A writer or journalist', 'writer|journalist|author|printer|editor|press', 'sc', 'writers'],
-  ['law', 'In law or public service', 'lawyer|jurist|statesm|politician|ruler|king', 'ro', 'lawyers and leaders'], ['outdoors', 'A farmer or lover of nature', 'farmer|gardener|hunter|ecology|environment|animal|forest', '', 'the land and its creatures'],
-  ['business', 'In business or finance', 'business|merchant|accountant|banker', '', 'business people'], ['tech', 'In technology or science', 'internet|computer|programmer|engineer|scientist|astronom', '', 'science and technology'],
-  ['travel', 'A traveler, driver, or sailor', 'travel|driver|pilot|aviator|sailor|mariner', '', 'travelers'], ['church', 'A priest, religious, or minister', 'priest|monk|nun|seminarian|confessor|catechist|deacon', 'pr', 'those who serve the Church']
+// Every choice is [key, label, patronage words, walk of life]. The words are matched at the start of a word
+// in the saint's patronages and tags, so 'nurse' finds "nurses" and "nursing".
+const PF_WORK = [
+  ['Health and care', [
+    ['doctor', 'Doctor or surgeon', 'physician|doctor|surgeon', 'me'], ['nurse', 'Nurse', 'nurse', 'me'],
+    ['pharmacist', 'Pharmacist', 'pharmacist|chemist', ''], ['dentist', 'Dentist', 'dentist|toothache', ''],
+    ['caregiver', 'Caregiver', 'caregiver|hospital|the sick|the elderly|invalid', 'me'], ['therapist', 'Counselor or therapist', 'therapist|mental|spiritual director', ''],
+    ['paramedic', 'Paramedic or EMT', 'paramedic|ambulance', ''], ['midwife', 'Midwife', 'midwi', ''],
+    ['vet', 'Veterinarian', 'veterinarian|sick animals|horses', ''], ['medtech', 'Medical technician', 'medical technician|blood bank|hospital administrator', '']
+  ]],
+  ['School and learning', [
+    ['student', 'Student', 'student|schoolchildren|schoolgirl|test taker|learning', ''], ['teacher', 'Teacher', 'teacher|educat|school', 'te'],
+    ['professor', 'Professor or researcher', 'professor|scholar|universit|historian|philosopher', 'sc'], ['librarian', 'Librarian', 'librar|book', ''],
+    ['catechist', 'Catechist', 'catechist', ''], ['athlete', 'Athlete or coach', 'athlete|archer|mountaineer|skier|skater', '']
+  ]],
+  ['Home and family', [
+    ['mother', 'Mother', 'mother', 'pa'], ['father', 'Father', 'father', 'pa'], ['grandparent', 'Grandparent', 'grandmother|grandfather|grandparent', ''],
+    ['homemaker', 'Homemaker', 'homemaker|housekeeper|housewi', ''], ['engaged', 'Engaged or newly married', 'engaged|bride|newlywed|married couple', ''],
+    ['single', 'Single', 'unmarried|bachelor|single', ''], ['adoptive', 'Adoptive or foster parent', 'adopt|orphan|stepparent', '']
+  ]],
+  ['Trades and crafts', [
+    ['carpenter', 'Carpenter or woodworker', 'carpenter|woodcarv|woodworker|carver|cabinet', ''], ['builder', 'Builder or construction', 'builder|construction|mason|bricklayer|plasterer|roofer|stonecutter', 'wo'],
+    ['architect', 'Architect', 'architect', ''], ['plumber', 'Plumber', 'plumber', ''], ['smith', 'Metalworker or blacksmith', 'smith|metalwork|locksmith', ''],
+    ['miner', 'Miner', 'miner', ''], ['tailor', 'Tailor, weaver, or textile worker', 'tailor|weaver|clothworker|seamstress|needlework|embroider|dyer|spinner|wool', ''],
+    ['shoemaker', 'Shoemaker or leatherworker', 'shoemaker|cobbler|leatherwork|tanner', ''], ['laborer', 'Laborer', 'laborer|worker|day laborer', 'wo'],
+    ['potter', 'Potter or glassmaker', 'potter|glazier|glass', '']
+  ]],
+  ['Food and hospitality', [
+    ['cook', 'Cook or chef', 'cook|chef|dietitian', ''], ['baker', 'Baker or pastry chef', 'baker|pastry', ''],
+    ['brewer', 'Brewer or winemaker', 'brewer|winemaker|vinedresser|winegrower|vineyard', ''], ['waiter', 'Waiter or server', 'waiter|server', ''],
+    ['innkeeper', 'Innkeeper or hotel worker', 'innkeeper|hotel|hospitality', ''], ['coffee', 'Barista or café owner', 'coffee', ''],
+    ['butcher', 'Butcher', 'butcher', ''], ['grocer', 'Grocer or shopkeeper', 'grocer|merchant', '']
+  ]],
+  ['Arts and media', [
+    ['musician', 'Musician or singer', 'musician|singer|choir|composer|organ|church musician', ''], ['artist', 'Painter or artist', 'artist|painter|icon painter|sculpt', ''],
+    ['performer', 'Actor, dancer, or performer', 'actor|comedian|clown|dancer|illusionist|magician|escape artist|humorist', ''], ['writer', 'Writer or poet', 'writer|poet|author|hymn writer', 'sc'],
+    ['journalist', 'Journalist or broadcaster', 'journalist|catholic press|broadcast|editor|publisher|television', ''], ['photographer', 'Photographer', 'photographer', '']
+  ]],
+  ['Law and public service', [
+    ['lawyer', 'Lawyer or judge', 'lawyer|jurist|notar|canon lawyer|court', ''], ['politician', 'Politician or civil servant', 'politician|statesm|civil servant|ruler|diplomat', 'ro'],
+    ['police', 'Police officer', 'police', 'so'], ['firefighter', 'Firefighter', 'firefighter|protection from fire', ''],
+    ['military', 'Soldier or veteran', 'soldier|military|infantr|artiller|knight|recruit|cavalry', 'so'], ['prison', 'Prison worker', 'prison guard|prison chaplain|prisoner', ''],
+    ['social', 'Social worker or volunteer', 'social worker|volunteer|charit', ''], ['postal', 'Postal or communications worker', 'postal|messenger|communications|telecommunication', '']
+  ]],
+  ['Business and money', [
+    ['business', 'Business owner', 'business|merchant', ''], ['finance', 'Accountant or banker', 'accountant|banker|tax collector|customs|pawnbroker', ''],
+    ['sales', 'Sales or advertising', 'advertis|public relations|salesm', ''], ['office', 'Receptionist or office worker', 'receptionist|porter|secretar', '']
+  ]],
+  ['Science and technology', [
+    ['scientist', 'Scientist', 'scientist|natural science|geolog|mathematic|astronom|archaeolog', 'sc'], ['engineer', 'Engineer', 'engineer', ''],
+    ['programmer', 'Programmer or IT', 'internet|computer|programmer', ''], ['pilot', 'Pilot or flight crew', 'aviator|pilot|astronaut|flight attendant', '']
+  ]],
+  ['Land, sea, and animals', [
+    ['farmer', 'Farmer', 'farmer|farm worker|rural|dairy|harvest|cattle|good weather', ''], ['gardener', 'Gardener or florist', 'gardener|florist', ''],
+    ['shepherd', 'Shepherd or rancher', 'shepherd|cattle|cowherd', ''], ['sailor', 'Sailor or fisherman', 'fisherm|sailor|mariner|boatm|navigator|diver|ferrym', ''],
+    ['forester', 'Hunter or forester', 'hunter|forester|park ranger|woodcutter|lumberjack', ''], ['beekeeper', 'Beekeeper', 'beekeep', ''],
+    ['animals', 'Animal lover', 'animal|dogs|cats|horses|wild animals|blackbird|swan', '']
+  ]],
+  ['Travel and transport', [
+    ['driver', 'Driver', 'driver|motorist|cab driver|coachm|motorcycl|transportation', ''], ['traveler', 'Frequent traveler', 'travel|pilgrim', '']
+  ]],
+  ['Serving the Church', [
+    ['priest', 'Priest or deacon', 'priest|deacon|clergy|confessor|preacher', 'pr'], ['seminarian', 'Seminarian', 'seminarian|vocations|novice', ''],
+    ['religious', 'Religious brother or sister', 'monk|nun|benedictine|tertiar|hermit', 'mo'], ['missionary', 'Missionary', 'mission', 'mi'],
+    ['server', 'Altar server or choir member', 'altar server|choirboy|choir', ''], ['minister', 'Youth minister', 'young people|youth|teenager', '']
+  ]],
+  ['Other work', [
+    ['barber', 'Barber or hairdresser', 'barber|hairdresser', ''], ['funeral', 'Funeral worker', 'funeral|undertaker|gravedigger|pallbearer', ''],
+    ['cleaner', 'Cleaner or domestic worker', 'laundr|maid|domestic worker|servant|housekeep', 'wo'], ['retired', 'Retired', 'the elderly|grandparent', '']
+  ]]
 ];
-const PF_NEED = [
-  ['healing', 'Healing for myself or someone I love', 'sick|cancer|ill|heal|disease|blind'], ['family', 'My family or marriage', 'famil|marriage|married|mother|father|children'],
-  ['anxiety', 'Anxiety, stress, or mental health', 'mental illness|anxiety|depression|stress'], ['hopeless', 'A situation that seems hopeless', 'impossible|desperate|lost causes'],
-  ['work', 'Finding work', 'job seekers|unemployed|workers'], ['exams', 'Studies and exams', 'student|test takers'],
-  ['grief', 'Grief and loss', 'widow|loss of parents|death'], ['baby', 'A baby or a pregnancy', 'expectant|childbirth|unborn|conceive|hoping for children'],
-  ['faith', 'Faith for someone I love', 'convert|conversion'], ['addiction', 'Freedom from addiction', 'alcoholics|drug addicts|gambling'],
-  ['peace', 'Peace and reconciliation', 'peace|reconciliation|nonviolence'], ['lost', 'Finding something lost', 'lost items|lost keys']
-];
-const PF_INSPIRE = [
-  ['martyrs', 'Courage under persecution', 'ma', ''], ['mystics', 'Deep prayer', 'my', ''], ['scholars', 'Wisdom and learning', 'dr|sc', ''],
-  ['poor', 'Serving the poor and the sick', '', 'poor|sick|charity|hospital'], ['young', 'Holiness while young', 'yo', ''],
-  ['married', 'Holiness in marriage and family', 'pa', ''], ['mission', 'Adventure and mission', 'mi', ''], ['converts', 'A dramatic conversion', '', 'convert|conversion|penitent']
-];
-const PF_ERA = [['any', 'Any time'], ['ancient', 'The early Church', 'apostolic martyrs fathers'], ['medieval', 'The Middle Ages', 'early medieval renaissance'], ['early', 'The 1500s to 1800s', 'reform revolution'], ['modern', 'Our own times', 'modern']];
-const pf = { month:'', day:'', work:'', need:'', inspire:'', era:'any' };
 
-function patronScore(e){
-  const info = saintInfo(e.id);
-  let score = 0;
-  const why = [];
-  if(pf.month && pf.day && (SAINT_FEASTS[`${pf.month}-${pf.day}`] || []).includes(e)){ score += 6; why.push('Feast day on your birthday'); }
-  const w = PF_WORK.find(x => x[0] === pf.work);
-  if(w){
-    if(patronMatches(e, w[2])){ score += 4; why.push('Patron of ' + w[4]); }
-    else if(w[3] && info.roles.includes(w[3])){ score += 2; why.push(SAINT_ROLE_NAME[w[3]]); }
-  }
-  const n = PF_NEED.find(x => x[0] === pf.need);
-  if(n && patronMatches(e, n[2])){ score += 4; why.push(n[1]); }
-  const insp = PF_INSPIRE.find(x => x[0] === pf.inspire);
-  if(insp && ((insp[2] && insp[2].split('|').some(r => info.roles.includes(r))) || (insp[3] && patronMatches(e, insp[3])))){ score += 2; why.push(insp[1]); }
-  const era = PF_ERA.find(x => x[0] === pf.era);
-  if(score > 0 && era && era[2] && era[2].split(' ').includes(info.era)){ score += 1.5; why.push(SAINT_ERAS.find(x => x.key === info.era).name); }
-  return { score, why };
+const PF_NEED = [
+  ['Health', [
+    ['healing', 'Healing from illness', 'the sick|sick|bodily|invalid|healing|chronically ill', ''], ['cancer', 'Cancer', 'cancer', ''],
+    ['mental', 'Anxiety, depression, or mental health', 'mental|anxiety|depression|stress|the emotionally', ''], ['headache', 'Headaches', 'headache|migraine', ''],
+    ['eyes', 'Eyes and sight', 'the blind|eye|eyesight', ''], ['throat', 'Throat, ears, or teeth', 'throat|earache|toothache|cough', ''],
+    ['chronic', 'Chronic illness', 'chronically|polio|diabetes|kidney|arthritis|bowel|stomach|epilep|heart patient|skin disease', ''],
+    ['injury', 'Injuries and broken bones', 'broken bones|knee|foot ailment|amputee|abdominal', ''], ['disability', 'Disability', 'disabled|the deaf|learning difficult', ''],
+    ['epidemic', 'Epidemics and fevers', 'plague|epidemic|fever', '']
+  ]],
+  ['Family and love', [
+    ['baby', 'A baby or a safe pregnancy', 'expectant|childbirth|unborn|women in labor|conceive|hoping for children|midwi|babies|infants|the childless|miscarriage', ''],
+    ['marriage', 'A struggling marriage', 'difficult marriage|separated spouse|divorced|married couple|happy marriage', ''],
+    ['spouse', 'Finding a spouse', 'engaged|bride|unmarried|bachelor|lovers|happy meeting|love', ''],
+    ['children', 'My children', 'children|parents of difficult|conversion of children|young people|teenager|youth|sick children', ''],
+    ['grief', 'Grief and loss', 'widow|loss of parents|death of children|those who have lost|the dead|souls in purgatory', ''],
+    ['orphans', 'Orphans and adoption', 'orphan|abandoned|adopt', ''], ['elderly', 'Aging parents and the elderly', 'the elderly|grandparent|grandmother|grandfather', '']
+  ]],
+  ['Daily life', [
+    ['job', 'Finding work', 'job seeker|unemployed|workers|ordinary work', ''], ['exams', 'Studies and exams', 'student|test taker|learning', ''],
+    ['home', 'Finding a home', 'house hunter|the homeless|hospitality|exile', ''], ['travel', 'Safe travels', 'travel|motorist|driver|pilgrim|sailor|flight', ''],
+    ['lost', 'Finding something lost', 'lost item|lost key', ''], ['urgent', 'An urgent or hopeless situation', 'impossible|desperate|lost cause|urgent|hopeless|those facing adversity', ''],
+    ['disaster', 'Protection from disasters', 'protection from|storm|flood|earthquake|volcanic|disaster|good weather|famine', ''],
+    ['money', 'Money worries', 'savings|pawnbroker|banker|unemployed|job seeker', '']
+  ]],
+  ['The soul', [
+    ['addiction', 'Freedom from addiction', 'alcoholic|drug addict|gambling', ''], ['temptation', 'Purity and temptation', 'temptation|chastity|purity|struggling with', ''],
+    ['conversion', 'Faith for someone I love', 'convert|conversion|people who doubt|penitent', ''], ['forgiveness', 'Forgiveness and reconciliation', 'forgiveness|reconciliation|peace|nonviolence', ''],
+    ['vocation', 'Discerning a vocation', 'vocation|seminarian|novice', ''], ['death', 'A holy death', 'happy death|holy death|the dying|sudden death', ''],
+    ['patience', 'Patience and perseverance', 'patience|perseverance|adversity', ''], ['friendship', 'Friendship', 'friendship', '']
+  ]],
+  ['Justice and mercy', [
+    ['abuse', 'Healing from abuse', 'abuse|rape victim|torture', ''], ['accused', 'The falsely accused', 'falsely accused', ''],
+    ['persecuted', 'Persecuted Christians', 'persecuted|martyr', ''], ['prisoners', 'Prisoners and captives', 'prisoner|captive|death-row|condemned', ''],
+    ['migrants', 'Migrants and refugees', 'immigrant|migrant|refugee|exile', ''], ['poor', 'The poor and homeless', 'the poor|homeless|beggar|destitute|almsgiver', ''],
+    ['racial', 'Racial justice', 'racial|interracial|enslaved|african american|mixed-race|native|indigenous', ''], ['trafficking', 'Victims of trafficking', 'trafficking|enslaved', ''],
+    ['unborn', 'The unborn', 'unborn|pro-life', ''], ['peace', 'Peace in the world', 'peace|peacemaker|nonviolence|christian unity|ecumenism', '']
+  ]]
+];
+
+// [key, label, patronage or tag words, walks of life]
+const PF_INSPIRE = [
+  ['martyrs', 'Courage under persecution', 'courage', 'ma'], ['mystics', 'Deep prayer and mysticism', 'mystic|prayer|visionary|stigmata', 'my'],
+  ['scholars', 'Wisdom and learning', 'theolog|scholar|philosoph', 'dr|sc'], ['poor', 'Serving the poor and the sick', 'the poor|the sick|charity|hospital|lepers|poverty', ''],
+  ['young', 'Holiness while young', 'young|youth', 'yo'], ['married', 'Holiness in marriage and family', 'married couple|family|mothers|fathers', 'pa'],
+  ['mission', 'Adventure and mission', 'mission', 'mi'], ['converts', 'A dramatic conversion', 'convert|conversion|penitent|penance', ''],
+  ['hidden', 'A quiet, hidden life', 'hermit|desert fathers|monasticism|stylite|anchoress|contemplative', 'mo|nu'], ['founders', 'Founding and leading', 'founder', 'fo'],
+  ['rulers', 'Rulers who served God', 'king|queen|emperor|empress|princess', 'ro'], ['soldiers', 'Soldiers and defenders', 'soldier|knight', 'so'],
+  ['shepherds', 'Popes and bishops', 'pope|bishop|patriarch', 'po|bi'], ['ordinary', 'Holiness in ordinary work', 'ordinary work|workers|domestic|laity|laymen|laywomen', 'wo|la'],
+  ['nature', 'Love of nature and animals', 'animal|nature|ecology|gardener|shepherd|farmer|beekeep', ''], ['joy', 'Joy and a sense of humor', 'joy|comedian|humorist|clown', ''],
+  ['mercy', 'Mercy and forgiveness', 'mercy|forgiveness|reconciliation|peace|divine mercy', ''], ['eucharist', 'Love of the Eucharist', 'eucharist|first communicant|corpus christi', ''],
+  ['mary', 'Devotion to Mary', 'marian|mary|rosary|scapular|miraculous medal|visitation', ''], ['suffering', 'Patience in suffering', 'suffering|stigmata|chronically|the sick', ''],
+  ['beauty', 'Art, music, and beauty', 'music|hymn|poet|artist|icon|painter', ''], ['scripture', 'Love of Scripture', 'scripture|translator|bible|old testament|new testament', ''],
+  ['apostles', 'Friends of Jesus in the Gospels', 'apostle|evangelist|friend of jesus|new testament|disciple', 'ap'], ['eastern', 'The Eastern Christian tradition', 'eastern|byzantine', '']
+];
+
+const PF_HERITAGE = [
+  ['ireland', 'Irish', 'ireland|irish|dublin|armagh'], ['poland', 'Polish', 'poland|polish|krak|silesia|podlasie'], ['italy', 'Italian', 'italy|italian|rome|milan|naples|venice|sicily|calabria|turin|verona|palermo|florence|assisi|padua|gubbio|abruzzo|lombardy|piedmont|pisa'],
+  ['france', 'French', 'france|french|paris|lyon|poitiers|reims|lourdes|alsace|brittany|burgundy|montpellier|gaul'], ['spain', 'Spanish', 'spain|spanish|seville|valencia|madrid|toledo|catalonia|basque|navarre|merida|barcelona'],
+  ['portugal', 'Portuguese', 'portugal|lisbon|braga'], ['germany', 'German', 'germany|german|bavaria|munich|cologne|augsburg|regensburg|magdeburg|frisia'],
+  ['england', 'English', 'england|english|britain|northumbria|canterbury|york|durham|east anglia|sussex|ely|portsmouth|st albans'], ['scotland', 'Scottish', 'scotland|glasgow'], ['wales', 'Welsh', 'wales'],
+  ['netherlands', 'Dutch or Belgian', 'netherlands|belgium|ghent|haarlem|luxembourg|geel|brussels'], ['austria', 'Austrian or Swiss', 'austria|tyrol|vienna|linz|switzerland|swiss'],
+  ['czech', 'Czech or Slovak', 'czech|bohemia|prague|slovak'], ['hungary', 'Hungarian', 'hungary|hungarian'], ['lithuania', 'Lithuanian', 'lithuania'],
+  ['scandinavia', 'Scandinavian', 'sweden|denmark|norway|scandinavia'], ['ukraine', 'Ukrainian', 'ukraine|ukrainian|kyiv'], ['russia', 'Russian', 'russia'],
+  ['greece', 'Greek', 'greece|greek|thessalonica|corfu|crete|constantinople|cyprus'], ['armenia', 'Armenian or Georgian', 'armenia|georgia'],
+  ['lebanon', 'Lebanese or Syrian', 'lebanon|maronite|syria|antioch'], ['holyland', 'From the Holy Land', 'holy land|jerusalem|gaza|bethlehem'], ['egypt', 'Egyptian or Ethiopian', 'egypt|alexandria|ethiopia|eritrea'],
+  ['africa', 'African', 'africa|sudan|uganda|congo|nigeria|algeria|carthage|madagascar'], ['india', 'Indian', 'india|goa|syro-malabar|kolkata|sri lanka'],
+  ['eastasia', 'East Asian', 'china|japan|korea|vietnam'], ['philippines', 'Filipino', 'philippines|filipino'], ['oceania', 'Australian or Pacific Islander', 'australia|oceania|papua|hawaii'],
+  ['mexico', 'Mexican', 'mexico|mexican'], ['latam', 'Latin American', 'latin america|south america|peru|colombia|chile|argentina|ecuador|quito|venezuela|el salvador|guatemala|uruguay|brazil|bahia|buenos aires|rio de janeiro|bolivia|paraguay'],
+  ['caribbean', 'Caribbean', 'puerto rico|dominican|barbados|west indies|cuba|haiti'], ['usa', 'American', 'united states|new york|philadelphia|st louis|california|san diego|native american|knights of columbus'],
+  ['canada', 'Canadian', 'canada|quebec|montreal|north america']
+];
+
+const PF_ERA = [['ancient', 'The early Church', 'apostolic martyrs fathers'], ['medieval', 'The Middle Ages', 'early medieval renaissance'],
+  ['early', '1500s to 1800s', 'reform revolution'], ['modern', 'Our own times', 'modern']];
+
+// Common forms of the same name, so Juan finds St. John and Marie finds St. Mary
+const PF_NAMES = [
+  'john jon juan jean joao giovanni gianni ivan ivo jan johann johannes sean shane ian evan jack hans jens',
+  'mary maria marie mariam miriam mariana marian maryam marija mae molly maureen mia', 'joseph jose giuseppe josef jozef joe joey pepe beppe yosef osip',
+  'peter pedro pietro pierre piotr petro pete petr', 'paul pablo paolo pavel pavol paulo pal pawel', 'james jacob jacques diego santiago jaime jakob giacomo jim jamie jimmy yakym jakub',
+  'francis francisco francesco francois frank franz frances francesca fran franca', 'catherine katherine kathryn katharine catalina caterina kate katie kathy kateri katarzyna',
+  'elizabeth elisabeth isabel isabella elisa eliza liz beth betty elzbieta elisabetta', 'margaret marguerite margarita maggie megan greta peggy margherita malgorzata',
+  'teresa theresa therese tess tessa tracy', 'anne anna ann hannah ana annie nancy anita', 'michael miguel michel michele michal mike mikhail mykhailo',
+  'nicholas nicolas nicola niccolo mykola nikolai nick klaus nils', 'thomas tomas tom tommaso toma', 'andrew andres andrea andre andrii andrzej andy drew andrei',
+  'stephen steven esteban stefan stephan etienne estephan stefano steve', 'anthony antonio antoine tony anton antoni', 'louis luis luigi ludwig lewis louise luisa',
+  'george jorge giorgio georg yuri jerzy', 'lawrence laurence lorenzo laurent larry laurentia', 'vincent vicente vincenzo vince', 'gregory gregorio hryhorij greg grzegorz',
+  'rose rosa rosie', 'clare clara claire chiara', 'helen helena elena ellen elaine olena', 'joan jeanne juana jane janet jean joanna giovanna',
+  'agnes ines agnese', 'charles carlo carlos karl karol charlie', 'benedict benedetto benito ben bennett benedikt', 'martin martino marty',
+  'dominic domingo domenico dominique dominik', 'bernard bernardo bernadette bernardine', 'cecilia cecily celia', 'lucy lucia lucie luz',
+  'ignatius ignacio inigo ignazio', 'bridget brigid brigitte birgitta bridie', 'patrick patricio pat paddy', 'christopher cristobal chris kit',
+  'philip felipe filippo phil', 'edward eduardo ed ted', 'henry enrique heinrich harry hal', 'gabriel gabriela gabrielle gabe', 'raphael rafael rafaela raffaele rafa',
+  'matthew mateo matteo matt matthias', 'mark marco marcos marcus', 'luke lucas luca', 'timothy tim', 'olga olha', 'elijah elias ilya eli',
+  'sophia sophie sofia', 'natalia natalie natasha', 'theodore theodora fyodor teodor ted', 'julian juliana julia', 'adrian adriana',
+  'faustina faustino', 'maximilian max maxim', 'josephine josefina giuseppina', 'frederick federico frederic fred', 'albert alberto bert', 'oscar oskar',
+  'rita margherita', 'veronica veronika', 'monica monika', 'genevieve genoveva', 'hedwig jadwiga', 'casimir kazimierz', 'stanislaus stanislaw stan',
+  'wenceslaus vaclav', 'columba colm', 'kevin caoimhin', 'gerard gerardo gerry', 'leonard leonardo leo', 'leo leon leone', 'vitus guy vito', 'alexis alex alexius'
+];
+
+const pf = { month:'', day:'', name:'', work:new Set(), need:new Set(), inspire:new Set(), heritage:new Set(), era:new Set() };
+const PF_KEY = 'sanctify.patronFinder';
+let pfShown = 12, pfIndex = null;
+try{
+  const saved = JSON.parse(localStorage.getItem(PF_KEY)) || {};
+  ['month', 'day', 'name'].forEach(k => { if(typeof saved[k] === 'string') pf[k] = saved[k]; });
+  ['work', 'need', 'inspire', 'heritage', 'era'].forEach(k => { if(Array.isArray(saved[k])) pf[k] = new Set(saved[k]); });
+}catch(e){}
+function pfSave(){
+  try{ localStorage.setItem(PF_KEY, JSON.stringify({ month:pf.month, day:pf.day, name:pf.name,
+    ...Object.fromEntries(['work', 'need', 'inspire', 'heritage', 'era'].map(k => [k, [...pf[k]]])) })); }catch(e){}
 }
 
+const pfFold = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const pfRegexCache = {};
+function pfRegex(words){
+  return pfRegexCache[words] || (pfRegexCache[words] = new RegExp('(^|[^a-z])(' + pfFold(words).replace(/[.*+?^${}()[\]\\]/g, '\\$&').replace(/\\\|/g, '|') + ')'));
+}
+const PF_NAME_STOP = new Set(['of', 'the', 'de', 'del', 'della', 'da', 'di', 'dos', 'das', 'do', 'du', 'von', 'van', 'la', 'le', 'y', 'and', 'companions', 'man', 'god', 'martyrs', 'great', 'younger', 'elder']);
+function pfNames(title){
+  const core = pfFold(title).replace(/\(.*?\)/g, '').replace(/^(pope\s+)?(st\.|sts\.|ss\.|bl\.|ven\.|saint|blessed|the)\s+/, '');
+  const names = [];
+  core.split(/,|\band\b/).forEach(part => {
+    for(const w of part.trim().replace(/^(st\.|bl\.)\s+/, '').split(/[\s’']+/)){
+      if(!w || PF_NAME_STOP.has(w) || /^\d/.test(w)) break;
+      if(w.length > 1 && !/^[ivx]+$/.test(w)) names.push(w.replace(/[^a-z-]/g, ''));
+    }
+  });
+  return names;
+}
+function pfBuildIndex(){
+  pfIndex = library.filter(e => e.category === 'saint').map(e => {
+    const patron = e.patron || '';
+    return { e, info:saintInfo(e.id), patron, phrases:patron.split(/\s*,\s*/).filter(Boolean),
+             hay:pfFold(patron + ' | ' + (e.tags || []).join(' | ') + (EASTERN_SAINTS.has(e.id) ? ' | eastern' : '')), names:pfNames(e.title) };
+  });
+}
+function pfNameSet(){
+  const n = pfFold(pf.name).trim().split(/\s+/)[0];
+  if(!n || n.length < 2) return null;
+  const set = new Set([n]);
+  PF_NAMES.forEach(g => { const list = g.split(' '); if(list.includes(n)) list.forEach(x => set.add(x)); });
+  return set;
+}
+// The patronage phrase that matched, so the card can say "Patron of nurses" instead of a vague label
+function pfWhy(x, words, fallback){
+  const re = pfRegex(words);
+  const phrase = x.phrases.find(p => re.test(pfFold(p)));
+  if(!phrase) return fallback;
+  const m = phrase.match(/^protection (?:from|against) (.*)/i);
+  return m ? 'Protects from ' + m[1] : 'Patron of ' + phrase;
+}
+const pfFlat = groups => groups.flatMap(g => g[1]);
+const PF_WORK_ALL = pfFlat(PF_WORK), PF_NEED_ALL = pfFlat(PF_NEED);
+
+function pfScore(x, nameSet){
+  let score = 0, hits = 0;
+  const why = [];
+  const add = (pts, text) => { score += pts; hits++; if(text && !why.includes(text)) why.push(text); };
+  if(pf.month && pf.day && (SAINT_FEASTS[`${pf.month}-${pf.day}`] || []).includes(x.e)) add(6, 'Feast day on your birthday');
+  if(nameSet && x.names.some(n => nameSet.has(n))) add(5, 'Shares your name');
+  PF_WORK_ALL.forEach(([k, label, words, roles]) => {
+    if(!pf.work.has(k)) return;
+    if(pfRegex(words).test(x.hay)) add(4, pfWhy(x, words, label));
+    else if(roles){ const r = roles.split('|').find(r => x.info.roles.includes(r)); if(r) add(2, 'One of the ' + SAINT_ROLE_NAME[r].toLowerCase()); }
+  });
+  PF_NEED_ALL.forEach(([k, label, words]) => { if(pf.need.has(k) && pfRegex(words).test(x.hay)) add(4, pfWhy(x, words, label)); });
+  PF_INSPIRE.forEach(([k, label, words, roles]) => {
+    if(!pf.inspire.has(k)) return;
+    if((k === 'eastern' && EASTERN_SAINTS.has(x.e.id)) || (roles && roles.split('|').some(r => x.info.roles.includes(r))) || (words && pfRegex(words).test(x.hay))) add(2.5, label);
+  });
+  PF_HERITAGE.forEach(([k, label, words]) => { if(pf.heritage.has(k) && pfRegex(words).test(x.hay)) add(3, pfWhy(x, words, label + ' heritage')); });
+  return { score, hits, why };
+}
+
+const pfAsked = () => !!((pf.month && pf.day) || pfNameSet() || pf.work.size || pf.need.size || pf.inspire.size || pf.heritage.size);
+
 function renderPatronFinder(){
+  if(!pfIndex) pfBuildIndex();
+  pfShown = 12;
   const months = MONTH_NAMES.map((m, i) => `<option value="${i + 1}"${String(i + 1) === pf.month ? ' selected' : ''}>${m}</option>`).join('');
   const days = Array.from({ length:31 }, (_, i) => `<option value="${i + 1}"${String(i + 1) === pf.day ? ' selected' : ''}>${i + 1}</option>`).join('');
-  const select = (key, opts, placeholder) => `<select data-pf="${key}"><option value="">${placeholder}</option>${opts.map(o => `<option value="${o[0]}"${pf[key] === o[0] ? ' selected' : ''}>${escapeHtml(o[1])}</option>`).join('')}</select>`;
-  const asked = pf.day || pf.work || pf.need || pf.inspire;
-  const results = asked
-    ? library.filter(e => e.category === 'saint').map(e => ({ e, ...patronScore(e) })).filter(r => r.score > 0)
-        .sort((a, b) => b.score - a.score || a.e.title.localeCompare(b.e.title)).slice(0, 9)
-    : [];
+  const chip = (q, k, label) => `<button type="button" class="patron-chip pf-chip${pf[q].has(k) ? ' active' : ''}" data-q="${q}" data-k="${k}" aria-pressed="${pf[q].has(k)}">${escapeHtml(label)}</button>`;
+  const grouped = (q, groups) => groups.map(([name, items]) => `
+        <div class="pf-group"><h4>${escapeHtml(name)}</h4><div class="pf-chips">${items.map(i => chip(q, i[0], i[1])).join('')}</div></div>`).join('');
+  const flat = (q, items) => `<div class="pf-chips">${items.map(i => chip(q, i[0], i[1])).join('')}</div>`;
+  const wide = window.matchMedia('(min-width: 901px)').matches;
+  const section = (q, title, hint, body, open) => `
+      <details class="pf-sec"${open && (wide || q === 'work' || pf[q].size) ? ' open' : ''} data-sec="${q}">
+        <summary><span class="pf-sec-title">${title}</span><span class="pf-count" data-count="${q}"></span></summary>
+        <p class="pf-hint">${hint}</p>${body}
+      </details>`;
   entryListEl.innerHTML = `
     <div class="pf">
-      <section class="pf-form">
-        <p class="pf-intro">Every Christian has friends in heaven. Answer as many questions as you like, and Sanctify will suggest saints to get to know and ask for prayers, whether for Confirmation, for your work, or for a need on your heart.</p>
-        <div class="pf-grid">
-          <label class="pf-q"><span>When is your birthday?</span>
-            <span class="pf-row"><select data-pf="month"><option value="">Month</option>${months}</select><select data-pf="day"><option value="">Day</option>${days}</select></span></label>
-          <label class="pf-q"><span>What do you do?</span>${select('work', PF_WORK, 'Choose one')}</label>
-          <label class="pf-q"><span>What are you praying for?</span>${select('need', PF_NEED, 'Choose one')}</label>
-          <label class="pf-q"><span>What inspires you most in a saint?</span>${select('inspire', PF_INSPIRE, 'Choose one')}</label>
-          <label class="pf-q"><span>Which era draws you?</span>${select('era', PF_ERA, 'Any time').replace('<option value="">Any time</option>', '')}</label>
+      <div class="pf-layout">
+        <div class="pf-form">
+          <section class="pf-sec pf-about">
+            <div class="pf-sec-title">About you</div>
+            <div class="pf-about-grid">
+              <label class="pf-q"><span>Your birthday</span>
+                <span class="pf-row"><select data-pf="month"><option value="">Month</option>${months}</select><select data-pf="day"><option value="">Day</option>${days}</select></span></label>
+              <label class="pf-q"><span>Your first name</span>
+                <input type="text" data-pf="name" autocomplete="given-name" maxlength="40" placeholder="Maria, John, Teresa…" value="${escapeHtml(pf.name)}"></label>
+            </div>
+          </section>
+          ${section('work', 'Your work or calling', 'Choose everything that fits: your job, your studies, your role at home.', grouped('work', PF_WORK), true)}
+          ${section('need', 'What you are praying for', 'Choose the needs on your heart, for yourself or for someone you love.', grouped('need', PF_NEED), true)}
+          ${section('inspire', 'What you love in a saint', 'Which kinds of holiness draw you?', flat('inspire', PF_INSPIRE), true)}
+          ${section('heritage', 'Your heritage', 'Saints from your homeland or your family’s.', flat('heritage', PF_HERITAGE), true)}
+          ${section('era', 'When they lived', 'Leave blank for any time, or choose the eras that interest you.', flat('era', PF_ERA), true)}
+          <button class="text-link pf-reset" data-act="reset">Clear all answers</button>
         </div>
-        ${asked ? '<button class="text-link" data-act="reset">Start over</button>' : ''}
-      </section>
-      ${!asked ? '<p class="pf-empty">Answer a question above to see your suggestions.</p>' : results.length ? `
-      <h3 class="pf-heading">Saints for you</h3>
-      <div class="pf-results">${results.map(({ e, why }) => `
-        <button class="pf-card" data-open="${e.id}">
-          <span class="saint-portrait" data-sid="${e.id}">${portraitPlaceholder(e.title)}</span>
-          <span class="pf-card-body">
-            <span class="pf-card-title">${escapeHtml(e.title)}</span>
-            <span class="g-meta">${escapeHtml(feastLabel(e))}</span>
-            <span class="pf-why">${why.map(w => `<span class="patron-tag">${escapeHtml(w)}</span>`).join('')}</span>
-          </span>
-        </button>`).join('')}</div>` : '<p class="pf-empty">No saints match all of those answers. Try changing one of them.</p>'}
+        <aside class="pf-side" id="pfResults" aria-live="polite"></aside>
+      </div>
+      <button class="pf-jump" type="button" hidden></button>
       <p class="shop-note">Many people choose a Confirmation saint whose virtues they want to imitate. Read about a few, ask them for their prayers, and see which one becomes a friend.</p>
     </div>`;
-  entryListEl.querySelectorAll('[data-pf]').forEach(s => s.addEventListener('change', () => { pf[s.dataset.pf] = s.value; renderPatronFinder(); }));
-  const reset = entryListEl.querySelector('[data-act="reset"]');
-  if(reset) reset.addEventListener('click', () => { Object.assign(pf, { month:'', day:'', work:'', need:'', inspire:'', era:'any' }); renderPatronFinder(); });
-  entryListEl.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openReadModal(b.dataset.open)));
-  entryListEl.querySelectorAll('.pf-card .saint-portrait').forEach(observePortrait);
+  const root = entryListEl;
+  root.querySelectorAll('select[data-pf]').forEach(s => s.addEventListener('change', () => { pf[s.dataset.pf] = s.value; pfChanged(); }));
+  let t;
+  root.querySelector('input[data-pf="name"]').addEventListener('input', ev => { pf.name = ev.target.value; clearTimeout(t); t = setTimeout(pfChanged, 180); });
+  root.querySelectorAll('.pf-chip').forEach(b => b.addEventListener('click', () => {
+    const set = pf[b.dataset.q], k = b.dataset.k;
+    set.has(k) ? set.delete(k) : set.add(k);
+    b.classList.toggle('active', set.has(k));
+    b.setAttribute('aria-pressed', set.has(k));
+    pfChanged();
+  }));
+  root.querySelector('[data-act="reset"]').addEventListener('click', () => {
+    Object.assign(pf, { month:'', day:'', name:'' });
+    ['work', 'need', 'inspire', 'heritage', 'era'].forEach(k => pf[k].clear());
+    pfSave();
+    renderPatronFinder();
+  });
+  const jump = root.querySelector('.pf-jump'), side = root.querySelector('#pfResults');
+  jump.addEventListener('click', () => side.scrollIntoView({ behavior:'smooth', block:'start' }));
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(([en]) => { jump.classList.toggle('away', en.isIntersecting); }).observe(side);
+  }
+  renderPfResults();
+}
+
+function pfChanged(){
+  pfShown = 12;
+  pfSave();
+  renderPfResults();
+}
+
+function renderPfResults(){
+  const side = document.getElementById('pfResults');
+  if(!side) return;
+  ['work', 'need', 'inspire', 'heritage', 'era'].forEach(q => {
+    const c = entryListEl.querySelector(`[data-count="${q}"]`);
+    if(c) c.textContent = pf[q].size ? pf[q].size + ' chosen' : '';
+  });
+  const jump = entryListEl.querySelector('.pf-jump');
+  if(!pfAsked()){
+    side.innerHTML = `<div class="pf-side-head"><h3 class="pf-heading">Saints for you</h3></div>
+      <p class="pf-empty">${pf.era.size ? 'Now choose something else, such as your work or a need, to see saints from those times.' : 'Choose a few answers and your saints will appear here.'}</p>`;
+    if(jump) jump.hidden = true;
+    return;
+  }
+  const nameSet = pfNameSet();
+  const eras = pf.era.size ? new Set(PF_ERA.filter(x => pf.era.has(x[0])).flatMap(x => x[2].split(' '))) : null;
+  const all = pfIndex.filter(x => !eras || eras.has(x.info.era)).map(x => ({ x, ...pfScore(x, nameSet) })).filter(r => r.score > 0)
+    .sort((a, b) => b.score - a.score || b.hits - a.hits || a.x.e.title.localeCompare(b.x.e.title));
+  const shown = all.slice(0, pfShown);
+  side.innerHTML = `
+    <div class="pf-side-head"><h3 class="pf-heading">Saints for you</h3>
+      <span class="pf-total">${all.length ? `${all.length} ${all.length === 1 ? 'match' : 'matches'}` : ''}</span></div>
+    ${all.length ? `<div class="pf-results">${shown.map(({ x, why, hits }) => `
+      <button class="pf-card" data-open="${x.e.id}">
+        <span class="saint-portrait" data-sid="${x.e.id}">${portraitPlaceholder(x.e.title)}</span>
+        <span class="pf-card-body">
+          <span class="pf-card-title">${escapeHtml(x.e.title)}</span>
+          <span class="g-meta">${escapeHtml(feastLabel(x.e))}</span>
+          <span class="pf-why">${why.slice(0, 5).map(w => `<span class="patron-tag">${escapeHtml(w)}</span>`).join('')}${why.length > 5 ? `<span class="patron-tag">+${why.length - 5} more</span>` : ''}</span>
+        </span>
+      </button>`).join('')}</div>
+    ${all.length > pfShown ? `<button class="btn quiet pf-more" type="button">Show ${Math.min(12, all.length - pfShown)} more</button>` : ''}`
+    : '<p class="pf-empty">No saints match those answers yet. Try choosing a few different ones, or widen the eras.</p>'}`;
+  side.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openReadModal(b.dataset.open)));
+  side.querySelectorAll('.pf-card .saint-portrait').forEach(observePortrait);
+  const more = side.querySelector('.pf-more');
+  if(more) more.addEventListener('click', () => { pfShown += 12; renderPfResults(); });
+  if(jump){ jump.hidden = !all.length; jump.textContent = `See your saints · ${all.length}`; }
 }
 
 /* =========================================================
@@ -11775,7 +12145,7 @@ const HUBS = {
         { route:'history/orders', desc:'Benedictines, Carmelites, Franciscans, Jesuits, Basilians, the Knights of Malta, and more.', meta:`${ORDER_GROUPS.reduce((n, g) => n + g.list.length, 0)} orders` },
         { route:'history/quotes', desc:'The words of the saints, from the Church Fathers to our own day, with their sources.', meta:`${QUOTES.length} quotes` },
         { route:'history/eastern-churches', desc:'The twenty-three Eastern Catholic Churches in communion with Rome: Byzantine, Syriac, Chaldean, Armenian, and Alexandrian.', meta:'23 Churches' },
-        { route:'history/saints/patron-finder', desc:'Answer a few questions to find saints for your birthday, your work, and your needs.', meta:'A short quiz' }
+        { route:'history/saints/patron-finder', desc:'Pick your work, your needs, your name, and what you love in a saint to find friends in heaven.', meta:'Choose as many as you like' }
       ];
     }
   }
