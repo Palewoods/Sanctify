@@ -1,0 +1,25 @@
+name: Daily Discord post
+
+on:
+  schedule:
+    - cron: '0 11 * * *'   # every day at 11:00 UTC: 7 AM Eastern in summer, 6 AM in winter
+  workflow_dispatch:          # lets you post by hand from the Actions tab
+    inputs:
+      dry_run:
+        description: 'Only print the message (do not post)'
+        type: boolean
+        default: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Post today's message
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TZ: America/New_York
+        run: node bot/daily.mjs ${{ inputs.dry_run && '--dry' || '' }}
