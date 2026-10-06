@@ -1032,6 +1032,35 @@
   .bk-sub{font-family:'Cormorant Garamond', serif; font-size:1.25em; margin:1.4em 0 0.6em; color:var(--ink);}
   .bk-quote{margin:0 0 1em 1em; padding-left:14px; border-left:3px solid var(--line); color:var(--ink-soft);}
   .bk-fn{font-size:0.8em; line-height:1.55; color:var(--ink-soft); margin:0 0 0.6em !important;}
+  .bk-text .bk-q{font-weight:650; margin:1.3em 0 0.3em;}
+  /* ---------- The Catechism ---------- */
+  .ccc-hit{display:grid; gap:10px; padding:14px 16px; border-radius:14px; border:1px solid var(--gold); background:color-mix(in srgb, var(--gold) 7%, transparent);}
+  .ccc-hit[hidden]{display:none;}
+  .ccc-hit-num{margin:0; font-family:'Cormorant Garamond', serif; font-size:1.35rem; font-weight:700;}
+  .ccc-path{margin:0; font-size:0.92rem; line-height:1.55; color:var(--ink-soft);}
+  .ccc-path b{color:var(--ink); font-weight:600;}
+  .ccc-hit-actions, .ccc-related{display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
+  .ccc-related{font-size:0.88rem; color:var(--ink-soft);}
+  .ccc-parts{display:grid; gap:10px; margin:0 0 30px; max-width:920px;}
+  .ccc-part{border:1px solid var(--line); border-radius:16px; background:var(--parchment-light);}
+  .ccc-part > summary{list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:14px 18px; font-family:'Cormorant Garamond', serif; font-size:1.3rem; font-weight:700; line-height:1.25;}
+  .ccc-part > summary::-webkit-details-marker{display:none;}
+  .ccc-part > summary::before{content:'›'; display:inline-block; margin-right:10px; color:var(--gold); transition:transform 0.15s;}
+  .ccc-part[open] > summary::before{transform:rotate(90deg);}
+  .ccc-part > summary > span:first-child{flex:1;}
+  .ccc-part > .ccc-tree{padding:0 12px 14px;}
+  .ccc-tree{list-style:none; margin:0; padding:0 0 0 14px;}
+  .ccc-tree .ccc-tree{border-left:1px solid var(--line); margin-left:8px;}
+  .ccc-row{display:flex; justify-content:space-between; align-items:baseline; gap:14px; padding:5px 8px; border-radius:8px; font-size:0.95rem; line-height:1.4; color:var(--ink); text-decoration:none;}
+  a.ccc-row:hover{background:color-mix(in srgb, var(--gold) 10%, transparent);}
+  .ccc-row.ccc-head{font-weight:650; margin-top:4px;}
+  .ccc-row.here{background:color-mix(in srgb, var(--gold) 20%, transparent);}
+  .ccc-ext{font-size:0.72em; color:var(--ink-soft); margin-left:5px;}
+  .ccc-range{flex:none; font-family:'Source Serif 4', serif; font-size:0.78rem; font-weight:400; color:var(--ink-soft); white-space:nowrap; font-variant-numeric:tabular-nums;}
+  .ccc-hit-actions .ccc-range{white-space:normal; flex:1 1 180px;}
+  .ccc-shelf-note{margin:-4px 0 12px; font-size:0.92rem; color:var(--ink-soft);}
+  .ccc-shelf{margin-bottom:30px;}
+  .ccc-shelf .bt-badge{display:inline-block; margin-top:6px; font-size:0.72rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--teal);}
   /* ---------- Bible reader ---------- */
   .bible-top{display:grid; gap:12px; padding:18px 20px; margin-bottom:24px; border:1px solid var(--line); border-radius:18px; background:var(--parchment-light);}
   .bible-go label{display:block; font-family:'Cormorant Garamond', serif; font-size:1.35rem; font-weight:700; margin-bottom:8px;}
@@ -4614,6 +4643,102 @@ const SEED_DATA = [
   { id:'s654', category:'saint', title:'St. Joan of France', author:'1464–1505, feast day February 4', tags:['princess','founder','disabled'],
     content:'Joan was the daughter of King Louis XI of France. Born with a physical disability, she was rejected by her father and married against her will to Louis of Orléans, who treated her coldly. When he became King Louis XII, he had the marriage annulled.\n\nJoan accepted it in peace, retired to Bourges, and founded the Order of the Annunciation of the Blessed Virgin Mary, devoted to imitating the virtues of Mary. She was canonized in 1950.',
     intercession:'St. Joan, pray for us. Comfort all who are rejected, and help them find their worth in God. Amen.' },
+  { id:'s655', category:'saint', title:'St. Thorlak of Iceland', author:'1133–1193, feast day December 23', tags:['bishop','iceland','reform'],
+    content:'Thorlak Thorhallsson studied for the priesthood in Paris and Lincoln, then returned to Iceland, where he founded a community of Augustinian canons at Thykkvibaer. In 1178 he became bishop of Skálholt.\n\nHe worked hard to reform the clergy and to strengthen Christian marriage on an island where the Church was still young. Icelanders honored him as a saint soon after his death, and in 1984 Pope St. John Paul II named him the patron of Iceland.',
+    intercession:'St. Thorlak, pray for us. Bless the people of the far north, and strengthen all who work to renew the Church. Amen.' },
+  { id:'s656', category:'saint', title:'St. Catherine of Bologna', author:'1413–1463, feast day March 9', tags:['poor clares','artist','mystic'],
+    content:'Catherine de’ Vigri grew up at the court of Ferrara, where she learned to read, write, paint, and play music. She left the court to join a community of women that became a monastery of Poor Clares, and later she was sent to found a new monastery in Bologna, which she led as abbess.\n\nShe painted, copied and illuminated books, and wrote The Seven Spiritual Weapons, a short guide for those struggling with temptation and discouragement. Her body is kept, seated, in the chapel of her monastery in Bologna. She is a patron of artists.',
+    intercession:'St. Catherine of Bologna, pray for us. Help us to use every gift for the glory of God, and to persevere in times of temptation. Amen.' },
+  { id:'s657', category:'saint', title:'St. Hugh of Grenoble', author:'1053–1132, feast day April 1', tags:['bishop','carthusians','reform'],
+    content:'Hugh was made bishop of Grenoble while still a young man and found a diocese troubled by simony and lax clergy. He felt so unequal to the task that he once withdrew to a monastery, until the pope sent him back.\n\nIn 1084 he welcomed St. Bruno and his companions and led them into the mountain wilderness of the Chartreuse, where they founded the first Carthusian monastery. Hugh governed his diocese for more than fifty years, often visiting the monks to pray with them.',
+    intercession:'St. Hugh of Grenoble, pray for us. Give courage to bishops and to all who are asked to do more than they feel able. Amen.' },
+  { id:'s658', category:'saint', title:'St. John Leonardi', author:'1541–1609, feast day October 9', tags:['priest','founder','pharmacist'],
+    content:'John Leonardi trained as a pharmacist in Lucca before becoming a priest. He gathered laymen to teach the catechism and founded the Clerks Regular of the Mother of God to renew the life of the clergy in the spirit of the Council of Trent.\n\nMisunderstood and even exiled from his own city, he worked in Rome with St. Philip Neri and helped lay the foundations of the college for training missionaries that became the Congregation for the Propagation of the Faith. He is the patron of pharmacists.',
+    intercession:'St. John Leonardi, pray for us. Bless all who prepare medicines and all who hand on the faith. Amen.' },
+  { id:'s659', category:'saint', title:'St. Agnes of Assisi', author:'c. 1197–1253, feast day November 16', tags:['poor clares','franciscan','sisters'],
+    content:'Agnes was the younger sister of St. Clare. Sixteen days after Clare fled to follow St. Francis, Agnes joined her. Their family sent armed relatives to drag Agnes home, but according to the early accounts her body became so heavy that the men could not move her, and they gave up.\n\nFrancis received her himself, and she later led a new community of Poor Clares at Monticelli near Florence. She returned to Assisi to be with Clare when she died, and followed her in death a few months later.',
+    intercession:'St. Agnes of Assisi, pray for us. Make us faithful to God’s call, whatever it costs. Amen.' },
+  { id:'s660', category:'saint', title:'Pope St. Celestine V', author:'c. 1215–1296, feast day May 19', tags:['pope','hermit','founder'],
+    content:'Pietro da Morrone was a hermit in the mountains of the Abruzzi who founded a community of monks later called the Celestines. In 1294, after the cardinals had failed to elect a pope for more than two years, they chose the elderly hermit.\n\nOverwhelmed by the politics of the papal court, he resigned after about five months, one of the very few popes ever to do so. His successor kept him confined, and he died in 1296. He was canonized in 1313.',
+    intercession:'Pope St. Celestine, pray for us. Give us humility, and the freedom to seek God above every honor. Amen.' },
+  { id:'s661', category:'saint', title:'Pope St. Leo IX', author:'1002–1054, feast day April 19', tags:['pope','reform','bishop'],
+    content:'Bruno of Egisheim was an Alsatian nobleman and bishop of Toul who became pope in 1049. He made the papacy a force for reform, holding synods across Italy, France, and Germany against simony and the corruption of the clergy, and gathering able reformers around him in Rome.\n\nHis last years were troubled: the Normans captured him in southern Italy, and the legates he sent to Constantinople were part of the bitter quarrel of 1054 between Rome and the Patriarch. He died in Rome soon after his release.',
+    intercession:'Pope St. Leo, pray for us. Renew the Church in holiness, and heal the wounds of division between East and West. Amen.' },
+  { id:'s662', category:'saint', title:'Pope St. Nicholas I', author:'c. 820–867, feast day November 13', tags:['pope','marriage','missions'],
+    content:'Nicholas the Great was pope from 858 to 867. He insisted that the laws of the Church bind the powerful as well as the weak, and he refused to allow King Lothair II of Lotharingia to put away his lawful wife to marry his mistress.\n\nHe defended the rights of ordinary clergy against their bishops, supported the mission to the Bulgarians, and sent them long, patient answers to their questions about the Christian life. He is one of only three popes to be called “the Great.”',
+    intercession:'Pope St. Nicholas, pray for us. Protect marriage and family life, and give courage to all who must tell the powerful the truth. Amen.' },
+  { id:'s663', category:'saint', title:'St. Gerard of Csanád', author:'c. 980–1046, feast day September 24', tags:['bishop','martyr','hungary'],
+    content:'Gerard Sagredo was a Benedictine monk from Venice who, on the way to the Holy Land, was persuaded to stay in Hungary by its first Christian king, St. Stephen. He became tutor to Stephen’s son St. Emeric and then the first bishop of Csanád.\n\nAfter Stephen’s death a pagan uprising broke out, and in 1046 Gerard was killed in Buda, where tradition says he was thrown from the hill above the Danube that now bears his name, Gellért Hill.',
+    intercession:'St. Gerard, pray for us. Make us faithful witnesses to Christ in times of unrest. Amen.' },
+  { id:'s664', category:'saint', title:'St. Odo of Cluny', author:'c. 878–942, feast day November 18', tags:['monk','abbot','reform'],
+    content:'Odo was raised in the household of the Count of Aquitaine and studied at Tours and Paris before becoming a monk. In 927 he became the second abbot of Cluny.\n\nUnder his leadership Cluny’s way of life, faithful to the Rule of St. Benedict and to the solemn worship of God, spread to many other monasteries across France and Italy, at the invitation of bishops and princes, and even popes. He also wrote a life of St. Gerald of Aurillac and moral reflections on the troubled times.',
+    intercession:'St. Odo, pray for us. Renew our love for prayer and the worship of God. Amen.' },
+  { id:'s665', category:'saint', title:'St. Raphael Kalinowski', author:'1835–1907, feast day November 19', tags:['carmelite','poland','priest'],
+    content:'Józef Kalinowski was an engineer and an officer in the Russian army who joined the Polish and Lithuanian uprising of 1863. Captured and sentenced to death, he was instead sent to labor in Siberia for ten years, where his faith deepened and he became a support to his fellow prisoners.\n\nAfter his release he became a Discalced Carmelite, taking the name Raphael. He spent long hours hearing confessions, worked for the reunion of Eastern Christians with Rome, and helped restore the Carmelites in Poland. Pope St. John Paul II canonized him in 1991.',
+    intercession:'St. Raphael Kalinowski, pray for us. Strengthen prisoners and exiles, and lead sinners to God’s mercy. Amen.' },
+  { id:'s666', category:'saint', title:'St. Zygmunt Szczęsny Feliński', author:'1822–1895, feast day September 17', tags:['bishop','poland','exile'],
+    content:'Feliński was named archbishop of Warsaw in 1862, at a time of rising tension between the Poles and their Russian rulers. When the Russians crushed the uprising of 1863, he protested to the Tsar and was exiled to Yaroslavl, where he spent twenty years.\n\nIn exile he lived simply, cared for the poor, and ministered to Catholics in the region. He had earlier founded the Franciscan Sisters of the Family of Mary. Pope Benedict XVI canonized him in 2009.',
+    intercession:'St. Zygmunt, pray for us. Strengthen all who suffer for their people and their faith. Amen.' },
+  { id:'s667', category:'saint', title:'St. Catherine of Sweden', author:'c. 1332–1381, feast day March 24', tags:['nun','mother and daughter','sweden'],
+    content:'Catherine was the daughter of St. Bridget of Sweden. Married young, she and her husband agreed to live as brother and sister. After his death she joined her mother in Rome and stayed with her for many years, sharing her prayer, pilgrimages, and work for the poor.\n\nAfter Bridget’s death Catherine brought her body home to Vadstena, became the leader of the monastery her mother had founded, and worked for the approval of Bridget’s order and her canonization. She is invoked by women who fear miscarriage.',
+    intercession:'St. Catherine, pray for us. Bless mothers and daughters, and protect every child in the womb. Amen.' },
+  { id:'s668', category:'saint', title:'St. John Gabriel Perboyre', author:'1802–1840, feast day September 11', tags:['vincentian','martyr','china'],
+    content:'John Gabriel Perboyre was a French priest of the Congregation of the Mission, the Vincentians, who trained seminarians before he was at last allowed to go to China in 1835. He worked among the poor in Henan and Hubei.\n\nDuring a persecution in 1839 he was betrayed, tortured, and finally strangled while tied to a cross at Wuchang in 1840. He was the first martyr of China to be canonized, by Pope St. John Paul II in 1996.',
+    intercession:'St. John Gabriel, pray for us. Strengthen the Church in China and all who suffer for the faith. Amen.' },
+  { id:'s669', category:'saint', title:'St. Théophane Vénard', author:'1829–1861, feast day November 24', tags:['martyr','missionary','vietnam'],
+    content:'Théophane Vénard was a priest of the Paris Foreign Missions Society who worked in northern Vietnam during a fierce persecution, hiding in caves and boats and ministering to Catholics at night. He was captured in 1860 and kept in a cage for weeks before being beheaded in 1861.\n\nHis cheerful letters to his family, written even from his cage, were published after his death. St. Thérèse of Lisieux loved them, copied passages from them, and called him her brother. He is honored with the Martyrs of Vietnam.',
+    intercession:'St. Théophane, pray for us. Give us joy and courage in every trial. Amen.' },
+  { id:'s670', category:'saint', title:'St. Anne Line', author:'c. 1563–1601, feast day February 27', tags:['martyr','england','widow'],
+    content:'Anne Heigham was disowned by her Protestant family when she became a Catholic, and married Roger Line, who was later exiled for his faith and died abroad. Though often ill, she kept houses in London where priests could hide and Catholics could come to Mass.\n\nShe was arrested on the feast of the Purification in 1601 and hanged at Tyburn for harboring a priest. She is one of the Forty Martyrs of England and Wales, canonized in 1970.',
+    intercession:'St. Anne Line, pray for us. Give us generous hearts to welcome others, even at a cost. Amen.' },
+  { id:'s671', category:'saint', title:'St. Magdalene of Nagasaki', author:'1611–1634, feast day September 28', tags:['martyr','japan','young people'],
+    content:'Magdalene was born near Nagasaki to Christian parents who were later martyred. She worked as an interpreter and catechist for Augustinian Recollect missionaries and became a tertiary of their order.\n\nWhen the persecution grew fiercer she hid in the hills, but she then walked into Nagasaki in her habit to strengthen the wavering. Arrested, she endured thirteen days of torture, hung upside down over a pit, and died in 1634 at about twenty-three. She is honored with St. Lorenzo Ruiz and Companions.',
+    intercession:'St. Magdalene, pray for us. Make us brave witnesses who strengthen others in the faith. Amen.' },
+  { id:'s672', category:'saint', title:'St. Philip of Jesus', author:'1572–1597, feast day February 5', tags:['martyr','franciscan','mexico'],
+    content:'Felipe de las Casas was born in Mexico City and was a restless young man before he became a Franciscan in Manila. Sailing home to be ordained, his ship was driven by storms onto the coast of Japan.\n\nThere he was arrested with Franciscan missionaries and Japanese Christians and crucified at Nagasaki in 1597, among the twenty-six martyrs with St. Paul Miki. He is Mexico’s first saint and a patron of Mexico City.',
+    intercession:'St. Philip of Jesus, pray for us. Turn restless hearts to God, and give us courage to follow Christ to the end. Amen.' },
+  { id:'s673', category:'saint', title:'St. Cristóbal Magallanes', author:'1869–1927, feast day May 21', tags:['priest','martyr','mexico'],
+    content:'Cristóbal Magallanes was the parish priest of Totatiche in Jalisco, where he opened schools and a seminary and worked among the Huichol people. During the persecution of the Church in Mexico, he preached against armed rebellion but kept ministering secretly.\n\nArrested on his way to celebrate Mass, he gave away his few possessions to his executioners and was shot in 1927 without a trial. He and twenty-four companions, mostly priests, were canonized in 2000.',
+    intercession:'St. Cristóbal, pray for us. Bless priests and the Church in Mexico, and teach us to forgive. Amen.' },
+  { id:'s674', category:'saint', title:'St. Miguel Febres Cordero', author:'1854–1910, feast day February 9', tags:['teacher','brother','ecuador'],
+    content:'Francisco Febres Cordero was born in Cuenca, Ecuador, with deformed feet that made walking hard all his life. Against his family’s wishes he joined the Brothers of the Christian Schools and taught in Quito for more than thirty years.\n\nA gifted linguist, he wrote grammar textbooks used across Latin America and was elected to the Ecuadorian Academy of Language. He prepared hundreds of children for First Communion. He died in Spain in 1910 and was the first Ecuadorian man to be canonized, in 1984.',
+    intercession:'St. Miguel, pray for us. Bless teachers and students, and all who live with disability. Amen.' },
+  { id:'s675', category:'saint', title:'St. Gonsalo Garcia', author:'1556–1597, feast day February 6', tags:['martyr','franciscan','india'],
+    content:'Gonsalo Garcia was born in Vasai, near Mumbai, to a Portuguese father and an Indian mother. He went to Japan with Jesuit missionaries, became a successful merchant and catechist, and later joined the Franciscans as a lay brother.\n\nHe was crucified at Nagasaki in 1597 with St. Paul Miki and his companions. He is the first saint born in India, and his feast is celebrated with great joy in Vasai.',
+    intercession:'St. Gonsalo, pray for us. Bless the Church in India and Japan, and make us generous missionaries. Amen.' },
+  { id:'s676', category:'saint', title:'St. Devasahayam Pillai', author:'1712–1752, feast day January 14', tags:['martyr','layman','india'],
+    content:'Neelakanta Pillai was a Hindu official at the court of the Kingdom of Travancore. He came to faith in Christ through a Dutch naval officer, and at his baptism in 1745 he took the name Lazarus, in Tamil Devasahayam, “God is my help.”\n\nHe refused to give up his faith and spoke against caste divisions, so he was arrested and paraded through the land for years before being shot in 1752. Pope Francis canonized him in 2022, the first Indian layman to be declared a saint.',
+    intercession:'St. Devasahayam, pray for us. Help us to see the equal dignity of every person, and to hold fast to Christ. Amen.' },
+  { id:'s677', category:'saint', title:'St. François de Laval', author:'1623–1708, feast day May 6', tags:['bishop','canada','missionary'],
+    content:'François de Montmorency-Laval arrived in New France in 1659 as its first bishop, at first as vicar apostolic and from 1674 as bishop of Quebec, responsible for a territory that stretched across much of North America. He founded the Seminary of Quebec in 1663 to train priests and organized the parishes of the young colony.\n\nHe defended the Indigenous peoples against the brandy trade that was ruining them, and lived so simply that he gave nearly everything to the poor. Université Laval is named for him. Pope Francis canonized him in 2014.',
+    intercession:'St. François de Laval, pray for us. Bless the Church in Canada and all who build up new communities of faith. Amen.' },
+  { id:'s678', category:'saint', title:'St. Maria Troncatti', author:'1883–1969, feast day August 25', tags:['nun','missionary','nurse'],
+    content:'Maria Troncatti was an Italian Salesian Sister, a Daughter of Mary Help of Christians, who served as a Red Cross nurse during the First World War. In 1922 she went as a missionary to the Amazon region of Ecuador.\n\nFor more than forty years she cared for the sick, delivered babies, and worked for peace between the Shuar people and the settlers, who called her “Madrecita.” She died in a plane crash at Sucúa in 1969. Pope Leo XIV canonized her in 2025.',
+    intercession:'St. Maria Troncatti, pray for us. Bless nurses and missionaries, and make us peacemakers. Amen.' },
+  { id:'s679', category:'saint', title:'St. Maximilian of Tebessa', author:'274–295, feast day March 12', tags:['martyr','young people','conscience'],
+    content:'Maximilian was the twenty-one-year-old son of Fabius Victor, an official connected with the Roman army in North Africa. When he was called to serve in the army, he refused to take the military oath, telling the proconsul, according to the record of his trial, that he could not serve because he was a Christian.\n\nHe was beheaded at Theveste, in present-day Algeria, in 295. His father went home rejoicing that he had been able to offer such a gift to God. The account of his trial is one of the oldest records of a Christian martyr.',
+    intercession:'St. Maximilian, pray for us. Give us courage to follow our conscience and to put Christ first. Amen.' },
+  { id:'s680', category:'saint', title:'St. Pelagia the Penitent', author:'5th century, feast day October 8', tags:['penitent','hermit','antioch'],
+    content:'Pelagia was a celebrated actress and dancer of Antioch, famous for her beauty and wealth. According to her Life, the holy bishop Nonnus wept when he saw her pass, praying that he might care for his soul as she cared for her looks. When she later heard him preach, she was moved to repentance and asked for Baptism.\n\nShe gave away her fortune to the poor, left the city in disguise, and lived as a hermit on the Mount of Olives, where she was known only as the monk Pelagius until her death.',
+    intercession:'St. Pelagia, pray for us. Give us true repentance, and lead all who have strayed back to God. Amen.' },
+  { id:'s681', category:'saint', title:'St. Abraham of Kidunaia', author:'4th century, feast day March 16', tags:['hermit','priest','syria'],
+    content:'Abraham was a hermit near Edessa who left his bride on their wedding day to live in solitude. His bishop ordained him and sent him to a pagan village, Kidunaia, where he endured years of insults and beatings until the people were converted.\n\nThe story of his niece Mary, whom he raised in the desert and who ran away to a life of sin, is famous: he disguised himself as a soldier, found her in an inn, and brought her home with such tenderness that she became a saint.',
+    intercession:'St. Abraham, pray for us. Teach us patience with the stubborn, and tender love for those who have strayed. Amen.' },
+  { id:'s682', category:'saint', title:'St. Theodore of Sykeon', author:'died 613, feast day April 22', tags:['bishop','wonderworker','monk'],
+    content:'Theodore was born at an inn in the village of Sykeon in Galatia, in Asia Minor. As a boy he spent long hours in prayer in a nearby chapel, and he grew into a severe ascetic who lived for a time in a cave and in an iron cage.\n\nHe was ordained, founded monasteries, and against his will became bishop of Anastasiopolis, though he later resigned to return to the monastic life. Crowds came to him for healing and help, and a disciple named George wrote a long, lively Life of him.',
+    intercession:'St. Theodore, pray for us. Bring healing to the sick, and peace to all who are troubled. Amen.' },
+  { id:'s683', category:'saint', title:'St. Lucian of Antioch', author:'c. 240–312, feast day January 7', tags:['martyr','priest','scholar'],
+    content:'Lucian was a priest and teacher in Antioch, known for his careful scholarship on the text of the Greek Bible. His revision of the Greek Old Testament and the New Testament was widely used in the churches of Syria and Asia Minor.\n\nDuring the persecution under Maximinus he was arrested and taken to Nicomedia, where he died for the faith in 312. Eusebius records that he made a speech in defense of the faith before the judge.',
+    intercession:'St. Lucian, pray for us. Bless all who study and translate the Scriptures. Amen.' },
+  { id:'s684', category:'saint', title:'St. Dionysius the Areopagite', author:'1st century, feast day October 3', tags:['bishop','convert','athens'],
+    content:'Dionysius was a member of the Areopagus, the high council of Athens, who believed when he heard St. Paul preach there about the unknown god, as the Acts of the Apostles records (Acts 17:34). An early tradition says he became the first bishop of Athens and died a martyr.\n\nAround the year 500 a Syrian writer published deep works of mystical theology under his name, and these writings, by the author called Pseudo-Dionysius, influenced theologians of both East and West for a thousand years.',
+    intercession:'St. Dionysius, pray for us. Open our minds to the God who is beyond all knowing, and our hearts to his word. Amen.' },
+  { id:'s685', category:'saint', title:'St. Pantaenus', author:'died c. 200, feast day July 7', tags:['teacher','missionary','alexandria'],
+    content:'Pantaenus was a Stoic philosopher who became a Christian and led the catechetical school of Alexandria, the first great Christian school of theology. His most famous student was Clement of Alexandria, who called him a “Sicilian bee” that gathered the honey of the apostles and prophets.\n\nEusebius records that Pantaenus also went as a missionary to the East, as far as “India,” where he was said to have found Christians who already had the Gospel of Matthew in Hebrew letters.',
+    intercession:'St. Pantaenus, pray for us. Bless all who teach the faith, and give us wisdom joined to love. Amen.' },
+  { id:'s686', category:'saint', title:'The Twenty-One Coptic Martyrs', author:'died 2015, feast day February 15', tags:['martyrs','coptic','egypt'],
+    content:'In February 2015, twenty Coptic Christian laborers from Egypt and a companion from Ghana, who had gone to Libya to work and support their families, were beheaded on a beach near Sirte by Islamic State militants. A video of their deaths showed many of them praying the name of Jesus.\n\nThe Coptic Orthodox Church soon proclaimed them saints. In 2023 Pope Francis, with Pope Tawadros II, announced that they would be included in the Roman Martyrology, a sign of the “ecumenism of blood” that unites Christians who die for Christ.',
+    intercession:'Holy Coptic Martyrs, pray for us. Strengthen persecuted Christians everywhere, and bring all Christians to unity. Amen.' },
   { id:'t58', category:'theology', group:'belief', art:'eastcross', title:'The Eastern Catholic Churches', author:'Catechism of the Catholic Church 1200–1209; Second Vatican Council, Orientalium Ecclesiarum', ccc:'1200–1209', tags:['eastern','church','liturgy'],
     content:'The Catholic Church is a communion of twenty-four Churches “of their own law” (sui iuris): the Latin Church and twenty-three Eastern Catholic Churches, each with its own liturgy, theology, spirituality, and discipline, all in full communion with the Bishop of Rome.\n\nThey belong to five great traditions: the Byzantine (fourteen Churches, including the Ukrainian, Ruthenian, Melkite, and Romanian), the Alexandrian (Coptic, Ethiopian, Eritrean), the Antiochene (Maronite, Syriac, Syro-Malankara), the Armenian, and the Chaldean or East Syriac (Chaldean and Syro-Malabar). The Second Vatican Council taught that their traditions are the heritage of the whole Church and must be preserved and treasured.',
     scripture:['John 17:20–21', 'Ephesians 4:4–6'],
@@ -4912,7 +5037,7 @@ const SEED_DATA = [
     link:'https://www.gutenberg.org/ebooks/search/?query=Autobiography+of+St.+Ignatius' },
   { id:'b70', category:'book', title:'The Roman Catechism', author:'Council of Trent, 1566', tags:['catechism','reference','councils'],
     content:'Commissioned by the Council of Trent and published under Pope St. Pius V, this catechism was written for parish priests to use in teaching. It covers the Creed, the sacraments, the Ten Commandments, and the Lord’s Prayer.\n\nIt remained the Church’s authoritative catechism for four centuries, until the Catechism of the Catholic Church in 1992.',
-    link:'https://www.gutenberg.org/ebooks/search/?query=Catechism+of+the+Council+of+Trent' },
+    link:'https://en.wikisource.org/wiki/The_Catechism_of_the_Council_of_Trent' },
   { id:'b71', category:'book', title:'The Secret of the Rosary', author:'St. Louis de Montfort, early 18th century', tags:['rosary','marian','devotion'],
     content:'A collection of fifty-two short chapters, or "roses," explaining the history, power, and method of praying the Rosary, with stories of its fruits and practical advice for praying it well.\n\nIt remains one of the most popular books on the Rosary.' },
   { id:'b72', category:'book', title:'Preparation for Death', author:'St. Alphonsus Liguori, 1758', tags:['death','conversion','meditation'],
@@ -5024,7 +5149,7 @@ const SEED_DATA = [
   { id:'b114', category:'book', title:'An Essay in Aid of a Grammar of Assent', author:'St. John Henry Newman, 1870', tags:['philosophy','faith','reason'],
     content:'Newman’s most philosophical work asks how ordinary people can rightly be certain of things they cannot strictly prove, including the truths of religion.\n\nHe distinguishes notional from real assent and describes the "illative sense," the mind’s ability to weigh many converging probabilities and reach a firm conclusion. It remains a classic of the philosophy of religious belief.',
     link:'https://www.gutenberg.org/ebooks/34022' },
-  { id:'b115', category:'book', title:'The Baltimore Catechism', author:'Third Plenary Council of Baltimore, 1885', tags:['catechism','united states','basics'],
+  { id:'b115', category:'book', title:'The Baltimore Catechism No. 2', author:'Third Plenary Council of Baltimore, 1885', tags:['catechism','united states','basics'],
     content:'Commissioned by the bishops of the United States, the Baltimore Catechism taught the faith to generations of American Catholics in short questions and answers to be memorized, such as "Who made us? God made us."\n\nIt was the standard Catholic school textbook in the United States from the 1880s until the 1960s and is still used by many families today.',
     link:'https://www.gutenberg.org/ebooks/14552' },
   { id:'b116', category:'book', title:'Aeterni Patris', author:'Pope Leo XIII, 1879', tags:['encyclical','philosophy','aquinas'],
@@ -5403,6 +5528,18 @@ const SEED_DATA = [
     content:'Seven short devotional treatises first printed by Henry Pepwell in 1521, including passages from St. Catherine of Siena, Walter Hilton, the author of The Cloud of Unknowing, and Margery Kempe. Edited by Edmund Gardner (1910).', link:'https://www.gutenberg.org/ebooks/4544' },
   { id:'b269', category:'book', title:'The Wisdom of Father Brown', author:'G.K. Chesterton, 1914', tags:['fiction','mystery'],
     content:'The second collection of stories about Chesterton’s priest-detective, who solves crimes through his knowledge of human nature and sin, gained from years in the confessional.', link:'https://www.gutenberg.org/ebooks/223' },
+  { id:'b270', category:'book', title:'A Complete Catechism of the Catholic Religion', author:'Fr. Joseph Deharbe, SJ, 1847', tags:['catechism','basics','reference'],
+    content:'The German Jesuit Joseph Deharbe wrote one of the most widely used catechisms of the nineteenth century, taught for generations in Germany and among German-speaking Catholics in America.\n\nThis fuller edition opens with a short history of revealed religion, from Adam to the modern Church, then explains the Creed, the Commandments, and the means of grace, the sacraments and prayer, in numbered questions and answers with Scripture for each.',
+    link:'https://en.wikisource.org/wiki/A_Complete_Catechism_of_the_Catholic_Religion' },
+  { id:'b271', category:'book', title:'The Baltimore Catechism No. 1', author:'Third Plenary Council of Baltimore, 1885', tags:['catechism','united states','basics','children'],
+    content:'The shortest of the Baltimore Catechisms, prepared for children getting ready for their First Communion. In 33 short lessons of questions and answers it covers God and creation, sin and redemption, the Church, the sacraments, prayer, and the commandments.\n\nIts questions are numbered to match the fuller No. 2, and it closes with morning and evening prayers, prayers for Mass and Communion, the Rosary, and hymns.',
+    link:'https://www.gutenberg.org/ebooks/14551' },
+  { id:'b272', category:'book', title:'The Baltimore Catechism No. 3', author:'supplemented by Fr. Thomas L. Kinkead', tags:['catechism','united states','basics'],
+    content:'The advanced Baltimore Catechism, written as a two-year course for students after Confirmation. It includes the questions of No. 2 and adds many more that explain them, defining terms and giving the reasons behind each teaching.\n\nIt follows the same 37 lessons, from the end of man to the last things.',
+    link:'https://www.gutenberg.org/ebooks/14553' },
+  { id:'b273', category:'book', title:'An Explanation of the Baltimore Catechism', author:'Fr. Thomas L. Kinkead, 1891', tags:['catechism','united states','teaching'],
+    content:'Written for Sunday-school teachers and older students, and often called Baltimore Catechism No. 4. It goes through the catechism question by question, explaining each answer in plain words with examples from everyday life.\n\nIts homely comparisons, like a watch made to keep time and a pen made to write, made it a favorite of teachers for decades.',
+    link:'https://www.gutenberg.org/ebooks/14554' },
   { id:'h50', category:'history', title:'Our Lady of the Pillar', author:'c. 40 (tradition)', year:40, era:'apostolic', tags:['marian','apparition','spain','tradition'],
     content:'According to an ancient Spanish tradition, the Virgin Mary appeared to St. James the Greater while he was discouraged by his slow progress preaching in Spain. She was said to be standing on a pillar of jasper by the Ebro River at Zaragoza. She encouraged him and asked for a church to be built there.\n\nIf the tradition is true, this would be the only apparition during Mary’s earthly life. The Basilica of Our Lady of the Pillar still enshrines the pillar, and her feast on October 12 is Spain’s national day of Hispanic heritage.' },
   { id:'h51', category:'history', title:'Our Lady of Walsingham', author:'1061', year:1061, era:'medieval', tags:['marian','apparition','england','pilgrimage'],
@@ -6340,7 +6477,8 @@ const SAINT_META = {
   s536:'reform 1620 nu fo te', s537:'modern 1874 nu fo mi', s538:'revolution 1730 la wo', s539:'revolution 1840 pr', s540:'revolution 1832 la wo my', s541:'reform 1626 la fo me', s542:'modern 1900 pr ma', s543:'modern 1891 pr ma', s544:'modern 1928 pr ma', s545:'modern 1870 pr mo my', s546:'modern 1935 pr mi ma', s547:'revolution 1852 pr fo', s548:'modern 1971 la yo', s549:'modern 1907 la pa ma', s550:'modern 1887 ro pa', s551:'modern 1947 pr ma', s552:'modern 1878 bi', s553:'modern 1876 pr', s554:'revolution 1813 la pa sc fo', s555:'revolution 1774 nu my', s556:'martyrs 250 yo ma', s557:'martyrs 260 yo ma', s558:'fathers 383 ma', s559:'martyrs 286 la ma', s560:'martyrs 292 yo ma', s561:'martyrs 287 yo ma', s562:'martyrs 303 la ma', s563:'early 650 mo', s564:'fathers 500 mo', s565:'early 588 bi', s566:'early 550 mo mi', s567:'early 600 mo', s568:'early 634 bi mo', s569:'early 633 bi mi', s570:'early 636 ro nu', s571:'early 800 bi', s572:'medieval 1197 bi sc', s573:'early 710 nu mi', s574:'modern 1887 la yo ma', s575:'revolution 1848 la wo pa', s576:'modern 1939 nu ma', s577:'modern 1903 pr mo', s578:'reform 1647 pr mi ma', s579:'revolution 1786 pr fo', s580:'revolution 1751 nu fo te', s581:'revolution 1796 nu fo', s582:'revolution 1828 pr fo',
   s583:'revolution 1874 la pa ma', s584:'early 840 bi mi sc', s585:'early 830 mo mi sc', s586:'early 754 so mo', s587:'early 815 ro pa', s588:'fathers 348 bi sc', s589:'martyrs 150 ma', s590:'fathers 520 mo sc te', s591:'fathers 540 mo', s592:'fathers 400 mo sc', s593:'martyrs 301 nu ma', s594:'modern 1865 bi mo', s595:'fathers 450 bi sc', s596:'early 810 nu sc', s597:'martyrs 250 yo ma', s598:'fathers 347 bi mi', s599:'martyrs 170 bi', s600:'modern 1875 pr mo fo', s601:'martyrs 130 pa yo ma', s602:'early 830 nu my', s603:'martyrs 284 nu ma', s604:'fathers 500 mo pr', s605:'early 702 la pa',
   s606:'medieval 1105 la mo wo', s607:'medieval 1265 la wo', s608:'martyrs 100 so pa ma', s609:'fathers 560 bi', s610:'apostolic 50 la wo', s611:'fathers 360 la pa me', s612:'fathers 456 bi', s613:'martyrs 290 yo ma', s614:'early 717 la pa mo', s615:'martyrs 280 so pa ma', s616:'medieval 1084 bi', s617:'martyrs 270 bi ma', s618:'early 589 mo pa', s619:'early 662 nu fo', s620:'early 604 ro so ma', s621:'early 880 nu ma', s622:'medieval 1010 bi', s623:'fathers 500 pr mo', s624:'early 626 nu', s626:'reform 1526 mo wo', s627:'medieval 1156 la', s628:'medieval 1000 la pa', s629:'martyrs 300 so ma',
-  s630:'medieval 1150 la my', s631:'medieval 1049 la pa ma', s632:'renaissance 1287 la my', s633:'early 584 bi mi mo', s634:'medieval 1040 bi mo so', s635:'medieval 1070 so mo', s636:'medieval 1190 pr mo', s637:'modern 1888 nu me', s638:'revolution 1864 nu me ma', s639:'modern 1897 me mo', s640:'revolution 1848 bi mi mo', s641:'revolution 1821 pr mo', s642:'fathers 560 ro ma', s643:'medieval 1073 ro pa', s644:'early 975 ro nu', s645:'revolution 1845 mo fo so', s646:'reform 1576 pr ma', s647:'revolution 1817 yo wo', s648:'modern 1891 yo', s649:'renaissance 1322 yo nu', s650:'martyrs 280 pr ma', s651:'martyrs 280 so ma', s652:'modern 1877 bi fo', s653:'early 892 ro pa', s654:'renaissance 1464 ro fo nu'
+  s630:'medieval 1150 la my', s631:'medieval 1049 la pa ma', s632:'renaissance 1287 la my', s633:'early 584 bi mi mo', s634:'medieval 1040 bi mo so', s635:'medieval 1070 so mo', s636:'medieval 1190 pr mo', s637:'modern 1888 nu me', s638:'revolution 1864 nu me ma', s639:'modern 1897 me mo', s640:'revolution 1848 bi mi mo', s641:'revolution 1821 pr mo', s642:'fathers 560 ro ma', s643:'medieval 1073 ro pa', s644:'early 975 ro nu', s645:'revolution 1845 mo fo so', s646:'reform 1576 pr ma', s647:'revolution 1817 yo wo', s648:'modern 1891 yo', s649:'renaissance 1322 yo nu', s650:'martyrs 280 pr ma', s651:'martyrs 280 so ma', s652:'modern 1877 bi fo', s653:'early 892 ro pa', s654:'renaissance 1464 ro fo nu',
+  s655:'medieval 1193 bi mo', s656:'renaissance 1463 nu my', s657:'medieval 1132 bi', s658:'reform 1609 pr fo', s659:'medieval 1253 nu', s660:'medieval 1296 po mo fo', s661:'medieval 1054 po bi', s662:'early 867 po', s663:'medieval 1046 bi mo ma mi te', s664:'early 942 mo sc', s665:'revolution 1907 pr mo so', s666:'revolution 1895 bi fo', s667:'renaissance 1381 nu pa', s668:'revolution 1840 pr mi ma', s669:'revolution 1861 pr mi ma', s670:'reform 1601 la ma', s671:'reform 1634 la yo ma', s672:'reform 1597 mo mi ma', s673:'modern 1927 pr ma', s674:'modern 1910 mo te sc', s675:'reform 1597 mo mi ma wo', s676:'revolution 1752 la ma', s677:'reform 1708 bi mi', s678:'modern 1969 nu mi me', s679:'martyrs 295 la yo ma', s680:'fathers 457 la mo', s681:'fathers 366 mo pr mi', s682:'early 613 bi mo', s683:'martyrs 312 pr sc ma', s684:'apostolic 96 bi', s685:'martyrs 200 te mi sc', s686:'modern 2015 la wo ma'
 };
 // What each saint is a patron of (traditional and official patronages; not every saint has one)
 const SAINT_PATRONS = {
@@ -6446,7 +6584,8 @@ const SAINT_PATRONS = {
   s606:'shepherds, coffee house owners, people ridiculed for their appearance', s607:'servants, farm workers, domestic workers, the Tyrol', s608:'hunters, firefighters, those facing adversity', s609:'bakers, pastry chefs', s610:'dyers, businesswomen, merchants', s611:'divorced people, difficult marriages, abuse victims, widows, nurses', s612:'farmers, vineyards, good weather', s613:'gardeners, florists, brides, newlyweds', s614:'difficult marriages, separated spouses, woodcutters', s615:'soldiers, butchers, prison guards, married couples', s616:'Gubbio, peacemakers', s617:'protection from earthquakes', s618:'Ghent, Haarlem, converts', s619:'Alsace, the blind, eye ailments', s620:'Northumbria, soldiers', s621:'libraries, librarians, book lovers', s622:'Munich, Bavaria, fishermen', s623:'innkeepers, potters, boatmen, hospitality', s624:'travelers, gardeners, cats, pilgrims', s626:'African Americans, Palermo, cooks', s627:'flight attendants, travelers, pilgrims, Pisa', s628:'innkeepers, ferrymen, travelers, hospitality', s629:'urgent causes, procrastinators',
   s209:'perseverance', s235:'the sick, Larnaca', s239:'married couples', s241:'earache sufferers, cattle', s256:'Poitiers', s319:'servant girls, Lyon', s389:'church musicians, choirs', s400:'Ukraine, Russia', s431:'the Carmelites', s433:'musicians, poets', s434:'the elderly', s435:'eye ailments', s440:'students', s442:'soldiers, Syria', s443:'soldiers, recruits', s447:'shepherds, Cyprus', s449:'beggars, pilgrims', s450:'weavers', s458:'widows', s472:'the Maronite Church', s493:'captives, prisoners, the Mercedarians', s495:'captives, the Trinitarians', s496:'the Carmelites', s502:'salt miners, Poland, Lithuania', s504:'widows, the death of children', s508:'foresters, park rangers', s510:'friendship', s514:'Hungary, soldiers', s520:'porters', s525:'San Diego', s526:'difficult marriages, widows, brides', s537:'indigenous peoples', s561:'prisoners, pilgrims', s572:'coachmen, Sussex',
   s630:'mental illness, psychiatrists, therapists, the souls in purgatory', s631:'difficult marriages, abuse victims, throat ailments', s632:'the disabled, the unwanted, the blind, the unborn', s633:'winemakers, brewers, innkeepers, bartenders, Flanders', s634:'brewers, hop pickers', s635:'swimmers, boaters, those in danger of drowning', s636:'sailors, fishermen, Galicia', s637:'nurses, the sick', s638:'nurses', s639:'physicians, medical students', s640:'cancer patients, Pasto', s641:'the sick', s642:'converts, Seville', s643:'Austria, Vienna, large families, fathers', s644:'Luxembourg, Lithuania, Bamberg', s645:'the homeless, artists, Kraków', s646:'Moravia, confessors, the seal of confession', s647:'workers, the disabled, apprentices', s648:'abuse victims, children of broken homes, Chile', s649:'first communicants', s650:'protection from temptation, deacons, a holy death', s651:'headache sufferers, those in doubt, soldiers', s652:'Eucharistic adoration', s653:'large families, parents of difficult children, widows, queens', s654:'the rejected, difficult marriages, the disabled',
-  s253:'Nola', s568:'Lichfield', s571:'Winchester', s569:'Ripon'
+  s253:'Nola', s568:'Lichfield', s571:'Winchester', s569:'Ripon',
+  s655:'Iceland', s656:'artists, painters, those fighting temptation, Bologna', s657:'Grenoble', s658:'pharmacists, catechists', s660:'bookbinders, Isernia', s663:'Hungary, Budapest, teachers', s665:'prisoners, exiles, Siberia', s666:'exiles, families', s667:'protection against miscarriage, pregnant women', s668:'China, missionaries', s669:'missionaries, Vietnam', s670:'widows, converts, those who shelter others', s671:'catechists, interpreters, Japan', s672:'Mexico City, the Mexican people', s673:'Mexico, persecuted priests', s674:'teachers, students, Ecuador, the disabled', s675:'Vasai, India, merchants', s676:'India, converts, the persecuted', s677:'Quebec, Canada', s678:'nurses, missionaries, Ecuador', s679:'conscientious objectors', s680:'penitents, actresses', s681:'hermits, those seeking a lost relative', s682:'the sick, Galatia', s683:'Bible scholars, translators', s684:'Athens', s685:'teachers, catechists', s686:'persecuted Christians, Christian unity, laborers'
 };
 SEED_DATA.forEach(e => { if(SAINT_PATRONS[e.id]) e.patron = SAINT_PATRONS[e.id]; });
 const SAINT_ERAS = [
@@ -6685,7 +6824,7 @@ function render(){
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
       community:renderCommunity, resources:renderResources,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
-      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
+      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
       'hub-pray':() => renderHub('pray'), 'hub-library':() => renderHub('library'), 'hub-learn':() => renderHub('learn'), 'hub-history':() => renderHub('history')
     };
     const needsNoSearch = new Set(['home', 'daily', 'theology', 'hub-pray', 'hub-library', 'hub-learn']);
@@ -7775,7 +7914,7 @@ function buildTheologyBlocks(e){
     block('In Scripture', `<div class="theo-refs">${e.scripture.map(s => `<span class="theo-ref">${escapeHtml(s)}</span>`).join('')}</div>`);
   }
   if(e.ccc){
-    block('In the Catechism', `<p class="theo-ccc">Catechism of the Catholic Church, paragraphs ${escapeHtml(e.ccc)}. <a href="https://www.vatican.va/archive/ENG0015/_INDEX.HTM" target="_blank" rel="noopener">Read the Catechism ↗</a></p>`);
+    block('In the Catechism', `<p class="theo-ccc">Catechism of the Catholic Church, paragraphs ${cccLinksHtml(e.ccc)}. Tap a number to find it in the Catechism.</p>`);
   }
   if(e.objections && e.objections.length){
     block('Common Objections', e.objections.map((o, i) =>
@@ -7859,7 +7998,8 @@ const SAINT_WIKI = {
   'St. Ladislaus of Hungary':'Ladislaus I of Hungary',
   'Bl. Martyrs of Pratulin':'Martyrs of Pratulin', 'St. Clement of Ohrid':'Clement of Ohrid', 'St. Naum of Ohrid':'Saint Naum', 'St. Joannicius the Great':'Joannicius the Great', 'St. Theodora the Empress':'Theodora (wife of Theophilos)', 'St. Isaac the Great of Armenia':'Isaac of Armenia', 'St. Paraskevi of Rome':'Paraskevi of Rome', 'St. Dorotheus of Gaza':'Dorotheus of Gaza', 'Sts. Barsanuphius and John':'Barsanuphius of Gaza', 'St. Nilus of Sinai':'Nilus of Sinai', 'Sts. Hripsime and Companions':'Hripsime', 'Ven. Andrey Sheptytsky':'Andrey Sheptytsky', 'St. Diadochus of Photice':'Diadochos of Photiki', 'St. Kassia':'Kassia', 'St. Tryphon':'Tryphon, Respicius, and Nympha', 'St. Porphyrius of Gaza':'Saint Porphyrius', 'St. Abercius of Hierapolis':'Abercius', 'Bl. Jacques Haddad':'Jacques Ghazir Haddad', 'Sts. Sophia, Faith, Hope, and Charity':'Saints Faith, Hope and Charity', 'St. Irene of Chrysovalantou':'Irene of Cappadocia', 'St. Febronia of Nisibis':'Febronia of Nisibis', 'St. Zosimas of Palestine':'Zosimas of Palestine', 'St. Philaret the Merciful':'Saint Philaretos',
   'St. Drogo':'Saint Drogo', 'St. Notburga':'Notburga', 'St. Eustace':'Saint Eustace', 'St. Honoratus of Amiens':'Honoratus of Amiens', 'St. Lydia of Thyatira':'Lydia of Thyatira', 'St. Fabiola':'Saint Fabiola', 'St. Medard':'Medardus', 'St. Dorothy of Caesarea':'Dorothea of Caesarea', 'St. Gummarus':'Gummarus', 'Sts. Adrian and Natalia':'Adrian and Natalia', 'St. Ubald of Gubbio':'Ubald', 'St. Emygdius':'Emygdius', 'St. Bavo of Ghent':'Bavo of Ghent', 'St. Odile of Alsace':'Odile of Alsace', 'St. Oswald of Northumbria':'Oswald of Northumbria', 'St. Wiborada':'Wiborada', 'St. Benno of Meissen':'Benno of Meissen', 'St. Goar':'Goar of Aquitaine', 'St. Gertrude of Nivelles':'Gertrude of Nivelles', 'St. Benedict the Moor':'Benedict the Moor', 'St. Bona of Pisa':'Bona of Pisa', 'St. Julian the Hospitaller':'Julian the Hospitaller', 'St. Expeditus':'Expeditus',
-  'St. Christina the Astonishing':'Christina the Astonishing', 'St. Godelieve':'Godelieve', 'St. Margaret of Castello':'Margaret of Castello', 'St. Amand':'Amandus', 'St. Arnold of Soissons':'Arnulf of Soissons', 'St. Adjutor':'Adjutor', 'St. Peter González':'Peter González', 'St. Maria Bertilla Boscardin':'Maria Bertilla Boscardin', 'St. Agostina Pietrantoni':'Agostina Pietrantoni', 'St. Riccardo Pampuri':'Riccardo Pampuri', 'St. Ezequiél Moreno':'Ezequiél Moreno y Díaz', 'St. Charles of Mount Argus':'Charles of Mount Argus', 'St. Hermenegild':'Hermenegild', 'St. Leopold III of Austria':'Leopold III, Margrave of Austria', 'St. Cunigunde':'Cunigunde of Luxembourg', 'St. Albert Chmielowski':'Albert Chmielowski', 'St. Jan Sarkander':'Jan Sarkander', 'St. Nunzio Sulprizio':'Nunzio Sulprizio', 'Bl. Laura Vicuña':'Laura Vicuña', 'Bl. Imelda Lambertini':'Imelda Lambertini', 'St. Cyriacus the Deacon':'Saint Cyriacus', 'St. Achatius':'Acacius of Byzantium', 'St. Manuel González García':'Manuel González García (bishop)', 'St. Matilda of Saxony':'Matilda of Ringelheim', 'St. Joan of France':'Joan of France, Duchess of Berry'
+  'St. Christina the Astonishing':'Christina the Astonishing', 'St. Godelieve':'Godelieve', 'St. Margaret of Castello':'Margaret of Castello', 'St. Amand':'Amandus', 'St. Arnold of Soissons':'Arnulf of Soissons', 'St. Adjutor':'Adjutor', 'St. Peter González':'Peter González', 'St. Maria Bertilla Boscardin':'Maria Bertilla Boscardin', 'St. Agostina Pietrantoni':'Agostina Pietrantoni', 'St. Riccardo Pampuri':'Riccardo Pampuri', 'St. Ezequiél Moreno':'Ezequiél Moreno y Díaz', 'St. Charles of Mount Argus':'Charles of Mount Argus', 'St. Hermenegild':'Hermenegild', 'St. Leopold III of Austria':'Leopold III, Margrave of Austria', 'St. Cunigunde':'Cunigunde of Luxembourg', 'St. Albert Chmielowski':'Albert Chmielowski', 'St. Jan Sarkander':'Jan Sarkander', 'St. Nunzio Sulprizio':'Nunzio Sulprizio', 'Bl. Laura Vicuña':'Laura Vicuña', 'Bl. Imelda Lambertini':'Imelda Lambertini', 'St. Cyriacus the Deacon':'Saint Cyriacus', 'St. Achatius':'Acacius of Byzantium', 'St. Manuel González García':'Manuel González García (bishop)', 'St. Matilda of Saxony':'Matilda of Ringelheim', 'St. Joan of France':'Joan of France, Duchess of Berry',
+  'St. Thorlak of Iceland':'Thorlak Thorhallsson', 'St. Catherine of Bologna':'Catherine of Bologna', 'St. Hugh of Grenoble':'Hugh of Châteauneuf', 'St. John Leonardi':'John Leonardi', 'St. Agnes of Assisi':'Agnes of Assisi', 'Pope St. Celestine V':'Pope Celestine V', 'Pope St. Leo IX':'Pope Leo IX', 'Pope St. Nicholas I':'Pope Nicholas I', 'St. Gerard of Csanád':'Gerard of Csanád', 'St. Odo of Cluny':'Odo of Cluny', 'St. Raphael Kalinowski':'Raphael Kalinowski', 'St. Zygmunt Szczęsny Feliński':'Zygmunt Szczęsny Feliński', 'St. Catherine of Sweden':'Catherine of Vadstena', 'St. John Gabriel Perboyre':'Jean-Gabriel Perboyre', 'St. Théophane Vénard':'Théophane Vénard', 'St. Anne Line':'Anne Line', 'St. Magdalene of Nagasaki':'Magdalene of Nagasaki', 'St. Philip of Jesus':'Philip of Jesus', 'St. Cristóbal Magallanes':'Cristóbal Magallanes Jara', 'St. Miguel Febres Cordero':'Miguel Febres Cordero', 'St. Gonsalo Garcia':'Gonsalo Garcia', 'St. Devasahayam Pillai':'Devasahayam Pillai', 'St. François de Laval':'François de Laval', 'St. Maria Troncatti':'Maria Troncatti', 'St. Maximilian of Tebessa':'Maximilian of Tebessa', 'St. Pelagia the Penitent':'Pelagia', 'St. Abraham of Kidunaia':'Abraham of Kidunaia', 'St. Theodore of Sykeon':'Theodore of Sykeon', 'St. Lucian of Antioch':'Lucian of Antioch', 'St. Dionysius the Areopagite':'Dionysius the Areopagite', 'St. Pantaenus':'Pantaenus', 'The Twenty-One Coptic Martyrs':'21 Coptic Martyrs of Libya'
 };
 // Wikipedia articles used for pictures of books and Church history events (first match with an image wins)
 const ENTRY_WIKI = {
@@ -8194,6 +8334,7 @@ const ENTRY_WIKI = {
   b229:["Epistle of Barnabas"],
   b230:["Liturgy of Saint James"],
   b231:["Liturgy of Saint John Chrysostom", "John Chrysostom"],
+  b270:["Joseph Deharbe"], b271:["Baltimore Catechism"], b272:["Baltimore Catechism"], b273:["Baltimore Catechism"],
   h101:["First Crusade"],
   h102:["Knights Templar", "Knights Hospitaller"],
   h103:["Second Crusade"],
@@ -8427,7 +8568,15 @@ const SAINT_ICONS = {
   s609:'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Saint_Honor%C3%A9_%28Deckherr%29.jpg/330px-Saint_Honor%C3%A9_%28Deckherr%29.jpg',
   s630:'https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/St_Christina_the_Astonishing_1892_Prayer_Card_-_with_Bishop%27s_Statement_front.jpg/330px-St_Christina_the_Astonishing_1892_Prayer_Card_-_with_Bishop%27s_Statement_front.jpg',
   s650:'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Mathis_Gothart_Gr%C3%BCnewald_050.jpg/330px-Mathis_Gothart_Gr%C3%BCnewald_050.jpg',
-  s651:'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Jochberg._Pfarrkirche_St._Wolfgang._Friedhof._Bildstock_Hl._Achatius.jpg/330px-Jochberg._Pfarrkirche_St._Wolfgang._Friedhof._Bildstock_Hl._Achatius.jpg'
+  s651:'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Jochberg._Pfarrkirche_St._Wolfgang._Friedhof._Bildstock_Hl._Achatius.jpg/330px-Jochberg._Pfarrkirche_St._Wolfgang._Friedhof._Bildstock_Hl._Achatius.jpg',
+  s655:'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Rey%C3%B0arfj%C3%B6r%C3%B0ur%2C_Saint_Thorlak_church_2026_11.jpg/330px-Rey%C3%B0arfj%C3%B6r%C3%B0ur%2C_Saint_Thorlak_church_2026_11.jpg',
+  s656:'https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Guglielmo_Giraldi_%28Italian%2C_active_1445_-_1489%29_-_Saint_Catherine_of_Bologna_-_Google_Art_Project.jpg/330px-Guglielmo_Giraldi_%28Italian%2C_active_1445_-_1489%29_-_Saint_Catherine_of_Bologna_-_Google_Art_Project.jpg',
+  s657:'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Hugo_van_Grenoble_Hugo_episcopus_gracianopolitanus_%28titel_op_object%29_Liber_Chronicarum_%28serietitel%29%2C_RP-P-2016-49-88-7.jpg/330px-Hugo_van_Grenoble_Hugo_episcopus_gracianopolitanus_%28titel_op_object%29_Liber_Chronicarum_%28serietitel%29%2C_RP-P-2016-49-88-7.jpg',
+  s664:'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Sanodondecluny.jpg/330px-Sanodondecluny.jpg',
+  s669:'https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Theophane_Venard.jpg/330px-Theophane_Venard.jpg',
+  s672:'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Philip_of_Jesus.jpg/330px-Philip_of_Jesus.jpg',
+  s676:'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Devasagayam.JPG/330px-Devasagayam.JPG',
+  s680:'https://upload.wikimedia.org/wikipedia/commons/7/70/8_oct_PELAGIA.jpg'
 };
 const ICON_FAILED = new Set();   // icons that would not load fall back to the Wikipedia picture
 function saintIcon(id){
@@ -11153,7 +11302,7 @@ const BOOK_TEXTS = {   // library entry -> [address, edition]
   b75:['dream-of-gerontius', 'First published 1865'], b76:['hound-of-heaven', 'First published 1890'],
   b77:['quo-vadis', 'Translated by Jeremiah Curtin (1896)'], b78:['innocence-of-father-brown', 'First published 1911'],
   b80:['poems-of-gerard-manley-hopkins', 'Edited by Robert Bridges (1918)'], b82:['st-francis-of-assisi', 'First published 1923'],
-  b114:['grammar-of-assent', 'First published 1870'], b115:['baltimore-catechism', 'Baltimore Catechism No. 2, 1891 edition'],
+  b114:['grammar-of-assent', 'First published 1870'], b115:['baltimore-catechism-2', 'Baltimore Catechism No. 2, approved in 1885'],
   b133:['europe-and-the-faith', 'First published 1920'], b146:['death-comes-for-the-archbishop', 'First published 1927'],
   b161:['the-ball-and-the-cross', 'First published 1909'], b162:['catholic-church-and-conversion', 'First published 1926'],
   b232:['barlaam-and-ioasaph', 'Translated by G. R. Woodward and H. Mattingly (1914)'], b233:['on-holy-images', 'Translated by Mary H. Allies (1898)'],
@@ -11175,6 +11324,9 @@ const BOOK_TEXTS = {   // library entry -> [address, edition]
   b264:['the-path-to-rome', 'First published 1902'], b265:['protestantism-and-catholicity', 'English translation'],
   b266:['english-monastic-life', 'First published 1904'], b267:['manual-of-catholic-piety', 'A Catholic prayer book of the nineteenth century'],
   b268:['the-cell-of-self-knowledge', 'Edited by Edmund Gardner (1910)'], b269:['wisdom-of-father-brown', 'First published 1914'],
+  b70:['roman-catechism', 'Translated by Jeremiah Donovan (1829), via Wikisource'], b270:['complete-catechism-deharbe', 'Translated by John Fander, 1912 edition, via Wikisource'],
+  b271:['baltimore-catechism-1', 'Baltimore Catechism No. 1, approved in 1885'], b272:['baltimore-catechism-3', 'Baltimore Catechism No. 3, supplemented by Rev. Thomas L. Kinkead, in an edition revised for the 1917 Code of Canon Law'],
+  b273:['explanation-of-the-baltimore-catechism', 'First published in 1891; this edition was approved in 1921, and its review questions and index are left out'],
   b16:['didache', 'From the Ante-Nicene Fathers (1885–1896), via Wikisource'], b17:['letters-of-st-ignatius', 'Translated by William Wake (1693), via Wikisource'],
   b94:['against-heresies', 'From the Ante-Nicene Fathers (1885–1896), via Wikisource'], b168:['letter-to-diognetus', 'From the Ante-Nicene Fathers (1885–1896), via Wikisource'],
   b188:['hexaemeron', 'From the Nicene and Post-Nicene Fathers, Second Series (1890–1900), via Wikisource'], b18:['on-the-incarnation', 'From the Nicene and Post-Nicene Fathers, Second Series (1890–1900), via Wikisource'],
@@ -11226,6 +11378,7 @@ function bookBlocksHtml(blocks){
     if(b.startsWith('## ')) return `<h4 class="bk-sub">${text(b.slice(3))}</h4>`;
     if(b.startsWith('^ ')) return `<p class="bk-fn">${text(b.slice(2))}</p>`;
     if(b.startsWith('> ')) return `<blockquote class="bk-quote">${text(b.slice(2))}</blockquote>`;
+    if(b.startsWith('? ')) return `<p class="bk-q">${text(b.slice(2))}</p>`;
     return `<p${b.includes('\t') ? ' class="bk-verse"' : ''}>${text(b)}</p>`;
   }).join('');
 }
@@ -11335,6 +11488,149 @@ document.addEventListener('keydown', ev => {
   const btn = entryListEl.querySelector(ev.key === 'ArrowLeft' ? '.bk-prev' : '.bk-next');
   if(btn && !btn.disabled) navigate(btn.dataset.route);
 });
+
+/* =========================================================
+   THE CATECHISM OF THE CATHOLIC CHURCH
+   Its text belongs to the Vatican's publisher, so it stays on vatican.va. Sanctify keeps only the outline and the
+   first paragraph on each of the Vatican's pages (catechism/outline-1.json, about 5 KB sent), so any heading or
+   paragraph number opens the right page there.
+   ========================================================= */
+const CCC_ROUTE = /^library\/catechism\/(\d{1,4})(?:-(\d{1,4}))?$/;
+const CCC_LAST = 2865;
+const cccPageUrl = p => `https://www.vatican.va/archive/ENG0015/__P${p}.HTM`;
+let cccRef = null;   // { from, to } when the address names paragraphs, e.g. #/library/catechism/1324-1327
+let cccData = null;
+function cccOutline(){
+  if(!cccData) cccData = bibleFetchText('catechism/outline-1.json').then(text => {
+    const build = (raw, parent) => raw.map(([title, page, start, kids]) => {
+      const n = { title, page, start, parent, end:0, kids:[] };
+      n.kids = kids ? build(kids, n) : [];
+      return n;
+    });
+    const tree = build(JSON.parse(text), null);
+    const pages = [];
+    // Each heading runs until the next heading beside it begins
+    const ends = (nodes, last) => nodes.forEach((n, i) => {
+      const next = nodes.slice(i + 1).find(x => x.start);
+      n.end = next ? next.start - 1 : last;
+      if(n.page && n.start) pages.push(n);
+      ends(n.kids, n.end);
+    });
+    ends(tree, CCC_LAST);
+    pages.sort((a, b) => a.start - b.start);
+    return { tree, pages };
+  }).catch(err => { cccData = null; throw err; });
+  return cccData;
+}
+// The headings that hold a paragraph, from the Part down
+function cccPath(data, n){
+  const path = [];
+  for(let level = data.tree; level.length;){
+    const hit = level.filter(x => x.start && x.start <= n && n <= x.end).pop();
+    if(!hit) break;
+    path.push(hit);
+    level = hit.kids;
+  }
+  return path;
+}
+// The Vatican pages that hold paragraphs from..to, with the part of the range on each
+function cccPages(data, from, to){
+  const out = [];
+  data.pages.forEach((p, i) => {
+    const pEnd = i + 1 < data.pages.length ? data.pages[i + 1].start - 1 : CCC_LAST;
+    if(p.start <= to && pEnd >= from) out.push({ page:p, from:Math.max(from, p.start), to:Math.min(to, pEnd) });
+  });
+  return out;
+}
+function parseCccRanges(text){
+  return [...String(text).matchAll(/(\d{1,4})(?:\s*[–—-]\s*(\d{1,4}))?/g)].map(m => [Number(m[1]), Number(m[2] || m[1])]);
+}
+function parseCccInput(text){
+  const m = /^\s*(?:ccc\s*|§\s*|¶\s*|paragraphs?\s*)?(\d{1,4})(?:\s*[–—-]\s*(\d{1,4}))?\s*$/i.exec(text || '');
+  if(!m) return null;
+  const from = Number(m[1]), to = Number(m[2] || m[1]);
+  return from >= 1 && to >= from && to <= CCC_LAST ? { from, to } : null;
+}
+const cccRoute = r => 'library/catechism/' + r.from + (r.to > r.from ? '-' + r.to : '');
+const cccLabel = r => r.to > r.from ? `${r.from}–${r.to}` : String(r.from);
+// Turns "1324–1327, 1373–1381" into links to the Catechism page
+function cccLinksHtml(text){
+  return escapeHtml(text).replace(/(\d{1,4})(?:\s*–\s*(\d{1,4}))?/g, (all, a, b) =>
+    `<button class="text-link" data-route="${cccRoute({ from:Number(a), to:Number(b || a) })}">${all}</button>`);
+}
+
+// Older catechisms to read here; the Eastern shelf leads in the Eastern edition
+const CCC_SHELVES = [
+  { key:'west', title:'Read a catechism in full here', note:'Earlier catechisms, now in the public domain, to read right here on Sanctify, a lesson at a time.', ids:['b271', 'b115', 'b272', 'b273', 'b70', 'b270'] },
+  { key:'east', title:'Catechisms of the Christian East', note:'How the Fathers of the East taught the faith to new Christians and to the Church, treasured by Eastern and Latin Catholics alike.', ids:['b186', 'b189', 'b222'] },
+  { key:'short', title:'Shorter companions', note:'Official summaries of the Catechism of the Catholic Church, in questions and answers.', ids:['b128', 'b129'] }
+];
+
+function renderCatechism(){
+  const ref = cccRef;
+  document.title = ref ? `Catechism ${cccLabel(ref)} — Sanctify` : 'The Catechism — Sanctify';
+  const shelves = isEastern() ? [CCC_SHELVES[1], CCC_SHELVES[0], CCC_SHELVES[2]] : CCC_SHELVES;
+  entryListEl.innerHTML = `
+    <section class="bible-top ccc-top">
+      <form class="bible-go" role="search">
+        <label for="cccGo">Find a paragraph</label>
+        <div class="bible-go-row"><input id="cccGo" type="text" inputmode="numeric" autocomplete="off" enterkeyhint="go" placeholder="1324, or 1324–1327" value="${ref ? cccLabel(ref) : ''}"><button class="btn" type="submit">Find</button></div>
+        <p class="bible-go-err" hidden>Enter a paragraph number from 1 to 2865, such as 1324 or 1324–1327.</p>
+      </form>
+      <div class="ccc-hit" hidden></div>
+      <p class="bible-about">The Catechism’s text belongs to the Vatican’s publisher, so it stays on the Vatican’s website. Sanctify keeps the whole outline here, and every heading and paragraph number opens the right page there.</p>
+    </section>
+    <div class="home-heading"><h3>The Catechism, part by part</h3><span class="view-count">2,865 paragraphs</span></div>
+    <div class="ccc-parts"><p class="br-loading">Loading the outline…</p></div>
+    ${shelves.map(sh => {
+      const books = sh.ids.map(id => library.find(e => e.id === id)).filter(Boolean);
+      if(!books.length) return '';
+      return `<section class="ccc-shelf"><div class="home-heading"><h3>${escapeHtml(sh.title)}</h3><span class="view-count">${books.length} ${books.length === 1 ? 'book' : 'books'}</span></div>
+        <p class="ccc-shelf-note">${escapeHtml(sh.note)}</p>
+        <div class="bible-tiles">${books.map(b => `<button class="bible-tile" ${BOOK_TEXTS[b.id] ? `data-route="library/books/${BOOK_TEXTS[b.id][0]}"` : `data-open="${b.id}"`}>
+          <span class="bt-title">${escapeHtml(b.title)}</span><span class="bt-note">${escapeHtml(b.author || '')}</span>${BOOK_TEXTS[b.id] ? '<span class="bt-badge">Read here</span>' : ''}</button>`).join('')}</div></section>`;
+    }).join('')}`;
+  entryListEl.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openReadModal(b.dataset.open)));
+  const form = entryListEl.querySelector('.bible-go');
+  form.addEventListener('submit', ev => {
+    ev.preventDefault();
+    const r = parseCccInput(form.querySelector('input').value);
+    form.querySelector('.bible-go-err').hidden = !!r;
+    if(r) navigate(cccRoute(r));
+  });
+  const partsEl = entryListEl.querySelector('.ccc-parts');
+  cccOutline().then(data => {
+    if(currentRoute !== 'library/catechism' || cccRef !== ref) return;
+    const range = n => !n.start ? '' : n.end > n.start ? `¶ ${n.start}–${n.end}` : `¶ ${n.start}`;
+    const hitPages = ref ? cccPages(data, ref.from, ref.to) : [];
+    const path = ref ? cccPath(data, ref.from) : [];
+    const row = (n, head) => {
+      const inner = `<span>${escapeHtml(n.title)}${n.page ? '<span class="ccc-ext" aria-hidden="true">↗</span>' : ''}</span><span class="ccc-range">${range(n)}</span>`;
+      const cls = `ccc-row${head ? ' ccc-head' : ''}${hitPages.some(h => h.page.page === n.page) ? ' here' : ''}`;
+      return n.page ? `<a class="${cls}" href="${cccPageUrl(n.page)}" target="_blank" rel="noopener">${inner}</a>` : `<div class="${cls}">${inner}</div>`;
+    };
+    const tree = kids => `<ul class="ccc-tree">${kids.map(k => `<li>${row(k, k.kids.length > 0)}${k.kids.length ? tree(k.kids) : ''}</li>`).join('')}</ul>`;
+    partsEl.innerHTML = data.tree.map(p => `<details class="ccc-part"${path[0] === p ? ' open' : ''}>
+      <summary><span>${escapeHtml(p.title)}</span><span class="ccc-range">${range(p)}</span></summary>
+      ${tree(p.page ? [{ ...p, title:'Opening', kids:[], end:p.kids.length && p.kids[0].start ? p.kids[0].start - 1 : p.end }].filter(x => x.end >= x.start) .concat(p.kids) : p.kids)}</details>`).join('');
+    if(!ref) return;
+    const hit = entryListEl.querySelector('.ccc-hit');
+    const related = library.filter(e => e.ccc && parseCccRanges(e.ccc).some(([a, b]) => a <= ref.to && b >= ref.from));
+    hit.hidden = false;
+    hit.innerHTML = `<p class="ccc-hit-num">${ref.to > ref.from ? 'Paragraphs' : 'Paragraph'} ${cccLabel(ref)}</p>
+      <p class="ccc-path">${path.map((n, i) => i === path.length - 1 ? `<b>${escapeHtml(n.title)}</b>` : escapeHtml(n.title)).join(' › ')}</p>
+      <div class="ccc-hit-actions">${hitPages.length > 3
+        ? `<a class="btn" href="${cccPageUrl(hitPages[0].page.page)}" target="_blank" rel="noopener">Start reading on vatican.va ↗</a><span class="ccc-range">Spread over ${hitPages.length} pages there, marked in the outline below</span>`
+        : hitPages.map((h, i) => `<a class="btn${i ? ' quiet' : ''}" href="${cccPageUrl(h.page.page)}" target="_blank" rel="noopener">${hitPages.length > 1 ? `Read ¶ ${cccLabel(h)}` : 'Read it on vatican.va'} ↗</a>`).join('')}</div>
+      ${related.length ? `<div class="ccc-related"><span>On Sanctify:</span>${related.slice(0, 8).map(e => `<button class="patron-chip" data-open="${e.id}">${escapeHtml(e.title)}</button>`).join('')}</div>` : ''}`;
+    hit.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openReadModal(b.dataset.open)));
+    const here = partsEl.querySelector('.ccc-row.here');
+    if(here) here.scrollIntoView({ block:'nearest' });
+    window.scrollTo({ top:0 });
+  }).catch(() => {
+    partsEl.innerHTML = `<p class="br-loading">The outline could not be loaded. Check your connection and <button class="text-link" data-route="${ref ? cccRoute(ref) : 'library/catechism'}">try again</button>, or <a href="https://www.vatican.va/archive/ENG0015/_INDEX.HTM" target="_blank" rel="noopener">open the Catechism on vatican.va ↗</a>.</p>`;
+  });
+}
 
 /* =========================================================
    READ ALOUD: the browser's own voice reads prayers and entries
@@ -11663,7 +11959,7 @@ const LATIN_ONLY = new Set(['p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'p9', 'p11', 'p1
   'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p30', 'p32', 'p33', 'p34', 'p35', 'p37', 'p38', 'p39', 'p40', 'p41', 'p43', 'p44',
   'p45', 'p46', 'p47', 'p48']);
 // Saints shown on the Byzantine calendar: everyone before 1054, plus these Eastern saints and blesseds
-const EASTERN_SAINTS = new Set(['s139', 's216', 's231', 's292', 's388', 's389', 's390', 's391', 's392', 's393', 's394', 's395', 's396', 's397', 's398', 's399', 's400', 's401', 's402', 's403', 's404', 's405', 's406', 's407', 's408', 's409', 's410', 's411', 's412', 's413', 's414', 's415', 's416', 's417', 's418', 's419', 's420', 's421', 's422', 's423', 's424', 's425', 's426', 's427', 's428', 's429', 's472', 's473', 's474', 's475', 's476', 's477', 's478', 's479', 's480', 's481', 's482', 's483', 's484', 's485', 's486', 's487', 's488', 's489', 's490', 's491', 's583', 's584', 's585', 's586', 's587', 's588', 's589', 's590', 's591', 's592', 's593', 's594', 's595', 's596', 's597', 's598', 's599', 's600', 's601', 's602', 's603', 's604', 's605']);
+const EASTERN_SAINTS = new Set(['s139', 's216', 's231', 's292', 's388', 's389', 's390', 's391', 's392', 's393', 's394', 's395', 's396', 's397', 's398', 's399', 's400', 's401', 's402', 's403', 's404', 's405', 's406', 's407', 's408', 's409', 's410', 's411', 's412', 's413', 's414', 's415', 's416', 's417', 's418', 's419', 's420', 's421', 's422', 's423', 's424', 's425', 's426', 's427', 's428', 's429', 's472', 's473', 's474', 's475', 's476', 's477', 's478', 's479', 's480', 's481', 's482', 's483', 's484', 's485', 's486', 's487', 's488', 's489', 's490', 's491', 's583', 's584', 's585', 's586', 's587', 's588', 's589', 's590', 's591', 's592', 's593', 's594', 's595', 's596', 's597', 's598', 's599', 's600', 's601', 's602', 's603', 's604', 's605', 's686']);
 const LIBRARY_ALL = library.slice();
 
 // Names that change between the editions: [Latin, Eastern]
@@ -12817,6 +13113,7 @@ const NAV_ICONS = {
   history:'<path d="M12 3l9 4.5H3z"/><path d="M5 10v7.5M9.7 10v7.5M14.3 10v7.5M19 10v7.5M3 21h18M4 18h16"/>',
   book:'<rect x="4" y="4" width="4" height="16" rx=".6"/><rect x="9.5" y="4" width="4" height="16" rx=".6"/><path d="M15.2 5.2l3.7-1 3.7 14.7-3.7 1z"/>',
   bible:'<path d="M6 3.5h12.5v17H6.5A1.5 1.5 0 0 1 5 19V5a1.5 1.5 0 0 1 1-1.5z"/><path d="M5 17.5A1.5 1.5 0 0 1 6.5 16h12"/><path d="M11.75 6v7.5M9.25 8.6h5"/>',
+  catechism:'<path d="M2.5 6.2c3.2-1.4 6.5-1.2 9.5.9 3-2.1 6.3-2.3 9.5-.9v13c-3.2-1.4-6.5-1.2-9.5.9-3-2.1-6.3-2.3-9.5-.9z"/><path d="M12 7.1v13"/><path d="M6.5 10.3c1.2-.3 2.4-.2 3.4.2M6.5 13.3c1.2-.3 2.4-.2 3.4.2M14.1 10.5c1-.4 2.2-.5 3.4-.2M14.1 13.5c1-.4 2.2-.5 3.4-.2"/>',
   all:'<rect x="3.5" y="3.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.2"/>',
   rosary:'<circle cx="12" cy="9" r="6" stroke-dasharray="1.6 2.1"/><path d="M12 15v7M9.5 18h5"/>',
   stations:'<path d="M12 2.5v19M7 7.5h10"/><path d="M8 21.5h8"/>',
@@ -12870,6 +13167,7 @@ const SECTIONS = {
   bible:{ name:'The Bible', group:'Library', icon:'bible', color:'var(--teal)' },
   biblereader:{ name:'The Bible', group:'Library', icon:'bible', color:'var(--teal)' },
   bookreader:{ name:'Books', group:'Library', icon:'book', color:'var(--indigo)' },
+  catechism:{ name:'The Catechism', group:'Library', icon:'catechism', color:'var(--wine)' },
   all:{ name:'Browse Everything', group:'Library', icon:'all', color:'var(--ink-soft)' },
   rosary:{ name:'The Holy Rosary', group:'Pray', icon:'rosary', color:'var(--rose)' },
   stations:{ name:'Stations of the Cross', group:'Pray', icon:'stations', color:'var(--wine)' },
@@ -12946,12 +13244,13 @@ const HUBS = {
   },
   library:{
     eyebrow:'Read and explore', title:'Library',
-    intro:'All 73 books of the Catholic Bible, the books that formed the saints, plans for reading Scripture, and trusted places to go deeper.',
+    intro:'All 73 books of the Catholic Bible, the Catechism, the books that formed the saints, plans for reading Scripture, and trusted places to go deeper.',
     cards:() => [
       { route:'library/bible', big:true, kicker:'The Word of God', title:'The Bible',
         desc:'Read all 73 books of the Catholic canon right here in the Douay-Rheims, chapter by chapter, with Bishop Challoner’s notes.',
         links:[['Reading Plans', 'library/plans']], meta:'73 books', cta:'Open the Bible' },
       { route:'library/books', desc:'Spiritual classics, the Church Fathers, Church documents, and great Catholic literature, with summaries and links to read.', meta:`${countOf('book')} books` },
+      { route:'library/catechism', desc:'The whole Catechism of the Catholic Church, part by part, with any paragraph a tap away, and older catechisms to read in full right here.', meta:'2,865 paragraphs' },
       { route:'library/plans', desc:'Read the Gospels in 30 days, the New Testament in 90, or the whole Bible in a year.', meta:'4 plans' },
       { route:'library/resources', desc:'Trusted websites, podcasts, videos, and courses for going deeper in the faith.', meta:`${RESOURCES.length} resources` },
       { route:'library/shop', desc:'Reputable shops for icons, rosaries, books, and other Catholic goods.', meta:'Trusted shops' },
@@ -12965,7 +13264,7 @@ const HUBS = {
     cards:() => [
       { route:'learn/theology', big:true, kicker:'Doctrine & apologetics', title:'Theology',
         desc:'The core teachings of the Catholic faith, each with the Scripture passages and Catechism paragraphs behind it, the witness of the Church Fathers, and charitable answers to the objections Catholics most often hear.',
-        links:[['Core Catholic Beliefs', 'learn/theology/beliefs'], ['The Faith of the Fathers', 'learn/theology/fathers'], ['Defending the Faith', 'learn/theology/apologetics']],
+        links:[['Core Catholic Beliefs', 'learn/theology/beliefs'], ['The Faith of the Fathers', 'learn/theology/fathers'], ['Defending the Faith', 'learn/theology/apologetics'], ['The Catechism', 'library/catechism']],
         meta:`${countOf('theology')} topics`, cta:'Start learning' },
       { route:'learn/mass', desc:isEastern() ? 'Every part of the Divine Liturgy of St. John Chrysostom, with what happens and why. Follow along on your phone.' : 'Every part of the Mass, with when to stand, sit, and kneel and what each moment means. Follow along on your phone.', meta:isEastern() ? 'The Divine Liturgy' : 'The Order of Mass' },
       { route:'learn/glossary', desc:'Short, clear definitions of the words of the faith, from Absolution to the Vulgate.', meta:`${GLOSSARY.length} terms` },
@@ -13271,6 +13570,7 @@ const ROUTES = {
   'library/bible/read':          { cat:'biblereader', parent:'library/bible', name:'The Bible' },
   'library/books/read':          { cat:'bookreader', parent:'library/books', name:'Books' },
   'library/books':               { cat:'book', parent:'library' },
+  'library/catechism':           { cat:'catechism', parent:'library' },
   'library/plans':               { cat:'plan', parent:'library' },
   'library/resources':           { cat:'resources', parent:'library' },
   'library/shop':                { cat:'shop', parent:'library' },
@@ -13316,7 +13616,7 @@ function routeName(route){
 // Accepts #/pray/rosary, and older links like #saint or #rosary
 function routeFromHash(){
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
-  if(ROUTES[h] || POST_ROUTE.test(h) || BIBLE_ROUTE.test(h) || BOOK_ROUTE.test(h)) return h;
+  if(ROUTES[h] || POST_ROUTE.test(h) || BIBLE_ROUTE.test(h) || BOOK_ROUTE.test(h) || CCC_ROUTE.test(h)) return h;
   if(ROUTE_ALIASES[h]) return h;   // applyRoute moves it to the new address
   if(CAT_ROUTE[h]) return CAT_ROUTE[h];
   return 'home';
@@ -13334,7 +13634,9 @@ function applyRoute(path){
   bibleRef = bib ? { slug:bib[1], chapter:Number(bib[2]) || 0, verse:Number(bib[3]) || 0, verseEnd:Number(bib[4]) || 0 } : null;
   const bk = BOOK_ROUTE.exec(path);
   bookRef = bk ? { slug:bk[1], section:Number(bk[2]) || 0 } : null;
-  let route = post ? 'community/post' : bib ? 'library/bible/read' : bk ? 'library/books/read' : path;
+  const cc = CCC_ROUTE.exec(path);
+  cccRef = cc ? parseCccInput(cc[1] + (cc[2] ? '-' + cc[2] : '')) : null;
+  let route = post ? 'community/post' : bib ? 'library/bible/read' : bk ? 'library/books/read' : cc ? 'library/catechism' : path;
   if(!ROUTES[route]) route = path = 'home';
   const r = ROUTES[route];
   currentRoute = route;
@@ -13422,6 +13724,7 @@ document.addEventListener('click', e => {
   const el = e.target.closest('[data-route]');
   if(!el || el.closest('.theme-menu')) return;
   e.preventDefault();
+  readOverlay.classList.remove('open');
   navigate(el.dataset.route);
 });
 
@@ -13518,6 +13821,9 @@ function openReadModal(id){
   if(e.category === 'book' && BOOK_TEXTS[e.id]){
     linkBox.innerHTML = `<button class="btn" data-route="library/books/${BOOK_TEXTS[e.id][0]}">Read it here</button>` + (e.link ? ` <a href="${escapeHtml(e.link)}" target="_blank" rel="noopener">Source ↗</a>` : '');
     linkBox.querySelector('button').addEventListener('click', () => readOverlay.classList.remove('open'));
+  }
+  if(e.id === 'b55'){
+    linkBox.innerHTML = `<button class="btn" data-route="library/catechism">Open the Catechism here</button> <a href="${escapeHtml(e.link)}" target="_blank" rel="noopener">vatican.va ↗</a>`;
   }
   const bibleBook = e.category === 'bible' && BIBLE_BOOKS.find(x => x[1] === e.id);
   if(bibleBook){
