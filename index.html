@@ -2269,6 +2269,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
   /* =========================================================
      2026 REFRESH: one consistent finish over every page and theme.
      Everything here builds on each theme's colors, so all 41 themes keep their character.
@@ -2622,6 +2634,13 @@
   .home-prayer-stats div{padding:10px 12px; border-radius:var(--r-sm); background:rgba(var(--ink-rgb),0.04); border:1px solid var(--hairline);}
   .home-prayer-stats strong{display:block; font-family:'Cormorant Garamond', serif; font-size:1.6rem; line-height:1.1; color:var(--ink);}
   .home-prayer-stats span{font-size:0.76rem; color:var(--ink-soft);}
+  /* The home greeting sits in the hero card beside the great cross */
+  .home > .dash-hero{margin-bottom:20px;}
+  .dash-hero{min-height:0; grid-template-columns:minmax(0, 1fr) clamp(200px, 24vw, 300px); padding:clamp(26px, 3.4vw, 44px) clamp(26px, 3.6vw, 52px);}
+  @media (max-width:700px){ .dash-hero{grid-template-columns:1fr;} }
+  .dash-hero .dash-greet{margin:12px 0 8px;}
+  .dash-hero .hero-actions{margin-top:22px;}
+  .dash-hero .hero-rosette{max-width:300px;}
   /* END LAYOUT */
 
   @media print{
@@ -13849,17 +13868,19 @@ function renderHome(){
   const wrap = document.createElement('div');
   wrap.className = 'home';
   wrap.innerHTML = `
-    <section class="dash-head" style="--season:${season.color}">
-      <div>
+    <section class="home-hero dash-hero" style="--season:${season.color}">
+      <div class="hero-text">
         <div class="hero-date">${WEEKDAY_NAMES[d.getDay()]}, ${MONTH_NAMES[d.getMonth()]} ${d.getDate()}
           <span class="cal-pill"><span class="dot" style="background:${season.color}"></span>${escapeHtml(season.name)}</span>${isEastern() ? '<span class="rite-pill">Eastern Catholic edition</span>' : ''}</div>
         <h1 class="dash-greet">${greeting}.</h1>
         <p class="dash-feast">${feastLine}</p>
         ${newcomer ? '<p class="dash-intro">Prayers, saints, Scripture, and two thousand years of Church history, gathered in one place. Free, with no ads, and no account needed to read or pray.</p>' : ''}
+        <div class="hero-actions">
+          <button class="btn primary pill" data-route="today">Open today</button>
+          <button class="text-link hero-link" data-route="pray/rosary">${isEastern() ? 'Pray the Jesus Prayer' : 'Pray the ' + escapeHtml(mysteries.name)} →</button>
+        </div>
       </div>
-      <div class="dash-actions">
-        <button class="btn primary pill" data-route="today">Open today</button>
-      </div>
+      ${heroRosette()}
     </section>
 
     <div class="dash-grid">
