@@ -2253,11 +2253,21 @@
   .read-modal.card-mode .link-box, .read-modal.card-mode .tags{justify-content:center; text-align:center;}
   @media (max-width:600px){ .read-modal.card-mode{padding:36px 26px 26px;} .read-modal.card-mode .modal-close{top:22px; right:24px;} }
 
-  @media print{ .tabbar{display:none !important;} }
 
-  @media print{ .tabbar{display:none !important;} .reveal-wait{opacity:1 !important; transform:none !important;} }
 
-  @media print{ .tabbar{display:none !important;} .reveal-wait{opacity:1 !important; transform:none !important;} }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   /* =========================================================
      2026 REFRESH: one consistent finish over every page and theme.
@@ -2493,6 +2503,126 @@
     .br-copybar, .pf-jump{bottom:calc(var(--tabbar-h) + 10px + env(safe-area-inset-bottom));}
   }
   @media print{ .tabbar{display:none !important;} .reveal-wait{opacity:1 !important; transform:none !important;} }
+  /* END 2026 REFRESH */
+
+  /* =========================================================
+     LAYOUT: a quiet app shell. A side menu on wide screens, the drawer and tab bar on smaller ones,
+     and a dashboard home.
+     ========================================================= */
+  /* ---------- Side menu (also the drawer on smaller screens) ---------- */
+  .side-brand{display:flex; align-items:center; gap:10px; width:100%; padding:16px 10px 14px; margin-bottom:6px; background:none; border:none; cursor:pointer;
+    color:var(--ink); font-family:'Cormorant Garamond', serif; font-size:1.55rem; font-weight:600; text-align:left;}
+  .side-brand .mark{width:26px; height:26px; color:var(--wine); flex:none; transition:transform 0.5s var(--ease-spring);}
+  .side-brand:hover .mark{transform:rotate(-8deg) scale(1.08);}
+  .side-brand small{display:none; font-family:'Source Serif 4', serif; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-left:2px;}
+  :root[data-rite="eastern"] .side-brand small{display:inline;}
+  nav.sidebar{scrollbar-width:thin;}
+  nav.sidebar .nav-group + .nav-group{margin-top:4px; padding-top:4px;}
+  nav.sidebar .nav-group:last-child{margin-top:14px; padding-top:12px; border-top:1px solid var(--hairline);}
+  .group-row{display:flex; align-items:center; gap:2px; border-radius:10px;}
+  nav.sidebar .group-row .group-link{
+    flex:1; display:flex; align-items:center; gap:11px; padding:8px 10px 8px 12px; margin:0; border-radius:10px;
+    font-family:'Source Serif 4', serif; font-size:0.97rem; font-weight:600; letter-spacing:0; text-transform:none; color:var(--ink);
+    transition:background 0.2s var(--ease), color 0.2s var(--ease);
+  }
+  nav.sidebar .group-row .group-link:hover{background:rgba(var(--ink-rgb),0.05);}
+  nav.sidebar .group-row .group-link.active{color:var(--ink); background:color-mix(in srgb, var(--cat-color, var(--wine)) 12%, transparent);}
+  .group-row .nl-icon{color:var(--cat-color);}
+  .group-toggle{flex:none; width:32px; height:32px; display:flex; align-items:center; justify-content:center; border:none; background:none; border-radius:8px; cursor:pointer; color:var(--ink-soft);}
+  .group-toggle:hover{background:rgba(var(--ink-rgb),0.06); color:var(--ink);}
+  .group-toggle svg{width:14px; height:14px; transition:transform 0.3s var(--ease);}
+  .nav-group.open .group-toggle svg{transform:rotate(90deg);}
+  .nav-group.collapsible > .group-body{display:grid; grid-template-rows:0fr; transition:grid-template-rows 0.35s var(--ease), margin 0.35s var(--ease);}
+  .nav-group.collapsible > .group-body > ul{overflow:hidden; min-height:0; margin-left:22px; padding-left:10px; border-left:1px solid var(--hairline);}
+  .nav-group.collapsible.open > .group-body{grid-template-rows:1fr; margin:2px 0 6px;}
+  .nav-group.collapsible .group-body ul .nl-icon{display:none;}
+  .nav-group.collapsible .group-body ul button.navlink{font-size:0.92rem; padding:6px 10px; color:var(--ink-soft);}
+  .nav-group.collapsible .group-body ul button.navlink:hover{color:var(--ink);}
+  .nav-group.collapsible .group-body ul button.navlink.active{color:var(--ink);}
+  nav.sidebar button.navlink:hover{padding-left:12px;}
+  .nav-group.collapsible .group-body ul button.navlink:hover{padding-left:13px;}
+
+  /* ---------- Wide screens: the side menu stays open beside the page ---------- */
+  @media (min-width:1100px){
+    :root{--side-w:264px;}
+    body{padding-left:var(--side-w);}
+    nav.sidebar{
+      transform:none; visibility:visible; width:var(--side-w); padding:6px 12px 28px; border-radius:0; box-shadow:none;
+      border-right:1px solid var(--hairline); background:color-mix(in srgb, var(--parchment-light) 70%, var(--parchment));
+    }
+    .nav-scrim, .menu-btn, .topnav, .topbar .brand{display:none !important;}
+    body.nav-open{overflow:auto;}
+    .topbar-inner{max-width:none; padding:0 32px; gap:14px;}
+    .searchbar{margin:0 auto 0 0; max-width:480px; min-width:240px;}
+    .search-kbd{display:inline-block;}
+    .layout{max-width:1160px; padding:34px 40px 84px;}
+    .site-footer .footer-inner, .site-footer > .footer-note{padding-left:40px; padding-right:40px;}
+    .theme-menu{right:28px;}
+  }
+  @media (min-width:1100px) and (max-width:1280px){
+    .layout{padding-left:30px; padding-right:30px;}
+    .pillars{grid-template-columns:repeat(2, minmax(0, 1fr));}
+  }
+
+  /* ---------- Home: a dashboard for today ---------- */
+  .dash-head{display:flex; align-items:flex-end; justify-content:space-between; gap:20px 28px; flex-wrap:wrap; margin:4px 0 22px;}
+  .dash-greet{font-size:clamp(2.4rem, 5vw, 3.4rem); line-height:1.05; letter-spacing:-0.015em; margin:10px 0 6px;}
+  .dash-feast{margin:0; color:var(--ink-soft); font-size:1.02rem; max-width:62ch;}
+  .dash-feast strong{color:var(--ink);}
+  .dash-intro{margin:8px 0 0; color:var(--ink-soft); font-style:italic; font-size:0.95rem; max-width:62ch;}
+  .dash-actions{display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+  .dash-grid{display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:16px; margin-bottom:34px;}
+  .dash-grid > *{margin:0; min-width:0;}
+  .dash-grid .feature-saint{grid-column:span 2;}
+  .dash-grid .home-prayer{grid-column:span 2; flex-direction:column; align-items:flex-start; justify-content:space-between; gap:12px; padding:20px; border-radius:var(--r-md); border-color:var(--hairline); box-shadow:var(--elev-1);}
+  .dash-grid .home-prayer-chips{flex:none;}
+  .dash-card{position:relative; overflow:hidden; display:flex; flex-direction:column; gap:6px; padding:20px; border-radius:var(--r-md); border:1px solid var(--hairline); background:var(--parchment-light); box-shadow:var(--elev-1); min-width:0;}
+  .dash-card h3{font-size:1.3rem; line-height:1.15;}
+  .dash-card p{margin:0; color:var(--ink-soft); font-size:0.9rem;}
+  .dash-card .bento-cta{margin-top:auto; padding-top:8px;}
+  .dash-mysteries{margin:4px 0 0; padding-left:18px; font-size:0.88rem; line-height:1.55; color:var(--ink-soft);}
+  .dash-upcoming .home-upcoming{gap:2px; margin-top:2px;}
+  .dash-upcoming .upcoming-item{padding:5px 6px 5px 4px; gap:10px;}
+  .dash-upcoming .up-date{flex-basis:40px; height:40px;}
+  .dash-upcoming .up-date strong{font-size:1.15rem;}
+  .dash-upcoming .up-name{font-size:0.9rem;}
+  .dash-card[data-route]{cursor:pointer; transition:transform 0.35s var(--ease), box-shadow 0.35s var(--ease);}
+  .dash-card[data-route]:hover{transform:translateY(-3px); box-shadow:var(--elev-2);}
+  .dash-rosary{--edge:var(--rose);}
+  .dash-rosary::before, .dash-upcoming::before{content:''; position:absolute; left:0; right:0; top:0; height:3px; pointer-events:none;
+    background:linear-gradient(90deg, transparent, var(--edge, var(--gold)) 20%, var(--edge, var(--gold)) 80%, transparent);}
+  .dash-upcoming{--edge:var(--green);}
+  .home .section-title{font-size:clamp(1.7rem, 3vw, 2.3rem);}
+  @media (max-width:1280px){
+    .dash-grid{grid-template-columns:repeat(2, minmax(0, 1fr));}
+  }
+  @media (max-width:640px){
+    .dash-grid{grid-template-columns:1fr;}
+    .dash-grid .feature-saint, .dash-grid .home-prayer{grid-column:auto;}
+    .dash-head{align-items:flex-start;}
+  }
+  /* Links in the menu look like the buttons beside them */
+  nav.sidebar a.navlink{display:flex; align-items:center; gap:11px; width:100%; padding:8px 10px 8px 12px; border-radius:8px; text-decoration:none;
+    font-family:'Source Serif 4', serif; font-size:0.97rem; color:var(--ink); transition:background 0.2s var(--ease), color 0.2s var(--ease);}
+  nav.sidebar a.navlink:hover{background:rgba(var(--ink-rgb),0.05);}
+  nav.sidebar a.navlink .nl-icon svg{width:18px; height:18px;}
+  nav.sidebar .nav-discord .nl-icon{color:#5865f2;}
+  /* Today's prayer card on the dashboard */
+  .dash-grid .home-prayer{justify-content:flex-start;}
+  .dash-grid .home-prayer > .text-link{margin-top:auto;}
+  .home-prayer-progress{display:flex; align-items:center; gap:10px; width:100%; font-size:0.82rem; color:var(--ink-soft);}
+  .home-prayer-progress .bar{flex:1; height:6px; border-radius:6px; background:rgba(var(--ink-rgb),0.08); overflow:hidden;}
+  .home-prayer-progress .bar span{display:block; height:100%; width:calc(var(--p) * 100%); border-radius:inherit; background:linear-gradient(90deg, var(--gold), var(--wine)); transition:width 0.6s var(--ease);}
+  .home-prayer-progress{display:none;}
+  .dash-grid .home-prayer-progress{display:flex;}
+  /* With the side menu showing every section, the home page skips the duplicate section cards */
+  @media (min-width:1100px){ .home .home-pillars{display:none;} }
+  .home-prayer-stats{display:none;}
+  .dash-grid .home-prayer-stats{display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:10px; width:100%; margin-top:4px;}
+  .home-prayer-stats div{padding:10px 12px; border-radius:var(--r-sm); background:rgba(var(--ink-rgb),0.04); border:1px solid var(--hairline);}
+  .home-prayer-stats strong{display:block; font-family:'Cormorant Garamond', serif; font-size:1.6rem; line-height:1.1; color:var(--ink);}
+  .home-prayer-stats span{font-size:0.76rem; color:var(--ink-soft);}
+  /* END LAYOUT */
 
   @media print{
     body *{visibility:hidden;}
@@ -2565,6 +2695,7 @@
 
 <!-- Full menu: a slide-out drawer on phones and tablets -->
 <nav class="sidebar" id="sidebar" aria-label="All sections">
+  <button class="side-brand" data-route="home" aria-label="Sanctify home"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true" fill="currentColor"><path fill-rule="evenodd" d="M28.5 3h7v14h-7zM12 17h40v7H12zM28.5 24h7v37h-7z"/></svg><span>Sanctify</span><small>Eastern</small></button>
   <div id="navList">
     <div class="nav-group">
       <ul>
@@ -10586,6 +10717,8 @@ function homePrayerHtml(){
   return `<section class="home-prayer" id="homePrayer" aria-label="Your prayer today">
     <span class="home-prayer-streak">${cardArt('flame')}${streak ? plural(streak, 'day', 'days') + ' of prayer' : 'Your prayer today'}</span>
     <div class="home-prayer-chips">${HABITS.filter(h => enabled.includes(h.key)).map(h => `<button class="patron-chip${done.has(h.key) ? ' active' : ''}" data-home-habit="${h.key}" aria-pressed="${done.has(h.key)}">${escapeHtml(habitName(h))}</button>`).join('')}</div>
+    <div class="home-prayer-progress"><span class="bar"><span style="--p:${enabled.length ? Math.min(1, done.size / enabled.length) : 0}"></span></span>${Math.min(done.size, enabled.length)} of ${enabled.length} today</div>
+    <div class="home-prayer-stats">${(() => { const st = prayerStats(); return `<div><strong>${st.current}</strong><span>day streak</span></div><div><strong>${st.thisMonth}</strong><span>days this month</span></div><div><strong>${st.longest}</strong><span>longest streak</span></div>`; })()}</div>
     <button class="text-link" data-route="pray/tracker">Prayer tracker →</button>
   </section>`;
 }
@@ -13474,6 +13607,51 @@ document.getElementById('navScrim').addEventListener('click', () => setNavOpen(f
 document.addEventListener('keydown', e => { if(e.key === 'Escape' && document.body.classList.contains('nav-open')) setNavOpen(false); });
 document.getElementById('brandHome').addEventListener('click', () => goToSection('home'));
 
+// The menu's sections fold open: the one you are in opens by itself, and any you open stay open
+const SIDE_GROUPS = { pray:['prayer', 'var(--wine)'], saints:['saint', 'var(--rose)'], history:['history', 'var(--gold)'], library:['book', 'var(--indigo)'], learn:['theology', 'var(--purple)'] };
+document.querySelectorAll('nav.sidebar .nav-group').forEach(g => {
+  const link = g.querySelector(':scope > .group-link'), ul = g.querySelector(':scope > ul');
+  if(!link || !ul) return;
+  const key = link.dataset.route, [icon, color] = SIDE_GROUPS[key] || ['all', 'var(--wine)'];
+  const name = link.textContent.replace(/\s*›\s*$/, '').trim();
+  link.textContent = name;
+  link.classList.remove('group-label');
+  link.style.setProperty('--cat-color', color);
+  link.insertAdjacentHTML('afterbegin', `<span class="nl-icon" aria-hidden="true">${navIcon(icon)}</span>`);
+  const row = document.createElement('div');
+  row.className = 'group-row';
+  link.replaceWith(row);
+  row.appendChild(link);
+  row.insertAdjacentHTML('beforeend', `<button class="group-toggle" type="button" aria-expanded="false" aria-label="Show the ${escapeHtml(name)} pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>`);
+  const body = document.createElement('div');
+  body.className = 'group-body';
+  ul.replaceWith(body);
+  body.appendChild(ul);
+  g.classList.add('collapsible');
+  g.dataset.group = key;
+  row.querySelector('.group-toggle').addEventListener('click', () => {
+    const open = !g.classList.contains('open');
+    setSideGroupOpen(g, open);
+    const saved = store.get('side.open', {});
+    saved[key] = open;
+    store.set('side.open', saved);
+  });
+});
+function setSideGroupOpen(g, open){
+  g.classList.toggle('open', open);
+  const t = g.querySelector('.group-toggle');
+  if(t) t.setAttribute('aria-expanded', String(open));
+  g.querySelectorAll('.group-body button.navlink').forEach(b => { b.tabIndex = open ? 0 : -1; });
+}
+function syncSideGroups(top){
+  const saved = store.get('side.open', {});
+  document.querySelectorAll('nav.sidebar .nav-group.collapsible').forEach(g => {
+    const here = g.dataset.group === top;
+    g.querySelector('.group-link').classList.toggle('active', here);
+    setSideGroupOpen(g, here || saved[g.dataset.group] === true);
+  });
+}
+
 /* ---------- Hub pages: Pray, Library, Learn ---------- */
 function countOf(cat){ return library.filter(e => e.category === cat).length; }
 
@@ -13657,6 +13835,9 @@ function renderHome(){
   const feastLine = obs.length
     ? `Today the Church celebrates <strong>${obs.slice(0, 2).map(o => escapeHtml(o.name)).join('</strong> and <strong>')}</strong>.`
     : `A weekday in ${escapeHtml(season.name)}.`;
+  const hour = new Date().getHours();
+  const greeting = hour < 5 ? 'Peace be with you' : hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+  const newcomer = !store.get('recent', []).length && !Object.keys(trackerLog()).length;
   const pillar = (icon, color, title, text, route) => `
     <button class="pillar" data-route="${route}" style="--tile-color:${color}">
       <span class="pillar-icon">${navIcon(icon)}</span>
@@ -13668,51 +13849,56 @@ function renderHome(){
   const wrap = document.createElement('div');
   wrap.className = 'home';
   wrap.innerHTML = `
-    <section class="home-hero" style="--season:${season.color}">
-      <div class="hero-text">
+    <section class="dash-head" style="--season:${season.color}">
+      <div>
         <div class="hero-date">${WEEKDAY_NAMES[d.getDay()]}, ${MONTH_NAMES[d.getMonth()]} ${d.getDate()}
           <span class="cal-pill"><span class="dot" style="background:${season.color}"></span>${escapeHtml(season.name)}</span>${isEastern() ? '<span class="rite-pill">Eastern Catholic edition</span>' : ''}</div>
-        <h1>Pray with the Church.<br>Know the faith.<br>Walk with the saints.</h1>
-        <p class="hero-tagline">Prayers, saints, Scripture, and two thousand years of Church history, gathered in one place. Free, with no ads, and no account needed to read or pray.</p>
-        <div class="hero-actions">
-          <button class="btn primary pill" data-route="today">Open today</button>
-          <button class="text-link hero-link" data-route="pray/rosary">${isEastern() ? 'Pray the Jesus Prayer' : 'Pray the ' + escapeHtml(mysteries.name)} →</button>
-        </div>
-        <p class="hero-feast">${feastLine}</p>
+        <h1 class="dash-greet">${greeting}.</h1>
+        <p class="dash-feast">${feastLine}</p>
+        ${newcomer ? '<p class="dash-intro">Prayers, saints, Scripture, and two thousand years of Church history, gathered in one place. Free, with no ads, and no account needed to read or pray.</p>' : ''}
       </div>
-      ${heroRosette()}
+      <div class="dash-actions">
+        <button class="btn primary pill" data-route="today">Open today</button>
+      </div>
     </section>
-    ${homePrayerHtml()}
+
+    <div class="dash-grid">
+      <article class="feature-card feature-saint" data-open="${saint.id}" tabindex="0">
+        <div class="saint-portrait" data-sid="${saint.id}">${portraitPlaceholder(saint.title)}</div>
+        <div>
+          <div class="daily-kicker">${feastIds.length ? 'Feast of the Day' : 'Saint of the Day'}</div>
+          <h3>${escapeHtml(saint.title)}</h3>
+          <p>${escapeHtml(excerptOf(saint.content, 170))}</p>
+        </div>
+      </article>
+      <article class="feature-card feature-verse">
+        <div class="daily-kicker">Verse of the Day</div>
+        <blockquote>“${escapeHtml(verse.text)}”</blockquote>
+        <cite>${escapeHtml(verse.ref)}</cite>
+      </article>
+      <article class="feature-card feature-prayer" data-open="${prayer.id}" tabindex="0" style="--accent:${card.accent}">
+        <span class="pc-art">${cardArt(card.art)}</span>
+        <div class="daily-kicker">Prayer of the Day</div>
+        <h3>${escapeHtml(prayer.title)}</h3>
+      </article>
+      ${homePrayerHtml()}
+      <article class="dash-card dash-rosary" data-route="pray/rosary" tabindex="0">
+        ${isEastern()
+          ? `<div class="daily-kicker">Pray today</div><h3>The Jesus Prayer</h3><p>Pray slowly on the prayer rope: “Lord Jesus Christ, Son of God, have mercy on me, a sinner.”</p><span class="bento-cta">Begin →</span>`
+          : `<div class="daily-kicker">Today’s Rosary</div><h3>The ${escapeHtml(mysteries.name)}</h3><ol class="dash-mysteries">${mysteries.list.map(m => `<li>${escapeHtml(m.name)}</li>`).join('')}</ol><span class="bento-cta">Pray the Rosary →</span>`}
+      </article>
+      <article class="dash-card dash-upcoming">
+        <div class="daily-kicker">Coming up</div>
+        <div class="home-upcoming" id="homeUpcoming"></div>
+        <button class="text-link" data-route="calendar" style="margin-top:auto; text-align:left">Full calendar →</button>
+      </article>
+    </div>
 
     <section class="home-continue" id="homeContinue"></section>
 
-    <section class="home-section">
-      <div class="section-eyebrow">Today in the Church</div>
-      <div class="home-features">
-        <article class="feature-card feature-saint" data-open="${saint.id}" tabindex="0">
-          <div class="saint-portrait" data-sid="${saint.id}">${portraitPlaceholder(saint.title)}</div>
-          <div>
-            <div class="daily-kicker">${feastIds.length ? 'Feast of the Day' : 'Saint of the Day'}</div>
-            <h3>${escapeHtml(saint.title)}</h3>
-            <p>${escapeHtml(excerptOf(saint.content, 150))}</p>
-          </div>
-        </article>
-        <article class="feature-card feature-verse">
-          <div class="daily-kicker">Verse of the Day</div>
-          <blockquote>“${escapeHtml(verse.text)}”</blockquote>
-          <cite>${escapeHtml(verse.ref)}</cite>
-        </article>
-        <article class="feature-card feature-prayer" data-open="${prayer.id}" tabindex="0" style="--accent:${card.accent}">
-          <span class="pc-art">${cardArt(card.art)}</span>
-          <div class="daily-kicker">Prayer of the Day</div>
-          <h3>${escapeHtml(prayer.title)}</h3>
-        </article>
-      </div>
-    </section>
-
     <section class="home-section home-pillars">
-      <div class="section-eyebrow">What's inside</div>
-      <h2 class="section-title">Find your way in.</h2>
+      <div class="section-eyebrow">Explore</div>
+      <h2 class="section-title">Everything in Sanctify.</h2>
       <div class="pillars">
         ${pillar('prayer', 'var(--wine)', 'Pray', isEastern() ? `${byCat('prayer').length} prayers as illustrated cards, the Jesus Prayer on a prayer rope, the Trisagion Prayers, and the Prayer of St. Ephrem.` : `${byCat('prayer').length} prayers as illustrated cards, the Rosary, the Stations of the Cross, and the Divine Mercy Chaplet.`, 'pray')}
         ${pillar('saint', 'var(--rose)', 'Saints', `${byCat('saint').length} saints with their lives and prayers, ${QUOTES.length} quotes in their own words, and a patron finder.`, 'saints')}
@@ -13763,13 +13949,7 @@ function renderHome(){
       <div class="home-community-posts" id="homeCommunity"></div>
     </section>
 
-    <section class="home-section home-split">
-      <div>
-        <div class="home-heading"><h3>Coming Up</h3><button class="text-link" data-route="calendar">Full calendar →</button></div>
-        <div class="home-upcoming" id="homeUpcoming"></div>
-      </div>
-      ${homeQuoteHtml()}
-    </section>
+    ${homeQuoteHtml()}
 
     ${riteBannerHtml()}`;
   entryListEl.appendChild(wrap);
@@ -13778,9 +13958,13 @@ function renderHome(){
   const cont = wrap.querySelector('#homeContinue');
   const recent = store.get('recent', []).map(id => library.find(x => x.id === id)).filter(Boolean).slice(0, 4);
   const novenas = store.get('novenas', []).filter(n => n.done.filter(Boolean).length < 9 && library.find(x => x.id === n.id));
-  if(recent.length || novenas.length){
+  const lastBible = store.get('bible.last', null), lastBibleBook = lastBible && BIBLE_BY_SLUG[lastBible.slug];
+  const lastBook = store.get('book.recent', null), lastBookB = lastBook && BOOK_BY_SLUG[lastBook.slug], lastBookE = lastBookB && bookEntry(lastBookB);
+  if(recent.length || novenas.length || lastBibleBook || lastBookE){
     cont.innerHTML = `<div class="home-heading"><h3>Continue</h3><button class="text-link" data-route="mine">My Sanctify →</button></div>
       <div class="continue-row">
+        ${lastBibleBook ? `<button class="continue-chip" data-route="library/bible/${lastBible.slug}/${lastBible.chapter}"><span class="daily-kicker">The Bible</span>${escapeHtml(bibleChapterName(lastBibleBook, lastBible.chapter))}</button>` : ''}
+        ${lastBookE ? `<button class="continue-chip" data-route="library/books/${lastBook.slug}/${lastBook.section}"><span class="daily-kicker">Reading</span>${escapeHtml(lastBookE.title)}</button>` : ''}
         ${novenas.slice(0, 2).map(n => { const e = library.find(x => x.id === n.id); return `<button class="continue-chip novena-chip" data-route="mine"><span class="daily-kicker">Novena · Day ${novenaDayNumber(n)} of 9</span>${escapeHtml(e.title)}</button>`; }).join('')}
         ${recent.map(e => `<button class="continue-chip" data-open="${e.id}"><span class="daily-kicker">${escapeHtml(CAT_LABEL[e.category] || e.category)}</span>${escapeHtml(e.title)}</button>`).join('')}
       </div>`;
@@ -13790,9 +13974,9 @@ function renderHome(){
 
   // Next few observances
   const up = [];
-  for(let i = 1; i <= 40 && up.length < 5; i++){
+  for(let i = 1; i <= 40 && up.length < 4; i++){
     const day = addDays(d, i);
-    observancesFor(day).filter(o => ['Solemnity', 'Great Feast', 'Feast', 'Memorial', 'Commemoration'].includes(o.type)).forEach(o => { if(up.length < 5) up.push({ day, o }); });
+    observancesFor(day).filter(o => ['Solemnity', 'Great Feast', 'Feast', 'Memorial', 'Commemoration'].includes(o.type)).forEach(o => { if(up.length < 4) up.push({ day, o }); });
   }
   wrap.querySelector('#homeUpcoming').innerHTML = up.map((u, i) => `
     <button class="upcoming-item" data-i="${i}">
@@ -13810,7 +13994,7 @@ function renderHome(){
     el.addEventListener('click', () => openReadModal(el.dataset.open));
     el.addEventListener('keydown', ev => { if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); openReadModal(el.dataset.open); } });
   });
-  wrap.querySelectorAll('.path-card').forEach(c => c.addEventListener('keydown', ev => { if(ev.target === c && (ev.key === 'Enter' || ev.key === ' ')){ ev.preventDefault(); navigate(c.dataset.route); } }));
+  wrap.querySelectorAll('.path-card, .dash-card[data-route]').forEach(c => c.addEventListener('keydown', ev => { if(ev.target === c && (ev.key === 'Enter' || ev.key === ' ')){ ev.preventDefault(); navigate(c.dataset.route); } }));
   wrap.querySelectorAll('.saint-portrait[data-sid]').forEach(observePortrait);
   loadHomeCommunity(wrap.querySelector('#homeCommunity'));
   bindHomePrayer(wrap);
@@ -13929,6 +14113,7 @@ function applyRoute(path){
   setNavOpen(false);
   const top = route.split('/')[0];
   document.querySelectorAll('.topnav-link').forEach(b => b.classList.toggle('active', b.dataset.route === top));
+  if(typeof syncSideGroups === 'function') syncSideGroups(top);
   document.querySelectorAll('.tab-link').forEach(b => { const on = b.dataset.route === top; b.classList.toggle('active', on); if(on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
   document.querySelectorAll('.top-action').forEach(b => b.classList.toggle('active', b.dataset.route === top));
   document.querySelectorAll('.navlink[data-route]').forEach(b => b.classList.toggle('active',
