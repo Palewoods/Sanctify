@@ -2253,6 +2253,235 @@
   .read-modal.card-mode .link-box, .read-modal.card-mode .tags{justify-content:center; text-align:center;}
   @media (max-width:600px){ .read-modal.card-mode{padding:36px 26px 26px;} .read-modal.card-mode .modal-close{top:22px; right:24px;} }
 
+  @media print{ .tabbar{display:none !important;} }
+
+  @media print{ .tabbar{display:none !important;} .reveal-wait{opacity:1 !important; transform:none !important;} }
+
+  /* =========================================================
+     2026 REFRESH: one consistent finish over every page and theme.
+     Everything here builds on each theme's colors, so all 41 themes keep their character.
+     ========================================================= */
+  :root{
+    --r-sm:10px; --r-md:14px; --r-lg:20px; --radius:10px;
+    --ease:cubic-bezier(0.22, 0.75, 0.2, 1);
+    --ease-spring:cubic-bezier(0.34, 1.4, 0.5, 1);
+    --surface:var(--parchment-light);
+    --hairline:color-mix(in srgb, var(--line) 85%, transparent);
+    --elev-1:0 1px 2px rgba(var(--ink-rgb),0.05), 0 1px 1px rgba(var(--ink-rgb),0.03);
+    --elev-2:0 2px 4px rgba(var(--ink-rgb),0.04), 0 10px 28px -6px rgba(var(--ink-rgb),0.16);
+    --elev-3:0 4px 10px rgba(var(--ink-rgb),0.05), 0 24px 60px -12px rgba(var(--ink-rgb),0.28);
+    --focus:0 0 0 3px color-mix(in srgb, var(--gold) 38%, transparent);
+  }
+  :root[data-mode="dark"]{
+    --elev-1:0 1px 2px rgba(0,0,0,0.35);
+    --elev-2:0 2px 6px rgba(0,0,0,0.3), 0 14px 32px -8px rgba(0,0,0,0.55);
+    --elev-3:0 6px 16px rgba(0,0,0,0.35), 0 30px 70px -14px rgba(0,0,0,0.7);
+  }
+
+  /* ---------- Type ---------- */
+  body{-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility; font-feature-settings:'kern' 1, 'liga' 1;}
+  h1, h2, h3, .hub-title, .home-hero h1{text-wrap:balance;}
+  p, .hub-intro, .hero-tagline{text-wrap:pretty;}
+  .main-head h2{letter-spacing:-0.01em;}
+  .hub-title{letter-spacing:-0.02em;}
+  .home-hero h1{letter-spacing:-0.01em; line-height:1.02;}
+  .daily-kicker, .hub-eyebrow, .hub-label, .main-eyebrow{letter-spacing:0.16em;}
+  :focus-visible{outline:none; box-shadow:var(--focus); border-radius:var(--r-sm);}
+  ::selection{background:color-mix(in srgb, var(--gold) 45%, transparent);}
+  html{scrollbar-color:color-mix(in srgb, var(--ink-soft) 40%, transparent) transparent;}
+  ::-webkit-scrollbar{width:11px; height:11px;}
+  ::-webkit-scrollbar-thumb{background:color-mix(in srgb, var(--ink-soft) 35%, transparent); border-radius:10px; border:3px solid var(--parchment);}
+  ::-webkit-scrollbar-track{background:transparent;}
+
+  /* ---------- Top bar: frosted, with a sliding underline ---------- */
+  .topbar{
+    background:color-mix(in srgb, var(--parchment-light) 82%, transparent);
+    -webkit-backdrop-filter:saturate(1.4) blur(14px); backdrop-filter:saturate(1.4) blur(14px);
+    border-bottom-color:var(--hairline); box-shadow:none; transition:box-shadow 0.25s var(--ease);
+  }
+  body.scrolled .topbar{box-shadow:0 6px 24px -12px rgba(var(--ink-rgb),0.35);}
+  .topnav-link{transition:color 0.2s var(--ease), background 0.2s var(--ease);}
+  .topnav-link::after{content:''; position:absolute; left:14px; right:14px; bottom:3px; height:2px; border-radius:2px; background:var(--wine);
+    transform:scaleX(0); transform-origin:center; transition:transform 0.3s var(--ease);}
+  .topnav-link.active::after, .topnav-link:hover::after{transform:scaleX(1);}
+  .topnav-link:hover::after{opacity:0.35;}
+  .topnav-link.active::after{opacity:1;}
+  .icon-btn{transition:border-color 0.2s var(--ease), color 0.2s var(--ease), background 0.2s var(--ease), transform 0.2s var(--ease);}
+  .icon-btn:hover{background:color-mix(in srgb, var(--gold) 10%, var(--parchment-light));}
+  .icon-btn:active{transform:scale(0.92);}
+  .brand .mark{transition:transform 0.5s var(--ease-spring);}
+  .brand:hover .mark{transform:rotate(-8deg) scale(1.08);}
+  .searchbar{background:color-mix(in srgb, var(--parchment) 70%, transparent);}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px; text-align:center; text-decoration:none;
+    min-height:40px; padding:9px 18px; border-radius:999px; font-weight:600; letter-spacing:0.01em;
+    border:1px solid color-mix(in srgb, var(--ink) 55%, transparent); background:transparent; color:var(--ink);
+    transition:background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease), box-shadow 0.2s var(--ease), transform 0.15s var(--ease);
+  }
+  .btn:hover{background:var(--ink); border-color:var(--ink); color:var(--parchment-light); box-shadow:var(--elev-2);}
+  .btn:active{transform:scale(0.97);}
+  .btn.primary, .hero-actions .btn:first-child{background:var(--wine); border-color:var(--wine); color:var(--parchment-light); box-shadow:0 6px 18px -8px color-mix(in srgb, var(--wine) 80%, transparent);}
+  .btn.primary:hover, .hero-actions .btn:first-child:hover{background:var(--wine-dark); border-color:var(--wine-dark); box-shadow:0 10px 24px -8px color-mix(in srgb, var(--wine) 90%, transparent);}
+  .btn.quiet{border-color:var(--hairline); color:var(--ink-soft); background:color-mix(in srgb, var(--ink) 3%, transparent);}
+  .btn.quiet:hover{background:color-mix(in srgb, var(--ink) 8%, transparent); color:var(--ink); border-color:var(--line); box-shadow:none;}
+  .side-actions .btn{justify-content:flex-start;}
+  .text-link{transition:color 0.2s var(--ease); text-underline-offset:3px;}
+  .text-link:hover{text-decoration:underline; color:var(--wine-dark);}
+
+  /* ---------- Chips, toggles, inputs ---------- */
+  .patron-chip, .hub-chip, .continue-chip{transition:background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.15s var(--ease);}
+  .patron-chip{border-radius:999px; padding:6px 14px;}
+  .patron-chip:hover{background:color-mix(in srgb, var(--gold) 14%, var(--parchment-light)); border-color:color-mix(in srgb, var(--gold) 60%, var(--line)); color:var(--ink);}
+  .patron-chip.active{background:var(--gold); border-color:var(--gold); color:var(--parchment-light);}
+  .patron-chip:active, .hub-chip:active, .continue-chip:active{transform:scale(0.96);}
+  .tag{border-radius:999px; padding:2px 10px;}
+  .cal-viewtoggle{border-radius:999px; padding:3px; gap:2px; background:color-mix(in srgb, var(--ink) 5%, var(--parchment-light)); border-color:var(--hairline);}
+  .cal-viewtoggle button{border-radius:999px; background:transparent; padding:6px 14px; transition:background 0.25s var(--ease), color 0.25s var(--ease), box-shadow 0.25s var(--ease);}
+  .cal-viewtoggle button + button{border-left:none;}
+  .cal-viewtoggle button:hover{color:var(--ink);}
+  .cal-viewtoggle button.active{background:var(--parchment-light); color:var(--ink); font-weight:600; box-shadow:var(--elev-1), 0 0 0 1px var(--hairline);}
+  :root[data-mode="dark"] .cal-viewtoggle button.active{background:color-mix(in srgb, var(--ink) 14%, var(--parchment-light));}
+  select, .field input, .field select, .field textarea, .feast-finder select, .quote-tools select, .br-pick select{
+    border-radius:var(--r-sm); border:1px solid var(--line); transition:border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus, select:focus{outline:none; border-color:var(--gold); box-shadow:var(--focus);}
+  .feast-finder{border-radius:var(--r-md); border-color:var(--hairline); background:var(--parchment-light); padding:16px 18px;}
+  .feast-finder select{padding:8px 12px;}
+  .sf-quiz-link, .rite-banner, .forum-guidelines, .forum-empty, .empty-state{border-style:solid; border-color:var(--hairline);}
+  .sf-quiz-link{background:linear-gradient(110deg, color-mix(in srgb, var(--gold) 12%, var(--parchment-light)), var(--parchment-light) 70%); border-radius:var(--r-md); padding:14px 18px;}
+  .empty-state{border-radius:var(--r-md); background:var(--parchment-light);}
+
+  /* ---------- Cards: one surface, one lift ---------- */
+  .feature-card, .bento-card, .path-card, .home-tile, .home-quiz, .continue-chip, .bible-tile, .pf-card, .fi-card, .g-card, .ccc-part, .bible-top, .pope-facts div, .avatar-panel{
+    border-color:var(--hairline); box-shadow:var(--elev-1);
+  }
+  .feature-card, .bento-card, .path-card, .home-tile, .bible-tile, .pf-card, .fi-card, .continue-chip, .upcoming-item, .hub-chip{
+    transition:transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease), background 0.35s var(--ease);
+  }
+  .feature-card[data-open]:hover, .bento-card:hover, .path-card:hover, .home-tile:hover, .bible-tile:hover, .pf-card:hover, .fi-card:hover, .continue-chip:hover{
+    transform:translateY(-3px); box-shadow:var(--elev-2);
+  }
+  .feature-card[data-open]:active, .bento-card:active, .path-card:active, .home-tile:active, .bible-tile:active{transform:translateY(-1px) scale(0.99); transition-duration:0.1s;}
+  .bento-cta, .path-card .bento-cta, .hub-card-cta{display:inline-flex; align-items:center; gap:4px;}
+  .bento-card .bento-cta, .path-card .bento-cta{transition:gap 0.3s var(--ease), letter-spacing 0.3s var(--ease);}
+  .bento-card:hover .bento-cta, .path-card:hover .bento-cta{letter-spacing:0.02em;}
+  /* Accent edges become a soft top glow instead of a thick colored rule */
+  .feature-saint, .feature-verse, .feature-prayer, .home-quiz, .path-card{border-top-width:1px; position:relative; overflow:hidden;}
+  .feature-saint::before, .feature-verse::before, .feature-prayer::before, .home-quiz::before, .path-card::before{
+    content:''; position:absolute; left:0; right:0; top:0; height:3px; pointer-events:none;
+    background:linear-gradient(90deg, transparent, var(--edge, var(--gold)) 20%, var(--edge, var(--gold)) 80%, transparent);
+  }
+  .feature-saint{--edge:var(--gold);} .feature-verse{--edge:var(--wine);} .feature-prayer{--edge:var(--accent, var(--gold));}
+  .home-quiz{--edge:var(--amber);} .path-card{--edge:var(--tile-color, var(--gold)); border-top-color:var(--hairline);}
+
+  /* ---------- Home hero ---------- */
+  .home-hero{border-radius:28px; border-color:var(--hairline); padding:clamp(28px, 4vw, 52px); box-shadow:var(--elev-2);
+    background:
+      radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--season) 16%, transparent), transparent 55%),
+      radial-gradient(90% 80% at 0% 100%, color-mix(in srgb, var(--gold) 8%, transparent), transparent 60%),
+      var(--parchment-light);}
+  .home-hero::before{width:auto; right:0; bottom:auto; height:3px; background:linear-gradient(90deg, var(--season), color-mix(in srgb, var(--season) 20%, transparent) 70%, transparent);}
+  .home-hero::after{content:''; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
+    background:linear-gradient(180deg, rgba(255,255,255,0.05), transparent 30%);}
+  .hero-rosette{filter:drop-shadow(0 10px 30px color-mix(in srgb, var(--gold) 25%, transparent));}
+  .hero-rays{transform-box:view-box; transform-origin:50% 50%; animation:heroTurn 140s linear infinite;}
+  @keyframes heroTurn{to{transform:rotate(360deg);}}
+  .hero-cross{filter:drop-shadow(0 0 0 transparent); animation:heroGlow 5s ease-in-out infinite;}
+  @keyframes heroGlow{50%{filter:drop-shadow(0 0 6px color-mix(in srgb, var(--wine) 55%, transparent));}}
+
+  /* ---------- Section header ---------- */
+  .section-icon{border-radius:16px; box-shadow:var(--elev-1);}
+  .home-heading{border-bottom-color:var(--hairline);}
+
+  /* ---------- Library: give the big card some presence ---------- */
+  .bento-card.big{position:relative; overflow:hidden;}
+  .bento-card.big::after{
+    content:''; position:absolute; right:-40px; bottom:-60px; width:340px; height:340px; pointer-events:none; opacity:0.07;
+    background:var(--tile-color, var(--gold)); -webkit-mask:var(--cross-mask) center / contain no-repeat; mask:var(--cross-mask) center / contain no-repeat;
+    transition:transform 0.8s var(--ease), opacity 0.8s var(--ease);
+  }
+  .bento-card.big:hover::after{transform:rotate(-6deg) scale(1.05); opacity:0.11;}
+  .bento-card.big > *{position:relative; z-index:1;}
+
+  /* ---------- Gallery portraits ---------- */
+  .saint-portrait{transition:transform 0.45s var(--ease), box-shadow 0.45s var(--ease);}
+  .g-card:hover .saint-portrait, .gallery > *:hover .saint-portrait{transform:translateY(-4px); box-shadow:var(--elev-2);}
+
+  /* ---------- Modals: soft card that rises into place ---------- */
+  .overlay{background:rgba(12,9,6,0.5); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);}
+  .overlay.open{animation:overlayIn 0.3s var(--ease) both;}
+  .modal{border:1px solid var(--hairline); border-radius:24px; box-shadow:var(--elev-3); position:relative;}
+  .overlay.open .modal{animation:modalIn 0.45s var(--ease) both;}
+  @keyframes overlayIn{from{opacity:0;}}
+  @keyframes modalIn{from{opacity:0; transform:translateY(24px) scale(0.98);}}
+  .modal-close{width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:background 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);}
+  .modal-close:hover{background:color-mix(in srgb, var(--ink) 8%, transparent); transform:rotate(90deg);}
+  @media (max-width:600px){ .modal{border-radius:20px;} }
+
+  /* ---------- Drawer ---------- */
+  nav.sidebar{transition:transform 0.4s var(--ease), visibility 0.4s; border-radius:0 22px 22px 0; box-shadow:var(--elev-3);}
+  .nav-scrim{-webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); animation:overlayIn 0.3s var(--ease) both;}
+  nav.sidebar button.navlink{transition:background 0.2s var(--ease), color 0.2s var(--ease), padding 0.25s var(--ease);}
+  nav.sidebar button.navlink:hover{padding-left:16px;}
+
+  /* ---------- Page entrance: a soft rise, staggered; content further down rises as it scrolls in ---------- */
+  @keyframes riseIn{
+    from{opacity:0; transform:translateY(14px); filter:blur(3px);}
+    to{opacity:1; transform:none; filter:none;}
+  }
+  .drop-in{animation:riseIn 0.65s var(--ease) both !important;}
+  .reveal-wait{opacity:0; transform:translateY(18px);}
+  .reveal-in{animation:riseIn 0.7s var(--ease) both;}
+  @media (prefers-reduced-motion: reduce){
+    .drop-in, .reveal-in, .overlay.open, .overlay.open .modal, .hero-rays, .hero-cross{animation:none !important;}
+    .reveal-wait{opacity:1; transform:none;}
+    *{transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- Footer-ish breathing room ---------- */
+  .layout{padding-top:40px;}
+  @media (max-width:600px){ .layout{padding-top:22px;} .home-hero{border-radius:22px;} }
+
+  /* ---------- Calendar ---------- */
+  .cal-grid{border-radius:var(--r-md); overflow:hidden; border:1px solid var(--hairline); border-right:none; border-bottom:none; background:var(--parchment-light); box-shadow:var(--elev-1);}
+  .cal-cell{transition:background 0.2s var(--ease);}
+  .cal-cell::after{left:6px; right:6px; bottom:4px; height:3px; border-radius:3px; opacity:0.55;}
+  .cal-detail{border-radius:var(--r-md); border-color:var(--hairline); border-top-width:1px; position:relative; overflow:hidden; box-shadow:var(--elev-1);}
+  .cal-detail::before{content:''; position:absolute; left:0; right:0; top:0; height:3px; background:var(--season);}
+  .cal-nav-btn{transition:border-color 0.2s var(--ease), background 0.2s var(--ease);}
+
+  /* ---------- Phones: a tab bar for the main sections ---------- */
+  .tabbar{display:none;}
+  @media (max-width:760px){
+    :root{--tabbar-h:60px;}
+    .tabbar{
+      display:grid; grid-template-columns:repeat(5, 1fr); position:fixed; left:0; right:0; bottom:0; z-index:45;
+      padding:5px 6px calc(5px + env(safe-area-inset-bottom));
+      background:color-mix(in srgb, var(--parchment-light) 86%, transparent);
+      -webkit-backdrop-filter:saturate(1.4) blur(16px); backdrop-filter:saturate(1.4) blur(16px);
+      border-top:1px solid var(--hairline); box-shadow:0 -8px 24px -16px rgba(var(--ink-rgb),0.4);
+    }
+    .tab-link{
+      position:relative; display:flex; flex-direction:column; align-items:center; gap:3px; padding:6px 0 3px; min-height:48px;
+      border:none; background:none; border-radius:12px; cursor:pointer; color:var(--ink-soft); -webkit-tap-highlight-color:transparent;
+      font-family:'Source Serif 4', serif; font-size:0.7rem; font-weight:600; letter-spacing:0.01em;
+      transition:color 0.25s var(--ease);
+    }
+    .tab-link svg{width:22px; height:22px; transition:transform 0.4s var(--ease-spring);}
+    .tab-link::before{content:''; position:absolute; top:-5px; left:32%; right:32%; height:3px; border-radius:0 0 3px 3px; background:var(--wine); transform:scaleX(0); transition:transform 0.35s var(--ease);}
+    .tab-link.active{color:var(--wine);}
+    .tab-link.active::before{transform:scaleX(1);}
+    .tab-link.active svg{transform:translateY(-1px) scale(1.08);}
+    .tab-link:active svg{transform:scale(0.88);}
+    body{padding-bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom));}
+    .back-to-top{bottom:calc(var(--tabbar-h) + 14px + env(safe-area-inset-bottom));}
+    .toast{bottom:calc(var(--tabbar-h) + 16px + env(safe-area-inset-bottom));}
+    .br-copybar, .pf-jump{bottom:calc(var(--tabbar-h) + 10px + env(safe-area-inset-bottom));}
+  }
+  @media print{ .tabbar{display:none !important;} .reveal-wait{opacity:1 !important; transform:none !important;} }
+
   @media print{
     body *{visibility:hidden;}
     #readOverlay, #readOverlay *{visibility:visible;}
@@ -2428,6 +2657,13 @@
   </div>
   <p class="footer-note">Ad maiorem Dei gloriam. Scripture quotations are from the Revised Standard Version of the Bible: Catholic Edition, copyright © 1965, 1966 the Division of Christian Education of the National Council of the Churches of Christ in the United States of America. Used by permission. All rights reserved. Saint and book images come from Wikipedia and Wikimedia Commons.</p>
 </footer>
+<nav class="tabbar" aria-label="Sections">
+  <button class="tab-link" data-route="today" data-icon="daily"><span>Today</span></button>
+  <button class="tab-link" data-route="pray" data-icon="prayer"><span>Pray</span></button>
+  <button class="tab-link" data-route="library" data-icon="book"><span>Library</span></button>
+  <button class="tab-link" data-route="learn" data-icon="theology"><span>Learn</span></button>
+  <button class="tab-link" data-route="history" data-icon="history"><span>History</span></button>
+</nav>
 
 <!-- Reading modal -->
 <div class="overlay" id="readOverlay">
@@ -8879,7 +9115,8 @@ themeMenu.addEventListener('click', e => {
   }
   const opt = e.target.closest('.theme-option');
   if(!opt) return;
-  applyTheme(opt.dataset.theme, true);
+  const pick = () => applyTheme(opt.dataset.theme, true);
+  if(document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(pick); else pick();
   setThemeMenuOpen(false);
   themeToggleBtn.focus();
 });
@@ -13146,6 +13383,7 @@ const NAV_ICONS = {
 function navIcon(key){
   return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${NAV_ICONS[key] || ''}</svg>`;
 }
+document.querySelectorAll('.tab-link').forEach(b => b.insertAdjacentHTML('afterbegin', navIcon(b.dataset.icon)));
 
 const SECTIONS = {
   home:{ name:'Home', icon:'home', color:'var(--wine)' },
@@ -13364,7 +13602,7 @@ function heroRosette(){
   return `<svg class="hero-rosette" viewBox="0 0 220 220" aria-hidden="true">
     <circle cx="110" cy="110" r="104" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.35"/>
     <circle cx="110" cy="110" r="52" fill="none" stroke="currentColor" stroke-width="1" opacity="0.55"/>
-    <path d="${rays}" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity="0.6"/>
+    <path class="hero-rays" d="${rays}" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity="0.6"/>
     <g class="hero-cross" transform="translate(68.4 68.4) scale(1.3)"><path fill-rule="evenodd" d="${cross}"/></g>
   </svg>`;
 }
@@ -13653,6 +13891,7 @@ function applyRoute(path){
   setNavOpen(false);
   const top = route.split('/')[0];
   document.querySelectorAll('.topnav-link').forEach(b => b.classList.toggle('active', b.dataset.route === top));
+  document.querySelectorAll('.tab-link').forEach(b => { const on = b.dataset.route === top; b.classList.toggle('active', on); if(on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
   document.querySelectorAll('.top-action').forEach(b => b.classList.toggle('active', b.dataset.route === top));
   document.querySelectorAll('.navlink[data-route]').forEach(b => b.classList.toggle('active',
     b.dataset.route === route || (route.startsWith(b.dataset.route + '/') && !document.querySelector(`.navlink[data-route="${route}"]`))));
@@ -13678,6 +13917,15 @@ function dropTargets(root, out){
   }
   return out;
 }
+const revealer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => entries.forEach(en => {
+  if(!en.isIntersecting) return;
+  const el = en.target;
+  revealer.unobserve(el);
+  el.classList.remove('reveal-wait');
+  el.classList.add('reveal-in');
+  const done = ev => { if(ev.target === el){ el.classList.remove('reveal-in'); el.removeEventListener('animationend', done); } };
+  el.addEventListener('animationend', done);
+}), { rootMargin:'0px 0px -6% 0px' }) : null;
 function dropIn(roots){
   const limit = window.innerHeight + 40;
   const items = [];
@@ -13686,8 +13934,12 @@ function dropIn(roots){
   for(const el of items){
     dropDone.add(el);
     const box = el.getBoundingClientRect();
-    if(!box.height || box.top > limit || box.bottom < 0) continue;   // only what's on screen
-    el.style.animationDelay = Math.min(n++ * 55, 1300) + 'ms';
+    if(!box.height || box.bottom < 0) continue;
+    if(box.top > limit){   // further down: wait until it scrolls into view
+      if(revealer){ el.classList.add('reveal-wait'); revealer.observe(el); }
+      continue;
+    }
+    el.style.animationDelay = Math.min(n++ * 45, 700) + 'ms';
     el.classList.add('drop-in');
     const done = ev => {
       if(ev.target !== el) return;
@@ -13701,6 +13953,7 @@ function dropIn(roots){
 function startDropIn(){
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   dropDone = new WeakSet();   // the page header is reused, so forget what was animated on the last page
+  if(revealer) revealer.disconnect();
   dropUntil = Date.now() + 2500;   // content that arrives a moment later (the Community, an account) drops in too
   dropIn([document.getElementById('mainHead'), entryListEl]);
 }
@@ -14462,7 +14715,7 @@ backToTop.setAttribute('aria-label', 'Back to top');
 backToTop.innerHTML = '↑';
 backToTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
 document.body.appendChild(backToTop);
-window.addEventListener('scroll', () => backToTop.classList.toggle('show', window.scrollY > 900), { passive:true });
+window.addEventListener('scroll', () => { backToTop.classList.toggle('show', window.scrollY > 900); document.body.classList.toggle('scrolled', window.scrollY > 4); }, { passive:true });
 
 /* ---------- Text size ---------- */
 const TEXT_SIZES = [['md', 'A', 'Normal text'], ['lg', 'A', 'Larger text'], ['xl', 'A', 'Largest text']];
