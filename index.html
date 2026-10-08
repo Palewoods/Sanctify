@@ -2012,6 +2012,39 @@
   .forum-form{max-width:720px;}
   .btn[hidden]{display:none !important;}
   .mod-page{max-width:900px;}
+  .author-link{background:none; border:none; padding:0; font:inherit; color:inherit; cursor:pointer; text-decoration:none;}
+  .author-link:hover{color:var(--wine-dark); text-decoration:underline; text-underline-offset:3px;}
+  .forum-search{max-width:none; margin:0 0 12px;}
+  .forum-notify{display:block; width:100%; margin:0 0 12px; padding:10px 14px; border-radius:12px; border:1px solid color-mix(in srgb, var(--wine) 40%, var(--line)); background:color-mix(in srgb, var(--wine) 8%, var(--parchment-light)); color:var(--ink); text-align:left; cursor:pointer; font-family:'Source Serif 4', serif; font-weight:600;}
+  .forum-move{display:inline-flex; align-items:center; gap:6px;}
+  .forum-move select{border:none; background:transparent; color:inherit; font:inherit; cursor:pointer;}
+  .forum-edit{margin:4px 0;}
+  .forum-edit textarea{min-height:140px;}
+  .notify-box{margin-bottom:22px; padding:16px 18px; border:1px solid var(--line); border-radius:16px; background:var(--parchment-light);}
+  .notify-head{display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:8px;}
+  .notify-head h3{font-size:1.3rem;}
+  .notify-list{display:flex; flex-direction:column; gap:6px;}
+  .notify-item{display:flex; gap:10px; align-items:flex-start; width:100%; padding:10px 12px; border-radius:12px; border:1px solid transparent; background:none; color:var(--ink); text-align:left; cursor:pointer; font-family:'Source Serif 4', serif;}
+  .notify-item:hover{border-color:var(--line); background:rgba(var(--tint-rgb),0.06);}
+  .notify-item.unread{background:color-mix(in srgb, var(--gold) 9%, transparent);}
+  .notify-item.warning{display:block; cursor:default; border-color:color-mix(in srgb, var(--wine) 35%, var(--line));}
+  .notify-item.warning .daily-kicker{color:var(--wine);}
+  .notify-item > span{display:flex; flex-direction:column; gap:2px; min-width:0;}
+  .notify-excerpt{font-size:0.9rem; color:var(--ink-soft); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .member-panel h3{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .member-stats{display:flex; flex-wrap:wrap; gap:6px 18px; margin:4px 0 10px; color:var(--ink-soft); font-size:0.92rem;}
+  .member-stats strong{color:var(--ink);}
+  .mod-tools{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; margin:0 0 18px;}
+  .mod-tool{padding:14px 16px; border:1px solid var(--line); border-radius:14px;}
+  .mod-tool h4{font-size:1.1rem;}
+  .mod-tool .field{margin-bottom:10px;}
+  .mod-tool textarea{min-height:80px;}
+  .mod-note-form{display:flex; gap:8px; margin:6px 0 12px;}
+  .mod-note-form input{flex:1; min-width:0; padding:9px 12px; border-radius:10px; border:1px solid var(--line); background:var(--parchment); color:var(--ink); font-family:'Source Serif 4', serif;}
+  .mod-setting{margin-bottom:18px; padding:16px 18px; border:1px solid var(--line); border-radius:14px; max-width:680px;}
+  .mod-setting h3{font-size:1.25rem;}
+  .mod-setting .shine-row{margin:0; background:none; padding:0;}
+  .mod-setting textarea{min-height:160px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:0.9rem;}
   .mod-tabs{display:inline-flex; margin-bottom:22px;}
   .mod-count{margin-left:6px; padding:0 7px; border-radius:999px; background:var(--wine); color:var(--parchment-light); font-size:0.72rem; line-height:18px;}
   .mod-count:empty{display:none;}
@@ -6681,7 +6714,7 @@ function render(){
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
       community:renderCommunity, resources:renderResources,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
-      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
+      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
       'hub-pray':() => renderHub('pray'), 'hub-library':() => renderHub('library'), 'hub-learn':() => renderHub('learn'), 'hub-history':() => renderHub('history'), 'hub-saints':() => renderHub('saints')
     };
     const needsNoSearch = new Set(['home', 'daily', 'theology', 'hub-pray', 'hub-library', 'hub-learn']);
@@ -9073,6 +9106,8 @@ const Community = { available:false, user:null, problem:null };
 let accountLoading = null;
 let viewSeq = 0;              // guards against a slow response drawing over a newer page
 let forumCat = 'all';
+let forumSearch = '';
+let profileName = null;      // the member whose profile is open
 let forumThreadId = null;
 let forumDraft = null;        // a new post in progress
 let replyDraft = { id:null, text:'' };
@@ -9101,7 +9136,7 @@ async function api(path, { method = 'GET', body } = {}){
 
 function ensureAccount(){
   if(!accountLoading) accountLoading = api('me')
-    .then(data => { Community.user = data.user; Community.available = true; Community.problem = null; })
+    .then(data => { Community.user = data.user; Community.readonly = !!data.readonly; Community.available = true; Community.problem = null; })
     .catch(err => { Community.user = null; Community.available = false; Community.problem = err; })
     .then(updateAccountButton);
   return accountLoading;
@@ -9110,8 +9145,9 @@ function ensureAccount(){
 function updateAccountButton(){
   const btn = document.getElementById('topAccount');
   const u = Community.user;
-  btn.innerHTML = u ? `<span class="top-avatar" aria-hidden="true">${escapeHtml(u.username[0].toUpperCase())}${avatarImg(u.username, u.avatar)}</span>` : navIcon('account');
-  btn.title = u ? `Your account (${u.username})` : 'Sign in';
+  btn.innerHTML = (u ? `<span class="top-avatar" aria-hidden="true">${escapeHtml(u.username[0].toUpperCase())}${avatarImg(u.username, u.avatar)}</span>` : navIcon('account'))
+    + (u && u.unread ? `<span class="top-badge">${u.unread > 9 ? '9+' : u.unread}</span>` : '');
+  btn.title = u ? `Your account (${u.username})${u.unread ? ` · ${u.unread} new` : ''}` : 'Sign in';
   const modNav = document.getElementById('navModerate');
   if(modNav) modNav.hidden = !(u && u.admin);
   btn.setAttribute('aria-label', btn.title);
@@ -9155,7 +9191,14 @@ function avatarDataUrl(file){
     img.src = url;
   });
 }
-function authorHtml(name){ return name ? escapeHtml(name) : '<em>Former member</em>'; }
+function authorHtml(name){ return name ? `<button class="author-link" data-route="community/user/${encodeURIComponent(name)}">${escapeHtml(name)}</button>` : '<em>Former member</em>'; }
+// Why a member can't post right now, if they can't
+function postingBlock(u){
+  if(!u || u.admin) return '';
+  if(Community.readonly) return 'The Community is read-only for a little while. Please check back soon.';
+  if(u.muted) return `You’re muted${u.muted.until ? ' until ' + new Date(u.muted.until).toLocaleDateString(undefined, { month:'long', day:'numeric' }) : ''}, so you can read and pray but not post or reply.${u.muted.reason ? ' Reason: ' + u.muted.reason : ''}`;
+  return '';
+}
 function forumTag(cat){
   const c = FORUM_CATS[cat] || FORUM_CATS.general;
   return `<span class="forum-tag" style="--tag-color:${c.color}">${escapeHtml(c.name)}</span>`;
@@ -9264,6 +9307,11 @@ async function renderCommunity(){
         : '<button class="text-link" data-auth="signin">Sign in</button> or <button class="text-link" data-auth="signup">create a free account</button> to post and reply.'}</p>
       <button class="btn primary pill" data-route="community/new">New post</button>
     </div>
+    ${Community.readonly ? '<p class="forum-locked">The Community is read-only for a little while. You can still read and pray.</p>' : ''}
+    ${u && u.muted ? `<p class="forum-locked">${escapeHtml(postingBlock(u))}</p>` : ''}
+    ${u && u.unread ? `<button class="forum-notify" data-route="account">You have ${plural(u.unread, 'new notification', 'new notifications')} →</button>` : ''}
+    <div class="searchbar forum-search" role="search"><svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input type="search" id="forumSearch" placeholder="Search the Community…" value="${escapeHtml(forumSearch)}" aria-label="Search the Community"></div>
     <div class="patron-filters-row forum-chips" role="group" aria-label="Categories">
       ${chips.map(([k, name]) => `<button class="patron-chip${forumCat === k ? ' active' : ''}" data-fcat="${k}" aria-pressed="${forumCat === k}">${escapeHtml(name)}</button>`).join('')}
     </div>
@@ -9275,9 +9323,18 @@ async function renderCommunity(){
   wrap.querySelectorAll('[data-fcat]').forEach(b => b.addEventListener('click', () => { forumCat = b.dataset.fcat; renderCommunity(); }));
   const query = { page:'0' };
   if(forumCat !== 'all') query.category = forumCat;
+  if(forumSearch) query.q = forumSearch;
+  let searchTimer = null;
+  wrap.querySelector('#forumSearch').addEventListener('input', ev => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      forumSearch = ev.target.value.trim();
+      renderCommunity().then(() => { const box = document.getElementById('forumSearch'); if(box){ box.focus(); box.setSelectionRange(box.value.length, box.value.length); } });
+    }, 400);
+  });
   loadForumPosts(wrap.querySelector('#forumList'), query, `
     <div class="forum-empty">
-      <p>${forumCat === 'all' ? 'No posts yet.' : 'No posts in ' + escapeHtml(FORUM_CATS[forumCat].name) + ' yet.'} Be the first to start a conversation!</p>
+      <p>${forumSearch ? 'No posts match “' + escapeHtml(forumSearch) + '”.' : (forumCat === 'all' ? 'No posts yet.' : 'No posts in ' + escapeHtml(FORUM_CATS[forumCat].name) + ' yet.') + ' Be the first to start a conversation!'}</p>
       <button class="btn primary pill" data-route="community/new">Write the first post</button>
     </div>`);
 }
@@ -9290,10 +9347,12 @@ let modQuery = { q:'', filter:'all', sort:'new' };
 const MOD_ACTIONS = {
   'moderator-on':'turned on moderator tools', ban:'banned', unban:'unbanned', 'remove-all':'removed everything posted by',
   'remove-post':'removed', 'remove-reply':'removed', pin:'pinned', unpin:'unpinned', lock:'locked', unlock:'unlocked',
-  'dismiss-report':'dismissed reports on', 'publish-news':'published', 'edit-news':'edited', 'delete-news':'deleted'
+  'dismiss-report':'dismissed reports on', mute:'muted', unmute:'unmuted', warn:'warned', 'add-note':'added a note on',
+  move:'moved', settings:'changed the settings', 'publish-news':'published', 'edit-news':'edited', 'delete-news':'deleted'
 };
 function modDate(ms){ return new Date(ms).toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' }); }
 function banLabel(ban){ return ban ? (ban.until ? 'Banned until ' + modDate(ban.until) : 'Banned permanently') : ''; }
+function muteLabel(m){ return m ? (m.until ? 'Muted until ' + modDate(m.until) : 'Muted') : ''; }
 
 async function renderModerate(){
   const seq = ++viewSeq;
@@ -9306,7 +9365,7 @@ async function renderModerate(){
     entryListEl.innerHTML = forumNotice('Moderators only', 'Turn on moderator tools from your Account page to use this page.', '<button class="btn primary pill" data-route="account">Go to your account</button>');
     return;
   }
-  const tabs = [['overview', 'Overview'], ['reports', 'Reports'], ['accounts', 'Accounts'], ['log', 'Log']];
+  const tabs = [['overview', 'Overview'], ['reports', 'Reports'], ['accounts', 'Accounts'], ['settings', 'Settings'], ['log', 'Log']];
   entryListEl.innerHTML = `
     <div class="mod-page">
       <div class="cal-viewtoggle mod-tabs" role="tablist" aria-label="Moderation">${tabs.map(([k, label]) =>
@@ -9322,6 +9381,7 @@ async function renderModerate(){
     if(modTab === 'overview') await modOverviewView(body, still);
     else if(modTab === 'reports') await modReportsView(body, still);
     else if(modTab === 'accounts') await (modUserId ? modUserView(body, still) : modAccountsView(body, still));
+    else if(modTab === 'settings') await modSettingsView(body, still);
     else await modLogView(body, still);
   }catch(err){ fail(err); }
 }
@@ -9335,16 +9395,20 @@ async function modOverviewView(body, still){
       ${stat(o.reports, o.reports === 1 ? 'open report' : 'open reports', 'reports')}
       ${stat(o.accounts, o.accounts === 1 ? 'account' : 'accounts', 'accounts')}
       ${stat(o.banned, 'banned', 'banned')}
+      ${stat(o.muted, 'muted', 'muted')}
       ${stat(o.posts, o.posts === 1 ? 'post' : 'posts')}
       ${stat(o.replies, o.replies === 1 ? 'reply' : 'replies')}
       ${stat(o.news, 'news posts', 'news')}
     </div>
+    ${o.readonly ? '<p class="forum-locked">The Community is read-only. Only moderators can post. <button class="text-link" data-go="settings">Change this in Settings</button></p>' : ''}
     <div class="mod-help">
       <h3>What moderators can do</h3>
       <ul>
         <li><strong>Reports:</strong> members can report a post or reply. Review them here, then remove it or dismiss the report.</li>
         <li><strong>Accounts:</strong> see every account with its posts and replies, ban a member for a day, a week, a month, or for good, and remove everything they have posted.</li>
-        <li><strong>Threads:</strong> open any Community post to remove it, pin it to the top, or lock it so it takes no new replies.</li>
+        <li><strong>Members:</strong> mute a member so they can read and pray but not post, send them a private warning, and keep private notes on their account.</li>
+        <li><strong>Threads:</strong> open any Community post to remove it, pin it to the top, lock it so it takes no new replies, or move it to another category.</li>
+        <li><strong>Settings:</strong> make the whole Community read-only for a while, and keep a list of blocked words that can’t be posted.</li>
         <li><strong>News:</strong> write, edit, and delete announcements on the News page.</li>
         <li><strong>Log:</strong> every moderator action is recorded, with who did it and when.</li>
       </ul>
@@ -9352,8 +9416,8 @@ async function modOverviewView(body, still){
   body.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => {
     const go = b.dataset.go;
     if(go === 'news') return navigate('news');
-    modTab = go === 'banned' ? 'accounts' : go;
-    if(go === 'banned') modQuery.filter = 'banned';
+    modTab = go === 'banned' || go === 'muted' ? 'accounts' : go;
+    if(go === 'banned' || go === 'muted') modQuery.filter = go;
     modUserId = null;
     renderModerate();
   }));
@@ -9400,7 +9464,7 @@ async function modAccountsView(body, still){
     <div class="mod-toolbar">
       <div class="searchbar mod-search"><svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
         <input type="search" id="modSearch" placeholder="Find an account…" value="${escapeHtml(modQuery.q)}" aria-label="Find an account"></div>
-      <select id="modFilter" aria-label="Show"><option value="all">All accounts</option><option value="reported">Reported</option><option value="banned">Banned</option></select>
+      <select id="modFilter" aria-label="Show"><option value="all">All accounts</option><option value="reported">Reported</option><option value="banned">Banned</option><option value="muted">Muted</option></select>
       <select id="modSort" aria-label="Sort"><option value="new">Newest first</option><option value="active">Recently active</option><option value="name">By name</option></select>
     </div>
     <p class="forum-meta mod-total">${plural(data.total, 'account', 'accounts')} in all</p>
@@ -9419,6 +9483,7 @@ async function modAccountsView(body, still){
           ${x.siteAdmin ? '<span class="mod-badge admin">Administrator</span>' : x.moderator ? '<span class="mod-badge mod">Moderator</span>' : ''}
           ${x.reports ? `<span class="mod-badge warn">${plural(x.reports, 'report', 'reports')}</span>` : ''}
           ${x.ban ? `<span class="mod-badge ban">${escapeHtml(banLabel(x.ban))}</span>` : ''}
+          ${x.mute ? `<span class="mod-badge warn">${escapeHtml(muteLabel(x.mute))}</span>` : ''}
         </span>
       </button>`).join('') : '<div class="forum-empty">No accounts match.</div>';
     more.innerHTML = data.more ? '<button class="btn quiet forum-more">Show more</button>' : '';
@@ -9456,8 +9521,10 @@ async function modUserView(body, still){
           ${x.siteAdmin ? '<span class="mod-badge admin">Administrator</span>' : x.moderator ? '<span class="mod-badge mod">Moderator</span>' : ''}
           ${x.reports ? `<span class="mod-badge warn">${plural(x.reports, 'open report', 'open reports')}</span>` : ''}
           ${x.ban ? `<span class="mod-badge ban">${escapeHtml(banLabel(x.ban))}</span>` : ''}
+          ${x.mute ? `<span class="mod-badge warn">${escapeHtml(muteLabel(x.mute))}</span>` : ''}
         </div>
-        ${x.ban && x.ban.reason ? `<p class="mod-reason"><strong>Reason:</strong> ${escapeHtml(x.ban.reason)}</p>` : ''}
+        ${x.ban && x.ban.reason ? `<p class="mod-reason"><strong>Ban reason:</strong> ${escapeHtml(x.ban.reason)}</p>` : ''}
+        ${x.mute && x.mute.reason ? `<p class="mod-reason"><strong>Mute reason:</strong> ${escapeHtml(x.mute.reason)}</p>` : ''}
       </div>
     </section>
     ${self || x.siteAdmin ? `<p class="forum-meta">${self ? 'This is your account.' : 'Site administrators can’t be banned.'}</p>` : x.ban ? `
@@ -9473,6 +9540,30 @@ async function modUserView(body, still){
         <p class="forum-error" id="banError" hidden></p>
         <button class="btn danger" type="submit">Ban ${escapeHtml(x.username)}</button>
       </form>`}
+    ${self || x.siteAdmin || x.ban ? '' : `
+      <div class="mod-tools">
+        ${x.mute ? `<div class="mod-tool"><h4>Muted</h4><p class="forum-meta">${escapeHtml(x.username)} can read and pray but can’t post or reply.</p><button class="btn quiet" data-unmute>Lift the mute</button></div>` : `
+        <form class="mod-tool" id="modMute">
+          <h4>Mute</h4>
+          <p class="forum-meta">They can still read and pray, but can’t post or reply.</p>
+          <div class="field"><select id="muteDays" aria-label="How long"><option value="1">1 day</option><option value="3">3 days</option><option value="7" selected>7 days</option><option value="30">30 days</option><option value="0">Until unmuted</option></select></div>
+          <div class="field"><input id="muteReason" maxlength="300" placeholder="Reason (shown to them)" aria-label="Reason"></div>
+          <button class="btn quiet" type="submit">Mute ${escapeHtml(x.username)}</button>
+        </form>`}
+        <form class="mod-tool" id="modWarn">
+          <h4>Send a warning</h4>
+          <p class="forum-meta">A private message from the moderators, shown in their notifications.</p>
+          <div class="field"><textarea id="warnText" maxlength="1000" placeholder="For example: please keep replies kind and on topic."></textarea></div>
+          <button class="btn quiet" type="submit">Send warning</button>
+        </form>
+      </div>`}
+    ${data.warnings.length ? `<h3 class="forum-replies-head">Warnings sent</h3><div class="mod-list">${data.warnings.map(w => `
+      <div class="mod-item"><div class="forum-meta">${escapeHtml(modDate(w.createdAt))} · from ${authorHtml(w.by)} · ${w.seen ? 'read' : 'not read yet'}</div><p class="mod-excerpt">${escapeHtml(w.message)}</p></div>`).join('')}</div>` : ''}
+    <h3 class="forum-replies-head">Moderator notes</h3>
+    <p class="forum-meta">Only moderators can see these.</p>
+    <form class="mod-note-form" id="modNote"><input id="noteText" maxlength="1000" placeholder="Add a private note…" aria-label="Add a private note"><button class="btn quiet" type="submit">Add note</button></form>
+    <div class="mod-list">${data.notes.map(n => `
+      <div class="mod-item"><div class="forum-meta">${escapeHtml(modDate(n.createdAt))} · ${authorHtml(n.by)} <button class="text-link forum-remove" data-del-note="${n.id}">Delete</button></div><p class="mod-excerpt">${escapeHtml(n.note)}</p></div>`).join('')}</div>
     ${(x.posts || x.replies) && !self ? `<div class="forum-form-actions mod-actions"><button class="btn quiet" data-remove-all>Remove all ${plural(x.posts + x.replies, 'post and reply', 'posts and replies')}</button></div>` : ''}
     <h3 class="forum-replies-head">Posts</h3>
     <div class="mod-list">${data.posts.length ? data.posts.map(p => `
@@ -9502,10 +9593,66 @@ async function modUserView(body, still){
   if(unban) unban.addEventListener('click', async () => {
     try{ await api(`mod/users/${x.id}/ban`, { method:'DELETE' }); after(`${x.username} can sign in again`); }catch(err){ toast(err.message); }
   });
+  const muteForm = body.querySelector('#modMute');
+  if(muteForm) muteForm.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    try{ await api(`mod/users/${x.id}/mute`, { method:'POST', body:{ days:Number(muteForm.querySelector('#muteDays').value), reason:muteForm.querySelector('#muteReason').value } }); after(`${x.username} is muted`); }
+    catch(err){ toast(err.message); }
+  });
+  const unmute = body.querySelector('[data-unmute]');
+  if(unmute) unmute.addEventListener('click', async () => {
+    try{ await api(`mod/users/${x.id}/mute`, { method:'DELETE' }); after(`${x.username} can post again`); }catch(err){ toast(err.message); }
+  });
+  const warnForm = body.querySelector('#modWarn');
+  if(warnForm) warnForm.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const text = warnForm.querySelector('#warnText').value.trim();
+    if(text.length < 3){ toast('Please write the warning first.'); return; }
+    try{ await api(`mod/users/${x.id}/warn`, { method:'POST', body:{ message:text } }); after('Warning sent'); }catch(err){ toast(err.message); }
+  });
+  const noteForm = body.querySelector('#modNote');
+  noteForm.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const text = noteForm.querySelector('#noteText').value.trim();
+    if(!text) return;
+    try{ await api(`mod/users/${x.id}/notes`, { method:'POST', body:{ note:text } }); after('Note added'); }catch(err){ toast(err.message); }
+  });
+  body.querySelectorAll('[data-del-note]').forEach(b => b.addEventListener('click', async () => {
+    if(!confirm('Delete this note?')) return;
+    try{ await api('mod/notes/' + b.dataset.delNote, { method:'DELETE' }); after('Note deleted'); }catch(err){ toast(err.message); }
+  }));
   const removeAll = body.querySelector('[data-remove-all]');
   if(removeAll) removeAll.addEventListener('click', async () => {
     if(!confirm(`Remove every post and reply by ${x.username}? This can’t be undone.`)) return;
     try{ await api(`mod/users/${x.id}/content`, { method:'DELETE' }); after('Their posts and replies were removed'); }catch(err){ toast(err.message); }
+  });
+}
+
+async function modSettingsView(body, still){
+  const st = await api('mod/settings');
+  if(!still()) return;
+  body.innerHTML = `
+    <section class="mod-setting">
+      <div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">Read-only Community</span><span class="shine-row-note">Pause all new posts and replies from members. Moderators can still post.</span></span>
+        <button type="button" class="shine-switch" id="roSwitch" role="switch" aria-checked="${st.readonly}" aria-label="Read-only Community"></button></div>
+    </section>
+    <form class="mod-setting" id="wordsForm">
+      <h3>Blocked words</h3>
+      <p class="forum-meta">Posts and replies that use any of these words (as a whole word) are turned back with a request to rephrase. One word or phrase per line. Moderators aren’t affected.</p>
+      <div class="field"><textarea id="wordsText" spellcheck="false">${escapeHtml(st.words.join('\n'))}</textarea></div>
+      <div class="forum-form-actions"><button class="btn primary pill" type="submit">Save blocked words</button><span class="forum-meta">${plural(st.words.length, 'word', 'words')} now</span></div>
+    </form>`;
+  body.querySelector('#roSwitch').addEventListener('click', async ev => {
+    const on = ev.currentTarget.getAttribute('aria-checked') !== 'true';
+    if(on && !confirm('Make the Community read-only? Members won’t be able to post or reply until you turn this off.')) return;
+    try{ await api('mod/settings', { method:'PUT', body:{ readonly:on } }); Community.readonly = on; toast(on ? 'The Community is read-only' : 'The Community is open again'); renderModerate(); }
+    catch(err){ toast(err.message); }
+  });
+  body.querySelector('#wordsForm').addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const words = body.querySelector('#wordsText').value.split('\n').map(w => w.trim()).filter(Boolean);
+    try{ await api('mod/settings', { method:'PUT', body:{ words } }); toast('Blocked words saved'); renderModerate(); }
+    catch(err){ toast(err.message); }
   });
 }
 
@@ -9516,6 +9663,69 @@ async function modLogView(body, still){
     <li><span class="forum-meta">${escapeHtml(fullDate(l.createdAt))}</span>
       <span><strong>${authorHtml(l.by)}</strong> ${escapeHtml(MOD_ACTIONS[l.action] || l.action)} <strong>${escapeHtml(l.target)}</strong>${l.detail ? ` <span class="forum-meta">· ${escapeHtml(l.detail)}</span>` : ''}</span></li>`).join('')}</ol>`
     : '<div class="forum-empty">Nothing in the log yet.</div>';
+}
+
+/* ---------- Member profiles (#/community/user/NAME) ---------- */
+async function renderMemberProfile(){
+  const seq = ++viewSeq;
+  const name = profileName;
+  entryListEl.innerHTML = '<div class="forum-loading">Loading…</div>';
+  await ensureAccount();
+  let data = null, problem = null;
+  if(Community.available){ try{ data = await api('users/' + encodeURIComponent(name)); }catch(err){ problem = err; } }
+  if(!stillShowing(seq, 'profile') || profileName !== name) return;
+  if(!Community.available){ showProblem(entryListEl, Community.problem); return; }
+  if(!data){
+    sectionTitleEl.textContent = 'Member not found';
+    entryListEl.innerHTML = forumNotice('Member not found', escapeHtml(problem ? problem.message : 'There’s no member by that name.'), '<button class="btn quiet" data-route="community">Back to the Community</button>');
+    return;
+  }
+  const p = data.profile, me = Community.user;
+  sectionTitleEl.textContent = p.username;
+  sectionDescEl.textContent = 'Member since ' + new Date(p.createdAt).toLocaleDateString(undefined, { month:'long', year:'numeric' });
+  document.title = p.username + ' — Sanctify';
+  entryListEl.innerHTML = `
+    <div class="member-page">
+      <section class="avatar-panel member-panel">
+        ${avatarFor(p.username, p.avatar, 'avatar-big')}
+        <div>
+          <h3>${escapeHtml(p.username)}${p.administrator ? ' <span class="mod-badge admin">Administrator</span>' : ''}</h3>
+          <div class="member-stats"><span><strong>${p.posts}</strong> ${p.posts === 1 ? 'post' : 'posts'}</span><span><strong>${p.replies}</strong> ${p.replies === 1 ? 'reply' : 'replies'}</span><span><strong>${p.prayers}</strong> ${p.prayers === 1 ? 'prayer offered' : 'prayers offered'}</span></div>
+          <div class="forum-form-actions">
+            ${me && me.username.toLowerCase() === p.username.toLowerCase() ? '<button class="btn quiet" data-route="account">Edit your account</button>' : ''}
+            ${me && me.admin ? `<button class="btn quiet" data-mod-open="${p.id}">Open in moderation</button>` : ''}
+          </div>
+        </div>
+      </section>
+      <h3 class="forum-replies-head">Posts</h3>
+      <div class="forum-list" id="memberPosts"></div>
+    </div>`;
+  const list = entryListEl.querySelector('#memberPosts');
+  if(data.posts.length) data.posts.forEach(x => list.appendChild(forumPostCard(x)));
+  else list.innerHTML = '<div class="forum-empty">No posts yet.</div>';
+  const open = entryListEl.querySelector('[data-mod-open]');
+  if(open) open.addEventListener('click', () => { modTab = 'accounts'; modUserId = Number(open.dataset.modOpen); navigate('moderate'); });
+}
+
+// The Account page's list of replies to your posts and messages from moderators
+async function loadNotifications(box){
+  let data;
+  try{ data = await api('notifications'); }catch(err){ box.innerHTML = `<p class="forum-meta">${escapeHtml(err.message)}</p>`; return; }
+  if(!box.isConnected) return;
+  const items = [
+    ...data.warnings.map(w => ({ at:w.createdAt, html:`<div class="notify-item warning${w.unread ? ' unread' : ''}"><span class="daily-kicker">A message from the moderators · ${escapeHtml(timeAgo(w.createdAt))}</span><div class="forum-body">${forumText(w.message)}</div></div>` })),
+    ...data.replies.map(r => ({ at:r.createdAt, html:`<button class="notify-item${r.unread ? ' unread' : ''}" data-route="community/post/${r.postId}">${avatarFor(r.author, r.authorAvatar)}<span><span class="forum-meta"><strong>${escapeHtml(r.author || 'Former member')}</strong> replied to “${escapeHtml(r.postTitle)}” · ${escapeHtml(timeAgo(r.createdAt))}</span><span class="notify-excerpt">${escapeHtml(r.excerpt)}</span></span></button>` }))
+  ].sort((a, b) => b.at - a.at);
+  const unread = Community.user && Community.user.unread;
+  box.innerHTML = items.length ? `
+    <div class="notify-head"><h3>Notifications${unread ? ` <span class="mod-count">${unread}</span>` : ''}</h3>${unread ? '<button class="text-link" data-seen>Mark all as read</button>' : ''}</div>
+    <div class="notify-list">${items.slice(0, 25).map(i => i.html).join('')}</div>` : `
+    <div class="notify-head"><h3>Notifications</h3></div><p class="forum-meta">When someone replies to your posts, or a moderator sends you a message, it will appear here.</p>`;
+  const seen = box.querySelector('[data-seen]');
+  if(seen) seen.addEventListener('click', async () => {
+    try{ await api('notifications/seen', { method:'POST' }); accountLoading = null; await ensureAccount(); loadNotifications(box); }
+    catch(err){ toast(err.message); }
+  });
 }
 
 /* ---------- News: announcements from the Sanctify team ---------- */
@@ -9666,13 +9876,15 @@ async function renderThread(){
   wrap.className = 'forum-thread';
   wrap.innerHTML = `
     <article class="forum-op">
-      <div class="forum-op-head">${avatarFor(post.author, post.authorAvatar)}<div><strong>${authorHtml(post.author)}</strong><span class="forum-meta">${escapeHtml(fullDate(post.createdAt))}</span></div></div>
-      <div class="forum-body">${forumText(post.body)}</div>
+      <div class="forum-op-head">${avatarFor(post.author, post.authorAvatar)}<div><strong>${authorHtml(post.author)}</strong><span class="forum-meta">${escapeHtml(fullDate(post.createdAt))}${post.editedAt ? ` · <span title="${escapeHtml(fullDate(post.editedAt))}">edited</span>` : ''}</span></div></div>
+      <div class="forum-body" id="opBody">${forumText(post.body)}</div>
       <div class="forum-actions">
         ${post.category === 'prayer' ? `<button class="read-action${post.prayed ? ' on' : ''}" data-act="pray" aria-pressed="${post.prayed}">${prayLabel(post)}</button>` : ''}
         <button class="read-action" data-act="reply">Reply</button>
         <button class="read-action" data-act="link">Copy link</button>
+        ${post.mine ? '<button class="read-action" data-act="edit">Edit</button>' : ''}
         ${u && !post.mine ? '<button class="read-action" data-act="report">Report</button>' : ''}
+        ${post.canModerate ? `<label class="read-action forum-move">Move to <select data-act="move">${Object.entries(FORUM_CATS).map(([k, c]) => `<option value="${k}"${post.category === k ? ' selected' : ''}>${escapeHtml(c.name)}</option>`).join('')}</select></label>` : ''}
         ${post.canModerate ? `<button class="read-action" data-act="pin">${post.pinned ? 'Unpin' : 'Pin to top'}</button><button class="read-action" data-act="lock">${post.locked ? 'Unlock' : 'Lock thread'}</button>` : ''}
         ${post.canRemove ? `<button class="read-action danger" data-act="remove">${post.mine ? 'Delete post' : 'Remove post'}</button>` : ''}
       </div>
@@ -9684,14 +9896,15 @@ async function renderThread(){
         ${avatarFor(r.author, r.authorAvatar)}
         <div class="forum-reply-main">
           <div class="forum-reply-head">
-            <strong>${authorHtml(r.author)}</strong><span class="forum-meta" title="${escapeHtml(fullDate(r.createdAt))}">${timeAgo(r.createdAt)}</span>
+            <strong>${authorHtml(r.author)}</strong><span class="forum-meta" title="${escapeHtml(fullDate(r.createdAt))}">${timeAgo(r.createdAt)}${r.editedAt ? ' · edited' : ''}</span>
+            ${r.mine ? `<button class="text-link forum-remove forum-report" data-edit-reply="${r.id}">Edit</button>` : ''}
             ${u && !r.mine ? `<button class="text-link forum-remove forum-report" data-report-reply="${r.id}">Report</button>` : ''}
             ${r.canRemove ? `<button class="text-link forum-remove" data-remove-reply="${r.id}">${r.mine ? 'Delete' : 'Remove'}</button>` : ''}
           </div>
-          <div class="forum-body">${forumText(r.body)}</div>
+          <div class="forum-body" data-reply-body="${r.id}">${forumText(r.body)}</div>
         </div>
       </div>`).join('')}</div>
-    ${post.locked && !post.canModerate ? '' : u ? `
+    ${post.locked && !post.canModerate ? '' : u && postingBlock(u) ? `<p class="forum-locked">${escapeHtml(postingBlock(u))}</p>` : u ? `
     <form class="forum-reply-form" id="replyForm">
       <div class="field"><label for="replyInput">Your reply</label><textarea id="replyInput" maxlength="3000" placeholder="Write a reply…"></textarea></div>
       <p class="forum-error" id="replyError" hidden></p>
@@ -9730,6 +9943,41 @@ async function renderThread(){
   });
   wrap.querySelector('[data-act="link"]').addEventListener('click', async () => {
     toast(await copyText(location.origin + location.pathname + '#/community/post/' + id) ? 'Link copied' : 'Could not copy link');
+  });
+  // Editing your own post and replies, in place
+  const editBtn = wrap.querySelector('[data-act="edit"]');
+  if(editBtn) editBtn.addEventListener('click', () => {
+    const box = wrap.querySelector('#opBody');
+    box.innerHTML = `<form class="forum-edit"><div class="field"><label>Title</label><input maxlength="120" value="${escapeHtml(post.title)}"></div>
+      <div class="field"><label>Post</label><textarea maxlength="5000">${escapeHtml(post.body)}</textarea></div>
+      <p class="forum-error" hidden></p>
+      <div class="forum-form-actions"><button class="btn primary pill" type="submit">Save</button><button class="btn quiet" type="button" data-cancel>Cancel</button></div></form>`;
+    const f = box.querySelector('form');
+    f.querySelector('[data-cancel]').addEventListener('click', () => renderThread());
+    f.addEventListener('submit', async ev => {
+      ev.preventDefault();
+      try{ await api('posts/' + id, { method:'PUT', body:{ title:f.querySelector('input').value, body:f.querySelector('textarea').value } }); toast('Post updated'); renderThread(); }
+      catch(err){ showFormError(f.querySelector('.forum-error'), err.message); }
+    });
+    f.querySelector('textarea').focus();
+  });
+  wrap.querySelectorAll('[data-edit-reply]').forEach(b => b.addEventListener('click', () => {
+    const rid = Number(b.dataset.editReply), r = replies.find(x => x.id === rid), box = wrap.querySelector(`[data-reply-body="${rid}"]`);
+    box.innerHTML = `<form class="forum-edit"><div class="field"><textarea maxlength="3000">${escapeHtml(r.body)}</textarea></div><p class="forum-error" hidden></p>
+      <div class="forum-form-actions"><button class="btn primary pill" type="submit">Save</button><button class="btn quiet" type="button" data-cancel>Cancel</button></div></form>`;
+    const f = box.querySelector('form');
+    f.querySelector('[data-cancel]').addEventListener('click', () => renderThread());
+    f.addEventListener('submit', async ev => {
+      ev.preventDefault();
+      try{ await api('replies/' + rid, { method:'PUT', body:{ body:f.querySelector('textarea').value } }); toast('Reply updated'); renderThread(); }
+      catch(err){ showFormError(f.querySelector('.forum-error'), err.message); }
+    });
+    f.querySelector('textarea').focus();
+  }));
+  const move = wrap.querySelector('[data-act="move"]');
+  if(move) move.addEventListener('change', async () => {
+    try{ await api(`posts/${id}/move`, { method:'POST', body:{ category:move.value } }); toast('Moved to ' + FORUM_CATS[move.value].name); renderThread(); }
+    catch(err){ toast(err.message); }
   });
   const sendReport = async (path) => {
     const reason = prompt('What’s wrong with it? A moderator will take a look. (You can leave this blank.)');
@@ -9807,6 +10055,10 @@ async function renderForumNew(){
   if(!u){
     entryListEl.innerHTML = signInPromptHtml('You need a free Sanctify account to post. It only takes a moment, and no email address is needed.');
     bindAuthButtons(entryListEl, 'community/new');
+    return;
+  }
+  if(postingBlock(u)){
+    entryListEl.innerHTML = forumNotice('You can’t post right now', escapeHtml(postingBlock(u)), '<button class="btn quiet" data-route="community">Back to the Community</button>');
     return;
   }
   const draft = forumDraft || (forumDraft = { category:forumCat !== 'all' ? forumCat : 'general', title:'', body:'' });
@@ -9943,6 +10195,8 @@ function renderProfile(){
   document.title = u.username + ' — Sanctify';
   entryListEl.innerHTML = `
     <div class="account-page">
+      ${u.muted ? `<p class="forum-locked">${escapeHtml(postingBlock(u))}</p>` : ''}
+      <section class="notify-box" id="notifyBox"><div class="forum-loading">Loading notifications…</div></section>
       <section class="avatar-panel">
         ${avatarFor(u.username, u.avatar, 'avatar-big')}
         <div>
@@ -9958,6 +10212,7 @@ function renderProfile(){
       <div class="forum-form-actions">
         <button class="btn primary pill" data-route="community/new">New post</button>
         <button class="btn quiet" data-route="community">Go to the Community</button>
+        <button class="btn quiet" data-route="community/user/${encodeURIComponent(u.username)}">Your public profile</button>
         <button class="btn quiet" id="signOutBtn">Sign out</button>
       </div>
       <h3 class="forum-replies-head">Your posts</h3>
@@ -9984,6 +10239,7 @@ function renderProfile(){
         </form>
       </details>
     </div>`;
+  loadNotifications(entryListEl.querySelector('#notifyBox'));
   loadForumPosts(entryListEl.querySelector('#myPosts'), { page:'0', mine:'1' },
     '<p class="mine-empty">You haven’t posted yet. <button class="text-link" data-route="community/new">Write your first post</button>.</p>');
 
@@ -13496,6 +13752,7 @@ const SECTIONS = {
   catechism:{ name:'The Catechism', group:'Library', icon:'catechism', color:'var(--wine)' },
   news:{ name:'News', group:'Community', icon:'news', color:'var(--amber)' },
   moderate:{ name:'Moderation', group:'Community', icon:'shield', color:'var(--wine)' },
+  profile:{ name:'Member', group:'Community', icon:'account', color:'var(--indigo)' },
   all:{ name:'Browse Everything', group:'Library', icon:'all', color:'var(--ink-soft)' },
   rosary:{ name:'The Holy Rosary', group:'Pray', icon:'rosary', color:'var(--rose)' },
   stations:{ name:'Stations of the Cross', group:'Pray', icon:'stations', color:'var(--wine)' },
@@ -13955,6 +14212,7 @@ const ROUTES = {
   'community':                   { cat:'community' },
   'community/new':               { cat:'forum-new', parent:'community' },
   'community/post':              { cat:'thread', parent:'community' },   // #/community/post/42
+  'community/user':              { cat:'profile', parent:'community' },  // #/community/user/Palewoods
   'account':                     { cat:'account' },
   'pray':                        { cat:'hub-pray' },
   'pray/prayers':                { cat:'prayer', parent:'pray' },
@@ -14011,6 +14269,7 @@ Object.entries(ROUTES).forEach(([route, r]) => { if(!(r.cat in CAT_ROUTE)) CAT_R
 let currentRoute = 'home';   // the ROUTES key, e.g. 'community/post'
 let currentPath = 'home';    // the full address, e.g. 'community/post/42'
 const POST_ROUTE = /^community\/post\/(\d+)$/;
+const PROFILE_ROUTE = /^community\/user\/([A-Za-z0-9_]{3,20})$/;
 
 function routeName(route){
   const r = ROUTES[route];
@@ -14020,7 +14279,7 @@ function routeName(route){
 // Accepts #/pray/rosary, and older links like #saint or #rosary
 function routeFromHash(){
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
-  if(ROUTES[h] || POST_ROUTE.test(h) || BIBLE_ROUTE.test(h) || BOOK_ROUTE.test(h) || CCC_ROUTE.test(h)) return h;
+  if(ROUTES[h] || POST_ROUTE.test(h) || PROFILE_ROUTE.test(h) || BIBLE_ROUTE.test(h) || BOOK_ROUTE.test(h) || CCC_ROUTE.test(h)) return h;
   if(ROUTE_ALIASES[h]) return h;   // applyRoute moves it to the new address
   if(CAT_ROUTE[h]) return CAT_ROUTE[h];
   return 'home';
@@ -14034,13 +14293,15 @@ function applyRoute(path){
   }
   const post = POST_ROUTE.exec(path);
   forumThreadId = post ? Number(post[1]) : null;
+  const prof = PROFILE_ROUTE.exec(path);
+  profileName = prof ? prof[1] : null;
   const bib = BIBLE_ROUTE.exec(path);
   bibleRef = bib ? { slug:bib[1], chapter:Number(bib[2]) || 0, verse:Number(bib[3]) || 0, verseEnd:Number(bib[4]) || 0 } : null;
   const bk = BOOK_ROUTE.exec(path);
   bookRef = bk ? { slug:bk[1], section:Number(bk[2]) || 0 } : null;
   const cc = CCC_ROUTE.exec(path);
   cccRef = cc ? parseCccInput(cc[1] + (cc[2] ? '-' + cc[2] : '')) : null;
-  let route = post ? 'community/post' : bib ? 'library/bible/read' : bk ? 'library/books/read' : cc ? 'library/catechism' : path;
+  let route = post ? 'community/post' : prof ? 'community/user' : bib ? 'library/bible/read' : bk ? 'library/books/read' : cc ? 'library/catechism' : path;
   if(!ROUTES[route]) route = path = 'home';
   const r = ROUTES[route];
   currentRoute = route;

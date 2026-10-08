@@ -95,6 +95,40 @@ const SCHEMA = [
      status TEXT NOT NULL DEFAULT 'open',
      UNIQUE (kind, target_id, reporter_id))`,
   `CREATE INDEX IF NOT EXISTS reports_open ON reports (status, created_at DESC)`,
+  `CREATE TABLE IF NOT EXISTS mutes (
+     user_id INTEGER PRIMARY KEY,
+     reason TEXT NOT NULL DEFAULT '',
+     until INTEGER,
+     by_user INTEGER,
+     created_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS warnings (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     user_id INTEGER NOT NULL,
+     by_user INTEGER,
+     message TEXT NOT NULL,
+     created_at INTEGER NOT NULL,
+     seen_at INTEGER)`,
+  `CREATE INDEX IF NOT EXISTS warnings_by_user ON warnings (user_id, created_at DESC)`,
+  `CREATE TABLE IF NOT EXISTS mod_notes (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     user_id INTEGER NOT NULL,
+     by_user INTEGER,
+     note TEXT NOT NULL,
+     created_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS blocked_words (
+     word TEXT PRIMARY KEY,
+     created_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS settings (
+     key TEXT PRIMARY KEY,
+     value TEXT NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS edits (
+     kind TEXT NOT NULL,
+     target_id INTEGER NOT NULL,
+     edited_at INTEGER NOT NULL,
+     PRIMARY KEY (kind, target_id))`,
+  `CREATE TABLE IF NOT EXISTS notify_seen (
+     user_id INTEGER PRIMARY KEY,
+     seen_at INTEGER NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS post_flags (
      post_id INTEGER PRIMARY KEY,
      pinned INTEGER NOT NULL DEFAULT 0,
@@ -145,7 +179,10 @@ export async function onRequest({ request, env }){
     let m;
     if((m = path.match(/^avatar\/([A-Za-z0-9_]{3,20})$/)) && (method === 'GET' || method === 'HEAD')) return await getAvatar(ctx, m[1]);
     ctx.user = await currentUser(ctx);
-    if(path === 'me' && method === 'GET') return json({ user:publicUser(ctx.user) });
+    if(path === 'me' && method === 'GET') return await getMe(ctx);
+    if(path === 'notifications' && method === 'GET') return await getNotifications(ctx);
+    if(path === 'notifications/seen' && method === 'POST') return await markNotificationsSeen(ctx);
+    if((m = path.match(/^users\/([A-Za-z0-9_]{3,20})$/)) && method === 'GET') return await getProfile(ctx, m[1]);
     if(path === 'signup' && method === 'POST') return await signup(ctx);
     if(path === 'login' && method === 'POST') return await login(ctx);
     if(path === 'logout' && method === 'POST') return await logout(ctx);
@@ -155,6 +192,8 @@ export async function onRequest({ request, env }){
     if(path.startsWith('mod/')) return await modRoute(ctx, path.slice(4), method);
     if((m = path.match(/^(posts|replies)\/(\d+)\/report$/)) && method === 'POST') return await report(ctx, m[1] === 'posts' ? 'post' : 'reply', Number(m[2]));
     if((m = path.match(/^posts\/(\d+)\/(pin|lock)$/)) && method === 'POST') return await flagPost(ctx, Number(m[1]), m[2]);
+    if((m = path.match(/^posts\/(\d+)\/move$/)) && method === 'POST') return await movePost(ctx, Number(m[1]));
+    if((m = path.match(/^replies\/(\d+)$/)) && method === 'PUT') return await editReply(ctx, Number(m[1]));
     if(path === 'news' && method === 'GET') return await listNews(ctx);
     if(path === 'news' && method === 'POST') return await saveNews(ctx, null);
     if((m = path.match(/^news\/(\d+)$/))){
@@ -168,6 +207,7 @@ export async function onRequest({ request, env }){
     if((m = path.match(/^posts\/(\d+)$/))){
       if(method === 'GET') return await getPost(ctx, Number(m[1]));
       if(method === 'DELETE') return await deletePost(ctx, Number(m[1]));
+      if(method === 'PUT') return await editPost(ctx, Number(m[1]));
     }
     if((m = path.match(/^posts\/(\d+)\/replies$/)) && method === 'POST') return await createReply(ctx, Number(m[1]));
     if((m = path.match(/^posts\/(\d+)\/pray$/)) && method === 'POST') return await togglePrayer(ctx, Number(m[1]));
@@ -301,6 +341,11 @@ async function listPosts(ctx){
     const user = requireUser(ctx);
     where.push('p.user_id = ?'); args.push(user.id);
   }
+  const search = cleanLine(q.get('q')).slice(0, 80);
+  if(search){
+    const like = '%' + search.replace(/[\\%_]/g, c => '\\' + c) + '%';
+    where.push(`(p.title LIKE ? ESCAPE '\\' OR p.body LIKE ? ESCAPE '\\')`); args.push(like, like);
+  }
   const { results } = await ctx.db.prepare(
     `SELECT p.id, p.category, p.title, substr(p.body, 1, 240) AS excerpt, p.created_at, p.last_activity,
             p.reply_count, p.prayer_count, u.username, a.updated_at AS avatar_v, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked
@@ -321,12 +366,15 @@ async function listPosts(ctx){
 async function getPost(ctx, id){
   const post = await ctx.db.prepare(
     `SELECT p.*, u.username, a.updated_at AS avatar_v, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked
+            , e.edited_at
        FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id LEFT JOIN post_flags f ON f.post_id = p.id
+            LEFT JOIN edits e ON e.kind = 'post' AND e.target_id = p.id
       WHERE p.id = ? AND p.deleted = 0`
   ).bind(id).first();
   if(!post) throw new HttpError(404, 'This post doesn’t exist or has been removed.');
   const { results } = await ctx.db.prepare(
-    `SELECT r.id, r.user_id, r.body, r.created_at, u.username, a.updated_at AS avatar_v FROM replies r LEFT JOIN users u ON u.id = r.user_id LEFT JOIN avatars a ON a.user_id = r.user_id
+    `SELECT r.id, r.user_id, r.body, r.created_at, u.username, a.updated_at AS avatar_v, e.edited_at FROM replies r LEFT JOIN users u ON u.id = r.user_id LEFT JOIN avatars a ON a.user_id = r.user_id
+       LEFT JOIN edits e ON e.kind = 'reply' AND e.target_id = r.id
       WHERE r.post_id = ? AND r.deleted = 0 ORDER BY r.created_at ASC, r.id ASC LIMIT 500`
   ).bind(id).all();
   const user = ctx.user;
@@ -337,11 +385,11 @@ async function getPost(ctx, id){
       id:post.id, category:post.category, title:post.title, body:post.body, author:post.username || null, authorAvatar:post.username ? post.avatar_v || null : null,
       createdAt:post.created_at, replies:post.reply_count, prayers:post.prayer_count, prayed,
       mine:!!user && user.id === post.user_id, canRemove:canRemove(post.user_id),
-      pinned:!!post.pinned, locked:!!post.locked, canModerate:!!user && !!user.admin
+      pinned:!!post.pinned, locked:!!post.locked, canModerate:!!user && !!user.admin, editedAt:post.edited_at || null
     },
     replies:results.map(r => ({
       id:r.id, body:r.body, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null, createdAt:r.created_at,
-      mine:!!user && user.id === r.user_id, canRemove:canRemove(r.user_id)
+      mine:!!user && user.id === r.user_id, canRemove:canRemove(r.user_id), editedAt:r.edited_at || null
     }))
   });
 }
@@ -355,6 +403,7 @@ async function createPost(ctx){
   if(title.length < 3 || title.length > 120) throw new HttpError(400, 'Titles are 3 to 120 characters.');
   const body = cleanText(data.body);
   if(body.length < 1 || body.length > 5000) throw new HttpError(400, 'Posts are 1 to 5,000 characters.');
+  await checkPosting(ctx, user, [title, body]);
   await limit(ctx, 'post:' + user.id, 5, 15 * 60 * 1000, 'You’ve posted several times in a short while. Please wait a few minutes before posting again.');
   const result = await ctx.db.prepare(
     'INSERT INTO posts (user_id, category, title, body, created_at, last_activity) VALUES (?, ?, ?, ?, ?, ?)'
@@ -367,6 +416,7 @@ async function createReply(ctx, postId){
   const data = await readBody(ctx);
   const body = cleanText(data.body);
   if(body.length < 1 || body.length > 3000) throw new HttpError(400, 'Replies are 1 to 3,000 characters.');
+  await checkPosting(ctx, user, [body]);
   const post = await ctx.db.prepare('SELECT p.id, COALESCE(f.locked, 0) AS locked FROM posts p LEFT JOIN post_flags f ON f.post_id = p.id WHERE p.id = ? AND p.deleted = 0').bind(postId).first();
   if(!post) throw new HttpError(404, 'This post doesn’t exist or has been removed.');
   if(post.locked && !user.admin) throw new HttpError(403, 'This thread is locked, so it can’t take new replies.');
@@ -417,6 +467,120 @@ async function togglePrayer(ctx, postId){
   await ctx.db.prepare(`UPDATE posts SET prayer_count = MAX(prayer_count ${prayed ? '+' : '-'} 1, 0) WHERE id = ?`).bind(postId).run();
   const row = await ctx.db.prepare('SELECT prayer_count FROM posts WHERE id = ?').bind(postId).first();
   return json({ prayed, prayers:row.prayer_count });
+}
+
+/* ---------- Posting rules ---------- */
+async function setting(ctx, key){
+  const row = await ctx.db.prepare('SELECT value FROM settings WHERE key = ?').bind(key).first();
+  return row ? row.value : null;
+}
+async function activeMute(ctx, userId){
+  return ctx.db.prepare('SELECT reason, until FROM mutes WHERE user_id = ? AND (until IS NULL OR until > ?)').bind(userId, ctx.now).first();
+}
+function muteMessage(m){
+  return 'You’re muted' + (m.until ? ' until ' + new Date(m.until).toISOString().slice(0, 10) : '') + ', so you can read and pray but not post or reply.' + (m.reason ? ' Reason: ' + m.reason : '');
+}
+async function checkPosting(ctx, user, texts){
+  if(user.admin) return;
+  if(await setting(ctx, 'readonly') === '1') throw new HttpError(403, 'The Community is read-only for a little while. Please check back soon.');
+  const mute = await activeMute(ctx, user.id);
+  if(mute) throw new HttpError(403, muteMessage(mute));
+  const { results } = await ctx.db.prepare('SELECT word FROM blocked_words').all();
+  const hay = texts.join(' ').toLowerCase();
+  for(const { word } of results){
+    const w = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    if(new RegExp('(^|[^\\p{L}\\p{N}])' + w + '($|[^\\p{L}\\p{N}])', 'u').test(hay)) throw new HttpError(400, 'Please rephrase: your post uses a word that isn’t allowed in the Community.');
+  }
+}
+
+/* ---------- Editing your own posts and replies ---------- */
+async function editPost(ctx, id){
+  const user = requireUser(ctx);
+  const post = await ctx.db.prepare('SELECT user_id FROM posts WHERE id = ? AND deleted = 0').bind(id).first();
+  if(!post) throw new HttpError(404, 'This post doesn’t exist or has been removed.');
+  if(post.user_id !== user.id) throw new HttpError(403, 'You can only edit your own posts.');
+  const data = await readBody(ctx);
+  const title = cleanLine(data.title), body = cleanText(data.body);
+  if(title.length < 3 || title.length > 120) throw new HttpError(400, 'Titles are 3 to 120 characters.');
+  if(body.length < 1 || body.length > 5000) throw new HttpError(400, 'Posts are 1 to 5,000 characters.');
+  await checkPosting(ctx, user, [title, body]);
+  await limit(ctx, 'edit:' + user.id, 30, 15 * 60 * 1000, 'You’ve made a lot of edits. Please wait a few minutes.');
+  await ctx.db.batch([
+    ctx.db.prepare('UPDATE posts SET title = ?, body = ? WHERE id = ?').bind(title, body, id),
+    ctx.db.prepare('INSERT INTO edits (kind, target_id, edited_at) VALUES (?, ?, ?) ON CONFLICT(kind, target_id) DO UPDATE SET edited_at = excluded.edited_at').bind('post', id, ctx.now)
+  ]);
+  return json({ ok:true });
+}
+async function editReply(ctx, id){
+  const user = requireUser(ctx);
+  const reply = await ctx.db.prepare('SELECT user_id FROM replies WHERE id = ? AND deleted = 0').bind(id).first();
+  if(!reply) throw new HttpError(404, 'This reply doesn’t exist or has been removed.');
+  if(reply.user_id !== user.id) throw new HttpError(403, 'You can only edit your own replies.');
+  const body = cleanText((await readBody(ctx)).body);
+  if(body.length < 1 || body.length > 3000) throw new HttpError(400, 'Replies are 1 to 3,000 characters.');
+  await checkPosting(ctx, user, [body]);
+  await limit(ctx, 'edit:' + user.id, 30, 15 * 60 * 1000, 'You’ve made a lot of edits. Please wait a few minutes.');
+  await ctx.db.batch([
+    ctx.db.prepare('UPDATE replies SET body = ? WHERE id = ?').bind(body, id),
+    ctx.db.prepare('INSERT INTO edits (kind, target_id, edited_at) VALUES (?, ?, ?) ON CONFLICT(kind, target_id) DO UPDATE SET edited_at = excluded.edited_at').bind('reply', id, ctx.now)
+  ]);
+  return json({ ok:true });
+}
+
+/* ---------- You: your status, notifications, and public profiles ---------- */
+async function getMe(ctx){
+  const readonly = await setting(ctx, 'readonly') === '1';
+  const user = ctx.user;
+  if(!user) return json({ user:null, readonly });
+  const mute = await activeMute(ctx, user.id);
+  const seen = await ctx.db.prepare('SELECT seen_at FROM notify_seen WHERE user_id = ?').bind(user.id).first();
+  const since = seen ? seen.seen_at : ctx.now - 30 * 86400000;
+  const unread = (await ctx.db.prepare(
+    `SELECT (SELECT COUNT(*) FROM replies r JOIN posts p ON p.id = r.post_id
+              WHERE p.user_id = ? AND r.user_id != ? AND r.deleted = 0 AND p.deleted = 0 AND r.created_at > ?)
+          + (SELECT COUNT(*) FROM warnings WHERE user_id = ? AND seen_at IS NULL) AS n`
+  ).bind(user.id, user.id, since, user.id).first()).n;
+  return json({ user:{ ...publicUser(user), muted:mute ? { until:mute.until || null, reason:mute.reason } : null, unread }, readonly });
+}
+
+async function getNotifications(ctx){
+  const user = requireUser(ctx);
+  const seen = await ctx.db.prepare('SELECT seen_at FROM notify_seen WHERE user_id = ?').bind(user.id).first();
+  const since = seen ? seen.seen_at : ctx.now - 30 * 86400000;
+  const replies = (await ctx.db.prepare(
+    `SELECT r.id, r.post_id, p.title, substr(r.body, 1, 180) AS excerpt, r.created_at, u.username, a.updated_at AS avatar_v
+       FROM replies r JOIN posts p ON p.id = r.post_id LEFT JOIN users u ON u.id = r.user_id LEFT JOIN avatars a ON a.user_id = r.user_id
+      WHERE p.user_id = ? AND r.user_id != ? AND r.deleted = 0 AND p.deleted = 0
+      ORDER BY r.created_at DESC LIMIT 40`).bind(user.id, user.id).all()).results;
+  const warnings = (await ctx.db.prepare('SELECT id, message, created_at, seen_at FROM warnings WHERE user_id = ? ORDER BY created_at DESC LIMIT 20').bind(user.id).all()).results;
+  return json({
+    replies:replies.map(r => ({ id:r.id, postId:r.post_id, postTitle:r.title, excerpt:r.excerpt, createdAt:r.created_at, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null, unread:r.created_at > since })),
+    warnings:warnings.map(w => ({ id:w.id, message:w.message, createdAt:w.created_at, unread:!w.seen_at }))
+  });
+}
+
+async function markNotificationsSeen(ctx){
+  const user = requireUser(ctx);
+  await ctx.db.batch([
+    ctx.db.prepare('INSERT INTO notify_seen (user_id, seen_at) VALUES (?, ?) ON CONFLICT(user_id) DO UPDATE SET seen_at = excluded.seen_at').bind(user.id, ctx.now),
+    ctx.db.prepare('UPDATE warnings SET seen_at = ? WHERE user_id = ? AND seen_at IS NULL').bind(ctx.now, user.id)
+  ]);
+  return json({ ok:true });
+}
+
+async function getProfile(ctx, name){
+  const u = await ctx.db.prepare('SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v FROM users u LEFT JOIN avatars a ON a.user_id = u.id WHERE u.username = ?').bind(name).first();
+  if(!u) throw new HttpError(404, 'There’s no member by that name.');
+  const counts = await ctx.db.prepare(
+    'SELECT (SELECT COUNT(*) FROM posts WHERE user_id = ? AND deleted = 0) AS posts, (SELECT COUNT(*) FROM replies WHERE user_id = ? AND deleted = 0) AS replies, (SELECT COUNT(*) FROM prayers WHERE user_id = ?) AS prayers'
+  ).bind(u.id, u.id, u.id).first();
+  const { results } = await ctx.db.prepare(
+    `SELECT id, category, title, substr(body, 1, 200) AS excerpt, created_at, reply_count, prayer_count FROM posts WHERE user_id = ? AND deleted = 0 ORDER BY created_at DESC LIMIT 20`
+  ).bind(u.id).all();
+  return json({
+    profile:{ id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, posts:counts.posts, replies:counts.replies, prayers:counts.prayers, administrator:siteAdmin(ctx, u.username) },
+    posts:results.map(p => ({ id:p.id, category:p.category, title:p.title, excerpt:p.excerpt, createdAt:p.created_at, lastActivity:p.created_at, replies:p.reply_count, prayers:p.prayer_count, author:u.username, authorAvatar:u.avatar_v || null }))
+  });
 }
 
 /* ---------- Moderation ---------- */
@@ -472,7 +636,102 @@ async function modRoute(ctx, sub, method){
   if(sub === 'reports' && method === 'GET') return await modReports(ctx);
   if((m = sub.match(/^reports\/(\d+)$/)) && method === 'DELETE') return await dismissReport(ctx, Number(m[1]));
   if(sub === 'log' && method === 'GET') return await modLogList(ctx);
+  if((m = sub.match(/^users\/(\d+)\/mute$/))){
+    if(method === 'POST') return await muteUser(ctx, Number(m[1]));
+    if(method === 'DELETE') return await unmuteUser(ctx, Number(m[1]));
+  }
+  if((m = sub.match(/^users\/(\d+)\/warn$/)) && method === 'POST') return await warnUser(ctx, Number(m[1]));
+  if((m = sub.match(/^users\/(\d+)\/notes$/)) && method === 'POST') return await addNote(ctx, Number(m[1]));
+  if((m = sub.match(/^notes\/(\d+)$/)) && method === 'DELETE') return await deleteNote(ctx, Number(m[1]));
+  if(sub === 'settings' && method === 'GET') return await getSettings(ctx);
+  if(sub === 'settings' && method === 'PUT') return await putSettings(ctx);
   throw new HttpError(404, 'Not found.');
+}
+
+async function movePost(ctx, id){
+  requireModerator(ctx);
+  const category = String((await readBody(ctx, 200)).category || '');
+  if(!CATEGORIES.includes(category)) throw new HttpError(400, 'Unknown category.');
+  const post = await ctx.db.prepare('SELECT title, category FROM posts WHERE id = ? AND deleted = 0').bind(id).first();
+  if(!post) throw new HttpError(404, 'This post doesn’t exist or has been removed.');
+  await ctx.db.prepare('UPDATE posts SET category = ? WHERE id = ?').bind(category, id).run();
+  await logMod(ctx, 'move', 'post ' + id, post.category + ' → ' + category);
+  return json({ ok:true, category });
+}
+
+async function guardTarget(ctx, id, verb){
+  const target = await ctx.db.prepare('SELECT id, username FROM users WHERE id = ?').bind(id).first();
+  if(!target) throw new HttpError(404, 'That account doesn’t exist.');
+  if(target.id === ctx.user.id) throw new HttpError(400, `You can’t ${verb} your own account.`);
+  if(siteAdmin(ctx, target.username)) throw new HttpError(403, `Site administrators can’t be ${verb === 'mute' ? 'muted' : 'warned'}.`);
+  return target;
+}
+
+async function muteUser(ctx, id){
+  const target = await guardTarget(ctx, id, 'mute');
+  const data = await readBody(ctx, 2000);
+  const days = Number(data.days) || 0;
+  if(days && (days < 0 || days > 3650)) throw new HttpError(400, 'Choose how long the mute lasts.');
+  const reason = cleanLine(data.reason).slice(0, 300);
+  await ctx.db.prepare('INSERT INTO mutes (user_id, reason, until, by_user, created_at) VALUES (?, ?, ?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET reason = excluded.reason, until = excluded.until, by_user = excluded.by_user, created_at = excluded.created_at')
+    .bind(id, reason, days ? ctx.now + days * 86400000 : null, ctx.user.id, ctx.now).run();
+  await logMod(ctx, 'mute', target.username, (days ? days + (days === 1 ? ' day' : ' days') : 'until unmuted') + (reason ? ' · ' + reason : ''));
+  return modUser(ctx, id);
+}
+
+async function unmuteUser(ctx, id){
+  const target = await ctx.db.prepare('SELECT username FROM users WHERE id = ?').bind(id).first();
+  if(!target) throw new HttpError(404, 'That account doesn’t exist.');
+  await ctx.db.prepare('DELETE FROM mutes WHERE user_id = ?').bind(id).run();
+  await logMod(ctx, 'unmute', target.username, '');
+  return modUser(ctx, id);
+}
+
+async function warnUser(ctx, id){
+  const target = await guardTarget(ctx, id, 'warn');
+  const message = cleanText((await readBody(ctx, 4000)).message);
+  if(message.length < 3 || message.length > 1000) throw new HttpError(400, 'Warnings are 3 to 1,000 characters.');
+  await ctx.db.prepare('INSERT INTO warnings (user_id, by_user, message, created_at) VALUES (?, ?, ?, ?)').bind(id, ctx.user.id, message, ctx.now).run();
+  await logMod(ctx, 'warn', target.username, message.slice(0, 120));
+  return modUser(ctx, id);
+}
+
+async function addNote(ctx, id){
+  const target = await ctx.db.prepare('SELECT username FROM users WHERE id = ?').bind(id).first();
+  if(!target) throw new HttpError(404, 'That account doesn’t exist.');
+  const note = cleanText((await readBody(ctx, 4000)).note);
+  if(note.length < 1 || note.length > 1000) throw new HttpError(400, 'Notes are 1 to 1,000 characters.');
+  await ctx.db.prepare('INSERT INTO mod_notes (user_id, by_user, note, created_at) VALUES (?, ?, ?, ?)').bind(id, ctx.user.id, note, ctx.now).run();
+  await logMod(ctx, 'add-note', target.username, '');
+  return modUser(ctx, id);
+}
+
+async function deleteNote(ctx, id){
+  const row = await ctx.db.prepare('SELECT user_id FROM mod_notes WHERE id = ?').bind(id).first();
+  if(!row) throw new HttpError(404, 'That note doesn’t exist.');
+  await ctx.db.prepare('DELETE FROM mod_notes WHERE id = ?').bind(id).run();
+  return modUser(ctx, row.user_id);
+}
+
+async function getSettings(ctx){
+  const { results } = await ctx.db.prepare('SELECT word FROM blocked_words ORDER BY word').all();
+  return json({ readonly:await setting(ctx, 'readonly') === '1', words:results.map(r => r.word) });
+}
+
+async function putSettings(ctx){
+  const data = await readBody(ctx, 20000);
+  const changes = [];
+  if(typeof data.readonly === 'boolean'){
+    await ctx.db.prepare('INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value').bind('readonly', data.readonly ? '1' : '0').run();
+    changes.push(data.readonly ? 'Community read-only' : 'Community open');
+  }
+  if(Array.isArray(data.words)){
+    const words = [...new Set(data.words.map(w => cleanLine(w).toLowerCase()).filter(w => w.length >= 2 && w.length <= 40))].slice(0, 300);
+    await ctx.db.batch([ctx.db.prepare('DELETE FROM blocked_words'), ...words.map(w => ctx.db.prepare('INSERT INTO blocked_words (word, created_at) VALUES (?, ?)').bind(w, ctx.now))]);
+    changes.push(words.length + (words.length === 1 ? ' blocked word' : ' blocked words'));
+  }
+  if(changes.length) await logMod(ctx, 'settings', '', changes.join(' · '));
+  return getSettings(ctx);
 }
 
 async function modOverview(ctx){
@@ -483,6 +742,8 @@ async function modOverview(ctx){
     replies:await n('SELECT COUNT(*) AS n FROM replies WHERE deleted = 0'),
     reports:await n(`SELECT COUNT(*) AS n FROM reports WHERE status = 'open'`),
     banned:await n('SELECT COUNT(*) AS n FROM bans WHERE until IS NULL OR until > ?'),
+    muted:await n('SELECT COUNT(*) AS n FROM mutes WHERE until IS NULL OR until > ?'),
+    readonly:await setting(ctx, 'readonly') === '1',
     news:await n('SELECT COUNT(*) AS n FROM news WHERE deleted = 0')
   });
 }
@@ -493,13 +754,16 @@ const USER_COLUMNS = `u.id, u.username, u.created_at, a.updated_at AS avatar_v,
   (SELECT MAX(t) FROM (SELECT MAX(created_at) AS t FROM posts WHERE user_id = u.id UNION ALL SELECT MAX(created_at) FROM replies WHERE user_id = u.id)) AS last_post,
   (SELECT COUNT(*) FROM reports rp WHERE rp.status = 'open' AND ((rp.kind = 'post' AND rp.target_id IN (SELECT id FROM posts WHERE user_id = u.id)) OR (rp.kind = 'reply' AND rp.target_id IN (SELECT id FROM replies WHERE user_id = u.id)))) AS reports,
   EXISTS (SELECT 1 FROM mod_sessions ms JOIN sessions s ON s.token_hash = ms.token_hash WHERE s.user_id = u.id AND ms.expires_at > ?) AS mod_now,
-  b.reason AS ban_reason, b.until AS ban_until, b.created_at AS banned_at`;
-const USER_JOINS = `FROM users u LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN bans b ON b.user_id = u.id AND (b.until IS NULL OR b.until > ?)`;
+  b.reason AS ban_reason, b.until AS ban_until, b.created_at AS banned_at,
+  mu.reason AS mute_reason, mu.until AS mute_until, mu.created_at AS muted_at`;
+const USER_JOINS = `FROM users u LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN bans b ON b.user_id = u.id AND (b.until IS NULL OR b.until > ?)
+  LEFT JOIN mutes mu ON mu.user_id = u.id AND (mu.until IS NULL OR mu.until > ?)`;
 function modUserJson(ctx, r){
   return {
     id:r.id, username:r.username, createdAt:r.created_at, avatar:r.avatar_v || null, posts:r.posts, replies:r.replies, lastPost:r.last_post || null,
     reports:r.reports, moderator:!!r.mod_now || siteAdmin(ctx, r.username), siteAdmin:siteAdmin(ctx, r.username),
-    ban:r.banned_at ? { reason:r.ban_reason, until:r.ban_until || null, since:r.banned_at } : null
+    ban:r.banned_at ? { reason:r.ban_reason, until:r.ban_until || null, since:r.banned_at } : null,
+    mute:r.muted_at ? { reason:r.mute_reason, until:r.mute_until || null, since:r.muted_at } : null
   };
 }
 
@@ -510,24 +774,29 @@ async function modUsers(ctx){
   const filter = q.get('filter') || 'all';
   const where = ['u.username LIKE ? ESCAPE \'\\\''];
   if(filter === 'banned') where.push('b.user_id IS NOT NULL');
+  if(filter === 'muted') where.push('mu.user_id IS NOT NULL');
   if(filter === 'reported') where.push(`EXISTS (SELECT 1 FROM reports rp WHERE rp.status = 'open' AND ((rp.kind = 'post' AND rp.target_id IN (SELECT id FROM posts WHERE user_id = u.id)) OR (rp.kind = 'reply' AND rp.target_id IN (SELECT id FROM replies WHERE user_id = u.id))))`);
   const order = q.get('sort') === 'active' ? 'last_post DESC NULLS LAST, u.id DESC' : q.get('sort') === 'name' ? 'u.username COLLATE NOCASE ASC' : 'u.created_at DESC, u.id DESC';
   const { results } = await ctx.db.prepare(
     `SELECT ${USER_COLUMNS} ${USER_JOINS} WHERE ${where.join(' AND ')} ORDER BY ${order} LIMIT ? OFFSET ?`
-  ).bind(ctx.now, ctx.now, '%' + search + '%', 31, page * 30).all();
+  ).bind(ctx.now, ctx.now, ctx.now, '%' + search + '%', 31, page * 30).all();
   const total = (await ctx.db.prepare('SELECT COUNT(*) AS n FROM users').first()).n;
   return json({ users:results.slice(0, 30).map(r => modUserJson(ctx, r)), more:results.length > 30, total });
 }
 
 async function modUser(ctx, id){
-  const row = await ctx.db.prepare(`SELECT ${USER_COLUMNS} ${USER_JOINS} WHERE u.id = ?`).bind(ctx.now, ctx.now, id).first();
+  const row = await ctx.db.prepare(`SELECT ${USER_COLUMNS} ${USER_JOINS} WHERE u.id = ?`).bind(ctx.now, ctx.now, ctx.now, id).first();
   if(!row) throw new HttpError(404, 'That account doesn’t exist.');
   const posts = (await ctx.db.prepare('SELECT id, title, substr(body, 1, 200) AS excerpt, created_at, deleted FROM posts WHERE user_id = ? ORDER BY created_at DESC LIMIT 50').bind(id).all()).results;
   const replies = (await ctx.db.prepare(
     `SELECT r.id, r.post_id, p.title AS post_title, substr(r.body, 1, 200) AS excerpt, r.created_at, r.deleted
        FROM replies r LEFT JOIN posts p ON p.id = r.post_id WHERE r.user_id = ? ORDER BY r.created_at DESC LIMIT 50`).bind(id).all()).results;
+  const warnings = (await ctx.db.prepare('SELECT w.id, w.message, w.created_at, w.seen_at, u.username FROM warnings w LEFT JOIN users u ON u.id = w.by_user WHERE w.user_id = ? ORDER BY w.created_at DESC LIMIT 30').bind(id).all()).results;
+  const notes = (await ctx.db.prepare('SELECT n.id, n.note, n.created_at, u.username FROM mod_notes n LEFT JOIN users u ON u.id = n.by_user WHERE n.user_id = ? ORDER BY n.created_at DESC LIMIT 50').bind(id).all()).results;
   return json({
     user:modUserJson(ctx, row),
+    warnings:warnings.map(w => ({ id:w.id, message:w.message, createdAt:w.created_at, seen:!!w.seen_at, by:w.username || null })),
+    notes:notes.map(n => ({ id:n.id, note:n.note, createdAt:n.created_at, by:n.username || null })),
     posts:posts.map(p => ({ id:p.id, title:p.title, excerpt:p.excerpt, createdAt:p.created_at, removed:!!p.deleted })),
     replies:replies.map(r => ({ id:r.id, postId:r.post_id, postTitle:r.post_title, excerpt:r.excerpt, createdAt:r.created_at, removed:!!r.deleted }))
   });
