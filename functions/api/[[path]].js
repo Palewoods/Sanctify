@@ -11,6 +11,10 @@
      MOD_PASSWORD   a secret: any signed-in member who enters it on their Account page
                     becomes a moderator on that device, until they sign out or leave moderator mode
 
+   Moderators can also see and search every account, ban members (for a time or for good), remove
+   everything a member has posted, review reported posts and replies, pin and lock threads, and read a
+   log of every moderator action.
+
    Passwords are salted and hashed with PBKDF2; sign-ins are kept in an
    HttpOnly cookie, and only a hash of each session token is stored.
    Profile pictures are small JPEG, PNG, or WebP images (resized in the
@@ -74,6 +78,35 @@ const SCHEMA = [
      updated_at INTEGER,
      deleted INTEGER NOT NULL DEFAULT 0)`,
   `CREATE INDEX IF NOT EXISTS news_by_date ON news (deleted, created_at DESC)`,
+  `CREATE TABLE IF NOT EXISTS bans (
+     user_id INTEGER PRIMARY KEY,
+     reason TEXT NOT NULL DEFAULT '',
+     until INTEGER,
+     by_user INTEGER,
+     created_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS reports (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     kind TEXT NOT NULL,
+     target_id INTEGER NOT NULL,
+     post_id INTEGER NOT NULL,
+     reporter_id INTEGER NOT NULL,
+     reason TEXT NOT NULL DEFAULT '',
+     created_at INTEGER NOT NULL,
+     status TEXT NOT NULL DEFAULT 'open',
+     UNIQUE (kind, target_id, reporter_id))`,
+  `CREATE INDEX IF NOT EXISTS reports_open ON reports (status, created_at DESC)`,
+  `CREATE TABLE IF NOT EXISTS post_flags (
+     post_id INTEGER PRIMARY KEY,
+     pinned INTEGER NOT NULL DEFAULT 0,
+     locked INTEGER NOT NULL DEFAULT 0)`,
+  `CREATE TABLE IF NOT EXISTS mod_log (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     mod_id INTEGER,
+     action TEXT NOT NULL,
+     target TEXT NOT NULL DEFAULT '',
+     detail TEXT NOT NULL DEFAULT '',
+     created_at INTEGER NOT NULL)`,
+  `CREATE INDEX IF NOT EXISTS mod_log_by_date ON mod_log (created_at DESC)`,
   `CREATE TABLE IF NOT EXISTS mod_sessions (
      token_hash TEXT PRIMARY KEY,
      expires_at INTEGER NOT NULL)`,
@@ -119,6 +152,9 @@ export async function onRequest({ request, env }){
     if(path === 'account' && method === 'DELETE') return await deleteAccount(ctx);
     if(path === 'moderator' && method === 'POST') return await enterModerator(ctx);
     if(path === 'moderator' && method === 'DELETE') return await leaveModerator(ctx);
+    if(path.startsWith('mod/')) return await modRoute(ctx, path.slice(4), method);
+    if((m = path.match(/^(posts|replies)\/(\d+)\/report$/)) && method === 'POST') return await report(ctx, m[1] === 'posts' ? 'post' : 'reply', Number(m[2]));
+    if((m = path.match(/^posts\/(\d+)\/(pin|lock)$/)) && method === 'POST') return await flagPost(ctx, Number(m[1]), m[2]);
     if(path === 'news' && method === 'GET') return await listNews(ctx);
     if(path === 'news' && method === 'POST') return await saveNews(ctx, null);
     if((m = path.match(/^news\/(\d+)$/))){
@@ -180,6 +216,8 @@ async function login(ctx){
   // Hash even when the user doesn't exist, so the response time doesn't reveal which usernames are real
   const hash = await hashPassword(String(password || ''), row ? row.salt : '00'.repeat(16));
   if(!row || !sameHash(hash, row.pass_hash)) throw new HttpError(401, 'That username and password don’t match.');
+  const ban = await ctx.db.prepare('SELECT reason, until FROM bans WHERE user_id = ? AND (until IS NULL OR until > ?)').bind(row.id, ctx.now).first();
+  if(ban) throw new HttpError(403, banMessage(ban));
 
   await ctx.db.prepare('DELETE FROM sessions WHERE expires_at < ?').bind(ctx.now).run();
   const user = { id:row.id, username:row.username, created_at:row.created_at, avatar_v:row.avatar_v };
@@ -265,16 +303,16 @@ async function listPosts(ctx){
   }
   const { results } = await ctx.db.prepare(
     `SELECT p.id, p.category, p.title, substr(p.body, 1, 240) AS excerpt, p.created_at, p.last_activity,
-            p.reply_count, p.prayer_count, u.username, a.updated_at AS avatar_v
-       FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id
+            p.reply_count, p.prayer_count, u.username, a.updated_at AS avatar_v, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked
+       FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id LEFT JOIN post_flags f ON f.post_id = p.id
       WHERE ${where.join(' AND ')}
-      ORDER BY p.last_activity DESC, p.id DESC
+      ORDER BY COALESCE(f.pinned, 0) DESC, p.last_activity DESC, p.id DESC
       LIMIT ? OFFSET ?`
   ).bind(...args, PAGE_SIZE + 1, page * PAGE_SIZE).all();
   return json({
     posts:results.slice(0, PAGE_SIZE).map(r => ({
       id:r.id, category:r.category, title:r.title, excerpt:r.excerpt, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null,
-      createdAt:r.created_at, lastActivity:r.last_activity, replies:r.reply_count, prayers:r.prayer_count
+      createdAt:r.created_at, lastActivity:r.last_activity, replies:r.reply_count, prayers:r.prayer_count, pinned:!!r.pinned, locked:!!r.locked
     })),
     more:results.length > PAGE_SIZE
   });
@@ -282,7 +320,9 @@ async function listPosts(ctx){
 
 async function getPost(ctx, id){
   const post = await ctx.db.prepare(
-    `SELECT p.*, u.username, a.updated_at AS avatar_v FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id WHERE p.id = ? AND p.deleted = 0`
+    `SELECT p.*, u.username, a.updated_at AS avatar_v, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked
+       FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id LEFT JOIN post_flags f ON f.post_id = p.id
+      WHERE p.id = ? AND p.deleted = 0`
   ).bind(id).first();
   if(!post) throw new HttpError(404, 'This post doesn’t exist or has been removed.');
   const { results } = await ctx.db.prepare(
@@ -296,7 +336,8 @@ async function getPost(ctx, id){
     post:{
       id:post.id, category:post.category, title:post.title, body:post.body, author:post.username || null, authorAvatar:post.username ? post.avatar_v || null : null,
       createdAt:post.created_at, replies:post.reply_count, prayers:post.prayer_count, prayed,
-      mine:!!user && user.id === post.user_id, canRemove:canRemove(post.user_id)
+      mine:!!user && user.id === post.user_id, canRemove:canRemove(post.user_id),
+      pinned:!!post.pinned, locked:!!post.locked, canModerate:!!user && !!user.admin
     },
     replies:results.map(r => ({
       id:r.id, body:r.body, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null, createdAt:r.created_at,
@@ -326,8 +367,9 @@ async function createReply(ctx, postId){
   const data = await readBody(ctx);
   const body = cleanText(data.body);
   if(body.length < 1 || body.length > 3000) throw new HttpError(400, 'Replies are 1 to 3,000 characters.');
-  const post = await ctx.db.prepare('SELECT id FROM posts WHERE id = ? AND deleted = 0').bind(postId).first();
+  const post = await ctx.db.prepare('SELECT p.id, COALESCE(f.locked, 0) AS locked FROM posts p LEFT JOIN post_flags f ON f.post_id = p.id WHERE p.id = ? AND p.deleted = 0').bind(postId).first();
   if(!post) throw new HttpError(404, 'This post doesn’t exist or has been removed.');
+  if(post.locked && !user.admin) throw new HttpError(403, 'This thread is locked, so it can’t take new replies.');
   await limit(ctx, 'reply:' + user.id, 20, 15 * 60 * 1000, 'You’ve replied many times in a short while. Please wait a few minutes.');
   const [result] = await ctx.db.batch([
     ctx.db.prepare('INSERT INTO replies (post_id, user_id, body, created_at) VALUES (?, ?, ?, ?)').bind(postId, user.id, body, ctx.now),
@@ -341,7 +383,11 @@ async function deletePost(ctx, id){
   const post = await ctx.db.prepare('SELECT user_id FROM posts WHERE id = ? AND deleted = 0').bind(id).first();
   if(!post) throw new HttpError(404, 'This post doesn’t exist or has already been removed.');
   if(post.user_id !== user.id && !user.admin) throw new HttpError(403, 'You can only remove your own posts.');
-  await ctx.db.prepare('UPDATE posts SET deleted = 1 WHERE id = ?').bind(id).run();
+  await ctx.db.batch([
+    ctx.db.prepare('UPDATE posts SET deleted = 1 WHERE id = ?').bind(id),
+    ctx.db.prepare(`UPDATE reports SET status = 'resolved' WHERE status = 'open' AND post_id = ?`).bind(id)
+  ]);
+  if(post.user_id !== user.id) await logMod(ctx, 'remove-post', 'post ' + id, '');
   return json({ ok:true });
 }
 
@@ -352,8 +398,10 @@ async function deleteReply(ctx, id){
   if(reply.user_id !== user.id && !user.admin) throw new HttpError(403, 'You can only remove your own replies.');
   await ctx.db.batch([
     ctx.db.prepare('UPDATE replies SET deleted = 1 WHERE id = ?').bind(id),
-    ctx.db.prepare('UPDATE posts SET reply_count = MAX(reply_count - 1, 0) WHERE id = ?').bind(reply.post_id)
+    ctx.db.prepare('UPDATE posts SET reply_count = MAX(reply_count - 1, 0) WHERE id = ?').bind(reply.post_id),
+    ctx.db.prepare(`UPDATE reports SET status = 'resolved' WHERE status = 'open' AND kind = 'reply' AND target_id = ?`).bind(id)
   ]);
+  if(reply.user_id !== user.id) await logMod(ctx, 'remove-reply', 'reply ' + id + ' on post ' + reply.post_id, '');
   return json({ ok:true });
 }
 
@@ -371,11 +419,208 @@ async function togglePrayer(ctx, postId){
   return json({ prayed, prayers:row.prayer_count });
 }
 
+/* ---------- Moderation ---------- */
+async function logMod(ctx, action, target, detail){
+  await ctx.db.prepare('INSERT INTO mod_log (mod_id, action, target, detail, created_at) VALUES (?, ?, ?, ?, ?)')
+    .bind(ctx.user ? ctx.user.id : null, action, String(target || '').slice(0, 200), String(detail || '').slice(0, 300), ctx.now).run();
+}
+function banMessage(ban){
+  return 'This account has been banned' + (ban.until ? ' until ' + new Date(ban.until).toISOString().slice(0, 10) : '') + '.' + (ban.reason ? ' Reason: ' + ban.reason : '');
+}
+function siteAdmin(ctx, username){
+  return String(ctx.env.ADMINS || '').split(',').map(x => x.trim().toLowerCase()).includes(String(username || '').toLowerCase());
+}
+
+async function report(ctx, kind, id){
+  const user = requireUser(ctx);
+  const data = await readBody(ctx, 2000);
+  const reason = cleanLine(data.reason).slice(0, 300);
+  const row = kind === 'post'
+    ? await ctx.db.prepare('SELECT id AS post_id, user_id FROM posts WHERE id = ? AND deleted = 0').bind(id).first()
+    : await ctx.db.prepare('SELECT post_id, user_id FROM replies WHERE id = ? AND deleted = 0').bind(id).first();
+  if(!row) throw new HttpError(404, 'That has already been removed.');
+  if(row.user_id === user.id) throw new HttpError(400, 'You can delete your own posts instead of reporting them.');
+  await limit(ctx, 'report:' + user.id, 10, 60 * 60 * 1000, 'You’ve sent several reports. Please wait a little before sending more.');
+  await ctx.db.prepare('INSERT OR IGNORE INTO reports (kind, target_id, post_id, reporter_id, reason, created_at) VALUES (?, ?, ?, ?, ?, ?)')
+    .bind(kind, id, row.post_id, user.id, reason, ctx.now).run();
+  return json({ ok:true });
+}
+
+async function flagPost(ctx, id, which){
+  requireModerator(ctx);
+  const data = await readBody(ctx, 200);
+  const on = data.on ? 1 : 0;
+  const post = await ctx.db.prepare('SELECT title FROM posts WHERE id = ? AND deleted = 0').bind(id).first();
+  if(!post) throw new HttpError(404, 'This post doesn’t exist or has been removed.');
+  const col = which === 'pin' ? 'pinned' : 'locked';
+  await ctx.db.prepare(`INSERT INTO post_flags (post_id, ${col}) VALUES (?, ?) ON CONFLICT(post_id) DO UPDATE SET ${col} = excluded.${col}`).bind(id, on).run();
+  await logMod(ctx, (on ? '' : 'un') + which, 'post ' + id, post.title);
+  return json({ ok:true, [col]:!!on });
+}
+
+async function modRoute(ctx, sub, method){
+  requireModerator(ctx);
+  let m;
+  if(sub === 'overview' && method === 'GET') return await modOverview(ctx);
+  if(sub === 'users' && method === 'GET') return await modUsers(ctx);
+  if((m = sub.match(/^users\/(\d+)$/)) && method === 'GET') return await modUser(ctx, Number(m[1]));
+  if((m = sub.match(/^users\/(\d+)\/ban$/))){
+    if(method === 'POST') return await banUser(ctx, Number(m[1]));
+    if(method === 'DELETE') return await unbanUser(ctx, Number(m[1]));
+  }
+  if((m = sub.match(/^users\/(\d+)\/content$/)) && method === 'DELETE') return await removeContent(ctx, Number(m[1]), true);
+  if(sub === 'reports' && method === 'GET') return await modReports(ctx);
+  if((m = sub.match(/^reports\/(\d+)$/)) && method === 'DELETE') return await dismissReport(ctx, Number(m[1]));
+  if(sub === 'log' && method === 'GET') return await modLogList(ctx);
+  throw new HttpError(404, 'Not found.');
+}
+
+async function modOverview(ctx){
+  const n = async sql => (await ctx.db.prepare(sql).bind(...(sql.includes('?') ? [ctx.now] : [])).first()).n;
+  return json({
+    accounts:await n('SELECT COUNT(*) AS n FROM users'),
+    posts:await n('SELECT COUNT(*) AS n FROM posts WHERE deleted = 0'),
+    replies:await n('SELECT COUNT(*) AS n FROM replies WHERE deleted = 0'),
+    reports:await n(`SELECT COUNT(*) AS n FROM reports WHERE status = 'open'`),
+    banned:await n('SELECT COUNT(*) AS n FROM bans WHERE until IS NULL OR until > ?'),
+    news:await n('SELECT COUNT(*) AS n FROM news WHERE deleted = 0')
+  });
+}
+
+const USER_COLUMNS = `u.id, u.username, u.created_at, a.updated_at AS avatar_v,
+  (SELECT COUNT(*) FROM posts p WHERE p.user_id = u.id AND p.deleted = 0) AS posts,
+  (SELECT COUNT(*) FROM replies r WHERE r.user_id = u.id AND r.deleted = 0) AS replies,
+  (SELECT MAX(t) FROM (SELECT MAX(created_at) AS t FROM posts WHERE user_id = u.id UNION ALL SELECT MAX(created_at) FROM replies WHERE user_id = u.id)) AS last_post,
+  (SELECT COUNT(*) FROM reports rp WHERE rp.status = 'open' AND ((rp.kind = 'post' AND rp.target_id IN (SELECT id FROM posts WHERE user_id = u.id)) OR (rp.kind = 'reply' AND rp.target_id IN (SELECT id FROM replies WHERE user_id = u.id)))) AS reports,
+  EXISTS (SELECT 1 FROM mod_sessions ms JOIN sessions s ON s.token_hash = ms.token_hash WHERE s.user_id = u.id AND ms.expires_at > ?) AS mod_now,
+  b.reason AS ban_reason, b.until AS ban_until, b.created_at AS banned_at`;
+const USER_JOINS = `FROM users u LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN bans b ON b.user_id = u.id AND (b.until IS NULL OR b.until > ?)`;
+function modUserJson(ctx, r){
+  return {
+    id:r.id, username:r.username, createdAt:r.created_at, avatar:r.avatar_v || null, posts:r.posts, replies:r.replies, lastPost:r.last_post || null,
+    reports:r.reports, moderator:!!r.mod_now || siteAdmin(ctx, r.username), siteAdmin:siteAdmin(ctx, r.username),
+    ban:r.banned_at ? { reason:r.ban_reason, until:r.ban_until || null, since:r.banned_at } : null
+  };
+}
+
+async function modUsers(ctx){
+  const q = ctx.url.searchParams;
+  const page = Math.max(0, Math.min(500, parseInt(q.get('page') || '0', 10) || 0));
+  const search = cleanLine(q.get('q')).slice(0, 40).replace(/[\\%_]/g, c => '\\' + c);
+  const filter = q.get('filter') || 'all';
+  const where = ['u.username LIKE ? ESCAPE \'\\\''];
+  if(filter === 'banned') where.push('b.user_id IS NOT NULL');
+  if(filter === 'reported') where.push(`EXISTS (SELECT 1 FROM reports rp WHERE rp.status = 'open' AND ((rp.kind = 'post' AND rp.target_id IN (SELECT id FROM posts WHERE user_id = u.id)) OR (rp.kind = 'reply' AND rp.target_id IN (SELECT id FROM replies WHERE user_id = u.id))))`);
+  const order = q.get('sort') === 'active' ? 'last_post DESC NULLS LAST, u.id DESC' : q.get('sort') === 'name' ? 'u.username COLLATE NOCASE ASC' : 'u.created_at DESC, u.id DESC';
+  const { results } = await ctx.db.prepare(
+    `SELECT ${USER_COLUMNS} ${USER_JOINS} WHERE ${where.join(' AND ')} ORDER BY ${order} LIMIT ? OFFSET ?`
+  ).bind(ctx.now, ctx.now, '%' + search + '%', 31, page * 30).all();
+  const total = (await ctx.db.prepare('SELECT COUNT(*) AS n FROM users').first()).n;
+  return json({ users:results.slice(0, 30).map(r => modUserJson(ctx, r)), more:results.length > 30, total });
+}
+
+async function modUser(ctx, id){
+  const row = await ctx.db.prepare(`SELECT ${USER_COLUMNS} ${USER_JOINS} WHERE u.id = ?`).bind(ctx.now, ctx.now, id).first();
+  if(!row) throw new HttpError(404, 'That account doesn’t exist.');
+  const posts = (await ctx.db.prepare('SELECT id, title, substr(body, 1, 200) AS excerpt, created_at, deleted FROM posts WHERE user_id = ? ORDER BY created_at DESC LIMIT 50').bind(id).all()).results;
+  const replies = (await ctx.db.prepare(
+    `SELECT r.id, r.post_id, p.title AS post_title, substr(r.body, 1, 200) AS excerpt, r.created_at, r.deleted
+       FROM replies r LEFT JOIN posts p ON p.id = r.post_id WHERE r.user_id = ? ORDER BY r.created_at DESC LIMIT 50`).bind(id).all()).results;
+  return json({
+    user:modUserJson(ctx, row),
+    posts:posts.map(p => ({ id:p.id, title:p.title, excerpt:p.excerpt, createdAt:p.created_at, removed:!!p.deleted })),
+    replies:replies.map(r => ({ id:r.id, postId:r.post_id, postTitle:r.post_title, excerpt:r.excerpt, createdAt:r.created_at, removed:!!r.deleted }))
+  });
+}
+
+async function banUser(ctx, id){
+  const me = ctx.user;
+  const target = await ctx.db.prepare('SELECT id, username FROM users WHERE id = ?').bind(id).first();
+  if(!target) throw new HttpError(404, 'That account doesn’t exist.');
+  if(target.id === me.id) throw new HttpError(400, 'You can’t ban your own account.');
+  if(siteAdmin(ctx, target.username)) throw new HttpError(403, 'Site administrators can’t be banned.');
+  const data = await readBody(ctx, 2000);
+  const days = Number(data.days) || 0;
+  if(days && (days < 0 || days > 3650)) throw new HttpError(400, 'Choose how long the ban lasts.');
+  const until = days ? ctx.now + days * 86400000 : null;
+  const reason = cleanLine(data.reason).slice(0, 300);
+  await ctx.db.batch([
+    ctx.db.prepare('INSERT INTO bans (user_id, reason, until, by_user, created_at) VALUES (?, ?, ?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET reason = excluded.reason, until = excluded.until, by_user = excluded.by_user, created_at = excluded.created_at')
+      .bind(id, reason, until, me.id, ctx.now),
+    ctx.db.prepare('DELETE FROM mod_sessions WHERE token_hash IN (SELECT token_hash FROM sessions WHERE user_id = ?)').bind(id),
+    ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(id)
+  ]);
+  await logMod(ctx, 'ban', target.username, (days ? days + (days === 1 ? ' day' : ' days') : 'permanent') + (reason ? ' · ' + reason : ''));
+  if(data.removeContent) await removeContent(ctx, id, false);
+  return modUser(ctx, id);
+}
+
+async function unbanUser(ctx, id){
+  const target = await ctx.db.prepare('SELECT username FROM users WHERE id = ?').bind(id).first();
+  if(!target) throw new HttpError(404, 'That account doesn’t exist.');
+  await ctx.db.prepare('DELETE FROM bans WHERE user_id = ?').bind(id).run();
+  await logMod(ctx, 'unban', target.username, '');
+  return modUser(ctx, id);
+}
+
+async function removeContent(ctx, id, respond){
+  const target = await ctx.db.prepare('SELECT username FROM users WHERE id = ?').bind(id).first();
+  if(!target) throw new HttpError(404, 'That account doesn’t exist.');
+  const counts = await ctx.db.prepare(
+    'SELECT (SELECT COUNT(*) FROM posts WHERE user_id = ? AND deleted = 0) AS posts, (SELECT COUNT(*) FROM replies WHERE user_id = ? AND deleted = 0) AS replies'
+  ).bind(id, id).first();
+  await ctx.db.batch([
+    ctx.db.prepare(`UPDATE reports SET status = 'resolved' WHERE status = 'open' AND ((kind = 'post' AND target_id IN (SELECT id FROM posts WHERE user_id = ?)) OR (kind = 'reply' AND target_id IN (SELECT id FROM replies WHERE user_id = ?)))`).bind(id, id),
+    ctx.db.prepare('UPDATE posts SET deleted = 1 WHERE user_id = ? AND deleted = 0').bind(id),
+    ctx.db.prepare('UPDATE replies SET deleted = 1 WHERE user_id = ? AND deleted = 0').bind(id),
+    ctx.db.prepare('UPDATE posts SET reply_count = (SELECT COUNT(*) FROM replies r WHERE r.post_id = posts.id AND r.deleted = 0) WHERE id IN (SELECT DISTINCT post_id FROM replies WHERE user_id = ?)').bind(id)
+  ]);
+  const n = (k, one, many) => `${k} ${k === 1 ? one : many}`;
+  await logMod(ctx, 'remove-all', target.username, `${n(counts.posts, 'post', 'posts')}, ${n(counts.replies, 'reply', 'replies')}`);
+  return respond ? modUser(ctx, id) : null;
+}
+
+async function modReports(ctx){
+  const { results } = await ctx.db.prepare(
+    `SELECT rp.id, rp.kind, rp.target_id, rp.post_id, rp.reason, rp.created_at, ru.username AS reporter, p.title AS post_title,
+            CASE rp.kind WHEN 'post' THEN substr(p.body, 1, 400) ELSE substr(rr.body, 1, 400) END AS excerpt,
+            CASE rp.kind WHEN 'post' THEN pu.username ELSE rru.username END AS author,
+            CASE rp.kind WHEN 'post' THEN p.user_id ELSE rr.user_id END AS author_id,
+            (SELECT COUNT(*) FROM reports x WHERE x.status = 'open' AND x.kind = rp.kind AND x.target_id = rp.target_id) AS times
+       FROM reports rp
+       LEFT JOIN users ru ON ru.id = rp.reporter_id
+       LEFT JOIN posts p ON p.id = rp.post_id
+       LEFT JOIN users pu ON pu.id = p.user_id
+       LEFT JOIN replies rr ON rp.kind = 'reply' AND rr.id = rp.target_id
+       LEFT JOIN users rru ON rru.id = rr.user_id
+      WHERE rp.status = 'open' ORDER BY rp.created_at DESC LIMIT 100`
+  ).all();
+  return json({ reports:results.map(r => ({
+    id:r.id, kind:r.kind, targetId:r.target_id, postId:r.post_id, postTitle:r.post_title, reason:r.reason, createdAt:r.created_at,
+    reporter:r.reporter || null, author:r.author || null, authorId:r.author_id || null, excerpt:r.excerpt || '', times:r.times
+  })) });
+}
+
+async function dismissReport(ctx, id){
+  const r = await ctx.db.prepare(`SELECT kind, target_id FROM reports WHERE id = ? AND status = 'open'`).bind(id).first();
+  if(!r) throw new HttpError(404, 'That report has already been handled.');
+  await ctx.db.prepare(`UPDATE reports SET status = 'dismissed' WHERE status = 'open' AND kind = ? AND target_id = ?`).bind(r.kind, r.target_id).run();
+  await logMod(ctx, 'dismiss-report', r.kind + ' ' + r.target_id, '');
+  return json({ ok:true });
+}
+
+async function modLogList(ctx){
+  const { results } = await ctx.db.prepare(
+    'SELECT l.id, l.action, l.target, l.detail, l.created_at, u.username FROM mod_log l LEFT JOIN users u ON u.id = l.mod_id ORDER BY l.created_at DESC, l.id DESC LIMIT 150'
+  ).all();
+  return json({ log:results.map(r => ({ id:r.id, action:r.action, target:r.target, detail:r.detail, createdAt:r.created_at, by:r.username || null })) });
+}
+
 /* ---------- News: everyone reads, moderators write ---------- */
 const NEWS_PAGE = 10;
-function requireModerator(ctx){
+function requireModerator(ctx, message = 'Only moderators can do that.'){
   const user = requireUser(ctx);
-  if(!user.admin) throw new HttpError(403, 'Only moderators can post news.');
+  if(!user.admin) throw new HttpError(403, message);
   return user;
 }
 
@@ -397,7 +642,7 @@ async function listNews(ctx){
 }
 
 async function saveNews(ctx, id){
-  const user = requireModerator(ctx);
+  const user = requireModerator(ctx, 'Only moderators can post news.');
   const data = await readBody(ctx, 30000);
   const title = cleanLine(data.title), body = cleanText(data.body);
   if(title.length < 3 || title.length > 140) throw new HttpError(400, 'Titles need 3 to 140 characters.');
@@ -405,11 +650,13 @@ async function saveNews(ctx, id){
   if(id === null){
     await limit(ctx, 'news:' + user.id, 20, 60 * 60 * 1000, 'That’s a lot of news at once. Please wait a little before posting more.');
     const result = await ctx.db.prepare('INSERT INTO news (user_id, title, body, created_at) VALUES (?, ?, ?, ?)').bind(user.id, title, body, ctx.now).run();
+    await logMod(ctx, 'publish-news', 'news ' + result.meta.last_row_id, title);
     return json({ id:result.meta.last_row_id }, 201);
   }
   const found = await ctx.db.prepare('SELECT id FROM news WHERE id = ? AND deleted = 0').bind(id).first();
   if(!found) throw new HttpError(404, 'That news post wasn’t found.');
   await ctx.db.prepare('UPDATE news SET title = ?, body = ?, updated_at = ? WHERE id = ?').bind(title, body, ctx.now, id).run();
+  await logMod(ctx, 'edit-news', 'news ' + id, title);
   return json({ id });
 }
 
@@ -418,6 +665,7 @@ async function deleteNews(ctx, id){
   const found = await ctx.db.prepare('SELECT id FROM news WHERE id = ? AND deleted = 0').bind(id).first();
   if(!found) throw new HttpError(404, 'That news post wasn’t found.');
   await ctx.db.prepare('UPDATE news SET deleted = 1 WHERE id = ?').bind(id).run();
+  await logMod(ctx, 'delete-news', 'news ' + id, '');
   return json({ ok:true });
 }
 
@@ -437,6 +685,7 @@ async function enterModerator(ctx){
   }
   await ctx.db.prepare('INSERT INTO mod_sessions (token_hash, expires_at) VALUES (?, ?) ON CONFLICT(token_hash) DO UPDATE SET expires_at = excluded.expires_at')
     .bind(ctx.tokenHash, user.session_expires).run();
+  await logMod(ctx, 'moderator-on', '', '');
   return json({ user:publicUser(withRole(ctx, { ...user, mod_token:ctx.tokenHash })) });
 }
 
@@ -455,8 +704,9 @@ async function currentUser(ctx){
     `SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, s.expires_at AS session_expires, m.token_hash AS mod_token
      FROM sessions s JOIN users u ON u.id = s.user_id LEFT JOIN avatars a ON a.user_id = u.id
      LEFT JOIN mod_sessions m ON m.token_hash = s.token_hash AND m.expires_at > ?
-     WHERE s.token_hash = ? AND s.expires_at > ?`
-  ).bind(ctx.now, ctx.tokenHash, ctx.now).first();
+     LEFT JOIN bans b ON b.user_id = u.id AND (b.until IS NULL OR b.until > ?)
+     WHERE s.token_hash = ? AND s.expires_at > ? AND b.user_id IS NULL`
+  ).bind(ctx.now, ctx.now, ctx.tokenHash, ctx.now).first();
   return row ? withRole(ctx, row) : null;
 }
 
