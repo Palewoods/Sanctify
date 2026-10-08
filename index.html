@@ -2297,6 +2297,10 @@
 
 
 
+
+
+
+
   /* =========================================================
      2026 REFRESH: one consistent finish over every page and theme.
      Everything here builds on each theme's colors, so all 41 themes keep their character.
@@ -2657,8 +2661,8 @@
   .dash-hero .dash-greet{margin:12px 0 8px;}
   .dash-hero .hero-actions{margin-top:22px;}
   .dash-hero .hero-rosette{max-width:300px;}
-  /* With the side menu open on wide screens, the top bar keeps only search and Appearance */
-  @media (min-width:1100px){ #topSaved, #topAccount, #riteToggle, #topDiscord{display:none !important;} }
+  /* Discord and the edition switch live in the top bar, so the menu leaves out its closing group */
+  nav.sidebar .nav-group:last-child{display:none;}
   /* END LAYOUT */
 
   @media print{
