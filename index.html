@@ -9226,6 +9226,7 @@ function applyTheme(key, save){
   themeMenu.querySelectorAll('.theme-option').forEach(o => o.setAttribute('aria-checked', o.dataset.theme === key ? 'true' : 'false'));
   const meta = document.querySelector('meta[name="theme-color"]');
   if(meta) meta.setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--wine').trim() || '#7a2426');
+  if(save) setSeasonFavicon(isEastern());   // at start-up the edition sets it once everything has loaded
 }
 
 // Gold shine: an optional metallic sheen on titles and cards, only on themes with gold in them
@@ -12606,13 +12607,15 @@ function applyRite(){
   Object.keys(guidedState).forEach(k => { guidedState[k] = null; });
 }
 
-// The favicon's cross takes the color of today's liturgical season (white feasts use gold so it shows on parchment)
-const FAVICON_COLORS = { violet:'#5b3f86', purple:'#5b3f86', white:'#94701a', gold:'#94701a', green:'#3e6b3a', red:'#9b1c1f', rose:'#b04a73', blue:'#2f5597', dark:'#3b2c4d', black:'#2a2522' };
+// The favicon wears the chosen theme: its page color for the tile, its gold for the edge, its accent for the cross
+// (the Liturgical Season themes' accent follows the season, so their cross does too)
 function setSeasonFavicon(east){
-  const name = String(todaysLiturgicalColor() || 'green').split(/\s+/)[0];
-  const color = FAVICON_COLORS[name] || '#7a2426', path = east ? CROSS_PATHS.eastern : CROSS_PATHS.latin;
+  const css = getComputedStyle(document.documentElement);
+  const v = (name, fallback) => (css.getPropertyValue(name) || '').trim() || fallback;
+  const tile = v('--parchment-light', '#f6f0dc'), edge = v('--gold', '#a6824a'), color = v('--wine', '#7a2426');
+  const path = east ? CROSS_PATHS.eastern : CROSS_PATHS.latin;
   const svg = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
-  if(svg) svg.setAttribute('href', 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="2" y="2" width="60" height="60" rx="13" fill="#f6f0dc" stroke="#a6824a" stroke-width="2.5"/><path fill="${color}" fill-rule="evenodd" transform="translate(32 32) scale(0.86) translate(-32 -32)" d="${path}"/></svg>`));
+  if(svg) svg.setAttribute('href', 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="2" y="2" width="60" height="60" rx="13" fill="${tile}" stroke="${edge}" stroke-width="2.5"/><path fill="${color}" fill-rule="evenodd" transform="translate(32 32) scale(0.86) translate(-32 -32)" d="${path}"/></svg>`));
   // Browsers that ignore SVG favicons (Safari) get the same drawing as a PNG
   const png = document.querySelector('link[rel="icon"][type="image/png"]');
   if(!png || typeof Path2D === 'undefined') return;
@@ -12621,7 +12624,7 @@ function setSeasonFavicon(east){
     const g = c.getContext('2d');
     g.beginPath();
     if(g.roundRect) g.roundRect(2, 2, 60, 60, 13); else g.rect(2, 2, 60, 60);
-    g.fillStyle = '#f6f0dc'; g.fill(); g.lineWidth = 2.5; g.strokeStyle = '#a6824a'; g.stroke();
+    g.fillStyle = tile; g.fill(); g.lineWidth = 2.5; g.strokeStyle = edge; g.stroke();
     g.translate(32, 32); g.scale(0.86, 0.86); g.translate(-32, -32);
     g.fillStyle = color; g.fill(new Path2D(path), 'evenodd');
     png.setAttribute('href', c.toDataURL('image/png'));
