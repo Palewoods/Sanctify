@@ -65,6 +65,15 @@ const SCHEMA = [
      mime TEXT NOT NULL,
      data TEXT NOT NULL,
      updated_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS news (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     user_id INTEGER NOT NULL,
+     title TEXT NOT NULL,
+     body TEXT NOT NULL,
+     created_at INTEGER NOT NULL,
+     updated_at INTEGER,
+     deleted INTEGER NOT NULL DEFAULT 0)`,
+  `CREATE INDEX IF NOT EXISTS news_by_date ON news (deleted, created_at DESC)`,
   `CREATE TABLE IF NOT EXISTS mod_sessions (
      token_hash TEXT PRIMARY KEY,
      expires_at INTEGER NOT NULL)`,
@@ -110,6 +119,12 @@ export async function onRequest({ request, env }){
     if(path === 'account' && method === 'DELETE') return await deleteAccount(ctx);
     if(path === 'moderator' && method === 'POST') return await enterModerator(ctx);
     if(path === 'moderator' && method === 'DELETE') return await leaveModerator(ctx);
+    if(path === 'news' && method === 'GET') return await listNews(ctx);
+    if(path === 'news' && method === 'POST') return await saveNews(ctx, null);
+    if((m = path.match(/^news\/(\d+)$/))){
+      if(method === 'PUT') return await saveNews(ctx, Number(m[1]));
+      if(method === 'DELETE') return await deleteNews(ctx, Number(m[1]));
+    }
     if(path === 'account/avatar' && method === 'PUT') return await setAvatar(ctx);
     if(path === 'account/avatar' && method === 'DELETE') return await removeAvatar(ctx);
     if(path === 'posts' && method === 'GET') return await listPosts(ctx);
@@ -354,6 +369,56 @@ async function togglePrayer(ctx, postId){
   await ctx.db.prepare(`UPDATE posts SET prayer_count = MAX(prayer_count ${prayed ? '+' : '-'} 1, 0) WHERE id = ?`).bind(postId).run();
   const row = await ctx.db.prepare('SELECT prayer_count FROM posts WHERE id = ?').bind(postId).first();
   return json({ prayed, prayers:row.prayer_count });
+}
+
+/* ---------- News: everyone reads, moderators write ---------- */
+const NEWS_PAGE = 10;
+function requireModerator(ctx){
+  const user = requireUser(ctx);
+  if(!user.admin) throw new HttpError(403, 'Only moderators can post news.');
+  return user;
+}
+
+async function listNews(ctx){
+  const page = Math.max(0, Math.min(500, parseInt(ctx.url.searchParams.get('page') || '0', 10) || 0));
+  const { results } = await ctx.db.prepare(
+    `SELECT n.id, n.title, n.body, n.created_at, n.updated_at, u.username, a.updated_at AS avatar_v
+       FROM news n LEFT JOIN users u ON u.id = n.user_id LEFT JOIN avatars a ON a.user_id = n.user_id
+      WHERE n.deleted = 0 ORDER BY n.created_at DESC, n.id DESC LIMIT ? OFFSET ?`
+  ).bind(NEWS_PAGE + 1, page * NEWS_PAGE).all();
+  return json({
+    news:results.slice(0, NEWS_PAGE).map(r => ({
+      id:r.id, title:r.title, body:r.body, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null,
+      createdAt:r.created_at, updatedAt:r.updated_at || null
+    })),
+    more:results.length > NEWS_PAGE,
+    canWrite:!!(ctx.user && ctx.user.admin)
+  });
+}
+
+async function saveNews(ctx, id){
+  const user = requireModerator(ctx);
+  const data = await readBody(ctx, 30000);
+  const title = cleanLine(data.title), body = cleanText(data.body);
+  if(title.length < 3 || title.length > 140) throw new HttpError(400, 'Titles need 3 to 140 characters.');
+  if(body.length < 10 || body.length > 10000) throw new HttpError(400, 'News posts need 10 to 10,000 characters.');
+  if(id === null){
+    await limit(ctx, 'news:' + user.id, 20, 60 * 60 * 1000, 'That’s a lot of news at once. Please wait a little before posting more.');
+    const result = await ctx.db.prepare('INSERT INTO news (user_id, title, body, created_at) VALUES (?, ?, ?, ?)').bind(user.id, title, body, ctx.now).run();
+    return json({ id:result.meta.last_row_id }, 201);
+  }
+  const found = await ctx.db.prepare('SELECT id FROM news WHERE id = ? AND deleted = 0').bind(id).first();
+  if(!found) throw new HttpError(404, 'That news post wasn’t found.');
+  await ctx.db.prepare('UPDATE news SET title = ?, body = ?, updated_at = ? WHERE id = ?').bind(title, body, ctx.now, id).run();
+  return json({ id });
+}
+
+async function deleteNews(ctx, id){
+  requireModerator(ctx);
+  const found = await ctx.db.prepare('SELECT id FROM news WHERE id = ? AND deleted = 0').bind(id).first();
+  if(!found) throw new HttpError(404, 'That news post wasn’t found.');
+  await ctx.db.prepare('UPDATE news SET deleted = 1 WHERE id = ?').bind(id).run();
+  return json({ ok:true });
 }
 
 /* ---------- Moderator mode ---------- */

@@ -564,6 +564,7 @@
   nav.sidebar button.navlink[data-cat="all"]{--cat-color:var(--ink);}
   nav.sidebar button.navlink[data-cat="daily"]{--cat-color:var(--gold);}
   nav.sidebar button.navlink[data-cat="theology"]{--cat-color:var(--purple);}
+  nav.sidebar button.navlink[data-cat="news"]{--cat-color:var(--amber);}
 
   .side-actions{border-top:1px solid var(--line); padding-top:18px; display:flex; flex-direction:column; gap:8px;}
   .btn{
@@ -2008,6 +2009,30 @@
   .forum-reply-form{margin-top:20px; padding-top:20px; border-top:1px solid var(--line);}
   .forum-reply-form textarea{min-height:110px;}
   .forum-form{max-width:720px;}
+  .btn[hidden]{display:none !important;}
+  .news-page{max-width:760px;}
+  .news-compose{margin-bottom:28px; padding:18px 20px; border:1px solid var(--line); border-radius:16px; background:var(--parchment-light);}
+  .news-compose-head{display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:10px;}
+  .news-compose-head h3{font-size:1.3rem;}
+  .news-compose textarea{min-height:200px;}
+  .news-list{display:flex; flex-direction:column; gap:16px;}
+  .news-item{padding:22px 24px; border:1px solid var(--line); border-radius:16px; background:var(--parchment-light); position:relative; overflow:hidden;}
+  .news-item::before{content:''; position:absolute; left:0; right:0; top:0; height:3px; background:linear-gradient(90deg, transparent, var(--amber) 20%, var(--amber) 80%, transparent);}
+  .news-date{font-size:0.72rem; text-transform:uppercase; letter-spacing:0.14em; font-weight:600; color:var(--amber);}
+  .news-item h3{font-size:1.6rem; line-height:1.15; margin:6px 0 10px;}
+  .news-foot{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-top:14px; padding-top:12px; border-top:1px solid var(--line);}
+  .news-tools{display:flex; gap:14px;}
+  .news-tools .forum-remove{margin-left:0;}
+  .news-more{display:flex; justify-content:center; margin-top:16px;}
+  .home-news{display:flex; align-items:center; gap:14px; width:100%; margin:0 0 16px; padding:14px 18px; text-align:left; cursor:pointer; color:var(--ink);
+    border:1px solid var(--line); border-radius:16px; background:var(--parchment-light); font-family:'Source Serif 4', serif;}
+  .home-news:hover{border-color:var(--amber);}
+  .home-news-text{display:flex; flex-direction:column; gap:2px; flex:1; min-width:0;}
+  .home-news-text .daily-kicker{margin:0; color:var(--amber);}
+  .home-news-text strong{font-family:'Cormorant Garamond', serif; font-size:1.25rem; line-height:1.2;}
+  .home-news-text > span:last-child{font-size:0.88rem; color:var(--ink-soft);}
+  .home-news .tile-icon{flex:none;}
+  @media (max-width:600px){ .home-news .bento-cta{display:none;} .news-item{padding:18px;} }
   .forum-form-actions{display:flex; flex-wrap:wrap; align-items:center; gap:10px;}
   .forum-error{color:var(--wine); font-size:0.9rem; margin:0 0 12px;}
   .forum-error[hidden]{display:none;}
@@ -2748,6 +2773,7 @@
         <li><button class="navlink" data-route="home" data-cat="home">Home</button></li>
         <li><button class="navlink" data-route="today" data-cat="daily">Today</button></li>
         <li><button class="navlink" data-route="calendar" data-cat="calendar">Calendar <span class="count" id="count-calendar"></span></button></li>
+        <li><button class="navlink" data-route="news" data-cat="news">News</button></li>
         <li><button class="navlink" data-route="mine" data-cat="mine">My Sanctify <span class="count" id="count-mine"></span></button></li>
         <li><button class="navlink" data-route="community" data-cat="community">Community</button></li>
         <li><button class="navlink" data-route="account" data-cat="account">Account</button></li>
@@ -2850,7 +2876,7 @@
       <div><h4>Learn</h4>
         <button data-route="learn/theology">Theology</button><button data-route="learn/theology/fathers">The Faith of the Fathers</button><button data-route="learn/theology/apologetics">Defending the Faith</button><button data-route="learn/mass">The Mass Explained</button><button data-route="learn/glossary">Glossary</button><button data-route="learn/quiz">Quiz</button></div>
       <div><h4>Sanctify</h4>
-        <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="library/resources">Resources</button><button data-route="mine">My Sanctify</button><button data-route="community">Community</button><button data-route="account">Account</button><button class="footer-rite" data-rite-switch>Switch to the Eastern Catholic edition</button></div>
+        <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="news">News</button><button data-route="library/resources">Resources</button><button data-route="mine">My Sanctify</button><button data-route="community">Community</button><button data-route="account">Account</button><button class="footer-rite" data-rite-switch>Switch to the Eastern Catholic edition</button></div>
     </div>
   </div>
   <p class="footer-note">Ad maiorem Dei gloriam. Scripture quotations are from the Revised Standard Version of the Bible: Catholic Edition, copyright © 1965, 1966 the Division of Christian Education of the National Council of the Churches of Christ in the United States of America. Used by permission. All rights reserved. Saint and book images come from Wikipedia and Wikimedia Commons.</p>
@@ -2893,6 +2919,7 @@ const CAT_DESC = {
   all: 'Every prayer, saint, book, event, and teaching in Sanctify, in one list.',
   daily: 'A saint, a prayer, a verse, and more for each day, chosen fresh every morning.',
   exam: 'A guided examination of conscience to prepare for the Sacrament of Reconciliation, following the Ten Commandments.',
+  news: 'Announcements and updates from the Sanctify team.',
   plan: 'Read through the Gospels, the Psalms, the New Testament, or the whole Bible, a little each day.',
   mine: 'Your saved entries, prayer intentions, and novenas. Everything here stays private, stored only in this browser.',
   timer: 'Set aside time for silent prayer, meditation, or a Holy Hour, with a gentle bell to begin and end.',
@@ -6598,7 +6625,7 @@ function render(){
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
       community:renderCommunity, resources:renderResources,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
-      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
+      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
       'hub-pray':() => renderHub('pray'), 'hub-library':() => renderHub('library'), 'hub-learn':() => renderHub('learn'), 'hub-history':() => renderHub('history'), 'hub-saints':() => renderHub('saints')
     };
     const needsNoSearch = new Set(['home', 'daily', 'theology', 'hub-pray', 'hub-library', 'hub-learn']);
@@ -9198,6 +9225,125 @@ async function renderCommunity(){
 }
 
 /* ---------- One post and its replies ---------- */
+/* ---------- News: announcements from the Sanctify team ---------- */
+let newsEditing = null;   // the news post being edited, if any
+function newsItemHtml(n, canWrite){
+  return `<article class="news-item" id="news-${n.id}">
+    <div class="news-date">${escapeHtml(new Date(n.createdAt).toLocaleDateString(undefined, { weekday:'long', month:'long', day:'numeric', year:'numeric' }))}</div>
+    <h3>${escapeHtml(n.title)}</h3>
+    <div class="forum-body">${forumText(n.body)}</div>
+    <div class="news-foot">
+      <span class="forum-meta">Posted by <strong>${authorHtml(n.author)}</strong>${n.updatedAt ? ' · edited' : ''}</span>
+      ${canWrite ? `<span class="news-tools"><button class="text-link" data-news-edit="${n.id}">Edit</button><button class="text-link forum-remove" data-news-delete="${n.id}">Delete</button></span>` : ''}
+    </div>
+  </article>`;
+}
+async function renderNews(){
+  const seq = ++viewSeq;
+  entryListEl.innerHTML = '<div class="forum-loading">Loading…</div>';
+  await ensureAccount();
+  let data = null, problem = null;
+  if(Community.available){
+    try{ data = await api('news?page=0'); }catch(err){ problem = err; }
+  }
+  if(!stillShowing(seq, 'news')) return;
+  if(!data){
+    const err = problem || Community.problem;
+    entryListEl.innerHTML = err && !err.setup
+      ? forumNotice('Couldn’t load the news', escapeHtml(err.message), '<button class="btn quiet" data-act="retry">Try again</button>')
+      : forumNotice('News is almost ready', 'Announcements from the Sanctify team will appear here soon.');
+    entryListEl.querySelectorAll('[data-act="retry"]').forEach(b => b.addEventListener('click', () => { accountLoading = null; render(); }));
+    return;
+  }
+  let items = data.news, page = 0;
+  const canWrite = data.canWrite;
+  entryListEl.innerHTML = `
+    <div class="news-page">
+      ${canWrite ? `
+      <form class="news-compose" id="newsForm">
+        <div class="news-compose-head"><h3 id="newsFormTitle">Write a news post</h3><span class="forum-meta">Only moderators see this</span></div>
+        <div class="field"><label for="newsTitle">Headline</label><input id="newsTitle" maxlength="140" autocomplete="off"></div>
+        <div class="field"><label for="newsBody">News</label><textarea id="newsBody" maxlength="10000" placeholder="Leave a blank line between paragraphs."></textarea></div>
+        <p class="forum-error" id="newsError" hidden></p>
+        <div class="forum-form-actions"><button class="btn primary pill" type="submit" id="newsSubmit">Publish</button><button class="btn quiet" type="button" id="newsCancel" hidden>Cancel editing</button></div>
+      </form>` : ''}
+      <div class="news-list" id="newsList"></div>
+      <div class="news-more"></div>
+    </div>`;
+  const list = entryListEl.querySelector('#newsList'), more = entryListEl.querySelector('.news-more');
+  const draw = () => {
+    list.innerHTML = items.length ? items.map(n => newsItemHtml(n, canWrite)).join('') : '<div class="forum-empty">No news yet. Check back soon.</div>';
+    more.innerHTML = data.more ? '<button class="btn quiet forum-more" data-act="older">Older news</button>' : '';
+    const older = more.querySelector('[data-act="older"]');
+    if(older) older.addEventListener('click', async () => {
+      older.disabled = true;
+      try{ data = await api('news?page=' + (page + 1)); page++; items = items.concat(data.news); draw(); }
+      catch(err){ toast(err.message); older.disabled = false; }
+    });
+  };
+  draw();
+  if(!canWrite) return;
+
+  const form = entryListEl.querySelector('#newsForm');
+  const title = form.querySelector('#newsTitle'), body = form.querySelector('#newsBody'), error = form.querySelector('#newsError');
+  const submit = form.querySelector('#newsSubmit'), cancel = form.querySelector('#newsCancel');
+  const setEditing = n => {
+    newsEditing = n ? n.id : null;
+    title.value = n ? n.title : '';
+    body.value = n ? n.body : '';
+    form.querySelector('#newsFormTitle').textContent = n ? 'Edit news post' : 'Write a news post';
+    submit.textContent = n ? 'Save changes' : 'Publish';
+    cancel.hidden = !n;
+    showFormError(error, '');
+  };
+  cancel.addEventListener('click', () => setEditing(null));
+  form.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    if(title.value.trim().length < 3){ showFormError(error, 'Please write a headline.'); title.focus(); return; }
+    if(body.value.trim().length < 10){ showFormError(error, 'Please write a little more.'); body.focus(); return; }
+    submit.disabled = true;
+    try{
+      await api(newsEditing ? 'news/' + newsEditing : 'news', { method:newsEditing ? 'PUT' : 'POST', body:{ title:title.value, body:body.value } });
+      toast(newsEditing ? 'News post updated.' : 'News published.');
+      newsEditing = null;
+      renderNews();
+    }catch(err){
+      showFormError(error, err.message);
+      submit.disabled = false;
+    }
+  });
+  list.addEventListener('click', async ev => {
+    const edit = ev.target.closest('[data-news-edit]'), del = ev.target.closest('[data-news-delete]');
+    if(edit){
+      setEditing(items.find(n => n.id === Number(edit.dataset.newsEdit)));
+      form.scrollIntoView({ behavior:'smooth', block:'start' });
+      title.focus({ preventScroll:true });
+    }
+    if(del){
+      if(!confirm('Delete this news post for everyone? This can’t be undone.')) return;
+      try{ await api('news/' + del.dataset.newsDelete, { method:'DELETE' }); toast('News post deleted.'); renderNews(); }
+      catch(err){ toast(err.message); }
+    }
+  });
+}
+
+// The latest news, shown on the home page when there is something from the last month
+async function loadHomeNews(slot){
+  if(!slot) return;
+  try{
+    await ensureAccount();
+    if(!Community.available) return;
+    const data = await api('news?page=0');
+    const n = data.news[0];
+    if(!n || Date.now() - n.createdAt > 31 * 86400000 || !slot.isConnected) return;
+    slot.innerHTML = `<button class="home-news" data-route="news">
+      <span class="tile-icon" style="--tile-color:var(--amber)">${navIcon('news')}</span>
+      <span class="home-news-text"><span class="daily-kicker">News · ${escapeHtml(timeAgo(n.createdAt))}</span><strong>${escapeHtml(n.title)}</strong><span>${escapeHtml(excerptOf(n.body, 150))}</span></span>
+      <span class="bento-cta">Read →</span>
+    </button>`;
+  }catch(err){ /* the home page works without it */ }
+}
+
 async function renderThread(){
   const seq = ++viewSeq;
   const id = forumThreadId;
@@ -12971,6 +13117,7 @@ const NAV_ICONS = {
   history:'<path d="M12 3l9 4.5H3z"/><path d="M5 10v7.5M9.7 10v7.5M14.3 10v7.5M19 10v7.5M3 21h18M4 18h16"/>',
   book:'<rect x="4" y="4" width="4" height="16" rx=".6"/><rect x="9.5" y="4" width="4" height="16" rx=".6"/><path d="M15.2 5.2l3.7-1 3.7 14.7-3.7 1z"/>',
   bible:'<path d="M6 3.5h12.5v17H6.5A1.5 1.5 0 0 1 5 19V5a1.5 1.5 0 0 1 1-1.5z"/><path d="M5 17.5A1.5 1.5 0 0 1 6.5 16h12"/><path d="M11.75 6v7.5M9.25 8.6h5"/>',
+  news:'<rect x="3.5" y="4.5" width="14" height="15" rx="1.6"/><path d="M17.5 8.5h3v9.3a1.7 1.7 0 0 1-3.4 0M6.5 8.5h8M6.5 11.8h8M6.5 15h5"/>',
   catechism:'<path d="M2.5 6.2c3.2-1.4 6.5-1.2 9.5.9 3-2.1 6.3-2.3 9.5-.9v13c-3.2-1.4-6.5-1.2-9.5.9-3-2.1-6.3-2.3-9.5-.9z"/><path d="M12 7.1v13"/><path d="M6.5 10.3c1.2-.3 2.4-.2 3.4.2M6.5 13.3c1.2-.3 2.4-.2 3.4.2M14.1 10.5c1-.4 2.2-.5 3.4-.2M14.1 13.5c1-.4 2.2-.5 3.4-.2"/>',
   all:'<rect x="3.5" y="3.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.2"/>',
   rosary:'<circle cx="12" cy="9" r="6" stroke-dasharray="1.6 2.1"/><path d="M12 15v7M9.5 18h5"/>',
@@ -13029,6 +13176,7 @@ const SECTIONS = {
   biblereader:{ name:'The Bible', group:'Library', icon:'bible', color:'var(--teal)' },
   bookreader:{ name:'Books', group:'Library', icon:'book', color:'var(--indigo)' },
   catechism:{ name:'The Catechism', group:'Library', icon:'catechism', color:'var(--wine)' },
+  news:{ name:'News', group:'Community', icon:'news', color:'var(--amber)' },
   all:{ name:'Browse Everything', group:'Library', icon:'all', color:'var(--ink-soft)' },
   rosary:{ name:'The Holy Rosary', group:'Pray', icon:'rosary', color:'var(--rose)' },
   stations:{ name:'Stations of the Cross', group:'Pray', icon:'stations', color:'var(--wine)' },
@@ -13334,6 +13482,7 @@ function renderHome(){
       ${heroRosette()}
     </section>
 
+    <div id="homeNews"></div>
     <div class="dash-grid">
       <article class="feature-card feature-saint" data-open="${saint.id}" tabindex="0">
         <div class="saint-portrait" data-sid="${saint.id}">${portraitPlaceholder(saint.title)}</div>
@@ -13469,6 +13618,7 @@ function renderHome(){
   wrap.querySelectorAll('.path-card, .dash-card[data-route]').forEach(c => c.addEventListener('keydown', ev => { if(ev.target === c && (ev.key === 'Enter' || ev.key === ' ')){ ev.preventDefault(); navigate(c.dataset.route); } }));
   wrap.querySelectorAll('.saint-portrait[data-sid]').forEach(observePortrait);
   loadHomeCommunity(wrap.querySelector('#homeCommunity'));
+  loadHomeNews(wrap.querySelector('#homeNews'));
   bindHomePrayer(wrap);
 }
 
@@ -13480,6 +13630,7 @@ const ROUTES = {
   'home':                        { cat:'home' },
   'today':                       { cat:'daily' },
   'calendar':                    { cat:'calendar' },
+  'news':                        { cat:'news' },
   'mine':                        { cat:'mine' },
   'community':                   { cat:'community' },
   'community/new':               { cat:'forum-new', parent:'community' },
