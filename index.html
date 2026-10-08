@@ -565,6 +565,7 @@
   nav.sidebar button.navlink[data-cat="daily"]{--cat-color:var(--gold);}
   nav.sidebar button.navlink[data-cat="theology"]{--cat-color:var(--purple);}
   nav.sidebar button.navlink[data-cat="news"]{--cat-color:var(--amber);}
+  nav.sidebar button.navlink[data-cat="badges"]{--cat-color:var(--gold);}
   nav.sidebar button.navlink[data-cat="moderate"]{--cat-color:var(--wine);}
 
   .side-actions{border-top:1px solid var(--line); padding-top:18px; display:flex; flex-direction:column; gap:8px;}
@@ -2012,6 +2013,35 @@
   .forum-form{max-width:720px;}
   .btn[hidden]{display:none !important;}
   .mod-page{max-width:900px;}
+  .badges-page{max-width:1000px;}
+  .badges-head{display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-bottom:24px; padding:18px 22px; border:1px solid var(--line); border-radius:18px; background:var(--parchment-light);}
+  .badges-head p{flex:1 1 320px; margin:0; color:var(--ink-soft); font-size:0.95rem;}
+  .badges-score{display:flex; flex-direction:column; align-items:center; min-width:120px;}
+  .badges-score strong{font-family:'Cormorant Garamond', serif; font-size:3rem; line-height:1; color:var(--gold);}
+  .badges-score span{font-size:0.8rem; color:var(--ink-soft);}
+  .badges-group{margin-bottom:28px;}
+  .badge-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(170px, 1fr)); gap:12px;}
+  .badge{display:flex; flex-direction:column; align-items:center; gap:4px; padding:16px 12px 14px; text-align:center; border:1px solid var(--line); border-radius:16px; background:var(--parchment-light);}
+  .badge-medal{width:58px; height:58px; padding:14px; border-radius:50%; color:var(--ink-soft); background:rgba(var(--ink-rgb),0.06); border:2px dashed color-mix(in srgb, var(--ink-soft) 40%, transparent); margin-bottom:4px;}
+  .badge-medal svg{width:100%; height:100%; display:block;}
+  .badge-name{font-family:'Cormorant Garamond', serif; font-size:1.12rem; font-weight:700; line-height:1.15;}
+  .badge-desc{font-size:0.78rem; color:var(--ink-soft); line-height:1.35;}
+  .badge:not(.earned) .badge-name{color:var(--ink-soft);}
+  .badge.earned{border-color:color-mix(in srgb, var(--b) 45%, var(--line)); background:linear-gradient(180deg, color-mix(in srgb, var(--b) 10%, var(--parchment-light)), var(--parchment-light) 70%);}
+  .badge.earned .badge-medal{color:var(--parchment-light); background:radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--b) 70%, white), var(--b)); border:2px solid color-mix(in srgb, var(--b) 60%, var(--gold)); box-shadow:0 4px 14px -4px color-mix(in srgb, var(--b) 70%, transparent);}
+  .badge-got{margin-top:4px; font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--b);}
+  .badge-progress{width:80%; height:5px; margin-top:6px; border-radius:5px; background:rgba(var(--ink-rgb),0.08); overflow:hidden;}
+  .badge-progress span{display:block; height:100%; border-radius:inherit; background:var(--b);}
+  .badge-count{font-size:0.72rem; color:var(--ink-soft);}
+  .badge-pill{display:inline-flex; align-items:center; gap:4px; margin-left:6px; padding:1px 9px; border-radius:999px; font-family:'Source Serif 4', serif; font-size:0.7rem; font-weight:700; letter-spacing:0.02em; vertical-align:middle;
+    color:var(--b); background:color-mix(in srgb, var(--b) 12%, transparent); border:1px solid color-mix(in srgb, var(--b) 45%, transparent);}
+  .badge-pills-big .badge-pill{font-size:0.9rem; padding:4px 14px; margin:0 6px 6px 0;}
+  .badge-x{border:none; background:none; color:inherit; cursor:pointer; font-size:1rem; line-height:1; padding:0 0 0 2px;}
+  .mod-badge-list{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px;}
+  .mod-badge-list .badge-pill{margin-left:0; font-size:0.82rem; padding:3px 10px;}
+  .badge-row{display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 4px;}
+  .badge-mini{width:30px; height:30px; padding:6px; border-radius:50%; color:var(--parchment-light); background:radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--b) 70%, white), var(--b));}
+  .badge-mini svg{width:100%; height:100%; display:block;}
   .author-link{background:none; border:none; padding:0; font:inherit; color:inherit; cursor:pointer; text-decoration:none;}
   .author-link:hover{color:var(--wine-dark); text-decoration:underline; text-underline-offset:3px;}
   .forum-search{max-width:none; margin:0 0 12px;}
@@ -2862,6 +2892,7 @@
         <li><button class="navlink" data-route="calendar" data-cat="calendar">Calendar <span class="count" id="count-calendar"></span></button></li>
         <li><button class="navlink" data-route="news" data-cat="news">News</button></li>
         <li><button class="navlink" data-route="mine" data-cat="mine">My Sanctify <span class="count" id="count-mine"></span></button></li>
+        <li><button class="navlink" data-route="badges" data-cat="badges">Badges</button></li>
         <li><button class="navlink" data-route="community" data-cat="community">Community</button></li>
         <li><button class="navlink" data-route="account" data-cat="account">Account</button></li>
         <li id="navModerate" hidden><button class="navlink" data-route="moderate" data-cat="moderate">Moderation</button></li>
@@ -2964,7 +2995,7 @@
       <div><h4>Learn</h4>
         <button data-route="learn/theology">Theology</button><button data-route="learn/theology/fathers">The Faith of the Fathers</button><button data-route="learn/theology/apologetics">Defending the Faith</button><button data-route="learn/mass">The Mass Explained</button><button data-route="learn/glossary">Glossary</button><button data-route="learn/quiz">Quiz</button></div>
       <div><h4>Sanctify</h4>
-        <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="news">News</button><button data-route="library/resources">Resources</button><button data-route="mine">My Sanctify</button><button data-route="community">Community</button><button data-route="account">Account</button><button class="footer-rite" data-rite-switch>Switch to the Eastern Catholic edition</button></div>
+        <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="news">News</button><button data-route="badges">Badges</button><button data-route="library/resources">Resources</button><button data-route="mine">My Sanctify</button><button data-route="community">Community</button><button data-route="account">Account</button><button class="footer-rite" data-rite-switch>Switch to the Eastern Catholic edition</button></div>
     </div>
   </div>
   <p class="footer-note">Ad maiorem Dei gloriam. Scripture quotations are from the Revised Standard Version of the Bible: Catholic Edition, copyright © 1965, 1966 the Division of Christian Education of the National Council of the Churches of Christ in the United States of America. Used by permission. All rights reserved. Saint and book images come from Wikipedia and Wikimedia Commons.</p>
@@ -3008,6 +3039,7 @@ const CAT_DESC = {
   daily: 'A saint, a prayer, a verse, and more for each day, chosen fresh every morning.',
   exam: 'A guided examination of conscience to prepare for the Sacrament of Reconciliation, following the Ten Commandments.',
   news: 'Announcements and updates from the Sanctify team.',
+  badges: 'Badges for prayer, reading, and the Community, with your progress toward each.',
   moderate: 'Reports, accounts, bans, and the moderation log.',
   plan: 'Read through the Gospels, the Psalms, the New Testament, or the whole Bible, a little each day.',
   mine: 'Your saved entries, prayer intentions, and novenas. Everything here stays private, stored only in this browser.',
@@ -6714,7 +6746,7 @@ function render(){
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
       community:renderCommunity, resources:renderResources,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
-      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
+      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, badges:renderBadges, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
       'hub-pray':() => renderHub('pray'), 'hub-library':() => renderHub('library'), 'hub-learn':() => renderHub('learn'), 'hub-history':() => renderHub('history'), 'hub-saints':() => renderHub('saints')
     };
     const needsNoSearch = new Set(['home', 'daily', 'theology', 'hub-pray', 'hub-library', 'hub-learn']);
@@ -9136,7 +9168,7 @@ async function api(path, { method = 'GET', body } = {}){
 
 function ensureAccount(){
   if(!accountLoading) accountLoading = api('me')
-    .then(data => { Community.user = data.user; Community.readonly = !!data.readonly; Community.available = true; Community.problem = null; })
+    .then(data => { Community.user = data.user; Community.readonly = !!data.readonly; Community.available = true; Community.problem = null; syncBadges(); })
     .catch(err => { Community.user = null; Community.available = false; Community.problem = err; })
     .then(updateAccountButton);
   return accountLoading;
@@ -9348,7 +9380,7 @@ const MOD_ACTIONS = {
   'moderator-on':'turned on moderator tools', ban:'banned', unban:'unbanned', 'remove-all':'removed everything posted by',
   'remove-post':'removed', 'remove-reply':'removed', pin:'pinned', unpin:'unpinned', lock:'locked', unlock:'unlocked',
   'dismiss-report':'dismissed reports on', mute:'muted', unmute:'unmuted', warn:'warned', 'add-note':'added a note on',
-  move:'moved', settings:'changed the settings', 'publish-news':'published', 'edit-news':'edited', 'delete-news':'deleted'
+  move:'moved', settings:'changed the settings', 'give-badge':'gave a badge to', 'take-badge':'removed a badge from', 'publish-news':'published', 'edit-news':'edited', 'delete-news':'deleted'
 };
 function modDate(ms){ return new Date(ms).toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' }); }
 function banLabel(ban){ return ban ? (ban.until ? 'Banned until ' + modDate(ban.until) : 'Banned permanently') : ''; }
@@ -9557,6 +9589,16 @@ async function modUserView(body, still){
           <button class="btn quiet" type="submit">Send warning</button>
         </form>
       </div>`}
+    <h3 class="forum-replies-head">Badges</h3>
+    <div class="mod-badge-list">${data.badges.appointed.map(b => `<span class="badge-pill" style="--b:var(--${b.color})">${escapeHtml(b.label)}${me && me.siteAdmin ? `<button class="badge-x" data-take-badge="${b.key}" aria-label="Remove the ${escapeHtml(b.label)} badge">×</button>` : ''}</span>`).join('') || '<span class="forum-meta">No badges given yet.</span>'}</div>
+    ${data.badges.earned.length ? `<p class="forum-meta">Earned: ${plural(data.badges.earned.length, 'badge', 'badges')} from prayer and reading.</p>` : ''}
+    ${me && me.siteAdmin ? `
+    <form class="mod-note-form" id="giveBadge">
+      <select id="badgePick" aria-label="Badge">${Object.entries(APPOINTED_BADGES).map(([k, [label]]) => `<option value="${k}">${escapeHtml(label)}</option>`).join('')}<option value="custom">Custom badge…</option></select>
+      <input id="badgeLabel" maxlength="30" placeholder="Badge name" aria-label="Badge name" hidden>
+      <select id="badgeColor" aria-label="Color" hidden>${BADGE_COLORS.map(c => `<option value="${c}">${c[0].toUpperCase() + c.slice(1)}</option>`).join('')}</select>
+      <button class="btn quiet" type="submit">Give badge</button>
+    </form>` : '<p class="forum-meta">Only site administrators can give badges.</p>'}
     ${data.warnings.length ? `<h3 class="forum-replies-head">Warnings sent</h3><div class="mod-list">${data.warnings.map(w => `
       <div class="mod-item"><div class="forum-meta">${escapeHtml(modDate(w.createdAt))} · from ${authorHtml(w.by)} · ${w.seen ? 'read' : 'not read yet'}</div><p class="mod-excerpt">${escapeHtml(w.message)}</p></div>`).join('')}</div>` : ''}
     <h3 class="forum-replies-head">Moderator notes</h3>
@@ -9593,6 +9635,20 @@ async function modUserView(body, still){
   if(unban) unban.addEventListener('click', async () => {
     try{ await api(`mod/users/${x.id}/ban`, { method:'DELETE' }); after(`${x.username} can sign in again`); }catch(err){ toast(err.message); }
   });
+  const give = body.querySelector('#giveBadge');
+  if(give){
+    const pick = give.querySelector('#badgePick'), label = give.querySelector('#badgeLabel'), color = give.querySelector('#badgeColor');
+    pick.addEventListener('change', () => { label.hidden = color.hidden = pick.value !== 'custom'; if(!label.hidden) label.focus(); });
+    give.addEventListener('submit', async ev => {
+      ev.preventDefault();
+      try{ await api(`mod/users/${x.id}/badges`, { method:'POST', body:{ badge:pick.value, label:label.value, color:color.value } }); after('Badge given'); }
+      catch(err){ toast(err.message); }
+    });
+  }
+  body.querySelectorAll('[data-take-badge]').forEach(b => b.addEventListener('click', async () => {
+    if(!confirm('Remove this badge?')) return;
+    try{ await api(`mod/users/${x.id}/badges/${b.dataset.takeBadge}`, { method:'DELETE' }); after('Badge removed'); }catch(err){ toast(err.message); }
+  }));
   const muteForm = body.querySelector('#modMute');
   if(muteForm) muteForm.addEventListener('submit', async ev => {
     ev.preventDefault();
@@ -9689,7 +9745,8 @@ async function renderMemberProfile(){
       <section class="avatar-panel member-panel">
         ${avatarFor(p.username, p.avatar, 'avatar-big')}
         <div>
-          <h3>${escapeHtml(p.username)}${p.administrator ? ' <span class="mod-badge admin">Administrator</span>' : ''}</h3>
+          <h3>${escapeHtml(p.username)}${p.administrator ? ' <span class="mod-badge admin">Administrator</span>' : ''}${badgePills(p.badges.appointed)}</h3>
+          ${badgeRow([...p.badges.earned, ...communityBadgeKeys(p)])}
           <div class="member-stats"><span><strong>${p.posts}</strong> ${p.posts === 1 ? 'post' : 'posts'}</span><span><strong>${p.replies}</strong> ${p.replies === 1 ? 'reply' : 'replies'}</span><span><strong>${p.prayers}</strong> ${p.prayers === 1 ? 'prayer offered' : 'prayers offered'}</span></div>
           <div class="forum-form-actions">
             ${me && me.username.toLowerCase() === p.username.toLowerCase() ? '<button class="btn quiet" data-route="account">Edit your account</button>' : ''}
@@ -9876,7 +9933,7 @@ async function renderThread(){
   wrap.className = 'forum-thread';
   wrap.innerHTML = `
     <article class="forum-op">
-      <div class="forum-op-head">${avatarFor(post.author, post.authorAvatar)}<div><strong>${authorHtml(post.author)}</strong><span class="forum-meta">${escapeHtml(fullDate(post.createdAt))}${post.editedAt ? ` · <span title="${escapeHtml(fullDate(post.editedAt))}">edited</span>` : ''}</span></div></div>
+      <div class="forum-op-head">${avatarFor(post.author, post.authorAvatar)}<div><strong>${authorHtml(post.author)}</strong>${badgePills(post.authorBadges)}<span class="forum-meta">${escapeHtml(fullDate(post.createdAt))}${post.editedAt ? ` · <span title="${escapeHtml(fullDate(post.editedAt))}">edited</span>` : ''}</span></div></div>
       <div class="forum-body" id="opBody">${forumText(post.body)}</div>
       <div class="forum-actions">
         ${post.category === 'prayer' ? `<button class="read-action${post.prayed ? ' on' : ''}" data-act="pray" aria-pressed="${post.prayed}">${prayLabel(post)}</button>` : ''}
@@ -9896,7 +9953,7 @@ async function renderThread(){
         ${avatarFor(r.author, r.authorAvatar)}
         <div class="forum-reply-main">
           <div class="forum-reply-head">
-            <strong>${authorHtml(r.author)}</strong><span class="forum-meta" title="${escapeHtml(fullDate(r.createdAt))}">${timeAgo(r.createdAt)}${r.editedAt ? ' · edited' : ''}</span>
+            <strong>${authorHtml(r.author)}</strong>${badgePills(r.authorBadges)}<span class="forum-meta" title="${escapeHtml(fullDate(r.createdAt))}">${timeAgo(r.createdAt)}${r.editedAt ? ' · edited' : ''}</span>
             ${r.mine ? `<button class="text-link forum-remove forum-report" data-edit-reply="${r.id}">Edit</button>` : ''}
             ${u && !r.mine ? `<button class="text-link forum-remove forum-report" data-report-reply="${r.id}">Report</button>` : ''}
             ${r.canRemove ? `<button class="text-link forum-remove" data-remove-reply="${r.id}">${r.mine ? 'Delete' : 'Remove'}</button>` : ''}
@@ -10583,6 +10640,7 @@ function logPrayer(key, d){
   list.add(key);
   log[k] = [...list];
   store.set('tracker', log);
+  checkBadgesSoon();
 }
 function togglePrayerLog(key, d){
   const log = trackerLog(), k = dateKey(d);
@@ -10590,6 +10648,7 @@ function togglePrayerLog(key, d){
   if(list.has(key)) list.delete(key); else list.add(key);
   if(list.size) log[k] = [...list]; else delete log[k];
   store.set('tracker', log);
+  checkBadgesSoon();
   return list.has(key);
 }
 
@@ -11697,6 +11756,7 @@ function renderBibleReader(){
   crumbs.insertAdjacentHTML('beforeend', `<span aria-hidden="true">›</span><button data-route="library/bible/${book[0]}">${escapeHtml(book[2])}</button>`);
   document.title = `${bibleChapterName(book, n)} — Sanctify`;
   store.set('bible.last', { slug:book[0], chapter:n });
+  markRead('read.bible', book[0] + '/' + n);
 
   const prev = bibleNeighbor(book, n, -1), next = bibleNeighbor(book, n, 1);
   const size = store.get('bible.size', 2), notesOn = !!store.get('bible.notes', false);
@@ -11954,6 +12014,7 @@ function renderBookReader(){
   sectionDescEl.textContent = bookShortAuthor(entry);
   document.getElementById('sectionEyebrow').insertAdjacentHTML('beforeend', `<span aria-hidden="true">›</span><button data-route="library/books/${book.slug}">${escapeHtml(entry.title)}</button>`);
   store.set('book.recent', { slug:book.slug, section:n });
+  markRead('read.books', book.slug + '/' + n);
   store.set('book.at.' + book.slug, n);
   const size = store.get('bible.size', 2);
   entryListEl.innerHTML = `
@@ -13690,6 +13751,7 @@ const NAV_ICONS = {
   history:'<path d="M12 3l9 4.5H3z"/><path d="M5 10v7.5M9.7 10v7.5M14.3 10v7.5M19 10v7.5M3 21h18M4 18h16"/>',
   book:'<rect x="4" y="4" width="4" height="16" rx=".6"/><rect x="9.5" y="4" width="4" height="16" rx=".6"/><path d="M15.2 5.2l3.7-1 3.7 14.7-3.7 1z"/>',
   bible:'<path d="M6 3.5h12.5v17H6.5A1.5 1.5 0 0 1 5 19V5a1.5 1.5 0 0 1 1-1.5z"/><path d="M5 17.5A1.5 1.5 0 0 1 6.5 16h12"/><path d="M11.75 6v7.5M9.25 8.6h5"/>',
+  badge:'<circle cx="12" cy="14.6" r="5.6"/><path d="M8.6 9.9L6.2 3h3.9l1.9 4.6M15.4 9.9L17.8 3h-3.9L12 7.6"/><path d="M12 11.9l.9 1.7 1.8.3-1.3 1.3.3 1.8-1.7-.9-1.7.9.3-1.8-1.3-1.3 1.8-.3z"/>',
   shield:'<path d="M12 3l7.5 3v5.6c0 4.5-3.2 8.2-7.5 9.4-4.3-1.2-7.5-4.9-7.5-9.4V6z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.4"/>',
   news:'<rect x="3.5" y="4.5" width="14" height="15" rx="1.6"/><path d="M17.5 8.5h3v9.3a1.7 1.7 0 0 1-3.4 0M6.5 8.5h8M6.5 11.8h8M6.5 15h5"/>',
   catechism:'<path d="M2.5 6.2c3.2-1.4 6.5-1.2 9.5.9 3-2.1 6.3-2.3 9.5-.9v13c-3.2-1.4-6.5-1.2-9.5.9-3-2.1-6.3-2.3-9.5-.9z"/><path d="M12 7.1v13"/><path d="M6.5 10.3c1.2-.3 2.4-.2 3.4.2M6.5 13.3c1.2-.3 2.4-.2 3.4.2M14.1 10.5c1-.4 2.2-.5 3.4-.2M14.1 13.5c1-.4 2.2-.5 3.4-.2"/>',
@@ -13751,6 +13813,7 @@ const SECTIONS = {
   bookreader:{ name:'Books', group:'Library', icon:'book', color:'var(--indigo)' },
   catechism:{ name:'The Catechism', group:'Library', icon:'catechism', color:'var(--wine)' },
   news:{ name:'News', group:'Community', icon:'news', color:'var(--amber)' },
+  badges:{ name:'Badges', group:'Pray', icon:'badge', color:'var(--gold)' },
   moderate:{ name:'Moderation', group:'Community', icon:'shield', color:'var(--wine)' },
   profile:{ name:'Member', group:'Community', icon:'account', color:'var(--indigo)' },
   all:{ name:'Browse Everything', group:'Library', icon:'all', color:'var(--ink-soft)' },
@@ -14207,6 +14270,7 @@ const ROUTES = {
   'today':                       { cat:'daily' },
   'calendar':                    { cat:'calendar' },
   'news':                        { cat:'news' },
+  'badges':                      { cat:'badges' },
   'moderate':                    { cat:'moderate', parent:'account' },
   'mine':                        { cat:'mine' },
   'community':                   { cat:'community' },
@@ -14426,6 +14490,7 @@ function openReadModal(id, fetched){
   const e = library.find(x => x.id === id);
   if(!e) return;
   if(e._t && !fetched){ withFullText(e).then(() => openReadModal(id, true)); return; }
+  if(e.category === 'saint') markRead('read.saints', id);
   currentReadId = id;
   document.getElementById('readCat').textContent = CAT_LABEL[e.category] || e.category;
   document.getElementById('readTitle').textContent = e.title;
@@ -14704,7 +14769,7 @@ function renderMine(){
       if(!target) return;
       target.done[Number(b.dataset.i)] = !target.done[Number(b.dataset.i)];
       store.set('novenas', all);
-      if(target.done.every(Boolean)) toast('Novena complete. Deo gratias!');
+      if(target.done.every(Boolean)){ toast('Novena complete. Deo gratias!'); markRead('read.novenas', n.id + '@' + n.start); }
       renderMine();
     }));
     box.querySelector('.novena-pray').addEventListener('click', () => openReadModal(e.id));
@@ -15025,7 +15090,7 @@ function renderQuiz(){
   if(i >= questions.length){
     const score = quizState.score;
     const newBest = best === null || score > best;
-    if(newBest) store.set('quizBest', score);
+    if(newBest){ store.set('quizBest', score); checkBadgesSoon(); }
     const verdict = score === 10 ? 'Perfect! A true Doctor of the Church.' : score >= 8 ? 'Excellent work.' : score >= 5 ? 'Well done. Keep learning!' : 'Every saint started somewhere. Try again!';
     wrap.innerHTML = `
       <div class="quiz-intro">
@@ -15922,10 +15987,161 @@ function renderSacredHeart(){
 }
 
 /* =========================================================
+   BADGES
+   Earned badges come from the prayer tracker and reading on this device (and, for the Community ones, from
+   the server). Signed-in members' earned badges are copied to their profile. Site administrators can also
+   appoint badges. The keys are kept in step with functions/api/[[path]].js.
+   ========================================================= */
+const APPOINTED_BADGES = {
+  founder:['Founder', 'gold'], team:['Sanctify Team', 'wine'], moderator:['Moderator', 'teal'], helper:['Community Helper', 'green'],
+  clergy:['Clergy', 'purple'], religious:['Religious', 'indigo'], catechist:['Catechist', 'amber'], scholar:['Scholar', 'indigo'],
+  artist:['Artist', 'rose'], musician:['Musician', 'rose'], contributor:['Contributor', 'green'], supporter:['Supporter', 'gold']
+};
+const BADGE_COLORS = ['gold', 'wine', 'teal', 'green', 'purple', 'indigo', 'amber', 'rose'];
+// [key, group, icon, color, need, metric, name, description, Eastern name, Eastern description, Eastern icon]
+const BADGE_ROWS = [
+  ['rosary-1', 'prayer', 'rosary', 'rose', 1, m => m.habit.rosary, 'First Rosary', 'Pray the Rosary.', 'First Prayer Rope', 'Pray the Jesus Prayer on the prayer rope.', 'rope'],
+  ['rosary-10', 'prayer', 'rosary', 'rose', 10, m => m.habit.rosary, 'Ten Rosaries', 'Pray the Rosary on 10 days.', 'Ten Prayer Ropes', 'Pray the Jesus Prayer on 10 days.', 'rope'],
+  ['rosary-50', 'prayer', 'rosary', 'rose', 50, m => m.habit.rosary, 'Fifty Rosaries', 'Pray the Rosary on 50 days.', 'Fifty Prayer Ropes', 'Pray the Jesus Prayer on 50 days.', 'rope'],
+  ['rosary-150', 'prayer', 'rosary', 'rose', 150, m => m.habit.rosary, 'Our Lady’s Psalter', 'Pray the Rosary on 150 days, one for each psalm. The Rosary was long called Our Lady’s Psalter.', 'Prayer of the Heart', 'Pray the Jesus Prayer on 150 days.', 'rope'],
+  ['chaplet-1', 'prayer', 'chaplet', 'teal', 1, m => m.habit.chaplet, 'Jesus, I Trust in You', 'Pray the Divine Mercy Chaplet.', 'Thrice-Holy', 'Pray the Trisagion Prayers.', 'theology'],
+  ['chaplet-30', 'prayer', 'chaplet', 'teal', 30, m => m.habit.chaplet, 'Fount of Mercy', 'Pray the Divine Mercy Chaplet on 30 days.', 'Holy, Mighty, Immortal', 'Pray the Trisagion Prayers on 30 days.', 'theology'],
+  ['sacredheart-1', 'prayer', 'sacredheart', 'wine', 1, m => m.habit.sacredheart, 'Sweet Heart of Jesus', 'Pray the Chaplet of the Sacred Heart.', 'Before the Mysteries', 'Pray the Prayers Before Holy Communion.', 'mass'],
+  ['sacredheart-9', 'prayer', 'sacredheart', 'wine', 9, m => m.habit.sacredheart, 'Heart of Jesus', 'Pray the Sacred Heart Chaplet on 9 days.', 'Of Your Mystical Supper', 'Pray the Prayers Before Holy Communion on 9 days.', 'mass'],
+  ['stations-1', 'prayer', 'stations', 'purple', 1, m => m.habit.stations, 'Way of the Cross', 'Pray the Stations of the Cross.', 'Lord and Master of My Life', 'Pray the Prayer of St. Ephrem.', 'eastcross'],
+  ['stations-14', 'prayer', 'stations', 'purple', 14, m => m.habit.stations, 'Fourteen Stations', 'Pray the Stations of the Cross on 14 days.', 'Lenten Prayer', 'Pray the Prayer of St. Ephrem on 14 days.', 'eastcross'],
+  ['mass-10', 'prayer', 'mass', 'gold', 10, m => m.habit.mass, 'Faithful at Mass', 'Mark Mass in your prayer tracker on 10 days.', 'Faithful at the Liturgy', 'Mark the Divine Liturgy in your prayer tracker on 10 days.'],
+  ['mass-52', 'prayer', 'mass', 'gold', 52, m => m.habit.mass, 'A Year of Sundays', 'Mark Mass in your prayer tracker on 52 days.', 'A Year of Sundays', 'Mark the Divine Liturgy in your prayer tracker on 52 days.'],
+  ['confession-1', 'prayer', 'exam', 'indigo', 1, m => m.habit.confession, 'Reconciled', 'Mark Confession in your prayer tracker.', 'Repentance', 'Mark Holy Confession in your prayer tracker.'],
+  ['confession-12', 'prayer', 'exam', 'indigo', 12, m => m.habit.confession, 'Frequent Confession', 'Mark Confession in your prayer tracker on 12 days.', 'Frequent Repentance', 'Mark Holy Confession in your prayer tracker on 12 days.'],
+  ['examen-7', 'prayer', 'examen', 'indigo', 7, m => m.habit.examen, 'Examined Heart', 'Pray the Daily Examen on 7 days.', 'Watchful Heart', 'Pray Evening Prayer on 7 days.'],
+  ['scripture-10', 'prayer', 'lectio', 'teal', 10, m => m.habit.scripture, 'Lamp to My Feet', 'Pray with Scripture on 10 days.'],
+  ['angelus-30', 'prayer', 'angelus', 'rose', 30, m => m.habit.angelus, 'Angelus Bell', 'Pray the Angelus on 30 days.', 'Rejoice, O Virgin', 'Pray the Hymns to the Theotokos on 30 days.'],
+  ['streak-7', 'prayer', 'tracker', 'amber', 7, m => m.streak, 'Seven Days', 'Pray seven days in a row.'],
+  ['streak-30', 'prayer', 'tracker', 'amber', 30, m => m.streak, 'Thirty Days', 'Pray thirty days in a row.'],
+  ['streak-100', 'prayer', 'tracker', 'amber', 100, m => m.streak, 'A Hundred Days', 'Pray a hundred days in a row.'],
+  ['streak-365', 'prayer', 'tracker', 'amber', 365, m => m.streak, 'Pray Without Ceasing', 'Pray every day for a whole year.'],
+  ['days-100', 'prayer', 'calendar', 'green', 100, m => m.days, 'Steadfast', 'Mark prayer in your tracker on 100 different days.'],
+  ['novena-1', 'prayer', 'mine', 'gold', 1, m => m.novenas, 'First Novena', 'Finish a nine-day novena.'],
+  ['novena-5', 'prayer', 'mine', 'gold', 5, m => m.novenas, 'Five Novenas', 'Finish five novenas.'],
+  ['bible-1', 'reading', 'bible', 'teal', 1, m => m.bible, 'Take and Read', 'Read a chapter of the Bible on Sanctify.'],
+  ['bible-50', 'reading', 'bible', 'teal', 50, m => m.bible, 'Fifty Chapters', 'Read 50 chapters of the Bible.'],
+  ['bible-260', 'reading', 'bible', 'teal', 260, m => m.bible, 'Two Hundred Sixty Chapters', 'Read 260 chapters, as many as in the whole New Testament.'],
+  ['bible-1000', 'reading', 'bible', 'teal', 1000, m => m.bible, 'A Thousand Chapters', 'Read 1,000 chapters of the Bible.'],
+  ['saints-10', 'reading', 'saint', 'gold', 10, m => m.saints, 'Friend of the Saints', 'Read the lives of 10 saints.'],
+  ['saints-100', 'reading', 'saint', 'gold', 100, m => m.saints, 'Communion of Saints', 'Read the lives of 100 saints.'],
+  ['saints-500', 'reading', 'saint', 'gold', 500, m => m.saints, 'Great Cloud of Witnesses', 'Read the lives of 500 saints.'],
+  ['books-10', 'reading', 'book', 'indigo', 10, m => m.books, 'Bookworm', 'Read 10 sections of books on Sanctify.'],
+  ['books-100', 'reading', 'book', 'indigo', 100, m => m.books, 'Library Lover', 'Read 100 sections of books on Sanctify.'],
+  ['quiz-10', 'reading', 'quiz', 'amber', 10, m => m.quiz, 'Perfect Score', 'Answer all ten questions right in the quiz.'],
+  ['post-1', 'community', 'community', 'indigo', 1, p => p.posts, 'First Post', 'Start a conversation in the Community.'],
+  ['reply-10', 'community', 'reply', 'indigo', 10, p => p.replies, 'Conversation Partner', 'Write 10 replies in the Community.'],
+  ['pray-10', 'community', 'prayer', 'wine', 10, p => p.prayers, 'Intercessor', 'Pray for 10 prayer requests in the Community.'],
+  ['pray-100', 'community', 'prayer', 'wine', 100, p => p.prayers, 'Faithful Intercessor', 'Pray for 100 prayer requests in the Community.'],
+  ['member-365', 'community', 'calendar', 'green', 365, p => Math.floor((Date.now() - p.createdAt) / 86400000), 'One Year with Sanctify', 'Be a member of the Sanctify Community for a year.']
+];
+const BADGES = BADGE_ROWS.map(([key, group, icon, color, need, metric, name, desc, eName, eDesc, eIcon]) => ({ key, group, icon, color, need, metric, name, desc, eName, eDesc, eIcon }));
+const DEVICE_BADGES = BADGES.filter(b => b.group !== 'community');
+const BADGE_GROUPS = [['prayer', 'Prayer'], ['reading', 'Scripture & reading'], ['community', 'Community']];
+const badgeName = b => isEastern() && b.eName ? b.eName : b.name;
+const badgeDesc = b => isEastern() && b.eDesc ? b.eDesc : b.desc;
+const badgeIcon = b => isEastern() && b.eIcon ? b.eIcon : b.icon;
+
+// What this device has done
+function badgeMetrics(){
+  const habit = {}; let days = 0;
+  Object.values(trackerLog()).forEach(list => { if(list.length) days++; list.forEach(k => { habit[k] = (habit[k] || 0) + 1; }); });
+  const doneNovenas = new Set(Object.keys(store.get('read.novenas', {})));
+  store.get('novenas', []).forEach(n => { if(n.done.every(Boolean)) doneNovenas.add(n.id + '@' + n.start); });
+  return { habit, days, streak:prayerStats().longest, novenas:doneNovenas.size,
+    bible:Object.keys(store.get('read.bible', {})).length, saints:Object.keys(store.get('read.saints', {})).length,
+    books:Object.keys(store.get('read.books', {})).length, quiz:store.get('quizBest', 0) || 0 };
+}
+function markRead(key, id){
+  const seen = store.get(key, {});
+  if(seen[id]) return;
+  seen[id] = 1;
+  store.set(key, seen);
+  checkBadgesSoon();
+}
+function earnedHere(){ const m = badgeMetrics(); return DEVICE_BADGES.filter(b => (b.metric(m) || 0) >= b.need).map(b => b.key); }
+
+let badgeTimer = null;
+function checkBadgesSoon(){ clearTimeout(badgeTimer); badgeTimer = setTimeout(checkBadges, 400); }
+function checkBadges(){
+  const now = earnedHere(), had = store.get('badges.earned', null);
+  if(had === null){ store.set('badges.earned', now); syncBadges(); return; }   // first visit: no fanfare for what was already done
+  const fresh = now.filter(k => !had.includes(k));
+  if(!fresh.length) return;
+  store.set('badges.earned', [...new Set([...had, ...now])]);
+  const b = BADGES.find(x => x.key === fresh[fresh.length - 1]);
+  toast(`🏅 Badge earned: ${badgeName(b)}${fresh.length > 1 ? ` (and ${fresh.length - 1} more)` : ''}`);
+  syncBadges();
+}
+// Copy earned badges to the member's profile
+function syncBadges(){
+  const u = Community.user;
+  if(!u) return;
+  const keys = store.get('badges.earned', []);
+  const sig = u.username + ':' + keys.join(',');
+  if(!keys.length || store.get('badges.synced', '') === sig) return;
+  api('badges/sync', { method:'POST', body:{ keys } }).then(() => store.set('badges.synced', sig)).catch(() => {});
+}
+
+function badgeMedal(b, earned, value){
+  const pct = Math.max(0, Math.min(100, Math.round((value || 0) / b.need * 100)));
+  return `<div class="badge${earned ? ' earned' : ''}" style="--b:var(--${b.color})">
+    <span class="badge-medal">${navIcon(badgeIcon(b))}</span>
+    <span class="badge-name">${escapeHtml(badgeName(b))}</span>
+    <span class="badge-desc">${escapeHtml(badgeDesc(b))}</span>
+    ${earned ? '<span class="badge-got">Earned</span>' : value !== null ? `<span class="badge-progress" aria-hidden="true"><span style="width:${pct}%"></span></span><span class="badge-count">${Math.min(value || 0, b.need).toLocaleString()} / ${b.need.toLocaleString()}</span>` : ''}
+  </div>`;
+}
+function badgePills(list){
+  return (list || []).map(b => `<span class="badge-pill" style="--b:var(--${BADGE_COLORS.includes(b.color) ? b.color : 'gold'})">${escapeHtml(b.label)}</span>`).join('');
+}
+// A profile's earned badges as a row of small medals
+function badgeRow(keys){
+  const list = BADGES.filter(b => keys.includes(b.key));
+  return list.length ? `<div class="badge-row">${list.map(b => `<span class="badge-mini" style="--b:var(--${b.color})" title="${escapeHtml(badgeName(b) + ': ' + badgeDesc(b))}">${navIcon(badgeIcon(b))}</span>`).join('')}</div>` : '';
+}
+function communityBadgeKeys(p){ return BADGES.filter(b => b.group === 'community' && (b.metric(p) || 0) >= b.need).map(b => b.key); }
+
+async function renderBadges(){
+  const seq = ++viewSeq;
+  const m = badgeMetrics();
+  const have = new Set([...store.get('badges.earned', []), ...earnedHere()]);
+  await ensureAccount();
+  if(!stillShowing(seq, 'badges')) return;
+  const u = Community.user;
+  let profile = null;
+  if(u){ try{ profile = (await api('users/' + encodeURIComponent(u.username))).profile; }catch(err){} }
+  if(!stillShowing(seq, 'badges')) return;
+  if(profile){ communityBadgeKeys(profile).forEach(k => have.add(k)); (profile.badges.earned || []).forEach(k => have.add(k)); }
+  const total = BADGES.length, got = BADGES.filter(b => have.has(b.key)).length;
+  entryListEl.innerHTML = `
+    <div class="badges-page">
+      <section class="badges-head">
+        <div class="badges-score"><strong>${got}</strong><span>of ${total} badges earned</span></div>
+        <p>${u ? 'Your badges show on your public profile.' : 'Prayer and reading badges come from this device. <button class="text-link" data-auth="signin">Sign in</button> to show them on a public profile and earn Community badges.'}
+          Prayer badges count the days you mark in the <button class="text-link" data-route="pray/tracker">prayer tracker</button>; finishing a Rosary, chaplet, or other guided prayer marks it for you.</p>
+      </section>
+      ${profile && profile.badges.appointed.length ? `<section class="badges-group"><h3>Given to you</h3><div class="badge-pills-big">${badgePills(profile.badges.appointed)}</div></section>` : ''}
+      ${BADGE_GROUPS.map(([g, title]) => {
+        const list = BADGES.filter(b => b.group === g);
+        return `<section class="badges-group"><div class="home-heading"><h3>${title}</h3><span class="view-count">${list.filter(b => have.has(b.key)).length} of ${list.length}</span></div>
+          <div class="badge-grid">${list.map(b => badgeMedal(b, have.has(b.key), g === 'community' ? (profile ? b.metric(profile) : null) : b.metric(m))).join('')}</div></section>`;
+      }).join('')}
+    </div>`;
+  bindAuthButtons(entryListEl, 'badges');
+}
+
+/* =========================================================
    INIT
    ========================================================= */
 // Deep links: #/library/saints opens a page (older #saint links still work); ?q=joseph runs a search
 applyRite();
+setTimeout(checkBadges, 1500);
 document.addEventListener('click', e => {
   if(!e.target.closest('#riteToggle, .rite-switch-link, [data-rite-switch]')) return;
   e.preventDefault();

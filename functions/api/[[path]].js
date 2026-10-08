@@ -27,6 +27,18 @@ const SESSION_DAYS = 30;
 const PAGE_SIZE = 20;
 const AVATAR_MAX_BYTES = 120 * 1024;
 const AVATAR_TYPES = { 'image/jpeg':[0xFF, 0xD8, 0xFF], 'image/png':[0x89, 0x50, 0x4E, 0x47], 'image/webp':[0x52, 0x49, 0x46, 0x46] };
+// Badges a site administrator can give, and badges members earn on their own devices (kept in step with index.html)
+const APPOINTED = {
+  founder:['Founder', 'gold'], team:['Sanctify Team', 'wine'], moderator:['Moderator', 'teal'], helper:['Community Helper', 'green'],
+  clergy:['Clergy', 'purple'], religious:['Religious', 'indigo'], catechist:['Catechist', 'amber'], scholar:['Scholar', 'indigo'],
+  artist:['Artist', 'rose'], musician:['Musician', 'rose'], contributor:['Contributor', 'green'], supporter:['Supporter', 'gold']
+};
+const BADGE_COLORS = ['gold', 'wine', 'teal', 'green', 'purple', 'indigo', 'amber', 'rose'];
+const EARNED_KEYS = new Set([
+  'rosary-1', 'rosary-10', 'rosary-50', 'rosary-150', 'chaplet-1', 'chaplet-30', 'sacredheart-1', 'sacredheart-9', 'stations-1', 'stations-14',
+  'mass-10', 'mass-52', 'confession-1', 'confession-12', 'examen-7', 'scripture-10', 'angelus-30', 'streak-7', 'streak-30', 'streak-100', 'streak-365',
+  'days-100', 'novena-1', 'novena-5', 'bible-1', 'bible-50', 'bible-260', 'bible-1000', 'saints-10', 'saints-100', 'saints-500', 'books-10', 'books-100', 'quiz-10'
+]);
 const RESERVED_NAMES = new Set(['admin', 'administrator', 'moderator', 'mod', 'sanctify', 'staff', 'support', 'system', 'pope', 'vatican']);
 
 const SCHEMA = [
@@ -129,6 +141,19 @@ const SCHEMA = [
   `CREATE TABLE IF NOT EXISTS notify_seen (
      user_id INTEGER PRIMARY KEY,
      seen_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS user_badges (
+     user_id INTEGER NOT NULL,
+     badge TEXT NOT NULL,
+     label TEXT NOT NULL,
+     color TEXT NOT NULL,
+     by_user INTEGER,
+     created_at INTEGER NOT NULL,
+     PRIMARY KEY (user_id, badge))`,
+  `CREATE TABLE IF NOT EXISTS earned_badges (
+     user_id INTEGER NOT NULL,
+     badge TEXT NOT NULL,
+     earned_at INTEGER NOT NULL,
+     PRIMARY KEY (user_id, badge))`,
   `CREATE TABLE IF NOT EXISTS post_flags (
      post_id INTEGER PRIMARY KEY,
      pinned INTEGER NOT NULL DEFAULT 0,
@@ -182,6 +207,7 @@ export async function onRequest({ request, env }){
     if(path === 'me' && method === 'GET') return await getMe(ctx);
     if(path === 'notifications' && method === 'GET') return await getNotifications(ctx);
     if(path === 'notifications/seen' && method === 'POST') return await markNotificationsSeen(ctx);
+    if(path === 'badges/sync' && method === 'POST') return await syncBadges(ctx);
     if((m = path.match(/^users\/([A-Za-z0-9_]{3,20})$/)) && method === 'GET') return await getProfile(ctx, m[1]);
     if(path === 'signup' && method === 'POST') return await signup(ctx);
     if(path === 'login' && method === 'POST') return await login(ctx);
@@ -378,6 +404,12 @@ async function getPost(ctx, id){
       WHERE r.post_id = ? AND r.deleted = 0 ORDER BY r.created_at ASC, r.id ASC LIMIT 500`
   ).bind(id).all();
   const user = ctx.user;
+  const authorIds = [...new Set([post.user_id, ...results.map(r => r.user_id)])];
+  const shown = {};
+  if(authorIds.length){
+    const { results:rows } = await ctx.db.prepare(`SELECT user_id, label, color FROM user_badges WHERE user_id IN (${authorIds.map(() => '?').join(',')}) ORDER BY created_at`).bind(...authorIds).all();
+    rows.forEach(b => { (shown[b.user_id] = shown[b.user_id] || []).push({ label:b.label, color:b.color }); });
+  }
   const prayed = user ? !!(await ctx.db.prepare('SELECT 1 FROM prayers WHERE post_id = ? AND user_id = ?').bind(id, user.id).first()) : false;
   const canRemove = ownerId => !!user && (user.id === ownerId || user.admin);
   return json({
@@ -385,11 +417,13 @@ async function getPost(ctx, id){
       id:post.id, category:post.category, title:post.title, body:post.body, author:post.username || null, authorAvatar:post.username ? post.avatar_v || null : null,
       createdAt:post.created_at, replies:post.reply_count, prayers:post.prayer_count, prayed,
       mine:!!user && user.id === post.user_id, canRemove:canRemove(post.user_id),
-      pinned:!!post.pinned, locked:!!post.locked, canModerate:!!user && !!user.admin, editedAt:post.edited_at || null
+      pinned:!!post.pinned, locked:!!post.locked, canModerate:!!user && !!user.admin, editedAt:post.edited_at || null,
+      authorBadges:(shown[post.user_id] || []).slice(0, 3)
     },
     replies:results.map(r => ({
       id:r.id, body:r.body, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null, createdAt:r.created_at,
-      mine:!!user && user.id === r.user_id, canRemove:canRemove(r.user_id), editedAt:r.edited_at || null
+      mine:!!user && user.id === r.user_id, canRemove:canRemove(r.user_id), editedAt:r.edited_at || null,
+      authorBadges:(shown[r.user_id] || []).slice(0, 3)
     }))
   });
 }
@@ -577,10 +611,68 @@ async function getProfile(ctx, name){
   const { results } = await ctx.db.prepare(
     `SELECT id, category, title, substr(body, 1, 200) AS excerpt, created_at, reply_count, prayer_count FROM posts WHERE user_id = ? AND deleted = 0 ORDER BY created_at DESC LIMIT 20`
   ).bind(u.id).all();
+  const badges = await badgesFor(ctx, u.id);
   return json({
-    profile:{ id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, posts:counts.posts, replies:counts.replies, prayers:counts.prayers, administrator:siteAdmin(ctx, u.username) },
+    profile:{ id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, posts:counts.posts, replies:counts.replies, prayers:counts.prayers, administrator:siteAdmin(ctx, u.username), badges },
     posts:results.map(p => ({ id:p.id, category:p.category, title:p.title, excerpt:p.excerpt, createdAt:p.created_at, lastActivity:p.created_at, replies:p.reply_count, prayers:p.prayer_count, author:u.username, authorAvatar:u.avatar_v || null }))
   });
+}
+
+/* ---------- Badges ---------- */
+async function badgesFor(ctx, userId){
+  const appointed = (await ctx.db.prepare('SELECT badge, label, color, created_at FROM user_badges WHERE user_id = ? ORDER BY created_at').bind(userId).all()).results;
+  const earned = (await ctx.db.prepare('SELECT badge, earned_at FROM earned_badges WHERE user_id = ? ORDER BY earned_at').bind(userId).all()).results;
+  return {
+    appointed:appointed.map(b => ({ key:b.badge, label:b.label, color:b.color, since:b.created_at })),
+    earned:earned.map(b => b.badge).filter(k => EARNED_KEYS.has(k))
+  };
+}
+
+// A member's device sends the badges it has earned (prayer and reading are kept on the device)
+async function syncBadges(ctx){
+  const user = requireUser(ctx);
+  const data = await readBody(ctx, 4000);
+  const keys = [...new Set((Array.isArray(data.keys) ? data.keys : []).map(String).filter(k => EARNED_KEYS.has(k)))];
+  await limit(ctx, 'badges:' + user.id, 30, 60 * 60 * 1000, 'Please try again later.');
+  if(keys.length) await ctx.db.batch(keys.map(k => ctx.db.prepare('INSERT OR IGNORE INTO earned_badges (user_id, badge, earned_at) VALUES (?, ?, ?)').bind(user.id, k, ctx.now)));
+  return json({ ok:true, saved:keys.length });
+}
+
+function requireSiteAdmin(ctx){
+  const user = requireUser(ctx);
+  if(!user.site) throw new HttpError(403, 'Only site administrators can give or remove badges.');
+  return user;
+}
+
+async function giveBadge(ctx, id){
+  requireSiteAdmin(ctx);
+  const target = await ctx.db.prepare('SELECT username FROM users WHERE id = ?').bind(id).first();
+  if(!target) throw new HttpError(404, 'That account doesn’t exist.');
+  const data = await readBody(ctx, 1000);
+  let key = String(data.badge || ''), label, color;
+  if(APPOINTED[key]) [label, color] = APPOINTED[key];
+  else if(key === 'custom'){
+    label = cleanLine(data.label).slice(0, 30);
+    color = BADGE_COLORS.includes(data.color) ? data.color : 'gold';
+    if(label.length < 2) throw new HttpError(400, 'Give the badge a name of at least 2 characters.');
+    key = 'custom-' + toHex(crypto.getRandomValues(new Uint8Array(4)));
+  } else throw new HttpError(400, 'Choose a badge.');
+  if(await ctx.db.prepare('SELECT 1 FROM user_badges WHERE user_id = ? AND badge = ?').bind(id, key).first()) throw new HttpError(400, 'That account already has this badge.');
+  const count = (await ctx.db.prepare('SELECT COUNT(*) AS n FROM user_badges WHERE user_id = ?').bind(id).first()).n;
+  if(count >= 12) throw new HttpError(400, 'That account already has 12 badges.');
+  await ctx.db.prepare('INSERT INTO user_badges (user_id, badge, label, color, by_user, created_at) VALUES (?, ?, ?, ?, ?, ?)')
+    .bind(id, key, label, color, ctx.user.id, ctx.now).run();
+  await logMod(ctx, 'give-badge', target.username, label);
+  return modUser(ctx, id);
+}
+
+async function takeBadge(ctx, id, key){
+  requireSiteAdmin(ctx);
+  const row = await ctx.db.prepare('SELECT b.label, u.username FROM user_badges b JOIN users u ON u.id = b.user_id WHERE b.user_id = ? AND b.badge = ?').bind(id, key).first();
+  if(!row) throw new HttpError(404, 'That badge isn’t on this account.');
+  await ctx.db.prepare('DELETE FROM user_badges WHERE user_id = ? AND badge = ?').bind(id, key).run();
+  await logMod(ctx, 'take-badge', row.username, row.label);
+  return modUser(ctx, id);
 }
 
 /* ---------- Moderation ---------- */
@@ -643,6 +735,8 @@ async function modRoute(ctx, sub, method){
   if((m = sub.match(/^users\/(\d+)\/warn$/)) && method === 'POST') return await warnUser(ctx, Number(m[1]));
   if((m = sub.match(/^users\/(\d+)\/notes$/)) && method === 'POST') return await addNote(ctx, Number(m[1]));
   if((m = sub.match(/^notes\/(\d+)$/)) && method === 'DELETE') return await deleteNote(ctx, Number(m[1]));
+  if((m = sub.match(/^users\/(\d+)\/badges$/)) && method === 'POST') return await giveBadge(ctx, Number(m[1]));
+  if((m = sub.match(/^users\/(\d+)\/badges\/([a-z0-9-]{1,40})$/)) && method === 'DELETE') return await takeBadge(ctx, Number(m[1]), m[2]);
   if(sub === 'settings' && method === 'GET') return await getSettings(ctx);
   if(sub === 'settings' && method === 'PUT') return await putSettings(ctx);
   throw new HttpError(404, 'Not found.');
@@ -795,6 +889,7 @@ async function modUser(ctx, id){
   const notes = (await ctx.db.prepare('SELECT n.id, n.note, n.created_at, u.username FROM mod_notes n LEFT JOIN users u ON u.id = n.by_user WHERE n.user_id = ? ORDER BY n.created_at DESC LIMIT 50').bind(id).all()).results;
   return json({
     user:modUserJson(ctx, row),
+    badges:await badgesFor(ctx, id),
     warnings:warnings.map(w => ({ id:w.id, message:w.message, createdAt:w.created_at, seen:!!w.seen_at, by:w.username || null })),
     notes:notes.map(n => ({ id:n.id, note:n.note, createdAt:n.created_at, by:n.username || null })),
     posts:posts.map(p => ({ id:p.id, title:p.title, excerpt:p.excerpt, createdAt:p.created_at, removed:!!p.deleted })),
@@ -991,12 +1086,12 @@ function clearCookie(){ return `${COOKIE}=; Path=/; HttpOnly; Secure; SameSite=L
 
 function withRole(ctx, user){
   const admins = String(ctx.env.ADMINS || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
-  const modMode = !!user.mod_token;
-  return { ...user, modMode, admin:modMode || admins.includes(user.username.toLowerCase()) };
+  const modMode = !!user.mod_token, site = admins.includes(user.username.toLowerCase());
+  return { ...user, modMode, site, admin:modMode || site };
 }
 
 function publicUser(user){
-  return user ? { username:user.username, createdAt:user.created_at, admin:!!user.admin, modMode:!!user.modMode, avatar:user.avatar_v || null } : null;
+  return user ? { username:user.username, createdAt:user.created_at, admin:!!user.admin, modMode:!!user.modMode, siteAdmin:!!user.site, avatar:user.avatar_v || null } : null;
 }
 
 function requireUser(ctx){
