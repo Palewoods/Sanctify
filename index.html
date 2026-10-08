@@ -559,6 +559,7 @@
   nav.sidebar button.navlink[data-cat="rosary"]{--cat-color:var(--rose);}
   nav.sidebar button.navlink[data-cat="stations"]{--cat-color:var(--wine);}
   nav.sidebar button.navlink[data-cat="chaplet"]{--cat-color:var(--teal);}
+  nav.sidebar button.navlink[data-cat="sacredheart"]{--cat-color:var(--wine);}
   nav.sidebar button.navlink[data-cat="shop"]{--cat-color:var(--amber);}
   nav.sidebar button.navlink[data-cat="all"]{--cat-color:var(--ink);}
   nav.sidebar button.navlink[data-cat="daily"]{--cat-color:var(--gold);}
@@ -2755,6 +2756,7 @@
         <li><button class="navlink" data-route="pray/rosary" data-cat="rosary">Rosary</button></li>
         <li><button class="navlink" data-route="pray/stations" data-cat="stations">Stations of the Cross</button></li>
         <li><button class="navlink" data-route="pray/chaplet" data-cat="chaplet">Divine Mercy Chaplet</button></li>
+        <li><button class="navlink" data-route="pray/sacred-heart" data-cat="sacredheart">Sacred Heart Chaplet</button></li>
         <li><button class="navlink" data-route="pray/examination" data-cat="exam">Examination of Conscience</button></li>
         <li><button class="navlink" data-route="pray/timer" data-cat="timer">Prayer Timer</button></li>
         <li><button class="navlink" data-route="pray/examen" data-cat="examen">Daily Examen</button></li>
@@ -2834,7 +2836,7 @@
     <div class="footer-cols">
       <div><h4>Pray</h4>
         <button data-route="pray/prayers">Prayers</button><button data-route="pray/rosary">Rosary</button><button data-route="pray/stations">Stations of the Cross</button>
-        <button data-route="pray/chaplet">Divine Mercy Chaplet</button><button data-route="pray/examination">Examination of Conscience</button><button data-route="pray/timer">Prayer Timer</button><button data-route="pray/examen">Daily Examen</button><button data-route="pray/angelus">Angelus</button><button data-route="pray/lectio">Lectio Divina</button><button data-route="pray/tracker">Prayer Tracker</button></div>
+        <button data-route="pray/chaplet">Divine Mercy Chaplet</button><button data-route="pray/sacred-heart">Sacred Heart Chaplet</button><button data-route="pray/examination">Examination of Conscience</button><button data-route="pray/timer">Prayer Timer</button><button data-route="pray/examen">Daily Examen</button><button data-route="pray/angelus">Angelus</button><button data-route="pray/lectio">Lectio Divina</button><button data-route="pray/tracker">Prayer Tracker</button></div>
       <div><h4>Saints</h4>
         <button data-route="saints/all">All the Saints</button><button data-route="saints/patron-finder">Find Your Patron Saint</button><button data-route="saints/quotes">Quotes of the Saints</button><button data-route="mine">Novenas</button></div>
       <div><h4>History</h4>
@@ -2916,7 +2918,8 @@ const CAT_DESC = {
   rosary: 'Pray the Rosary step by step, with the mysteries for each day of the week.',
   shop: 'A few reputable retailers for rosaries, icons, statues, and other Catholic goods.',
   stations: 'Walk through the fourteen Stations of the Cross with a short meditation at each.',
-  chaplet: 'Pray the Chaplet of Divine Mercy step by step, as given to St. Faustina Kowalska.'
+  chaplet: 'Pray the Chaplet of Divine Mercy step by step, as given to St. Faustina Kowalska.',
+  sacredheart: 'Pray the Chaplet of the Sacred Heart step by step, on thirty-three beads for the years of Christ’s life on earth.'
 };
 
 const CAL_TYPE_COLOR = {
@@ -6587,7 +6590,7 @@ function render(){
   if(!globalSearch){
     const special = {
       home:renderHome, calendar:renderCalendar, rosary:renderRosary, shop:renderShop, stations:renderStations,
-      chaplet:renderChaplet, history:renderHistory, daily:renderDaily, theology:renderTheology,
+      chaplet:renderChaplet, sacredheart:renderSacredHeart, history:renderHistory, daily:renderDaily, theology:renderTheology,
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
       community:renderCommunity, resources:renderResources,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
@@ -9793,6 +9796,7 @@ const HABITS = [
   { key:'rosary',     name:'Rosary',                icon:'rosary',   route:'pray/rosary',      note:'Five decades' },
   { key:'mass',       name:'Mass',                  icon:'mass',     route:'learn/mass',       note:'Sunday or daily Mass' },
   { key:'chaplet',    name:'Divine Mercy Chaplet',  icon:'chaplet',  route:'pray/chaplet',     note:'Especially at 3 pm' },
+  { key:'sacredheart', name:'Sacred Heart Chaplet', icon:'sacredheart', route:'pray/sacred-heart', note:'Especially on First Fridays' },
   { key:'silence',    name:'Silent prayer',         icon:'timer',    route:'pray/timer',       note:'Time alone with God' },
   { key:'examen',     name:'Examen',                icon:'examen',   route:'pray/examen',      note:'Review the day with God' },
   { key:'stations',   name:'Stations of the Cross', icon:'stations', route:'pray/stations',    note:'Especially on Fridays' },
@@ -11756,6 +11760,7 @@ const RITE_SECTIONS = {
   rosary:{ name:['The Holy Rosary', 'The Jesus Prayer'], icon:['rosary', 'rope'] },
   stations:{ name:['Stations of the Cross', 'Prayer of St. Ephrem'], icon:['stations', 'eastcross'] },
   chaplet:{ name:['Divine Mercy Chaplet', 'The Trisagion Prayers'], icon:['chaplet', 'theology'] },
+  sacredheart:{ name:['Sacred Heart Chaplet', 'Prayers Before Holy Communion'], icon:['sacredheart', 'mass'] },
   angelus:{ name:['The Angelus', 'Hymns to the Theotokos'] },
   examen:{ name:['The Daily Examen', 'Evening Prayer'] },
   exam:{ name:['Examination of Conscience', 'Preparing for Confession'] },
@@ -11765,13 +11770,14 @@ const RITE_DESC = {
   rosary:'Pray the Jesus Prayer on a prayer rope, knot by knot: the ancient prayer of the heart of the Eastern Churches.',
   stations:'The great Lenten prayer of St. Ephrem the Syrian, prayed with prostrations on the weekdays of Great Lent.',
   chaplet:'The “usual beginning” of Byzantine prayer: O Heavenly King, the Thrice-Holy Hymn, and the Lord’s Prayer.',
+  sacredheart:'The prayers of the Divine Liturgy before receiving the Holy Mysteries: I believe, O Lord; Of your mystical supper; and the prayer of the publican.',
   angelus:'Honor the Mother of God with the beloved hymns of the East: Rejoice, O Virgin; It Is Truly Right; and Beneath Your Compassion.',
   examen:'Close the day with God in stillness, thanksgiving, watchfulness over the heart, and repentance.',
   exam:'A guided examination of conscience to prepare for the Holy Mystery of Repentance.',
   mass:'Every part of the Divine Liturgy of St. John Chrysostom in order, with what happens and what it means. Follow along on your phone at the Liturgy.'
 };
 const RITE_NAV = {
-  'pray/rosary':'Jesus Prayer', 'pray/stations':'Prayer of St. Ephrem', 'pray/chaplet':'Trisagion Prayers', 'pray/angelus':'Hymns to the Theotokos',
+  'pray/rosary':'Jesus Prayer', 'pray/stations':'Prayer of St. Ephrem', 'pray/chaplet':'Trisagion Prayers', 'pray/sacred-heart':'Prayers Before Communion', 'pray/angelus':'Hymns to the Theotokos',
   'pray/examen':'Evening Prayer', 'pray/examination':'Preparing for Confession', 'learn/mass':'The Divine Liturgy Explained'
 };
 const latinDesc = {};
@@ -11981,7 +11987,7 @@ function applyRite(){
   }
   document.querySelectorAll('[data-rite-switch]').forEach(b => { b.textContent = east ? 'Switch to the Roman Catholic edition' : 'Switch to the Eastern Catholic edition'; });
   // Reset guided prayers that differ between editions
-  rosarySequence = null; stationsStep = null; chapletSequence = null; massStep = null;
+  rosarySequence = null; stationsStep = null; chapletSequence = null; shSequence = null; massStep = null;
   Object.keys(guidedState).forEach(k => { guidedState[k] = null; });
 }
 
@@ -12120,6 +12126,19 @@ Object.assign(GUIDED, {
     ],
     doneTitle:'You have prayed the Trisagion Prayers', doneText:'Through the prayers of our holy fathers, Lord Jesus Christ our God, have mercy on us and save us. Amen.', again:'Pray again'
   },
+  communion:{
+    color:'var(--wine)', art:'chalice', habit:'sacredheart', kicker:'Before the Holy Mysteries', title:'Prayers Before Holy Communion',
+    intro:'In the Divine Liturgy the faithful prepare to receive the Body and Blood of Christ with the prayer of St. John Chrysostom, “I believe, O Lord, and I confess,” and the hymn of the Mystical Supper. They may be prayed at home too, before the Liturgy or simply to give thanks for the love of Christ.',
+    small:'About 5 minutes', begin:'Begin the prayers',
+    steps:() => [
+      { kicker:'Beginning', title:'In the name of the Father', body:'<p>In the name of the Father, and of the Son, and of the Holy Spirit. Amen.</p><p>Glory to you, our God, glory to you!</p>' },
+      { kicker:'St. John Chrysostom', title:'I believe, O Lord', body:devoParas(firstPara('pe10')) },
+      { kicker:'The Mystical Supper', title:'Of your mystical supper', body:devoParas(prayerText('pe10').split(/\n\s*\n/)[1] || '') },
+      { kicker:'For healing', title:'Not unto judgment', body:'<p>May the communion of your holy Mysteries be neither to my judgment nor to my condemnation, O Lord, but to the healing of soul and body. Amen.</p>' },
+      { kicker:'The prayer of the publican', title:'O God, be merciful to me', body:`<p>O God, be merciful to me, a sinner.</p>${rubric('Pray it three times, bowing each time.')}`, extra:devoBeadRow(3, 0, 'Three times') }
+    ],
+    doneTitle:'You have prayed the prayers before Holy Communion', doneText:'Remember me, O Lord, in your kingdom.', again:'Pray again'
+  },
   theotokos:{
     color:'var(--indigo)', art:'lily', habit:'angelus', kicker:'The Mother of God', title:'Hymns to the Theotokos',
     intro:'The Eastern Churches honor the Virgin Mary above all as the Theotokos, the one who gave birth to God. These three hymns are among the best loved in the Byzantine tradition, and may be prayed at any hour.',
@@ -12159,7 +12178,7 @@ Object.assign(GUIDED, {
     doneTitle:'Good night, in the peace of Christ', doneText:'Glory to you, O Lord, glory to you.', again:'Pray again'
   }
 });
-Object.assign(guidedState, { trisagion:null, theotokos:null, ephrem:null, evening:null });
+Object.assign(guidedState, { trisagion:null, theotokos:null, ephrem:null, evening:null, communion:null });
 
 /* ---------- The Divine Liturgy explained ---------- */
 POSTURE_ICONS.bow = '<circle cx="15" cy="5.5" r="2.2"/><path d="M13.5 8 8 12.5l3 1.5M8 12.5V21M8 21h5"/>';
@@ -12309,7 +12328,7 @@ GLOSSARY.sort((a, b) => a[0].localeCompare(b[0]));
 /* ---------- Edition-aware labels and cards ---------- */
 const HABIT_EAST = {
   morning:['Morning Prayers', 'Begin the day with God', 'pe11'], angelus:['Hymns to the Theotokos', 'Honor the Mother of God'],
-  rosary:['Jesus Prayer', 'On the prayer rope'], mass:['Divine Liturgy', 'Sunday or weekday Liturgy'], chaplet:['Trisagion Prayers', 'The usual beginning'],
+  rosary:['Jesus Prayer', 'On the prayer rope'], mass:['Divine Liturgy', 'Sunday or weekday Liturgy'], chaplet:['Trisagion Prayers', 'The usual beginning'], sacredheart:['Before Holy Communion', 'Prayers before the Holy Mysteries'],
   examen:['Evening Prayer', 'Look back on the day with God'], stations:['Prayer of St. Ephrem', 'Especially in Great Lent'],
   adoration:['Akathist', 'A hymn of praise'], confession:['Holy Confession', 'The Mystery of Repentance']
 };
@@ -12326,6 +12345,7 @@ function easternPrayCards(){
       extra:`<p class="rope-prayer small">${escapeHtml(JESUS_PRAYER)}</p>`, meta:'33, 50, or 100 knots', cta:'Begin praying' },
     { route:'pray/prayers', desc:'The prayers of the Byzantine tradition as illustrated cards, from O Heavenly King to It Is Truly Right.', meta:`${countOf('prayer')} prayer cards` },
     { route:'pray/chaplet', desc:'The “usual beginning” of Byzantine prayer: O Heavenly King, the Thrice-Holy Hymn, and the Lord’s Prayer.', meta:'About 5 minutes' },
+    { route:'pray/sacred-heart', desc:'The prayers of the Divine Liturgy before receiving the Holy Mysteries.', meta:'About 5 minutes' },
     { route:'pray/angelus', desc:'Honor the Mother of God with the beloved hymns of the East.', meta:'About 3 minutes' },
     { route:'pray/stations', desc:'The great Lenten prayer of St. Ephrem the Syrian, prayed with prostrations.', meta:'About 5 minutes' },
     { route:'pray/examen', desc:'Close the day with God in stillness, thanksgiving, watchfulness, and repentance.', meta:'About 10 minutes' },
@@ -12909,6 +12929,7 @@ const NAV_ICONS = {
   rosary:'<circle cx="12" cy="9" r="6" stroke-dasharray="1.6 2.1"/><path d="M12 15v7M9.5 18h5"/>',
   stations:'<path d="M12 2.5v19M7 7.5h10"/><path d="M8 21.5h8"/>',
   chaplet:'<circle cx="12" cy="6.5" r="3"/><path d="M10 10.5l-4 11M14 10.5l4 11M8.5 16h7"/>',
+  sacredheart:'<path d="M12 20.5s-7.5-4.6-7.5-10a4 4 0 0 1 7.5-2 4 4 0 0 1 7.5 2c0 5.4-7.5 10-7.5 10z"/><path d="M12 2.5v4.2M10.2 4.1h3.6"/>',
   exam:'<path d="M9.5 6h11M9.5 12h11M9.5 18h11"/><path d="M3.5 6l1.6 1.6L7.8 5M3.5 12l1.6 1.6 2.7-2.6M3.5 18l1.6 1.6 2.7-2.6"/>',
   timer:'<path d="M6 2.5h12M6 21.5h12"/><path d="M7.5 2.5v2.7c0 2.4 4.5 4.3 4.5 6.8s-4.5 4.4-4.5 6.8v2.7M16.5 2.5v2.7c0 2.4-4.5 4.3-4.5 6.8s4.5 4.4 4.5 6.8v2.7"/>',
   calendar:'<rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="12" cy="15" r="1" fill="currentColor"/>',
@@ -12965,6 +12986,7 @@ const SECTIONS = {
   rosary:{ name:'The Holy Rosary', group:'Pray', icon:'rosary', color:'var(--rose)' },
   stations:{ name:'Stations of the Cross', group:'Pray', icon:'stations', color:'var(--wine)' },
   chaplet:{ name:'Divine Mercy Chaplet', group:'Pray', icon:'chaplet', color:'var(--teal)' },
+  sacredheart:{ name:'Sacred Heart Chaplet', group:'Pray', icon:'sacredheart', color:'var(--wine)' },
   exam:{ name:'Examination of Conscience', group:'Pray', icon:'exam', color:'var(--purple)' },
   timer:{ name:'Prayer Timer', group:'Pray', icon:'timer', color:'var(--indigo)' },
   examen:{ name:'The Daily Examen', group:'Pray', icon:'examen', color:'var(--indigo)' },
@@ -13070,6 +13092,7 @@ const HUBS = {
         { route:'pray/prayers', desc:'Every prayer as an illustrated card, from the Sign of the Cross to the Te Deum, some in Latin and Spanish.', meta:`${countOf('prayer')} prayer cards` },
         { route:'pray/stations', desc:'Walk the fourteen Stations with Christ, with a short meditation at each.', meta:'14 stations' },
         { route:'pray/chaplet', desc:'The Chaplet of Divine Mercy, as given to St. Faustina, prayed on rosary beads.', meta:'About 15 minutes' },
+        { route:'pray/sacred-heart', desc:'Thirty-three beads for the years of Christ’s life: “Sweet Heart of Jesus, be my love.”', meta:'About 10 minutes' },
         { route:'pray/examination', desc:'Prepare for Confession with a guided examination, following the Ten Commandments.', meta:'Private: nothing is saved' },
         { route:'pray/timer', desc:'Set aside time for silent prayer or a Holy Hour, with a gentle bell to begin and end.', meta:'5 minutes to an hour' },
         { route:'pray/examen', desc:'Look back on your day with God in five short steps, the evening prayer of St. Ignatius.', meta:'About 10 minutes' },
@@ -13420,6 +13443,7 @@ const ROUTES = {
   'pray/rosary':                 { cat:'rosary', parent:'pray' },
   'pray/stations':               { cat:'stations', parent:'pray' },
   'pray/chaplet':                { cat:'chaplet', parent:'pray' },
+  'pray/sacred-heart':           { cat:'sacredheart', parent:'pray' },
   'pray/examination':            { cat:'exam', parent:'pray' },
   'pray/timer':                  { cat:'timer', parent:'pray' },
   'pray/examen':                 { cat:'examen', parent:'pray' },
@@ -14558,7 +14582,7 @@ function renderDevotionDone(o){
 }
 
 document.addEventListener('keydown', e => {
-  if(!devoKeys || !['rosary', 'stations', 'chaplet', 'examen', 'angelus', 'lectio', 'mass'].includes(activeCategory) || searchTerm.trim()) return;
+  if(!devoKeys || !['rosary', 'stations', 'chaplet', 'sacredheart', 'examen', 'angelus', 'lectio', 'mass'].includes(activeCategory) || searchTerm.trim()) return;
   if(e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
   if(e.target.closest && e.target.closest('input, textarea, select, [contenteditable="true"]')) return;
   if(readOverlay.classList.contains('open') || document.body.classList.contains('nav-open')) return;
@@ -14592,8 +14616,8 @@ const ROSARY_GEOM = (() => {
   return { cx, cy, r, beads, byKey:Object.fromEntries(beads.map(b => [b.key, b])) };
 })();
 
-function rosarySvg(currentKey, seq, center){
-  const g = ROSARY_GEOM;
+function rosarySvg(currentKey, seq, center, geom){
+  const g = geom || ROSARY_GEOM;
   const cur = currentKey ? g.byKey[currentKey].order : -1;
   const firstStep = {};
   (seq || []).forEach((s, i) => { if(!(s.at in firstStep)) firstStep[s.at] = i; });
@@ -14994,6 +15018,126 @@ function renderChaplet(){
     emblem:step.bead ? '<span class="devo-ornament"></span>' : devoMedal(cardArt('rays')),
     aside:rosarySvg(step.at, chapletSequence, { big:d ? ROMAN[d - 1] : '✠', small:'Jesus, I trust in You' }),
     go:i => { chapletStep = Math.max(0, Math.min(i, total)); renderChaplet(); },
+    exit:again, exitLabel:'Start over'
+  });
+}
+
+/* =========================================================
+   CHAPLET OF THE SACRED HEART
+   Thirty-three small beads, one for each year of Christ's life on earth, and six large beads:
+   one large and three small on the pendant, then five groups of one large and six small.
+   ========================================================= */
+const SH_PRAYERS = {
+  large: 'O Sweetest Heart of Jesus, I implore that I may ever love Thee more and more.',
+  small: 'Sweet Heart of Jesus, be my love.',
+  mary: 'Sweet Heart of Mary, be my salvation.',
+  closing: 'May the Heart of Jesus in the Most Blessed Sacrament be praised, adored, and loved with grateful affection, at every moment, in all the tabernacles of the world, even to the end of time. Amen.'
+};
+const SH_COLOR = 'var(--wine)';
+let shSequence = null;
+let shStep = 0;
+
+const SH_GEOM = (() => {
+  const cx = 150, cy = 146, r = 116, gap = 14;
+  const beads = [];
+  const add = (key, x, y, size) => beads.push({ key, x, y, size });
+  add('cross', 150, 420, 'cross');
+  add('p-big', 150, 379, 'big');
+  [1, 2, 3].forEach(i => add('p-' + i, 150, 368 - i * 19, 'small'));
+  const units = [];
+  for(let g = 1; g <= 5; g++){
+    units.push({ key:`g${g}-big`, w:1.9, size:'big' });
+    for(let j = 1; j <= 6; j++) units.push({ key:`g${g}-${j}`, w:1.15, size:'small' });
+  }
+  const totalW = units.reduce((n, u) => n + u.w, 0);
+  let acc = 0;
+  units.forEach(u => {
+    const a = (90 + gap + (360 - 2 * gap) * (acc + u.w / 2) / totalW) * Math.PI / 180;
+    acc += u.w;
+    add(u.key, cx + r * Math.cos(a), cy + r * Math.sin(a), u.size);
+  });
+  add('medal', 150, cy + r + 10, 'medal');
+  beads.forEach((b, i) => { b.order = i; });
+  return { cx, cy, r, beads, byKey:Object.fromEntries(beads.map(b => [b.key, b])) };
+})();
+
+function buildSacredHeartSequence(){
+  const seq = [];
+  seq.push({ label:'Sign of the Cross', prayer:ROSARY_PRAYERS.cross, at:'cross' });
+  seq.push({ label:'Soul of Christ', prayer:prayerText('p24'), at:'cross' });
+  const group = (g, big, smalls) => {
+    seq.push({ label:'O Sweetest Heart of Jesus', prayer:SH_PRAYERS.large, group:g, at:big });
+    smalls.forEach((at, j) => seq.push({ label:'Sweet Heart of Jesus', prayer:SH_PRAYERS.small, group:g, bead:j + 1, of:smalls.length, at }));
+    seq.push({ label:'Sweet Heart of Mary', prayer:SH_PRAYERS.mary, group:g, mary:true, at:smalls[smalls.length - 1] });
+  };
+  group(0, 'p-big', ['p-1', 'p-2', 'p-3']);
+  for(let g = 1; g <= 5; g++) group(g, `g${g}-big`, [1, 2, 3, 4, 5, 6].map(j => `g${g}-${j}`));
+  seq.push({ label:'Closing Prayer', prayer:SH_PRAYERS.closing, at:'medal' });
+  return seq;
+}
+
+function renderSacredHeartStart(){
+  devoKeys = null;
+  const center = { big:'♥', small:'Sweet Heart of Jesus' };
+  entryListEl.innerHTML = `
+    <div class="devo-start" style="--devo:${SH_COLOR}">
+      <article class="devo-card devo-intro">
+        <div class="devo-emblem">${devoMedal(cardArt('heart'))}</div>
+        <div class="devo-kicker">Sweet Heart of Jesus, be my love</div>
+        <h3 class="devo-title">The Chaplet of the Sacred Heart</h3>
+        <div class="devo-rule" aria-hidden="true"></div>
+        <p class="devo-closing">Devotion to the Sacred Heart of Jesus spread through the Church after Christ’s appearances to St. Margaret Mary Alacoque at Paray-le-Monial between 1673 and 1675. This chaplet honors his Heart on thirty-three small beads, one for each year of his life on earth. It is especially loved on First Fridays and through the month of June.</p>
+        <div class="devo-actions"><button class="btn primary pill" id="shBeginBtn">Begin praying</button></div>
+        <p class="devo-small">Thirty-three beads · about 10 minutes</p>
+      </article>
+      <details class="devo-howto">
+        <summary>How to pray the Chaplet</summary>
+        <div class="howto-grid">
+          ${rosarySvg(null, null, center, SH_GEOM)}
+          <ol>
+            <li>On the crucifix, make the Sign of the Cross and pray the Soul of Christ (Anima Christi).</li>
+            <li>On each large bead, pray “O Sweetest Heart of Jesus, I implore that I may ever love Thee more and more.”</li>
+            <li>On each small bead, pray “Sweet Heart of Jesus, be my love.”</li>
+            <li>After each group of small beads, pray “Sweet Heart of Mary, be my salvation.”</li>
+            <li>Begin with the three small beads on the pendant, then pray the five groups of six around the chaplet.</li>
+            <li>At the centerpiece, close with “May the Heart of Jesus in the Most Blessed Sacrament be praised, adored, and loved…”</li>
+          </ol>
+        </div>
+        <p class="devo-small">Some chaplets use “Jesus, meek and humble of heart, make my heart like unto Thine” on the large beads instead. Any rosary can be used: pray six small beads in each decade.</p>
+      </details>
+    </div>`;
+  document.getElementById('shBeginBtn').addEventListener('click', () => {
+    shSequence = buildSacredHeartSequence();
+    shStep = 0;
+    renderSacredHeart();
+  });
+}
+
+function renderSacredHeart(){
+  entryListEl.innerHTML = '';
+  if(isEastern()) return renderGuided('communion');
+  if(!shSequence) return renderSacredHeartStart();
+  const total = shSequence.length;
+  const again = () => { shSequence = null; shStep = 0; renderSacredHeart(); };
+  if(shStep >= total){
+    logPrayer('sacredheart');
+    return renderDevotionDone({
+      kind:'sacredheart', color:SH_COLOR, emblem:devoMedal(cardArt('heart')), title:'You have prayed the Chaplet of the Sacred Heart',
+      text:'Sacred Heart of Jesus, I place all my trust in Thee.', againLabel:'Pray the Chaplet again', again
+    });
+  }
+  const step = shSequence[shStep];
+  const g = step.group;
+  const kicker = g === 0 ? 'The pendant' : g ? `Group ${ROMAN[g - 1]} of V` : step.at === 'medal' ? 'Conclusion' : 'Chaplet of the Sacred Heart';
+  const track = step.bead ? devoBeadRow(step.of, step.bead, `Bead ${step.bead} of ${step.of}`) : '';
+  const finished = g === undefined ? (step.at === 'medal' ? 5 : 0) : Math.max(0, g - 1);
+  const pips = `<div class="devo-pips" aria-hidden="true">${[1, 2, 3, 4, 5].map(i => `<span class="${i <= finished && step.at !== 'cross' ? 'done' : i === g ? 'current' : ''}">${ROMAN[i - 1]}</span>`).join('')}</div>`;
+  renderDevotionStep({
+    kind:'sacredheart', color:SH_COLOR, step:shStep, total, kicker, title:step.label,
+    body:devoParas(step.prayer), track:track + pips,
+    emblem:step.bead || step.mary ? '<span class="devo-ornament"></span>' : devoMedal(cardArt('heart')),
+    aside:rosarySvg(step.at, shSequence, { big:g ? ROMAN[g - 1] : '♥', small:'Sweet Heart of Jesus' }, SH_GEOM),
+    go:i => { shStep = Math.max(0, Math.min(i, total)); renderSacredHeart(); },
     exit:again, exitLabel:'Start over'
   });
 }
