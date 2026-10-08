@@ -2025,6 +2025,10 @@
   .account-note .text-link{font-size:inherit;}
   .account-page{max-width:860px;}
   .account-danger{margin-top:34px; padding:14px 18px; border:1px solid var(--line); border-radius:14px; max-width:560px;}
+  .account-mod{margin-top:34px; padding:14px 18px; border:1px solid var(--line); border-radius:14px; max-width:560px;}
+  .account-mod summary{cursor:pointer; font-weight:600; color:var(--ink);}
+  .account-mod p{font-size:0.9rem; color:var(--ink-soft);}
+  .account-mod + .account-danger{margin-top:14px;}
   .account-danger summary{cursor:pointer; color:var(--wine); font-weight:600;}
   .account-danger p{font-size:0.9rem; color:var(--ink-soft);}
   .home-community{padding:22px; border-radius:18px; border:1px solid var(--line); background:var(--parchment-light); margin:34px 0;}
@@ -9495,6 +9499,18 @@ function renderProfile(){
       </div>
       <h3 class="forum-replies-head">Your posts</h3>
       <div class="forum-list" id="myPosts"><div class="forum-loading">Loading your posts…</div></div>
+      <details class="account-mod"${u.admin ? ' open' : ''}>
+        <summary>Moderator${u.admin ? ' · on' : ''}</summary>
+        ${u.admin
+          ? `<p>You’re a moderator. You can remove any post or reply in the Community: open it and choose Remove.</p>
+             ${u.modMode ? '<button class="btn quiet" id="modLeave" type="button">Leave moderator mode</button>' : ''}`
+          : `<p>Moderators can remove any post or reply. Enter the moderator password to turn on moderator tools on this device.</p>
+             <form id="modForm">
+               <div class="field"><label for="modPass">Moderator password</label><input id="modPass" type="password" autocomplete="off" maxlength="128"></div>
+               <p class="forum-error" id="modError" hidden></p>
+               <button class="btn primary pill" type="submit">Turn on moderator tools</button>
+             </form>`}
+      </details>
       <details class="account-danger">
         <summary>Delete my account</summary>
         <p>This signs you out everywhere and frees up your username. Your posts and replies stay up, shown as written by a “Former member.” If you’d like any of them gone, delete them first.</p>
@@ -9538,6 +9554,37 @@ function renderProfile(){
     }catch(err){ showAvatarError(err.message || 'That didn’t work. Please try again.'); }
   });
 
+  const modForm = entryListEl.querySelector('#modForm');
+  if(modForm) modForm.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const pass = modForm.querySelector('#modPass'), error = modForm.querySelector('#modError'), btn = modForm.querySelector('button[type="submit"]');
+    if(!pass.value){ showFormError(error, 'Please enter the moderator password.'); pass.focus(); return; }
+    btn.disabled = true;
+    showFormError(error, '');
+    try{
+      const res = await api('moderator', { method:'POST', body:{ password:pass.value } });
+      Community.user = res.user;
+      updateAccountButton();
+      toast('Moderator tools are on.');
+      renderProfile();
+    }catch(err){
+      showFormError(error, err.message);
+      pass.value = '';
+      btn.disabled = false;
+      pass.focus();
+    }
+  });
+  const modLeave = entryListEl.querySelector('#modLeave');
+  if(modLeave) modLeave.addEventListener('click', async () => {
+    modLeave.disabled = true;
+    try{
+      const res = await api('moderator', { method:'DELETE' });
+      Community.user = res.user;
+      updateAccountButton();
+      toast('Moderator tools are off.');
+      renderProfile();
+    }catch(err){ toast(err.message); modLeave.disabled = false; }
+  });
   entryListEl.querySelector('#signOutBtn').addEventListener('click', async () => {
     try{ await api('logout', { method:'POST' }); }catch(err){ /* signed out locally either way */ }
     Community.user = null;

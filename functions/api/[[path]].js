@@ -6,8 +6,10 @@
    (Cloudflare dashboard → Workers & Pages → sanctify → Settings → Bindings).
    The tables are created automatically on the first request.
 
-   Optional environment variable:
-     ADMINS  comma-separated usernames allowed to remove any post or reply
+   Optional environment variables (Settings → Variables and Secrets):
+     ADMINS         comma-separated usernames allowed to remove any post or reply
+     MOD_PASSWORD   a secret: any signed-in member who enters it on their Account page
+                    becomes a moderator on that device, until they sign out or leave moderator mode
 
    Passwords are salted and hashed with PBKDF2; sign-ins are kept in an
    HttpOnly cookie, and only a hash of each session token is stored.
@@ -63,6 +65,9 @@ const SCHEMA = [
      mime TEXT NOT NULL,
      data TEXT NOT NULL,
      updated_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS mod_sessions (
+     token_hash TEXT PRIMARY KEY,
+     expires_at INTEGER NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS limits (
      key TEXT PRIMARY KEY,
      count INTEGER NOT NULL,
@@ -103,6 +108,8 @@ export async function onRequest({ request, env }){
     if(path === 'login' && method === 'POST') return await login(ctx);
     if(path === 'logout' && method === 'POST') return await logout(ctx);
     if(path === 'account' && method === 'DELETE') return await deleteAccount(ctx);
+    if(path === 'moderator' && method === 'POST') return await enterModerator(ctx);
+    if(path === 'moderator' && method === 'DELETE') return await leaveModerator(ctx);
     if(path === 'account/avatar' && method === 'PUT') return await setAvatar(ctx);
     if(path === 'account/avatar' && method === 'DELETE') return await removeAvatar(ctx);
     if(path === 'posts' && method === 'GET') return await listPosts(ctx);
@@ -166,7 +173,13 @@ async function login(ctx){
 
 async function logout(ctx){
   const token = readCookie(ctx.request, COOKIE);
-  if(token) await ctx.db.prepare('DELETE FROM sessions WHERE token_hash = ?').bind(await sha256(token)).run();
+  if(token){
+    const hash = await sha256(token);
+    await ctx.db.batch([
+      ctx.db.prepare('DELETE FROM sessions WHERE token_hash = ?').bind(hash),
+      ctx.db.prepare('DELETE FROM mod_sessions WHERE token_hash = ?').bind(hash)
+    ]);
+  }
   return json({ ok:true }, 200, { 'Set-Cookie':clearCookie() });
 }
 
@@ -177,6 +190,7 @@ async function deleteAccount(ctx){
   const row = await ctx.db.prepare('SELECT pass_hash, salt FROM users WHERE id = ?').bind(user.id).first();
   if(!row || !sameHash(await hashPassword(String(password || ''), row.salt), row.pass_hash)) throw new HttpError(401, 'That password isn’t right.');
   await ctx.db.batch([
+    ctx.db.prepare('DELETE FROM mod_sessions WHERE token_hash IN (SELECT token_hash FROM sessions WHERE user_id = ?)').bind(user.id),
     ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM avatars WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM users WHERE id = ?').bind(user.id)
@@ -342,13 +356,42 @@ async function togglePrayer(ctx, postId){
   return json({ prayed, prayers:row.prayer_count });
 }
 
+/* ---------- Moderator mode ---------- */
+// The password is the Cloudflare secret MOD_PASSWORD. Both sides are hashed before comparing, so the
+// comparison takes the same time however many characters match. Tries are limited per device and per member.
+async function enterModerator(ctx){
+  const user = requireUser(ctx);
+  const secret = ctx.env.MOD_PASSWORD;
+  if(!secret) throw new HttpError(503, 'Moderator access isn’t set up yet.');
+  await limit(ctx, 'mod-ip:' + await ipKey(ctx), 5, 15 * 60 * 1000, 'Too many tries. Please wait 15 minutes and try again.');
+  await limit(ctx, 'mod-user:' + user.id, 5, 15 * 60 * 1000, 'Too many tries. Please wait 15 minutes and try again.');
+  const body = await readBody(ctx, 1000);
+  const password = typeof body.password === 'string' ? body.password : '';
+  if(!password || password.length > 128 || !sameHash(await sha256(password), await sha256(secret))){
+    throw new HttpError(403, 'That moderator password isn’t right.');
+  }
+  await ctx.db.prepare('INSERT INTO mod_sessions (token_hash, expires_at) VALUES (?, ?) ON CONFLICT(token_hash) DO UPDATE SET expires_at = excluded.expires_at')
+    .bind(ctx.tokenHash, user.session_expires).run();
+  return json({ user:publicUser(withRole(ctx, { ...user, mod_token:ctx.tokenHash })) });
+}
+
+async function leaveModerator(ctx){
+  const user = requireUser(ctx);
+  await ctx.db.prepare('DELETE FROM mod_sessions WHERE token_hash = ?').bind(ctx.tokenHash).run();
+  return json({ user:publicUser(withRole(ctx, { ...user, mod_token:null })) });
+}
+
 /* ---------- Sessions ---------- */
 async function currentUser(ctx){
   const token = readCookie(ctx.request, COOKIE);
   if(!token || !/^[0-9a-f]{64}$/.test(token)) return null;
+  ctx.tokenHash = await sha256(token);
   const row = await ctx.db.prepare(
-    'SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v FROM sessions s JOIN users u ON u.id = s.user_id LEFT JOIN avatars a ON a.user_id = u.id WHERE s.token_hash = ? AND s.expires_at > ?'
-  ).bind(await sha256(token), ctx.now).first();
+    `SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, s.expires_at AS session_expires, m.token_hash AS mod_token
+     FROM sessions s JOIN users u ON u.id = s.user_id LEFT JOIN avatars a ON a.user_id = u.id
+     LEFT JOIN mod_sessions m ON m.token_hash = s.token_hash AND m.expires_at > ?
+     WHERE s.token_hash = ? AND s.expires_at > ?`
+  ).bind(ctx.now, ctx.tokenHash, ctx.now).first();
   return row ? withRole(ctx, row) : null;
 }
 
@@ -364,11 +407,12 @@ function clearCookie(){ return `${COOKIE}=; Path=/; HttpOnly; Secure; SameSite=L
 
 function withRole(ctx, user){
   const admins = String(ctx.env.ADMINS || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
-  return { ...user, admin:admins.includes(user.username.toLowerCase()) };
+  const modMode = !!user.mod_token;
+  return { ...user, modMode, admin:modMode || admins.includes(user.username.toLowerCase()) };
 }
 
 function publicUser(user){
-  return user ? { username:user.username, createdAt:user.created_at, admin:!!user.admin, avatar:user.avatar_v || null } : null;
+  return user ? { username:user.username, createdAt:user.created_at, admin:!!user.admin, modMode:!!user.modMode, avatar:user.avatar_v || null } : null;
 }
 
 function requireUser(ctx){
