@@ -2411,43 +2411,6 @@
   .read-modal.card-mode .body-text p:first-of-type:first-letter{float:none; font-size:inherit; padding:0; line-height:inherit; color:inherit; font-weight:inherit; font-family:inherit;}
   .read-modal.card-mode .link-box, .read-modal.card-mode .tags{justify-content:center; text-align:center;}
   @media (max-width:600px){ .read-modal.card-mode{padding:36px 26px 26px;} .read-modal.card-mode .modal-close{top:22px; right:24px;} }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   /* =========================================================
      2026 REFRESH: one consistent finish over every page and theme.
      Everything here builds on each theme's colors, so all 41 themes keep their character.
@@ -2658,7 +2621,7 @@
   @media (max-width:760px){
     :root{--tabbar-h:60px;}
     .tabbar{
-      display:grid; grid-template-columns:repeat(5, 1fr); position:fixed; left:0; right:0; bottom:0; z-index:45;
+      display:grid; grid-template-columns:repeat(6, 1fr); position:fixed; left:0; right:0; bottom:0; z-index:45;
       padding:5px 6px calc(5px + env(safe-area-inset-bottom));
       background:color-mix(in srgb, var(--parchment-light) 86%, transparent);
       -webkit-backdrop-filter:saturate(1.4) blur(16px); backdrop-filter:saturate(1.4) blur(16px);
@@ -2811,6 +2774,67 @@
   /* Discord and the edition switch live in the top bar, so the menu leaves out its closing group */
   nav.sidebar .nav-group:last-child{display:none;}
   /* END LAYOUT */
+  /* =========================================================
+     FLAT: solid colors, no gloss. Shadows, sheens, glows, and frosted glass are taken out;
+     depth comes from borders and flat tints instead. The opt-in Glow and Shine settings still work.
+     ========================================================= */
+  /* Shadows: a transparent zero shadow (not "none") so the lists that include these still work */
+  :root{
+    --shadow:0 0 #0000 !important; --elev-1:0 0 #0000 !important; --elev-2:0 0 #0000 !important; --elev-3:0 0 #0000 !important;
+  }
+
+  /* Cards don't float or lift; hovering just colors the border */
+  .dash-card, .feature-card, .daily-card, .home-tile, .bento-card, .path-card, .pillar, .theology-row, .tl-card, .bible-tile,
+  .prayer-card, .g-card .saint-portrait, .gallery > * .saint-portrait, .card, .dash-grid .home-prayer, .cal-grid, .cal-detail,
+  .account-tabs button, .searchbar, .modal, .topbar, body.scrolled .topbar, .btn, .btn:hover, .btn.primary, .btn.primary:hover,
+  .hero-actions .btn:first-child, .hero-actions .btn:first-child:hover, .section-icon, .shine-switch::after, .devo-aside, .mystery-card.active,
+  .fi-figure img, .br-copybar, .exam-bar, .toast, nav.sidebar, .saint-portrait.shape-book{box-shadow:none;}
+  .dash-card[data-route]:hover, .feature-card[data-open]:hover, .feature-card[data-open]:focus-visible, .daily-card[data-open]:hover, .daily-card[data-open]:focus-visible,
+  .home-tile:hover, .home-tile:focus-visible, .bento-card:hover, .bento-card:focus-visible, .path-card:hover, .path-card:focus-visible,
+  .pillar:hover, .pillar:focus-visible, .theology-grid .theology-row:hover, .history-row:hover .tl-card, .bible-tile:hover, .bible-tile:focus-visible,
+  .prayer-card:hover{transform:none; box-shadow:none; border-color:color-mix(in srgb, var(--tile-color, var(--edge, var(--gold))) 55%, var(--line));}
+  .g-card:hover .saint-portrait, .g-card:focus-visible .saint-portrait, .gallery > *:hover .saint-portrait{transform:none; box-shadow:none;}
+  .feature-card[data-open]:focus-visible, .daily-card[data-open]:focus-visible, .home-tile:focus-visible, .bento-card:focus-visible,
+  .path-card:focus-visible, .pillar:focus-visible, .bible-tile:focus-visible{box-shadow:var(--focus);}
+  .saint-portrait.shape-book{box-shadow:inset 3px 0 0 rgba(var(--ink-rgb),0.18);}
+  .mystery-card.active{box-shadow:0 0 0 1px var(--devo);}
+  .devo-bead.current{box-shadow:none;}
+  .cal-viewtoggle button.active{box-shadow:0 0 0 1px var(--hairline);}
+  .account-tabs button[aria-selected="true"]{box-shadow:0 0 0 1px var(--line);}
+  .read-modal.card-mode{box-shadow:inset 0 0 0 12px var(--parchment-light), inset 0 0 0 13px var(--accent);}
+  .tabbar{box-shadow:none;}
+
+  /* Solid surfaces instead of sheens and glows */
+  .home-hero, .dash-hero{background:var(--parchment-light);}
+  .home-hero::after, .dash-hero::after{display:none;}
+  .home-hero::before, .dash-hero::before{background:var(--season);}
+  .feature-saint::before, .feature-verse::before, .feature-prayer::before, .home-quiz::before, .path-card::before,
+  .dash-rosary::before, .dash-upcoming::before{background:var(--edge, var(--gold));}
+  .news-item::before{background:var(--amber);}
+  .hero-rosette, .hero-cross{filter:none; animation:none;}
+  .devo-aside, .path-card, .bento-card.big, .prayer-card, .read-modal.card-mode{background:var(--parchment-light);}
+  .devo-mercy{background:var(--parchment-light);}
+  .mystery-card.active{background:color-mix(in srgb, var(--devo) 9%, var(--parchment-light));}
+  .tracker-stats{background:color-mix(in srgb, var(--gold) 9%, var(--parchment-light)) !important;}
+  .quote-hero, .sf-quiz-link{background:color-mix(in srgb, var(--gold) 8%, var(--parchment-light));}
+  .home-quote{background:color-mix(in srgb, var(--gold) 5%, var(--parchment-light));}
+  .saint-portrait{background:var(--parchment-dark);}
+  .pc-art, .read-modal.card-mode .read-art{background:color-mix(in srgb, var(--accent) 10%, transparent);}
+  .home-prayer-progress .bar span{background:var(--gold);}
+  .shine-switch[aria-checked="true"]{background:#b8923a;}
+  .badge.earned{background:color-mix(in srgb, var(--b) 8%, var(--parchment-light));}
+  .badge.earned .badge-medal, .badge-mini{background:var(--b); border-color:var(--b); box-shadow:none;}
+
+  /* No frosted glass: bars are solid, and overlays just dim */
+  .topbar{background:var(--parchment-light); -webkit-backdrop-filter:none; backdrop-filter:none;}
+  .tabbar{background:var(--parchment-light); -webkit-backdrop-filter:none; backdrop-filter:none;}
+  .overlay, .nav-scrim{-webkit-backdrop-filter:none; backdrop-filter:none;}
+
+  /* The opt-in Glow setting keeps its glow */
+  :root[data-glow] .home-hero, :root[data-glow] .dash-hero{
+    background:radial-gradient(ellipse at 85% 50%, color-mix(in srgb, var(--gold) 20%, transparent), transparent 60%), var(--parchment-light);}
+  :root[data-glow] .hero-cross{animation:heroGlow 5s ease-in-out infinite;}
+  /* END FLAT */
 
   @media print{
     body *{visibility:hidden;}
