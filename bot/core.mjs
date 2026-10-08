@@ -51,8 +51,10 @@ return { liturgicalSeason, observancesFor, dayNotes, dailyPick, DAILY_VERSES, SE
 const SEASON_COLORS = { violet:0x5b3f86, white:0xc9a227, 'white and red':0x9b1c1f, green:0x3e6b3a, red:0x9b1c1f, rose:0xb04a73 };
 const clip = (s, n) => s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s;
 
-export function buildPost(html, d){
+// texts: the long texts from data/texts/*.json merged into one { id: { content, intercession } } map
+export function buildPost(html, d, texts = {}){
   const k = extract(html);
+  k.SEED_DATA.forEach(e => { if(texts[e.id]) Object.assign(e, texts[e.id]); });
   const latin = k.SEED_DATA.filter(e => e.rite !== 'eastern');
   const byCat = cat => latin.filter(e => e.category === cat);
   const season = k.liturgicalSeason(d);

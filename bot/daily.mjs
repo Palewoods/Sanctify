@@ -3,7 +3,7 @@
 //   node bot/daily.mjs --dry         print the message instead of posting it
 //   node bot/daily.mjs 2026-12-25    use another date
 // "Today" follows the TZ environment variable (the GitHub workflow sets America/New_York).
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { buildPost } from './core.mjs';
 
 const args = process.argv.slice(2);
@@ -13,7 +13,11 @@ const now = given ? new Date(given + 'T12:00:00') : new Date();
 const day = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
 const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
-const post = buildPost(html, day);
+// Saints' lives and prayers live in data/texts/ (see tools/slim_texts.py)
+const textsDir = new URL('../data/texts/', import.meta.url);
+const texts = {};
+for(const f of (await readdir(textsDir)).filter(f => f.endsWith('.json'))) Object.assign(texts, JSON.parse(await readFile(new URL(f, textsDir), 'utf8')));
+const post = buildPost(html, day, texts);
 
 if(dry){
   console.log(JSON.stringify(post, null, 2));

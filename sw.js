@@ -1,7 +1,7 @@
 // Sanctify service worker: lets the site open offline after a first visit.
 // Pages are fetched network-first (so updates appear right away) and fall back
 // to the cached copy when offline. Icons and fonts are served from cache.
-const VERSION = 'sanctify-v34';   // bump when icons or other cached files change
+const VERSION = 'sanctify-v35';   // bump when icons or other cached files change
 const BIBLE = 'sanctify-bible-1';   // Bible chapters never change, so they keep their own cache across updates
 const PRECACHE = [
   './',
@@ -51,8 +51,8 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Bible chapters, book sections, and the Catechism outline: from the device once read, with no background refresh, to save data
-  if(url.origin === location.origin && (url.pathname.includes('/bible/') || url.pathname.includes('/books/') || url.pathname.includes('/catechism/'))){
+  // Bible chapters, book sections, the Catechism outline, and entry texts: from the device once read, with no background refresh, to save data
+  if(url.origin === location.origin && (url.pathname.includes('/bible/') || url.pathname.includes('/books/') || url.pathname.includes('/catechism/') || url.pathname.includes('/data/'))){
     event.respondWith(
       caches.open(BIBLE).then(cache => cache.match(req).then(hit => hit || fetch(req).then(res => {
         if(res.ok) cache.put(req, res.clone());
