@@ -2830,6 +2830,22 @@
   .tabbar{background:var(--parchment-light); -webkit-backdrop-filter:none; backdrop-filter:none;}
   .overlay, .nav-scrim{-webkit-backdrop-filter:none; backdrop-filter:none;}
 
+  /* A small colored dot in the top left corner instead of a colored bar across the top */
+  .daily-card, .ec-card, .plan-choice, .theology-grid .theology-row, .path-card, .feature-saint, .feature-verse, .feature-prayer, .home-quiz{
+    position:relative; border-top-width:1px; border-top-color:var(--line);}
+  .daily-saint{--dot:var(--gold);} .daily-verse{--dot:var(--wine);} .daily-prayer{--dot:var(--accent);} .daily-rosary, .daily-book{--dot:var(--indigo);}
+  .daily-history{--dot:var(--green);} .daily-bible{--dot:var(--teal);} .daily-theology{--dot:var(--purple);}
+  .ec-card{--dot:var(--wine);} .order-card{--dot:var(--green);} .order-card.military{--dot:var(--wine);}
+  .plan-choice{--dot:var(--teal);} .theology-grid .theology-row{--dot:var(--purple);} .home-quiz{--dot:var(--amber);} .news-item{--dot:var(--amber);}
+  .path-card{--dot:var(--tile-color);} .feature-saint, .feature-verse, .feature-prayer, .dash-rosary, .dash-upcoming{--dot:var(--edge, var(--gold));}
+  .home-hero, .dash-hero, .cal-detail{--dot:var(--season);}
+  .daily-card::before, .ec-card::before, .plan-choice::before, .theology-grid .theology-row::before,
+  .path-card::before, .feature-saint::before, .feature-verse::before, .feature-prayer::before, .home-quiz::before, .news-item::before,
+  .dash-rosary::before, .dash-upcoming::before, .home-hero::before, .dash-hero::before, .cal-detail::before{
+    content:''; position:absolute; top:10px; left:10px; right:auto; bottom:auto; width:7px; height:7px; border-radius:50%;
+    background:var(--dot); pointer-events:none;}
+  .home-hero::before, .dash-hero::before{top:16px; left:16px; width:8px; height:8px;}
+
   /* The opt-in Glow setting keeps its glow */
   :root[data-glow] .home-hero, :root[data-glow] .dash-hero{
     background:radial-gradient(ellipse at 85% 50%, color-mix(in srgb, var(--gold) 20%, transparent), transparent 60%), var(--parchment-light);}
