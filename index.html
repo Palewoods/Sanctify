@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Sanctify — A Catholic Repository</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
@@ -2622,7 +2622,7 @@
     :root{--tabbar-h:60px;}
     .tabbar{
       display:grid; grid-template-columns:repeat(6, 1fr); position:fixed; left:0; right:0; bottom:0; z-index:45;
-      padding:5px 6px calc(5px + env(safe-area-inset-bottom));
+      padding:5px calc(6px + env(safe-area-inset-right)) calc(5px + env(safe-area-inset-bottom)) calc(6px + env(safe-area-inset-left));
       background:color-mix(in srgb, var(--parchment-light) 86%, transparent);
       -webkit-backdrop-filter:saturate(1.4) blur(16px); backdrop-filter:saturate(1.4) blur(16px);
       border-top:1px solid var(--hairline); box-shadow:0 -8px 24px -16px rgba(var(--ink-rgb),0.4);
@@ -2639,12 +2639,25 @@
     .tab-link.active::before{transform:scaleX(1);}
     .tab-link.active svg{transform:translateY(-1px) scale(1.08);}
     .tab-link:active svg{transform:scale(0.88);}
-    body{padding-bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom));}
-    .back-to-top{bottom:calc(var(--tabbar-h) + 14px + env(safe-area-inset-bottom));}
-    .toast{bottom:calc(var(--tabbar-h) + 16px + env(safe-area-inset-bottom));}
-    .br-copybar, .pf-jump{bottom:calc(var(--tabbar-h) + 10px + env(safe-area-inset-bottom));}
+    /* --tabbar-space is the tab bar's real height (measured by the page), so nothing hides behind it even with larger text */
+    :root{--tabbar-room:var(--tabbar-space, calc(var(--tabbar-h) + env(safe-area-inset-bottom)));}
+    body{padding-bottom:var(--tabbar-room);}
+    .back-to-top{bottom:calc(var(--tabbar-room) + 14px);}
+    .toast{bottom:calc(var(--tabbar-room) + 16px);}
+    .br-copybar, .pf-jump{bottom:calc(var(--tabbar-room) + 10px);}
   }
   @media print{ .tabbar{display:none !important;} .reveal-wait{opacity:1 !important; transform:none !important;} }
+
+  /* ---------- iPhone: room for the home bar, the notch, and Safari's toolbars ---------- */
+  body{min-height:100vh; min-height:100dvh; padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right);}
+  .overlay{padding-bottom:calc(40px + env(safe-area-inset-bottom));}
+  nav.sidebar{padding-bottom:calc(30px + env(safe-area-inset-bottom)); padding-left:calc(14px + env(safe-area-inset-left));}
+  .theme-menu{max-height:calc(100vh - 90px); max-height:calc(100dvh - 90px - env(safe-area-inset-bottom));}
+  .back-to-top{right:calc(20px + env(safe-area-inset-right));}
+  .rosary-svg, .stations-svg, .rope-svg{max-height:calc(100dvh - 150px);}
+  .pf-side{max-height:calc(100dvh - 100px);}
+  .site-footer{padding-bottom:env(safe-area-inset-bottom);}
+  @media (max-width:760px){ .site-footer{padding-bottom:0;} }
   /* END 2026 REFRESH */
 
   /* =========================================================
@@ -16182,6 +16195,16 @@ async function renderBadges(){
 // Deep links: #/library/saints opens a page (older #saint links still work); ?q=joseph runs a search
 applyRite();
 setTimeout(checkBadges, 1500);
+// Keep the page clear of the phone tab bar at whatever height it really is (larger text, the iPhone home bar)
+(() => {
+  const bar = document.querySelector('.tabbar');
+  if(!bar || !('ResizeObserver' in window)) return;
+  new ResizeObserver(() => {
+    const h = bar.offsetHeight;
+    if(h) document.documentElement.style.setProperty('--tabbar-space', h + 'px');
+    else document.documentElement.style.removeProperty('--tabbar-space');
+  }).observe(bar);
+})();
 document.addEventListener('click', e => {
   if(!e.target.closest('#riteToggle, .rite-switch-link, [data-rite-switch]')) return;
   e.preventDefault();
