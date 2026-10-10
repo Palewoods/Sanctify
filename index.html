@@ -2014,6 +2014,28 @@
   .btn[hidden]{display:none !important;}
   .mod-page{max-width:900px;}
   .badges-page{max-width:1000px;}
+  .dv-page{max-width:860px;}
+  .dv-jump{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px;}
+  .dv-chip{display:inline-flex; align-items:center; gap:7px; padding:6px 13px; border:1px solid var(--line); border-radius:999px; background:var(--parchment-light); color:var(--ink); font-family:'Source Serif 4', serif; font-size:0.85rem; font-weight:600; cursor:pointer;}
+  .dv-chip::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--dv);}
+  .dv-chip:hover{border-color:var(--dv);}
+  .dv-card{position:relative; padding:24px 26px; margin-bottom:18px; border:1px solid var(--line); border-radius:14px; background:var(--parchment-light); scroll-margin-top:86px;}
+  .dv-card::before{content:''; position:absolute; top:10px; left:10px; width:7px; height:7px; border-radius:50%; background:var(--dv);}
+  .dv-head{display:flex; align-items:center; gap:14px; margin-bottom:12px;}
+  .dv-icon{flex:0 0 46px; width:46px; height:46px; padding:11px; border-radius:12px; color:var(--dv); background:color-mix(in srgb, var(--dv) 12%, transparent);}
+  .dv-icon svg{width:100%; height:100%; display:block;}
+  .dv-head h3{margin:2px 0 0; font-size:1.5rem;}
+  .dv-card > p{margin:0 0 10px;}
+  .dv-card h4{margin:18px 0 8px; font-family:'Cormorant Garamond', serif; font-size:1.2rem;}
+  .dv-steps{margin:0; padding-left:22px;}
+  .dv-steps li{margin-bottom:6px;}
+  .dv-prayer{padding:12px 16px; margin-bottom:10px; border-radius:12px; background:color-mix(in srgb, var(--dv) 8%, transparent); font-style:italic;}
+  .dv-prayer p{margin:0 0 3px;}
+  .dv-prayer-title{font-style:normal; font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--dv); margin-bottom:6px;}
+  .dv-note{font-size:0.88rem; color:var(--ink-soft); border-left:2px solid var(--dv, var(--gold)); padding-left:12px; margin:14px 0 0;}
+  .dv-east{margin-top:4px;}
+  .dv-link{display:inline-block; margin-top:12px;}
+  @media (max-width:600px){ .dv-card{padding:20px 18px;} .dv-head h3{font-size:1.3rem;} }
   .badges-head{display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-bottom:24px; padding:18px 22px; border:1px solid var(--line); border-radius:18px; background:var(--parchment-light);}
   .badges-head p{flex:1 1 320px; margin:0; color:var(--ink-soft); font-size:0.95rem;}
   .badges-score{display:flex; flex-direction:column; align-items:center; min-width:120px;}
@@ -2964,6 +2986,7 @@
         <li><button class="navlink" data-route="pray/examen" data-cat="examen">Daily Examen</button></li>
         <li><button class="navlink" data-route="pray/angelus" data-cat="angelus">Angelus</button></li>
         <li><button class="navlink" data-route="pray/lectio" data-cat="lectio">Lectio Divina</button></li>
+        <li><button class="navlink" data-route="pray/devotions" data-cat="devotions">Devotions</button></li>
         <li><button class="navlink" data-route="pray/tracker" data-cat="tracker">Prayer Tracker</button></li>
       </ul>
     </div>
@@ -3038,7 +3061,7 @@
     <div class="footer-cols">
       <div><h4>Pray</h4>
         <button data-route="pray/prayers">Prayers</button><button data-route="pray/rosary">Rosary</button><button data-route="pray/stations">Stations of the Cross</button>
-        <button data-route="pray/chaplet">Divine Mercy Chaplet</button><button data-route="pray/sacred-heart">Sacred Heart Chaplet</button><button data-route="pray/examination">Examination of Conscience</button><button data-route="pray/timer">Prayer Timer</button><button data-route="pray/examen">Daily Examen</button><button data-route="pray/angelus">Angelus</button><button data-route="pray/lectio">Lectio Divina</button><button data-route="pray/tracker">Prayer Tracker</button></div>
+        <button data-route="pray/chaplet">Divine Mercy Chaplet</button><button data-route="pray/sacred-heart">Sacred Heart Chaplet</button><button data-route="pray/examination">Examination of Conscience</button><button data-route="pray/timer">Prayer Timer</button><button data-route="pray/examen">Daily Examen</button><button data-route="pray/angelus">Angelus</button><button data-route="pray/lectio">Lectio Divina</button><button data-route="pray/devotions">Devotions</button><button data-route="pray/tracker">Prayer Tracker</button></div>
       <div><h4>Saints</h4>
         <button data-route="saints/all">All the Saints</button><button data-route="saints/patron-finder">Find Your Patron Saint</button><button data-route="saints/quotes">Quotes of the Saints</button><button data-route="mine">Novenas</button></div>
       <div><h4>History</h4>
@@ -3100,6 +3123,7 @@ const CAT_DESC = {
   quiz: 'Test what you know about the saints, Scripture, Church history, and great Catholic books.',
   prayer: 'Every prayer as an illustrated prayer card. Choose a topic, then open a card to pray it, save it, or print it.',
   examen: 'The prayer St. Ignatius never wanted his companions to skip: five short steps to look back on the day with God.',
+  devotions: 'The Brown and Green Scapulars, the Miraculous and St. Benedict Medals, First Fridays and First Saturdays, and holy water: what each one is, how to keep it, and its prayers.',
   angelus: 'The ancient prayer of the Incarnation, prayed at morning, noon, and evening. During the Easter season, the Regina Caeli.',
   lectio: 'Pray with a passage of Scripture the way the monks did: read, reflect, respond, and rest in God.',
   tracker: 'Keep a private record of your daily prayer, build a steady habit, and see your faithfulness over the weeks.',
@@ -6799,7 +6823,7 @@ function render(){
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
       community:renderCommunity, resources:renderResources,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
-      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, badges:renderBadges, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
+      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, badges:renderBadges, devotions:renderDevotions, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
       'hub-pray':() => renderHub('pray'), 'hub-library':() => renderHub('library'), 'hub-learn':() => renderHub('learn'), 'hub-history':() => renderHub('history'), 'hub-saints':() => renderHub('saints')
     };
     const needsNoSearch = new Set(['home', 'daily', 'theology', 'hub-pray', 'hub-library', 'hub-learn']);
@@ -12644,7 +12668,8 @@ const RITE_SECTIONS = {
   angelus:{ name:['The Angelus', 'Hymns to the Theotokos'] },
   examen:{ name:['The Daily Examen', 'Evening Prayer'] },
   exam:{ name:['Examination of Conscience', 'Preparing for Confession'] },
-  mass:{ name:['The Mass Explained', 'The Divine Liturgy Explained'] }
+  mass:{ name:['The Mass Explained', 'The Divine Liturgy Explained'] },
+  devotions:{ name:['Devotions & Sacramentals', 'Holy Customs'], icon:['scapular', 'icons'] }
 };
 const RITE_DESC = {
   rosary:'Pray the Jesus Prayer on a prayer rope, knot by knot: the ancient prayer of the heart of the Eastern Churches.',
@@ -12654,11 +12679,12 @@ const RITE_DESC = {
   angelus:'Honor the Mother of God with the beloved hymns of the East: Rejoice, O Virgin; It Is Truly Right; and Beneath Your Compassion.',
   examen:'Close the day with God in stillness, thanksgiving, watchfulness over the heart, and repentance.',
   exam:'A guided examination of conscience to prepare for the Holy Mystery of Repentance.',
+  devotions:'The holy customs of Byzantine Christians: the icon corner, Theophany water, the baptismal cross, the prayer rope, the Paraklesis and Akathist, and the Pascha basket.',
   mass:'Every part of the Divine Liturgy of St. John Chrysostom in order, with what happens and what it means. Follow along on your phone at the Liturgy.'
 };
 const RITE_NAV = {
   'pray/rosary':'Jesus Prayer', 'pray/stations':'Prayer of St. Ephrem', 'pray/chaplet':'Trisagion Prayers', 'pray/sacred-heart':'Prayers Before Communion', 'pray/angelus':'Hymns to the Theotokos',
-  'pray/examen':'Evening Prayer', 'pray/examination':'Preparing for Confession', 'learn/mass':'The Divine Liturgy Explained'
+  'pray/examen':'Evening Prayer', 'pray/examination':'Preparing for Confession', 'learn/mass':'The Divine Liturgy Explained', 'pray/devotions':'Holy Customs'
 };
 const latinDesc = {};
 
@@ -13230,6 +13256,7 @@ function easternPrayCards(){
     { route:'pray/stations', desc:'The great Lenten prayer of St. Ephrem the Syrian, prayed with prostrations.', meta:'About 5 minutes' },
     { route:'pray/examen', desc:'Close the day with God in stillness, thanksgiving, watchfulness, and repentance.', meta:'About 10 minutes' },
     { route:'pray/lectio', desc:'Pray slowly with a passage of Scripture: read, reflect, respond, and rest.', meta:'About 15 minutes' },
+    { route:'pray/devotions', desc:'The icon corner, Theophany water, the baptismal cross, the prayer rope, the Paraklesis and Akathist, and the Pascha basket.', meta:`${DEVOTIONS_EAST.length} holy customs` },
     { route:'pray/examination', desc:'Prepare for the Holy Mystery of Repentance with a guided examination of conscience.', meta:'Private: nothing is saved' },
     { route:'pray/timer', desc:'Set aside time for silent prayer, with a gentle bell to begin and end.', meta:'5 minutes to an hour' },
     { route:'pray/tracker', desc:'A private record of your daily prayer, with streaks and a calendar of your faithfulness.', meta:streak ? `${streak}-day streak` : 'Stored only on this device' },
@@ -13820,6 +13847,10 @@ const NAV_ICONS = {
   quiz:'<circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.4c-.7.3-1 .9-1 1.6v.6"/><circle cx="12" cy="17" r=".7" fill="currentColor"/>',
   shop:'<path d="M5 8h14l-1.2 13H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>',
   search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
+  scapular:'<path d="M8 3.5c-1.5 4 .5 7.5 4 7.5s5.5-3.5 4-7.5"/><rect x="8" y="11" width="8" height="9.5" rx="1.2"/><path d="M12 13.5v4.5M10.2 15.3h3.6"/>',
+  medal:'<path d="M9 2.5l3 4 3-4"/><ellipse cx="12" cy="14" rx="5.5" ry="7"/><path d="M12 10.5v7M9.5 13h5"/>',
+  water:'<path d="M12 3s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/><path d="M12 11v6M9.5 13.5h5"/>',
+  basket:'<path d="M4 11h16l-1.6 8.2a1.5 1.5 0 0 1-1.5 1.3H7.1a1.5 1.5 0 0 1-1.5-1.3z"/><path d="M7 11a5 5 0 0 1 10 0"/><path d="M12 13.5v4M10.3 15h3.4"/>',
   rope:'<circle cx="12" cy="9.5" r="6.5" stroke-dasharray="1.4 2"/><path d="M12 16v5.5M10 18.5h4M10.5 20.7l3 .8"/>',
   eastcross:'<path d="M12 2.5v19M9.5 5.5h5M7 9h10M9 16.4l6 1.9"/>',
   quote:'<path d="M4 11.5C4 8 6 6 9 5.5M4 11.5h4.5V17H4zM13.5 11.5c0-3.5 2-5.5 5-6M13.5 11.5H18V17h-4.5z"/>',
@@ -13879,6 +13910,7 @@ const SECTIONS = {
   examen:{ name:'The Daily Examen', group:'Pray', icon:'examen', color:'var(--indigo)' },
   angelus:{ name:'The Angelus', group:'Pray', icon:'angelus', color:'var(--rose)' },
   lectio:{ name:'Lectio Divina', group:'Pray', icon:'lectio', color:'var(--green)' },
+  devotions:{ name:'Devotions & Sacramentals', group:'Pray', icon:'scapular', color:'var(--amber)' },
   tracker:{ name:'Prayer Tracker', group:'Pray', icon:'tracker', color:'var(--gold)' },
   mass:{ name:'The Mass Explained', group:'Learn', icon:'mass', color:'var(--wine)' },
   glossary:{ name:'Catholic Glossary', group:'Learn', icon:'glossary', color:'var(--purple)' },
@@ -13985,6 +14017,7 @@ const HUBS = {
         { route:'pray/examen', desc:'Look back on your day with God in five short steps, the evening prayer of St. Ignatius.', meta:'About 10 minutes' },
         { route:'pray/angelus', title:isEasterSeason() ? 'The Regina Caeli' : 'The Angelus', desc:'Pause at morning, noon, or evening to honor the Incarnation with Mary.', meta:'About 3 minutes' },
         { route:'pray/lectio', desc:'Pray slowly with a passage of Scripture: read, reflect, respond, and rest.', meta:'About 15 minutes' },
+        { route:'pray/devotions', desc:'The Brown and Green Scapulars, the Miraculous and St. Benedict Medals, First Fridays and Saturdays, and holy water, with their prayers.', meta:`${DEVOTIONS.length} devotions` },
         { route:'pray/tracker', desc:'A private record of your daily prayer, with streaks and a calendar of your faithfulness.', meta:(() => { const n = prayerStats().current; return n ? `${n}-day streak` : 'Stored only on this device'; })() },
         { route:'mine', title:'Novenas & Intentions', icon:'mine', desc:'Keep a list of your prayer intentions, and pray a nine-day novena with any saint.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' }
       ];
@@ -14342,6 +14375,7 @@ const ROUTES = {
   'pray/examen':                 { cat:'examen', parent:'pray' },
   'pray/angelus':                { cat:'angelus', parent:'pray' },
   'pray/lectio':                 { cat:'lectio', parent:'pray' },
+  'pray/devotions':              { cat:'devotions', parent:'pray' },
   'pray/tracker':                { cat:'tracker', parent:'pray' },
   'library':                     { cat:'hub-library' },
   'library/bible':               { cat:'bible', parent:'library' },
@@ -16037,6 +16071,249 @@ function renderSacredHeart(){
     go:i => { shStep = Math.max(0, Math.min(i, total)); renderSacredHeart(); },
     exit:again, exitLabel:'Start over'
   });
+}
+
+/* =========================================================
+   DEVOTIONS & SACRAMENTALS
+   Scapulars, medals, and other devotions: what each is, how to keep it, and its prayers.
+   The Eastern edition shows the holy customs of the Byzantine tradition instead.
+   ========================================================= */
+const DEVOTIONS = [
+  { id:'brown-scapular', name:'The Brown Scapular', icon:'scapular', color:'amber', kicker:'Our Lady of Mount Carmel · July 16',
+    about:[
+      'The Brown Scapular is a sign of belonging to Mary and of sharing in the spiritual family of the Carmelite Order. It is made of two small pieces of brown wool cloth joined by two strings, and worn over the shoulders so that one piece rests on the chest and the other on the back.',
+      'Carmelite tradition holds that in 1251 Our Lady gave the scapular to St. Simon Stock, an English Carmelite, with the promise: “Whoever dies wearing this scapular shall not suffer eternal fire.”'
+    ],
+    howTitle:'How to receive and wear it',
+    how:[
+      'Ask a priest or deacon to bless your first scapular and enroll you, using the Church’s short rite. This is done only once in your life.',
+      'Wear it at all times, over the shoulders, one piece in front and one behind. It may be worn under your clothes.',
+      'When it wears out, simply replace it. Only the first scapular needs to be blessed.',
+      'Since 1910, once you have been enrolled, you may wear a blessed scapular medal instead, with the Sacred Heart of Jesus on one side and Our Lady on the other.',
+      'Let it remind you to live as a Christian and to imitate Mary: pray every day, and turn to her as your mother.'
+    ],
+    prayers:[
+      ['Flos Carmeli (Flower of Carmel)', 'Flower of Carmel,\nTall vine blossom laden;\nSplendor of heaven,\nChildbearing yet maiden.\nNone equals thee.\nMother so tender,\nWho no man didst know,\nOn Carmel’s children\nThy favors bestow.\nStar of the Sea.'],
+      ['Prayer to Our Lady of Mount Carmel', 'O most beautiful Flower of Mount Carmel, fruitful vine, splendor of heaven, blessed Mother of the Son of God, Immaculate Virgin, assist me in this my necessity. O Star of the Sea, help me and show me that you are my Mother.\nO Holy Mary, Mother of God, Queen of heaven and earth, I humbly beseech you from the bottom of my heart to help me in this necessity. There are none that can withstand your power. O show me that you are my Mother.\nO Mary, conceived without sin, pray for us who have recourse to thee. (Three times)\nSweet Mother, I place this cause in your hands. (Three times)']
+    ],
+    note:'The scapular is not a charm or an automatic guarantee of salvation. It is a sign of a real commitment to follow Christ as Mary did. The “Sabbatine privilege,” a further tradition of Mary’s help soon after death, asks more: chastity according to your state in life, and a daily prayer such as the Little Office of the Blessed Virgin Mary or another prayer given by the priest.' },
+  { id:'green-scapular', name:'The Green Scapular', icon:'scapular', color:'green', kicker:'The Immaculate Heart of Mary',
+    about:[
+      'The Green Scapular is a devotion to the Immaculate Heart of Mary, above all for the conversion of souls and for the grace of a happy death. In 1840 Our Lady showed it to Sister Justine Bisqueyburu, a Daughter of Charity in Paris. Blessed Pius IX approved it in 1863 and again in 1870.',
+      'Strictly speaking it is a badge rather than a scapular: a single piece of green cloth on one string. On the front is Mary holding her Immaculate Heart. On the back is her heart pierced by a sword, beneath a cross, with the prayer written around it.'
+    ],
+    howTitle:'How to use it',
+    how:[
+      'Have it blessed by a priest. No enrollment is needed.',
+      'Wear it, carry it, or keep it close by. You may also give it to someone else, especially someone far from God. If they will not wear it, it may be placed in their pocket, their room, or under their pillow.',
+      'Pray its prayer at least once every day. If the person cannot or will not pray it, the one who gave the scapular prays it for them.',
+      'Tradition says its graces are given in proportion to the confidence of those who use it.'
+    ],
+    prayers:[
+      ['The Green Scapular prayer', 'Immaculate Heart of Mary, pray for us now and at the hour of our death.']
+    ] },
+  { id:'miraculous-medal', name:'The Miraculous Medal', icon:'medal', color:'indigo', kicker:'Our Lady of the Miraculous Medal · November 27',
+    about:[
+      'In 1830 Our Lady appeared to St. Catherine Labouré, a young Daughter of Charity, in the chapel on the Rue du Bac in Paris, and asked her to have a medal made. She promised that those who wear it with confidence will receive great graces. It was first called the Medal of the Immaculate Conception; so many conversions and cures followed that people soon called it miraculous.',
+      'On the front, Mary stands on the globe, crushing the serpent, with rays of grace streaming from her hands, and the words “O Mary, conceived without sin, pray for us who have recourse to thee.” On the back are the letter M with a cross, the Hearts of Jesus and Mary, and twelve stars.'
+    ],
+    howTitle:'How to wear it',
+    how:[
+      'Have the medal blessed by a priest.',
+      'Wear it around your neck, as Our Lady asked.',
+      'Pray its prayer every day, and turn to Mary with confidence in every need.',
+      'Give medals to others: St. Maximilian Kolbe handed them out by the thousands and called them his “bullets” in the battle for souls.'
+    ],
+    prayers:[
+      ['The prayer on the medal', 'O Mary, conceived without sin, pray for us who have recourse to thee.'],
+      ['The Memorare', 'Remember, O most gracious Virgin Mary, that never was it known that anyone who fled to thy protection, implored thy help, or sought thine intercession was left unaided. Inspired by this confidence, I fly unto thee, O Virgin of virgins, my Mother. To thee do I come, before thee I stand, sinful and sorrowful. O Mother of the Word Incarnate, despise not my petitions, but in thy mercy hear and answer me. Amen.']
+    ] },
+  { id:'benedict-medal', name:'The St. Benedict Medal', icon:'medal', color:'gold', kicker:'St. Benedict · July 11',
+    about:[
+      'The St. Benedict Medal asks God’s protection through the cross of Christ and the prayers of St. Benedict, the father of Western monks. Its best-known form, the Jubilee Medal, was struck at Monte Cassino in 1880 for the 1,400th anniversary of his birth.',
+      'On the front, St. Benedict holds a cross and his Rule, with the words “May we be strengthened by his presence in the hour of our death.” On the back is a cross covered with the first letters of a Latin prayer against evil, with PAX (peace) above it.'
+    ],
+    howTitle:'How to use it',
+    how:[
+      'Have it blessed by a priest.',
+      'Wear it, attach it to your rosary, or keep it in your home, your car, or your workplace.',
+      'Pray the words of the medal when you are tempted or afraid, trusting in the power of the cross, not in the medal itself.'
+    ],
+    prayers:[
+      ['The letters on the cross', 'C S P B: Crux Sancti Patris Benedicti. The cross of our holy father Benedict.\nC S S M L: Crux Sacra Sit Mihi Lux. May the holy cross be my light.\nN D S M D: Non Draco Sit Mihi Dux. Let not the dragon be my guide.'],
+      ['The letters around the edge', 'V R S: Vade Retro Satana. Begone, Satan!\nN S M V: Numquam Suade Mihi Vana. Never tempt me with your vanities!\nS M Q L: Sunt Mala Quae Libas. What you offer me is evil.\nI V B: Ipse Venena Bibas. Drink the poison yourself!']
+    ] },
+  { id:'first-fridays', name:'The Nine First Fridays', icon:'sacredheart', color:'wine', kicker:'The Sacred Heart of Jesus',
+    about:[
+      'Between 1673 and 1675, Our Lord appeared to St. Margaret Mary Alacoque at Paray-le-Monial in France, showed her his Heart burning with love, and asked for Communions of reparation on the first Friday of the month.',
+      'Among his promises was this “great promise”: that those who receive Holy Communion on the first Friday of nine months in a row will receive the grace of final repentance, and will not die without the sacraments or out of his grace.'
+    ],
+    howTitle:'How to make the First Fridays',
+    how:[
+      'On the first Friday of the month, go to Mass and receive Holy Communion in a state of grace. Go to Confession beforehand if you need to.',
+      'Offer your Communion in honor of the Sacred Heart and in reparation for the sins that wound it.',
+      'Do this for nine months in a row. If you miss a month, begin again.',
+      'Spend some time with Jesus that day, for example in Adoration or with the Sacred Heart Chaplet.'
+    ],
+    prayers:[
+      ['Short prayers to the Sacred Heart', 'Most Sacred Heart of Jesus, have mercy on us.\nSacred Heart of Jesus, I place all my trust in thee.\nJesus, meek and humble of heart, make my heart like unto thine.'],
+      ['Morning Offering', 'O Jesus, through the Immaculate Heart of Mary, I offer you my prayers, works, joys, and sufferings of this day, for all the intentions of your Sacred Heart, in union with the Holy Sacrifice of the Mass throughout the world, in reparation for my sins, for the intentions of all our associates, and in particular for the intention recommended this month by the Holy Father. Amen.']
+    ],
+    link:['pray/sacred-heart', 'Pray the Sacred Heart Chaplet'] },
+  { id:'first-saturdays', name:'The Five First Saturdays', icon:'rosary', color:'rose', kicker:'The Immaculate Heart of Mary · Fatima',
+    about:[
+      'At Fatima in 1917, Our Lady said she would come to ask for Communions of reparation on the first Saturdays. On December 10, 1925, at Pontevedra in Spain, she appeared to Sister Lúcia with the Child Jesus and made her request.',
+      'She promised to help at the hour of death, with the graces needed for salvation, all who on the first Saturday of five months in a row make reparation to her Immaculate Heart in these four ways.'
+    ],
+    howTitle:'How to make the First Saturdays',
+    how:[
+      'Go to Confession. It may be a few days before or after the first Saturday, as long as you receive Communion in a state of grace.',
+      'Receive Holy Communion on the first Saturday.',
+      'Pray five decades of the Rosary.',
+      'Keep Our Lady company for fifteen minutes, meditating on the mysteries of the Rosary.',
+      'Do all of this with the intention of making reparation to the Immaculate Heart of Mary, for five months in a row.'
+    ],
+    prayers:[
+      ['The Fatima Prayer', 'O my Jesus, forgive us our sins, save us from the fires of hell; lead all souls to heaven, especially those in most need of thy mercy.'],
+      ['The Pardon Prayer', 'My God, I believe, I adore, I hope, and I love you! I ask pardon of you for those who do not believe, do not adore, do not hope, and do not love you.']
+    ],
+    link:['pray/rosary', 'Pray the Rosary'] },
+  { id:'holy-water', name:'Holy Water', icon:'water', color:'teal', kicker:'A reminder of Baptism',
+    about:[
+      'Holy water is water blessed by a priest. Blessing ourselves with it recalls our Baptism, asks God’s forgiveness for our everyday sins, and calls on his protection against evil.'
+    ],
+    howTitle:'How to use it',
+    how:[
+      'Bless yourself with holy water when you enter a church, dipping your fingers in the font and making the Sign of the Cross.',
+      'Keep some at home. Most parishes have holy water you can take, or bring a bottle to the priest to bless.',
+      'Use it at morning and night prayers, bless your children, sprinkle your home, and keep it near the sick.'
+    ],
+    prayers:[
+      ['When you bless yourself', 'By this holy water and by your Precious Blood, wash away all my sins, O Lord.'],
+      ['The Sign of the Cross', 'In the name of the Father, and of the Son, and of the Holy Spirit. Amen.']
+    ] }
+];
+const DEVOTIONS_EAST = [
+  { id:'icon-corner', name:'The Icon Corner', icon:'icons', color:'gold', kicker:'The prayer of the home',
+    about:[
+      'Byzantine Christians keep an icon corner, sometimes called the beautiful corner, as the heart of the home. It is the family’s little church, where they gather for morning and evening prayer.',
+      'It usually faces east, and holds icons of Christ and the Theotokos, a lampada (an oil lamp) or candle, and often the family’s holy water, blessed willow or palms, and a prayer book.'
+    ],
+    howTitle:'How to set one up',
+    how:[
+      'Choose a quiet place, on an east-facing wall if you can.',
+      'Place the icon of Christ on the right and the Theotokos on the left, as on the iconostasis, and add icons of your patron saints.',
+      'Light the lamp or a candle when you pray.',
+      'To venerate an icon, make the Sign of the Cross, bow, and kiss the icon on the hand or the edge, not the face.'
+    ],
+    prayers:[
+      ['Before an icon of Christ', 'We venerate your most pure image, O good Lord, and ask forgiveness of our transgressions, O Christ our God. Of your own will you were pleased to ascend the Cross in the flesh to deliver your creatures from bondage to the enemy. Therefore with thankfulness we cry aloud to you: You have filled all with joy, O our Savior, by coming to save the world.']
+    ] },
+  { id:'theophany-water', name:'Theophany Water', icon:'water', color:'teal', kicker:'Theophany · January 6',
+    about:[
+      'On the feast of Theophany, the baptism of Christ in the Jordan, the Church celebrates the Great Blessing of Water. The faithful take the blessed water home, and in the weeks after the feast the priest visits homes to bless them with it.'
+    ],
+    howTitle:'How to keep it',
+    how:[
+      'Bring a bottle to church at Theophany and take some of the blessed water home.',
+      'Keep it in your icon corner. Many drink a little in the morning after their prayers, before eating.',
+      'Bless your home with it, and invite the priest for the house blessing in the Theophany season.'
+    ],
+    prayers:[
+      ['Troparion of Theophany', 'When you, O Lord, were baptized in the Jordan, the worship of the Trinity was made manifest. For the voice of the Father bore witness to you, calling you his beloved Son, and the Spirit in the form of a dove confirmed the truthfulness of his word. O Christ our God, who have appeared and enlightened the world, glory to you!']
+    ] },
+  { id:'baptismal-cross', name:'The Baptismal Cross', icon:'eastcross', color:'wine', kicker:'Worn for life',
+    about:[
+      'At Baptism and Chrismation, each newly illumined Christian receives a cross to wear. It is worn for life, usually under the clothes, as a sign that we belong to Christ crucified and risen.'
+    ],
+    howTitle:'How to wear it',
+    how:[
+      'Wear your cross always, day and night.',
+      'If it is lost or broken, have a new one blessed by a priest.',
+      'Kiss it in the morning and at night, and when you are tempted or afraid.'
+    ],
+    prayers:[
+      ['Troparion of the Cross', 'O Lord, save your people and bless your inheritance. Grant victory to your people over their adversaries, and by the power of your Cross preserve your commonwealth.']
+    ] },
+  { id:'prayer-rope', name:'The Prayer Rope', icon:'rope', color:'purple', kicker:'The Jesus Prayer',
+    about:[
+      'The prayer rope (the chotki or komboskini) is a loop of knotted wool, usually of 33, 50, or 100 knots, with a cross. On each knot the Jesus Prayer is prayed, slowly and attentively, so that the prayer comes to live in the heart.'
+    ],
+    howTitle:'How to pray with it',
+    how:[
+      'Hold the rope in your left hand, leaving the right free to make the Sign of the Cross.',
+      'Pray the Jesus Prayer once on each knot, slowly, without hurrying.',
+      'Ask a priest or spiritual father how much to pray, and pray with humility rather than counting.'
+    ],
+    prayers:[
+      ['The Jesus Prayer', 'Lord Jesus Christ, Son of God, have mercy on me, a sinner.']
+    ],
+    link:['pray/rosary', 'Pray the Jesus Prayer'] },
+  { id:'paraklesis', name:'The Paraklesis', icon:'prayer', color:'indigo', kicker:'Supplication to the Theotokos',
+    about:[
+      'The Paraklesis is a service of supplication to the Theotokos, prayed in times of sickness, sorrow, and danger. During the Dormition Fast, from August 1 to 14, it is prayed in the evenings, alternating the Small and Great Paraklesis.'
+    ],
+    howTitle:'How to pray it',
+    how:[
+      'Join the Paraklesis at your parish during the Dormition Fast or in a time of need.',
+      'At home, pray it from a prayer book, or pray its refrain and troparia when you are in trouble.',
+      'Bring the names of the sick and suffering to pray for them.'
+    ],
+    prayers:[
+      ['The refrain', 'Most holy Theotokos, save us.'],
+      ['A troparion', 'We have no other help, we have no other hope but you, O Lady. Help us, for we hope in you and glory in you, for we are your servants; let us not be put to shame.']
+    ] },
+  { id:'akathist', name:'The Akathist Hymn', icon:'quote', color:'rose', kicker:'Sung standing',
+    about:[
+      'The Akathist (“not sitting”) is the great hymn of praise to the Theotokos, sung standing, in twenty-four stanzas full of greetings: “Rejoice!” In Great Lent its parts are sung on the Fridays, and the whole hymn on the Saturday of the Akathist in the fifth week. Many other akathists have since been written to Christ and the saints.'
+    ],
+    howTitle:'How to pray it',
+    how:[
+      'Pray it standing, as its name says, from a prayer book.',
+      'Pray a section each day, or the whole hymn on a feast of the Theotokos.',
+      'Let the “Rejoice” greetings become your own words of love to the Mother of God.'
+    ],
+    prayers:[
+      ['The opening kontakion', 'To you, O Theotokos, invincible Champion, your city, delivered from sufferings, ascribes hymns of victory and thanksgiving. Since you have invincible power, deliver me from every danger, that I may cry to you: Rejoice, O Bride unwedded!']
+    ] },
+  { id:'pascha-basket', name:'The Pascha Basket', icon:'basket', color:'green', kicker:'Holy and Great Saturday · Pascha',
+    about:[
+      'In the Slavic Byzantine Churches, families bring baskets of the foods they gave up during the Great Fast to be blessed for Pascha: the paska bread, eggs (often decorated pysanky), butter, cheese, meats such as ham and sausage, salt, and horseradish. The blessed food is the family’s first meal of Pascha.'
+    ],
+    howTitle:'How to prepare one',
+    how:[
+      'Line the basket with an embroidered cloth and fill it with your Paschal foods.',
+      'Bring it to church for the blessing, on Holy Saturday or after the Paschal Divine Liturgy, as your parish does.',
+      'Break the fast together with the blessed food, greeting one another: “Christ is risen!” “Indeed he is risen!”'
+    ],
+    prayers:[
+      ['Troparion of Pascha', 'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life!']
+    ] }
+];
+
+function renderDevotions(){
+  const east = isEastern(), list = east ? DEVOTIONS_EAST : DEVOTIONS;
+  const lines = text => text.split('\n').map(l => `<p>${escapeHtml(l)}</p>`).join('');
+  entryListEl.innerHTML = `
+    <div class="dv-page">
+      <nav class="dv-jump" aria-label="On this page">${list.map(d => `<button class="dv-chip" data-dv="${d.id}" style="--dv:var(--${d.color})">${escapeHtml(d.name)}</button>`).join('')}</nav>
+      ${list.map(d => `
+      <section class="dv-card" id="dv-${d.id}" style="--dv:var(--${d.color})">
+        <header class="dv-head"><span class="dv-icon">${navIcon(d.icon)}</span><div><div class="daily-kicker">${escapeHtml(d.kicker)}</div><h3>${escapeHtml(d.name)}</h3></div></header>
+        ${d.about.map(p => `<p>${escapeHtml(p)}</p>`).join('')}
+        <h4>${escapeHtml(d.howTitle)}</h4>
+        <ol class="dv-steps">${d.how.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ol>
+        <h4>${d.prayers.length > 1 ? 'Prayers' : 'Prayer'}</h4>
+        ${d.prayers.map(([t, x]) => `<div class="dv-prayer"><div class="dv-prayer-title">${escapeHtml(t)}</div>${lines(x)}</div>`).join('')}
+        ${d.note ? `<p class="dv-note">${escapeHtml(d.note)}</p>` : ''}
+        ${d.link ? `<button class="text-link dv-link" data-route="${d.link[0]}">${escapeHtml(d.link[1])} →</button>` : ''}
+      </section>`).join('')}
+      ${east ? '<p class="dv-note dv-east">Some Eastern Catholics also keep devotions from the Latin Church, such as the scapular or the Miraculous Medal. You can read about them in the <button class="text-link" data-rite-switch>Roman Catholic edition</button>.</p>' : ''}
+    </div>`;
+  entryListEl.querySelectorAll('[data-dv]').forEach(b => b.addEventListener('click', () => {
+    const el = document.getElementById('dv-' + b.dataset.dv);
+    if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+  }));
 }
 
 /* =========================================================
