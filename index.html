@@ -2034,6 +2034,32 @@
   .mod-page{max-width:900px;}
   .badges-page{max-width:1000px;}
   .dv-page{max-width:860px;}
+  .lo-page{max-width:820px;}
+  .lo-lead{color:var(--ink-soft); margin:0 0 18px;}
+  .lo-tabs{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;}
+  .lo-tab{display:flex; flex-direction:column; align-items:flex-start; gap:1px; padding:7px 13px; border:1px solid var(--line); border-radius:12px; background:var(--parchment-light); color:var(--ink); font-family:'Source Serif 4', serif; cursor:pointer; text-align:left;}
+  .lo-tab strong{font-size:0.9rem;}
+  .lo-tab span{font-size:0.7rem; color:var(--ink-soft);}
+  .lo-tab:hover{border-color:var(--indigo);}
+  .lo-tab.active{border-color:var(--indigo); background:color-mix(in srgb, var(--indigo) 12%, var(--parchment-light));}
+  .lo-settings{display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; margin-bottom:18px; font-size:0.85rem; color:var(--ink-soft);}
+  .lo-settings label{display:flex; align-items:center; gap:6px;}
+  .lo-settings select{padding:4px 8px; border:1px solid var(--line); border-radius:8px; background:var(--parchment-light); color:var(--ink); font-family:inherit;}
+  .lo-season{font-style:italic;}
+  .lo-text{padding:26px 30px; border:1px solid var(--line); border-radius:14px; background:var(--parchment-light); line-height:1.6;}
+  .lo-title{margin:0 0 14px; font-size:1.8rem;}
+  .lo-text p{margin:0 0 8px;}
+  .lo-h{margin:22px 0 4px; font-family:'Cormorant Garamond', serif; font-size:1.25rem; color:var(--indigo);}
+  .lo-sub{font-style:italic; font-size:0.85rem; color:var(--ink-soft);}
+  .lo-r{font-style:italic; font-size:0.85rem; color:var(--wine);}
+  .lo-sym{color:var(--wine); font-weight:700;}
+  .lo-ant{padding:8px 12px; border-left:2px solid var(--indigo); background:color-mix(in srgb, var(--indigo) 6%, transparent); border-radius:0 8px 8px 0;}
+  .lo-s{padding-left:14px; text-indent:-14px;}
+  .lo-hy{font-style:italic; margin-bottom:12px !important;}
+  .lo-glory{font-size:0.88rem; color:var(--ink-soft);}
+  .lo-nav{display:flex; justify-content:space-between; gap:10px; margin:16px 0;}
+  .lo-source{font-size:0.78rem; color:var(--ink-soft);}
+  @media (max-width:600px){ .lo-text{padding:20px 18px;} .lo-tab{padding:6px 10px;} }
   .dv-jump{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px;}
   .dv-chip{display:inline-flex; align-items:center; gap:7px; padding:6px 13px; border:1px solid var(--line); border-radius:999px; background:var(--parchment-light); color:var(--ink); font-family:'Source Serif 4', serif; font-size:0.85rem; font-weight:600; cursor:pointer;}
   .dv-chip::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--dv);}
@@ -3006,6 +3032,7 @@
         <li><button class="navlink" data-route="pray/angelus" data-cat="angelus">Angelus</button></li>
         <li><button class="navlink" data-route="pray/lectio" data-cat="lectio">Lectio Divina</button></li>
         <li><button class="navlink" data-route="pray/devotions" data-cat="devotions">Devotions</button></li>
+        <li><button class="navlink" data-route="pray/little-office" data-cat="littleoffice">Little Office</button></li>
         <li><button class="navlink" data-route="pray/tracker" data-cat="tracker">Prayer Tracker</button></li>
       </ul>
     </div>
@@ -3043,6 +3070,7 @@
       <ul>
         <li><button class="navlink" data-route="learn/theology" data-cat="theology">Theology <span class="count" id="count-theology"></span></button></li>
         <li><button class="navlink" data-route="learn/mass" data-cat="mass">The Mass Explained</button></li>
+        <li><button class="navlink" data-route="learn/living-the-faith" data-cat="vocations">Living the Faith</button></li>
         <li><button class="navlink" data-route="learn/glossary" data-cat="glossary">Catholic Glossary</button></li>
         <li><button class="navlink" data-route="learn/quiz" data-cat="quiz">Quiz</button></li>
       </ul>
@@ -3080,7 +3108,7 @@
     <div class="footer-cols">
       <div><h4>Pray</h4>
         <button data-route="pray/prayers">Prayers</button><button data-route="pray/rosary">Rosary</button><button data-route="pray/stations">Stations of the Cross</button>
-        <button data-route="pray/chaplet">Divine Mercy Chaplet</button><button data-route="pray/sacred-heart">Sacred Heart Chaplet</button><button data-route="pray/examination">Examination of Conscience</button><button data-route="pray/timer">Prayer Timer</button><button data-route="pray/examen">Daily Examen</button><button data-route="pray/angelus">Angelus</button><button data-route="pray/lectio">Lectio Divina</button><button data-route="pray/devotions">Devotions</button><button data-route="pray/tracker">Prayer Tracker</button></div>
+        <button data-route="pray/chaplet">Divine Mercy Chaplet</button><button data-route="pray/sacred-heart">Sacred Heart Chaplet</button><button data-route="pray/examination">Examination of Conscience</button><button data-route="pray/timer">Prayer Timer</button><button data-route="pray/examen">Daily Examen</button><button data-route="pray/angelus">Angelus</button><button data-route="pray/lectio">Lectio Divina</button><button data-route="pray/devotions">Devotions</button><button data-route="pray/little-office">Little Office</button><button data-route="pray/tracker">Prayer Tracker</button></div>
       <div><h4>Saints</h4>
         <button data-route="saints/all">All the Saints</button><button data-route="saints/patron-finder">Find Your Patron Saint</button><button data-route="saints/quotes">Quotes of the Saints</button><button data-route="mine">Novenas</button></div>
       <div><h4>History</h4>
@@ -3088,7 +3116,7 @@
       <div><h4>Library</h4>
         <button data-route="library/bible">The Bible</button><button data-route="library/books">Books</button><button data-route="library/plans">Reading Plans</button><button data-route="library/shop">Shop</button><button data-route="library/all">Browse everything</button></div>
       <div><h4>Learn</h4>
-        <button data-route="learn/theology">Theology</button><button data-route="learn/theology/fathers">The Faith of the Fathers</button><button data-route="learn/theology/apologetics">Defending the Faith</button><button data-route="learn/mass">The Mass Explained</button><button data-route="learn/glossary">Glossary</button><button data-route="learn/quiz">Quiz</button></div>
+        <button data-route="learn/theology">Theology</button><button data-route="learn/theology/fathers">The Faith of the Fathers</button><button data-route="learn/theology/apologetics">Defending the Faith</button><button data-route="learn/mass">The Mass Explained</button><button data-route="learn/living-the-faith">Living the Faith</button><button data-route="learn/glossary">Glossary</button><button data-route="learn/quiz">Quiz</button></div>
       <div><h4>Sanctify</h4>
         <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="news">News</button><button data-route="badges">Badges</button><button data-route="library/resources">Resources</button><button data-route="mine">My Sanctify</button><button data-route="community">Community</button><button data-route="account">Account</button><button class="footer-rite" data-rite-switch>Switch to the Eastern Catholic edition</button></div>
     </div>
@@ -3142,6 +3170,7 @@ const CAT_DESC = {
   quiz: 'Test what you know about the saints, Scripture, Church history, and great Catholic books.',
   prayer: 'Every prayer as an illustrated prayer card. Choose a topic, then open a card to pray it, save it, or print it.',
   examen: 'The prayer St. Ignatius never wanted his companions to skip: five short steps to look back on the day with God.',
+  littleoffice: 'The Hours of Our Lady, from Matins to Compline, following the seasons of the year. A beloved prayer of religious, tertiaries, and those who wear the Brown Scapular.',
   devotions: 'The Brown and Green Scapulars, the Miraculous and St. Benedict Medals, First Fridays and First Saturdays, and holy water: what each one is, how to keep it, and its prayers.',
   angelus: 'The ancient prayer of the Incarnation, prayed at morning, noon, and evening. During the Easter season, the Regina Caeli.',
   lectio: 'Pray with a passage of Scripture the way the monks did: read, reflect, respond, and rest in God.',
@@ -3151,6 +3180,7 @@ const CAT_DESC = {
   orders: 'The great religious orders of the Church: monks, canons, friars, clerks regular, sisters, and the military orders of the crusades.',
   icons: 'The most famous icons of East and West, what they show, and the stories behind them.',
   easternchurches: 'The twenty-three Eastern Catholic Churches, in full communion with Rome: their traditions, leaders, and lands.',
+  vocations: 'How to become Catholic or come home, the basics of everyday Catholic life, and guides to discerning and living each vocation: marriage, priesthood, religious life, and more.',
   glossary: 'Clear, short definitions of the words of the Catholic faith, from Absolution to the Vulgate.',
   quotes: 'The words of the saints, from the Church Fathers to our own day, each with its source. Search them, browse by theme, and share your favorites.',
   patronfinder: 'Pick as many answers as you like: your name, your work, your needs, and what you love in a saint. Sanctify suggests friends in heaven who fit.',
@@ -6842,7 +6872,7 @@ function render(){
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
       community:renderCommunity, resources:renderResources,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
-      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, badges:renderBadges, devotions:renderDevotions, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
+      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, badges:renderBadges, devotions:renderDevotions, littleoffice:renderLittleOffice, vocations:renderVocations, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
       'hub-pray':() => renderHub('pray'), 'hub-library':() => renderHub('library'), 'hub-learn':() => renderHub('learn'), 'hub-history':() => renderHub('history'), 'hub-saints':() => renderHub('saints')
     };
     const needsNoSearch = new Set(['home', 'daily', 'theology', 'hub-pray', 'hub-library', 'hub-learn']);
@@ -12707,7 +12737,8 @@ const RITE_SECTIONS = {
   examen:{ name:['The Daily Examen', 'Evening Prayer'] },
   exam:{ name:['Examination of Conscience', 'Preparing for Confession'] },
   mass:{ name:['The Mass Explained', 'The Divine Liturgy Explained'] },
-  devotions:{ name:['Devotions & Sacramentals', 'Holy Customs'], icon:['scapular', 'icons'] }
+  devotions:{ name:['Devotions & Sacramentals', 'Holy Customs'], icon:['scapular', 'icons'] },
+  littleoffice:{ name:['The Little Office of Our Lady', 'Akathist & Paraklesis'], icon:['office', 'angelus'] }
 };
 const RITE_DESC = {
   rosary:'Pray the Jesus Prayer on a prayer rope, knot by knot: the ancient prayer of the heart of the Eastern Churches.',
@@ -12717,12 +12748,14 @@ const RITE_DESC = {
   angelus:'Honor the Mother of God with the beloved hymns of the East: Rejoice, O Virgin; It Is Truly Right; and Beneath Your Compassion.',
   examen:'Close the day with God in stillness, thanksgiving, watchfulness over the heart, and repentance.',
   exam:'A guided examination of conscience to prepare for the Holy Mystery of Repentance.',
+  vocations:'How to become an Eastern Catholic or come home, the rhythm of Byzantine Christian life, and guides to each vocation: Holy Crowning, the married and celibate priesthood, monastic life, and more.',
+  littleoffice:'The great services of supplication and praise to the Theotokos: the Akathist Hymn and the Paraklesis.',
   devotions:'The holy customs of Byzantine Christians: the icon corner, Theophany water, the baptismal cross, the prayer rope, the Paraklesis and Akathist, and the Pascha basket.',
   mass:'Every part of the Divine Liturgy of St. John Chrysostom in order, with what happens and what it means. Follow along on your phone at the Liturgy.'
 };
 const RITE_NAV = {
   'pray/rosary':'Jesus Prayer', 'pray/stations':'Prayer of St. Ephrem', 'pray/chaplet':'Trisagion Prayers', 'pray/sacred-heart':'Prayers Before Communion', 'pray/angelus':'Hymns to the Theotokos',
-  'pray/examen':'Evening Prayer', 'pray/examination':'Preparing for Confession', 'learn/mass':'The Divine Liturgy Explained', 'pray/devotions':'Holy Customs'
+  'pray/examen':'Evening Prayer', 'pray/examination':'Preparing for Confession', 'learn/mass':'The Divine Liturgy Explained', 'pray/devotions':'Holy Customs', 'pray/little-office':'Akathist & Paraklesis'
 };
 const latinDesc = {};
 
@@ -13294,6 +13327,7 @@ function easternPrayCards(){
     { route:'pray/stations', desc:'The great Lenten prayer of St. Ephrem the Syrian, prayed with prostrations.', meta:'About 5 minutes' },
     { route:'pray/examen', desc:'Close the day with God in stillness, thanksgiving, watchfulness, and repentance.', meta:'About 10 minutes' },
     { route:'pray/lectio', desc:'Pray slowly with a passage of Scripture: read, reflect, respond, and rest.', meta:'About 15 minutes' },
+    { route:'pray/little-office', desc:'The great services to the Theotokos: the Akathist Hymn, sung standing, and the Paraklesis of supplication.', meta:'Marian services' },
     { route:'pray/devotions', desc:'The icon corner, Theophany water, the baptismal cross, the prayer rope, the Paraklesis and Akathist, and the Pascha basket.', meta:`${DEVOTIONS_EAST.length} holy customs` },
     { route:'pray/examination', desc:'Prepare for the Holy Mystery of Repentance with a guided examination of conscience.', meta:'Private: nothing is saved' },
     { route:'pray/timer', desc:'Set aside time for silent prayer, with a gentle bell to begin and end.', meta:'5 minutes to an hour' },
@@ -13885,6 +13919,10 @@ const NAV_ICONS = {
   quiz:'<circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.4c-.7.3-1 .9-1 1.6v.6"/><circle cx="12" cy="17" r=".7" fill="currentColor"/>',
   shop:'<path d="M5 8h14l-1.2 13H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>',
   search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
+  compass:'<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/><circle cx="12" cy="12" r=".6"/>',
+  rings:'<circle cx="9" cy="14" r="5"/><circle cx="15" cy="14" r="5"/><path d="M7.5 6.5L9 4.5l1.5 2"/>',
+  stole:'<path d="M8 3c0 6-1.5 11-3 18h4l1-12M16 3c0 6 1.5 11 3 18h-4l-1-12"/><path d="M8 3c1.2 1.3 2.5 2 4 2s2.8-.7 4-2"/><path d="M6.5 17.5h1.6M15.9 17.5h1.6"/>',
+  office:'<path d="M3.5 5.5c3-1 6-1 8.5.8 2.5-1.8 5.5-1.8 8.5-.8V19c-3-1-6-1-8.5.8C9.5 18 6.5 18 3.5 19z"/><path d="M12 6.3v13.5"/><path d="M7.5 8.8l.6 1.3 1.4.2-1 1 .2 1.4-1.2-.7-1.2.7.2-1.4-1-1 1.4-.2z"/>',
   scapular:'<path d="M8 3.5c-1.5 4 .5 7.5 4 7.5s5.5-3.5 4-7.5"/><rect x="8" y="11" width="8" height="9.5" rx="1.2"/><path d="M12 13.5v4.5M10.2 15.3h3.6"/>',
   medal:'<path d="M9 2.5l3 4 3-4"/><ellipse cx="12" cy="14" rx="5.5" ry="7"/><path d="M12 10.5v7M9.5 13h5"/>',
   water:'<path d="M12 3s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/><path d="M12 11v6M9.5 13.5h5"/>',
@@ -13949,9 +13987,11 @@ const SECTIONS = {
   angelus:{ name:'The Angelus', group:'Pray', icon:'angelus', color:'var(--rose)' },
   lectio:{ name:'Lectio Divina', group:'Pray', icon:'lectio', color:'var(--green)' },
   devotions:{ name:'Devotions & Sacramentals', group:'Pray', icon:'scapular', color:'var(--amber)' },
+  littleoffice:{ name:'The Little Office of Our Lady', group:'Pray', icon:'office', color:'var(--indigo)' },
   tracker:{ name:'Prayer Tracker', group:'Pray', icon:'tracker', color:'var(--gold)' },
   mass:{ name:'The Mass Explained', group:'Learn', icon:'mass', color:'var(--wine)' },
   glossary:{ name:'Catholic Glossary', group:'Learn', icon:'glossary', color:'var(--purple)' },
+  vocations:{ name:'Living the Faith', group:'Learn', icon:'compass', color:'var(--teal)' },
   icons:{ name:'Famous Icons', group:'Learn', icon:'icons', color:'var(--gold)' },
   popes:{ name:'The Popes', group:'Learn', icon:'popes', color:'var(--gold)' },
   orders:{ name:'Religious Orders', group:'Learn', icon:'orders', color:'var(--green)' },
@@ -14055,6 +14095,7 @@ const HUBS = {
         { route:'pray/examen', desc:'Look back on your day with God in five short steps, the evening prayer of St. Ignatius.', meta:'About 10 minutes' },
         { route:'pray/angelus', title:isEasterSeason() ? 'The Regina Caeli' : 'The Angelus', desc:'Pause at morning, noon, or evening to honor the Incarnation with Mary.', meta:'About 3 minutes' },
         { route:'pray/lectio', desc:'Pray slowly with a passage of Scripture: read, reflect, respond, and rest.', meta:'About 15 minutes' },
+        { route:'pray/little-office', desc:'The Hours of Our Lady: psalms, hymns, and readings in honor of Mary, from Matins to Compline, following the seasons.', meta:'8 Hours' },
         { route:'pray/devotions', desc:'The Brown and Green Scapulars, the Miraculous and St. Benedict Medals, First Fridays and Saturdays, and holy water, with their prayers.', meta:`${DEVOTIONS.length} devotions` },
         { route:'pray/tracker', desc:'A private record of your daily prayer, with streaks and a calendar of your faithfulness.', meta:(() => { const n = prayerStats().current; return n ? `${n}-day streak` : 'Stored only on this device'; })() },
         { route:'mine', title:'Novenas & Intentions', icon:'mine', desc:'Keep a list of your prayer intentions, and pray a nine-day novena with any saint.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' }
@@ -14086,6 +14127,7 @@ const HUBS = {
         links:[['Core Catholic Beliefs', 'learn/theology/beliefs'], ['The Faith of the Fathers', 'learn/theology/fathers'], ['Defending the Faith', 'learn/theology/apologetics'], ['The Catechism', 'library/catechism']],
         meta:`${countOf('theology')} topics`, cta:'Start learning' },
       { route:'learn/mass', desc:isEastern() ? 'Every part of the Divine Liturgy of St. John Chrysostom, with what happens and why. Follow along on your phone.' : 'Every part of the Mass, with when to stand, sit, and kneel and what each moment means. Follow along on your phone.', meta:isEastern() ? 'The Divine Liturgy' : 'The Order of Mass' },
+      { route:'learn/living-the-faith', desc:isEastern() ? 'Becoming an Eastern Catholic, the rhythm of Byzantine life, and guides to Holy Crowning, the priesthood, monastic life, and more.' : 'Becoming Catholic, coming home, the precepts of the Church, and guides to discerning and living every vocation.', meta:isEastern() ? `${VOCATIONS_EAST.length} guides` : `${VOCATIONS.length} guides` },
       { route:'learn/glossary', desc:'Short, clear definitions of the words of the faith, from Absolution to the Vulgate.', meta:`${GLOSSARY.length} terms` },
       { route:'learn/quiz', desc:'Ten fresh questions on the saints, Scripture, Church history, and great Catholic books.', meta:'New questions every time' },
       (() => {
@@ -14414,6 +14456,7 @@ const ROUTES = {
   'pray/angelus':                { cat:'angelus', parent:'pray' },
   'pray/lectio':                 { cat:'lectio', parent:'pray' },
   'pray/devotions':              { cat:'devotions', parent:'pray' },
+  'pray/little-office':          { cat:'littleoffice', parent:'pray' },
   'pray/tracker':                { cat:'tracker', parent:'pray' },
   'library':                     { cat:'hub-library' },
   'library/bible':               { cat:'bible', parent:'library' },
@@ -14435,6 +14478,7 @@ const ROUTES = {
                                    desc:'The reasons behind the faith, and charitable answers to the questions and objections Catholics most often hear.' },
   'learn/mass':                  { cat:'mass', parent:'learn' },
   'learn/glossary':              { cat:'glossary', parent:'learn' },
+  'learn/living-the-faith':      { cat:'vocations', parent:'learn' },
   'learn/quiz':                  { cat:'quiz', parent:'learn' },
   'history':                     { cat:'hub-history' },
   'saints':                      { cat:'hub-saints' },
@@ -16134,7 +16178,8 @@ const DEVOTIONS = [
       ['Flos Carmeli (Flower of Carmel)', 'Flower of Carmel,\nTall vine blossom laden;\nSplendor of heaven,\nChildbearing yet maiden.\nNone equals thee.\nMother so tender,\nWho no man didst know,\nOn Carmel’s children\nThy favors bestow.\nStar of the Sea.'],
       ['Prayer to Our Lady of Mount Carmel', 'O most beautiful Flower of Mount Carmel, fruitful vine, splendor of heaven, blessed Mother of the Son of God, Immaculate Virgin, assist me in this my necessity. O Star of the Sea, help me and show me that you are my Mother.\nO Holy Mary, Mother of God, Queen of heaven and earth, I humbly beseech you from the bottom of my heart to help me in this necessity. There are none that can withstand your power. O show me that you are my Mother.\nO Mary, conceived without sin, pray for us who have recourse to thee. (Three times)\nSweet Mother, I place this cause in your hands. (Three times)']
     ],
-    note:'The scapular is not a charm or an automatic guarantee of salvation. It is a sign of a real commitment to follow Christ as Mary did. The “Sabbatine privilege,” a further tradition of Mary’s help soon after death, asks more: chastity according to your state in life, and a daily prayer such as the Little Office of the Blessed Virgin Mary or another prayer given by the priest.' },
+    note:'The scapular is not a charm or an automatic guarantee of salvation. It is a sign of a real commitment to follow Christ as Mary did. The “Sabbatine privilege,” a further tradition of Mary’s help soon after death, asks more: chastity according to your state in life, and a daily prayer such as the Little Office of the Blessed Virgin Mary or another prayer given by the priest.',
+    link:['pray/little-office', 'Pray the Little Office of Our Lady'] },
   { id:'green-scapular', name:'The Green Scapular', icon:'scapular', color:'green', kicker:'The Immaculate Heart of Mary',
     about:[
       'The Green Scapular is a devotion to the Immaculate Heart of Mary, above all for the conversion of souls and for the grace of a happy death. In 1840 Our Lady showed it to Sister Justine Bisqueyburu, a Daughter of Charity in Paris. Blessed Pius IX approved it in 1863 and again in 1870.',
@@ -16329,24 +16374,399 @@ const DEVOTIONS_EAST = [
     ] }
 ];
 
-function renderDevotions(){
-  const east = isEastern(), list = east ? DEVOTIONS_EAST : DEVOTIONS;
+function dvCardHtml(d){
   const lines = text => text.split('\n').map(l => `<p>${escapeHtml(l)}</p>`).join('');
-  entryListEl.innerHTML = `
-    <div class="dv-page">
-      <nav class="dv-jump" aria-label="On this page">${list.map(d => `<button class="dv-chip" data-dv="${d.id}" style="--dv:var(--${d.color})">${escapeHtml(d.name)}</button>`).join('')}</nav>
-      ${list.map(d => `
+  return `
       <section class="dv-card" id="dv-${d.id}" style="--dv:var(--${d.color})">
         <header class="dv-head"><span class="dv-icon">${navIcon(d.icon)}</span><div><div class="daily-kicker">${escapeHtml(d.kicker)}</div><h3>${escapeHtml(d.name)}</h3></div></header>
         ${d.about.map(p => `<p>${escapeHtml(p)}</p>`).join('')}
-        <h4>${escapeHtml(d.howTitle)}</h4>
-        <ol class="dv-steps">${d.how.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ol>
-        <h4>${d.prayers.length > 1 ? 'Prayers' : 'Prayer'}</h4>
-        ${d.prayers.map(([t, x]) => `<div class="dv-prayer"><div class="dv-prayer-title">${escapeHtml(t)}</div>${lines(x)}</div>`).join('')}
+        ${d.how ? `<h4>${escapeHtml(d.howTitle)}</h4>
+        <ol class="dv-steps">${d.how.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ol>` : ''}
+        ${d.prayers && d.prayers.length ? `<h4>${d.prayers.length > 1 ? 'Prayers' : 'Prayer'}</h4>
+        ${d.prayers.map(([t, x]) => `<div class="dv-prayer"><div class="dv-prayer-title">${escapeHtml(t)}</div>${lines(x)}</div>`).join('')}` : ''}
         ${d.note ? `<p class="dv-note">${escapeHtml(d.note)}</p>` : ''}
-        ${d.link ? `<button class="text-link dv-link" data-route="${d.link[0]}">${escapeHtml(d.link[1])} →</button>` : ''}
-      </section>`).join('')}
+        ${(d.links || (d.link ? [d.link] : [])).map(([r, t]) => `<button class="text-link dv-link" data-route="${r}">${escapeHtml(t)} →</button>`).join(' ')}
+      </section>`;
+}
+function renderDevotions(){
+  const east = isEastern(), list = east ? DEVOTIONS_EAST : DEVOTIONS;
+  entryListEl.innerHTML = `
+    <div class="dv-page">
+      <nav class="dv-jump" aria-label="On this page">${list.map(d => `<button class="dv-chip" data-dv="${d.id}" style="--dv:var(--${d.color})">${escapeHtml(d.name)}</button>`).join('')}</nav>
+      ${list.map(dvCardHtml).join('')}
       ${east ? '<p class="dv-note dv-east">Some Eastern Catholics also keep devotions from the Latin Church, such as the scapular or the Miraculous Medal. You can read about them in the <button class="text-link" data-rite-switch>Roman Catholic edition</button>.</p>' : ''}
+    </div>`;
+  entryListEl.querySelectorAll('[data-dv]').forEach(b => b.addEventListener('click', () => {
+    const el = document.getElementById('dv-' + b.dataset.dv);
+    if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+  }));
+}
+
+/* =========================================================
+   THE LITTLE OFFICE OF THE BLESSED VIRGIN MARY
+   The Hours of Our Lady, from the 1915 Benziger edition (public domain), kept in data/little-office.json.
+   Each line can carry conditions (season, Eastertide, Septuagesima, the Te Deum, the weekday, the anthem)
+   so the Office shows what is said today. In the Eastern edition this page shows the Akathist and Paraklesis.
+   ========================================================= */
+const LO_HOURS = ['matins', 'lauds', 'prime', 'terce', 'sext', 'none', 'vespers', 'compline'];
+const LO_SEASONS = [['auto', 'Today’s season'], ['ord', 'Throughout the year'], ['easter', 'Eastertide'], ['adv', 'Advent'], ['xmas', 'Christmas to Candlemas']];
+let loData = null, loHour = null, loSeason = 'auto', loDay = 'auto', loLatinAnyway = false;
+function loHourNow(){
+  const h = new Date().getHours();
+  return h < 5 ? 'matins' : h < 7 ? 'lauds' : h < 9 ? 'prime' : h < 12 ? 'terce' : h < 15 ? 'sext' : h < 17 ? 'none' : h < 20 ? 'vespers' : 'compline';
+}
+function loFlags(hour){
+  const d = startOfToday(), y = d.getFullYear(), e = easterDate(y), adv0 = adventStart(y);
+  const evening = hour === 'vespers' || hour === 'compline';
+  const xmasEve = new Date(y, 11, 24), feb2 = new Date(y, 1, 2);
+  let season = 'ord';
+  if(d >= adv0 && d < xmasEve) season = 'adv';
+  if(evening && +d === +addDays(adv0, -1)) season = 'adv';          // Advent begins at Vespers the Saturday before
+  if(+d === +xmasEve) season = evening ? 'xmas' : 'adv';             // Christmas begins at its first Vespers
+  if(d > xmasEve || d <= feb2) season = 'xmas';                       // until after Compline of Candlemas
+  let easter = (d >= e && d <= addDays(e, 55)) || (hour === 'compline' && +d === +addDays(e, -1));
+  let sept = d >= addDays(e, -63) && d < e && !easter;
+  let alma = d >= adv0 || (evening && +d === +addDays(adv0, -1)) || d < feb2 || (+d === +feb2 && hour !== 'compline');
+  if(loSeason !== 'auto'){
+    season = loSeason === 'easter' ? 'ord' : loSeason;
+    easter = loSeason === 'easter'; sept = false; alma = season !== 'ord';
+  }
+  const avereg = !alma && !easter && d < e && loSeason === 'auto';
+  const f = { ord:season === 'ord', adv:season === 'adv', xmas:season === 'xmas', easter, sept,
+    te:season !== 'adv' && !sept, alma, avereg, salve:!alma && !easter && !avereg };
+  const day = loDay === 'auto' ? d.getDay() : Number(loDay);
+  ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'].forEach((k, i) => { f[k] = i === day; });
+  return f;
+}
+function loSeasonText(f){
+  const parts = [f.adv ? 'Advent' : f.xmas ? 'Christmas to Candlemas' : f.easter ? 'Eastertide' : 'Throughout the year'];
+  if(f.sept) parts.push('Septuagesima to Easter: “Praise be to Thee” in place of Alleluia');
+  parts.push(f.te ? 'Te Deum said at Matins' : 'no Te Deum');
+  return parts.join(' · ');
+}
+function loItemHtml([t, x]){
+  const text = escapeHtml(x);
+  switch(t){
+    case 'h': return `<h4 class="lo-h">${text}</h4>`;
+    case 'sub': return `<p class="lo-sub">${text}</p>`;
+    case 'r': return `<p class="lo-r">${text}</p>`;
+    case 'v': return `<p class="lo-vr"><span class="lo-sym">℣.</span> ${text}</p>`;
+    case 'rs': return `<p class="lo-vr"><span class="lo-sym">℟.</span> ${text}</p>`;
+    case 'ant': return `<p class="lo-ant"><span class="lo-sym">Ant.</span> ${text}</p>`;
+    case 'hy': return `<p class="lo-hy">${text.split(' / ').join('<br>')}</p>`;
+    case 's': return `<p class="lo-s">${text}</p>`;
+    case 'glory': return `<p class="lo-glory">${text}</p>`;
+    default: return `<p>${text}</p>`;
+  }
+}
+function loShows(item, f){
+  const cond = item[2];
+  return !cond || cond.every(cl => cl.some(tok => tok[0] === '!' ? !f[tok.slice(1)] : !!f[tok]));
+}
+async function renderLittleOffice(){
+  const seq = ++viewSeq;
+  if(isEastern() && !loLatinAnyway){
+    const list = DEVOTIONS_EAST.filter(d => d.id === 'akathist' || d.id === 'paraklesis');
+    entryListEl.innerHTML = `<div class="dv-page">${list.map(dvCardHtml).join('')}
+      <p class="dv-note dv-east">The Little Office of the Blessed Virgin Mary is the Marian office of the Latin Church. <button class="text-link" data-lo-latin>Pray it anyway</button></p></div>`;
+    entryListEl.querySelector('[data-lo-latin]').addEventListener('click', () => { loLatinAnyway = true; renderLittleOffice(); });
+    return;
+  }
+  if(!loData){
+    entryListEl.innerHTML = '<div class="forum-loading">Loading the Little Office…</div>';
+    try{ loData = await (await fetch('data/little-office.json')).json(); }
+    catch(err){ if(stillShowing(seq, 'littleoffice')) entryListEl.innerHTML = forumNotice('Couldn’t load the Little Office', 'Please check your connection and try again.', ''); return; }
+    if(!stillShowing(seq, 'littleoffice')) return;
+  }
+  if(!loHour) loHour = loHourNow();
+  const hours = Object.fromEntries(loData.hours.map(h => [h.key, h]));
+  const hour = hours[loHour] || hours.matins, f = loFlags(hour.key);
+  const idx = LO_HOURS.indexOf(hour.key);
+  const prev = idx > 0 ? hours[LO_HOURS[idx - 1]] : null, next = idx >= 0 && idx < LO_HOURS.length - 1 ? hours[LO_HOURS[idx + 1]] : null;
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  entryListEl.innerHTML = `
+    <div class="lo-page">
+      <p class="lo-lead">The Hours of Our Lady: a short form of the Church’s daily prayer, with psalms, hymns, and readings in honor of Mary. Pray one Hour or all of them. It is often prayed by religious, tertiaries, and those who wear the <button class="text-link" data-route="pray/devotions">Brown Scapular</button>.</p>
+      <div class="lo-tabs" role="tablist" aria-label="Hours">${[...LO_HOURS, 'before'].map(k => `<button role="tab" class="lo-tab${k === hour.key ? ' active' : ''}" aria-selected="${k === hour.key}" data-lo-hour="${k}"><strong>${escapeHtml(hours[k].name)}</strong>${hours[k].when ? `<span>${escapeHtml(hours[k].when)}</span>` : ''}</button>`).join('')}</div>
+      <div class="lo-settings">
+        <label>Season <select id="loSeason">${LO_SEASONS.map(([k, n]) => `<option value="${k}"${k === loSeason ? ' selected' : ''}>${n}</option>`).join('')}</select></label>
+        ${hour.key === 'matins' ? `<label>Day <select id="loDay"><option value="auto"${loDay === 'auto' ? ' selected' : ''}>Today</option>${days.map((n, i) => `<option value="${i}"${String(i) === loDay ? ' selected' : ''}>${n}</option>`).join('')}</select></label>` : ''}
+        <span class="lo-season">${escapeHtml(loSeasonText(f))}</span>
+      </div>
+      <article class="lo-text">
+        <h3 class="lo-title">${escapeHtml(hour.key === 'before' ? 'Before and After the Office' : hour.name)}</h3>
+        ${hour.items.filter(it => loShows(it, f)).map(loItemHtml).join('')}
+      </article>
+      <div class="lo-nav">
+        ${prev ? `<button class="btn quiet pill" data-lo-hour="${prev.key}">← ${escapeHtml(prev.name)}</button>` : '<span></span>'}
+        ${next ? `<button class="btn quiet pill" data-lo-hour="${next.key}">${escapeHtml(next.name)} →</button>` : ''}
+      </div>
+      <p class="lo-source">${escapeHtml(loData.source)} Psalms are numbered as in the Latin Vulgate, with the usual modern numbering in brackets.</p>
+    </div>`;
+  entryListEl.querySelectorAll('[data-lo-hour]').forEach(b => b.addEventListener('click', () => {
+    loHour = b.dataset.loHour; renderLittleOffice();
+    document.querySelector('.lo-page')?.scrollIntoView({ block:'start' });
+  }));
+  entryListEl.querySelector('#loSeason').addEventListener('change', e => { loSeason = e.target.value; renderLittleOffice(); });
+  entryListEl.querySelector('#loDay')?.addEventListener('change', e => { loDay = e.target.value; renderLittleOffice(); });
+}
+
+/* =========================================================
+   LIVING THE FAITH
+   How to become Catholic, come home, live the faith day to day, and follow a vocation.
+   The Eastern edition follows the Byzantine tradition and Eastern canon law.
+   ========================================================= */
+const ACT_OF_CONTRITION_TRAD = 'O my God, I am heartily sorry for having offended Thee, and I detest all my sins because of Thy just punishments, but most of all because they offend Thee, my God, Who art all good and deserving of all my love. I firmly resolve, with the help of Thy grace, to sin no more and to avoid the near occasion of sin. Amen.';
+const NEWMAN_MISSION = 'God has created me to do Him some definite service; He has committed some work to me which He has not committed to another. I have my mission. I never may know it in this life, but I shall be told it in the next. I am a link in a chain, a bond of connexion between persons. He has not created me for naught. I shall do good, I shall do His work; I shall be an angel of peace, a preacher of truth in my own place, while not intending it, if I do but keep His commandments and serve Him in my calling.';
+const SUSCIPE = 'Take, Lord, and receive all my liberty, my memory, my understanding, and my entire will, all that I have and possess. Thou hast given all to me. To Thee, O Lord, I return it. All is Thine; dispose of it wholly according to Thy will. Give me only Thy love and Thy grace, for this is sufficient for me.';
+const VOCATIONS = [
+  { id:'becoming', name:'Becoming Catholic', icon:'home', color:'gold', kicker:'Joining the Church',
+    about:[
+      'Anyone can become Catholic. Adults are welcomed through the Order of Christian Initiation of Adults (OCIA, formerly called RCIA): a time of learning, prayer, and getting to know a parish that leads to the sacraments of Baptism, Confirmation, and the Eucharist.',
+      'If you have already been validly baptized in another Christian community, you are not baptized again. You make a profession of the Catholic faith and are received into full communion, usually with Confirmation and your First Communion.'
+    ],
+    howTitle:'How to begin',
+    how:[
+      'Contact your local parish and ask about OCIA. You can simply say you are interested in becoming Catholic.',
+      'Inquiry: come with your questions, with no obligation, and begin to pray and to go to Mass.',
+      'Catechumenate: those who are not baptized are welcomed as catechumens and spend a time, often about a year, learning the faith with a sponsor beside them.',
+      'Lent: the Rite of Election on the First Sunday of Lent begins weeks of prayer and purification before Easter.',
+      'The Easter Vigil: catechumens are baptized, confirmed, and receive their First Communion. Baptized Christians are often received then too, though they may be received at another time of year.',
+      'After Easter: keep growing in the faith and in the life of your parish.'
+    ],
+    note:'If you were baptized Catholic as a child but never received Confirmation or First Communion, ask your parish about preparing for them. Mention any past marriages early on, since the priest may need to help with them before you are received.' },
+  { id:'coming-home', name:'Coming Home', icon:'exam', color:'purple', kicker:'For Catholics who have been away',
+    about:['If you were baptized Catholic and have been away, for a few months or for many years, you do not need to join again. You are still Catholic, and the Church is waiting to welcome you back.'],
+    howTitle:'How to come back',
+    how:[
+      'Go to Confession. Tell the priest how long it has been; he will help you. Confess honestly the serious sins you can remember after examining your conscience.',
+      'Return to Mass every Sunday, and receive Holy Communion once you have been to Confession.',
+      'If you married outside the Church, speak with a priest. A marriage can often be made valid in the Church, and if there was a previous marriage he can explain the process for a declaration of nullity.',
+      'Find a way into parish life: a Bible study, a group that serves the poor, or simply introducing yourself to the priest.'
+    ],
+    prayers:[['Act of Contrition', ACT_OF_CONTRITION_TRAD]],
+    link:['pray/examination', 'Prepare for Confession'] },
+  { id:'everyday', name:'Everyday Catholic Life', icon:'daily', color:'teal', kicker:'For every Catholic',
+    about:['Every Catholic is called to holiness, whatever their state in life. The Church gives five precepts as the minimum every Catholic owes, and the saints show how much more is possible through daily prayer, the sacraments, and love of God and neighbor.'],
+    howTitle:'The precepts of the Church',
+    how:[
+      'Attend Mass on Sundays and holy days of obligation, and rest from unnecessary work.',
+      'Confess your sins at least once a year.',
+      'Receive Holy Communion at least once a year, during the Easter season.',
+      'Observe the days of fasting and abstinence set by the Church.',
+      'Help to provide for the needs of the Church.'
+    ],
+    note:'Beyond the minimum, pray every morning and evening, read Scripture, go to Confession often, and practice the works of mercy. Fast for an hour before Communion. In the United States, Catholics from 18 to 59 fast on Ash Wednesday and Good Friday, and those 14 and older abstain from meat on those days and on the Fridays of Lent.',
+    links:[['learn/mass', 'The Mass Explained'], ['pray/tracker', 'Keep a prayer tracker']] },
+  { id:'discerning', name:'Discerning Your Vocation', icon:'compass', color:'indigo', kicker:'What is God calling me to?',
+    about:['Every Christian’s first vocation is to holiness, received in Baptism. Within it, God calls each person to a particular way of life: marriage, the priesthood or diaconate, religious life, or another form of consecrated or single life. Discernment is the prayerful work of listening for that call.'],
+    howTitle:'How to discern',
+    how:[
+      'Pray every day, especially before the Blessed Sacrament, and ask God plainly what He wants of you.',
+      'Go to Mass and Confession often. A heart at peace hears more clearly.',
+      'Find a spiritual director: a priest or another wise and holy person who can help you see clearly.',
+      'Talk with people living each vocation: married couples, priests, and religious brothers and sisters.',
+      'Notice your deepest desires, the gifts others see in you, and lasting peace rather than passing feelings.',
+      'Take a step: a “come and see” retreat, a conversation with a vocation director, or a dating relationship lived chastely and with purpose. God often makes the way clear as we walk it.'
+    ],
+    prayers:[['St. John Henry Newman', NEWMAN_MISSION], ['The Suscipe of St. Ignatius', SUSCIPE]] },
+  { id:'marriage', name:'Marriage', icon:'rings', color:'rose', kicker:'The sacrament of Matrimony',
+    about:['In marriage a man and a woman give themselves to each other for life, in a covenant of faithful and fruitful love. Between baptized Christians it is a sacrament, an image of Christ’s love for His Church. In the Latin Church the spouses themselves are the ministers of the sacrament, with a priest or deacon as the Church’s witness.'],
+    howTitle:'Preparing to marry',
+    how:[
+      'Contact your parish as soon as you are engaged, before booking a date or a venue. Many dioceses ask for at least six months of preparation.',
+      'Take part in marriage preparation (often called Pre-Cana): communication, faith, money, and the Church’s teaching on love, family, and natural family planning.',
+      'Make sure you are both free to marry. Any previous marriage, even a civil one, must be looked into first.',
+      'If one of you is not Catholic, the priest will ask the bishop for the permission or dispensation needed.',
+      'Go to Confession, and marry in the Church before a priest or deacon and two witnesses, ideally at a Nuptial Mass.'
+    ],
+    note:'Living it: pray together every day, go to Mass together, forgive quickly, stay open to the gift of children, and make your home a “domestic church” where the faith is lived and handed on.' },
+  { id:'priesthood', name:'The Priesthood', icon:'stole', color:'wine', kicker:'Holy Orders',
+    about:['Priests act in the person of Christ: they offer the Holy Sacrifice of the Mass, forgive sins, anoint the sick, preach the Gospel, and shepherd God’s people. In the Latin Church, priests are ordinarily unmarried men who promise celibacy for the sake of the Kingdom.'],
+    howTitle:'The path to ordination',
+    how:[
+      'Pray, and talk with your parish priest and a spiritual director.',
+      'Contact your diocese’s vocation director, or the vocation director of a religious order you feel drawn to.',
+      'Apply to the seminary. Formation usually takes six to eight years of prayer, study of philosophy and theology, and pastoral work.',
+      'You are first ordained a deacon, usually about a year before ordination to the priesthood.',
+      'The bishop ordains you a priest by the laying on of hands and the prayer of consecration.'
+    ],
+    note:'Diocesan priests serve a diocese and promise obedience to its bishop. Religious priests belong to an order, such as the Benedictines, Franciscans, Dominicans, or Jesuits, and take religious vows.' },
+  { id:'religious', name:'Religious Life', icon:'saint', color:'purple', kicker:'Brothers, sisters, monks, and nuns',
+    about:['Religious men and women give their whole lives to God through vows of poverty, chastity, and obedience, living in community according to the rule and spirit of their order. Some are contemplative, like monks and cloistered nuns devoted to prayer; others are apostolic, serving in schools, hospitals, parishes, and missions.'],
+    howTitle:'The stages of religious life',
+    how:[
+      'Visit communities, read about their founders, and go on a “come and see” weekend.',
+      'Candidacy or postulancy: a first time of living with the community, often from a few months to a year or two.',
+      'Novitiate: at least a year of deeper formation in prayer and the life of the community.',
+      'Temporary vows: usually for three to six years, renewed as you keep discerning.',
+      'Perpetual vows: a consecration of your whole life to God.'
+    ],
+    note:'Student debt and health matters can affect when you can enter, so mention them early. Many communities have ways to help.' },
+  { id:'diaconate', name:'The Permanent Diaconate', icon:'stole', color:'green', kicker:'Holy Orders for service',
+    about:['Deacons are ordained for service: they proclaim the Gospel and preach, baptize, witness marriages, lead funeral rites, and serve the poor. In the Latin Church, married men may be ordained permanent deacons.'],
+    howTitle:'Becoming a deacon',
+    how:[
+      'Talk with your pastor and, if you are married, with your wife. Her consent is required.',
+      'Contact your diocese’s diaconate office. A married man must ordinarily be at least 35, and an unmarried man at least 25, who commits to celibacy.',
+      'Formation usually takes several years of study, prayer, and pastoral work, often alongside a job and family life. Wives are often invited to take part.',
+      'The bishop ordains you a deacon by the laying on of hands.'
+    ],
+    note:'A man who is married when ordained stays married. An unmarried deacon, or one whose wife dies, may not ordinarily marry afterward.' },
+  { id:'consecrated', name:'Consecrated Life in the World', icon:'theology', color:'indigo', kicker:'Virgins, hermits, and secular institutes',
+    about:['Some are called to give themselves wholly to God while living in the world: consecrated virgins, consecrated by their bishop; diocesan hermits, who live in solitude and prayer; and members of secular institutes, who profess the evangelical counsels while keeping their ordinary work and life.'],
+    howTitle:'How to explore it',
+    how:[
+      'Pray and discern with a spiritual director.',
+      'Speak with your diocese’s office for consecrated life, or contact a secular institute.',
+      'Expect a time of formation and discernment before any consecration or profession.'
+    ],
+    note:'Consecration as a virgin is for women who have never married and have not lived openly in a way contrary to chastity.' },
+  { id:'single', name:'The Single Life', icon:'account', color:'amber', kicker:'Serving God in every season',
+    about:['Many Catholics live single lives, for a season or for life. The single life is not a waiting room. It is a real path to holiness, with freedom to pray, serve, and love generously, as single saints like St. Joseph Moscati, a doctor, and St. Pier Giorgio Frassati showed.'],
+    howTitle:'Living it well',
+    how:[
+      'Build your life around prayer and the sacraments.',
+      'Give your time and gifts: serve your parish, volunteer, and care for family and friends.',
+      'Stay connected. Friendship and community matter.',
+      'Keep listening with an open heart: God may be calling you to marriage, to consecrated life, or to a lasting single life of service.'
+    ] },
+  { id:'lay-orders', name:'Third Orders and Lay Associations', icon:'community', color:'green', kicker:'Belonging to a spiritual family',
+    about:['Lay people can share in the life and spirituality of a religious order without leaving the world: Secular Franciscans, Lay and Secular Carmelites, Lay Dominicans, Benedictine Oblates, and others. Movements and associations such as the Legion of Mary, the Society of St. Vincent de Paul, and the Knights of Columbus also offer prayer, formation, and service.'],
+    howTitle:'How to join',
+    how:[
+      'Find a local group (often called a fraternity, community, or chapter) and visit a meeting.',
+      'Begin a time of formation, often a year or more, learning the spirituality and rule of the order.',
+      'Make a promise or profession, and live the rule in daily life, including its prayer. Many lay Carmelites, for example, pray the Liturgy of the Hours or the Little Office of Our Lady.'
+    ],
+    links:[['pray/little-office', 'The Little Office of Our Lady'], ['pray/devotions', 'The Brown Scapular']] },
+  { id:'family', name:'Parents and the Family', icon:'mine', color:'rose', kicker:'The domestic church',
+    about:['Parents are the first teachers of the faith. The family is called the domestic church: the first place where children learn to pray, to forgive, and to love God.'],
+    howTitle:'Living the faith at home',
+    how:[
+      'Have your children baptized soon after birth. Contact your parish to arrange it.',
+      'Pray together every day, even briefly: grace at meals, a prayer at bedtime, a decade of the Rosary.',
+      'Go to Mass together every Sunday, and talk about it afterward.',
+      'Prepare your children with your parish for First Confession, First Communion, and Confirmation.',
+      'Live the Church’s year at home: an Advent wreath, feast days, and your family’s patron saints.'
+    ],
+    links:[['saints/patron-finder', 'Find a patron saint']] }
+];
+const VOCATIONS_EAST = [
+  { id:'becoming', name:'Becoming an Eastern Catholic', icon:'home', color:'gold', kicker:'Joining the Church',
+    about:[
+      'In the Eastern Churches the three Holy Mysteries of initiation are given together: Baptism, Chrismation, and the Holy Eucharist, even to infants. Adults who wish to enter the Church learn the faith as catechumens with the priest of their parish.',
+      'The Byzantine Catholic Churches, such as the Ukrainian, Ruthenian, Melkite, Romanian, and Slovak Churches, each keep their own tradition while living in full communion with the Bishop of Rome.'
+    ],
+    howTitle:'How to begin',
+    how:[
+      'Contact the priest of an Eastern Catholic parish and tell him you would like to become Catholic.',
+      'If you are not baptized, you become a catechumen and learn the faith, then are baptized, chrismated, and receive the Eucharist together.',
+      'If you were baptized in another Christian community, you make a profession of faith and are chrismated, then receive the Holy Mysteries.',
+      'If you are Orthodox, you are received by a profession of the Catholic faith, since your sacraments are already recognized.',
+      'If you are a Latin Catholic drawn to an Eastern Church, you may worship and receive the Holy Mysteries there freely. Formally transferring to another Church requires permission, so ask the priest how.'
+    ] },
+  { id:'coming-home', name:'Coming Home', icon:'exam', color:'purple', kicker:'For those who have been away',
+    about:['If you were baptized and chrismated in the Church and have been away, for a short time or for many years, you do not need to join again. The Father runs to meet His returning children.'],
+    howTitle:'How to come back',
+    how:[
+      'Go to the Holy Mystery of Repentance. Tell the priest how long it has been; he will help you.',
+      'Return to the Divine Liturgy every Sunday, and approach the Holy Mysteries once you have been to Confession.',
+      'If you married outside the Church, speak with a priest about having your marriage blessed.',
+      'Find your place in the parish: the choir, a sisterhood or brotherhood, or simply staying for the coffee hour.'
+    ],
+    link:['pray/examination', 'Prepare for Confession'] },
+  { id:'everyday', name:'Everyday Eastern Catholic Life', icon:'daily', color:'teal', kicker:'The rhythm of the Byzantine year',
+    about:['Byzantine Christians keep the Lord’s Day with the Divine Liturgy, pray morning and evening before the icons, and keep the fasts of the Church year, which prepare for the great feasts.'],
+    howTitle:'The basics',
+    how:[
+      'Take part in the Divine Liturgy on Sundays and holy days.',
+      'Pray morning and evening prayers, ideally in your icon corner.',
+      'Keep the fasts as your Church directs: Wednesdays and Fridays through most of the year, Great Lent, and the Nativity, Apostles’, and Dormition fasts.',
+      'Confess your sins in the Holy Mystery of Repentance, and receive the Eucharist often, at least as often as your Church requires.',
+      'Support your parish and care for the poor.'
+    ],
+    note:'Each Eastern Catholic Church sets its own rules for fasting, and many are gentler than the full traditional fasts. Ask your priest what applies to you.',
+    links:[['learn/mass', 'The Divine Liturgy Explained'], ['pray/devotions', 'Holy customs']] },
+  { id:'discerning', name:'Discerning Your Vocation', icon:'compass', color:'indigo', kicker:'What is God calling me to?',
+    about:['Every Christian is called to theosis, union with God, received in Baptism and Chrismation. Within that call, God leads each person to a particular way of life: marriage, the priesthood or diaconate, monastic life, or a single life given to God.'],
+    howTitle:'How to discern',
+    how:[
+      'Pray the Jesus Prayer and your daily prayers faithfully, and ask God plainly what He wants of you.',
+      'Go to the Divine Liturgy and Confession often.',
+      'Find a spiritual father or mother to guide you.',
+      'Talk with married couples, priests and their wives, and monastics, and spend time at a monastery.',
+      'Look for lasting peace rather than passing feelings, and take a concrete step when the time comes.'
+    ],
+    prayers:[['St. John Henry Newman', NEWMAN_MISSION]] },
+  { id:'marriage', name:'Holy Crowning', icon:'rings', color:'rose', kicker:'The Holy Mystery of Marriage',
+    about:['In the Byzantine tradition marriage is celebrated with the Betrothal and the Crowning. The bride and groom are crowned as king and queen of a new household, and as witnesses to Christ’s self-giving love. In the Eastern Churches the priest’s blessing is essential: he is the minister of the Mystery.'],
+    howTitle:'Preparing to marry',
+    how:[
+      'Speak with your priest early, well before setting a date.',
+      'Take part in marriage preparation, and go to Confession.',
+      'Make sure you are both free to marry. Any previous marriage must be looked into first.',
+      'If one of you belongs to another Church or is not Catholic, the priest will help with any permission needed.',
+      'Celebrate the Crowning: the rings, the crowns, the common cup, and the procession around the table as the “dance of Isaiah” is sung.'
+    ],
+    note:'Living it: pray together before your icons, keep the feasts and fasts together, forgive quickly, stay open to the gift of children, and make your home a little church.' },
+  { id:'priesthood', name:'The Priesthood', icon:'stole', color:'wine', kicker:'Holy Orders',
+    about:['Priests celebrate the Divine Liturgy and the Holy Mysteries, preach the Gospel, and shepherd God’s people. Following the ancient tradition of the East, married men may be ordained priests in the Eastern Catholic Churches, though a man must marry before he is ordained a deacon. Bishops are chosen from among celibate clergy, often monks.'],
+    howTitle:'The path to ordination',
+    how:[
+      'Pray, and talk with your parish priest and a spiritual father.',
+      'Contact your eparchy’s vocation director.',
+      'If you are called to marriage, marry first; priests’ wives (called by titles such as Pani, Khouria, or Presbytera) share in a unique way in their husband’s ministry.',
+      'Complete seminary formation in prayer, theology, liturgy, and the music of the Church.',
+      'The bishop ordains you a deacon and then a priest by the laying on of hands.'
+    ],
+    note:'Married Eastern Catholic priests were long restricted in North America and some other places. Since 2014 the Eastern Catholic Churches may ordain married men everywhere, according to their own tradition.' },
+  { id:'monastic', name:'Monastic Life', icon:'saint', color:'purple', kicker:'The angelic life',
+    about:['Religious life in the Christian East is above all monastic: monks and nuns living in prayer, work, and obedience under their hegumen or abbess, in the tradition of St. Basil the Great and the Desert Fathers.'],
+    howTitle:'The stages of monastic life',
+    how:[
+      'Visit a monastery and stay as a guest.',
+      'Novice: live in the monastery and learn its life and services.',
+      'Rassophore: the first step of tonsure, receiving the monastic robe.',
+      'Stavrophore (the small schema): monastic vows, with the cross and mantle.',
+      'The great schema: for some, later in life, the fullest monastic consecration.'
+    ] },
+  { id:'diaconate', name:'The Diaconate', icon:'stole', color:'green', kicker:'Holy Orders for service',
+    about:['The deacon has a beautiful place in the Byzantine Divine Liturgy, leading the litanies, proclaiming the Gospel, and censing the church and the people, and he serves the poor and the parish. Married men may be ordained deacons, though a man must marry before ordination.'],
+    howTitle:'Becoming a deacon',
+    how:[
+      'Talk with your priest and, if you are married, with your wife.',
+      'Contact your eparchy about diaconal formation.',
+      'Study theology and the liturgy, and learn the deacon’s part in the services.',
+      'The bishop ordains you by the laying on of hands.'
+    ] },
+  { id:'single', name:'The Single Life', icon:'account', color:'amber', kicker:'Serving God in every season',
+    about:['Many live single lives, for a season or for life. It is a real path to holiness, with freedom to pray, serve, and love generously in the parish and the world.'],
+    howTitle:'Living it well',
+    how:[
+      'Build your life around prayer, the Divine Liturgy, and the Holy Mysteries.',
+      'Serve your parish: the choir, the sisterhood or brotherhood, teaching children, caring for the sick.',
+      'Stay close to friends, family, and your parish community.',
+      'Keep listening: God may be calling you to marriage, to monastic life, or to a lasting single life of service.'
+    ] },
+  { id:'family', name:'The Family', icon:'mine', color:'rose', kicker:'The little church',
+    about:['The family is a little church. Children in the Eastern Churches are baptized, chrismated, and given Holy Communion from infancy, and they grow up in the faith through prayer, the Liturgy, and the life of the home.'],
+    howTitle:'Living the faith at home',
+    how:[
+      'Have your children baptized and chrismated soon after birth, and bring them often to Holy Communion.',
+      'Pray together before your icons, morning and evening.',
+      'Keep the feasts and fasts as a family: the Pascha basket, the Holy Supper on Christmas Eve, and your children’s name days.',
+      'Teach your children the Sign of the Cross, the Jesus Prayer, and the troparia of the great feasts.'
+    ],
+    link:['pray/devotions', 'Holy customs for the home'] }
+];
+function renderVocations(){
+  const list = isEastern() ? VOCATIONS_EAST : VOCATIONS;
+  entryListEl.innerHTML = `
+    <div class="dv-page">
+      <nav class="dv-jump" aria-label="On this page">${list.map(d => `<button class="dv-chip" data-dv="${d.id}" style="--dv:var(--${d.color})">${escapeHtml(d.name)}</button>`).join('')}</nav>
+      ${list.map(dvCardHtml).join('')}
+      <p class="dv-note">These guides are a starting place. Your parish priest and your diocese or eparchy can tell you exactly what applies where you live.</p>
     </div>`;
   entryListEl.querySelectorAll('[data-dv]').forEach(b => b.addEventListener('click', () => {
     const el = document.getElementById('dv-' + b.dataset.dv);
