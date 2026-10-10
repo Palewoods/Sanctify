@@ -17129,7 +17129,7 @@ async function renderAkathist(seq){
    ========================================================= */
 let hyData = null, hyGroup = 'all';
 const HY_COLORS = { 'Our Lady':'rose', 'The Eucharist':'gold', 'The Holy Spirit':'wine', 'Advent & Christmas':'purple', 'Easter':'green', 'Praise':'teal', 'For the Dead':'indigo',
-  'The Divine Liturgy':'gold', 'The Theotokos':'indigo', 'Feasts & Seasons':'green' };
+  'Lent & Holy Week':'amber', 'The Divine Liturgy':'gold', 'Vespers & Matins':'teal', 'The Theotokos':'indigo', 'Feasts & Seasons':'green' };
 function hymnWords(h){
   const lines = t => t.split('\n').map(escapeHtml).join('<br>');
   if(h.pairs) return `<div class="hy-pairs${h.compact ? ' compact' : ''}">${h.pairs.map(([a, b]) => `<p class="hy-orig">${lines(a)}</p><p class="hy-en">${lines(b)}</p>`).join('')}</div>`;
