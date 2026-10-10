@@ -2055,6 +2055,10 @@
   .hy-verses p{margin:0 0 12px;}
   @media (max-width:640px){ .hy-pairs{grid-template-columns:1fr; gap:0;} .hy-pairs .hy-en{margin-bottom:16px;} .hy-pairs .hy-orig{margin-bottom:4px;} .hy-card{padding:20px 18px;} }
   .ak-title{margin:0 0 6px; font-size:1.6rem;}
+  .ak-versions{margin:10px 0 6px;}
+  .ak-two{display:grid; grid-template-columns:1fr 1fr; gap:6px 26px; align-items:start;}
+  .ak-greek{font-size:0.95rem; line-height:1.6; color:var(--ink-soft); font-family:'Source Serif 4', Georgia, serif;}
+  @media (max-width:700px){ .ak-two{grid-template-columns:1fr;} .ak-greek{padding-bottom:10px; border-bottom:1px solid var(--line);} }
   .ak-stanza{margin-top:20px;}
   .ak-stanza h4{display:flex; align-items:baseline; gap:10px; margin:0 0 8px; font-family:'Cormorant Garamond', serif; font-size:1.2rem; color:var(--rose);}
   .ak-stanza h4 span{font-family:'Source Serif 4', serif; font-size:0.75rem; font-style:italic; color:var(--ink-soft);}
@@ -12784,7 +12788,7 @@ const RITE_DESC = {
   examen:'Close the day with God in stillness, thanksgiving, watchfulness over the heart, and repentance.',
   exam:'A guided examination of conscience to prepare for the Holy Mystery of Repentance.',
   vocations:'How to become an Eastern Catholic or come home, the rhythm of Byzantine Christian life, and guides to each vocation: Holy Crowning, the married and celibate priesthood, monastic life, and more.',
-  littleoffice:'The whole Akathist Hymn to the Theotokos, in English verse, and the Paraklesis of supplication.',
+  littleoffice:'The whole Akathist Hymn to the Theotokos, in a new translation from the Greek, and the Paraklesis of supplication.',
   hymns:'The chants of the Byzantine Churches, with recordings: O Heavenly King, the Cherubic Hymn, It Is Truly Right, Christ Is Risen, and more.',
   devotions:'The holy customs of Byzantine Christians: the icon corner, Theophany water, the baptismal cross, the prayer rope, the Paraklesis and Akathist, and the Pascha basket.',
   mass:'Every part of the Divine Liturgy of St. John Chrysostom in order, with what happens and what it means. Follow along on your phone at the Liturgy.'
@@ -13635,6 +13639,231 @@ Object.assign(FAMOUS_IMG, {
   "page": "https://commons.wikimedia.org/wiki/File:Our_Lady_of_Philerme_icon.jpg"
  }
 });
+// More icons and sacred images, East and West
+FAMOUS_ICONS.push(
+  { key:'monreale', kind:'christ', title:'Christ Pantocrator of Monreale', date:'c. 1180s', place:'Monreale Cathedral, near Palermo, Sicily', medium:'Mosaic in the apse',
+    text:'The Norman king William II began Monreale Cathedral in 1174, and mosaicists trained in the Byzantine manner covered its walls with more than six thousand square meters of gold mosaic. In the apse, an enormous half-figure of Christ Pantocrator opens His arms over the whole church.\n\nBeneath Him the Mother of God sits enthroned with the Child, among angels and apostles. The cathedral shows how the art of Byzantium and the faith of the Latin West met in Norman Sicily.',
+    look:['The arms spread wide, as if to embrace the whole nave.','The Gospel book open in His left hand.','The gold of the apse, catching the light from below.'] },
+  { key:'chora', kind:'christ', title:'Christ, the Land of the Living (Chora)', date:'c. 1315–1321', place:'Chora Church (Kariye), Istanbul', medium:'Mosaic',
+    text:'The Church of the Holy Savior in Chora was rebuilt and decorated by the statesman Theodore Metochites in the early 1300s, and its mosaics and frescoes are among the last great works of Byzantine art.\n\nOver the door into the nave, Christ is named “the Land of the Living,” a play on the church’s own name, since chora means land or country. The famous Anastasis fresco of the same church appears elsewhere on this page.',
+    look:['The Greek inscription naming Christ the Land of the Living.','The classic Pantocrator pose: blessing with one hand, holding the Gospel with the other.','The fine, painterly modeling of the face in tiny glass tesserae.'] },
+  { key:'spasvsilah', kind:'christ', title:'The Savior in Power (Rublev)', date:'1408', place:'Tretyakov Gallery, Moscow (from the Dormition Cathedral, Vladimir)', medium:'Tempera on wood',
+    text:'In 1408 Andrei Rublev and his companions painted the Dormition Cathedral in Vladimir and its great iconostasis. At the center of its Deësis tier stood this image of Christ enthroned in glory as King and Judge, a type the Russians call the “Savior in Power.”\n\nHe sits within a red diamond and a dark oval, layers of divine light and of the heavenly powers, with the symbols of the four evangelists in the corners. The Mother of God and St. John the Baptist once stood on either side, turned to Him in prayer.',
+    look:['The red diamond and the dark blue-green oval: rings of divine glory.','The four symbols in the corners: angel, lion, ox, and eagle.','The open book, for Christ the Judge at the end of time.'] },
+  { key:'menas', kind:'christ', title:'Christ and Abbot Menas', date:'6th–8th century', place:'Louvre, Paris (from the monastery of Bawit, Egypt)', medium:'Tempera on wood',
+    text:'This small painted panel came from the monastery of Bawit in Upper Egypt and is one of the oldest Coptic icons. Christ stands beside Menas, abbot of the monastery, with His arm resting on the abbot’s shoulder.\n\nIt is often called the Icon of Friendship, and the Taizé community has made it known around the world: Christ walks beside us as a companion on the way.',
+    look:['Christ’s arm around the abbot’s shoulder.','The large, wide-open eyes typical of Coptic painting.','Menas blessing, and Christ holding the jeweled Gospel.'] },
+  { key:'mercy', kind:'christ', title:'The Divine Mercy (Vilnius)', date:'1934', place:'Divine Mercy Sanctuary, Vilnius, Lithuania', medium:'Oil on canvas',
+    text:'In 1931 St. Faustina Kowalska saw Jesus in a white garment, with a pale ray and a red ray streaming from His heart, and was asked to have the vision painted with the words “Jesus, I trust in You.” Under the direction of her confessor, Bl. Michael Sopoćko, the painter Eugeniusz Kazimirowski made this first image in Vilnius in 1934.\n\nJesus explained to her that the pale ray stands for the water that makes souls righteous, and the red ray for the blood that is the life of souls. It is not an icon in the Byzantine sense, but it has become one of the most beloved images of Christ in the Catholic world.',
+    look:['The two rays, pale and red, flowing from His heart.','His right hand raised in blessing as He walks toward us.','His gaze, lowered toward the one who prays.'] },
+  { key:'guadalupe', kind:'mary', title:'Our Lady of Guadalupe', date:'1531', place:'Basilica of Our Lady of Guadalupe, Mexico City', medium:'Image on a cloak (tilma) of agave fiber',
+    text:'In December 1531 the Virgin Mary appeared to St. Juan Diego on the hill of Tepeyac, near Mexico City. When he opened his cloak before the bishop, the roses he had gathered at her word fell out, and this image was found on the cloth.\n\nShe appears as a young woman of the land, clothed with the sun and standing on the moon, like the woman of the Book of Revelation. Great numbers of the native peoples were baptized in the years that followed, and her basilica is now one of the most visited shrines in the world.',
+    look:['The rays of the sun behind her and the moon beneath her feet.','Her blue-green mantle scattered with stars.','Her hands joined and her head bowed: she prays to the God she points to.','The dark sash at her waist, a sign that she is with child.'] },
+  { key:'goodcounsel', kind:'mary', title:'Our Lady of Good Counsel', date:'venerated at Genazzano since 1467', place:'Shrine of Our Lady of Good Counsel, Genazzano, Italy', medium:'Fresco on a thin layer of plaster',
+    text:'On April 25, 1467, during a feast in the little town of Genazzano, southeast of Rome, this image appeared on a wall of the unfinished church of the Augustinian friars. Tradition holds that it came miraculously from Shkodër in Albania, then falling to the Ottoman Turks.\n\nMany popes have honored it, and in 1903 Pope Leo XIII added the title “Mother of Good Counsel” to the Litany of Loreto.',
+    look:['Mother and Child cheek to cheek, in the Eastern manner of the Virgin of Tenderness.','The Child looking up at His Mother as she looks out at us.'] },
+  { key:'clemenza', kind:'mary', title:'Madonna della Clemenza', date:'7th–8th century', place:'Santa Maria in Trastevere, Rome', medium:'Encaustic on wood',
+    text:'One of the oldest icons of the Mother of God in the world, kept in the Altemps Chapel of Santa Maria in Trastevere. Mary sits enthroned as Queen, dressed like a Byzantine empress, holding the Christ Child, with two angels standing guard beside her.\n\nA small kneeling figure of a pope at her feet is often thought to be John VII, who reigned from 705 to 707.',
+    look:['Mary crowned and robed as an empress.','The two angels at her sides, like officers of a royal court.','The tiny kneeling pope, offering his prayer.'] },
+  { key:'sanluca', kind:'mary', title:'Madonna di San Luca', date:'probably 12th century', place:'Sanctuary of the Madonna di San Luca, Bologna', medium:'Tempera on wood, in the Byzantine manner',
+    text:'Tradition says that a pilgrim brought this icon from Constantinople in the twelfth century, believing it to have been painted by St. Luke. It has been kept on the hill above Bologna ever since, and every year it is carried down into the city in procession.\n\nThe sanctuary is reached by a covered walk of nearly four kilometers, the longest portico in the world, climbing the hillside arch after arch.',
+    look:['The silver cover, which leaves only the faces uncovered.','The crowns given by the faithful of Bologna.'] },
+  { key:'materadmirabilis', kind:'mary', title:'Mater Admirabilis', date:'1844', place:'Convent of Trinità dei Monti, Rome', medium:'Fresco',
+    text:'Painted in 1844 by Pauline Perdrau, a young postulant of the Society of the Sacred Heart, on a wall of the convent at the top of the Spanish Steps. It shows the young Mary in the Temple, sitting quietly with her spindle and her book.\n\nWhen Pope Pius IX saw it in 1846 he exclaimed, “Mater admirabilis!” (“Mother most admirable!”), and the name remained. It is especially loved in Sacred Heart schools around the world.',
+    look:['The lily beside her, for purity.','The distaff and spindle: holiness in ordinary work.','Her lowered eyes, thoughtful and at peace.'] },
+  { key:'feodorovskaya', kind:'mary', title:'Theotokos of St. Theodore (Feodorovskaya)', date:'original probably 12th–13th century; shown: a late 17th-century copy', place:'Original: Epiphany-Anastasia Convent, Kostroma, Russia', medium:'Tempera on wood',
+    text:'An icon of the Virgin of Tenderness type, closely related to the Theotokos of Vladimir. Tradition says that it was found near Kostroma in the thirteenth century and is named after St. Theodore Stratelates, the soldier-saint in whose company it was first seen.\n\nIn 1613 the young Michael Romanov was blessed with this icon when he accepted the throne of Russia, and it became the patron icon of the Romanov family.',
+    look:['Mother and Child cheek to cheek.','The Child’s bare foot showing beneath His robe, a sign of His true humanity.'] },
+  { key:'axion', kind:'mary', title:'Axion Estin of Mount Athos', date:'tradition from the 10th century', place:'Church of the Protaton, Karyes, Mount Athos', medium:'Tempera on wood, with a silver cover',
+    text:'According to Athonite tradition, in the tenth century the Archangel Gabriel, appearing as a monk, sang before this icon the words “It is truly right to bless you, O Theotokos,” and wrote them on a tile of stone. The hymn It Is Truly Right has been sung at every Divine Liturgy ever since.\n\nThe icon is the chief icon of the Holy Mountain, kept behind the altar of the Protaton, the main church of Karyes.',
+    look:['Mother and Child cheek to cheek, in the manner of the Virgin of Tenderness.','The silver cover, which leaves only the faces uncovered.'] },
+  { key:'mariapocs', kind:'mary', title:'Theotokos of Máriapócs', date:'painted 1676; shown: the icon now at Máriapócs', place:'Máriapócs, Hungary; the original is in St. Stephen’s Cathedral, Vienna', medium:'Tempera on wood',
+    text:'This icon was painted in 1676 for the Greek Catholic church of the village of Pócs in eastern Hungary. In 1696 the faithful saw tears flowing from the Virgin’s eyes for days on end. Emperor Leopold I had it brought to Vienna, where it has been kept in St. Stephen’s Cathedral since 1697.\n\nA copy was made for Pócs, and it too was seen to weep, in 1715 and again in 1905. Máriapócs is now the great national shrine of the Hungarian Greek Catholic Church.',
+    look:['The Hodegetria pose: Mary showing us her Son.','The Child raising His hand in blessing.'] },
+  { key:'ohrid', kind:'feast', title:'The Annunciation of Ohrid', date:'early 14th century', place:'Icon Gallery, Ohrid, North Macedonia (from the Church of the Theotokos Peribleptos)', medium:'Tempera on wood',
+    text:'The Church of the Theotokos Peribleptos in Ohrid kept one of the richest collections of late Byzantine icons, now shown in the Ohrid Icon Gallery. Here the Archangel Gabriel strides toward Mary with his hand raised in greeting, while she turns to him from her spinning.\n\nHer thread recalls an old story that she was spinning the purple for the veil of the Temple when the angel came.',
+    look:['Gabriel in motion, as if just landing.','Mary’s spindle of red thread.','The tall buildings and draped cloth that set the scene indoors.'] },
+  { key:'baptism', kind:'feast', title:'The Baptism of the Lord (Theophany)', date:'early 15th century', place:'Annunciation Cathedral, Moscow Kremlin', medium:'Tempera on wood',
+    text:'From the festal tier of the iconostasis of the Annunciation Cathedral in the Kremlin. The chronicles record that in 1405 Theophanes the Greek, Prokhor of Gorodets, and Andrei Rublev painted this church, and several of its feast icons are traditionally linked to Rublev.\n\nChrist stands in the Jordan, the Spirit descends as a dove, John lays his hand on Christ’s head, and angels wait with cloths on the far bank. The icon shows what the feast of Theophany proclaims: the Holy Trinity revealed.',
+    look:['The dark water around Christ, like a cave or a tomb: baptism is a sharing in His death.','The ray from heaven and the dove.','The angels bowing on the right with their hands covered in reverence.'] },
+  { key:'entry', kind:'feast', title:'The Entry into Jerusalem', date:'early 15th century', place:'Annunciation Cathedral, Moscow Kremlin', medium:'Tempera on wood',
+    text:'Also from the festal tier of the Annunciation Cathedral. Christ rides toward Jerusalem on a donkey, turning back toward His disciples, while the people come out of the city to meet Him and children spread their garments on the road.\n\nPalm Sunday opens Holy Week. The icon holds together triumph and the road to the Cross: the King comes humbly, in order to suffer.',
+    look:['Christ looking back at the apostles who follow.','The children laying garments before the donkey.','The city gate and the crowd waiting on the right.'] },
+  { key:'crucifixion', kind:'feast', title:'The Crucifixion (Dionisius)', date:'1500', place:'Tretyakov Gallery, Moscow', medium:'Tempera on wood',
+    text:'Painted by Dionisius, the greatest Russian icon painter after Rublev. Its tall, slender figures and soft, luminous colors seem almost weightless, and there is no horror in it: the Crucifixion is shown as the quiet victory of love.\n\nThe Mother of God and the holy women stand on one side and St. John and the centurion on the other, while angels fly above the arms of the Cross.',
+    look:['The body of Christ bending gently, not twisted in agony.','The dark opening beneath the Cross, where icons place the skull of Adam.','The angels grieving above.'] },
+  { key:'ascension', kind:'feast', title:'The Ascension', date:'c. 1408', place:'Tretyakov Gallery, Moscow (from the Dormition Cathedral, Vladimir)', medium:'Tempera on wood',
+    text:'From the festal tier painted in 1408 for the Dormition Cathedral in Vladimir by Andrei Rublev and his circle. Christ rises in a circle of glory borne by angels, while the apostles below look up in wonder.\n\nIn the center stands the Mother of God, calm and still, between two angels in white. In Ascension icons she stands for the Church that remains on earth, praying and waiting for her Lord to come again.',
+    look:['Christ in the circle of glory at the top.','The stillness of the Mother of God amid the astonished apostles.','The two angels in white, pointing upward.'] },
+  { key:'lastsupper', kind:'feast', title:'The Last Supper (Ushakov)', date:'1685', place:'Dormition Cathedral, Trinity Lavra of St. Sergius, Sergiev Posad', medium:'Tempera on wood',
+    text:'Simon Ushakov, the leading painter of the tsars’ workshop in Moscow, painted this icon to hang above the Royal Doors of the Dormition Cathedral in the Trinity Lavra. Its rounded figures and deep space show how Western art was changing Russian icon painting in the seventeenth century.\n\nAbove the doors through which the Holy Gifts are brought out, the Last Supper reminds the faithful that the Divine Liturgy is the same Supper the Lord gave to His apostles.',
+    look:['St. John leaning on the Lord’s breast.','Judas reaching toward the dish.','The eight-sided shape, made to fit above the Royal Doors.'] },
+  { key:'lazarus', kind:'feast', title:'The Raising of Lazarus', date:'15th century', place:'Russian Museum, St. Petersburg', medium:'Tempera on wood (Novgorod school)',
+    text:'At Bethany, Christ called His friend Lazarus out of the tomb four days after he had died. The icon shows Lazarus standing in the mouth of the tomb, still bound in his grave-clothes, while his sisters Martha and Mary fall at Christ’s feet.\n\nThe Byzantine Churches keep Lazarus Saturday on the day before Palm Sunday, as a foretaste of the Resurrection.',
+    look:['Lazarus upright in the dark cave, wrapped in white bands.','The two sisters bowed at the Lord’s feet.','The bright rocky mountains of Novgorod painting.'] },
+  { key:'pokrov', kind:'feast', title:'The Protection of the Mother of God (Pokrov)', date:'1399', place:'Novgorod, Russia', medium:'Tempera on wood',
+    text:'In the tenth century St. Andrew the Fool for Christ saw the Mother of God in the Church of Blachernae in Constantinople, spreading her veil over the people at prayer. The Slavic Churches made the vision a feast, the Protection of the Mother of God, kept on October 1 (October 14 on the civil calendar).\n\nMary stands in the air holding out her veil, among saints and angels; below, St. Romanos the Melodist sings from the ambo, and St. Andrew points out the vision.',
+    look:['The veil held out over the people.','The arches of the church of Blachernae.','The crowds of the faithful gathered beneath her.'] },
+  { key:'triumph', kind:'feast', title:'The Triumph of Orthodoxy', date:'c. 1400', place:'British Museum, London', medium:'Tempera on wood',
+    text:'Painted in Constantinople around 1400, this icon celebrates the restoration of icons in 843 after more than a century of iconoclasm. At the top, the Hodegetria icon is held up by angels, with the Empress Theodora and her young son Michael III on one side and Patriarch Methodios on the other.\n\nBelow stand saints who suffered for the holy icons. The victory is kept every year on the first Sunday of Great Lent, the Sunday of Orthodoxy.',
+    look:['The Hodegetria icon itself, carried on its stand.','The empress and the child emperor in their crowns.','Confessors holding small icons of Christ.'] },
+  { key:'cimabue', kind:'feast', title:'The Crucifix of Santa Croce (Cimabue)', date:'c. 1287–1288', place:'Basilica of Santa Croce, Florence', medium:'Tempera on wood',
+    text:'Cimabue painted this great painted cross for the Franciscan church of Santa Croce. It follows the Byzantine image of the dead Christ, but with a new softness and weight that points toward the art of his pupil Giotto.\n\nOn November 4, 1966, the Arno flooded Florence and the crucifix was submerged; much of its paint was lost. It became a symbol of the city’s suffering, and it was painstakingly restored over the decades that followed.',
+    look:['The body curving gently to one side.','The Mother of God and St. John mourning at the ends of the arms.','The thin, transparent loincloth, a sign of the painter’s skill.'] },
+  { key:'nicholas', kind:'saints', title:'St. Nicholas of Zaraysk, with Scenes of His Life', date:'c. 1500', place:'National Museum, Oslo', medium:'Tempera on wood (Novgorod school)',
+    text:'St. Nicholas, bishop of Myra in the fourth century, is among the most loved saints of East and West. The Zaraysk type shows him standing in his bishop’s vestments, blessing and holding the Gospel; it is named after a wonder-working icon brought to the Russian town of Zaraysk in the thirteenth century.\n\nAround the border are twenty scenes from his life, including the dowries he gave in secret to three poor girls, the source of the stories of Santa Claus.',
+    look:['The twenty small scenes around the edge.','His omophorion, the bishop’s stole, covered with crosses.','His right hand blessing and his left holding the Gospel.'] },
+  { key:'johndesert', kind:'saints', title:'St. John the Baptist, Angel of the Desert', date:'17th century', place:'Russia', medium:'Tempera on wood',
+    text:'Eastern icons often give St. John the Baptist wings, as the messenger, or angel, foretold by the prophet Malachi: “Behold, I send my messenger to prepare the way before me.” He wears a garment of camel’s hair and holds a scroll calling the world to repentance.\n\nSuch icons often show his own head in a dish at his feet, and an axe laid at the root of a tree, from his preaching that every tree that does not bear good fruit will be cut down.',
+    look:['The great wings of the messenger.','The scroll with his call to repent.','The wild, rocky desert where he lived.'] },
+  { key:'borisgleb', kind:'saints', title:'Sts. Boris and Gleb', date:'mid-14th century', place:'Russia', medium:'Tempera on wood',
+    text:'Boris and Gleb, sons of St. Vladimir the Great, were murdered in 1015 by their brother Sviatopolk in a struggle for the throne of Kyiv. They refused to fight back, following Christ who did not resist those who killed Him, and they were the first saints canonized by the Church of Rus.\n\nThey are honored as passion-bearers: not martyrs for refusing to deny the faith, but Christians who met an unjust death with meekness.',
+    look:['The princely robes and fur-trimmed caps.','The swords they hold but never used.','The two brothers side by side, almost alike.'] },
+  { key:'demetrios', kind:'saints', title:'St. Demetrios with the Founders of His Church', date:'7th century', place:'Basilica of St. Demetrios, Thessaloniki', medium:'Mosaic',
+    text:'St. Demetrios, a martyr of the early fourth century, is the patron of Thessaloniki. In this mosaic in his great basilica he stands between a bishop and a governor of the city, who rebuilt the church after a fire in the seventh century, his arms around their shoulders like a protector.\n\nThe basilica burned again in the great fire of 1917, but this mosaic survived.',
+    look:['The young martyr embracing the two founders.','The bishop on one side and the city’s governor on the other.','The gold background and the city walls behind them.'] },
+  { key:'goldenhair', kind:'saints', title:'The Angel with the Golden Hair', date:'second half of the 12th century', place:'Russian Museum, St. Petersburg', medium:'Tempera on wood',
+    text:'Probably the Archangel Gabriel from a Deësis, this is one of the oldest Russian icons to survive. Fine lines of gold run through the angel’s hair, which gives the icon its name.\n\nThe large, sorrowful eyes and the soft, still face show the Byzantine ideal of a being wholly turned toward God.',
+    look:['The gold threads woven through the hair.','The large eyes and small mouth: the senses turned inward, toward God.'] },
+  { key:'sergiusbacchus', kind:'saints', title:'Sts. Sergius and Bacchus', date:'turn of the 6th to the 7th century', place:'Khanenko Museum, Kyiv (from St. Catherine’s Monastery, Sinai)', medium:'Encaustic on wood',
+    text:'Sergius and Bacchus were Roman officers martyred in Syria around the year 300. This small icon, painted with hot wax like the Sinai Pantocrator, came from St. Catherine’s Monastery at Sinai and was brought to Kyiv in the nineteenth century by the scholar-bishop Porphyry Uspensky.\n\nThe two young soldiers wear the gold collars of the imperial guard and hold the crosses of martyrs, while a small medallion of Christ looks down between them.',
+    look:['The gold collars of the emperor’s guard.','The crosses they hold as martyrs.','The little image of Christ between their heads.'] },
+  { key:'elijah', kind:'saints', title:'The Fiery Ascent of Elijah', date:'late 15th century', place:'Novgorod, Russia', medium:'Tempera on wood',
+    text:'The prophet Elijah was taken up to heaven in a chariot of fire, leaving his mantle to his disciple Elisha. Novgorod painters loved this subject, with its brilliant red fire against the gold.\n\nIn the Byzantine Churches Elijah is honored on July 20, and he was often prayed to for rain, since he had brought rain back to Israel after a long drought.',
+    look:['The red fire and the chariot wheels.','Elijah dropping his mantle to Elisha below.','The angel leading the horses.'] },
+  { key:'francis', kind:'saints', title:'St. Francis of Assisi (Berlinghieri)', date:'1235', place:'Church of San Francesco, Pescia, Italy', medium:'Tempera on wood',
+    text:'Painted by Bonaventura Berlinghieri only nine years after St. Francis died, this is one of the earliest images of him. He stands barefoot in his habit, showing the wounds of the stigmata, framed by six scenes: among them the stigmata, his sermon to the birds, and healings at his tomb.\n\nIt is an Italian painting, but made in the manner of an icon: a gold background, a timeless standing figure, and stories of the saint’s life around him.',
+    look:['The wounds of the stigmata in his hands and feet.','The six small scenes at his sides.','The gold background, borrowed from Byzantine icons.'] }
+);
+Object.assign(FAMOUS_IMG, {
+ "monreale": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Christ_Pantocrator_-_Cathedral_of_Monreale_-_Italy_2015_%286%29.JPG/500px-Christ_Pantocrator_-_Cathedral_of_Monreale_-_Italy_2015_%286%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Christ_Pantocrator_-_Cathedral_of_Monreale_-_Italy_2015_(6).JPG",
+  "credit": "José Luiz, CC BY-SA 4.0"
+ },
+ "chora": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Christ_Pantocrator_the_Land_of_the_Living_Mosaic_Inner_Narthex_Chora_Church_Istanbul.jpg/500px-Christ_Pantocrator_the_Land_of_the_Living_Mosaic_Inner_Narthex_Chora_Church_Istanbul.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Christ_Pantocrator_the_Land_of_the_Living_Mosaic_Inner_Narthex_Chora_Church_Istanbul.jpg"
+ },
+ "spasvsilah": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Spas_v_silach_from_Vasilyevskiy_chin_%2815th_c.%2C_GTG%29.jpg/500px-Spas_v_silach_from_Vasilyevskiy_chin_%2815th_c.%2C_GTG%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Spas_v_silach_from_Vasilyevskiy_chin_(15th_c.,_GTG).jpg"
+ },
+ "menas": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Kristus_a_svat%C3%BD_Menas.jpg/500px-Kristus_a_svat%C3%BD_Menas.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Kristus_a_svat%C3%BD_Menas.jpg"
+ },
+ "mercy": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Kazimirowski_Eugeniusz%2C_Divine_Mercy%2C_1934.jpg/500px-Kazimirowski_Eugeniusz%2C_Divine_Mercy%2C_1934.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Kazimirowski_Eugeniusz,_Divine_Mercy,_1934.jpg"
+ },
+ "guadalupe": {
+  "img": "https://upload.wikimedia.org/wikipedia/commons/2/20/Virgen_de_Guadalupe_1531.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Virgen_de_Guadalupe_1531.jpg"
+ },
+ "goodcounsel": {
+  "img": "https://upload.wikimedia.org/wikipedia/commons/4/4e/OurLadyGenazzano02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:OurLadyGenazzano02.jpg"
+ },
+ "clemenza": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Madonna_della_Clemenza_Icon_of_the_Virgin_and_Child_.jpg/500px-Madonna_della_Clemenza_Icon_of_the_Virgin_and_Child_.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Madonna_della_Clemenza_Icon_of_the_Virgin_and_Child_.jpg"
+ },
+ "sanluca": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/The_icon_of_the_Madonna_di_San_Luca%2C_Bologna.jpg/500px-The_icon_of_the_Madonna_di_San_Luca%2C_Bologna.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:The_icon_of_the_Madonna_di_San_Luca,_Bologna.jpg",
+  "credit": "Ввласенко, CC BY-SA 3.0"
+ },
+ "materadmirabilis": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Mater_Admirabilis.JPG/500px-Mater_Admirabilis.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Mater_Admirabilis.JPG"
+ },
+ "feodorovskaya": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Fyodorofskaya_icon_of_the_Mother_of_God_%2817th_c.%2C_Yaroslavl_museum%29.jpg/500px-Fyodorofskaya_icon_of_the_Mother_of_God_%2817th_c.%2C_Yaroslavl_museum%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Fyodorofskaya_icon_of_the_Mother_of_God_(17th_c.,_Yaroslavl_museum).jpg"
+ },
+ "axion": {
+  "img": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Mount_Athos%27_Axion_Estin_icon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Mount_Athos%27_Axion_Estin_icon.jpg"
+ },
+ "mariapocs": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Holy_icon_of_Theotokos_of_M%C3%A1riap%C3%B3cs.jpg/500px-Holy_icon_of_Theotokos_of_M%C3%A1riap%C3%B3cs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Holy_icon_of_Theotokos_of_M%C3%A1riap%C3%B3cs.jpg",
+  "credit": "Jojojoe, CC BY-SA 3.0"
+ },
+ "ohrid": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Annunciation%2C_Early_XIV_Century%2C_St_Mary_Perivleptos_Church%2C_Ohrid_Icon_Gallery.jpg/500px-Annunciation%2C_Early_XIV_Century%2C_St_Mary_Perivleptos_Church%2C_Ohrid_Icon_Gallery.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Annunciation,_Early_XIV_Century,_St_Mary_Perivleptos_Church,_Ohrid_Icon_Gallery.jpg"
+ },
+ "baptism": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Baptism_%2815th_c.%2C_Annunciation_Cathedral_in_Moscow%29.jpg/500px-Baptism_%2815th_c.%2C_Annunciation_Cathedral_in_Moscow%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Baptism_(15th_c.,_Annunciation_Cathedral_in_Moscow).jpg"
+ },
+ "entry": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Entry_into_Jerusalem_%28Annunciation_Cathedral_in_Moscow%29.jpg/500px-Entry_into_Jerusalem_%28Annunciation_Cathedral_in_Moscow%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Entry_into_Jerusalem_(Annunciation_Cathedral_in_Moscow).jpg"
+ },
+ "crucifixion": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Crucifixion_of_Jesus%2C_Russian_icon_by_Dionisius%2C_1500.jpg/500px-Crucifixion_of_Jesus%2C_Russian_icon_by_Dionisius%2C_1500.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Crucifixion_of_Jesus,_Russian_icon_by_Dionisius,_1500.jpg"
+ },
+ "ascension": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Ascension_from_Vasilyevskiy_chin_%2815th_c.%2C_GTG%29.jpg/500px-Ascension_from_Vasilyevskiy_chin_%2815th_c.%2C_GTG%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Ascension_from_Vasilyevskiy_chin_(15th_c.,_GTG).jpg"
+ },
+ "lastsupper": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Simon_ushakov_last_supper_1685.jpg/500px-Simon_ushakov_last_supper_1685.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Simon_ushakov_last_supper_1685.jpg"
+ },
+ "lazarus": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/The_Lazarus_Raising._Novgorod_icon-painting_school%2C_15th_cent.%2C_Kirillo-Belozersky_Monastery._Saint-Petersburg%2C_Russia.jpg/500px-The_Lazarus_Raising._Novgorod_icon-painting_school%2C_15th_cent.%2C_Kirillo-Belozersky_Monastery._Saint-Petersburg%2C_Russia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Lazarus_Raising._Novgorod_icon-painting_school,_15th_cent.,_Kirillo-Belozersky_Monastery._Saint-Petersburg,_Russia.jpg"
+ },
+ "pokrov": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Pokrov_%28icon%2C_1399%29.jpeg/500px-Pokrov_%28icon%2C_1399%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Pokrov_(icon,_1399).jpeg"
+ },
+ "triumph": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Triumph_orthodoxy.jpg/500px-Triumph_orthodoxy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Triumph_orthodoxy.jpg"
+ },
+ "cimabue": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Cimabue_025.jpg/500px-Cimabue_025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Cimabue_025.jpg"
+ },
+ "nicholas": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Novgorod_School_-_Saint_Nicholas_of_Zaraysk_with_20_scenes_from_his_life_-_NG.M.01773_-_National_Museum_of_Art%2C_Architecture_and_Design.jpg/500px-Novgorod_School_-_Saint_Nicholas_of_Zaraysk_with_20_scenes_from_his_life_-_NG.M.01773_-_National_Museum_of_Art%2C_Architecture_and_Design.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Novgorod_School_-_Saint_Nicholas_of_Zaraysk_with_20_scenes_from_his_life_-_NG.M.01773_-_National_Museum_of_Art,_Architecture_and_Design.jpg"
+ },
+ "johndesert": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/St_John_the_Baptist%2C_Angel_of_the_Desert%2C_17the.jpg/500px-St_John_the_Baptist%2C_Angel_of_the_Desert%2C_17the.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:St_John_the_Baptist,_Angel_of_the_Desert,_17the.jpg"
+ },
+ "borisgleb": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Unknow_-_St_Boris_and_St_Gleb_-_Google_Art_Project.jpg/500px-Unknow_-_St_Boris_and_St_Gleb_-_Google_Art_Project.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Unknow_-_St_Boris_and_St_Gleb_-_Google_Art_Project.jpg"
+ },
+ "demetrios": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Meister_der_Demetrius-Kirche_in_Saloniki_002.jpg/500px-Meister_der_Demetrius-Kirche_in_Saloniki_002.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Meister_der_Demetrius-Kirche_in_Saloniki_002.jpg"
+ },
+ "goldenhair": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Angel_with_Golden_Hair.jpg/500px-Angel_with_Golden_Hair.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Angel_with_Golden_Hair.jpg"
+ },
+ "sergiusbacchus": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Sergius_baccus.jpg/500px-Sergius_baccus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Sergius_baccus.jpg"
+ },
+ "elijah": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/The_Fiery_Ascension_of_the_Prophet_Elijah._Novgorod_School_of_Icon_Painting%2C_late_1400s.jpg/500px-The_Fiery_Ascension_of_the_Prophet_Elijah._Novgorod_School_of_Icon_Painting%2C_late_1400s.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Fiery_Ascension_of_the_Prophet_Elijah._Novgorod_School_of_Icon_Painting,_late_1400s.jpg"
+ },
+ "francis": {
+  "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Bonaventura_Berlinghieri_-_St_Francis_-_WGA01955.jpg/500px-Bonaventura_Berlinghieri_-_St_Francis_-_WGA01955.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Bonaventura_Berlinghieri_-_St_Francis_-_WGA01955.jpg"
+ }
+});
 const FAMOUS_KINDS = [['all', 'All icons'], ['christ', 'Christ'], ['mary', 'The Mother of God'], ['feast', 'Feasts'], ['saints', 'Saints & others']];
 let famousKind = 'all';
 let famousOpen = null;
@@ -13649,7 +13878,7 @@ function renderFamousIcons(){
     wrap.innerHTML = `
       <button class="text-link fi-back" type="button">← All famous icons</button>
       <article class="fi-detail">
-        <figure class="fi-figure">${img ? `<img src="${escapeHtml(img.img)}" alt="${escapeHtml(ic.title)}" decoding="async"><figcaption><a href="${escapeHtml(img.page)}" target="_blank" rel="noopener">Image via Wikimedia Commons ↗</a></figcaption>` : ''}</figure>
+        <figure class="fi-figure">${img ? `<img src="${escapeHtml(img.img)}" alt="${escapeHtml(ic.title)}" decoding="async"><figcaption><a href="${escapeHtml(img.page)}" target="_blank" rel="noopener">${img.credit ? `Photo: ${escapeHtml(img.credit)}, via` : 'Image via'} Wikimedia Commons ↗</a></figcaption>` : ''}</figure>
         <div class="fi-body">
           <h2>${escapeHtml(ic.title)}</h2>
           <dl class="fi-facts"><div><dt>Date</dt><dd>${escapeHtml(ic.date)}</dd></div><div><dt>Where</dt><dd>${escapeHtml(ic.place)}</dd></div><div><dt>Made with</dt><dd>${escapeHtml(ic.medium)}</dd></div></dl>
@@ -16399,7 +16628,7 @@ const DEVOTIONS_EAST = [
     ],
     link:['pray/little-office', 'Pray the whole Akathist'],
     prayers:[
-      ['The opening kontakion', 'To you, O Theotokos, invincible Champion, your city, delivered from sufferings, ascribes hymns of victory and thanksgiving. Since you have invincible power, deliver me from every danger, that I may cry to you: Rejoice, O Bride unwedded!']
+      ['The opening kontakion', 'To you, our champion and leader, O Theotokos, I, your city, delivered from terrible things, dedicate songs of victory and thanksgiving. Since your power is invincible, set me free from every kind of danger, so that I may cry out to you: Rejoice, O Bride unwedded!']
     ] },
   { id:'pascha-basket', name:'The Pascha Basket', icon:'basket', color:'green', kicker:'Holy and Great Saturday · Pascha',
     about:[
@@ -16819,7 +17048,7 @@ const AKATHIST_WORDS = [['bedesman', 'one who prays for another'], ['damozel', '
   ['joyaunce', 'joy'], ['wemless', 'spotless'], ['leal', 'loyal'], ['eke', 'also'], ['ken', 'know'], ['trow', 'believe'], ['agen', 'again'],
   ['depone', 'depose, cast down'], ['quire', 'choir'], ['shrift', 'absolution'], ['aeviternity', 'unending life'], ['mirky', 'murky, dark'],
   ['pyx', 'a vessel that holds the Holy Eucharist'], ['depaint', 'depict'], ['inly', 'inwardly'], ['anon', 'at once'], ['descry', 'catch sight of']];
-let akData = null;
+let akData = null, akVersion = store.get('akathist.version', 'modern');
 async function renderAkathist(seq){
   const ak = DEVOTIONS_EAST.find(d => d.id === 'akathist'), par = DEVOTIONS_EAST.find(d => d.id === 'paraklesis');
   if(!akData){
@@ -16829,12 +17058,40 @@ async function renderAkathist(seq){
     if(!stillShowing(seq, 'littleoffice')) return;
   }
   const line = l => l.startsWith('~') ? `<span class="ak-in">${escapeHtml(l.slice(1))}</span>` : escapeHtml(l);
-  const stanza = st => `
+  const head = st => `<h4>${escapeHtml(st.label)}${st.tone ? `<span>${escapeHtml(st.tone)}</span>` : ''}</h4>`;
+  // Woodward's 1917 verse
+  const verse = st => `
     <section class="ak-stanza${st.label.startsWith('Ikos') ? ' ikos' : ''}">
-      <h4>${escapeHtml(st.label)}${st.tone ? `<span>${escapeHtml(st.tone)}</span>` : ''}</h4>
+      ${head(st)}
       ${st.groups.map(g => `<p class="${g[0].startsWith('Hail Mary') ? 'ak-hail' : 'ak-verse'}">${g.map(line).join('<br>')}</p>`).join('')}
       <p class="ak-end">${st.end.map(escapeHtml).join('<br>')}</p>
     </section>`;
+  // The modern translation, with the Greek beside it if asked
+  const modern = (st, withGreek) => {
+    const english = `
+      <p class="ak-verse">${escapeHtml(st.text)}</p>
+      ${st.hails.map(([a, b]) => `<p class="ak-hail">${escapeHtml(a)}<br>${escapeHtml(b)}</p>`).join('')}
+      <p class="ak-end">${escapeHtml(st.end)}</p>`;
+    return `
+    <section class="ak-stanza${st.label.startsWith('Ikos') ? ' ikos' : ''}">
+      ${head(st)}
+      ${withGreek ? `<div class="ak-two"><div class="ak-greek" lang="grc">${st.greek.split('\n').map(escapeHtml).join('<br>')}</div><div>${english}</div></div>` : english}
+    </section>`;
+  };
+  const m = akData.modern, withGreek = akVersion === 'greek';
+  const versions = [['modern', 'Modern English'], ['greek', 'With the Greek'], ['woodward', 'Woodward’s verse (1917)']];
+  const body = akVersion === 'woodward' ? `
+        ${akData.stanzas.map(verse).join('')}
+        <details class="ak-words"><summary>Old words in this translation</summary>
+          <dl>${AKATHIST_WORDS.map(([w, mean]) => `<div><dt>${w}</dt><dd>${mean}</dd></div>`).join('')}</dl>
+        </details>
+        <p class="lo-source">${escapeHtml(akData.woodward_source)} Woodward wrote it in easy metres so that it could be sung; in place of “Rejoice” he uses “Hail Mary!”</p>` : `
+        ${m.stanzas.map(st => modern(st, withGreek)).join('')}
+        <details class="ak-words"><summary>${escapeHtml(m.annunciation.label)}</summary>
+          <p class="lo-r">The Greek books also give this kontakion of the Annunciation at the beginning of the hymn.</p>
+          ${modern({ ...m.annunciation, label:'', tone:'', hails:[] }, withGreek)}
+        </details>
+        <p class="lo-source">${escapeHtml(m.source)} The refrain “Chaire,” translated here “Rejoice,” is the angel’s greeting to Mary.</p>`;
   entryListEl.innerHTML = `
     <div class="dv-page">
       <nav class="dv-jump" aria-label="On this page">
@@ -16845,12 +17102,9 @@ async function renderAkathist(seq){
       ${dvCardHtml({ ...ak, prayers:[], link:null })}
       <article class="ak-text dv-card" id="dv-akathist-text" style="--dv:var(--rose)">
         <h3 class="ak-title">${escapeHtml(akData.title)}</h3>
+        <div class="lo-tabs ak-versions" role="tablist" aria-label="Translation">${versions.map(([k, n]) => `<button role="tab" class="lo-tab${akVersion === k ? ' active' : ''}" aria-selected="${akVersion === k}" data-ak-version="${k}"><strong>${n}</strong></button>`).join('')}</div>
         <p class="lo-r">Stand while you pray it, as its name says. After the last Kontakion, it is customary to repeat it three times, then the first Ikos and the first Kontakion.</p>
-        ${akData.stanzas.map(stanza).join('')}
-        <details class="ak-words"><summary>Old words in this translation</summary>
-          <dl>${AKATHIST_WORDS.map(([w, m]) => `<div><dt>${w}</dt><dd>${m}</dd></div>`).join('')}</dl>
-        </details>
-        <p class="lo-source">${escapeHtml(akData.source)} Woodward wrote it in easy metres so that it could be sung; in place of “Rejoice” he uses “Hail Mary!”</p>
+        ${body}
       </article>
       ${dvCardHtml(par)}
       <p class="dv-note dv-east">The Little Office of the Blessed Virgin Mary is the Marian office of the Latin Church. <button class="text-link" data-lo-latin>Pray it anyway</button></p>
@@ -16859,6 +17113,12 @@ async function renderAkathist(seq){
   entryListEl.querySelectorAll('[data-dv]').forEach(b => b.addEventListener('click', () => {
     const el = document.getElementById('dv-' + b.dataset.dv);
     if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+  }));
+  entryListEl.querySelectorAll('[data-ak-version]').forEach(b => b.addEventListener('click', () => {
+    akVersion = b.dataset.akVersion;
+    store.set('akathist.version', akVersion);
+    renderAkathist(++viewSeq);
+    document.getElementById('dv-akathist-text')?.scrollIntoView({ block:'start' });
   }));
 }
 
