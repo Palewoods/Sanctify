@@ -2118,6 +2118,32 @@
   .dv-east{margin-top:4px;}
   .dv-link{display:inline-block; margin-top:12px;}
   @media (max-width:600px){ .dv-card{padding:20px 18px;} .dv-head h3{font-size:1.3rem;} }
+  /* Catholic Lists, Inside a Church */
+  .ls-items{margin:8px 0 6px; padding:0; list-style:none; counter-reset:ls;}
+  .ls-items li{counter-increment:ls; position:relative; padding:9px 0 9px 34px; border-top:1px solid var(--line);}
+  .ls-items li:first-child{border-top:0;}
+  .ls-items li::before{content:counter(ls); position:absolute; left:0; top:9px; width:24px; height:24px; border-radius:50%; background:color-mix(in srgb, var(--dv) 16%, transparent); color:var(--ink); font-size:0.8rem; font-weight:600; display:flex; align-items:center; justify-content:center;}
+  .ls-term{display:block; font-weight:600;}
+  .ls-items.plain .ls-term{font-weight:400; font-style:italic;}
+  .ls-x{display:block; color:var(--ink-soft); margin-top:2px;}
+  .ls-swatch{display:inline-block; width:14px; height:14px; border-radius:50%; margin-right:8px; vertical-align:-2px; border:1px solid var(--line);}
+  .ls-source{margin:10px 0 0; font-size:0.85rem; color:var(--ink-soft);}
+  /* The Ecumenical Councils */
+  .cn-list{list-style:none; margin:0; padding:0;}
+  .cn-item{position:relative; display:flex; gap:16px; padding:0 0 22px;}
+  .cn-item::before{content:''; position:absolute; left:19px; top:40px; bottom:0; width:2px; background:var(--line);}
+  .cn-item:last-child::before{display:none;}
+  .cn-num{flex:0 0 40px; height:40px; border-radius:50%; border:1px solid var(--line); background:var(--parchment-light); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond', serif; font-size:1.2rem; font-weight:600; color:var(--ink);}
+  .cn-seven .cn-num{border-color:var(--gold); background:color-mix(in srgb, var(--gold) 16%, var(--parchment-light));}
+  .cn-body{flex:1; min-width:0; padding:14px 18px; border:1px solid var(--line); border-radius:14px; background:var(--parchment-light);}
+  .cn-body h3{margin:0; font-family:'Cormorant Garamond', serif; font-size:1.35rem;}
+  .cn-year{font-family:inherit; font-size:1rem; color:var(--ink-soft); font-weight:400; margin-left:6px;}
+  .cn-meta{margin:2px 0 8px; font-size:0.88rem; color:var(--ink-soft);}
+  .cn-body ul{margin:0 0 6px; padding-left:20px;}
+  .cn-body li{margin:3px 0;}
+  .cn-also{margin:8px 0 4px; font-size:0.92rem; color:var(--ink-soft);}
+  .cn-east{border-left:2px solid var(--gold); padding-left:10px;}
+  @media (max-width:600px){ .cn-item{gap:10px;} .cn-num{flex-basis:32px; height:32px; font-size:1rem;} .cn-item::before{left:15px; top:32px;} .cn-body{padding:12px 14px;} }
   .badges-head{display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-bottom:24px; padding:18px 22px; border:1px solid var(--line); border-radius:18px; background:var(--parchment-light);}
   .badges-head p{flex:1 1 320px; margin:0; color:var(--ink-soft); font-size:0.95rem;}
   .badges-score{display:flex; flex-direction:column; align-items:center; min-width:120px;}
@@ -3087,6 +3113,7 @@
       <ul>
         <li><button class="navlink" data-route="history/timeline" data-cat="history">Church History <span class="count" id="count-history"></span></button></li>
         <li><button class="navlink" data-route="history/popes" data-cat="popes">The Popes</button></li>
+        <li><button class="navlink" data-route="history/councils" data-cat="councils">The Ecumenical Councils</button></li>
         <li><button class="navlink" data-route="history/icons" data-cat="icons">Famous Icons</button></li>
         <li><button class="navlink" data-route="history/orders" data-cat="orders">Religious Orders</button></li>
         <li><button class="navlink" data-route="history/eastern-churches" data-cat="easternchurches">The Eastern Catholic Churches</button></li>
@@ -3109,6 +3136,8 @@
         <li><button class="navlink" data-route="learn/theology" data-cat="theology">Theology <span class="count" id="count-theology"></span></button></li>
         <li><button class="navlink" data-route="learn/mass" data-cat="mass">The Mass Explained</button></li>
         <li><button class="navlink" data-route="learn/living-the-faith" data-cat="vocations">Living the Faith</button></li>
+        <li><button class="navlink" data-route="learn/lists" data-cat="lists">Catholic Lists</button></li>
+        <li><button class="navlink" data-route="learn/church" data-cat="church">Inside a Church</button></li>
         <li><button class="navlink" data-route="learn/glossary" data-cat="glossary">Catholic Glossary</button></li>
         <li><button class="navlink" data-route="learn/quiz" data-cat="quiz">Quiz</button></li>
       </ul>
@@ -3150,11 +3179,11 @@
       <div><h4>Saints</h4>
         <button data-route="saints/all">All the Saints</button><button data-route="saints/patron-finder">Find Your Patron Saint</button><button data-route="saints/quotes">Quotes of the Saints</button><button data-route="mine">Novenas</button></div>
       <div><h4>History</h4>
-        <button data-route="history/timeline">Church History</button><button data-route="history/timeline/apparitions">Marian Apparitions</button><button data-route="history/timeline/crusades">The Crusades</button><button data-route="history/popes">The Popes</button><button data-route="history/icons">Famous Icons</button><button data-route="history/orders">Religious Orders</button><button data-route="history/eastern-churches">Eastern Catholic Churches</button></div>
+        <button data-route="history/timeline">Church History</button><button data-route="history/timeline/apparitions">Marian Apparitions</button><button data-route="history/timeline/crusades">The Crusades</button><button data-route="history/popes">The Popes</button><button data-route="history/councils">The Councils</button><button data-route="history/icons">Famous Icons</button><button data-route="history/orders">Religious Orders</button><button data-route="history/eastern-churches">Eastern Catholic Churches</button></div>
       <div><h4>Library</h4>
         <button data-route="library/bible">The Bible</button><button data-route="library/books">Books</button><button data-route="library/plans">Reading Plans</button><button data-route="library/shop">Shop</button><button data-route="library/all">Browse everything</button></div>
       <div><h4>Learn</h4>
-        <button data-route="learn/theology">Theology</button><button data-route="learn/theology/fathers">The Faith of the Fathers</button><button data-route="learn/theology/apologetics">Defending the Faith</button><button data-route="learn/mass">The Mass Explained</button><button data-route="learn/living-the-faith">Living the Faith</button><button data-route="learn/glossary">Glossary</button><button data-route="learn/quiz">Quiz</button></div>
+        <button data-route="learn/theology">Theology</button><button data-route="learn/theology/fathers">The Faith of the Fathers</button><button data-route="learn/theology/apologetics">Defending the Faith</button><button data-route="learn/mass">The Mass Explained</button><button data-route="learn/living-the-faith">Living the Faith</button><button data-route="learn/lists">Catholic Lists</button><button data-route="learn/church">Inside a Church</button><button data-route="learn/glossary">Glossary</button><button data-route="learn/quiz">Quiz</button></div>
       <div><h4>Sanctify</h4>
         <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="news">News</button><button data-route="badges">Badges</button><button data-route="library/resources">Resources</button><button data-route="mine">My Sanctify</button><button data-route="community">Community</button><button data-route="account">Account</button><button class="footer-rite" data-rite-switch>Switch to the Eastern Catholic edition</button></div>
     </div>
@@ -3220,6 +3249,9 @@ const CAT_DESC = {
   icons: 'The most famous icons of East and West, what they show, and the stories behind them.',
   easternchurches: 'The twenty-three Eastern Catholic Churches, in full communion with Rome: their traditions, leaders, and lands.',
   vocations: 'How to become Catholic or come home, the basics of everyday Catholic life, and guides to discerning and living each vocation: marriage, priesthood, religious life, and more.',
+  lists: 'The lists every Catholic learns, explained: the Ten Commandments, the Beatitudes, the precepts, the sacraments, the virtues, the works of mercy, the capital sins, and more.',
+  church: 'A walk through a Catholic church: what each part is for, the sacred vessels, the vestments, the colors of the seasons, and how to take part in the Mass.',
+  councils: 'All twenty-one ecumenical councils, from Nicaea to Vatican II: when and where they met, and what each one taught.',
   glossary: 'Clear, short definitions of the words of the Catholic faith, from Absolution to the Vulgate.',
   quotes: 'The words of the saints, from the Church Fathers to our own day, each with its source. Search them, browse by theme, and share your favorites.',
   patronfinder: 'Pick as many answers as you like: your name, your work, your needs, and what you love in a saint. Sanctify suggests friends in heaven who fit.',
@@ -3350,6 +3382,12 @@ const SEED_DATA = [
     content:'Lord Jesus, who went about doing good and healing every sickness, look with compassion on all who are ill, especially those I now name before you. Give them patience in their suffering, strength in their weakness, and, if it be your will, the gift of health.\n\nBless the doctors, nurses, and caregivers who tend them, and let all who suffer know that they are not alone, for you have carried our infirmities. Amen.' },
 
   // ---- Prayers of the Byzantine tradition (shown in the Eastern Catholic edition) ----
+  { id:'p51', category:'prayer', title:'Litany of Loreto', author:'The Litany of the Blessed Virgin Mary; with the titles added by Pope St. John Paul II and Pope Francis', tags:['marian','litany','mary'],
+    content:'Lord, have mercy. Christ, have mercy. Lord, have mercy.\nChrist, hear us. Christ, graciously hear us.\n\nGod the Father of heaven, have mercy on us.\nGod the Son, Redeemer of the world, have mercy on us.\nGod the Holy Spirit, have mercy on us.\nHoly Trinity, one God, have mercy on us.\n\nHoly Mary, pray for us.\nHoly Mother of God, pray for us.\nHoly Virgin of virgins, pray for us.\nMother of Christ, pray for us.\nMother of the Church, pray for us.\nMother of mercy, pray for us.\nMother of divine grace, pray for us.\nMother of hope, pray for us.\nMother most pure, pray for us.\nMother most chaste, pray for us.\nMother inviolate, pray for us.\nMother undefiled, pray for us.\nMother most amiable, pray for us.\nMother most admirable, pray for us.\nMother of good counsel, pray for us.\nMother of our Creator, pray for us.\nMother of our Savior, pray for us.\nVirgin most prudent, pray for us.\nVirgin most venerable, pray for us.\nVirgin most renowned, pray for us.\nVirgin most powerful, pray for us.\nVirgin most merciful, pray for us.\nVirgin most faithful, pray for us.\nMirror of justice, pray for us.\nSeat of wisdom, pray for us.\nCause of our joy, pray for us.\nSpiritual vessel, pray for us.\nVessel of honor, pray for us.\nSingular vessel of devotion, pray for us.\nMystical rose, pray for us.\nTower of David, pray for us.\nTower of ivory, pray for us.\nHouse of gold, pray for us.\nArk of the covenant, pray for us.\nGate of heaven, pray for us.\nMorning star, pray for us.\nHealth of the sick, pray for us.\nRefuge of sinners, pray for us.\nSolace of migrants, pray for us.\nComfort of the afflicted, pray for us.\nHelp of Christians, pray for us.\nQueen of Angels, pray for us.\nQueen of Patriarchs, pray for us.\nQueen of Prophets, pray for us.\nQueen of Apostles, pray for us.\nQueen of Martyrs, pray for us.\nQueen of Confessors, pray for us.\nQueen of Virgins, pray for us.\nQueen of all Saints, pray for us.\nQueen conceived without original sin, pray for us.\nQueen assumed into heaven, pray for us.\nQueen of the most holy Rosary, pray for us.\nQueen of families, pray for us.\nQueen of peace, pray for us.\n\nLamb of God, who takest away the sins of the world, spare us, O Lord.\nLamb of God, who takest away the sins of the world, graciously hear us, O Lord.\nLamb of God, who takest away the sins of the world, have mercy on us.\n\nV. Pray for us, O holy Mother of God.\nR. That we may be made worthy of the promises of Christ.\n\nLet us pray. Grant, we beseech thee, O Lord God, that we thy servants may enjoy perpetual health of mind and body; and by the glorious intercession of the Blessed Mary, ever Virgin, may be delivered from present sorrow, and obtain eternal joy. Through Christ our Lord. Amen.' },
+  { id:'p52', category:'prayer', title:'Litany of the Sacred Heart of Jesus', author:'Approved by Pope Leo XIII, 1899', tags:['sacred heart','litany','jesus','june'],
+    content:'Lord, have mercy. Christ, have mercy. Lord, have mercy.\nChrist, hear us. Christ, graciously hear us.\n\nGod the Father of heaven, have mercy on us.\nGod the Son, Redeemer of the world, have mercy on us.\nGod the Holy Spirit, have mercy on us.\nHoly Trinity, one God, have mercy on us.\n\nHeart of Jesus, Son of the Eternal Father, have mercy on us.\nHeart of Jesus, formed by the Holy Spirit in the womb of the Virgin Mother, have mercy on us.\nHeart of Jesus, substantially united to the Word of God, have mercy on us.\nHeart of Jesus, of infinite majesty, have mercy on us.\nHeart of Jesus, sacred temple of God, have mercy on us.\nHeart of Jesus, tabernacle of the Most High, have mercy on us.\nHeart of Jesus, house of God and gate of heaven, have mercy on us.\nHeart of Jesus, burning furnace of charity, have mercy on us.\nHeart of Jesus, abode of justice and love, have mercy on us.\nHeart of Jesus, full of goodness and love, have mercy on us.\nHeart of Jesus, abyss of all virtues, have mercy on us.\nHeart of Jesus, most worthy of all praise, have mercy on us.\nHeart of Jesus, king and center of all hearts, have mercy on us.\nHeart of Jesus, in whom are all the treasures of wisdom and knowledge, have mercy on us.\nHeart of Jesus, in whom dwells the fullness of divinity, have mercy on us.\nHeart of Jesus, in whom the Father was well pleased, have mercy on us.\nHeart of Jesus, of whose fullness we have all received, have mercy on us.\nHeart of Jesus, desire of the everlasting hills, have mercy on us.\nHeart of Jesus, patient and most merciful, have mercy on us.\nHeart of Jesus, enriching all who invoke thee, have mercy on us.\nHeart of Jesus, fountain of life and holiness, have mercy on us.\nHeart of Jesus, propitiation for our sins, have mercy on us.\nHeart of Jesus, loaded down with opprobrium, have mercy on us.\nHeart of Jesus, bruised for our offenses, have mercy on us.\nHeart of Jesus, obedient unto death, have mercy on us.\nHeart of Jesus, pierced with a lance, have mercy on us.\nHeart of Jesus, source of all consolation, have mercy on us.\nHeart of Jesus, our life and resurrection, have mercy on us.\nHeart of Jesus, our peace and our reconciliation, have mercy on us.\nHeart of Jesus, victim for our sins, have mercy on us.\nHeart of Jesus, salvation of those who trust in thee, have mercy on us.\nHeart of Jesus, hope of those who die in thee, have mercy on us.\nHeart of Jesus, delight of all the saints, have mercy on us.\n\nLamb of God, who takest away the sins of the world, spare us, O Lord.\nLamb of God, who takest away the sins of the world, graciously hear us, O Lord.\nLamb of God, who takest away the sins of the world, have mercy on us.\n\nV. Jesus, meek and humble of heart.\nR. Make our hearts like unto thine.\n\nLet us pray. Almighty and everlasting God, look upon the Heart of thy most beloved Son, and upon the praise and satisfaction which he offers thee in the name of sinners; and to those who implore thy mercy, in thy great goodness grant forgiveness in the name of the same Jesus Christ, thy Son, who liveth and reigneth with thee, world without end. Amen.' },
+  { id:'p53', category:'prayer', title:'Litany of St. Joseph', author:'Approved by Pope St. Pius X, 1909; with the invocations added by Pope Francis in 2021', tags:['st. joseph','litany','fathers','march'],
+    content:'Lord, have mercy. Christ, have mercy. Lord, have mercy.\nChrist, hear us. Christ, graciously hear us.\n\nGod the Father of heaven, have mercy on us.\nGod the Son, Redeemer of the world, have mercy on us.\nGod the Holy Spirit, have mercy on us.\nHoly Trinity, one God, have mercy on us.\n\nHoly Mary, pray for us.\nSaint Joseph, pray for us.\nRenowned offspring of David, pray for us.\nLight of Patriarchs, pray for us.\nSpouse of the Mother of God, pray for us.\nGuardian of the Redeemer, pray for us.\nChaste guardian of the Virgin, pray for us.\nFoster father of the Son of God, pray for us.\nDiligent protector of Christ, pray for us.\nServant of Christ, pray for us.\nMinister of salvation, pray for us.\nHead of the Holy Family, pray for us.\nJoseph most just, pray for us.\nJoseph most chaste, pray for us.\nJoseph most prudent, pray for us.\nJoseph most strong, pray for us.\nJoseph most obedient, pray for us.\nJoseph most faithful, pray for us.\nMirror of patience, pray for us.\nLover of poverty, pray for us.\nModel of workmen, pray for us.\nGlory of home life, pray for us.\nGuardian of virgins, pray for us.\nPillar of families, pray for us.\nSupport in difficulties, pray for us.\nSolace of the wretched, pray for us.\nHope of the sick, pray for us.\nPatron of exiles, pray for us.\nPatron of the afflicted, pray for us.\nPatron of the poor, pray for us.\nPatron of the dying, pray for us.\nTerror of demons, pray for us.\nProtector of Holy Church, pray for us.\n\nLamb of God, who takest away the sins of the world, spare us, O Lord.\nLamb of God, who takest away the sins of the world, graciously hear us, O Lord.\nLamb of God, who takest away the sins of the world, have mercy on us.\n\nV. He made him the lord of his household.\nR. And prince over all his possessions.\n\nLet us pray. O God, who in thy ineffable providence didst vouchsafe to choose Blessed Joseph to be the spouse of thy most holy Mother, grant, we beseech thee, that we may be worthy to have him for our intercessor in heaven, whom we venerate as our protector on earth: who livest and reignest world without end. Amen.' },
   { id:'pe1', category:'prayer', rite:'eastern', title:'O Heavenly King', author:'Byzantine tradition; begins nearly every service', tags:['eastern','holy spirit','daily'],
     content:'O Heavenly King, Comforter, Spirit of Truth, everywhere present and filling all things, Treasury of blessings and Giver of life: come and abide in us, cleanse us from every stain, and save our souls, O Good One.' },
   { id:'pe2', category:'prayer', rite:'eastern', title:'The Trisagion (Thrice-Holy Hymn)', author:'Byzantine tradition, 5th century', tags:['eastern','daily','trinity'],
@@ -3434,6 +3472,10 @@ const SEED_DATA = [
     content:'The memory of the just is celebrated with hymns of praise, but the Lord’s testimony is sufficient for you, O Forerunner. You have proved to be truly even more venerable than the prophets, since you were granted to baptize in the running waters him whom they proclaimed.\n\nTherefore, having contended for the truth, you rejoiced to announce even to those in Hades the God who appeared in the flesh, who takes away the sin of the world and grants us great mercy.' },
   { id:'pe42', category:'prayer', rite:'eastern', title:'Evening Prayer of St. Macarius the Great', author:'From the Byzantine prayers before sleep', tags:['eastern','evening','night prayer'],
     content:'O eternal God and King of all creation, who have granted me to arrive at this hour, forgive me the sins I have committed this day in thought, word, and deed, and cleanse, O Lord, my humble soul from every stain of flesh and spirit.\n\nGrant me, O Lord, to pass the sleep of this night in peace, that rising from my lowly bed I may please your most holy name all the days of my life, and conquer the enemies, both bodily and bodiless, that war against me. Deliver me, O Lord, from vain thoughts and from evil desires which defile me.\n\nFor yours is the kingdom, the power, and the glory, of the Father and of the Son and of the Holy Spirit, now and ever and unto ages of ages. Amen.' },
+  { id:'pe43', category:'prayer', rite:'eastern', title:'The Great Litany (Litany of Peace)', author:'The Divine Liturgy; English translated from the Greek for Sanctify', tags:['eastern','litany','divine liturgy','peace'],
+    content:'Deacon: In peace let us pray to the Lord.\nPeople: Lord, have mercy.\nFor the peace from above and for the salvation of our souls, let us pray to the Lord. Lord, have mercy.\nFor the peace of the whole world, for the well-being of the holy Churches of God, and for the union of all, let us pray to the Lord. Lord, have mercy.\nFor this holy house, and for those who enter it with faith, reverence, and the fear of God, let us pray to the Lord. Lord, have mercy.\nFor our holy father N., Pope of Rome, for our bishop N., for the honorable presbyters, for the deacons in Christ, and for all the clergy and the people, let us pray to the Lord. Lord, have mercy.\nFor our country, for all in authority, and for all who serve and protect it, let us pray to the Lord. Lord, have mercy.\nFor this city, for every city and land, and for the faithful who dwell in them, let us pray to the Lord. Lord, have mercy.\nFor seasonable weather, for an abundance of the fruits of the earth, and for peaceful times, let us pray to the Lord. Lord, have mercy.\nFor those who travel by land, by sea, and by air, for the sick and the suffering, for captives, and for their salvation, let us pray to the Lord. Lord, have mercy.\nFor our deliverance from all affliction, wrath, danger, and need, let us pray to the Lord. Lord, have mercy.\nHelp us, save us, have mercy on us, and protect us, O God, by your grace. Lord, have mercy.\nRemembering our most holy, most pure, most blessed and glorious Lady, the Theotokos and ever-virgin Mary, with all the saints, let us commend ourselves and one another and our whole life to Christ our God.\nPeople: To you, O Lord.\nPriest: For to you belong all glory, honor, and worship, to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages.\nPeople: Amen.' },
+  { id:'pe44', category:'prayer', rite:'eastern', title:'The Litany of Fervent Supplication', author:'The Divine Liturgy; English translated from the Greek for Sanctify', tags:['eastern','litany','divine liturgy','intercession'],
+    content:'Deacon: Let us all say with our whole soul and with our whole mind, let us say:\nPeople: Lord, have mercy.\nO Lord almighty, God of our fathers, we pray you, hear us and have mercy. Lord, have mercy.\nHave mercy on us, O God, according to your great mercy, we pray you, hear us and have mercy. Lord, have mercy. Lord, have mercy. Lord, have mercy.\nAgain we pray for our holy father N., Pope of Rome, for our bishop N., and for all our brothers and sisters in Christ. Lord, have mercy (three times).\nAgain we pray for mercy, life, peace, health, salvation, protection, and the pardon and forgiveness of the sins of the servants of God, (names), and of all the faithful of this parish. Lord, have mercy (three times).\nAgain we pray for the blessed and ever-remembered founders of this holy church, and for all our fathers, brothers, and sisters who have fallen asleep before us and who rest here and everywhere. Lord, have mercy (three times).\nAgain we pray for those who bear fruit and do good in this holy and all-venerable church, for those who labor and those who sing, and for the people here present, who await your great and abundant mercy. Lord, have mercy (three times).\nPriest: For you are a merciful God who loves mankind, and to you we give glory, to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages.\nPeople: Amen.' },
   { id:'s1', category:'saint', title:'St. Francis of Assisi', author:'1181\u20131226, feast day October 4', tags:['founder','poverty','nature'],
     content:'Born to a wealthy cloth merchant in Assisi, Francis abandoned a comfortable life after a series of conversions, embracing radical poverty and founding the Franciscan order. He preached to the poor…', _t:'saint-0' },
   { id:'s2', category:'saint', title:'St. Thérèse of Lisieux', author:'1873\u20131897, feast day October 1', tags:['carmelite','little way','doctor of the church'],
@@ -7067,7 +7109,7 @@ function render(){
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
       community:renderCommunity, resources:renderResources,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
-      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, badges:renderBadges, devotions:renderDevotions, littleoffice:renderLittleOffice, vocations:renderVocations, hymns:renderHymns, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
+      tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, lists:renderLists, church:renderChurchGuide, councils:renderCouncils, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, badges:renderBadges, devotions:renderDevotions, littleoffice:renderLittleOffice, vocations:renderVocations, hymns:renderHymns, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
       'hub-pray':() => renderHub('pray'), 'hub-library':() => renderHub('library'), 'hub-learn':() => renderHub('learn'), 'hub-history':() => renderHub('history'), 'hub-saints':() => renderHub('saints')
     };
     const needsNoSearch = new Set(['home', 'daily', 'theology', 'hub-pray', 'hub-library', 'hub-learn']);
@@ -12918,7 +12960,7 @@ CARD_ART.rope = (() => {
 // Latin-only prayers, replaced in the Eastern edition by their Byzantine counterparts
 const LATIN_ONLY = new Set(['t108', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'p9', 'p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20',
   'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p30', 'p32', 'p33', 'p34', 'p35', 'p37', 'p38', 'p39', 'p40', 'p41', 'p43', 'p44',
-  'p45', 'p46', 'p47', 'p48']);
+  'p45', 'p46', 'p47', 'p48', 'p51', 'p52', 'p53']);
 // Saints shown on the Byzantine calendar: everyone before 1054, plus these Eastern saints and blesseds
 const EASTERN_SAINTS = new Set(['s139', 's216', 's231', 's292', 's388', 's389', 's390', 's391', 's392', 's393', 's394', 's395', 's396', 's397', 's398', 's399', 's400', 's401', 's402', 's403', 's404', 's405', 's406', 's407', 's408', 's409', 's410', 's411', 's412', 's413', 's414', 's415', 's416', 's417', 's418', 's419', 's420', 's421', 's422', 's423', 's424', 's425', 's426', 's427', 's428', 's429', 's472', 's473', 's474', 's475', 's476', 's477', 's478', 's479', 's480', 's481', 's482', 's483', 's484', 's485', 's486', 's487', 's488', 's489', 's490', 's491', 's583', 's584', 's585', 's586', 's587', 's588', 's589', 's590', 's591', 's592', 's593', 's594', 's595', 's596', 's597', 's598', 's599', 's600', 's601', 's602', 's603', 's604', 's605', 's686']);
 const LIBRARY_ALL = library.slice();
@@ -12934,7 +12976,8 @@ const RITE_SECTIONS = {
   exam:{ name:['Examination of Conscience', 'Preparing for Confession'] },
   mass:{ name:['The Mass Explained', 'The Divine Liturgy Explained'] },
   devotions:{ name:['Devotions & Sacramentals', 'Holy Customs'], icon:['scapular', 'icons'] },
-  littleoffice:{ name:['The Little Office of Our Lady', 'Akathist & Paraklesis'], icon:['office', 'angelus'] }
+  littleoffice:{ name:['The Little Office of Our Lady', 'Akathist & Paraklesis'], icon:['office', 'angelus'] },
+  church:{ name:['Inside a Church', 'Inside a Byzantine Church'] }
 };
 const RITE_DESC = {
   rosary:'Pray the Jesus Prayer on a prayer rope, knot by knot: the ancient prayer of the heart of the Eastern Churches.',
@@ -12948,11 +12991,13 @@ const RITE_DESC = {
   littleoffice:'The whole Akathist Hymn to the Theotokos, in a new translation from the Greek, and the Paraklesis of supplication.',
   hymns:'The chants of the Byzantine Churches, with recordings: O Heavenly King, the Cherubic Hymn, It Is Truly Right, Christ Is Risen, and more.',
   devotions:'The holy customs of Byzantine Christians: the icon corner, Theophany water, the baptismal cross, the prayer rope, the Paraklesis and Akathist, and the Pascha basket.',
-  mass:'Every part of the Divine Liturgy of St. John Chrysostom in order, with what happens and what it means. Follow along on your phone at the Liturgy.'
+  mass:'Every part of the Divine Liturgy of St. John Chrysostom in order, with what happens and what it means. Follow along on your phone at the Liturgy.',
+  lists:'The lists every Christian learns, explained: the Commandments, the Beatitudes, the Holy Mysteries, the virtues, the works of mercy, the eight evil thoughts, the great feasts and the fasts, and more.',
+  church:'A walk through a Byzantine church: the iconostasis and how to read it, the Holy Table, the holy vessels, the vestments, the colors, and how to take part in the Divine Liturgy.'
 };
 const RITE_NAV = {
   'pray/rosary':'Jesus Prayer', 'pray/stations':'Prayer of St. Ephrem', 'pray/chaplet':'Trisagion Prayers', 'pray/sacred-heart':'Prayers Before Communion', 'pray/angelus':'Hymns to the Theotokos',
-  'pray/examen':'Evening Prayer', 'pray/examination':'Preparing for Confession', 'learn/mass':'The Divine Liturgy Explained', 'pray/devotions':'Holy Customs', 'pray/little-office':'Akathist & Paraklesis'
+  'pray/examen':'Evening Prayer', 'pray/examination':'Preparing for Confession', 'learn/mass':'The Divine Liturgy Explained', 'pray/devotions':'Holy Customs', 'pray/little-office':'Akathist & Paraklesis', 'learn/church':'Inside a Byzantine Church'
 };
 const latinDesc = {};
 
@@ -14318,6 +14363,9 @@ function renderPopes(){
    ========================================================= */
 const NAV_ICONS = {
   home:'<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
+  list:'<path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.2"/><circle cx="4.5" cy="12" r="1.2"/><circle cx="4.5" cy="18" r="1.2"/>',
+  church:'<path d="M12 2v5M9.5 4h5"/><path d="M5 21V12l7-5 7 5v9"/><path d="M3 21h18"/><path d="M10 21v-4a2 2 0 0 1 4 0v4"/>',
+  council:'<path d="M6 21h12"/><path d="M7 21L6 9.5 12 3l6 6.5L17 21"/><path d="M12 3v18"/><path d="M6.4 14h11.2"/>',
   daily:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M2 12h2.5M19.5 12H22M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/>',
   mine:'<path d="M6 3h12v18l-6-4.5L6 21z"/>',
   prayer:'<path d="M12 3c-1.2 3.2-4 6.2-4 10.5V18l4 3 4-3v-4.5C16 9.2 13.2 6.2 12 3z"/><path d="M12 7.5V21"/>',
@@ -14417,6 +14465,9 @@ const SECTIONS = {
   mass:{ name:'The Mass Explained', group:'Learn', icon:'mass', color:'var(--wine)' },
   glossary:{ name:'Catholic Glossary', group:'Learn', icon:'glossary', color:'var(--purple)' },
   vocations:{ name:'Living the Faith', group:'Learn', icon:'compass', color:'var(--teal)' },
+  lists:{ name:'Catholic Lists', group:'Learn', icon:'list', color:'var(--indigo)' },
+  church:{ name:'Inside a Church', group:'Learn', icon:'church', color:'var(--wine)' },
+  councils:{ name:'The Ecumenical Councils', group:'Learn', icon:'council', color:'var(--gold)' },
   icons:{ name:'Famous Icons', group:'Learn', icon:'icons', color:'var(--gold)' },
   popes:{ name:'The Popes', group:'Learn', icon:'popes', color:'var(--gold)' },
   orders:{ name:'Religious Orders', group:'Learn', icon:'orders', color:'var(--green)' },
@@ -14554,6 +14605,8 @@ const HUBS = {
         meta:`${countOf('theology')} topics`, cta:'Start learning' },
       { route:'learn/mass', desc:isEastern() ? 'Every part of the Divine Liturgy of St. John Chrysostom, with what happens and why. Follow along on your phone.' : 'Every part of the Mass, with when to stand, sit, and kneel and what each moment means. Follow along on your phone.', meta:isEastern() ? 'The Divine Liturgy' : 'The Order of Mass' },
       { route:'learn/living-the-faith', desc:isEastern() ? 'Becoming an Eastern Catholic, the rhythm of Byzantine life, and guides to Holy Crowning, the priesthood, monastic life, and more.' : 'Becoming Catholic, coming home, the precepts of the Church, and guides to discerning and living every vocation.', meta:isEastern() ? `${VOCATIONS_EAST.length} guides` : `${VOCATIONS.length} guides` },
+      { route:'learn/lists', desc:isEastern() ? 'The Commandments, the Beatitudes, the seven Holy Mysteries, the eight evil thoughts, the twelve great feasts, the fasts, and more, each explained.' : 'The Commandments, the Beatitudes, the precepts, the sacraments, the virtues, the works of mercy, the capital sins, and more, each explained.', meta:`${LISTS.length} lists` },
+      { route:'learn/church', desc:isEastern() ? 'The iconostasis and how to read it, the Holy Table, the holy vessels and vestments, and how to take part in the Liturgy.' : 'The altar, the tabernacle, the sacred vessels, the vestments, the colors of the seasons, and how to take part in Mass.', meta:'A guided tour' },
       { route:'learn/glossary', desc:'Short, clear definitions of the words of the faith, from Absolution to the Vulgate.', meta:`${GLOSSARY.length} terms` },
       { route:'learn/quiz', desc:'Ten fresh questions on the saints, Scripture, Church history, and great Catholic books.', meta:'New questions every time' },
       (() => {
@@ -14594,6 +14647,7 @@ const HUBS = {
         desc:'Two thousand years on one timeline: councils, schisms, missions, martyrs, and the apparitions of Our Lady, each with the story behind it.',
         links:[['Marian Apparitions', 'history/timeline/apparitions'], ['The Crusades', 'history/timeline/crusades']], meta:`${countOf('history')} events`, cta:'Open the timeline' },
       { route:'history/popes', desc:'Every pope from St. Peter to Leo XIV, century by century, with notes on the most important.', meta:`${POPES.length} popes` },
+      { route:'history/councils', desc:'All twenty-one ecumenical councils, from Nicaea in 325 to Vatican II: where they met and what they taught.', meta:'21 councils' },
       { route:'history/icons', desc:'The great icons of East and West, from the Sinai Pantocrator to Rublev’s Trinity, and what to look for in each.', meta:`${FAMOUS_ICONS.length} icons` },
       { route:'history/orders', desc:'Benedictines, Carmelites, Franciscans, Jesuits, Basilians, the Knights of Malta, and more.', meta:`${ORDER_GROUPS.reduce((n, g) => n + g.list.length, 0)} orders` },
       { route:'history/eastern-churches', desc:'The twenty-three Eastern Catholic Churches in communion with Rome: Byzantine, Syriac, Chaldean, Armenian, and Alexandrian.', meta:'23 Churches' },
@@ -14908,6 +14962,8 @@ const ROUTES = {
   'learn/mass':                  { cat:'mass', parent:'learn' },
   'learn/glossary':              { cat:'glossary', parent:'learn' },
   'learn/living-the-faith':      { cat:'vocations', parent:'learn' },
+  'learn/lists':                 { cat:'lists', parent:'learn' },
+  'learn/church':                { cat:'church', parent:'learn' },
   'learn/quiz':                  { cat:'quiz', parent:'learn' },
   'history':                     { cat:'hub-history' },
   'saints':                      { cat:'hub-saints' },
@@ -14922,6 +14978,7 @@ const ROUTES = {
                                    desc:'From the Council of Clermont to the Siege of Malta: the crusades, the knightly orders they created, and how the Church remembers them today.' },
   'history/popes':               { cat:'popes', parent:'history' },
   'history/orders':              { cat:'orders', parent:'history' },
+  'history/councils':            { cat:'councils', parent:'history' },
   'history/eastern-churches':    { cat:'easternchurches', parent:'history' }
 };
 // Older addresses keep working: they open the page at its new address
@@ -15652,6 +15709,13 @@ function buildQuizQuestions(n){
     return { q:`${ref} is a key passage for which topic?`, answer:t.title, options:shuffled([t.title, ...wrong]), id:t.id };
   });
 
+  // The ecumenical councils
+  makers.push(() => {
+    const c = COUNCILS[Math.floor(Math.random() * COUNCILS.length)];
+    const wrong = shuffled(COUNCILS.filter(x => x !== c)).slice(0, 3).map(x => x.name);
+    return { q:`Which ecumenical council ${c.quiz}?`, answer:c.name, options:shuffled([c.name, ...wrong]), route:'history/councils' };
+  });
+
   const out = [], seen = new Set();
   for(let tries = 0; out.length < n && tries < n * 20; tries++){
     const q = makers[(out.length + tries) % makers.length]();
@@ -15732,7 +15796,7 @@ function renderQuiz(){
     renderQuiz();
   }));
   if(answered){
-    document.getElementById('quizLearn').addEventListener('click', () => openReadModal(q.id));
+    document.getElementById('quizLearn').addEventListener('click', () => q.route ? navigate(q.route) : openReadModal(q.id));
     document.getElementById('quizNext').addEventListener('click', () => { quizState.i++; quizState.picked = null; renderQuiz(); });
     document.getElementById('quizNext').focus();
   }
@@ -17196,6 +17260,571 @@ function renderVocations(){
     const el = document.getElementById('dv-' + b.dataset.dv);
     if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
   }));
+}
+
+/* =========================================================
+   CATHOLIC LISTS
+   The numbered teachings every Catholic learns: the Commandments, the Beatitudes, the works of mercy, and more,
+   each with the Catechism paragraphs behind it. The Eastern edition swaps in its own lists where the traditions differ.
+   ========================================================= */
+const LISTS = [
+  { id:'commandments', name:'The Ten Commandments', icon:'theology', color:'wine', kicker:'Exodus 20 and Deuteronomy 5', source:'CCC 2052–2557',
+    about:'The law God gave Moses on Mount Sinai. Jesus summed it up in two great commandments: love God with all your heart, soul, and mind, and love your neighbor as yourself (Matthew 22:37–40).',
+    items:[
+      ['I am the Lord your God: you shall not have strange gods before me.', 'Put God first. Worship him alone, and turn away from idols, superstition, and the occult.'],
+      ['You shall not take the name of the Lord your God in vain.', 'Speak God’s name, and holy things, with reverence. Keep your oaths and promises.'],
+      ['Remember to keep holy the Lord’s Day.', 'Go to Mass on Sundays and holy days, and set the day apart for rest, family, and prayer.'],
+      ['Honor your father and your mother.', 'Love, respect, and care for your parents, and respect rightful authority. Parents, in turn, care for and teach their children.'],
+      ['You shall not kill.', 'Protect every human life, from conception to natural death. Root out hatred and lasting anger too.'],
+      ['You shall not commit adultery.', 'Live chastely in your state of life, and be faithful in marriage.'],
+      ['You shall not steal.', 'Respect what belongs to others, be honest in work and business, and share with the poor.'],
+      ['You shall not bear false witness against your neighbor.', 'Tell the truth. Avoid lies, gossip, and harming anyone’s good name.'],
+      ['You shall not covet your neighbor’s wife.', 'Keep your heart pure, guarding your thoughts and desires.'],
+      ['You shall not covet your neighbor’s goods.', 'Be free of envy and greed, and content with what God gives.']
+    ],
+    note:'The Churches count the commandments a little differently. The Catholic Church follows St. Augustine’s numbering; the Greek Fathers count the command against carved images separately and join the two against coveting. The commandments themselves are the same (CCC 2066).' },
+  { id:'beatitudes', name:'The Beatitudes', icon:'daily', color:'gold', kicker:'Matthew 5:3–10 (RSV-CE)', source:'CCC 1716–1729',
+    about:'Jesus began the Sermon on the Mount with these eight blessings. They paint the face of Christ, and they show the way to the happiness God made us for.',
+    plain:true,
+    items:[
+      ['Blessed are the poor in spirit, for theirs is the kingdom of heaven.'],
+      ['Blessed are those who mourn, for they shall be comforted.'],
+      ['Blessed are the meek, for they shall inherit the earth.'],
+      ['Blessed are those who hunger and thirst for righteousness, for they shall be satisfied.'],
+      ['Blessed are the merciful, for they shall obtain mercy.'],
+      ['Blessed are the pure in heart, for they shall see God.'],
+      ['Blessed are the peacemakers, for they shall be called sons of God.'],
+      ['Blessed are those who are persecuted for righteousness’ sake, for theirs is the kingdom of heaven.']
+    ] },
+  { id:'precepts', name:'The Precepts of the Church', icon:'catechism', color:'indigo', kicker:'The least a Catholic must do', source:'CCC 2041–2043',
+    about:'The precepts are the bare minimum of prayer and effort that the Church asks of every Catholic, so that we grow in love of God and neighbor.',
+    items:[
+      ['Attend Mass on Sundays and holy days of obligation, and rest from unnecessary work.', 'The heart of the Christian week is the Eucharist on the Lord’s Day.'],
+      ['Confess your sins at least once a year.', 'This is the minimum; going often is a great help.'],
+      ['Receive Holy Communion at least during the Easter season.', 'Always in a state of grace, after going to Confession if you are aware of mortal sin.'],
+      ['Keep the days of fasting and abstinence set by the Church.', 'See “Fasting and Abstinence” below.'],
+      ['Help to provide for the needs of the Church.', 'With your money, your time, and your talents, each according to their means.']
+    ] },
+  { id:'sacraments', name:'The Seven Sacraments', icon:'mass', color:'gold', kicker:'Signs that give grace', source:'CCC 1210–1666',
+    about:'Christ gave the Church seven sacraments. Each is a visible sign that truly gives the grace it signifies. They touch every stage of life.',
+    groups:[
+      ['Initiation', [
+        ['Baptism', 'Washes away original sin and all sins, makes us children of God, and joins us to the Church.'],
+        ['Confirmation', 'Seals us with the gift of the Holy Spirit and strengthens us to live and witness to the faith.'],
+        ['The Eucharist', 'The Body and Blood, soul and divinity of Christ: the source and summit of the Christian life.']]],
+      ['Healing', [
+        ['Penance (Confession)', 'Forgives the sins committed after Baptism and reconciles us with God and the Church.'],
+        ['Anointing of the Sick', 'Gives strength, peace, and courage to the seriously ill and the elderly, and forgives their sins.']]],
+      ['Service of communion', [
+        ['Holy Orders', 'Ordains bishops, priests, and deacons to serve the Church in Christ’s name.'],
+        ['Matrimony', 'Joins a man and a woman in a lifelong covenant of love, open to children.']]]
+    ] },
+  { id:'virtues', name:'The Virtues', icon:'shield', color:'teal', kicker:'Theological and cardinal', source:'CCC 1803–1829',
+    about:'A virtue is a firm habit of doing good. The three theological virtues are gifts poured into us by God and lead straight to him. The four cardinal virtues are the hinges (Latin cardo) on which every other good habit turns.',
+    groups:[
+      ['The theological virtues', [
+        ['Faith', 'Believing God and all that he has revealed, because he is truth itself.'],
+        ['Hope', 'Desiring heaven and trusting in Christ’s promises, relying on his grace and not our own strength.'],
+        ['Charity', 'Loving God above all things for his own sake, and our neighbor as ourselves for love of God. The greatest of the three (1 Corinthians 13:13).']]],
+      ['The cardinal virtues', [
+        ['Prudence', 'Seeing what is truly good in each situation and choosing the right way to do it.'],
+        ['Justice', 'Giving God and neighbor what is their due.'],
+        ['Fortitude', 'Courage and firmness in difficulties, even in the face of death.'],
+        ['Temperance', 'Moderation in pleasures, keeping our desires in good order.']]]
+    ] },
+  { id:'gifts', name:'The Gifts and Fruits of the Holy Spirit', icon:'angelus', color:'wine', kicker:'Isaiah 11:2 and Galatians 5:22–23', source:'CCC 1830–1832',
+    about:'The seven gifts make us docile to the promptings of the Holy Spirit. The twelve fruits are the good things he grows in us, signs of his life within.',
+    groups:[
+      ['The seven gifts', [
+        ['Wisdom', 'To see and love all things as God sees them.'],
+        ['Understanding', 'To grasp the truths of the faith more deeply.'],
+        ['Counsel', 'To judge rightly what to do, especially in hard choices.'],
+        ['Fortitude', 'Courage to do good and endure for Christ.'],
+        ['Knowledge', 'To see created things in their true relation to God.'],
+        ['Piety', 'Loving reverence for God as our Father.'],
+        ['Fear of the Lord', 'Awe before God’s greatness, and sorrow at the thought of offending him.']]],
+      ['The twelve fruits', [
+        ['Charity'], ['Joy'], ['Peace'], ['Patience'], ['Kindness'], ['Goodness'], ['Generosity'], ['Gentleness'], ['Faithfulness'], ['Modesty'], ['Self-control'], ['Chastity']]]
+    ] },
+  { id:'mercy', name:'The Works of Mercy', icon:'sacredheart', color:'rose', kicker:'Matthew 25:31–46', source:'CCC 2447',
+    about:'Works of charity by which we come to the help of our neighbor in body and soul. Jesus said that what we do for the least of his brethren, we do for him.',
+    groups:[
+      ['Corporal works of mercy', [
+        ['Feed the hungry', 'Give to a food bank, cook for a family in need, or share a meal.'],
+        ['Give drink to the thirsty', 'Support clean water projects, or simply offer a drink to someone working in the heat.'],
+        ['Clothe the naked', 'Give good clothes you no longer wear to people who need them.'],
+        ['Shelter the homeless', 'Volunteer at or support a shelter, or welcome a guest.'],
+        ['Visit the sick', 'Call on the sick and the homebound, in person or by phone.'],
+        ['Visit the imprisoned', 'Support prison ministry, and pray for prisoners and their families.'],
+        ['Bury the dead', 'Go to funerals, comfort mourners, and pray at the graves of the dead.']]],
+      ['Spiritual works of mercy', [
+        ['Instruct the ignorant', 'Share the faith gently, and teach what you know.'],
+        ['Counsel the doubtful', 'Listen patiently and help others find good answers.'],
+        ['Admonish sinners', 'Correct with love and humility when it can do good.'],
+        ['Bear wrongs patiently', 'Offer up slights and annoyances without returning them.'],
+        ['Forgive offenses willingly', 'Let go of grudges, as God forgives us.'],
+        ['Comfort the afflicted', 'Be present to those who grieve or suffer.'],
+        ['Pray for the living and the dead', 'Hold others before God, especially the souls in purgatory.']]]
+    ] },
+  { id:'sins', name:'The Seven Capital Sins', icon:'exam', color:'purple', kicker:'And the virtues that overcome them', source:'CCC 1866',
+    about:'They are called capital (from Latin caput, “head”) because other sins grow out of them. The list comes down from St. John Cassian and St. Gregory the Great. Each is overcome by its opposite virtue.',
+    items:[
+      ['Pride', 'Overcome by humility.'],
+      ['Greed (avarice)', 'Overcome by generosity.'],
+      ['Envy', 'Overcome by kindness and rejoicing in others’ good.'],
+      ['Wrath (anger)', 'Overcome by patience.'],
+      ['Lust', 'Overcome by chastity.'],
+      ['Gluttony', 'Overcome by temperance.'],
+      ['Sloth (acedia)', 'Overcome by diligence and zeal for the things of God.']
+    ] },
+  { id:'mortal', name:'Mortal and Venial Sin', icon:'exam', color:'indigo', kicker:'What makes a sin mortal', source:'CCC 1854–1864',
+    about:'A mortal sin destroys charity in the heart and turns us away from God. It must be confessed before receiving Communion. All three of these conditions must be met at once:',
+    items:[
+      ['Grave matter', 'The act itself is seriously wrong, as named by the Ten Commandments.'],
+      ['Full knowledge', 'You know that it is seriously wrong.'],
+      ['Deliberate consent', 'You choose it freely.']
+    ],
+    note:'A sin that lacks one of these, or concerns a less serious matter, is venial. Venial sin wounds charity without destroying it. It is good to confess venial sins too, but they are also forgiven through sorrow, prayer, and the Eucharist.' },
+  { id:'crying', name:'The Sins That Cry to Heaven', icon:'stations', color:'wine', kicker:'Named in Scripture', source:'CCC 1867',
+    about:'Scripture speaks of certain sins whose cry rises up to God.',
+    items:[
+      ['The blood of Abel', 'Murder (Genesis 4:10).'],
+      ['The sin of the Sodomites', '(Genesis 18:20; 19:13).'],
+      ['The cry of the people oppressed in Egypt', 'Oppression (Exodus 3:7–10).'],
+      ['The cry of the foreigner, the widow, and the orphan', 'Neglect and exploitation of the weak (Exodus 22:21–24).'],
+      ['Injustice to the wage earner', 'Withholding a worker’s fair pay (Deuteronomy 24:14–15; James 5:4).']
+    ] },
+  { id:'sharing', name:'Sharing in Another’s Sin', icon:'community', color:'amber', kicker:'When we are responsible for what others do', source:'CCC 1868',
+    about:'We can be responsible for sins committed by others when we cooperate in them:',
+    items:[
+      ['By taking part in them directly and willingly.'],
+      ['By ordering, advising, praising, or approving them.'],
+      ['By not disclosing or not hindering them when we have a duty to do so.'],
+      ['By protecting those who do evil.']
+    ] },
+  { id:'marks', name:'The Four Marks of the Church', icon:'popes', color:'gold', kicker:'From the Nicene Creed', source:'CCC 811–870',
+    about:'“I believe in one, holy, catholic and apostolic Church.” These four marks are both gifts of Christ and tasks for us to live out.',
+    items:[
+      ['One', 'United in one faith, one set of sacraments, and one communion under the successors of the apostles.'],
+      ['Holy', 'Made holy by Christ, her head, and the means of holiness for all, even though her members are sinners.'],
+      ['Catholic', 'Universal: she has the fullness of the faith and is sent to every people in every age.'],
+      ['Apostolic', 'Built on the apostles, keeping their teaching, and led by their successors, the bishops.']
+    ] },
+  { id:'last', name:'The Four Last Things', icon:'office', color:'indigo', kicker:'Remember your end', source:'CCC 1005–1060',
+    about:'The great realities that await every person. The saints meditated on them often, not to frighten themselves, but to live wisely.',
+    items:[
+      ['Death', 'The end of our earthly pilgrimage, and the end of the time to choose for or against God.'],
+      ['Judgment', 'Each soul is judged at death (the particular judgment), and all will be judged when Christ returns in glory (the general judgment).'],
+      ['Heaven', 'Perfect, unending life with the Holy Trinity, the Virgin Mary, the angels, and all the saints. Those who die in God’s friendship but still need purifying are made ready for it in purgatory.'],
+      ['Hell', 'Eternal separation from God, which a person freely chooses by dying in mortal sin without repentance.']
+    ] },
+  { id:'holydays', name:'Holy Days of Obligation', icon:'calendar', color:'amber', kicker:'Feasts kept like Sundays', source:'Code of Canon Law, canon 1246',
+    about:'Besides every Sunday, the universal law of the Church lists ten holy days of obligation. Each bishops’ conference may move some of them to a Sunday or drop the obligation.',
+    items:[
+      ['The Nativity of the Lord', 'December 25'],
+      ['Mary, the Holy Mother of God', 'January 1'],
+      ['The Epiphany', 'January 6'],
+      ['St. Joseph', 'March 19'],
+      ['The Ascension', 'Forty days after Easter'],
+      ['The Body and Blood of Christ (Corpus Christi)', 'The Thursday after Trinity Sunday'],
+      ['Sts. Peter and Paul', 'June 29'],
+      ['The Assumption', 'August 15'],
+      ['All Saints', 'November 1'],
+      ['The Immaculate Conception', 'December 8']
+    ],
+    note:'In the United States the holy days are Mary, Mother of God; the Ascension (moved to the following Sunday in most dioceses); the Assumption; All Saints; the Immaculate Conception; and Christmas. When some of them fall on a Saturday or Monday, the obligation is lifted. Check your diocese’s calendar.' },
+  { id:'fasting', name:'Fasting and Abstinence', icon:'timer', color:'purple', kicker:'The Church’s days of penance', source:'Code of Canon Law, canons 1249–1253 and 919',
+    about:'Every Friday, and the whole of Lent, are days of penance for Catholics of the Latin Church.',
+    items:[
+      ['Ash Wednesday and Good Friday', 'Fasting and abstinence. Fasting means one full meal and two small meals that together do not equal a full meal, for ages 18 to 59.'],
+      ['Abstinence', 'No meat on Ash Wednesday and the Fridays of Lent (and, by universal law, on all Fridays unless your bishops’ conference allows another penance), from age 14.'],
+      ['The other Fridays of the year', 'A day of penance in memory of the Passion. In the U.S. you may keep abstinence or choose another penance or work of charity.'],
+      ['The Eucharistic fast', 'No food or drink, except water and medicine, for one hour before Holy Communion.']
+    ],
+    note:'The sick, pregnant or nursing women, and others with good reason are excused from fasting. Parents and pastors should help children learn the meaning of penance.' },
+  { id:'pillars', name:'Prayer, Fasting, and Almsgiving', icon:'basket', color:'green', kicker:'The three works of penance', source:'Matthew 6:1–18; CCC 1434',
+    about:'Jesus spoke of these three together in the Sermon on the Mount. They turn us back toward God, ourselves, and our neighbor, and they are the heart of Lent.',
+    items:[
+      ['Prayer', 'Turning to God: Mass, the Rosary, Scripture, and quiet time with him.'],
+      ['Fasting', 'Mastering ourselves, so that we hunger for God more than for anything else.'],
+      ['Almsgiving', 'Turning to our neighbor, giving to the poor from what we have saved and from our heart.']
+    ] },
+  { id:'prayer-forms', name:'The Forms of Prayer', icon:'prayer', color:'rose', kicker:'Ways the Spirit teaches us to pray', source:'CCC 2626–2649',
+    about:'The Catechism names five basic forms of prayer. A balanced prayer life includes them all.',
+    items:[
+      ['Blessing and adoration', 'Acknowledging God as Creator and Lord, and blessing him who blesses us.'],
+      ['Petition', 'Asking for what we need, above all for forgiveness and for the coming of his Kingdom.'],
+      ['Intercession', 'Asking on behalf of others, even our enemies.'],
+      ['Thanksgiving', 'Thanking God in every circumstance, as we do above all in the Eucharist.'],
+      ['Praise', 'Glorifying God simply because he is God, not only for what he does.']
+    ] }
+];
+// The Eastern edition keeps the shared lists and swaps in its own where the traditions differ
+const LISTS_EAST_SWAP = {
+  precepts:{ id:'precepts', name:'The Duties of an Eastern Catholic', icon:'catechism', color:'indigo', kicker:'The least the Church asks', source:'Code of Canons of the Eastern Churches, and the law of each Church',
+    about:'Each Eastern Catholic Church sets the details by its own law, but the basic duties are the same everywhere:',
+    items:[
+      ['Take part in the Divine Liturgy on Sundays and holy days.', 'Or, where your Church allows it, in Vespers or Matins.'],
+      ['Keep the fasts of the Church.', 'As your Church directs. See “The Fasts of the Year” below.'],
+      ['Confess your sins in the Holy Mystery of Repentance.', 'Regularly, and before Communion if you are aware of serious sin.'],
+      ['Receive the Holy Eucharist often.', 'With preparation, prayer, and the Eucharistic fast.'],
+      ['Support your parish and care for the poor.', 'With your money, your time, and your talents.']
+    ] },
+  sacraments:{ id:'sacraments', name:'The Seven Holy Mysteries', icon:'mass', color:'gold', kicker:'What the West calls the sacraments', source:'CCC 1210–1666',
+    about:'The Eastern Churches call the sacraments “mysteries,” for in them God works in ways beyond our understanding. In the Byzantine tradition, infants receive Baptism, Chrismation, and the Eucharist together.',
+    items:[
+      ['Baptism', 'Dying and rising with Christ by threefold immersion, washed of all sin and born into the life of God.'],
+      ['Chrismation', 'Sealed with the gift of the Holy Spirit, anointed with holy myron right after Baptism.'],
+      ['The Holy Eucharist', 'The Body and Blood of Christ, given from the spoon to all the baptized, infants included.'],
+      ['Repentance (Confession)', 'Forgiveness of sins, confessed before Christ’s icon with the priest as witness.'],
+      ['Holy Anointing', 'Healing of soul and body, prayed with oil, traditionally by seven priests and especially on Holy Wednesday.'],
+      ['Holy Orders', 'Bishops, priests, and deacons. Married men may be ordained priests and deacons.'],
+      ['Holy Crowning', 'Marriage, in which the bride and groom are crowned as witnesses and martyrs of self-giving love.']
+    ] },
+  sins:{ id:'sins', name:'The Eight Evil Thoughts', icon:'exam', color:'purple', kicker:'The passions, as the desert fathers taught', source:'St. John Cassian, The Institutes; CCC 1866',
+    about:'The monks of the desert, through Evagrius and St. John Cassian, taught of eight “thoughts” (logismoi) that war against the soul. In the West, St. Gregory the Great later reckoned them as seven capital sins. Each is healed by its own remedy.',
+    items:[
+      ['Gluttony', 'Healed by fasting and self-control.'],
+      ['Lust', 'Healed by watchfulness, fasting, and purity of heart.'],
+      ['Love of money', 'Healed by almsgiving and trust in God.'],
+      ['Anger', 'Healed by meekness and forgiveness.'],
+      ['Sorrow (dejection)', 'Healed by hope and thanksgiving.'],
+      ['Despondency (acedia)', 'Healed by perseverance, work, and steady prayer.'],
+      ['Vainglory', 'Healed by doing good in secret.'],
+      ['Pride', 'Healed by humility, the mother of all the virtues.']
+    ] },
+  holydays:{ id:'holydays', name:'The Twelve Great Feasts', icon:'calendar', color:'amber', kicker:'And Pascha, the Feast of Feasts', source:'The Byzantine liturgical year',
+    about:'Above all stands Holy Pascha, the Resurrection. Around it the Byzantine year keeps twelve great feasts of the Lord and of the Theotokos. The church year begins on September 1.',
+    items:[
+      ['The Nativity of the Theotokos', 'September 8'],
+      ['The Exaltation of the Holy Cross', 'September 14'],
+      ['The Entrance of the Theotokos into the Temple', 'November 21'],
+      ['The Nativity of Christ', 'December 25'],
+      ['Theophany', 'January 6'],
+      ['The Meeting of the Lord', 'February 2'],
+      ['The Annunciation', 'March 25'],
+      ['The Entrance into Jerusalem (Palm Sunday)', 'The Sunday before Pascha'],
+      ['The Ascension', 'Forty days after Pascha'],
+      ['Pentecost', 'Fifty days after Pascha'],
+      ['The Transfiguration', 'August 6'],
+      ['The Dormition of the Theotokos', 'August 15']
+    ],
+    note:'Churches on the Julian calendar keep the fixed feasts thirteen days later on the civil calendar: Christmas, for example, falls on January 7.' },
+  fasting:{ id:'fasting', name:'The Fasts of the Year', icon:'timer', color:'purple', kicker:'The rhythm of feast and fast', source:'The Byzantine Typikon',
+    about:'Fasting in the Christian East prepares for the feasts. The traditional fast means no meat, dairy, eggs, or fish, and on many days no wine or oil.',
+    items:[
+      ['Wednesdays and Fridays', 'Through most of the year, for Christ’s betrayal and his Crucifixion.'],
+      ['Great Lent and Holy Week', 'The forty days before Palm Sunday, then Holy Week.'],
+      ['The Nativity Fast', 'November 15 to December 24.'],
+      ['The Apostles’ Fast', 'From the Monday after All Saints’ Sunday to June 28.'],
+      ['The Dormition Fast', 'August 1 to 14.'],
+      ['Single fast days', 'The Beheading of St. John the Baptist (August 29), the Exaltation of the Cross (September 14), and the eve of Theophany (January 5).'],
+      ['Fast-free weeks', 'From Christmas to the eve of Theophany, Bright Week after Pascha, the week after Pentecost, and the week after the Sunday of the Publican and the Pharisee.']
+    ],
+    note:'Each Eastern Catholic Church sets its own rules, and many are gentler than the full traditional fast. Fasting is always adjusted for health, age, and circumstance. Ask your priest what applies to you.' }
+};
+const LISTS_EAST = LISTS.map(l => LISTS_EAST_SWAP[l.id] || l);
+
+function lsItemsHtml(items, plain){
+  return `<ol class="ls-items${plain ? ' plain' : ''}">${items.map(([t, x, sw]) => `<li><span class="ls-term">${sw ? `<span class="ls-swatch" style="background:${sw}"></span>` : ''}${escapeHtml(t)}</span>${x ? `<span class="ls-x">${escapeHtml(x)}</span>` : ''}</li>`).join('')}</ol>`;
+}
+function lsCardHtml(d){
+  return `
+      <section class="dv-card" id="dv-${d.id}" style="--dv:var(--${d.color})">
+        <header class="dv-head"><span class="dv-icon">${navIcon(d.icon)}</span><div><div class="daily-kicker">${escapeHtml(d.kicker)}</div><h3>${escapeHtml(d.name)}</h3></div></header>
+        ${d.about ? `<p>${escapeHtml(d.about)}</p>` : ''}
+        ${d.items ? lsItemsHtml(d.items, d.plain) : ''}
+        ${(d.groups || []).map(([g, items]) => `<h4>${escapeHtml(g)}</h4>${lsItemsHtml(items, d.plain)}`).join('')}
+        ${d.note ? `<p class="dv-note">${escapeHtml(d.note)}</p>` : ''}
+        ${d.source ? `<p class="ls-source">${escapeHtml(d.source)}</p>` : ''}
+      </section>`;
+}
+function renderGuidePage(list, foot){
+  entryListEl.innerHTML = `
+    <div class="dv-page">
+      <nav class="dv-jump" aria-label="On this page">${list.map(d => `<button class="dv-chip" data-dv="${d.id}" style="--dv:var(--${d.color})">${escapeHtml(d.name)}</button>`).join('')}</nav>
+      ${list.map(lsCardHtml).join('')}
+      ${foot || ''}
+    </div>`;
+  entryListEl.querySelectorAll('[data-dv]').forEach(b => b.addEventListener('click', () => {
+    const el = document.getElementById('dv-' + b.dataset.dv);
+    if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+  }));
+}
+function renderLists(){
+  renderGuidePage(isEastern() ? LISTS_EAST : LISTS,
+    '<p class="dv-note">CCC refers to the paragraphs of the Catechism of the Catholic Church. <button class="text-link" data-route="library/catechism">Open the Catechism →</button></p>');
+}
+
+/* =========================================================
+   INSIDE A CHURCH
+   The parts of a church, the sacred vessels, vestments, colors, and customs: for the Roman Rite,
+   and for a Byzantine church in the Eastern edition.
+   ========================================================= */
+const CHURCH_GUIDE = [
+  { id:'building', name:'The Church Building', icon:'church', color:'wine', kicker:'Walking in from the door to the altar',
+    about:'A Catholic church is built to lead us from the everyday world toward the altar, where heaven and earth meet in the Mass.',
+    items:[
+      ['Narthex', 'The entrance hall or vestibule, between the street and the place of worship.'],
+      ['Holy water font', 'Bless yourself with the Sign of the Cross as you enter, remembering your Baptism.'],
+      ['Baptismal font', 'Often near the door, because Baptism is the door into the Church.'],
+      ['Nave', 'Where the people gather. The name comes from Latin navis, “ship”: the Church is the ark that carries us to salvation.'],
+      ['Confessional', 'Where the sacrament of Penance is heard, with a screen or face to face.'],
+      ['Stations of the Cross', 'Fourteen images around the walls, for walking the way of the Cross with Jesus.'],
+      ['Sanctuary', 'The raised area around the altar, set apart for the liturgy.'],
+      ['Altar', 'The table of the Lord’s sacrifice and his supper, the center of the church. It often holds relics of saints, and the priest kisses it at the start and end of Mass.'],
+      ['Ambo', 'The place from which the Scriptures are proclaimed.'],
+      ['Tabernacle', 'Where the Blessed Sacrament is kept, for Communion to the sick and for prayer. Genuflect toward it.'],
+      ['Sanctuary lamp', 'A candle that burns day and night near the tabernacle, showing that Christ is present.'],
+      ['Crucifix', 'On or near the altar, recalling that the Mass makes present the sacrifice of the Cross.'],
+      ['Altar rail', 'A low rail at the edge of the sanctuary, where many people kneel to receive Communion.'],
+      ['Ambry', 'A niche or cabinet for the holy oils: sacred chrism, the oil of catechumens, and the oil of the sick.'],
+      ['Paschal candle', 'Lit at the Easter Vigil and through the Easter season, and at baptisms and funerals.'],
+      ['Consecration crosses', 'Twelve (or four) crosses on the walls, marking where the bishop anointed them with chrism when the church was dedicated.'],
+      ['Sacristy', 'The room where vestments and vessels are kept and the clergy vest for Mass.']
+    ] },
+  { id:'vessels', name:'Sacred Vessels and Linens', icon:'mass', color:'gold', kicker:'What you see on and around the altar', items:[
+      ['Chalice', 'The cup that holds the Precious Blood.'],
+      ['Paten', 'The plate that holds the Host.'],
+      ['Ciborium', 'A covered cup holding the hosts for the people’s Communion and for the tabernacle.'],
+      ['Pyx', 'A small round case for carrying Communion to the sick.'],
+      ['Monstrance', 'The radiant stand in which the Host is shown for adoration and Benediction.'],
+      ['Cruets', 'Small jugs for the wine and water.'],
+      ['Lavabo bowl and towel', 'For washing the priest’s hands at the Offertory.'],
+      ['Corporal', 'The square white cloth spread on the altar, on which the Host and chalice rest.'],
+      ['Purificator', 'The cloth for wiping the chalice.'],
+      ['Pall', 'A stiff square card covered in linen, placed over the chalice.'],
+      ['Thurible and boat', 'The censer for burning incense, and the small vessel that holds the incense.'],
+      ['Aspergillum', 'The sprinkler for holy water, used at the Asperges, blessings, and funerals.'],
+      ['Altar bells', 'Rung at the consecration in many parishes, to call everyone’s attention.'],
+      ['Roman Missal, Lectionary, and Book of the Gospels', 'The books of the prayers of Mass, the readings, and the Gospels.']
+    ] },
+  { id:'vestments', name:'Vestments', icon:'stole', color:'purple', kicker:'What the priest, deacon, and bishop wear', items:[
+      ['Cassock', 'The long everyday garment of clergy: black for priests, with colored trim for bishops and cardinals.'],
+      ['Amice', 'A white cloth worn around the neck and shoulders under the alb.'],
+      ['Alb', 'The long white garment worn by all ministers, recalling the white robe of Baptism.'],
+      ['Cincture', 'The cord tied around the waist of the alb.'],
+      ['Stole', 'The sign of ordained ministry: worn around the neck by priests and bishops, and over the left shoulder by deacons.'],
+      ['Chasuble', 'The outer vestment of the priest at Mass, in the color of the day.'],
+      ['Dalmatic', 'The deacon’s outer vestment, with sleeves.'],
+      ['Cope', 'A long cape worn for processions, Benediction, and solemn blessings.'],
+      ['Surplice', 'A white, wide-sleeved garment worn over the cassock by servers and clergy outside Mass.'],
+      ['Humeral veil', 'A long shawl that covers the hands when holding the monstrance at Benediction.'],
+      ['Mitre and crozier', 'The bishop’s tall pointed hat and shepherd’s staff.'],
+      ['Pallium', 'A band of white wool worn by the pope and metropolitan archbishops, a sign of unity with the Holy See.'],
+      ['Zucchetto', 'The skullcap: white for the pope, red for cardinals, violet for bishops.'],
+      ['Biretta', 'A square cap with three ridges, worn by some clergy.']
+    ] },
+  { id:'colors', name:'Liturgical Colors', icon:'daily', color:'green', kicker:'The colors of the seasons', swatches:true, items:[
+      ['White', 'Christmas and Easter, feasts of the Lord, Our Lady, the angels, and saints who were not martyrs.', '#f4efe2'],
+      ['Red', 'Palm Sunday, Good Friday, Pentecost, the apostles, and the martyrs.', '#a3262a'],
+      ['Green', 'Ordinary Time: the season of growing in the faith.', '#3f7a46'],
+      ['Violet', 'Advent and Lent, seasons of preparation and penance.', '#5b3a7a'],
+      ['Rose', 'Gaudete Sunday in Advent and Laetare Sunday in Lent, when joy breaks through.', '#d98ca4'],
+      ['Black', 'May be worn at Masses for the dead, and on All Souls’ Day.', '#1d1b1a'],
+      ['Gold or silver', 'May be worn on the most solemn days in place of white, red, or green.', '#c9a24a']
+    ],
+    note:'The colors are set by the General Instruction of the Roman Missal, no. 346.' },
+  { id:'customs', name:'Customs and Gestures', icon:'prayer', color:'rose', kicker:'How to take part', items:[
+      ['On entering', 'Bless yourself with holy water and make the Sign of the Cross.'],
+      ['Genuflect', 'Before entering the pew, bend the right knee to the ground toward the tabernacle. If the tabernacle is elsewhere, bow to the altar.'],
+      ['Keep silence', 'Prepare for Mass with quiet prayer, and let others pray.'],
+      ['Fast for one hour', 'No food or drink except water and medicine for an hour before Communion.'],
+      ['At the Gospel', 'Trace small crosses on your forehead, lips, and heart: may the Word be in my mind, on my lips, and in my heart.'],
+      ['At the Creed', 'Bow at the words “and by the Holy Spirit was incarnate.” On Christmas and the Annunciation, kneel.'],
+      ['Receiving Communion', 'Make a sign of reverence, such as a bow, and answer “Amen” to “The Body of Christ.” You may receive on the tongue or in the hand. If you are aware of mortal sin, go to Confession first.'],
+      ['Not receiving', 'Those who cannot receive may come forward with arms crossed for a blessing, or make a spiritual communion in the pew.'],
+      ['At the end', 'Stay until the closing hymn is over, and genuflect again before you leave.']
+    ] }
+];
+const CHURCH_GUIDE_EAST = [
+  { id:'building', name:'The Temple', icon:'church', color:'wine', kicker:'A Byzantine church, from the door to the altar',
+    about:'A Byzantine church (often called a temple) is an image of heaven on earth. Its icons gather the whole Church, the saints in heaven and the faithful on earth, around Christ.',
+    items:[
+      ['Narthex', 'The entrance hall. In ancient times catechumens and penitents stood here. Candles are often bought and lit here.'],
+      ['Nave', 'Where the people stand to pray. Many Eastern churches have few pews, since standing is the ancient posture of prayer.'],
+      ['Tetrapod', 'A small stand near the front of the nave with the icon of the day or the feast. Venerate it as you arrive.'],
+      ['Kliros', 'The place at the front of the nave where the cantors and choir sing.'],
+      ['Solea', 'The raised step running in front of the icon screen. Holy Communion is given here.'],
+      ['Ambo', 'The center of the solea, before the Royal Doors, where the Gospel is read and the deacon leads the litanies.'],
+      ['Iconostasis', 'The wall of icons between the nave and the sanctuary. It does not hide the altar so much as show the heavenly worship going on behind it.'],
+      ['Royal Doors', 'The central doors of the iconostasis, opened at the solemn moments of the Liturgy. Only the clergy pass through them.'],
+      ['Deacons’ doors', 'The side doors, usually with icons of the archangels or of holy deacons.'],
+      ['Sanctuary', 'The holy place behind the iconostasis, also called the altar.'],
+      ['Holy Table', 'The altar itself, square and covered. On it rest the Gospel book, the blessing cross, the tabernacle, and the antimension.'],
+      ['Antimension', 'A cloth bearing an icon of Christ laid in the tomb and the bishop’s signature, usually with relics sewn in. The Liturgy is celebrated on it.'],
+      ['Table of Oblation', 'A side table on the north side of the sanctuary, where the bread and wine are prepared before the Liturgy (the Proskomedia).'],
+      ['High Place', 'The bishop’s throne at the back of the sanctuary, behind the Holy Table.'],
+      ['Dome and apse', 'Christ the Pantokrator, Ruler of All, looks down from the dome. In the apse above the altar, the Theotokos “wider than the heavens” (Platytera) holds Christ before her.']
+    ] },
+  { id:'iconostasis', name:'Reading the Iconostasis', icon:'icons', color:'gold', kicker:'Where each icon goes',
+    about:'Every iconostasis is a little different, and many Eastern Catholic churches have a single row of icons. The usual arrangement is:',
+    items:[
+      ['The Royal Doors', 'The Annunciation, the beginning of our salvation, and the four Evangelists.'],
+      ['To the right of the doors', 'Christ, who will come again.'],
+      ['To the left of the doors', 'The Theotokos holding the Christ Child, who came first through her.'],
+      ['Beyond them', 'The deacons’ doors, then icons such as St. John the Baptist, St. Nicholas, or the saint or feast the church is named for.'],
+      ['Above the Royal Doors', 'The Mystical Supper.'],
+      ['The upper rows', 'In taller iconostases: the twelve great feasts, then the Deesis (Christ with the Theotokos, St. John the Baptist, and the apostles), then the prophets and the patriarchs.']
+    ] },
+  { id:'vessels', name:'Holy Vessels and Things', icon:'mass', color:'teal', kicker:'What you see during the Divine Liturgy', items:[
+      ['Prosphora', 'The round loaves of leavened bread for the Liturgy, stamped with the cross and the letters IC XC NIKA, “Jesus Christ conquers.”'],
+      ['Chalice', 'The cup for the Holy Gifts.'],
+      ['Diskos', 'The paten on a foot, which holds the Lamb, the square of bread to be consecrated.'],
+      ['Star (asterisk)', 'Two crossed metal arches set over the diskos so that the veil does not touch the Lamb. It recalls the star of Bethlehem.'],
+      ['Lance', 'A small knife for cutting the Lamb from the prosphora.'],
+      ['Spoon', 'For giving Holy Communion, the Body and Blood together.'],
+      ['Veils and aër', 'The small veils covering the chalice and diskos, and the large veil (aër) waved over the Gifts during the Creed.'],
+      ['Zeon', 'Hot water poured into the chalice before Communion: the warmth of the Holy Spirit.'],
+      ['Antidoron', 'Blessed bread from the prosphora, given out at the end of the Liturgy.'],
+      ['Censer', 'For incense, often hung with twelve bells for the twelve apostles.'],
+      ['Blessing cross', 'The hand cross the priest blesses with and offers to be kissed at the dismissal.'],
+      ['Ripidia', 'Liturgical fans bearing six-winged seraphim, carried in procession.'],
+      ['Dikirion and trikirion', 'The bishop’s two- and three-branched candles, for the two natures of Christ and the Holy Trinity.']
+    ] },
+  { id:'vestments', name:'Vestments', icon:'stole', color:'purple', kicker:'What the deacon, priest, and bishop wear', items:[
+      ['Sticharion', 'The long tunic worn by all who serve, from altar servers to the bishop.'],
+      ['Orarion', 'The deacon’s long stole over the left shoulder, which he raises as he leads the people in prayer.'],
+      ['Epitrachelion', 'The priest’s stole, worn around the neck and joined in front. A priest does not serve without it.'],
+      ['Zone', 'The belt.'],
+      ['Epimanikia', 'The cuffs, laced over the sleeves.'],
+      ['Phelonion', 'The priest’s great outer vestment, like a cape.'],
+      ['Sakkos', 'The bishop’s tunic-like outer vestment.'],
+      ['Omophorion', 'The bishop’s broad band over the shoulders: the Good Shepherd carrying the lost sheep.'],
+      ['Mitre and panagia', 'The bishop’s crown-shaped mitre, and the round icon of the Theotokos he wears on his breast.'],
+      ['Riasa and kamilavka', 'The wide-sleeved outer robe of clergy and monastics, and the clergy’s cylindrical hat.']
+    ] },
+  { id:'colors', name:'Liturgical Colors', icon:'daily', color:'green', kicker:'Bright and dark, feast and fast', swatches:true,
+    about:'The Byzantine Churches have no single fixed rule for colors. Greek custom often simply uses bright vestments for feasts and dark ones for fasts. A common Slavic custom is:',
+    items:[
+      ['Gold', 'Sundays and most days, and the feasts of apostles, prophets, and holy bishops.', '#c9a24a'],
+      ['White', 'Theophany, the Transfiguration, the Nativity in many places, the start of Pascha, and funerals.', '#f4efe2'],
+      ['Blue', 'Feasts of the Theotokos.', '#3c5f99'],
+      ['Purple or dark red', 'Great Lent, and the feasts of the Holy Cross.', '#5b3a7a'],
+      ['Red', 'The martyrs, and in many places the season of Pascha and the Nativity Fast.', '#a3262a'],
+      ['Green', 'Palm Sunday, Pentecost, and monastic saints.', '#3f7a46'],
+      ['Black', 'Weekdays of Great Lent in some places.', '#1d1b1a']
+    ] },
+  { id:'customs', name:'Customs and Gestures', icon:'prayer', color:'rose', kicker:'How to take part', items:[
+      ['On arriving', 'Light a candle, and venerate the icons with the Sign of the Cross and a bow, kissing the icon on the tetrapod.'],
+      ['The Sign of the Cross', 'Touch forehead, breast, right shoulder, then left. Join the thumb and first two fingers for the Holy Trinity, and fold the other two into the palm for the two natures of Christ.'],
+      ['Bows and prostrations', 'A bow (small metania) often goes with the Sign of the Cross. Full prostrations are made during Great Lent, but not on Sundays or in the Paschal season.'],
+      ['Standing', 'Stand for prayer, especially for the Gospel and the Anaphora.'],
+      ['Fasting before Communion', 'Traditionally from midnight. Ask your priest what your Church asks.'],
+      ['Receiving Communion', 'Approach with arms crossed over your chest, say your baptismal name, and receive the Body and Blood from the spoon. Don’t make the Sign of the Cross near the chalice.'],
+      ['At the end', 'Come forward to kiss the blessing cross, and receive the antidoron.'],
+      ['Modesty', 'Dress modestly. In many Slavic parishes women cover their heads.']
+    ] }
+];
+function renderChurchGuide(){
+  const east = isEastern();
+  renderGuidePage(east ? CHURCH_GUIDE_EAST : CHURCH_GUIDE,
+    east ? '<p class="dv-note dv-east">Want to see a Latin church? Read the guide in the <button class="text-link" data-rite-switch>Roman Catholic edition</button>.</p>'
+         : '<p class="dv-note">The Eastern Catholic Churches have their own beautiful arrangement, with the iconostasis and the Holy Table. Read about it in the <button class="text-link" data-rite-switch>Eastern Catholic edition</button>.</p>');
+}
+
+/* =========================================================
+   THE ECUMENICAL COUNCILS
+   All twenty-one councils the Catholic Church counts as ecumenical, in order.
+   ========================================================= */
+const COUNCILS = [
+  { name:'Nicaea I', year:'325', place:'Nicaea, in modern Turkey', pope:'St. Sylvester I, through his legates', open:'h1',
+    did:['Condemned Arius, who taught that the Son of God was a creature.', 'Declared the Son “consubstantial” (homoousios), of one substance with the Father.', 'Gave the first form of the Nicene Creed.', 'Set a common way of reckoning the date of Easter.'],
+    east:'Commemorated on the Sunday of the Fathers of the First Council, the Sunday after the Ascension.', quiz:'condemned Arius and gave the first form of the Creed' },
+  { name:'Constantinople I', year:'381', place:'Constantinople', pope:'St. Damasus I', open:'h15',
+    did:['Affirmed the divinity of the Holy Spirit against those who denied it.', 'Completed the Creed in the form still prayed today, the Nicene-Constantinopolitan Creed: “the Lord, the giver of life…”'],
+    quiz:'confessed the divinity of the Holy Spirit and completed the Nicene Creed' },
+  { name:'Ephesus', year:'431', place:'Ephesus, in modern Turkey', pope:'St. Celestine I', open:'h17',
+    did:['Condemned Nestorius, who divided Christ into two persons.', 'Proclaimed Mary Theotokos, the Mother of God, because her Son is one divine Person.', 'Condemned the Pelagians.'],
+    quiz:'proclaimed Mary the Theotokos, Mother of God' },
+  { name:'Chalcedon', year:'451', place:'Chalcedon, across the Bosporus from Constantinople', pope:'St. Leo the Great', open:'h17',
+    did:['Defined that Christ is one Person in two natures, divine and human, “without confusion, change, division, or separation.”', 'Received Pope Leo’s Tome with the cry “Peter has spoken through Leo!”', 'Condemned Eutyches, who said Christ’s humanity was swallowed up in his divinity.'],
+    also:'The Oriental Churches (Coptic, Armenian, Syriac, and Ethiopian) did not accept Chalcedon. In recent decades popes and their patriarchs have signed declarations recognizing that they share the same faith in Christ.',
+    quiz:'defined that Christ is one Person in two natures' },
+  { name:'Constantinople II', year:'553', place:'Constantinople', pope:'Vigilius',
+    did:['Condemned the “Three Chapters,” writings judged to favor Nestorius.', 'Confirmed the teaching of Chalcedon.'],
+    quiz:'condemned the “Three Chapters”' },
+  { name:'Constantinople III', year:'680–681', place:'Constantinople', pope:'St. Agatho; confirmed by St. Leo II',
+    did:['Condemned Monothelitism, the teaching that Christ has only one will.', 'Taught that Christ has two wills, divine and human, his human will freely obeying the divine.'],
+    quiz:'taught that Christ has two wills, divine and human' },
+  { name:'Nicaea II', year:'787', place:'Nicaea', pope:'Adrian I, through his legates', open:'h22',
+    did:['Ended the first period of iconoclasm.', 'Taught that holy images are rightly venerated, and that the honor given an image passes to the one it shows. Worship (latreia) belongs to God alone.'],
+    east:'The final end of iconoclasm in 843 is celebrated on the Sunday of Orthodoxy, the first Sunday of Great Lent, with a procession of icons.', quiz:'defended the veneration of holy icons' },
+  { name:'Constantinople IV', year:'869–870', place:'Constantinople', pope:'Adrian II',
+    did:['Deposed Patriarch Photius and restored Patriarch Ignatius.', 'Confirmed the veneration of icons.'],
+    also:'The Orthodox do not count this council. Many of them regard a later council (879–880), which restored Photius, as the eighth.',
+    quiz:'deposed Patriarch Photius' },
+  { name:'Lateran I', year:'1123', place:'The Lateran Basilica, Rome', pope:'Callistus II',
+    did:['The first ecumenical council held in the West.', 'Confirmed the Concordat of Worms, ending the investiture controversy over who appoints bishops.', 'Passed decrees against simony and for clerical celibacy.'],
+    quiz:'was the first ecumenical council held in the West' },
+  { name:'Lateran II', year:'1139', place:'The Lateran Basilica, Rome', pope:'Innocent II',
+    did:['Ended the schism of the antipope Anacletus II.', 'Continued the reform of the clergy.'],
+    quiz:'ended the schism of the antipope Anacletus II' },
+  { name:'Lateran III', year:'1179', place:'The Lateran Basilica, Rome', pope:'Alexander III',
+    did:['Required a two-thirds majority of the cardinals to elect a pope.', 'Condemned the Cathars.', 'Asked every cathedral to keep a school with a teacher for poor students, free of charge.'],
+    quiz:'required a two-thirds majority of cardinals to elect a pope' },
+  { name:'Lateran IV', year:'1215', place:'The Lateran Basilica, Rome', pope:'Innocent III', open:'h30',
+    did:['Used the word “transubstantiation” for the change of bread and wine into the Body and Blood of Christ.', 'Required every Catholic to confess at least once a year and receive Communion at Easter.', 'Condemned the Cathar heresy and called a new crusade.'],
+    quiz:'required yearly Confession and Easter Communion' },
+  { name:'Lyon I', year:'1245', place:'Lyon, France', pope:'Innocent IV',
+    did:['Deposed the Emperor Frederick II.', 'Called for a crusade to the Holy Land.'],
+    quiz:'deposed the Emperor Frederick II' },
+  { name:'Lyon II', year:'1274', place:'Lyon, France', pope:'Bl. Gregory X',
+    did:['Brought about a brief reunion with the Greek Church.', 'Taught that the Holy Spirit proceeds from the Father and the Son as from one principle.', 'Set the rules of the conclave, locking the cardinals in until they elect a pope.'],
+    also:'St. Thomas Aquinas died on his way to the council, and St. Bonaventure died during it. The reunion was rejected in the East within a few years.',
+    quiz:'set the rules for the conclave' },
+  { name:'Vienne', year:'1311–1312', place:'Vienne, France', pope:'Clement V',
+    did:['Suppressed the Knights Templar.', 'Taught that the rational soul is the form of the human body.', 'Called for teaching Hebrew, Greek, Arabic, and Syriac at the great universities, for the sake of the missions.'],
+    quiz:'suppressed the Knights Templar' },
+  { name:'Constance', year:'1414–1418', place:'Constance, in modern Germany', pope:'Gregory XII (who resigned); then Martin V',
+    did:['Ended the Great Western Schism, when three men claimed to be pope, by electing Martin V.', 'Condemned the teachings of John Wycliffe and Jan Hus.'],
+    also:'Its claim that a council stands above the pope was never accepted by the popes.',
+    quiz:'ended the Great Western Schism' },
+  { name:'Florence', year:'1431–1445', place:'Basel, Ferrara, Florence, and Rome', pope:'Eugene IV', open:'h33',
+    did:['Reunited the Greek Church with Rome in 1439, agreeing on the Filioque, purgatory, and the primacy of the pope, with each Church keeping its own rites.', 'Received the Armenians and the Copts into union, and set out the teaching on the seven sacraments.'],
+    also:'The union with the Greeks was rejected in Constantinople, which fell to the Ottomans in 1453.',
+    east:'The bishops who made the Union of Brest (1595–1596), from which the Ukrainian Greek Catholic Church comes, looked back to Florence and kept their Byzantine rites.', quiz:'brought a short-lived reunion with the Greek Church in 1439' },
+  { name:'Lateran V', year:'1512–1517', place:'The Lateran Basilica, Rome', pope:'Julius II; then Leo X',
+    did:['Taught that each human soul is immortal.', 'Passed reforms that were largely left undone. It closed seven months before Luther posted his Ninety-Five Theses.'],
+    quiz:'closed just months before Luther’s Ninety-Five Theses' },
+  { name:'Trent', year:'1545–1563', place:'Trent, in northern Italy', pope:'Paul III, Julius III, and Pius IV', open:'h4',
+    did:['Answered the Protestant Reformation on Scripture and Tradition, the canon of the Bible, justification, and the seven sacraments.', 'Taught the Real Presence, transubstantiation, and the Mass as a true sacrifice.', 'Founded seminaries for the training of priests, and led to the Roman Catechism and the Roman Missal of 1570.'],
+    quiz:'answered the Reformation and founded seminaries' },
+  { name:'Vatican I', year:'1869–1870', place:'St. Peter’s Basilica, Rome', pope:'Bl. Pius IX', open:'h41',
+    did:['Taught that God can be known with certainty by the light of reason, and that faith and reason never truly conflict (Dei Filius).', 'Defined the primacy of the pope and his infallibility when he solemnly defines a teaching on faith or morals (Pastor Aeternus).'],
+    also:'The council was cut short when Italian troops entered Rome in 1870.',
+    quiz:'defined papal infallibility' },
+  { name:'Vatican II', year:'1962–1965', place:'St. Peter’s Basilica, Rome', pope:'St. John XXIII; then St. Paul VI', open:'h5',
+    did:['Issued sixteen documents, among them four constitutions: on the liturgy (Sacrosanctum Concilium), the Church (Lumen Gentium), divine revelation (Dei Verbum), and the Church in the modern world (Gaudium et Spes).', 'Proclaimed the universal call to holiness, allowed the vernacular in the liturgy, and restored the permanent diaconate.', 'Taught on ecumenism, religious liberty, and the Church’s relation to other religions.'],
+    east:'Its decree Orientalium Ecclesiarum asked the Eastern Catholic Churches to keep and, where needed, restore their own traditions. On December 7, 1965, Pope Paul VI and Patriarch Athenagoras lifted the excommunications of 1054.', quiz:'issued Lumen Gentium and Dei Verbum' }
+];
+function renderCouncils(){
+  const east = isEastern();
+  entryListEl.innerHTML = `
+    <div class="dv-page cn-page">
+      <section class="dv-card" style="--dv:var(--gold)">
+        <header class="dv-head"><span class="dv-icon">${navIcon('council')}</span><div><div class="daily-kicker">Twenty-one councils</div><h3>What is an ecumenical council?</h3></div></header>
+        <p>An ecumenical council is a gathering of the bishops of the whole world, in union with the pope, to settle questions of faith and discipline. Its teaching on faith and morals, confirmed by the pope, is infallible (CCC 884, 891). The model is the Council of Jerusalem in Acts 15, where the apostles and elders met to decide whether Gentile converts had to keep the law of Moses.</p>
+        ${east ? '<p>The Orthodox Churches receive the first seven, the Seven Ecumenical Councils, which shaped the Byzantine liturgy and its feasts. The Eastern Catholic Churches, in full communion with Rome, accept all twenty-one, as do Latin Catholics.</p>' : '<p>The first seven are shared with the Orthodox Churches, who call them the Seven Ecumenical Councils. The Catholic Church counts twenty-one in all.</p>'}
+        <button class="text-link dv-link" data-open="h7">The Council of Jerusalem →</button>
+      </section>
+      <ol class="cn-list">
+        ${COUNCILS.map((c, i) => `
+        <li class="cn-item${i < 7 ? ' cn-seven' : ''}">
+          <div class="cn-num" aria-hidden="true">${i + 1}</div>
+          <div class="cn-body">
+            <h3>${escapeHtml(c.name)} <span class="cn-year">${escapeHtml(c.year)}</span></h3>
+            <p class="cn-meta">${escapeHtml(c.place)} · Pope ${escapeHtml(c.pope)}</p>
+            <ul>${c.did.map(d => `<li>${escapeHtml(d)}</li>`).join('')}</ul>
+            ${c.also ? `<p class="cn-also">${escapeHtml(c.also)}</p>` : ''}
+            ${east && c.east ? `<p class="cn-also cn-east">${escapeHtml(c.east)}</p>` : ''}
+            ${c.open ? `<button class="text-link dv-link" data-open="${c.open}">Read the story →</button>` : ''}
+          </div>
+        </li>`).join('')}
+      </ol>
+      ${east ? '<p class="dv-note">The Byzantine calendar also keeps the Sunday of the Fathers of the Seventh Council in October, and of the Fathers of the first six councils in July.</p>' : ''}
+    </div>`;
+  entryListEl.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openReadModal(b.dataset.open)));
 }
 
 /* =========================================================
