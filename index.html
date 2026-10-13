@@ -10,6 +10,18 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#7a2426">
+<meta name="description" content="Prayers, the Rosary, the saints, the Bible, the Catechism, hymns, and Church history, for Roman and Eastern Catholics. Free, with no ads.">
+<link rel="canonical" href="https://sanctify.pages.dev/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sanctify">
+<meta property="og:title" content="Sanctify — A Catholic Repository">
+<meta property="og:description" content="Prayers, the Rosary, the saints, the Bible, the Catechism, hymns, and Church history, for Roman and Eastern Catholics. Free, with no ads.">
+<meta property="og:url" content="https://sanctify.pages.dev/">
+<meta property="og:image" content="https://sanctify.pages.dev/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sanctify, a Catholic repository: a red cross on parchment">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -2118,6 +2130,16 @@
   .dv-east{margin-top:4px;}
   .dv-link{display:inline-block; margin-top:12px;}
   @media (max-width:600px){ .dv-card{padding:20px 18px;} .dv-head h3{font-size:1.3rem;} }
+  /* Pages in search results */
+  .search-pages{margin:0 0 22px;}
+  .search-pages h3{margin:0 0 10px; font-family:'Cormorant Garamond', serif; font-size:1.2rem;}
+  .sp-list{display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:10px;}
+  .sp-card{display:flex; gap:12px; align-items:flex-start; text-align:left; padding:12px 14px; border:1px solid var(--line); border-radius:12px; background:var(--parchment-light); color:var(--ink); font:inherit; cursor:pointer;}
+  .sp-card:hover, .sp-card:focus-visible{border-color:var(--sp);}
+  .sp-icon{flex:0 0 34px; height:34px; border-radius:9px; display:flex; align-items:center; justify-content:center; color:var(--sp); background:color-mix(in srgb, var(--sp) 12%, transparent);}
+  .sp-icon svg{width:20px; height:20px;}
+  .sp-card strong{display:block;}
+  .sp-card strong + span{display:block; font-size:0.86rem; color:var(--ink-soft); margin-top:2px;}
   /* Catholic Lists, Inside a Church */
   .ls-items{margin:8px 0 6px; padding:0; list-style:none; counter-reset:ls;}
   .ls-items li{counter-increment:ls; position:relative; padding:9px 0 9px 34px; border-top:1px solid var(--line);}
@@ -7122,6 +7144,10 @@ function render(){
   let entries = currentEntries();
   if(activeCategory === 'book' && booksReadableOnly && !searching) entries = entries.filter(e => BOOK_TEXTS[e.id]);
   entryListEl.innerHTML = '';
+  if(searching && (globalSearch || activeCategory === 'all')){
+    const pages = searchPagesEl(searchTerm);
+    if(pages) entryListEl.appendChild(pages);
+  }
 
   if(activeCategory === 'all' && !searching){
     entryListEl.appendChild(buildTodayPanel());
@@ -7150,6 +7176,39 @@ function render(){
     }
   }
   renderRows(entries);
+}
+
+/* Pages that match a search: the page names and descriptions, plus the words on the guide pages */
+const SEARCH_SKIP_ROUTES = new Set(['home', 'moderate', 'account', 'community/new', 'community/post', 'community/user', 'library/bible/read', 'library/books/read', 'library/all']);
+function pageSearchText(route){
+  const r = ROUTES[route], east = isEastern();
+  const words = [routeName(route), r.desc || CAT_DESC[r.cat] || ''];
+  const guide = list => list.forEach(d => words.push(d.name, d.kicker || '', ...(d.items || []).map(x => x[0]), ...(d.groups || []).flatMap(([g, items]) => [g, ...items.map(x => x[0])])));
+  if(r.cat === 'lists') guide(east ? LISTS_EAST : LISTS);
+  if(r.cat === 'church') guide(east ? CHURCH_GUIDE_EAST : CHURCH_GUIDE);
+  if(r.cat === 'councils') COUNCILS.forEach(c => words.push(c.name, c.place));
+  if(r.cat === 'devotions') (east ? DEVOTIONS_EAST : DEVOTIONS).forEach(d => words.push(d.name, d.kicker || ''));
+  if(r.cat === 'vocations') (east ? VOCATIONS_EAST : VOCATIONS).forEach(d => words.push(d.name, d.kicker || ''));
+  if(r.cat === 'glossary') GLOSSARY.forEach(([t]) => words.push(t));
+  return words.join(' ').toLowerCase();
+}
+function searchPagesEl(term){
+  const t = term.trim().toLowerCase();
+  if(t.length < 3) return null;
+  const re = new RegExp('\\b' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  const hits = Object.keys(ROUTES).filter(route => !SEARCH_SKIP_ROUTES.has(route) && !ROUTES[route].cat.startsWith('hub-'))
+    .map(route => ({ route, inName:re.test(routeName(route).toLowerCase()), inText:re.test(pageSearchText(route)) }))
+    .filter(h => h.inName || h.inText)
+    .sort((a, b) => b.inName - a.inName || (a.route === 'learn/glossary') - (b.route === 'learn/glossary'))
+    .slice(0, 4);
+  if(!hits.length) return null;
+  const box = document.createElement('section');
+  box.className = 'search-pages';
+  box.innerHTML = `<h3>Pages</h3><div class="sp-list">${hits.map(({ route }) => {
+    const r = ROUTES[route], sec = SECTIONS[r.cat] || SECTIONS.all;
+    return `<button class="sp-card" data-route="${route}" style="--sp:${sec.color}"><span class="sp-icon">${navIcon(sec.icon)}</span><span><strong>${escapeHtml(routeName(route))}</strong><span>${escapeHtml(excerptOf(r.desc || CAT_DESC[r.cat] || '', 90))}</span></span></button>`;
+  }).join('')}</div>`;
+  return box;
 }
 
 const ROW_COLORS = { prayer:'var(--wine)', saint:'var(--gold)', history:'var(--green)', book:'var(--indigo)', bible:'var(--teal)', theology:'var(--purple)' };
@@ -11610,7 +11669,33 @@ const GLOSSARY = [
   ['Vestments', 'The liturgical garments worn by clergy, such as the alb, stole, and chasuble, whose colors follow the liturgical season.'],
   ['Viaticum', 'Holy Communion given to a dying person, from the Latin for “provision for the journey.”'],
   ['Vocation', 'God’s call to each person: to holiness, and to a particular state of life such as marriage, priesthood, or consecrated life.'],
-  ['Vulgate', 'St. Jerome’s Latin translation of the Bible, made in the late 4th century, the standard Bible of the Western Church for centuries.']
+  ['Vulgate', 'St. Jerome’s Latin translation of the Bible, made in the late 4th century, the standard Bible of the Western Church for centuries.'],
+  ['Acedia', 'Spiritual sloth: a listless boredom with prayer and the things of God, counted among the capital sins. The desert fathers called it the “noonday demon.”'],
+  ['Alb', 'The long white vestment worn by priests, deacons, and servers at the liturgy, recalling the white garment of Baptism.'],
+  ['Beatitudes', 'The eight blessings with which Jesus began the Sermon on the Mount (Matthew 5:3–10), beginning “Blessed are the poor in spirit.”'],
+  ['Capital sins', 'The seven sins from which others spring: pride, greed, envy, wrath, lust, gluttony, and sloth. Often called the seven deadly sins.'],
+  ['Chasuble', 'The outer vestment the priest wears to celebrate Mass, in the color of the day.'],
+  ['Cope', 'A long cape worn by clergy for processions, Benediction, and other solemn rites outside Mass.'],
+  ['Corporal', 'The square white linen cloth spread on the altar, on which the Host and chalice are placed.'],
+  ['Dalmatic', 'The outer vestment of a deacon, a tunic with wide sleeves.'],
+  ['Diskos', 'In the Byzantine Liturgy, the paten on a foot that holds the Lamb, the bread to be consecrated.'],
+  ['Ektenia', 'A litany of the Byzantine services, led by the deacon, to which the people answer “Lord, have mercy” or “Grant this, O Lord.”'],
+  ['Filioque', 'Latin for “and the Son”: the words added in the West to the Nicene Creed, saying that the Holy Spirit proceeds from the Father and the Son. A long point of discussion between East and West. Eastern Catholics usually pray the Creed without it.'],
+  ['Holy day of obligation', 'A feast on which Catholics are bound, as on Sunday, to attend Mass and rest from unnecessary work.'],
+  ['Lunette', 'The small glass holder that keeps the Host upright in the monstrance.'],
+  ['Mitre', 'The tall, pointed liturgical hat worn by bishops and some abbots.'],
+  ['Narthex', 'The entrance hall of a church, between the doors and the nave.'],
+  ['Nave', 'The main body of a church, where the people gather. The name comes from the Latin for “ship.”'],
+  ['Pallium', 'A band of white wool marked with black crosses, worn by the pope and by metropolitan archbishops as a sign of their office and of unity with the pope.'],
+  ['Paten', 'The plate, usually of gold or silver, that holds the Host at Mass.'],
+  ['Precepts of the Church', 'The least the Church asks of every Catholic: Mass on Sundays and holy days, yearly Confession, Communion in the Easter season, fasting and abstinence, and supporting the Church.'],
+  ['Pyx', 'A small round case for carrying the Eucharist to the sick.'],
+  ['Sanctuary lamp', 'The lamp or candle that burns day and night near the tabernacle, showing that Christ is present in the Blessed Sacrament.'],
+  ['Sedevacantism', 'The view that the Chair of Peter has been empty since the death of Pius XII (or another recent pope), so that later popes are not true popes. The Church rejects it.'],
+  ['Stole', 'The long band of cloth that is the sign of ordained ministry, worn by bishops, priests, and deacons.'],
+  ['Thurible', 'The censer: a metal vessel hung on chains, in which incense is burned.'],
+  ['Triodion', 'The Byzantine service book, and season, of the ten weeks before Pascha, from the Sunday of the Publican and the Pharisee through Holy Saturday.'],
+  ['Works of mercy', 'Acts of charity for our neighbor’s bodily needs (the seven corporal works) and spiritual needs (the seven spiritual works).']
 ].sort((a, b) => a[0].localeCompare(b[0]));
 let glossaryQuery = '';
 
