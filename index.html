@@ -13445,6 +13445,7 @@ const RITE_DESC = {
 const TRAD_DESC = {
   mass:'Every part of the Traditional Latin Mass of 1962 in order, with the Latin you will hear, what it means, and when to kneel, sit, and stand. Follow along on your phone at Mass.',
   rosary:'Pray the Rosary bead by bead with the fifteen traditional mysteries, Joyful, Sorrowful, and Glorious, and a meditation for each.',
+  hymns:'Gregorian chant and the hymns of the Latin Church, with recordings: the Asperges and the Kyrie of the Sunday Mass, the Marian anthems, Adoro Te, the chants of Holy Week and Easter, and more.',
   calendar:'The traditional Roman calendar of 1962: feasts of the I, II, and III class, commemorations, Ember and Rogation Days, and the seasons of Septuagesima and Passiontide.'
 };
 const TRAD_NAV = { 'learn/mass':'The Latin Mass Explained' };
@@ -18888,8 +18889,8 @@ async function renderHymns(){
     catch(err){ if(stillShowing(seq, 'hymns')) entryListEl.innerHTML = forumNotice('Couldn’t load the hymns', 'Please check your connection and try again.', ''); return; }
     if(!stillShowing(seq, 'hymns')) return;
   }
-  const rite = isEastern() ? 'eastern' : 'latin';
-  const all = hyData.hymns.filter(h => h.rite === rite);
+  // the Traditional edition also has the chants of the old rite (rite 'traditional')
+  const all = hyData.hymns.filter(h => isEastern() ? h.rite === 'eastern' : h.rite === 'latin' || (h.rite === 'traditional' && isTraditional()));
   const groups = [...new Set(all.map(h => h.group))];
   if(hyGroup !== 'all' && !groups.includes(hyGroup)) hyGroup = 'all';
   const list = hyGroup === 'all' ? all : all.filter(h => h.group === hyGroup);
