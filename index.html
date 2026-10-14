@@ -1019,6 +1019,9 @@
   .mass-intro > div{flex:1 1 380px;}
   .mass-intro p{margin:0 0 12px;}
   .mass-legend{display:flex; flex-wrap:wrap; align-items:center; gap:8px;}
+  .mass-forms{margin-bottom:16px;}
+  .mass-latin{margin:4px 0 10px; padding:4px 0 4px 12px; border-left:2px solid var(--gold); font-style:italic; color:var(--ink);}
+  .tlm-guide{margin-top:26px;}
   .mass-legend-note{font-size:0.78rem; color:var(--ink-soft);}
   .posture{display:inline-flex; align-items:center; gap:5px; padding:3px 10px 3px 6px; border-radius:12px; font-size:0.75rem; font-weight:600; white-space:nowrap;}
   .posture svg{width:18px; height:18px;}
@@ -7190,6 +7193,8 @@ function pageSearchText(route){
   if(r.cat === 'devotions') (east ? DEVOTIONS_EAST : DEVOTIONS).forEach(d => words.push(d.name, d.kicker || ''));
   if(r.cat === 'vocations') (east ? VOCATIONS_EAST : VOCATIONS).forEach(d => words.push(d.name, d.kicker || ''));
   if(r.cat === 'glossary') GLOSSARY.forEach(([t]) => words.push(t));
+  if(r.tlm) words.push('Tridentine Mass, Extraordinary Form, Vetus Ordo, Usus Antiquior, Low Mass, High Mass, Missal of 1962', ...TLM_PARTS.flatMap(sec => sec.parts.map(p => p.name)));
+  else if(r.cat === 'mass' && !east) words.push('Novus Ordo, Ordinary Form', ...MASS_PARTS.flatMap(sec => sec.parts.map(p => p.name)));
   return words.join(' ').toLowerCase();
 }
 function searchPagesEl(term){
@@ -11499,26 +11504,179 @@ const MASS_PARTS = [
       why:'The word “Mass” comes from the Latin dismissal, “Ite, missa est.” We are sent to bring Christ into the world.' }
   ]}
 ];
+/* ---------- The Traditional Latin Mass (the Missal of 1962) ---------- */
+const TLM_PARTS = [
+  { section:'Mass of the Catechumens', parts:[
+    { name:'Asperges', posture:'stand', when:'On Sundays, before the principal Mass',
+      latin:'Asperges me, Domine, hyssopo, et mundabor:\nlavabis me, et super nivem dealbabor.',
+      what:'The priest, in a cope, walks through the church sprinkling the people with holy water while the choir sings “Thou shalt sprinkle me, O Lord, with hyssop, and I shall be cleansed.” In Eastertide it is the Vidi aquam: “I saw water flowing from the temple.” Bless yourself as the water reaches you.',
+      why:'We are washed and reminded of our Baptism before we approach the altar.', ref:'Psalm 51:7' },
+    { name:'Prayers at the Foot of the Altar', posture:'kneel',
+      latin:'V. Introibo ad altare Dei.\nR. Ad Deum qui laetificat juventutem meam.',
+      what:'The priest makes the Sign of the Cross at the foot of the altar steps and prays Psalm 42 (43) with the server: “I will go in to the altar of God. To God, who gives joy to my youth.” The priest says the Confiteor, then the server says it for the people, and the priest prays for their forgiveness. Then he goes up to the altar and kisses it, where the relics of the martyrs rest.',
+      why:'The priest, and all of us with him, confess our sins and ask to be made clean before going up to the altar of God.', ref:'Psalm 43' },
+    { name:'Introit', posture:'kneel', note:'At a High Mass, stand from the Introit to the end of the Collect',
+      what:'At the Epistle side (the right side as you face the altar), the priest makes the Sign of the Cross and reads the Introit, an antiphon and psalm verse that set the tone of the day. Many Sundays are named after the first word of their Introit, such as Gaudete and Laetare.',
+      why:'The Introit was once sung as the procession entered; it opens the day’s feast or season.' },
+    { name:'Kyrie', posture:'kneel',
+      latin:'Kyrie, eleison. (three times)\nChriste, eleison. (three times)\nKyrie, eleison. (three times)',
+      what:'At the center of the altar, the priest and server (or the choir) alternate the ninefold Kyrie: “Lord, have mercy. Christ, have mercy. Lord, have mercy,” each three times.',
+      why:'Nine cries for mercy, traditionally three to each Person of the Trinity, in a Greek prayer the Roman Church has kept since ancient times.' },
+    { name:'Gloria', posture:'kneel', when:'On most Sundays and feasts; not in the Masses of the season in Advent, Septuagesima, and Lent, nor at Requiems',
+      latin:'Gloria in excelsis Deo,\net in terra pax hominibus bonae voluntatis.',
+      what:'The priest intones “Glory to God in the highest,” the hymn of the angels at Bethlehem, and continues it at the altar. Bow your head at the holy name of Jesus.',
+      why:'The Church takes up the angels’ song of praise to the Father, the Son, and the Holy Spirit.', ref:'Luke 2:14' },
+    { name:'Collect', posture:'kneel',
+      latin:'V. Dominus vobiscum.\nR. Et cum spiritu tuo.\nV. Oremus… Per omnia saecula saeculorum.\nR. Amen.',
+      what:'The priest turns to the people: “The Lord be with you.” “And with thy spirit.” Then, “Let us pray,” and he reads the Collect of the day, which gathers up the prayers of all. We answer, “Amen.”',
+      why:'One prayer collects the intentions of the whole Church and offers them through Christ.' },
+    { name:'Epistle', posture:'sit',
+      latin:'R. Deo gratias.',
+      what:'At the Epistle side the priest reads the Epistle, usually from St. Paul, in Latin. At its end the server answers, “Thanks be to God.” In many churches the readings are read again in the vernacular before the sermon.',
+      why:'God speaks to His Church through the writings of the apostles and prophets.' },
+    { name:'Gradual and Alleluia', posture:'sit', note:'A Tract replaces the Alleluia from Septuagesima to Easter; on a few great days a Sequence follows',
+      what:'The priest reads (or the choir sings) the Gradual, psalm verses once sung from the altar steps (gradus), and the Alleluia with its verse. The server then moves the missal to the Gospel side (the left), while the priest bows at the center and prays Munda cor meum: “Cleanse my heart and my lips.”',
+      why:'Meditative chants prepare our hearts to hear the Gospel.' },
+    { name:'Gospel', posture:'stand',
+      latin:'V. Sequentia sancti Evangelii secundum N.\nR. Gloria tibi, Domine.\n… R. Laus tibi, Christe.',
+      what:'The priest announces the Gospel and traces small crosses on the book, his forehead, lips, and breast; we make the small crosses with him. We answer, “Glory be to Thee, O Lord,” and at the end, “Praise be to Thee, O Christ.”',
+      why:'We stand to honor Christ, who speaks to us in the Gospel.' },
+    { name:'Sermon', posture:'sit',
+      what:'The priest preaches, usually from the pulpit. Announcements and the readings in the vernacular often come first.',
+      why:'The priest explains the Word of God and the faith of the Church.' },
+    { name:'Credo', posture:'stand', when:'On Sundays and certain feasts', note:'Kneel (or genuflect) at “Et incarnatus est”',
+      latin:'Credo in unum Deum…\nEt incarnatus est de Spiritu Sancto ex Maria Virgine: et homo factus est.',
+      what:'The priest intones the Nicene Creed. At the words “And was incarnate by the Holy Spirit of the Virgin Mary, and was made man,” everyone kneels or genuflects in adoration of the Incarnation.',
+      why:'We profess together the faith of the Church, kneeling at the mystery of God made man.' }
+  ]},
+  { section:'The Offertory', parts:[
+    { name:'Offertory', posture:'sit',
+      latin:'Suscipe, sancte Pater, omnipotens aeterne Deus, hanc immaculatam hostiam…',
+      what:'After “Dominus vobiscum” and “Oremus,” the priest reads the Offertory antiphon. He offers the host on the paten: “Receive, O holy Father, almighty and eternal God, this spotless host.” He mixes a drop of water into the wine and offers the chalice. At a High Mass the altar, the priest, and the people are incensed.',
+      why:'The bread and wine are set apart for the Sacrifice, and we offer ourselves with them.' },
+    { name:'Lavabo', posture:'sit',
+      latin:'Lavabo inter innocentes manus meas…',
+      what:'At the Epistle side the priest washes his fingers, praying Psalm 25 (26): “I will wash my hands among the innocent.”',
+      why:'The priest asks for purity of heart before he offers the Holy Sacrifice.', ref:'Psalm 26:6' },
+    { name:'Orate, Fratres and the Secret', posture:'sit', note:'Many kneel from here at a Low Mass',
+      latin:'V. Orate, fratres: ut meum ac vestrum sacrificium acceptabile fiat apud Deum Patrem omnipotentem.\nR. Suscipiat Dominus sacrificium de manibus tuis ad laudem et gloriam nominis sui, ad utilitatem quoque nostram, totiusque Ecclesiae suae sanctae.',
+      what:'The priest turns: “Pray, brethren, that my sacrifice and yours may be acceptable to God the Father almighty.” The server answers: “May the Lord receive the sacrifice from thy hands, to the praise and glory of His name, for our benefit, and that of all His holy Church.” The priest then says the Secret silently.',
+      why:'The sacrifice is the priest’s and the people’s together, offered for the whole Church.' }
+  ]},
+  { section:'The Canon', parts:[
+    { name:'Preface', posture:'kneel', note:'At a High Mass, stand for the Preface and kneel at the Sanctus',
+      latin:'V. Sursum corda.\nR. Habemus ad Dominum.\nV. Gratias agamus Domino Deo nostro.\nR. Dignum et justum est.',
+      what:'“Lift up your hearts.” “We have lifted them up unto the Lord.” “Let us give thanks to the Lord our God.” “It is meet and just.” The priest sings or says the Preface of the day or season, a hymn of thanksgiving.',
+      why:'We lift our hearts to heaven to join the angels.' },
+    { name:'Sanctus', posture:'kneel',
+      latin:'Sanctus, Sanctus, Sanctus Dominus Deus Sabaoth…\nBenedictus qui venit in nomine Domini. Hosanna in excelsis.',
+      what:'The bell rings as the priest bows and says the Sanctus: “Holy, holy, holy, Lord God of hosts,” and the Benedictus. At a High Mass the choir sings it, and the Benedictus may be sung after the Consecration.',
+      why:'We join the song of the seraphim and the crowds of Palm Sunday.', ref:'Isaiah 6:3' },
+    { name:'The Roman Canon', posture:'kneel',
+      latin:'Te igitur, clementissime Pater…',
+      what:'The priest prays the Canon silently, in Latin, as he has for centuries. He prays for the Church, the pope, and the bishop, remembers the living, and calls on Our Lady, the apostles, and the martyrs (the Communicantes). At the Hanc igitur he spreads his hands over the offerings, and in many places a bell rings.',
+      why:'The Roman Canon, essentially unchanged since the time of St. Gregory the Great, is the heart of the Mass, prayed in reverent silence.' },
+    { name:'Consecration and Elevation', posture:'kneel',
+      latin:'Hoc est enim Corpus meum.\nHic est enim Calix Sanguinis mei, novi et aeterni testamenti: mysterium fidei: qui pro vobis et pro multis effundetur in remissionem peccatorum.',
+      what:'Bending low over the altar, the priest says Christ’s words over the host: “For this is my Body,” and over the chalice: “For this is the Chalice of my Blood.” He genuflects and lifts the Host, and then the Chalice, high for all to adore, while the bell rings. Many look up and pray silently, “My Lord and my God.”',
+      why:'Bread and wine become the Body and Blood of Christ, and His sacrifice on Calvary is made present on the altar.', ref:'Matthew 26:26–28' },
+    { name:'After the Consecration', posture:'kneel',
+      latin:'Nobis quoque peccatoribus…\nV. Per omnia saecula saeculorum.\nR. Amen.',
+      what:'The priest continues silently, offering the Victim to the Father and praying for the dead. At “To us sinners also” he strikes his breast and says the words aloud. The Canon ends with the minor elevation and “For ever and ever,” and we answer, “Amen.”',
+      why:'Our “Amen” seals the great prayer of the Church.' }
+  ]},
+  { section:'The Communion', parts:[
+    { name:'Pater Noster', posture:'kneel',
+      latin:'V. Et ne nos inducas in tentationem.\nR. Sed libera nos a malo.',
+      what:'The priest alone says or sings the Our Father. The server, or the choir at a High Mass, answers the last line: “But deliver us from evil.”',
+      why:'We pray the prayer Jesus taught us before receiving the Bread of Life.', ref:'Matthew 6:9–13' },
+    { name:'Pax and Agnus Dei', posture:'kneel',
+      latin:'V. Pax Domini sit semper vobiscum.\nR. Et cum spiritu tuo.\nAgnus Dei, qui tollis peccata mundi: miserere nobis… dona nobis pacem.',
+      what:'The priest breaks the Host and drops a particle into the chalice: “The peace of the Lord be always with you.” He strikes his breast three times at the Agnus Dei, “Lamb of God, who takest away the sins of the world.” At a Solemn High Mass the peace is passed among the clergy.',
+      why:'Christ, the Lamb of God, gives us His peace.', ref:'John 1:29' },
+    { name:'Domine, Non Sum Dignus', posture:'kneel',
+      latin:'V. Ecce Agnus Dei, ecce qui tollit peccata mundi.\nR. Domine, non sum dignus, ut intres sub tectum meum: sed tantum dic verbo, et sanabitur anima mea. (three times)',
+      what:'After the priest’s own Communion, he turns holding the Host: “Behold the Lamb of God, behold Him who takes away the sins of the world.” Three times we answer, striking the breast: “Lord, I am not worthy that Thou shouldst enter under my roof; say but the word, and my soul shall be healed.”',
+      why:'Our answer echoes the humble faith of the Roman centurion.', ref:'Matthew 8:8' },
+    { name:'Holy Communion', posture:'kneel', note:'Kneel at the altar rail and receive on the tongue',
+      latin:'Corpus Domini nostri Jesu Christi custodiat animam tuam in vitam aeternam. Amen.',
+      what:'Communicants kneel at the altar rail, and the server holds a paten beneath each chin. The priest makes the Sign of the Cross with the Host and says, “May the Body of our Lord Jesus Christ keep thy soul unto life everlasting. Amen.” He says the Amen himself, so the communicant simply receives on the tongue.',
+      why:'We receive Jesus Himself, kneeling in adoration.' },
+    { name:'Ablutions and Postcommunion', posture:'kneel', note:'Sit during the ablutions; at a High Mass, stand for the Postcommunion',
+      what:'The priest purifies the chalice and his fingers, reads the Communion antiphon at the Epistle side, and turns for “Dominus vobiscum” and the Postcommunion prayer.',
+      why:'We give thanks in silence and ask that the Sacrament bear fruit in us.' }
+  ]},
+  { section:'The Conclusion', parts:[
+    { name:'Ite, Missa Est', posture:'kneel', note:'Stand at a High Mass',
+      latin:'V. Ite, missa est.\nR. Deo gratias.',
+      what:'“Go, the Mass is ended.” “Thanks be to God.” On days without the Gloria the priest says “Benedicamus Domino” (“Let us bless the Lord”), and at a Requiem “Requiescant in pace” (“May they rest in peace”).',
+      why:'The word “Mass” comes from this dismissal.' },
+    { name:'Blessing', posture:'kneel',
+      latin:'Benedicat vos omnipotens Deus, Pater, et Filius, ✠ et Spiritus Sanctus.\nR. Amen.',
+      what:'The priest silently prays the Placeat, asking that the sacrifice be pleasing to the Trinity, then blesses the people: “May almighty God bless you, the Father, and the Son, and the Holy Spirit.” Make the Sign of the Cross. There is no blessing at a Requiem Mass.',
+      why:'We leave under God’s blessing.' },
+    { name:'The Last Gospel', posture:'stand', note:'Genuflect at “Et Verbum caro factum est”',
+      latin:'V. Initium sancti Evangelii secundum Joannem.\nR. Gloria tibi, Domine.\nIn principio erat Verbum…\nEt Verbum caro factum est…\nR. Deo gratias.',
+      what:'At the Gospel side the priest reads the beginning of St. John’s Gospel, “In the beginning was the Word.” At “And the Word was made flesh,” everyone genuflects.',
+      why:'The Mass ends where our salvation began: the eternal Word became flesh and dwelt among us.', ref:'John 1:1–14' },
+    { name:'Prayers after Low Mass', posture:'kneel', when:'After a Low Mass, in many places',
+      what:'Kneeling at the foot of the altar, the priest leads three Hail Marys, the Hail, Holy Queen, a prayer for the Church, and the prayer to St. Michael the Archangel, often followed by “Most Sacred Heart of Jesus, have mercy on us” three times.',
+      why:'Pope Leo XIII asked for these prayers after every Low Mass. They are no longer required, but many communities keep them.' }
+  ]}
+];
+const TLM_GUIDE = [
+  { id:'tlm-kinds', name:'Low Mass, High Mass, and Solemn High Mass', icon:'mass', color:'gold', kicker:'Three ways it is celebrated',
+    items:[
+      ['Low Mass (Missa lecta)', 'Said by the priest with one or two servers. Quiet and prayerful; the people mostly kneel. Hymns may be sung.'],
+      ['High Mass (Missa cantata)', 'Sung by the priest with a choir, often with incense. The people stand more often and may sing the responses and the Ordinary in chant.'],
+      ['Solemn High Mass', 'Sung with a deacon and subdeacon assisting the priest, the fullest form of the Roman liturgy.'],
+      ['Requiem Mass', 'A Mass for the dead in black vestments, with the Dies Irae and no Gloria, Alleluia, or blessing.']
+    ] },
+  { id:'tlm-year', name:'The 1962 Calendar', icon:'calendar', color:'purple', kicker:'The seasons of the traditional year', items:[
+      ['Advent', 'Four weeks of preparation for Christmas. Violet; rose on Gaudete Sunday.'],
+      ['Christmastide and the Time after Epiphany', 'From Christmas through the Sundays after the Epiphany. White, then green.'],
+      ['Septuagesima', 'The three Sundays before Lent: Septuagesima, Sexagesima, and Quinquagesima. Violet; the Gloria and Alleluia fall silent.'],
+      ['Lent and Passiontide', 'From Ash Wednesday. In the last two weeks, from Passion Sunday, crosses and images are veiled.'],
+      ['Eastertide', 'From Easter to the octave of Pentecost. White, and red for Pentecost.'],
+      ['The Time after Pentecost', 'The long green season of Sundays from Trinity Sunday until Advent.'],
+      ['Ember and Rogation Days', 'Days of fasting and prayer at the four seasons, and of prayer for the harvest before the Ascension.']
+    ] },
+  { id:'tlm-tips', name:'Your First Latin Mass', icon:'compass', color:'teal', kicker:'Tips for newcomers', items:[
+      ['Bring a hand missal', 'Many churches lend booklets with the Latin and English side by side. Don’t worry about following every word.'],
+      ['Follow the people around you', 'Postures vary from place to place. When in doubt, kneel.'],
+      ['Let the silence pray', 'Much of the Mass is said quietly by the priest. Unite your prayer with his.'],
+      ['Receiving Communion', 'Kneel at the rail and receive on the tongue. Do not say “Amen.” The usual rules apply: be in a state of grace and keep the one-hour fast.'],
+      ['Dress', 'Many people dress in their Sunday best, and many women wear a chapel veil, though it is not required.']
+    ],
+    note:'The Missal of 1962 is the last edition of the Roman Missal from before the reforms after Vatican II. Since 2021 it may be celebrated with the permission of the diocesan bishop. Ask your parish or diocese where it is offered near you.' }
+];
 let massStep = null;   // null: the overview; otherwise the step in "follow along" mode
+let massForm = null;   // which guide massStep belongs to
 
 function postureBadge(p, note){
   return `<span class="posture posture-${p}" title="${escapeHtml(note || POSTURE_NAME[p])}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${POSTURE_ICONS[p]}</svg>${POSTURE_NAME[p]}</span>`;
 }
 
+function latinHtml(text){
+  return `<p class="mass-latin" lang="la">${text.split('\n').map(escapeHtml).join('<br>')}</p>`;
+}
 function renderMass(){
-  const PARTS = isEastern() ? LITURGY_PARTS : MASS_PARTS;
+  const tlm = !!(ROUTES[currentRoute] || {}).tlm;
+  const form = tlm ? 'tlm' : isEastern() ? 'east' : 'ordinary';
+  if(massForm !== form){ massForm = form; massStep = null; }
+  const PARTS = tlm ? TLM_PARTS : isEastern() ? LITURGY_PARTS : MASS_PARTS;
   const flat = PARTS.flatMap((s, si) => s.parts.map(p => ({ ...p, section:s.section, si })));
   if(massStep !== null){
     if(massStep >= flat.length){
       logPrayer('mass');
-      return renderDevotionDone({ kind:'mass', color:'var(--wine)', emblem:devoMedal(cardArt('chalice')), title:'Go in peace',
-        text:'Thanks be to God.', againLabel:'Back to The Mass Explained', again:() => { massStep = null; renderMass(); } });
+      return renderDevotionDone({ kind:'mass', color:'var(--wine)', emblem:devoMedal(cardArt('chalice')), title:tlm ? 'Deo gratias' : 'Go in peace',
+        text:tlm ? 'Ite, missa est.' : 'Thanks be to God.', againLabel:tlm ? 'Back to the Latin Mass guide' : 'Back to The Mass Explained', again:() => { massStep = null; renderMass(); } });
     }
     const p = flat[massStep];
     return renderDevotionStep({
       kind:'mass', color:'var(--wine)', step:massStep, total:flat.length,
       emblem:postureBadge(p.posture, p.note), kicker:escapeHtml(p.section), title:p.name,
-      body:`<p>${escapeHtml(p.what)}</p>${p.note ? `<p class="devo-small">${escapeHtml(p.note)}</p>` : ''}`,
+      body:`${p.latin ? latinHtml(p.latin) : ''}<p>${escapeHtml(p.what)}</p>${p.note ? `<p class="devo-small">${escapeHtml(p.note)}</p>` : ''}`,
       extra:`<p class="mass-why">${escapeHtml(p.why)}</p>${p.ref ? `<div class="devo-meta">${scriptureLink(p.ref)}</div>` : ''}`,
       track:`<div class="devo-pips always" aria-hidden="true">${PARTS.map((s, i) => `<span class="${i < p.si ? 'done' : i === p.si ? 'current' : ''}">${ROMAN[i]}</span>`).join('')}</div>`,
       go:i => { massStep = Math.max(0, Math.min(i, flat.length)); renderMass(); window.scrollTo({ top:0 }); },
@@ -11527,16 +11685,22 @@ function renderMass(){
   }
   devoKeys = null;
   let n = 0;
+  const forms = !isEastern() ? `
+      <div class="lo-tabs mass-forms" role="tablist" aria-label="Form of the Mass">
+        <button role="tab" class="lo-tab${tlm ? '' : ' active'}" aria-selected="${!tlm}" data-route="learn/mass"><strong>The Mass today</strong><span>Missal of Paul VI (Novus Ordo)</span></button>
+        <button role="tab" class="lo-tab${tlm ? ' active' : ''}" aria-selected="${tlm}" data-route="learn/latin-mass"><strong>The Traditional Latin Mass</strong><span>Missal of 1962 (Vetus Ordo)</span></button>
+      </div>` : tlm ? `<p class="dv-note">This is the Latin Mass of the Roman Church. <button class="text-link" data-route="learn/mass">The Divine Liturgy Explained →</button></p>` : '';
   entryListEl.innerHTML = `
     <div class="mass-page">
+      ${forms}
       <section class="mass-intro">
         <div>
-          <p>${massIntroText()}</p>
-          <div class="mass-legend">${Object.keys(POSTURE_NAME).filter(p => isEastern() || p !== 'bow').map(p => postureBadge(p)).join('')}<span class="mass-legend-note">${massPostureNote()}</span></div>
+          <p>${tlm ? TLM_INTRO : massIntroText()}</p>
+          <div class="mass-legend">${Object.keys(POSTURE_NAME).filter(p => (isEastern() && !tlm) || p !== 'bow').map(p => postureBadge(p)).join('')}<span class="mass-legend-note">${tlm ? TLM_POSTURE_NOTE : massPostureNote()}</span></div>
         </div>
-        <button class="btn primary pill" id="massFollow">Follow along at ${isEastern() ? 'the Divine Liturgy' : 'Mass'}</button>
+        <button class="btn primary pill" id="massFollow">Follow along at ${tlm ? 'the Latin Mass' : isEastern() ? 'the Divine Liturgy' : 'Mass'}</button>
       </section>
-      <nav class="mass-strip" aria-label="Parts of the Mass">${PARTS.map((s, i) => `<a href="#mass-${i}" class="mass-strip-seg" style="flex:${s.parts.length}"><span>${ROMAN[i]}</span>${escapeHtml(s.section)}</a>`).join('')}</nav>
+      <nav class="mass-strip" aria-label="Parts of the Mass">${PARTS.map((s, i) => `<a href="#mass-${i}" class="mass-strip-seg" style="flex:${s.parts.length} 1 auto"><span>${ROMAN[i]}</span>${escapeHtml(s.section)}</a>`).join('')}</nav>
       ${PARTS.map((s, si) => `
         <section class="mass-section" id="mass-${si}">
           <h3 class="mass-section-title"><span class="mass-roman">${ROMAN[si]}</span>${escapeHtml(s.section)}</h3>
@@ -11547,12 +11711,14 @@ function renderMass(){
                 <div class="mass-head"><h4>${escapeHtml(p.name)}</h4>${postureBadge(p.posture, p.note)}</div>
                 ${p.when ? `<div class="mass-when">${escapeHtml(p.when)}</div>` : ''}
                 ${p.note ? `<div class="mass-when">${escapeHtml(p.note)}</div>` : ''}
+                ${p.latin ? latinHtml(p.latin) : ''}
                 <p>${escapeHtml(p.what)}</p>
                 <p class="mass-why">${escapeHtml(p.why)}</p>
                 ${p.ref ? scriptureLink(p.ref) : ''}
               </div>
             </li>`; }).join('')}</ol>
         </section>`).join('')}
+      ${tlm ? `<div class="dv-page tlm-guide">${TLM_GUIDE.map(lsCardHtml).join('')}</div>` : ''}
       <p class="shop-note">${isEastern() ? 'Find a Divine Liturgy near you at <a href="https://masstimes.org/" target="_blank" rel="noopener">MassTimes.org</a>, which also lists Eastern Catholic parishes.' : 'Find Mass times near you at <a href="https://masstimes.org/" target="_blank" rel="noopener">MassTimes.org</a>, and the readings for any day in the Calendar.'}</p>
     </div>`;
   document.getElementById('massFollow').addEventListener('click', () => { massStep = 0; renderMass(); window.scrollTo({ top:0 }); });
@@ -11669,6 +11835,8 @@ const GLOSSARY = [
   ['Vestments', 'The liturgical garments worn by clergy, such as the alb, stole, and chasuble, whose colors follow the liturgical season.'],
   ['Viaticum', 'Holy Communion given to a dying person, from the Latin for “provision for the journey.”'],
   ['Vocation', 'God’s call to each person: to holiness, and to a particular state of life such as marriage, priesthood, or consecrated life.'],
+  ['Traditional Latin Mass', 'The Mass celebrated in Latin from the Roman Missal of 1962, the last edition before the reforms after Vatican II. Also called the Tridentine Mass, the Extraordinary Form, or the Vetus Ordo.'],
+  ['Novus Ordo', 'Latin for “new order”: an informal name for the Mass of the Roman Missal of Pope Paul VI (1970), the form of the Mass celebrated in most parishes today.'],
   ['Vulgate', 'St. Jerome’s Latin translation of the Bible, made in the late 4th century, the standard Bible of the Western Church for centuries.'],
   ['Acedia', 'Spiritual sloth: a listless boredom with prayer and the things of God, counted among the capital sins. The desert fathers called it the “noonday demon.”'],
   ['Alb', 'The long white vestment worn by priests, deacons, and servers at the liturgy, recalling the white garment of Baptism.'],
@@ -13572,6 +13740,8 @@ function massIntroText(){
     ? 'The Divine Liturgy is heaven on earth: the one sacrifice of Christ made present and the banquet of his Body and Blood. Here is every part of the Divine Liturgy of St. John Chrysostom, the Liturgy celebrated on most days in the Byzantine Churches, in order, with what happens and why it matters.'
     : 'The Mass is the source and summit of the Christian life: the one sacrifice of Christ on the Cross made present, and the banquet in which He gives us His Body and Blood. Here is every part of the Mass, in order, with what to do and why it matters.';
 }
+const TLM_INTRO = 'The Traditional Latin Mass, celebrated from the Roman Missal of 1962, is the form of the Roman Rite that nourished the saints for centuries, essentially as it was codified after the Council of Trent. The priest faces the altar with the people, and prays in Latin, much of it in silence. Here is every part of a Sunday Mass in order, with the Latin you will hear, what it means, and what to do.';
+const TLM_POSTURE_NOTE = 'Postures are those common at a Low Mass in the United States. At a High Mass the people stand more often. Follow those around you.';
 function massPostureNote(){
   return isEastern()
     ? 'In the Byzantine tradition the faithful mostly stand, bow, and make the Sign of the Cross often; customs for sitting vary from parish to parish.'
@@ -14688,7 +14858,7 @@ const HUBS = {
         desc:'The core teachings of the Catholic faith, each with the Scripture passages and Catechism paragraphs behind it, the witness of the Church Fathers, and charitable answers to the objections Catholics most often hear.',
         links:[['Core Catholic Beliefs', 'learn/theology/beliefs'], ['The Faith in Simple Words', 'learn/theology/simple-words'], ['The Faith of the Fathers', 'learn/theology/fathers'], ['Defending the Faith', 'learn/theology/apologetics'], ['The Catechism', 'library/catechism']],
         meta:`${countOf('theology')} topics`, cta:'Start learning' },
-      { route:'learn/mass', desc:isEastern() ? 'Every part of the Divine Liturgy of St. John Chrysostom, with what happens and why. Follow along on your phone.' : 'Every part of the Mass, with when to stand, sit, and kneel and what each moment means. Follow along on your phone.', meta:isEastern() ? 'The Divine Liturgy' : 'The Order of Mass' },
+      { route:'learn/mass', desc:isEastern() ? 'Every part of the Divine Liturgy of St. John Chrysostom, with what happens and why. Follow along on your phone.' : 'Every part of the Mass, with when to stand, sit, and kneel and what each moment means, and a guide to the Traditional Latin Mass. Follow along on your phone.', meta:isEastern() ? 'The Divine Liturgy' : 'The Order of Mass' },
       { route:'learn/living-the-faith', desc:isEastern() ? 'Becoming an Eastern Catholic, the rhythm of Byzantine life, and guides to Holy Crowning, the priesthood, monastic life, and more.' : 'Becoming Catholic, coming home, the precepts of the Church, and guides to discerning and living every vocation.', meta:isEastern() ? `${VOCATIONS_EAST.length} guides` : `${VOCATIONS.length} guides` },
       { route:'learn/lists', desc:isEastern() ? 'The Commandments, the Beatitudes, the seven Holy Mysteries, the eight evil thoughts, the twelve great feasts, the fasts, and more, each explained.' : 'The Commandments, the Beatitudes, the precepts, the sacraments, the virtues, the works of mercy, the capital sins, and more, each explained.', meta:`${LISTS.length} lists` },
       { route:'learn/church', desc:isEastern() ? 'The iconostasis and how to read it, the Holy Table, the holy vessels and vestments, and how to take part in the Liturgy.' : 'The altar, the tabernacle, the sacred vessels, the vestments, the colors of the seasons, and how to take part in Mass.', meta:'A guided tour' },
@@ -15045,6 +15215,8 @@ const ROUTES = {
   'learn/theology/apologetics':  { cat:'theology', parent:'learn/theology', group:'defense', name:'Defending the Faith',
                                    desc:'The reasons behind the faith, and charitable answers to the questions and objections Catholics most often hear.' },
   'learn/mass':                  { cat:'mass', parent:'learn' },
+  'learn/latin-mass':            { cat:'mass', parent:'learn/mass', tlm:true, name:'The Traditional Latin Mass',
+                                   desc:'Every part of the Mass of 1962 in order, with the Latin you will hear, what it means, and when to kneel, sit, and stand. Follow along on your phone.' },
   'learn/glossary':              { cat:'glossary', parent:'learn' },
   'learn/living-the-faith':      { cat:'vocations', parent:'learn' },
   'learn/lists':                 { cat:'lists', parent:'learn' },
