@@ -22,9 +22,13 @@ Visit it at **https://sanctify.pages.dev/**. It is free, has no ads, and works o
 - **History:** a timeline of Church history, the popes, the ecumenical councils, famous icons, religious orders, and the Eastern Catholic Churches.
 - **Community:** a forum for prayer requests and questions, with accounts, badges, and moderation.
 
-### Two editions
+### Three editions
 
-A switch in the menu turns Sanctify into an **Eastern Catholic edition**. It has the Byzantine calendar and prayers, the Jesus Prayer, the Akathist and Paraklesis, the Divine Liturgy explained, and a guide to a Byzantine church. Each Roman-specific page has an Eastern counterpart.
+The edition button in the top bar switches Sanctify between three editions:
+
+- **Roman Catholic**: the Mass and calendar of the Roman Rite as celebrated in most parishes today.
+- **Traditional Latin**: the Roman Missal and calendar of 1962. It has the Traditional Latin Mass explained, the feasts of the I, II, and III class, Septuagesima, Passiontide, and the Ember and Rogation Days, and the fifteen mysteries of the Rosary.
+- **Eastern Catholic**: the Byzantine calendar and prayers, the Jesus Prayer, the Akathist and Paraklesis, the Divine Liturgy explained, and a guide to a Byzantine church. Each Roman-specific page has an Eastern counterpart.
 
 Sanctify also has many color themes, including dark versions and themes that follow the liturgical season.
 

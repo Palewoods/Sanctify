@@ -1258,6 +1258,22 @@
   .rite-banner-cross{flex:0 0 38px; width:38px; height:38px; padding:6px; border-radius:50%; color:var(--wine); background:color-mix(in srgb, var(--wine) 10%, transparent);}
   .rite-banner-cross svg{width:100%; height:100%; display:block;}
   .rite-banner .btn{flex:0 0 auto;}
+  .rite-banner-cross.two{flex-basis:66px; width:66px; display:flex; gap:2px; border-radius:19px;}
+  .rite-banner-cross.two svg{width:50%;}
+  .rite-picker{position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center; padding:16px; background:rgba(0,0,0,0.45);}
+  .rp-card{width:100%; max-width:520px; max-height:calc(100dvh - 32px); overflow:auto; padding:22px 22px 16px; border-radius:18px; border:1px solid var(--line); background:var(--parchment); color:var(--ink); box-shadow:0 18px 48px rgba(0,0,0,0.3);}
+  .rp-card h2{margin:0 0 4px; font-family:'Cormorant Garamond', serif; font-size:1.6rem;}
+  .rp-intro{margin:0 0 14px; color:var(--ink-soft); font-size:0.92rem;}
+  .rp-list{display:grid; gap:10px;}
+  .rp-option{display:flex; gap:14px; align-items:flex-start; width:100%; text-align:left; padding:12px 14px; border:1px solid var(--line); border-radius:14px; background:var(--parchment-light); color:var(--ink); font:inherit; cursor:pointer;}
+  .rp-option:hover, .rp-option:focus-visible{border-color:var(--wine);}
+  .rp-option.current{border-color:var(--wine); box-shadow:inset 0 0 0 1px var(--wine);}
+  .rp-cross{flex:0 0 42px; height:42px; padding:7px; border-radius:50%; color:var(--wine); background:color-mix(in srgb, var(--wine) 10%, transparent);}
+  .rp-cross svg{width:100%; height:100%; display:block;}
+  .rp-text strong{display:block; font-size:1.02rem;}
+  .rp-text strong em{font-style:normal; font-size:0.72rem; font-weight:600; margin-left:6px; padding:2px 7px; border-radius:999px; color:var(--parchment-light); background:var(--wine); vertical-align:2px;}
+  .rp-text > span{display:block; margin-top:2px; font-size:0.88rem; color:var(--ink-soft);}
+  .rp-close{display:block; margin:14px auto 0;}
   .footer-rite{color:var(--wine) !important; font-weight:600;}
   .devo-rubric{font-size:0.88rem; font-style:italic; color:var(--wine); margin-top:10px !important;}
   .posture-bow{color:var(--purple); background:color-mix(in srgb, var(--purple) 12%, transparent);}
@@ -3041,8 +3057,9 @@
     var size = JSON.parse(localStorage.getItem('sanctify.textsize') || '"md"');
     if(size === 'lg' || size === 'xl') document.documentElement.setAttribute('data-textsize', size);
     var rite = new URLSearchParams(location.search).get('rite');
-    if(rite === 'eastern' || rite === 'latin') localStorage.setItem('sanctify.rite', JSON.stringify(rite));
-    if(JSON.parse(localStorage.getItem('sanctify.rite') || '"latin"') === 'eastern') document.documentElement.setAttribute('data-rite', 'eastern');
+    if(rite === 'eastern' || rite === 'latin' || rite === 'traditional') localStorage.setItem('sanctify.rite', JSON.stringify(rite));
+    var saved = JSON.parse(localStorage.getItem('sanctify.rite') || '"latin"');
+    if(saved === 'eastern' || saved === 'traditional') document.documentElement.setAttribute('data-rite', saved);
   }catch(e){}
 </script>
 </head>
@@ -7486,6 +7503,7 @@ const SEASON_INFO = {
 
 function liturgicalSeason(d){
   if(isEastern()) return easternSeason(d);
+  if(isTraditional()) return tradSeason(d);
   const y = d.getFullYear();
   const t = new Date(y, d.getMonth(), d.getDate()).getTime();
   const E = easterDate(y);
@@ -7522,6 +7540,7 @@ function saintCore(title){
 
 function observancesFor(d){
   if(isEastern()) return easternObservancesFor(d);
+  if(isTraditional()) return tradObservancesFor(d);
   const m = d.getMonth() + 1, day = d.getDate();
   const list = CALENDAR_DATA.filter(e => e.month === m && e.day === day).map(e => ({ ...e }));
   moveableFor(d.getFullYear()).forEach(e => { if(sameDay(e.date, d)) list.push({ ...e }); });
@@ -7537,6 +7556,7 @@ function observancesFor(d){
 
 function dayNotes(d, obs){
   if(isEastern()) return easternDayNotes(d, obs);
+  if(isTraditional()) return tradDayNotes(d, obs);
   const E = easterDate(d.getFullYear());
   if(sameDay(d, addDays(E, -46)) || sameDay(d, addDays(E, -2))) return ['A day of fasting and abstinence.'];
   if(d.getDay() === 5 && !obs.some(o => o.type === 'Solemnity')){
@@ -7706,7 +7726,14 @@ function renderCalendar(){
 
   const key = document.createElement('div');
   key.className = 'cal-season-key';
-  key.innerHTML = `<span>Liturgical color:</span>
+  key.innerHTML = isTraditional() ? `<span>Liturgical color:</span>
+    <span><i style="background:var(--purple)"></i>Advent, Septuagesima &amp; Lent</span>
+    <span><i style="background:var(--gold)"></i>Christmastide &amp; Paschaltide</span>
+    <span><i style="background:var(--green)"></i>After Epiphany &amp; after Pentecost</span>
+    <span><i style="background:var(--wine)"></i>Pentecost week</span>
+    <span><i style="background:var(--ink)"></i>Good Friday</span>
+    <span><i style="background:var(--rose)"></i>Gaudete &amp; Laetare</span>
+    <span class="cal-hint">Tip: use the arrow keys to move between days.</span>` : `<span>Liturgical color:</span>
     <span><i style="background:var(--purple)"></i>Advent &amp; Lent</span>
     <span><i style="background:var(--gold)"></i>Christmas &amp; Easter</span>
     <span><i style="background:var(--green)"></i>Ordinary Time</span>
@@ -8035,6 +8062,7 @@ function dailyPick(list, salt, d){
 }
 
 function mysterySetFor(d){
+  if(isTraditional()) return {0:'glorious',1:'joyful',2:'sorrowful',3:'glorious',4:'joyful',5:'sorrowful',6:'glorious'}[d.getDay()];
   return {0:'glorious',1:'joyful',2:'sorrowful',3:'glorious',4:'luminous',5:'sorrowful',6:'joyful'}[d.getDay()];
 }
 
@@ -8096,7 +8124,9 @@ function renderDaily(){
       : `<div class="daily-feast-item">A weekday in ${escapeHtml(season.name)}.</div>`}
     ${dayNotes(d, obs).map(n => `<div class="cal-daynote">${escapeHtml(n)}</div>`).join('')}
     <div class="daily-links">
-      ${isEastern() ? `<a class="daily-link" href="https://masstimes.org/" target="_blank" rel="noopener">Find a Divine Liturgy near you (MassTimes.org lists Eastern Catholic parishes) ↗</a>` : `
+      ${isEastern() ? `<a class="daily-link" href="https://masstimes.org/" target="_blank" rel="noopener">Find a Divine Liturgy near you (MassTimes.org lists Eastern Catholic parishes) ↗</a>` : isTraditional() ? `
+      <a class="daily-link" href="https://www.divinumofficium.com/" target="_blank" rel="noopener">The Mass and Divine Office of the day in Latin and English (Divinum Officium) ↗</a>
+      <a class="daily-link" href="https://masstimes.org/" target="_blank" rel="noopener">Find Mass and Confession times near you ↗</a>` : `
       <a class="daily-link" href="${massReadingsUrl(d)}" target="_blank" rel="noopener">Read the Mass readings for this day (USCCB) ↗</a>
       <a class="daily-link" href="https://universalis.com/" target="_blank" rel="noopener">Pray the Liturgy of the Hours (Universalis) ↗</a>
       <a class="daily-link" href="https://masstimes.org/" target="_blank" rel="noopener">Find Mass and Confession times near you ↗</a>`}
@@ -9106,7 +9136,7 @@ function todaysLiturgicalColor(){
   // this can run too early; applyRite() sets the season color again once everything is ready.
   try{
     const name = liturgicalSeason(startOfToday()).colorName;
-    return name === 'white and red' ? 'red' : name;
+    return name === 'white and red' ? 'red' : name === 'black' ? 'violet' : name;
   }catch(e){ return 'green'; }
 }
 
@@ -9205,7 +9235,7 @@ function applyTheme(key, save){
   themeMenu.querySelectorAll('.theme-option').forEach(o => o.setAttribute('aria-checked', o.dataset.theme === key ? 'true' : 'false'));
   const meta = document.querySelector('meta[name="theme-color"]');
   if(meta) meta.setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--wine').trim() || '#7a2426');
-  if(save) setSeasonFavicon(isEastern());   // at start-up the edition sets it once everything has loaded
+  if(save) setSeasonFavicon();   // at start-up the edition sets it once everything has loaded
 }
 
 // Gold shine: an optional metallic sheen on titles and cards, only on themes with gold in them
@@ -11513,7 +11543,7 @@ const TLM_PARTS = [
       why:'We are washed and reminded of our Baptism before we approach the altar.', ref:'Psalm 51:7' },
     { name:'Prayers at the Foot of the Altar', posture:'kneel',
       latin:'V. Introibo ad altare Dei.\nR. Ad Deum qui laetificat juventutem meam.',
-      what:'The priest makes the Sign of the Cross at the foot of the altar steps and prays Psalm 42 (43) with the server: “I will go in to the altar of God. To God, who gives joy to my youth.” The priest says the Confiteor, then the server says it for the people, and the priest prays for their forgiveness. Then he goes up to the altar and kisses it, where the relics of the martyrs rest.',
+      what:'The priest makes the Sign of the Cross at the foot of the altar steps and prays Psalm 42 (43) with the server: “I will go in to the altar of God. To God, who gives joy to my youth.” The priest says the Confiteor, then the server says it for the people, and the priest prays for their forgiveness. Then he goes up to the altar and kisses it, where the relics of the saints rest.', note:'Psalm 42 is left out in Passiontide and at Requiem Masses',
       why:'The priest, and all of us with him, confess our sins and ask to be made clean before going up to the altar of God.', ref:'Psalm 43' },
     { name:'Introit', posture:'kneel', note:'At a High Mass, stand from the Introit to the end of the Collect',
       what:'At the Epistle side (the right side as you face the altar), the priest makes the Sign of the Cross and reads the Introit, an antiphon and psalm verse that set the tone of the day. Many Sundays are named after the first word of their Introit, such as Gaudete and Laetare.',
@@ -11592,11 +11622,12 @@ const TLM_PARTS = [
       why:'We pray the prayer Jesus taught us before receiving the Bread of Life.', ref:'Matthew 6:9–13' },
     { name:'Pax and Agnus Dei', posture:'kneel',
       latin:'V. Pax Domini sit semper vobiscum.\nR. Et cum spiritu tuo.\nAgnus Dei, qui tollis peccata mundi: miserere nobis… dona nobis pacem.',
-      what:'The priest breaks the Host and drops a particle into the chalice: “The peace of the Lord be always with you.” He strikes his breast three times at the Agnus Dei, “Lamb of God, who takest away the sins of the world.” At a Solemn High Mass the peace is passed among the clergy.',
+      what:'The priest breaks the Host. Making the Sign of the Cross over the chalice with a small particle, he says, “The peace of the Lord be always with you,” and drops the particle into the chalice. He strikes his breast three times at the Agnus Dei, “Lamb of God, who takest away the sins of the world.” At a Solemn High Mass the peace is passed among the clergy.',
       why:'Christ, the Lamb of God, gives us His peace.', ref:'John 1:29' },
     { name:'Domine, Non Sum Dignus', posture:'kneel',
-      latin:'V. Ecce Agnus Dei, ecce qui tollit peccata mundi.\nR. Domine, non sum dignus, ut intres sub tectum meum: sed tantum dic verbo, et sanabitur anima mea. (three times)',
-      what:'After the priest’s own Communion, he turns holding the Host: “Behold the Lamb of God, behold Him who takes away the sins of the world.” Three times we answer, striking the breast: “Lord, I am not worthy that Thou shouldst enter under my roof; say but the word, and my soul shall be healed.”',
+      note:'The 1962 Missal leaves out the server’s second Confiteor here, but many places still say it',
+      latin:'Ecce Agnus Dei, ecce qui tollit peccata mundi.\nDomine, non sum dignus, ut intres sub tectum meum: sed tantum dic verbo, et sanabitur anima mea. (three times)',
+      what:'After his own Communion, the priest turns to the people holding a Host: “Behold the Lamb of God, behold Him who takes away the sins of the world.” Then, striking the breast, he says three times, and by custom the people say with him: “Lord, I am not worthy that Thou shouldst enter under my roof; say but the word, and my soul shall be healed.”',
       why:'Our answer echoes the humble faith of the Roman centurion.', ref:'Matthew 8:8' },
     { name:'Holy Communion', posture:'kneel', note:'Kneel at the altar rail and receive on the tongue',
       latin:'Corpus Domini nostri Jesu Christi custodiat animam tuam in vitam aeternam. Amen.',
@@ -11616,7 +11647,7 @@ const TLM_PARTS = [
       what:'The priest silently prays the Placeat, asking that the sacrifice be pleasing to the Trinity, then blesses the people: “May almighty God bless you, the Father, and the Son, and the Holy Spirit.” Make the Sign of the Cross. There is no blessing at a Requiem Mass.',
       why:'We leave under God’s blessing.' },
     { name:'The Last Gospel', posture:'stand', note:'Genuflect at “Et Verbum caro factum est”',
-      latin:'V. Initium sancti Evangelii secundum Joannem.\nR. Gloria tibi, Domine.\nIn principio erat Verbum…\nEt Verbum caro factum est…\nR. Deo gratias.',
+      latin:'V. Dominus vobiscum.\nR. Et cum spiritu tuo.\nV. Initium sancti Evangelii secundum Joannem.\nR. Gloria tibi, Domine.\nIn principio erat Verbum…\nEt Verbum caro factum est…\nR. Deo gratias.',
       what:'At the Gospel side the priest reads the beginning of St. John’s Gospel, “In the beginning was the Word.” At “And the Word was made flesh,” everyone genuflects.',
       why:'The Mass ends where our salvation began: the eternal Word became flesh and dwelt among us.', ref:'John 1:1–14' },
     { name:'Prayers after Low Mass', posture:'kneel', when:'After a Low Mass, in many places',
@@ -11661,7 +11692,7 @@ function latinHtml(text){
   return `<p class="mass-latin" lang="la">${text.split('\n').map(escapeHtml).join('<br>')}</p>`;
 }
 function renderMass(){
-  const tlm = !!(ROUTES[currentRoute] || {}).tlm;
+  const tlm = !!(ROUTES[currentRoute] || {}).tlm || isTraditional();
   const form = tlm ? 'tlm' : isEastern() ? 'east' : 'ordinary';
   if(massForm !== form){ massForm = form; massStep = null; }
   const PARTS = tlm ? TLM_PARTS : isEastern() ? LITURGY_PARTS : MASS_PARTS;
@@ -11685,7 +11716,8 @@ function renderMass(){
   }
   devoKeys = null;
   let n = 0;
-  const forms = !isEastern() ? `
+  const forms = isTraditional() ? `<p class="dv-note">The Mass of Paul VI, celebrated in most parishes today, is explained in the <button class="text-link" data-rite-switch="latin">Roman Catholic edition</button>.</p>`
+    : !isEastern() ? `
       <div class="lo-tabs mass-forms" role="tablist" aria-label="Form of the Mass">
         <button role="tab" class="lo-tab${tlm ? '' : ' active'}" aria-selected="${!tlm}" data-route="learn/mass"><strong>The Mass today</strong><span>Missal of Paul VI (Novus Ordo)</span></button>
         <button role="tab" class="lo-tab${tlm ? ' active' : ''}" aria-selected="${tlm}" data-route="learn/latin-mass"><strong>The Traditional Latin Mass</strong><span>Missal of 1962 (Vetus Ordo)</span></button>
@@ -11836,6 +11868,9 @@ const GLOSSARY = [
   ['Viaticum', 'Holy Communion given to a dying person, from the Latin for “provision for the journey.”'],
   ['Vocation', 'God’s call to each person: to holiness, and to a particular state of life such as marriage, priesthood, or consecrated life.'],
   ['Traditional Latin Mass', 'The Mass celebrated in Latin from the Roman Missal of 1962, the last edition before the reforms after Vatican II. Also called the Tridentine Mass, the Extraordinary Form, or the Vetus Ordo.'],
+  ['Passiontide', 'In the traditional calendar, the last two weeks of Lent, from Passion Sunday through Holy Saturday, when the crosses and images in the church are veiled.'],
+  ['Octave', 'The eight days of celebration that follow a great feast, ending on its octave day. Since 1955, only Christmas, Easter, and Pentecost have octaves in the Roman calendar.'],
+  ['Cross bottony', 'A cross whose arms each end in three round lobes, like a trefoil. It marks the Traditional Latin edition of Sanctify.'],
   ['Novus Ordo', 'Latin for “new order”: an informal name for the Mass of the Roman Missal of Pope Paul VI (1970), the form of the Mass celebrated in most parishes today.'],
   ['Vulgate', 'St. Jerome’s Latin translation of the Bible, made in the late 4th century, the standard Bible of the Western Church for centuries.'],
   ['Acedia', 'Spiritual sloth: a listless boredom with prayer and the things of God, counted among the capital sins. The desert fathers called it the “noonday demon.”'],
@@ -13195,10 +13230,20 @@ function homeQuoteHtml(){
    ========================================================= */
 const CROSS_PATHS = {
   latin:document.querySelector('.brand .mark path').getAttribute('d'),
-  eastern:'M29 2h6v7h-6zM22 9h20v5H22zM29 14h6v5h-6zM8 19h48v7H8zM29 26h6v17.76l-6-1.72zM18 38.9L46 46.9L46 52.1L18 44.1zM29 47.24L35 48.96V62h-6z'
+  eastern:'M29 2h6v7h-6zM22 9h20v5H22zM29 14h6v5h-6zM8 19h48v7H8zM29 26h6v17.76l-6-1.72zM18 38.9L46 46.9L46 52.1L18 44.1zM29 47.24L35 48.96V62h-6z',
+  // a cross bottony, with three round lobes at each end, drawn as one outline
+  traditional:'M28.5 17 28.5 12.6 27.59 12.79 26.65 12.74 25.76 12.47 24.97 11.97 24.32 11.3 23.87 10.48 23.63 9.58 23.63 8.65 23.86 7.74 24.31 6.93 24.95 6.25 25.73 5.75 26.62 5.46 27.55 5.41 28.47 5.59 28.86 4.74 29.45 4.02 30.21 3.46 31.07 3.12 32 3 32.93 3.12 33.79 3.46 34.55 4.02 35.14 4.74 35.53 5.59 36.45 5.41 37.38 5.46 38.27 5.75 39.05 6.25 39.69 6.93 40.14 7.74 40.37 8.65 40.37 9.58 40.13 10.48 39.68 11.3 39.03 11.97 38.24 12.47 37.35 12.74 36.41 12.79 35.5 12.6 35.5 17 43.9 17 43.71 16.09 43.76 15.15 44.03 14.26 44.53 13.47 45.2 12.82 46.02 12.37 46.92 12.13 47.85 12.13 48.76 12.36 49.57 12.81 50.25 13.45 50.75 14.23 51.04 15.12 51.09 16.05 50.91 16.97 51.76 17.36 52.48 17.95 53.04 18.71 53.38 19.57 53.5 20.5 53.38 21.43 53.04 22.29 52.48 23.05 51.76 23.64 50.91 24.03 51.09 24.95 51.04 25.88 50.75 26.77 50.25 27.55 49.57 28.19 48.76 28.64 47.85 28.87 46.92 28.87 46.02 28.63 45.2 28.18 44.53 27.53 44.03 26.74 43.76 25.85 43.71 24.91 43.9 24 35.5 24 35.5 51.4 36.41 51.21 37.35 51.26 38.24 51.53 39.03 52.03 39.68 52.7 40.13 53.52 40.37 54.42 40.37 55.35 40.14 56.26 39.69 57.07 39.05 57.75 38.27 58.25 37.38 58.54 36.45 58.59 35.53 58.41 35.14 59.26 34.55 59.98 33.79 60.54 32.93 60.88 32 61 31.07 60.88 30.21 60.54 29.45 59.98 28.86 59.26 28.47 58.41 27.55 58.59 26.62 58.54 25.73 58.25 24.95 57.75 24.31 57.07 23.86 56.26 23.63 55.35 23.63 54.42 23.87 53.52 24.32 52.7 24.97 52.03 25.76 51.53 26.65 51.26 27.59 51.21 28.5 51.4 28.5 24 20.1 24 20.29 24.91 20.24 25.85 19.97 26.74 19.47 27.53 18.8 28.18 17.98 28.63 17.08 28.87 16.15 28.87 15.24 28.64 14.43 28.19 13.75 27.55 13.25 26.77 12.96 25.88 12.91 24.95 13.09 24.03 12.24 23.64 11.52 23.05 10.96 22.29 10.62 21.43 10.5 20.5 10.62 19.57 10.96 18.71 11.52 17.95 12.24 17.36 13.09 16.97 12.91 16.05 12.96 15.12 13.25 14.23 13.75 13.45 14.43 12.81 15.24 12.36 16.15 12.13 17.08 12.13 17.98 12.37 18.8 12.82 19.47 13.47 19.97 14.26 20.24 15.15 20.29 16.09 20.1 17z'
 };
 function isEastern(){ return document.documentElement.dataset.rite === 'eastern'; }
-function crossPath(){ return CROSS_PATHS[isEastern() ? 'eastern' : 'latin']; }
+function isTraditional(){ return document.documentElement.dataset.rite === 'traditional'; }
+function riteKey(){ return isEastern() ? 'eastern' : isTraditional() ? 'traditional' : 'latin'; }
+function crossPath(){ return CROSS_PATHS[riteKey()]; }
+const EDITIONS = [
+  { key:'latin', name:'Roman Catholic', desc:'The Mass and calendar of the Roman Rite as celebrated in most parishes today.' },
+  { key:'traditional', name:'Traditional Latin', desc:'The Missal and calendar of 1962: the Traditional Latin Mass explained, the old feasts, seasons, and Ember Days, and the fifteen mysteries of the Rosary.' },
+  { key:'eastern', name:'Eastern Catholic', desc:'The Byzantine tradition: the Divine Liturgy, the Jesus Prayer, Byzantine prayers, and the Byzantine calendar.' }
+];
+const editionName = key => EDITIONS.find(e => e.key === key).name;
 CARD_ART.eastcross = '<circle cx="32" cy="32" r="25"/><path d="M32 8.5v47M25 15h14M16.5 23.5h31M23 39l18 5.5"/>';
 CARD_ART.rope = (() => {
   let d = '';
@@ -13227,7 +13272,7 @@ const RITE_SECTIONS = {
   angelus:{ name:['The Angelus', 'Hymns to the Theotokos'] },
   examen:{ name:['The Daily Examen', 'Evening Prayer'] },
   exam:{ name:['Examination of Conscience', 'Preparing for Confession'] },
-  mass:{ name:['The Mass Explained', 'The Divine Liturgy Explained'] },
+  mass:{ name:['The Mass Explained', 'The Divine Liturgy Explained', 'The Latin Mass Explained'] },
   devotions:{ name:['Devotions & Sacramentals', 'Holy Customs'], icon:['scapular', 'icons'] },
   littleoffice:{ name:['The Little Office of Our Lady', 'Akathist & Paraklesis'], icon:['office', 'angelus'] },
   church:{ name:['Inside a Church', 'Inside a Byzantine Church'] }
@@ -13248,6 +13293,12 @@ const RITE_DESC = {
   lists:'The lists every Christian learns, explained: the Commandments, the Beatitudes, the Holy Mysteries, the virtues, the works of mercy, the eight evil thoughts, the great feasts and the fasts, and more.',
   church:'A walk through a Byzantine church: the iconostasis and how to read it, the Holy Table, the holy vessels, the vestments, the colors, and how to take part in the Divine Liturgy.'
 };
+const TRAD_DESC = {
+  mass:'Every part of the Traditional Latin Mass of 1962 in order, with the Latin you will hear, what it means, and when to kneel, sit, and stand. Follow along on your phone at Mass.',
+  rosary:'Pray the Rosary bead by bead with the fifteen traditional mysteries, Joyful, Sorrowful, and Glorious, and a meditation for each.',
+  calendar:'The traditional Roman calendar of 1962: feasts of the I, II, and III class, commemorations, Ember and Rogation Days, and the seasons of Septuagesima and Passiontide.'
+};
+const TRAD_NAV = { 'learn/mass':'The Latin Mass Explained' };
 const RITE_NAV = {
   'pray/rosary':'Jesus Prayer', 'pray/stations':'Prayer of St. Ephrem', 'pray/chaplet':'Trisagion Prayers', 'pray/sacred-heart':'Prayers Before Communion', 'pray/angelus':'Hymns to the Theotokos',
   'pray/examen':'Evening Prayer', 'pray/examination':'Preparing for Confession', 'learn/mass':'The Divine Liturgy Explained', 'pray/devotions':'Holy Customs', 'pray/little-office':'Akathist & Paraklesis', 'learn/church':'Inside a Byzantine Church'
@@ -13404,6 +13455,454 @@ function easternDayNotes(d, obs){
   if(sameDay(d, P) || sameDay(d, addDays(P, -2))) notes.push('Some Eastern Catholic Churches keep Pascha on the Julian date with the Orthodox; check with your parish.');
   return notes;
 }
+/* =========================================================
+   THE TRADITIONAL LATIN EDITION: the calendar of the Roman Missal of 1962
+   The General Roman Calendar of 1960 (Rubricarum instructum), used with the Missal of 1962.
+   ========================================================= */
+const TRAD_FIXED = [
+  { month:1, day:1, name:'The Octave Day of the Nativity of Our Lord', type:'I class', note:'Formerly called the Circumcision of the Lord.' },
+  { month:1, day:5, name:'St. Telesphorus Pope and Martyr', type:'Commemoration' },
+  { month:1, day:6, name:'The Epiphany of the Lord', type:'I class' },
+  { month:1, day:11, name:'St. Hyginus Pope and Martyr', type:'Commemoration' },
+  { month:1, day:13, name:'The Commemoration of the Baptism of Our Lord', type:'II class' },
+  { month:1, day:14, name:'St. Hilary Bishop, Confessor, and Doctor of the Church', type:'III class', coms:['St. Felix Priest and Martyr'], saints:['s172'] },
+  { month:1, day:15, name:'St. Paul the First Hermit, Confessor', type:'III class', coms:['St. Maurus Abbot'], saints:['s333'] },
+  { month:1, day:16, name:'St. Marcellus I Pope and Martyr', type:'III class' },
+  { month:1, day:17, name:'St. Anthony Abbot', type:'III class', saints:['s48'] },
+  { month:1, day:18, name:'St. Prisca Virgin and Martyr', type:'Commemoration' },
+  { month:1, day:19, name:'Ss. Marius, Martha, Audifax, and Abachum Martyrs', type:'Commemoration', coms:['St. Canute, Martyr'] },
+  { month:1, day:20, name:'Ss. Fabian Pope and Sebastian Martyrs', type:'III class', saints:['s19', 's240'] },
+  { month:1, day:21, name:'St. Agnes, Virgin and Martyr', type:'III class', saints:['s42'] },
+  { month:1, day:22, name:'Ss. Vincent and Anastasius Martyrs', type:'III class', saints:['s244'] },
+  { month:1, day:23, name:'St. Raymund of Peñafort Confessor', type:'III class', coms:['St. Emerentiana Virgin and Martyr'], saints:['s190'] },
+  { month:1, day:24, name:'St. Timothy Bishop and Martyr', type:'III class', saints:['s161'] },
+  { month:1, day:25, name:'The Conversion of St. Paul Apostle', type:'III class', coms:['St. Peter Apostle'], saints:['s8'] },
+  { month:1, day:26, name:'St. Polycarp Bishop and Martyr', type:'III class', saints:['s75'] },
+  { month:1, day:27, name:'St. John Chrysostom Bishop, Confessor, and Doctor of the Church', type:'III class', saints:['s88'] },
+  { month:1, day:28, name:'St. Peter Nolasco, Confessor', type:'III class', coms:['St. Agnes, Virgin and Martyr (her second feast)'], saints:['s493'] },
+  { month:1, day:29, name:'St. Francis de Sales Bishop, Confessor, and Doctor of the Church', type:'III class', saints:['s122'] },
+  { month:1, day:30, name:'St. Martina Virgin and Martyr', type:'III class' },
+  { month:1, day:31, name:'St. John Bosco Confessor', type:'III class', saints:['s54'] },
+  { month:2, day:1, name:'St. Ignatius Bishop and Martyr', type:'III class', saints:['s74'] },
+  { month:2, day:2, name:'The Purification of the Blessed Virgin Mary', type:'II class', note:'Candlemas: candles are blessed and carried in procession.' },
+  { month:2, day:3, name:'St. Blase Bishop and Martyr', type:'Commemoration', saints:['s46'] },
+  { month:2, day:4, name:'St. Andrew Corsini Bishop and Confessor', type:'III class' },
+  { month:2, day:5, name:'St. Agatha Virgin and Martyr', type:'III class', saints:['s79'] },
+  { month:2, day:6, name:'St. Titus Bishop and Confessor', type:'III class', coms:['St. Dorothy Virgin and Martyr'], saints:['s233'] },
+  { month:2, day:7, name:'St. Romuald Abbot', type:'III class', saints:['s507'] },
+  { month:2, day:8, name:'St. John of Matha Confessor', type:'III class', saints:['s495'] },
+  { month:2, day:9, name:'St. Cyril Bishop of Alexandria, Confessor, and Doctor of the Church', type:'III class', coms:['St. Apollonia Virgin and Martyr'], saints:['s89'] },
+  { month:2, day:10, name:'St. Scholastica Virgin', type:'III class', saints:['s93'] },
+  { month:2, day:11, name:'The Apparition of the Blessed Virgin Mary Immaculate', type:'III class', note:'Our Lady of Lourdes.' },
+  { month:2, day:12, name:'The Seven Holy Founders of the Order of Servants of the Blessed Virgin Mary Confessors', type:'III class' },
+  { month:2, day:14, name:'St. Valentine Priest and Martyr', type:'Commemoration', saints:['s45'] },
+  { month:2, day:15, name:'Ss. Faustinus and Jovita Martyrs', type:'Commemoration' },
+  { month:2, day:18, name:'St. Simeon Bishop and Martyr', type:'Commemoration' },
+  { month:2, day:22, name:'Chair of St. Peter', type:'II class', coms:['St. Paul'], saints:['s7'] },
+  { month:2, day:23, name:'St. Peter Damian Bishop, Confessor, and Doctor of the Church', type:'III class', saints:['s187'] },
+  { month:2, day:24, name:'St. Matthias Apostle', type:'II class', saints:['s157'] },
+  { month:2, day:27, name:'St. Gabriel of Our Lady of Sorrows', type:'III class', saints:['s213'] },
+  { month:3, day:4, name:'St. Casimir Confessor', type:'III class', coms:['St. Lucius I Pope and Martyr'], saints:['s195'] },
+  { month:3, day:6, name:'Ss. Perpetua and Felicity Martyrs', type:'III class', saints:['s78'] },
+  { month:3, day:7, name:'St. Thomas Aquinas Confessor and Doctor of the Church', type:'III class', saints:['s4'] },
+  { month:3, day:8, name:'St. John of God Confessor', type:'III class', saints:['s198'] },
+  { month:3, day:9, name:'St. Frances of Rome Widow', type:'III class', saints:['s114'] },
+  { month:3, day:10, name:'The Forty Holy Martyrs', type:'III class' },
+  { month:3, day:12, name:'St. Gregory I Pope, Confessor, and Doctor of the Church', type:'III class', saints:['s95'] },
+  { month:3, day:17, name:'St. Patrick Bishop and Confessor', type:'III class', saints:['s14'] },
+  { month:3, day:18, name:'St. Cyril of Jerusalem, Bishop, Confessor, and Doctor of the Church', type:'III class', saints:['s173'] },
+  { month:3, day:19, name:'St. Joseph, Spouse of the Blessed Virgin Mary, Confessor, and Patron of the Universal Church', type:'I class', saints:['s11'] },
+  { month:3, day:21, name:'St. Benedict Abbot', type:'III class', saints:['s13'] },
+  { month:3, day:24, name:'St. Gabriel the Archangel', type:'III class', saints:['s155'] },
+  { month:3, day:25, name:'Annunciation of the Blessed Virgin Mary', type:'I class' },
+  { month:3, day:27, name:'St. John Damascene Confessor and Doctor of the Church', type:'III class', saints:['s184'] },
+  { month:3, day:28, name:'St. John Capistran Confessor', type:'III class', saints:['s194'] },
+  { month:4, day:2, name:'St. Francis of Paula Confessor', type:'III class', saints:['s284'] },
+  { month:4, day:4, name:'St. Isidore Bishop, Confessor, and Doctor of the Church', type:'III class', saints:['s96'] },
+  { month:4, day:5, name:'St. Vincent Ferrer Confessor', type:'III class', saints:['s192'] },
+  { month:4, day:11, name:'St. Leo I Pope, Confessor, and Doctor of the Church', type:'III class', saints:['s90'] },
+  { month:4, day:13, name:'St. Hermenegild Martyr', type:'III class', saints:['s642'] },
+  { month:4, day:14, name:'St. Justin, Martyr', type:'III class', coms:['Ss. Tiburtius, Valerian, and Maximus, Martyrs'], saints:['s76'] },
+  { month:4, day:17, name:'St. Anicetus Pope and Martyr', type:'Commemoration' },
+  { month:4, day:21, name:'St. Anselm Bishop, Confessor, and Doctor of the Church', type:'III class', saints:['s104'] },
+  { month:4, day:22, name:'Ss. Soter and Cajus Popes and Martyrs', type:'III class' },
+  { month:4, day:23, name:'St. George Martyr', type:'Commemoration', saints:['s18'] },
+  { month:4, day:24, name:'St. Fidelis of Sigmaringen Martyr', type:'III class', saints:['s291'] },
+  { month:4, day:25, name:'St. Mark, Evangelist', type:'II class', note:'Also the Greater Litanies (the Major Rogation): the Litany of the Saints is chanted in procession.', saints:['s71'] },
+  { month:4, day:26, name:'Ss. Cletus and Marcellinus Popes and Martyrs', type:'III class' },
+  { month:4, day:27, name:'St. Peter Canisius Confessor and Doctor of the Church', type:'III class', saints:['s203'] },
+  { month:4, day:28, name:'St. Paul of the Cross Confessor', type:'III class', saints:['s208'] },
+  { month:4, day:29, name:'St. Peter Martyr', type:'III class', saints:['s499'] },
+  { month:4, day:30, name:'St. Catherine of Siena Virgin and Doctor of the Church', type:'III class', saints:['s33'] },
+  { month:5, day:1, name:'St. Joseph the Workman, Spouse of the Blessed Virgin Mary, Confessor', type:'I class', note:'Instituted by Pope Pius XII in 1955.', saints:['s11'] },
+  { month:5, day:2, name:'St. Athanasius, Bishop, Confessor, and Doctor of the Church', type:'III class', saints:['s83'] },
+  { month:5, day:3, name:'Ss. Alexander, Eventius and Theodulus Martyrs, and Juvenal, Bishop and Confessor', type:'Commemoration' },
+  { month:5, day:4, name:'St. Monica Widow', type:'III class', saints:['s20'] },
+  { month:5, day:5, name:'St. Pius V Pope and Confessor', type:'III class', saints:['s199'] },
+  { month:5, day:7, name:'St. Stanislaus Bishop and Martyr', type:'III class', saints:['s384'] },
+  { month:5, day:9, name:'St. Gregory Nazianzen Bishop, Confessor, and Doctor of the Church', type:'III class', saints:['s87'] },
+  { month:5, day:10, name:'St. Antoninus Bishop and Confessor', type:'III class', coms:['Ss. Gordian and Epimachus'] },
+  { month:5, day:11, name:'Ss. Philip and James Apostles', type:'II class', saints:['s158', 's159'] },
+  { month:5, day:12, name:'Ss. Nereus, Achilleus, Domitilla Virgin, and Pancras Martyrs', type:'III class' },
+  { month:5, day:13, name:'St. Robert Bellarmine Bishop, Confessor, and Doctor of the Church', type:'III class', saints:['s119'] },
+  { month:5, day:14, name:'St. Boniface Martyr', type:'Commemoration' },
+  { month:5, day:15, name:'St. John Baptist de la Salle Confessor', type:'III class' },
+  { month:5, day:16, name:'St. Ubald Bishop and Confessor', type:'III class', saints:['s616'] },
+  { month:5, day:17, name:'St. Paschal Baylon Confessor', type:'III class', saints:['s524'] },
+  { month:5, day:18, name:'St. Venantius Martyr', type:'III class' },
+  { month:5, day:19, name:'St. Peter Celestine Pope and Confessor', type:'III class', coms:['St. Pudentiana Virgin'], saints:['s660'] },
+  { month:5, day:20, name:'St. Bernardine of Siena Confessor', type:'III class', saints:['s193'] },
+  { month:5, day:25, name:'St. Gregory VII Pope and Confessor', type:'III class', coms:['St. Urban I Pope and Martyr'], saints:['s271'] },
+  { month:5, day:26, name:'St. Philip Neri Confessor', type:'III class', coms:['St. Eleutherius Pope and Martyr'], saints:['s57'] },
+  { month:5, day:27, name:'St. Bede the Venerable Confessor and Doctor of the Church', type:'III class', coms:['St. John I Pope and Martyr'], saints:['s98'] },
+  { month:5, day:28, name:'St. Augustine Bishop and Confessor', type:'III class', saints:['s180'] },
+  { month:5, day:29, name:'St. Mary Magdalen de Pazzi Virgin', type:'III class', saints:['s528'] },
+  { month:5, day:30, name:'St. Felix I Pope and Martyr', type:'Commemoration' },
+  { month:5, day:31, name:'Blessed Virgin Mary, Queen', type:'II class', coms:['St. Petronilla Virgin'], note:'The Queenship of Mary, instituted by Pope Pius XII in 1954.' },
+  { month:6, day:1, name:'St. Angela Merici Virgin', type:'III class', saints:['s197'] },
+  { month:6, day:2, name:'Ss. Marcellinus, Peter, and Erasmus Bishop, Martyrs', type:'Commemoration', saints:['s248'] },
+  { month:6, day:4, name:'St. Francis Caracciolo Confessor', type:'III class' },
+  { month:6, day:5, name:'St. Boniface Bishop and Martyr', type:'III class', saints:['s99'] },
+  { month:6, day:6, name:'St. Norbert Bishop and Confessor', type:'III class', saints:['s105'] },
+  { month:6, day:9, name:'Ss. Primus and Felician Martyrs', type:'Commemoration' },
+  { month:6, day:10, name:'St. Margaret Queen, Widow', type:'III class', saints:['s103'] },
+  { month:6, day:11, name:'St. Barnabas Apostle', type:'III class', saints:['s73'] },
+  { month:6, day:12, name:'St. John of San Facundo Confessor', type:'III class', coms:['Ss. Basilides, Cyrinus, Nabor and Nazarius Martyrs'] },
+  { month:6, day:13, name:'St. Anthony of Padua Confessor and Doctor of the Church', type:'III class', saints:['s15'] },
+  { month:6, day:14, name:'St. Basil the Great Bishop, Confessor, and Doctor of the Church', type:'III class', saints:['s86'] },
+  { month:6, day:15, name:'Ss. Vitus, Modestus, and Crescentia Martyrs', type:'Commemoration', saints:['s246'] },
+  { month:6, day:17, name:'St. Gregory Barbarigo Bishop and Confessor', type:'III class' },
+  { month:6, day:18, name:'St. Ephraem Syrus Deacon, Confessor, and Doctor of the Church', type:'III class', coms:['Ss. Mark and Marcellianus Martyrs'], saints:['s84'] },
+  { month:6, day:19, name:'St. Juliana Falconieri Virgin', type:'III class', coms:['Ss. Gervase and Protase Martyrs'], saints:['s497'] },
+  { month:6, day:20, name:'St. Silverius Pope and Martyr', type:'Commemoration' },
+  { month:6, day:21, name:'St. Aloysius Gonzaga Confessor', type:'III class', saints:['s121'] },
+  { month:6, day:22, name:'St. Paulinus Bishop and Confessor', type:'III class', saints:['s253'] },
+  { month:6, day:23, name:'The Vigil of the Nativity of St. John the Baptist', type:'II class' },
+  { month:6, day:24, name:'The Nativity of St. John the Baptist', type:'I class', saints:['s63'] },
+  { month:6, day:25, name:'St. William Abbot', type:'III class' },
+  { month:6, day:26, name:'Ss. John and Paul Martyrs', type:'III class' },
+  { month:6, day:28, name:'The Vigil of Ss. Peter and Paul', type:'II class' },
+  { month:6, day:29, name:'Ss. Peter and Paul Apostles', type:'I class', saints:['s7', 's8'] },
+  { month:6, day:30, name:'The Commemoration of St. Paul Apostle', type:'III class', coms:['St. Peter Apostle'], saints:['s8'] },
+  { month:7, day:1, name:'The Most Precious Blood of Our Lord Jesus Christ', type:'I class', note:'Extended to the whole Church by Pope Pius IX in 1849.' },
+  { month:7, day:2, name:'The Visitation of the Blessed Virgin Mary', type:'II class', coms:['Ss. Processus and Martinian Martyrs'] },
+  { month:7, day:3, name:'St. Irenaeus Bishop, Martyr, and Doctor of the Church', type:'III class', saints:['s77'] },
+  { month:7, day:5, name:'St. Anthony Mary Zaccaria Confessor', type:'III class', saints:['s532'] },
+  { month:7, day:7, name:'Ss. Cyril and Methodius Bishops and Confessors', type:'III class', saints:['s100'] },
+  { month:7, day:8, name:'St. Elizabeth Queen, Widow', type:'III class', saints:['s279'] },
+  { month:7, day:10, name:'The Seven Holy Brothers Martyrs, and Ss. Rufina and Secunda Virgins and Martyrs', type:'III class' },
+  { month:7, day:11, name:'St. Pius I Pope and Martyr', type:'Commemoration' },
+  { month:7, day:12, name:'St. John Gualbert Abbot', type:'III class', coms:['Ss. Nabor and Felix Martyrs'], saints:['s508'] },
+  { month:7, day:14, name:'St. Bonaventure Bishop, Confessor, and Doctor of the Church', type:'III class', saints:['s111'] },
+  { month:7, day:15, name:'St. Henry II Emperor, Confessor', type:'III class', saints:['s270'] },
+  { month:7, day:16, name:'Our Lady of Mount Carmel', type:'Commemoration' },
+  { month:7, day:17, name:'St. Alexius Confessor', type:'Commemoration' },
+  { month:7, day:18, name:'St. Camillus de Lellis Confessor', type:'III class', coms:['St. Symphorosa and her seven Sons Martyrs'], saints:['s120'] },
+  { month:7, day:19, name:'St. Vincent de Paul Confessor', type:'III class', saints:['s36'] },
+  { month:7, day:20, name:'St. Jerome Emiliani Confessor', type:'III class', coms:['St. Margaret Virgin Martyr'], saints:['s287'] },
+  { month:7, day:21, name:'St. Lawrence of Brindisi Confessor and Doctor of the Church', type:'III class', coms:['St. Praxedes Virgin'], saints:['s293'] },
+  { month:7, day:22, name:'St. Mary Magdalene Penitent', type:'III class', saints:['s10'] },
+  { month:7, day:23, name:'St. Apollinaris Bishop and Martyr', type:'III class', coms:['St. Liborius Bishop and Confessor'] },
+  { month:7, day:24, name:'St. Christina Virgin and Martyr', type:'Commemoration' },
+  { month:7, day:25, name:'St. James Apostle', type:'II class', coms:['St. Christopher Martyr'], saints:['s67'] },
+  { month:7, day:26, name:'St. Anne Mother of the Blessed Virgin Mary', type:'II class', saints:['s12'] },
+  { month:7, day:27, name:'St. Pantaleon Martyr', type:'Commemoration' },
+  { month:7, day:28, name:'Ss. Nazarius and Celsus Martyrs, Victor I Pope and Martyr, and St. Innocent I Pope and Confessor', type:'III class', saints:['s350'] },
+  { month:7, day:29, name:'St. Martha Virgin', type:'III class', coms:['Ss. Felix, Simplicius, Faustinus, and Beatrice Martyrs'], saints:['s162'] },
+  { month:7, day:30, name:'Ss. Abdon and Sennen Martyrs', type:'Commemoration' },
+  { month:7, day:31, name:'St. Ignatius Confessor', type:'III class', saints:['s23'] },
+  { month:8, day:1, name:'The Holy Machabees, Martyrs', type:'Commemoration' },
+  { month:8, day:2, name:'St. Alphonsus Mary of Liguori Bishop, Confessor, and Doctor of the Church', type:'III class', coms:['St. Stephen I Pope and Martyr'], saints:['s60'] },
+  { month:8, day:4, name:'St. Dominic Confessor', type:'III class', saints:['s35'] },
+  { month:8, day:5, name:'The Dedication of Our Lady of the Snows', type:'III class', note:'The dedication of the Basilica of St. Mary Major in Rome.' },
+  { month:8, day:6, name:'The Transfiguration of Our Lord Jesus Christ', type:'II class', coms:['Ss. Xystus II Pope, Felicissimus, and Agapitus Martyrs'] },
+  { month:8, day:7, name:'St. Cajetan Confessor', type:'III class', coms:['St. Donatus Bishop and Martyr'], saints:['s286'] },
+  { month:8, day:8, name:'St. John Mary Vianney Confessor and Priest', type:'III class', coms:['Ss. Cyriacus, Largus, and Smaragdus Martyrs'], saints:['s25'] },
+  { month:8, day:9, name:'The Vigil of St. Laurence', type:'III class', coms:['St. Romanus, Martyr'] },
+  { month:8, day:10, name:'St. Laurence Martyr', type:'II class', saints:['s80'] },
+  { month:8, day:11, name:'Ss. Tiburtius and Susanna, Virgin, Martyrs', type:'Commemoration' },
+  { month:8, day:12, name:'St. Clare Virgin', type:'III class', saints:['s108'] },
+  { month:8, day:13, name:'Ss. Hippolytus and Cassian Martyrs', type:'Commemoration', saints:['s243'] },
+  { month:8, day:14, name:'The Vigil of the Assumption', type:'II class', coms:['St. Eusebius, Confessor'] },
+  { month:8, day:15, name:'The Assumption of the Blessed Virgin Mary', type:'I class' },
+  { month:8, day:16, name:'St. Joachim Father of the Blessed Virgin Mary, Confessor', type:'II class', saints:['s64'] },
+  { month:8, day:17, name:'St. Hyacinth of Poland Confessor', type:'III class', saints:['s274'] },
+  { month:8, day:18, name:'St. Agapitus Martyr', type:'Commemoration' },
+  { month:8, day:19, name:'St. John Eudes Confessor', type:'III class', saints:['s531'] },
+  { month:8, day:20, name:'St. Bernard Abbot and Doctor of the Church', type:'III class', saints:['s106'] },
+  { month:8, day:21, name:'St. Jane Frances de Chantal Widow', type:'III class', saints:['s123'] },
+  { month:8, day:22, name:'Immaculate Heart of the Blessed Virgin Mary', type:'II class', coms:['Ss. Timothy and Companions Martyrs'], note:'Extended to the whole Church by Pope Pius XII in 1944.' },
+  { month:8, day:23, name:'St. Philip Benizi Confessor', type:'III class', saints:['s498'] },
+  { month:8, day:24, name:'St. Bartholomew Apostle', type:'II class', saints:['s69'] },
+  { month:8, day:25, name:'St. Louis King, Confessor', type:'III class', saints:['s110'] },
+  { month:8, day:26, name:'St. Zephyrinus Pope Martyr', type:'Commemoration' },
+  { month:8, day:27, name:'St. Joseph Calasanctius Confessor', type:'III class', saints:['s294'] },
+  { month:8, day:28, name:'St. Augustine Bishop, Confessor, and Doctor of the Church', type:'III class', coms:['St. Hermes Martyr'], saints:['s3'] },
+  { month:8, day:29, name:'The Beheading of St. John the Baptist', type:'III class', coms:['St. Sabina Martyr'], saints:['s63'] },
+  { month:8, day:30, name:'St. Rose of Lima Virgin', type:'III class', coms:['Ss. Felix and Adauctus Martyrs'], saints:['s37'] },
+  { month:8, day:31, name:'St. Raymond Nonnatus Confessor', type:'III class', saints:['s494'] },
+  { month:9, day:1, name:'St. Giles Abbot', type:'Commemoration', coms:['The Holy Twelve Brothers Martyrs'], saints:['s563'] },
+  { month:9, day:2, name:'St. Stephen King, Confessor', type:'III class', saints:['s185'] },
+  { month:9, day:3, name:'St. Pius X Pope and Confessor', type:'III class', saints:['s141'] },
+  { month:9, day:5, name:'St. Laurence Justinian Bishop and Confessor', type:'III class' },
+  { month:9, day:8, name:'The Nativity of the Blessed Virgin Mary', type:'II class', coms:['St. Hadrian Martyr'] },
+  { month:9, day:9, name:'St. Gorgonius Martyr', type:'Commemoration' },
+  { month:9, day:10, name:'St. Nicholas of Tolentino Confessor', type:'III class', saints:['s492'] },
+  { month:9, day:11, name:'Ss. Protus and Hyacinth Martyrs', type:'Commemoration' },
+  { month:9, day:12, name:'The Most Holy Name of Mary', type:'III class' },
+  { month:9, day:14, name:'The Exaltation of the Holy Cross', type:'II class' },
+  { month:9, day:15, name:'Seven Sorrows of the Blessed Virgin Mary', type:'II class', coms:['St. Nicomedes Martyr'] },
+  { month:9, day:16, name:'St. Cornelius Pope and St. Cyprian Bishop, Martyrs', type:'III class', coms:['Ss. Euphemia Virgin, Lucy and Geminianus Martyrs'], saints:['s81', 's241'] },
+  { month:9, day:17, name:'The Impression of the Stigmata of St. Francis', type:'Commemoration', saints:['s1'] },
+  { month:9, day:18, name:'St. Joseph of Cupertino Confessor', type:'III class', saints:['s126'] },
+  { month:9, day:19, name:'St. Januarius Bishop and Companions Martyrs', type:'III class', saints:['s169'] },
+  { month:9, day:20, name:'St. Eustace and Companions Martyrs', type:'Commemoration', saints:['s608'] },
+  { month:9, day:21, name:'St. Matthew Apostle and Evangelist', type:'II class', saints:['s70'] },
+  { month:9, day:22, name:'St. Thomas of Villanova Bishop and Confessor', type:'III class', coms:['Ss. Maurice and Companions Martyrs'], saints:['s387'] },
+  { month:9, day:23, name:'St. Linus Pope and Martyr', type:'III class', coms:['St. Thecla Virgin and Martyr'] },
+  { month:9, day:24, name:'Our Lady of Ransom', type:'Commemoration' },
+  { month:9, day:26, name:'Ss. Cyprian and Justina Virgin, Martyrs', type:'Commemoration' },
+  { month:9, day:27, name:'Ss. Cosmas and Damian Martyrs', type:'III class', saints:['s164'] },
+  { month:9, day:28, name:'St. Wenceslaus Duke, Martyr', type:'III class', saints:['s101'] },
+  { month:9, day:29, name:'The Dedication of St. Michael Archangel', type:'I class', note:'Michaelmas.', saints:['s40'] },
+  { month:9, day:30, name:'St. Jerome Priest, Confessor, and Doctor of the Church', type:'III class', saints:['s21'] },
+  { month:10, day:1, name:'St. Remigius Bishop and Confessor', type:'Commemoration', saints:['s365'] },
+  { month:10, day:2, name:'The Holy Guardian Angels', type:'III class' },
+  { month:10, day:3, name:'St. Teresa of the Child Jesus Virgin and Doctor of the Church', type:'III class', saints:['s2'] },
+  { month:10, day:4, name:'St. Francis of Assisi Confessor', type:'III class', saints:['s1'] },
+  { month:10, day:5, name:'St. Placid and companions Martyrs', type:'Commemoration' },
+  { month:10, day:6, name:'St. Bruno Confessor', type:'III class', saints:['s102'] },
+  { month:10, day:7, name:'Blessed Virgin Mary of the Rosary', type:'II class', coms:['St. Mark Pope and Confessor'] },
+  { month:10, day:8, name:'St. Bridget Widow', type:'III class', coms:['Ss. Sergius and Bacchus, Marcellus and Apuleius Martyrs'], saints:['s55'] },
+  { month:10, day:9, name:'St. John Leonard Confessor', type:'III class', coms:['St. Denis Bishop, Rusticus Priest, and Eleutherius Martyrs'], saints:['s658'] },
+  { month:10, day:10, name:'St. Francis Borgia Confessor', type:'III class', saints:['s288'] },
+  { month:10, day:11, name:'The Maternity of the Blessed Virgin Mary', type:'II class', note:'Extended to the whole Church by Pope Pius XI in 1931.' },
+  { month:10, day:13, name:'St. Edward King, Confessor', type:'III class', saints:['s186'] },
+  { month:10, day:14, name:'St. Callistus I Pope and Martyr', type:'III class', saints:['s321'] },
+  { month:10, day:15, name:'St. Teresa Virgin and Doctor of the Church', type:'III class', saints:['s5'] },
+  { month:10, day:16, name:'St. Hedwig Widow', type:'III class', saints:['s188'] },
+  { month:10, day:17, name:'St. Margaret Mary Alacoque Virgin', type:'III class', saints:['s128'] },
+  { month:10, day:18, name:'St. Luke Evangelist', type:'II class', saints:['s72'] },
+  { month:10, day:19, name:'St. Peter of Alcantara Confessor', type:'III class', saints:['s289'] },
+  { month:10, day:20, name:'St. John Cantius Confessor', type:'III class', saints:['s285'] },
+  { month:10, day:21, name:'St. Hilarion Abbot', type:'Commemoration', coms:['St. Ursula and Companions Virgins and Martyrs'], saints:['s335'] },
+  { month:10, day:23, name:'St. Anthony Mary Claret Bishop and Confessor', type:'III class', saints:['s214'] },
+  { month:10, day:24, name:'St. Raphael Archangel', type:'III class', saints:['s156'] },
+  { month:10, day:25, name:'Ss. Chrysanthus and Daria Martyrs', type:'Commemoration' },
+  { month:10, day:26, name:'St. Evaristus Pope and Martyr', type:'Commemoration' },
+  { month:10, day:28, name:'Ss. Simon and Jude Apostles', type:'II class', saints:['s160', 's16'] },
+  { month:11, day:1, name:'All Saints', type:'I class' },
+  { month:11, day:4, name:'St. Charles Bishop and Confessor', type:'III class', coms:['Ss. Vitalis and Agricola Martyrs'], saints:['s58'] },
+  { month:11, day:8, name:'The Holy Four Crowned Martyrs', type:'Commemoration' },
+  { month:11, day:9, name:'The Dedication of the Archbasilica of the most Holy Saviour', type:'II class', coms:['St. Theodore Martyr'], note:'The dedication of the cathedral of Rome, the Pope’s own church.' },
+  { month:11, day:10, name:'St. Andrew Avellino Confessor', type:'III class', coms:['Ss. Tryphon, Respicius, and Nympha Martyrs'] },
+  { month:11, day:11, name:'St. Martin Bishop and Confessor', type:'III class', coms:['St. Mennas Martyr'], saints:['s85'] },
+  { month:11, day:12, name:'St. Martin I Pope and Martyr', type:'III class', saints:['s460'] },
+  { month:11, day:13, name:'St. Didacus Confessor', type:'III class', saints:['s525'] },
+  { month:11, day:14, name:'St. Josaphat Bishop and Martyr', type:'III class', saints:['s292'] },
+  { month:11, day:15, name:'St. Albert the Great Bishop, Confessor, and Doctor of the Church', type:'III class', saints:['s112'] },
+  { month:11, day:16, name:'St. Gertrude Virgin', type:'III class', saints:['s191'] },
+  { month:11, day:17, name:'St. Gregory Thaumaturgus Bishop and Confessor', type:'III class', saints:['s323'] },
+  { month:11, day:18, name:'The Dedication of the Basilicas of Ss. Peter and Paul', type:'III class' },
+  { month:11, day:19, name:'St. Elizabeth Widow', type:'III class', coms:['St. Pontianus Pope and Martyr'], saints:['s109'] },
+  { month:11, day:20, name:'St. Felix of Valois Confessor', type:'III class' },
+  { month:11, day:21, name:'The Presentation of the Blessed Virgin Mary', type:'III class' },
+  { month:11, day:22, name:'St. Cecilia Virgin and Martyr', type:'III class', saints:['s43'] },
+  { month:11, day:23, name:'St. Clement I Pope and Martyr', type:'III class', coms:['St. Felicitas Martyr'], saints:['s163'] },
+  { month:11, day:24, name:'St. John of the Cross Confessor and Doctor of the Church', type:'III class', coms:['St. Chrysogonus Martyr'], saints:['s118'] },
+  { month:11, day:25, name:'St. Catherine Virgin and Martyr', type:'III class', saints:['s165'] },
+  { month:11, day:26, name:'St. Sylvester Abbot', type:'III class', coms:['St. Peter of Alexandria Bishop and Martyr'] },
+  { month:11, day:29, name:'St. Saturninus Martyr', type:'Commemoration' },
+  { month:11, day:30, name:'St. Andrew Apostle', type:'II class', saints:['s66'] },
+  { month:12, day:2, name:'St. Bibiana Virgin and Martyr', type:'III class' },
+  { month:12, day:3, name:'St. Francis Xavier Confessor', type:'III class', saints:['s24'] },
+  { month:12, day:4, name:'St. Peter Chrysologus Bishop, Confessor, and Doctor of the Church', type:'III class', coms:['St. Barbara Virgin and Martyr'], saints:['s178'] },
+  { month:12, day:5, name:'St. Sabbas Abbot', type:'Commemoration', saints:['s403'] },
+  { month:12, day:6, name:'St. Nicholas Bishop and Confessor', type:'III class', saints:['s17'] },
+  { month:12, day:7, name:'St. Ambrose Bishop, Confessor, and Doctor of the Church', type:'III class', saints:['s22'] },
+  { month:12, day:8, name:'The Immaculate Conception of the Blessed Virgin Mary', type:'I class' },
+  { month:12, day:10, name:'St. Melchiades Pope and Martyr', type:'Commemoration' },
+  { month:12, day:11, name:'St. Damasus I Pope and Confessor', type:'III class', saints:['s252'] },
+  { month:12, day:13, name:'St. Lucy Virgin and Martyr', type:'III class', saints:['s41'] },
+  { month:12, day:16, name:'St. Eusebius Bishop and Martyr', type:'III class', saints:['s339'] },
+  { month:12, day:21, name:'St. Thomas Apostle', type:'II class', saints:['s68'] },
+  { month:12, day:24, name:'The Vigil of the Nativity of Our Lord', type:'I class' },
+  { month:12, day:25, name:'The Nativity of Our Lord Jesus Christ', type:'I class', note:'Three Masses are said: at midnight, at dawn, and during the day. In the second Mass, St. Anastasia, Martyr, is commemorated.' },
+  { month:12, day:26, name:'St. Stephen, Protomartyr', type:'II class', note:'The second day within the octave of Christmas.', saints:['s65'] },
+  { month:12, day:27, name:'St. John, Apostle and Evangelist', type:'II class', note:'The third day within the octave of Christmas.', saints:['s9'] },
+  { month:12, day:28, name:'The Holy Innocents, Martyrs', type:'II class', note:'The fourth day within the octave of Christmas.' },
+  { month:12, day:29, name:'The Fifth Day within the Octave of Christmas', type:'II class', coms:['St. Thomas, Bishop and Martyr'], saints:['s107'] },
+  { month:12, day:30, name:'The Sixth Day within the Octave of Christmas', type:'II class' },
+  { month:12, day:31, name:'The Seventh Day within the Octave of Christmas', type:'II class', coms:['St. Sylvester I, Pope and Confessor'], saints:['s328'] }
+];
+const TRAD_SEASON_INFO = {
+  advent:      { name:'Advent', color:'var(--purple)', colorName:'violet', blurb:'Four weeks of preparation for the coming of Christ, at Christmas and at the end of time.' },
+  christmas:   { name:'Christmastide', color:'var(--gold)', colorName:'white', blurb:'From the Nativity to the Commemoration of the Baptism of Our Lord on January 13.' },
+  epiphany:    { name:'Time after Epiphany', color:'var(--green)', colorName:'green', blurb:'The Sundays after the Epiphany, when Christ is made known to the nations.' },
+  septuagesima:{ name:'Septuagesima', color:'var(--purple)', colorName:'violet', blurb:'The three weeks before Lent. The Gloria and the Alleluia fall silent, and violet is worn.' },
+  lent:        { name:'Lent', color:'var(--purple)', colorName:'violet', blurb:'Forty days of fasting, prayer, and almsgiving, from Ash Wednesday.' },
+  passiontide: { name:'Passiontide', color:'var(--purple)', colorName:'violet', blurb:'The last two weeks of Lent, from Passion Sunday through Holy Week. Crosses and images are veiled.' },
+  easter:      { name:'Paschaltide', color:'var(--gold)', colorName:'white', blurb:'From Easter Sunday to the Saturday after Pentecost.' },
+  pentecost:   { name:'Time after Pentecost', color:'var(--green)', colorName:'green', blurb:'From Trinity Sunday until Advent: the long season of the Church’s growth.' }
+};
+function tradSeason(d){
+  const y = d.getFullYear(), t = new Date(y, d.getMonth(), d.getDate()).getTime(), E = easterDate(y);
+  const at = n => addDays(E, n).getTime();
+  let key = 'christmas';
+  if(t <= new Date(y, 0, 13).getTime()) key = 'christmas';
+  else if(t < at(-63)) key = 'epiphany';
+  else if(t < at(-46)) key = 'septuagesima';
+  else if(t < at(-14)) key = 'lent';
+  else if(t < E.getTime()) key = 'passiontide';
+  else if(t <= at(55)) key = 'easter';
+  else if(t < adventStart(y).getTime()) key = 'pentecost';
+  else if(t < new Date(y, 11, 25).getTime()) key = 'advent';
+  const info = { key, ...TRAD_SEASON_INFO[key] };
+  const set = (color, colorName) => { info.color = color; info.colorName = colorName; };
+  if(sameDay(d, addDays(E, -21)) || sameDay(d, addDays(adventStart(y), 14))) set('var(--rose)', 'rose');
+  if(sameDay(d, addDays(E, -3))) set('var(--gold)', 'white');
+  if(sameDay(d, addDays(E, -2))) set('var(--ink)', 'black');
+  if(t >= at(48) && t <= at(55)) set('var(--wine)', 'red');
+  return info;
+}
+
+const TRAD_ORD = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh', 'Eighth', 'Ninth', 'Tenth', 'Eleventh', 'Twelfth', 'Thirteenth',
+  'Fourteenth', 'Fifteenth', 'Sixteenth', 'Seventeenth', 'Eighteenth', 'Nineteenth', 'Twentieth', 'Twenty-First', 'Twenty-Second', 'Twenty-Third',
+  'Twenty-Fourth', 'Twenty-Fifth', 'Twenty-Sixth', 'Twenty-Seventh', 'Twenty-Eighth'];
+const tradMoveableCache = {};
+function tradMoveable(y){
+  if(tradMoveableCache[y]) return tradMoveableCache[y];
+  const E = easterDate(y), A = adventStart(y), list = [];
+  const add = (date, name, type, note) => list.push({ name, type, note:note || '', date, temporal:true });
+  const ember = (base, season, type) => [[3, 'Wednesday'], [5, 'Friday'], [6, 'Saturday']].forEach(([n, day]) =>
+    add(addDays(base, n), `Ember ${day} ${season}`, type || 'II class', 'An Ember Day: by tradition a day of fasting and prayer for the season, and for those to be ordained.'));
+  // Christmastide and the Time after Epiphany
+  let holyName = new Date(y, 0, 2);
+  for(let i = 2; i <= 5; i++){ const d = new Date(y, 0, i); if(d.getDay() === 0) holyName = d; }
+  add(holyName, 'The Most Holy Name of Jesus', 'II class', 'Kept on the Sunday between the Octave Day of Christmas and the Epiphany, or else on January 2.');
+  const jan6 = new Date(y, 0, 6), holyFam = addDays(jan6, 7 - jan6.getDay());
+  add(holyFam, 'The Holy Family of Jesus, Mary, and Joseph', 'II class', 'The First Sunday after the Epiphany.');
+  for(let s = addDays(holyFam, 7), n = 1; s < addDays(E, -63); s = addDays(s, 7), n++) add(s, `${TRAD_ORD[n]} Sunday after Epiphany`, 'II class');
+  // Septuagesima, Lent, and Passiontide
+  add(addDays(E, -63), 'Septuagesima Sunday', 'II class', 'The name means “seventieth,” counting toward Easter. The Gloria and Alleluia fall silent, and violet is worn until Easter.');
+  add(addDays(E, -56), 'Sexagesima Sunday', 'II class');
+  add(addDays(E, -49), 'Quinquagesima Sunday', 'II class');
+  add(addDays(E, -46), 'Ash Wednesday', 'I class', 'Lent begins. Ashes are blessed and imposed: “Memento, homo, quia pulvis es, et in pulverem reverteris.”');
+  ['First', 'Second', 'Third'].forEach((n, i) => add(addDays(E, -42 + 7 * i), `${n} Sunday of Lent`, 'I class'));
+  ember(addDays(E, -42), 'of Lent');
+  add(addDays(E, -21), 'Fourth Sunday of Lent (Laetare)', 'I class', 'Named from the first word of its Introit, “Rejoice.” Rose vestments may be worn.');
+  add(addDays(E, -14), 'Passion Sunday', 'I class', 'Passiontide begins, and the crosses and images in the church are veiled.');
+  add(addDays(E, -9), 'The Seven Sorrows of the Blessed Virgin Mary', 'Commemoration', 'Commemorated on the Friday after Passion Sunday.');
+  add(addDays(E, -7), 'Palm Sunday', 'I class', 'The Second Sunday of the Passion. Palms are blessed and carried in procession.');
+  ['Monday', 'Tuesday', 'Wednesday'].forEach((n, i) => add(addDays(E, -6 + i), `${n} of Holy Week`, 'I class'));
+  add(addDays(E, -3), 'Holy Thursday', 'I class', 'The Mass of the Lord’s Supper, the washing of feet, and the stripping of the altars.');
+  add(addDays(E, -2), 'Good Friday', 'I class', 'The solemn afternoon liturgy of the Passion, with the adoration of the Cross. No Mass is said.');
+  add(addDays(E, -1), 'Holy Saturday', 'I class', 'The Easter Vigil is kept at night.');
+  // Paschaltide
+  add(E, 'Easter Sunday: the Resurrection of Our Lord', 'I class', 'The feast of feasts.');
+  ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].forEach((n, i) => add(addDays(E, 1 + i), `Easter ${n}`, 'I class', 'Within the octave of Easter.'));
+  add(addDays(E, 7), 'Low Sunday', 'I class', 'The Octave Day of Easter (Dominica in Albis).');
+  ['Second', 'Third', 'Fourth', 'Fifth'].forEach((n, i) => add(addDays(E, 14 + 7 * i), `${n} Sunday after Easter`, 'II class'));
+  ['Monday', 'Tuesday', 'Wednesday'].forEach((n, i) => add(addDays(E, 36 + i), `Rogation ${n}`, 'Season', 'The Lesser Litanies: the Litany of the Saints is chanted, traditionally in procession, to ask God’s blessing on the fields.'));
+  add(addDays(E, 38), 'The Vigil of the Ascension', 'II class');
+  add(addDays(E, 39), 'The Ascension of Our Lord', 'I class', 'Forty days after Easter. The Paschal candle is extinguished after the Gospel.');
+  add(addDays(E, 42), 'Sunday after the Ascension', 'II class');
+  add(addDays(E, 48), 'The Vigil of Pentecost', 'I class');
+  add(addDays(E, 49), 'Pentecost Sunday', 'I class', 'The descent of the Holy Spirit upon the apostles.');
+  ['Monday', 'Tuesday'].forEach((n, i) => add(addDays(E, 50 + i), `Pentecost ${n}`, 'I class', 'Within the octave of Pentecost.'));
+  ember(addDays(E, 49), 'in the Octave of Pentecost', 'I class');
+  add(addDays(E, 53), 'Pentecost Thursday', 'I class', 'Within the octave of Pentecost.');
+  // The Time after Pentecost
+  add(addDays(E, 56), 'The Most Holy Trinity', 'I class', 'The First Sunday after Pentecost.');
+  add(addDays(E, 60), 'Corpus Christi', 'I class', 'The feast of the Most Holy Body of Christ, with its procession of the Blessed Sacrament.');
+  add(addDays(E, 68), 'The Most Sacred Heart of Jesus', 'I class', 'The Friday after the octave of Corpus Christi.');
+  const sundays = [];
+  for(let s = addDays(E, 63); s < A; s = addDays(s, 7)) sundays.push(s);
+  const extra = sundays.length - 23;   // Sundays beyond the twenty-fourth borrow the Masses left over after Epiphany
+  sundays.forEach((s, i) => {
+    const n = i + 2, last = i === sundays.length - 1;
+    if(last) add(s, 'Twenty-Fourth and Last Sunday after Pentecost', 'II class', 'Its Gospel speaks of the end of the world and the coming of the Son of Man.');
+    else if(n <= 23) add(s, `${TRAD_ORD[n - 1]} Sunday after Pentecost`, 'II class');
+    else add(s, `${TRAD_ORD[6 - extra + (n - 24)]} Sunday after Epiphany (resumed)`, 'II class', `The ${TRAD_ORD[n - 1].toLowerCase()} Sunday after Pentecost. The Mass of a Sunday after Epiphany that was left over earlier in the year is said.`);
+  });
+  const sep1 = new Date(y, 8, 1), firstSunSep = addDays(sep1, (7 - sep1.getDay()) % 7);
+  ember(addDays(firstSunSep, 14), 'of September');
+  const oct31 = new Date(y, 9, 31);
+  add(addDays(oct31, -oct31.getDay()), 'Our Lord Jesus Christ the King', 'I class', 'Kept on the last Sunday of October. Instituted by Pope Pius XI in 1925.');
+  const nov2 = new Date(y, 10, 2);
+  add(nov2.getDay() === 0 ? new Date(y, 10, 3) : nov2, 'The Commemoration of All the Faithful Departed (All Souls)', 'I class', 'Every priest may say three Masses for the dead.' + (nov2.getDay() === 0 ? ' Kept on November 3 this year, because November 2 is a Sunday.' : ''));
+  // Advent
+  ['First', 'Second', 'Third', 'Fourth'].forEach((n, i) => add(addDays(A, 7 * i), `${n} Sunday of Advent` + (i === 2 ? ' (Gaudete)' : ''), 'I class', i === 2 ? 'Named from the first word of its Introit, “Rejoice.” Rose vestments may be worn.' : ''));
+  ember(addDays(A, 14), 'of Advent');
+  for(let i = 26; i <= 31; i++){ const d = new Date(y, 11, i); if(d.getDay() === 0) add(d, 'The Sunday within the Octave of Christmas', 'II class'); }
+  return tradMoveableCache[y] = list;
+}
+
+// The fixed feasts for a year: February's feasts shift a day in leap years, and a feast of the I class
+// that falls on a greater day of the season moves to the next free day
+const TRAD_LORD_FEASTS = new Set(['2-2', '8-6', '9-14', '11-9']);   // feasts of the Lord of the II class, which take a Sunday's place
+const tradFixedCache = {};
+function tradFixedFor(y){
+  if(tradFixedCache[y]) return tradFixedCache[y];
+  const leap = new Date(y, 1, 29).getDate() === 29;
+  const out = TRAD_FIXED.map(e => ({ ...e, date:new Date(y, e.month - 1, e.day + (leap && e.month === 2 && e.day >= 24 ? 1 : 0)) }));
+  const key = d => d.toDateString();
+  const seasonFirst = new Set(tradMoveable(y).filter(e => e.type === 'I class').map(e => key(e.date)));
+  const fixedFirst = new Set(out.filter(e => e.type === 'I class').map(e => key(e.date)));
+  out.filter(e => e.type === 'I class' && !/^The Vigil/.test(e.name) && seasonFirst.has(key(e.date)) && !(e.month === 12 && e.day === 8))
+    .sort((a, b) => a.date - b.date)
+    .forEach(e => {
+      const from = e.date;
+      let d = addDays(from, 1);
+      while(seasonFirst.has(key(d)) || fixedFirst.has(key(d))) d = addDays(d, 1);
+      fixedFirst.delete(key(from)); fixedFirst.add(key(d));
+      e.date = d;
+      e.note = ((e.note || '') + ` Transferred this year from ${MONTH_NAMES[from.getMonth()]} ${from.getDate()}.`).trim();
+    });
+  return tradFixedCache[y] = out;
+}
+
+function tradObservancesFor(d){
+  const y = d.getFullYear();
+  const list = tradMoveable(y).filter(e => sameDay(e.date, d)).map(e => ({ ...e }));
+  tradFixedFor(y).filter(e => sameDay(e.date, d)).forEach(e => {
+    const o = { name:e.name, type:e.type, note:e.note || '', month:e.month, day:e.day };
+    if(e.coms) o.note = (o.note + ' With a commemoration of ' + e.coms.join(' and ') + '.').trim();
+    const saints = (e.saints || []).filter(id => library.some(x => x.id === id));
+    if(saints.length) o.saints = saints;
+    list.push(o);
+  });
+  // Precedence (Code of Rubrics, 1960): a day of the I class leaves out lesser feasts, a Sunday leaves out
+  // feasts of the III class, and on an Ember Day or vigil of the II class a III class feast is only commemorated
+  // A Sunday of the II class gives way only to a feast of the Lord; other II class feasts on it are commemorated
+  const lordFeast = o => !o.temporal && TRAD_LORD_FEASTS.has(o.month + '-' + o.day);
+  let shown = list;
+  if(list.some(o => o.type === 'I class')) shown = list.filter(o => o.type === 'I class');
+  else if(d.getDay() === 0){
+    const lord = list.some(lordFeast);
+    shown = list.filter(o => ['II class', 'Season'].includes(o.type))
+      .map(o => o.type !== 'II class' || lordFeast(o) ? o : lord || !o.temporal ? { ...o, type:'Commemoration' } : o);
+  }
+  else if(list.some(o => o.temporal && o.type === 'II class')) shown = list.map(o => o.type === 'III class' ? { ...o, type:'Commemoration' } : o);
+  const rank = o => CAL_TYPE_RANK[o.type] ?? 9;
+  return shown.sort((a, b) => rank(a) - rank(b) || (a.type === 'I class' ? !!a.temporal - !!b.temporal : !!b.temporal - !!a.temporal));
+}
+
+function tradDayNotes(d, obs){
+  const E = easterDate(d.getFullYear()), notes = [];
+  if(sameDay(d, addDays(E, -46)) || sameDay(d, addDays(E, -2))) notes.push('A day of fasting and abstinence.');
+  else if(d.getDay() === 5 && !obs.some(o => o.type === 'I class')){
+    const key = tradSeason(d).key;
+    notes.push(key === 'lent' || key === 'passiontide' ? 'A Friday of Lent: a day of abstinence from meat.' : 'Fridays are days of penance throughout the year.');
+  }
+  if(d.getDay() === 0) notes.push('The Lord’s Day: Mass is an obligation for Catholics.');
+  return notes;
+}
+const CAL_TYPES_TRAD = {
+  color:{ 'I class':'var(--gold)', 'II class':'var(--wine)', 'III class':'var(--green)', Commemoration:'var(--indigo)', Season:'var(--purple)' },
+  rank:{ 'I class':0, 'II class':1, 'III class':2, Commemoration:3, Saint:4, Season:5 },
+  plural:{ 'I class':'Feasts of the I class', 'II class':'Days of the II class', 'III class':'Feasts of the III class', Commemoration:'Commemorations', Season:'Rogation days' }
+};
 const CAL_TYPES_LATIN = { color:{ ...CAL_TYPE_COLOR }, rank:{ ...CAL_TYPE_RANK }, plural:{ ...CAL_TYPE_PLURAL } };
 const CAL_TYPES_EASTERN = {
   color:{ 'Great Feast':'var(--gold)', Feast:'var(--green)', Commemoration:'var(--indigo)', Saint:'var(--teal)', Fast:'var(--purple)' },
@@ -13414,7 +13913,7 @@ function swapObject(target, source){ Object.keys(target).forEach(k => delete tar
 
 /* ---------- Switching editions ---------- */
 function applyRite(){
-  const east = isEastern();
+  const east = isEastern(), trad = isTraditional(), idx = east ? 1 : trad ? 2 : 0;
   if(SEASONAL_THEMES.has(document.documentElement.dataset.theme)) document.documentElement.setAttribute('data-season', todaysLiturgicalColor());
   // Which prayers are shown
   const keep = LIBRARY_ALL.filter(e => east ? !LATIN_ONLY.has(e.id) : e.rite !== 'eastern');
@@ -13423,41 +13922,44 @@ function applyRite(){
   // Page names, icons, and descriptions
   Object.entries(RITE_SECTIONS).forEach(([cat, v]) => {
     if(!SECTIONS[cat]) return;
-    SECTIONS[cat].name = v.name[east ? 1 : 0];
-    if(v.icon) SECTIONS[cat].icon = v.icon[east ? 1 : 0];
+    SECTIONS[cat].name = v.name[idx] || v.name[0];
+    if(v.icon) SECTIONS[cat].icon = v.icon[idx] || v.icon[0];
   });
-  Object.entries(RITE_DESC).forEach(([cat, text]) => {
+  [...new Set([...Object.keys(RITE_DESC), ...Object.keys(TRAD_DESC)])].forEach(cat => {
     if(!(cat in latinDesc)) latinDesc[cat] = CAT_DESC[cat];
-    CAT_DESC[cat] = east ? text : latinDesc[cat];
+    CAT_DESC[cat] = (east ? RITE_DESC[cat] : trad ? TRAD_DESC[cat] : null) || latinDesc[cat];
   });
   document.querySelectorAll('.navlink[data-route], .footer-cols [data-route]').forEach(el => {
-    if(!RITE_NAV[el.dataset.route]) return;
+    const route = el.dataset.route;
+    if(!RITE_NAV[route] && !TRAD_NAV[route]) return;
     const node = [...el.childNodes].find(n => n.nodeType === 3 && n.textContent.trim());
     if(!node) return;
     if(!el.dataset.latin) el.dataset.latin = node.textContent.trim();
-    node.textContent = (east ? RITE_NAV[el.dataset.route] : el.dataset.latin) + (el.classList.contains('navlink') ? ' ' : '');
+    node.textContent = ((east ? RITE_NAV[route] : trad ? TRAD_NAV[route] : null) || el.dataset.latin) + (el.classList.contains('navlink') ? ' ' : '');
   });
   document.querySelectorAll('.navlink[data-cat]').forEach(b => {
     const sec = SECTIONS[b.dataset.cat], ic = b.querySelector('.nl-icon');
     if(sec && ic && !ic.classList.contains('nl-spark')) ic.innerHTML = navIcon(sec.icon);
   });
   // Calendar
-  const types = east ? CAL_TYPES_EASTERN : CAL_TYPES_LATIN;
+  const types = east ? CAL_TYPES_EASTERN : trad ? CAL_TYPES_TRAD : CAL_TYPES_LATIN;
   swapObject(CAL_TYPE_COLOR, types.color);
   swapObject(CAL_TYPE_RANK, types.rank);
   swapObject(CAL_TYPE_PLURAL, types.plural);
   calHidden.clear();
   // Crosses
   document.querySelectorAll('svg.mark path').forEach(p => p.setAttribute('d', crossPath()));
-  setSeasonFavicon(east);
-  // The switch itself
+  setSeasonFavicon();
+  // The edition button shows the current edition's cross and opens the choice of editions
+  const name = editionName(riteKey());
   const btn = document.getElementById('riteToggle');
   if(btn){
-    btn.innerHTML = `<svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="${east ? CROSS_PATHS.latin : CROSS_PATHS.eastern}"/></svg>`;
-    btn.title = east ? 'Switch to the Roman Catholic edition' : 'Switch to the Eastern Catholic edition';
+    btn.innerHTML = `<svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="${crossPath()}"/></svg>`;
+    btn.title = `Edition: ${name}. Choose an edition`;
     btn.setAttribute('aria-label', btn.title);
   }
-  document.querySelectorAll('[data-rite-switch]').forEach(b => { b.textContent = east ? 'Switch to the Roman Catholic edition' : 'Switch to the Eastern Catholic edition'; });
+  document.querySelectorAll('.rite-switch-link .nl-icon path').forEach(p => p.setAttribute('d', crossPath()));
+  document.querySelectorAll('.rite-switch-link [data-rite-switch], .footer-rite').forEach(b => { b.textContent = `Edition: ${name}`; b.title = 'Choose an edition'; });
   // Reset guided prayers that differ between editions
   rosarySequence = null; stationsStep = null; chapletSequence = null; shSequence = null; massStep = null;
   Object.keys(guidedState).forEach(k => { guidedState[k] = null; });
@@ -13465,11 +13967,11 @@ function applyRite(){
 
 // The favicon wears the chosen theme: its page color for the tile, its gold for the edge, its accent for the cross
 // (the Liturgical Season themes' accent follows the season, so their cross does too)
-function setSeasonFavicon(east){
+function setSeasonFavicon(){
   const css = getComputedStyle(document.documentElement);
   const v = (name, fallback) => (css.getPropertyValue(name) || '').trim() || fallback;
   const tile = v('--parchment-light', '#f6f0dc'), edge = v('--gold', '#a6824a'), color = v('--wine', '#7a2426');
-  const path = east ? CROSS_PATHS.eastern : CROSS_PATHS.latin;
+  const path = crossPath();
   const svg = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
   if(svg) svg.setAttribute('href', 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="2" y="2" width="60" height="60" rx="13" fill="${tile}" stroke="${edge}" stroke-width="2.5"/><path fill="${color}" fill-rule="evenodd" transform="translate(32 32) scale(0.86) translate(-32 -32)" d="${path}"/></svg>`));
   // Browsers that ignore SVG favicons (Safari) get the same drawing as a PNG
@@ -13488,14 +13990,40 @@ function setSeasonFavicon(east){
 }
 
 function setRite(rite){
-  if(rite === 'eastern') document.documentElement.dataset.rite = 'eastern';
+  if(rite === 'eastern' || rite === 'traditional') document.documentElement.dataset.rite = rite;
   else delete document.documentElement.dataset.rite;
   store.set('rite', rite);
   applyRite();
   applyRoute(currentPath);
-  toast(rite === 'eastern' ? 'Eastern Catholic edition: Byzantine prayers, calendar, and Divine Liturgy' : 'Roman Catholic edition');
+  toast({ eastern:'Eastern Catholic edition: Byzantine prayers, calendar, and Divine Liturgy', traditional:'Traditional Latin edition: the Missal and calendar of 1962' }[rite] || 'Roman Catholic edition');
 }
-function toggleRite(){ setRite(isEastern() ? 'latin' : 'eastern'); }
+function openRitePicker(){
+  closeRitePicker();
+  const current = riteKey();
+  const box = document.createElement('div');
+  box.className = 'rite-picker';
+  box.id = 'ritePicker';
+  box.innerHTML = `
+    <div class="rp-card" role="dialog" aria-modal="true" aria-labelledby="rpTitle">
+      <h2 id="rpTitle">Choose an edition</h2>
+      <p class="rp-intro">Sanctify comes in three editions. Your prayer tracker, novenas, and settings stay the same in each.</p>
+      <div class="rp-list">${EDITIONS.map(e => `
+        <button class="rp-option${e.key === current ? ' current' : ''}" data-rp="${e.key}" aria-pressed="${e.key === current}">
+          <span class="rp-cross"><svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="${CROSS_PATHS[e.key]}"/></svg></span>
+          <span class="rp-text"><strong>${e.name}${e.key === current ? ' <em>Current</em>' : ''}</strong><span>${e.desc}</span></span>
+        </button>`).join('')}</div>
+      <button class="btn quiet rp-close" type="button">Close</button>
+    </div>`;
+  document.body.appendChild(box);
+  box.addEventListener('click', ev => {
+    const opt = ev.target.closest('[data-rp]');
+    if(opt){ closeRitePicker(); if(opt.dataset.rp !== riteKey()) setRite(opt.dataset.rp); return; }
+    if(ev.target === box || ev.target.closest('.rp-close')) closeRitePicker();
+  });
+  box.querySelector('.rp-option.current').focus();
+}
+function closeRitePicker(){ const box = document.getElementById('ritePicker'); if(box) box.remove(); }
+document.addEventListener('keydown', ev => { if(ev.key === 'Escape') closeRitePicker(); });
 
 /* ---------- The Jesus Prayer on a prayer rope ---------- */
 const JESUS_PRAYER = 'Lord Jesus Christ, Son of God, have mercy on me, a sinner.';
@@ -13835,10 +14363,14 @@ function easternPrayCards(){
 }
 
 function riteBannerHtml(){
-  const cross = `<span class="rite-banner-cross"><svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="${isEastern() ? CROSS_PATHS.latin : CROSS_PATHS.eastern}"/></svg></span>`;
-  return isEastern()
-    ? `<section class="rite-banner">${cross}<div><strong>The Eastern Catholic edition</strong> follows the Byzantine tradition, shared by the Ukrainian, Ruthenian, Melkite, Romanian, and other Greek Catholic Churches. The Maronite, Syro-Malabar, Chaldean, Armenian, Coptic, and other Eastern Catholic Churches have their own liturgies. <button class="text-link" data-open="t58">About the Eastern Catholic Churches →</button></div><button class="btn quiet" data-rite-switch>Switch to the Roman Catholic edition</button></section>`
-    : `<section class="rite-banner">${cross}<div><strong>Eastern Catholic?</strong> Switch to the edition for the Byzantine tradition, with the Divine Liturgy, the Jesus Prayer, Byzantine prayers, and the Byzantine calendar.</div><button class="btn quiet" data-rite-switch>Switch to the Eastern Catholic edition</button></section>`;
+  const k = riteKey();
+  const crosses = (k === 'latin' ? ['traditional', 'eastern'] : [k]).map(x => `<svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="${CROSS_PATHS[x]}"/></svg>`).join('');
+  const text = {
+    latin:'<strong>Attend the Latin Mass, or Eastern Catholic?</strong> Sanctify also comes in a Traditional Latin edition, with the 1962 calendar and the Latin Mass explained, and an Eastern Catholic edition for the Byzantine tradition.',
+    traditional:'<strong>The Traditional Latin edition</strong> follows the Roman Missal of 1962 and its calendar: the old feasts and seasons, Ember Days, the Latin Mass explained, and the fifteen mysteries of the Rosary. Its prayers are those of the Roman Catholic edition.',
+    eastern:`<strong>The Eastern Catholic edition</strong> follows the Byzantine tradition, shared by the Ukrainian, Ruthenian, Melkite, Romanian, and other Greek Catholic Churches. The Maronite, Syro-Malabar, Chaldean, Armenian, Coptic, and other Eastern Catholic Churches have their own liturgies. <button class="text-link" data-open="t58">About the Eastern Catholic Churches →</button>`
+  }[k];
+  return `<section class="rite-banner"><span class="rite-banner-cross${k === 'latin' ? ' two' : ''}">${crosses}</span><div>${text}</div><button class="btn quiet" data-rite-switch>${k === 'latin' ? 'Choose an edition' : 'Change edition'}</button></section>`;
 }
 /* =========================================================
    FAMOUS ICONS
@@ -14858,7 +15390,7 @@ const HUBS = {
         desc:'The core teachings of the Catholic faith, each with the Scripture passages and Catechism paragraphs behind it, the witness of the Church Fathers, and charitable answers to the objections Catholics most often hear.',
         links:[['Core Catholic Beliefs', 'learn/theology/beliefs'], ['The Faith in Simple Words', 'learn/theology/simple-words'], ['The Faith of the Fathers', 'learn/theology/fathers'], ['Defending the Faith', 'learn/theology/apologetics'], ['The Catechism', 'library/catechism']],
         meta:`${countOf('theology')} topics`, cta:'Start learning' },
-      { route:'learn/mass', desc:isEastern() ? 'Every part of the Divine Liturgy of St. John Chrysostom, with what happens and why. Follow along on your phone.' : 'Every part of the Mass, with when to stand, sit, and kneel and what each moment means, and a guide to the Traditional Latin Mass. Follow along on your phone.', meta:isEastern() ? 'The Divine Liturgy' : 'The Order of Mass' },
+      { route:'learn/mass', desc:isTraditional() ? 'Every part of the Traditional Latin Mass of 1962, with the Latin you will hear, when to kneel, sit, and stand, and what each moment means. Follow along on your phone.' : isEastern() ? 'Every part of the Divine Liturgy of St. John Chrysostom, with what happens and why. Follow along on your phone.' : 'Every part of the Mass, with when to stand, sit, and kneel and what each moment means, and a guide to the Traditional Latin Mass. Follow along on your phone.', meta:isEastern() ? 'The Divine Liturgy' : isTraditional() ? 'The Missal of 1962' : 'The Order of Mass' },
       { route:'learn/living-the-faith', desc:isEastern() ? 'Becoming an Eastern Catholic, the rhythm of Byzantine life, and guides to Holy Crowning, the priesthood, monastic life, and more.' : 'Becoming Catholic, coming home, the precepts of the Church, and guides to discerning and living every vocation.', meta:isEastern() ? `${VOCATIONS_EAST.length} guides` : `${VOCATIONS.length} guides` },
       { route:'learn/lists', desc:isEastern() ? 'The Commandments, the Beatitudes, the seven Holy Mysteries, the eight evil thoughts, the twelve great feasts, the fasts, and more, each explained.' : 'The Commandments, the Beatitudes, the precepts, the sacraments, the virtues, the works of mercy, the capital sins, and more, each explained.', meta:`${LISTS.length} lists` },
       { route:'learn/church', desc:isEastern() ? 'The iconostasis and how to read it, the Holy Table, the holy vessels and vestments, and how to take part in the Liturgy.' : 'The altar, the tabernacle, the sacred vessels, the vestments, the colors of the seasons, and how to take part in Mass.', meta:'A guided tour' },
@@ -15137,7 +15669,7 @@ function renderHome(){
   const up = [];
   for(let i = 1; i <= 40 && up.length < 4; i++){
     const day = addDays(d, i);
-    observancesFor(day).filter(o => ['Solemnity', 'Great Feast', 'Feast', 'Memorial', 'Commemoration'].includes(o.type)).forEach(o => { if(up.length < 4) up.push({ day, o }); });
+    observancesFor(day).filter(o => ['Solemnity', 'Great Feast', 'Feast', 'Memorial', 'Commemoration', 'I class', 'II class'].includes(o.type)).forEach(o => { if(up.length < 4) up.push({ day, o }); });
   }
   wrap.querySelector('#homeUpcoming').innerHTML = up.map((u, i) => `
     <button class="upcoming-item" data-i="${i}">
@@ -16198,10 +16730,11 @@ const MYSTERIES = {
   ]}
 };
 
-function todaysMysterySet(){
-  const map = {0:'glorious',1:'joyful',2:'sorrowful',3:'glorious',4:'luminous',5:'sorrowful',6:'joyful'};
-  return map[new Date().getDay()];
-}
+function todaysMysterySet(){ return mysterySetFor(new Date()); }
+// The Traditional edition prays the fifteen mysteries, on their days before 2002
+const TRAD_MYSTERY_DAYS = { joyful:'Monday & Thursday', sorrowful:'Tuesday & Friday', glorious:'Wednesday, Saturday & Sunday' };
+function rosarySets(){ return Object.keys(MYSTERIES).filter(k => !(isTraditional() && k === 'luminous')); }
+function mysteryDays(key){ return isTraditional() ? TRAD_MYSTERY_DAYS[key] : MYSTERIES[key].days; }
 
 let rosarySet = todaysMysterySet();
 let rosarySequence = null;
@@ -16424,16 +16957,17 @@ function rosaryHowTo(){
 function renderRosaryStart(){
   devoKeys = null;
   const today = todaysMysterySet();
+  if(!rosarySets().includes(rosarySet)) rosarySet = today;
   entryListEl.innerHTML = `
     <div class="devo-start">
       <div class="mystery-grid" role="radiogroup" aria-label="Mysteries">
-        ${Object.keys(MYSTERIES).map(key => {
+        ${rosarySets().map(key => {
           const m = MYSTERIES[key], st = MYSTERY_STYLE[key];
           return `<button class="mystery-card${key === rosarySet ? ' active' : ''}" role="radio" aria-checked="${key === rosarySet}" data-set="${key}" style="--devo:${st.color}">
             ${key === today ? '<span class="mystery-today">Today</span>' : ''}
             <span class="mystery-art">${cardArt(st.art)}</span>
             <span class="mystery-name">${escapeHtml(m.name)}</span>
-            <span class="mystery-days">${escapeHtml(m.days)}</span>
+            <span class="mystery-days">${escapeHtml(mysteryDays(key))}</span>
             <ol>${m.list.map(x => `<li>${escapeHtml(x.name.replace(/^The /, ''))}</li>`).join('')}</ol>
           </button>`;
         }).join('')}
@@ -17145,7 +17679,7 @@ function renderDevotions(){
     <div class="dv-page">
       <nav class="dv-jump" aria-label="On this page">${list.map(d => `<button class="dv-chip" data-dv="${d.id}" style="--dv:var(--${d.color})">${escapeHtml(d.name)}</button>`).join('')}</nav>
       ${list.map(dvCardHtml).join('')}
-      ${east ? '<p class="dv-note dv-east">Some Eastern Catholics also keep devotions from the Latin Church, such as the scapular or the Miraculous Medal. You can read about them in the <button class="text-link" data-rite-switch>Roman Catholic edition</button>.</p>' : ''}
+      ${east ? '<p class="dv-note dv-east">Some Eastern Catholics also keep devotions from the Latin Church, such as the scapular or the Miraculous Medal. You can read about them in the <button class="text-link" data-rite-switch="latin">Roman Catholic edition</button>.</p>' : ''}
     </div>`;
   entryListEl.querySelectorAll('[data-dv]').forEach(b => b.addEventListener('click', () => {
     const el = document.getElementById('dv-' + b.dataset.dv);
@@ -17976,8 +18510,8 @@ const CHURCH_GUIDE_EAST = [
 function renderChurchGuide(){
   const east = isEastern();
   renderGuidePage(east ? CHURCH_GUIDE_EAST : CHURCH_GUIDE,
-    east ? '<p class="dv-note dv-east">Want to see a Latin church? Read the guide in the <button class="text-link" data-rite-switch>Roman Catholic edition</button>.</p>'
-         : '<p class="dv-note">The Eastern Catholic Churches have their own beautiful arrangement, with the iconostasis and the Holy Table. Read about it in the <button class="text-link" data-rite-switch>Eastern Catholic edition</button>.</p>');
+    east ? '<p class="dv-note dv-east">Want to see a Latin church? Read the guide in the <button class="text-link" data-rite-switch="latin">Roman Catholic edition</button>.</p>'
+         : '<p class="dv-note">The Eastern Catholic Churches have their own beautiful arrangement, with the iconostasis and the Holy Table. Read about it in the <button class="text-link" data-rite-switch="eastern">Eastern Catholic edition</button>.</p>');
 }
 
 /* =========================================================
@@ -18394,10 +18928,12 @@ setTimeout(checkBadges, 1500);
   }).observe(bar);
 })();
 document.addEventListener('click', e => {
-  if(!e.target.closest('#riteToggle, .rite-switch-link, [data-rite-switch]')) return;
+  const el = e.target.closest('#riteToggle, .rite-switch-link, [data-rite-switch]');
+  if(!el) return;
   e.preventDefault();
   setNavOpen(false);
-  toggleRite();
+  const to = (el.closest('[data-rite-switch]') || {}).dataset?.riteSwitch;   // a link may name its edition; otherwise offer the choice
+  if(to) setRite(to); else openRitePicker();
 });
 (function startRoute(){
   const shared = /^#read=/.test(location.hash);

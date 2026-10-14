@@ -29,7 +29,7 @@ function statementAt(lines, start){
 function extract(html){
   const lines = html.split(/\r?\n/);
   const find = re => lines.findIndex(l => re.test(l));
-  const parts = ['const isEastern = () => false;'];
+  const parts = ['const isEastern = () => false;', 'const isTraditional = () => false;'];
   for(const name of NEEDED){
     const i = find(new RegExp(`^(const|let|function) ${name}\\b`));
     if(i < 0) throw new Error('Could not find ' + name + ' in index.html');
