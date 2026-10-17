@@ -2213,6 +2213,25 @@
   .badge-row{display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 4px;}
   .badge-mini{width:30px; height:30px; padding:6px; border-radius:50%; color:var(--parchment-light); background:radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--b) 70%, white), var(--b));}
   .badge-mini svg{width:100%; height:100%; display:block;}
+  .badge-ic{display:inline-flex; width:22px; height:22px; margin-left:5px; padding:4px; border-radius:50%; vertical-align:middle; color:var(--parchment-light); background:var(--b); flex:0 0 auto;}
+  .badge-ic svg{width:100%; height:100%; display:block;}
+  .member-panel h3 .badge-ic{width:28px; height:28px; padding:5px; margin-left:0;}
+  .badge-pill-ic{display:inline-flex; width:1.1em; height:1.1em; margin-right:2px;}
+  .badge-pill-ic svg{width:100%; height:100%;}
+  .member-bio{margin:6px 0 4px; white-space:pre-line; color:var(--ink); max-width:60ch;}
+  .bio-panel{margin-bottom:20px; padding:16px 18px; border:1px solid var(--line); border-radius:14px; background:var(--parchment-light);}
+  .bio-panel h3{margin:0 0 2px; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.3rem;}
+  .bio-panel textarea{width:100%; margin-top:8px; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:var(--parchment); color:var(--ink); font:inherit; resize:vertical;}
+  .bio-row{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:8px;}
+  .crop-card{max-width:420px;}
+  .crop-stage{display:flex; justify-content:center; margin:6px 0 12px;}
+  .crop-stage canvas{width:min(300px, 72vw); height:auto; aspect-ratio:1; border-radius:12px; cursor:grab; touch-action:none; background:#fff;}
+  .crop-stage canvas.dragging{cursor:grabbing;}
+  .crop-stage canvas:focus-visible{outline:3px solid var(--wine); outline-offset:3px;}
+  .crop-zoom{display:flex; align-items:center; gap:10px; font-size:0.9rem;}
+  .crop-zoom input{flex:1; accent-color:var(--wine);}
+  .crop-actions{display:flex; align-items:center; gap:8px; margin-top:14px; flex-wrap:wrap;}
+  .crop-gap{flex:1;}
   .author-link{background:none; border:none; padding:0; font:inherit; color:inherit; cursor:pointer; text-decoration:none;}
   .author-link:hover{color:var(--wine-dark); text-decoration:underline; text-underline-offset:3px;}
   .forum-search{max-width:none; margin:0 0 12px;}
@@ -9825,28 +9844,97 @@ function avatarFor(name, v, cls = ''){
 }
 document.addEventListener('error', ev => { if(ev.target.classList && ev.target.classList.contains('av-img')) ev.target.remove(); }, true);
 
-// Crops a chosen picture to a square and shrinks it to 256 pixels before upload
-function avatarDataUrl(file){
+// Opens a picture in the editor: drag to move it, zoom to frame it in the circle. Resolves with a
+// 320-pixel JPEG ready to upload, or null if the member cancels.
+const BIO_MAX = 300;
+function openAvatarEditor(src){
   return new Promise((resolve, reject) => {
-    if(!/^image\//.test(file.type)) return reject(new Error('Please choose a picture file.'));
-    if(file.size > 15 * 1024 * 1024) return reject(new Error('That picture is very large. Please choose one under 15 MB.'));
-    const url = URL.createObjectURL(file);
     const img = new Image();
+    img.onerror = () => reject(new Error('That picture couldn’t be opened. Please try a JPEG or PNG.'));
     img.onload = () => {
-      URL.revokeObjectURL(url);
-      const side = Math.min(img.naturalWidth, img.naturalHeight);
-      const canvas = document.createElement('canvas');
-      canvas.width = canvas.height = 256;
-      const g = canvas.getContext('2d');
-      g.fillStyle = '#ffffff';
-      g.fillRect(0, 0, 256, 256);
-      g.drawImage(img, (img.naturalWidth - side) / 2, (img.naturalHeight - side) / 2, side, side, 0, 0, 256, 256);
-      let q = 0.86, data = canvas.toDataURL('image/jpeg', q);
-      while(data.length > 140000 && q > 0.4){ q -= 0.12; data = canvas.toDataURL('image/jpeg', q); }
-      resolve(data);
+      const box = document.createElement('div');
+      box.className = 'rite-picker crop-modal';
+      box.innerHTML = `
+        <div class="rp-card crop-card" role="dialog" aria-modal="true" aria-labelledby="cropTitle">
+          <h2 id="cropTitle">Frame your picture</h2>
+          <p class="rp-intro">Drag the picture to move it, and use the slider (or your mouse wheel) to zoom. Arrow keys work too.</p>
+          <div class="crop-stage"><canvas width="560" height="560" tabindex="0" aria-label="Picture preview. Drag or use the arrow keys to move it."></canvas></div>
+          <label class="crop-zoom"><span>Zoom</span><input type="range" min="1" max="4" step="0.01" value="1"></label>
+          <div class="crop-actions">
+            <button class="btn quiet" data-crop="reset" type="button">Reset</button>
+            <span class="crop-gap"></span>
+            <button class="btn quiet" data-crop="cancel" type="button">Cancel</button>
+            <button class="btn primary pill" data-crop="save" type="button">Save picture</button>
+          </div>
+        </div>`;
+      document.body.appendChild(box);
+      const canvas = box.querySelector('canvas'), g = canvas.getContext('2d'), range = box.querySelector('input[type="range"]');
+      const S = canvas.width, W = img.naturalWidth, H = img.naturalHeight;
+      const base = S / Math.min(W, H);   // at zoom 1 the picture just fills the frame
+      let zoom = 1, cx = W / 2, cy = H / 2;   // the point of the picture at the center of the frame
+      const clamp = () => {
+        const half = S / 2 / (base * zoom);
+        cx = Math.min(Math.max(cx, half), W - half);
+        cy = Math.min(Math.max(cy, half), H - half);
+      };
+      const paint = (ctx, size, mask) => {
+        const k = base * zoom * size / S;
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, size, size);
+        ctx.setTransform(k, 0, 0, k, size / 2 - cx * k, size / 2 - cy * k);
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(img, 0, 0);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        if(!mask) return;
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        ctx.beginPath();
+        ctx.rect(0, 0, size, size);
+        ctx.arc(size / 2, size / 2, size / 2 - 3, 0, Math.PI * 2);
+        ctx.fill('evenodd');
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, size / 2 - 3, 0, Math.PI * 2);
+        ctx.stroke();
+      };
+      const draw = () => { clamp(); paint(g, S, true); };
+      const setZoom = z => { zoom = Math.min(4, Math.max(1, z)); range.value = zoom; draw(); };
+      const move = (dx, dy) => { const k = S / canvas.clientWidth / (base * zoom); cx -= dx * k; cy -= dy * k; draw(); };
+      let drag = null;
+      canvas.addEventListener('pointerdown', ev => { drag = { x:ev.clientX, y:ev.clientY }; canvas.setPointerCapture(ev.pointerId); canvas.classList.add('dragging'); });
+      canvas.addEventListener('pointermove', ev => { if(!drag) return; move(ev.clientX - drag.x, ev.clientY - drag.y); drag = { x:ev.clientX, y:ev.clientY }; });
+      const stop = () => { drag = null; canvas.classList.remove('dragging'); };
+      canvas.addEventListener('pointerup', stop);
+      canvas.addEventListener('pointercancel', stop);
+      canvas.addEventListener('wheel', ev => { ev.preventDefault(); setZoom(zoom * Math.exp(-ev.deltaY * 0.0015)); }, { passive:false });
+      canvas.addEventListener('keydown', ev => {
+        const step = ev.shiftKey ? 30 : 8;
+        const d = { ArrowLeft:[step, 0], ArrowRight:[-step, 0], ArrowUp:[0, step], ArrowDown:[0, -step] }[ev.key];
+        if(d){ ev.preventDefault(); move(d[0], d[1]); }
+        if(ev.key === '+' || ev.key === '='){ ev.preventDefault(); setZoom(zoom * 1.1); }
+        if(ev.key === '-'){ ev.preventDefault(); setZoom(zoom / 1.1); }
+      });
+      range.addEventListener('input', () => setZoom(Number(range.value)));
+      const close = result => { document.removeEventListener('keydown', onKey); box.remove(); resolve(result); };
+      const onKey = ev => { if(ev.key === 'Escape') close(null); };
+      document.addEventListener('keydown', onKey);
+      box.addEventListener('click', ev => {
+        const act = ev.target.closest('[data-crop]');
+        if(ev.target === box || (act && act.dataset.crop === 'cancel')) return close(null);
+        if(!act) return;
+        if(act.dataset.crop === 'reset'){ cx = W / 2; cy = H / 2; setZoom(1); return; }
+        const out = document.createElement('canvas');
+        out.width = out.height = 320;
+        paint(out.getContext('2d'), 320, false);
+        let q = 0.88, data = out.toDataURL('image/jpeg', q);
+        while(data.length > 140000 && q > 0.4){ q -= 0.12; data = out.toDataURL('image/jpeg', q); }
+        close(data);
+      });
+      draw();
+      canvas.focus();
     };
-    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('That picture couldn’t be opened. Please try a JPEG or PNG.')); };
-    img.src = url;
+    img.src = src;
   });
 }
 function authorHtml(name){ return name ? `<button class="author-link" data-route="community/user/${encodeURIComponent(name)}">${escapeHtml(name)}</button>` : '<em>Former member</em>'; }
@@ -10006,7 +10094,7 @@ const MOD_ACTIONS = {
   'moderator-on':'turned on moderator tools', ban:'banned', unban:'unbanned', 'remove-all':'removed everything posted by',
   'remove-post':'removed', 'remove-reply':'removed', pin:'pinned', unpin:'unpinned', lock:'locked', unlock:'unlocked',
   'dismiss-report':'dismissed reports on', mute:'muted', unmute:'unmuted', warn:'warned', 'add-note':'added a note on',
-  move:'moved', settings:'changed the settings', 'give-badge':'gave a badge to', 'take-badge':'removed a badge from', 'publish-news':'published', 'edit-news':'edited', 'delete-news':'deleted'
+  move:'moved', settings:'changed the settings', 'give-badge':'gave a badge to', 'take-badge':'removed a badge from', 'clear-bio':'cleared the description of', 'clear-avatar':'removed the picture of', 'publish-news':'published', 'edit-news':'edited', 'delete-news':'deleted'
 };
 function modDate(ms){ return new Date(ms).toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' }); }
 function banLabel(ban){ return ban ? (ban.until ? 'Banned until ' + modDate(ban.until) : 'Banned permanently') : ''; }
@@ -10215,8 +10303,14 @@ async function modUserView(body, still){
           <button class="btn quiet" type="submit">Send warning</button>
         </form>
       </div>`}
+    <h3 class="forum-replies-head">Profile</h3>
+    ${data.bio ? `<p class="mod-excerpt member-bio">${escapeHtml(data.bio)}</p>` : '<p class="forum-meta">No description.</p>'}
+    <div class="forum-form-actions mod-actions">
+      ${data.bio ? '<button class="btn quiet" data-clear-bio>Clear the description</button>' : ''}
+      ${x.avatar ? '<button class="btn quiet" data-clear-avatar>Remove the picture</button>' : ''}
+    </div>
     <h3 class="forum-replies-head">Badges</h3>
-    <div class="mod-badge-list">${data.badges.appointed.map(b => `<span class="badge-pill" style="--b:var(--${b.color})">${escapeHtml(b.label)}${me && me.siteAdmin ? `<button class="badge-x" data-take-badge="${b.key}" aria-label="Remove the ${escapeHtml(b.label)} badge">×</button>` : ''}</span>`).join('') || '<span class="forum-meta">No badges given yet.</span>'}</div>
+    <div class="mod-badge-list">${data.badges.appointed.map(b => `<span class="badge-pill" style="--b:var(--${b.color})"><span class="badge-pill-ic">${navIcon(APPOINTED_ICONS[b.key] || 'badge')}</span>${escapeHtml(b.label)}${me && me.siteAdmin ? `<button class="badge-x" data-take-badge="${b.key}" aria-label="Remove the ${escapeHtml(b.label)} badge">×</button>` : ''}</span>`).join('') || '<span class="forum-meta">No badges given yet.</span>'}</div>
     ${data.badges.earned.length ? `<p class="forum-meta">Earned: ${plural(data.badges.earned.length, 'badge', 'badges')} from prayer and reading.</p>` : ''}
     ${me && me.siteAdmin ? `
     <form class="mod-note-form" id="giveBadge">
@@ -10303,6 +10397,16 @@ async function modUserView(body, still){
     if(!confirm('Delete this note?')) return;
     try{ await api('mod/notes/' + b.dataset.delNote, { method:'DELETE' }); after('Note deleted'); }catch(err){ toast(err.message); }
   }));
+  const clearBio = body.querySelector('[data-clear-bio]');
+  if(clearBio) clearBio.addEventListener('click', async () => {
+    if(!confirm(`Clear ${x.username}’s description?`)) return;
+    try{ await api(`mod/users/${x.id}/bio`, { method:'DELETE' }); after('Their description was cleared'); }catch(err){ toast(err.message); }
+  });
+  const clearAvatar = body.querySelector('[data-clear-avatar]');
+  if(clearAvatar) clearAvatar.addEventListener('click', async () => {
+    if(!confirm(`Remove ${x.username}’s profile picture?`)) return;
+    try{ await api(`mod/users/${x.id}/avatar`, { method:'DELETE' }); after('Their picture was removed'); }catch(err){ toast(err.message); }
+  });
   const removeAll = body.querySelector('[data-remove-all]');
   if(removeAll) removeAll.addEventListener('click', async () => {
     if(!confirm(`Remove every post and reply by ${x.username}? This can’t be undone.`)) return;
@@ -10371,7 +10475,8 @@ async function renderMemberProfile(){
       <section class="avatar-panel member-panel">
         ${avatarFor(p.username, p.avatar, 'avatar-big')}
         <div>
-          <h3>${escapeHtml(p.username)}${p.administrator ? ' <span class="mod-badge admin">Administrator</span>' : ''}${badgePills(p.badges.appointed)}</h3>
+          <h3>${escapeHtml(p.username)}${p.administrator ? adminIcon() : ''}${badgePills(p.badges.appointed)}</h3>
+          ${p.bio ? `<p class="member-bio">${escapeHtml(p.bio)}</p>` : ''}
           ${badgeRow([...p.badges.earned, ...communityBadgeKeys(p)])}
           <div class="member-stats"><span><strong>${p.posts}</strong> ${p.posts === 1 ? 'post' : 'posts'}</span><span><strong>${p.replies}</strong> ${p.replies === 1 ? 'reply' : 'replies'}</span><span><strong>${p.prayers}</strong> ${p.prayers === 1 ? 'prayer offered' : 'prayers offered'}</span></div>
           <div class="forum-form-actions">
@@ -10884,13 +10989,20 @@ function renderProfile(){
         ${avatarFor(u.username, u.avatar, 'avatar-big')}
         <div>
           <h3>Profile picture</h3>
-          <p class="forum-meta">Shown next to your posts and replies. Pictures are cropped to a square.</p>
+          <p class="forum-meta">Shown in a circle next to your posts and replies. After choosing a picture you can zoom in and move it to frame it just right.</p>
           <div class="avatar-actions">
             <label class="btn primary pill avatar-upload">${u.avatar ? 'Change picture' : 'Add a picture'}<input type="file" id="avatarFile" accept="image/jpeg,image/png,image/webp,image/gif" hidden></label>
-            ${u.avatar ? '<button class="btn quiet" id="avatarRemove" type="button">Remove</button>' : ''}
+            ${u.avatar ? '<button class="btn quiet" id="avatarAdjust" type="button">Adjust</button><button class="btn quiet" id="avatarRemove" type="button">Remove</button>' : ''}
           </div>
           <p class="forum-error" id="avatarError" hidden></p>
         </div>
+      </section>
+      <section class="bio-panel">
+        <h3><label for="bioText">About you</label></h3>
+        <p class="forum-meta">A few words for your public profile: your parish, your patron saint, what brings you here.</p>
+        <textarea id="bioText" maxlength="${BIO_MAX}" rows="3" placeholder="For example: Parishioner at St. Joseph’s. Devoted to St. Thérèse. Learning to pray the Liturgy of the Hours." disabled></textarea>
+        <div class="bio-row"><span class="forum-meta" id="bioCount"></span><button class="btn primary pill" id="bioSave" type="button" disabled>Save</button></div>
+        <p class="forum-error" id="bioError" hidden></p>
       </section>
       <div class="forum-form-actions">
         <button class="btn primary pill" data-route="community/new">New post</button>
@@ -10928,14 +11040,13 @@ function renderProfile(){
 
   const avatarError = entryListEl.querySelector('#avatarError');
   const showAvatarError = msg => { avatarError.textContent = msg; avatarError.hidden = !msg; };
-  entryListEl.querySelector('#avatarFile').addEventListener('change', async ev => {
-    const file = ev.target.files && ev.target.files[0];
-    if(!file) return;
+  const saveAvatar = async src => {
     showAvatarError('');
     const label = entryListEl.querySelector('.avatar-upload');
-    label.classList.add('busy');
     try{
-      const image = await avatarDataUrl(file);
+      const image = await openAvatarEditor(src);
+      if(!image) return;
+      label.classList.add('busy');
       const res = await api('account/avatar', { method:'PUT', body:{ image } });
       Community.user = { ...Community.user, ...res.user };
       updateAccountButton();
@@ -10944,6 +11055,46 @@ function renderProfile(){
       label.classList.remove('busy');
       showAvatarError(err.message || 'That picture couldn’t be saved.');
     }
+  };
+  entryListEl.querySelector('#avatarFile').addEventListener('change', async ev => {
+    const file = ev.target.files && ev.target.files[0];
+    ev.target.value = '';
+    if(!file) return;
+    if(!/^image\//.test(file.type)){ showAvatarError('Please choose a picture file.'); return; }
+    if(file.size > 15 * 1024 * 1024){ showAvatarError('That picture is very large. Please choose one under 15 MB.'); return; }
+    const url = URL.createObjectURL(file);
+    await saveAvatar(url);
+    URL.revokeObjectURL(url);
+  });
+  const adjustBtn = entryListEl.querySelector('#avatarAdjust');
+  if(adjustBtn) adjustBtn.addEventListener('click', () => saveAvatar(`/api/avatar/${encodeURIComponent(u.username)}?v=${Number(u.avatar)}`));
+
+  // The description on your public profile
+  const bioText = entryListEl.querySelector('#bioText'), bioSave = entryListEl.querySelector('#bioSave');
+  const bioCount = entryListEl.querySelector('#bioCount'), bioError = entryListEl.querySelector('#bioError');
+  let bioSaved = '';
+  const bioState = () => {
+    bioCount.textContent = `${bioText.value.length} / ${BIO_MAX}`;
+    bioSave.disabled = bioText.value.trim() === bioSaved;
+  };
+  api('users/' + encodeURIComponent(u.username)).then(res => {
+    if(!bioText.isConnected) return;
+    bioSaved = res.profile.bio || '';
+    bioText.value = bioSaved;
+    bioText.disabled = false;
+    bioState();
+  }).catch(err => { showFormError(bioError, err.message); });
+  bioText.addEventListener('input', bioState);
+  bioSave.addEventListener('click', async () => {
+    bioSave.disabled = true;
+    showFormError(bioError, '');
+    try{
+      const res = await api('account/profile', { method:'PUT', body:{ bio:bioText.value } });
+      bioSaved = res.bio;
+      bioText.value = res.bio;
+      bioState();
+      toast(res.bio ? 'Your description was saved.' : 'Your description was removed.');
+    }catch(err){ showFormError(bioError, err.message); bioState(); }
   });
   const removeBtn = entryListEl.querySelector('#avatarRemove');
   if(removeBtn) removeBtn.addEventListener('click', async () => {
@@ -15313,6 +15464,12 @@ const NAV_ICONS = {
   bible:'<path d="M6 3.5h12.5v17H6.5A1.5 1.5 0 0 1 5 19V5a1.5 1.5 0 0 1 1-1.5z"/><path d="M5 17.5A1.5 1.5 0 0 1 6.5 16h12"/><path d="M11.75 6v7.5M9.25 8.6h5"/>',
   badge:'<circle cx="12" cy="14.6" r="5.6"/><path d="M8.6 9.9L6.2 3h3.9l1.9 4.6M15.4 9.9L17.8 3h-3.9L12 7.6"/><path d="M12 11.9l.9 1.7 1.8.3-1.3 1.3.3 1.8-1.7-.9-1.7.9.3-1.8-1.3-1.3 1.8-.3z"/>',
   shield:'<path d="M12 3l7.5 3v5.6c0 4.5-3.2 8.2-7.5 9.4-4.3-1.2-7.5-4.9-7.5-9.4V6z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.4"/>',
+  star:'<path d="M12 3.2l2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 17l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8z"/>',
+  heart:'<path d="M12 20s-7.5-4.6-7.5-10.1A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.7C19.5 15.4 12 20 12 20z"/>',
+  palette:'<path d="M12 3.5a8.5 8.5 0 1 0 0 17c1.3 0 1.9-.9 1.9-1.8 0-1.4-1.2-1.8-1.2-3 0-1 .8-1.7 1.8-1.7h2.2a3.8 3.8 0 0 0 3.8-3.8C20.5 6.9 16.7 3.5 12 3.5z"/><circle cx="7.6" cy="11" r="1.1"/><circle cx="10.4" cy="7.4" r="1.1"/><circle cx="15" cy="7.6" r="1.1"/>',
+  pen:'<path d="M14.5 4.5l5 5L9 20H4v-5z"/><path d="M12.5 6.5l5 5"/>',
+  crown:'<path d="M4 8l4 4 4-6.5 4 6.5 4-4-1.6 10H5.6z"/><path d="M5.6 18h12.8"/>',
+  cross:'<path d="M12 3v18M6.5 8.5h11"/>',
   news:'<rect x="3.5" y="4.5" width="14" height="15" rx="1.6"/><path d="M17.5 8.5h3v9.3a1.7 1.7 0 0 1-3.4 0M6.5 8.5h8M6.5 11.8h8M6.5 15h5"/>',
   catechism:'<path d="M2.5 6.2c3.2-1.4 6.5-1.2 9.5.9 3-2.1 6.3-2.3 9.5-.9v13c-3.2-1.4-6.5-1.2-9.5.9-3-2.1-6.3-2.3-9.5-.9z"/><path d="M12 7.1v13"/><path d="M6.5 10.3c1.2-.3 2.4-.2 3.4.2M6.5 13.3c1.2-.3 2.4-.2 3.4.2M14.1 10.5c1-.4 2.2-.5 3.4-.2M14.1 13.5c1-.4 2.2-.5 3.4-.2"/>',
   all:'<rect x="3.5" y="3.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.2"/>',
@@ -18923,6 +19080,9 @@ const APPOINTED_BADGES = {
   artist:['Artist', 'rose'], musician:['Musician', 'rose'], contributor:['Contributor', 'green'], supporter:['Supporter', 'gold']
 };
 const BADGE_COLORS = ['gold', 'wine', 'teal', 'green', 'purple', 'indigo', 'amber', 'rose'];
+// The icon each appointed badge wears beside a member's name (custom badges wear the medal)
+const APPOINTED_ICONS = { founder:'star', team:'cross', moderator:'shield', helper:'community', clergy:'stole', religious:'orders',
+  catechist:'catechism', scholar:'book', artist:'palette', musician:'music', contributor:'pen', supporter:'heart' };
 // [key, group, icon, color, need, metric, name, description, Eastern name, Eastern description, Eastern icon]
 const BADGE_ROWS = [
   ['rosary-1', 'prayer', 'rosary', 'rose', 1, m => m.habit.rosary, 'First Rosary', 'Pray the Rosary.', 'First Prayer Rope', 'Pray the Jesus Prayer on the prayer rope.', 'rope'],
@@ -19022,9 +19182,16 @@ function badgeMedal(b, earned, value){
     ${earned ? '<span class="badge-got">Earned</span>' : value !== null ? `<span class="badge-progress" aria-hidden="true"><span style="width:${pct}%"></span></span><span class="badge-count">${Math.min(value || 0, b.need).toLocaleString()} / ${b.need.toLocaleString()}</span>` : ''}
   </div>`;
 }
-function badgePills(list){
-  return (list || []).map(b => `<span class="badge-pill" style="--b:var(--${BADGE_COLORS.includes(b.color) ? b.color : 'gold'})">${escapeHtml(b.label)}</span>`).join('');
+// Appointed badges as small icons; their names show on hover and to screen readers (with labels: icon and name)
+function badgePills(list, labels){
+  return (list || []).map(b => {
+    const color = BADGE_COLORS.includes(b.color) ? b.color : 'gold', icon = navIcon(APPOINTED_ICONS[b.key] || 'badge');
+    return labels
+      ? `<span class="badge-pill" style="--b:var(--${color})"><span class="badge-pill-ic">${icon}</span>${escapeHtml(b.label)}</span>`
+      : `<span class="badge-ic" style="--b:var(--${color})" role="img" aria-label="${escapeHtml(b.label)}" title="${escapeHtml(b.label)}">${icon}</span>`;
+  }).join('');
 }
+function adminIcon(){ return `<span class="badge-ic admin" style="--b:var(--teal)" role="img" aria-label="Administrator" title="Administrator">${navIcon('crown')}</span>`; }
 // A profile's earned badges as a row of small medals
 function badgeRow(keys){
   const list = BADGES.filter(b => keys.includes(b.key));
@@ -19051,7 +19218,7 @@ async function renderBadges(){
         <p>${u ? 'Your badges show on your public profile.' : 'Prayer and reading badges come from this device. <button class="text-link" data-auth="signin">Sign in</button> to show them on a public profile and earn Community badges.'}
           Prayer badges count the days you mark in the <button class="text-link" data-route="pray/tracker">prayer tracker</button>; finishing a Rosary, chaplet, or other guided prayer marks it for you.</p>
       </section>
-      ${profile && profile.badges.appointed.length ? `<section class="badges-group"><h3>Given to you</h3><div class="badge-pills-big">${badgePills(profile.badges.appointed)}</div></section>` : ''}
+      ${profile && profile.badges.appointed.length ? `<section class="badges-group"><h3>Given to you</h3><div class="badge-pills-big">${badgePills(profile.badges.appointed, true)}</div></section>` : ''}
       ${BADGE_GROUPS.map(([g, title]) => {
         const list = BADGES.filter(b => b.group === g);
         return `<section class="badges-group"><div class="home-heading"><h3>${title}</h3><span class="view-count">${list.filter(b => have.has(b.key)).length} of ${list.length}</span></div>

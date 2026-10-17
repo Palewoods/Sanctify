@@ -26,6 +26,7 @@ const COOKIE = '__Host-sanctify';
 const SESSION_DAYS = 30;
 const PAGE_SIZE = 20;
 const AVATAR_MAX_BYTES = 120 * 1024;
+const BIO_MAX = 300;
 const AVATAR_TYPES = { 'image/jpeg':[0xFF, 0xD8, 0xFF], 'image/png':[0x89, 0x50, 0x4E, 0x47], 'image/webp':[0x52, 0x49, 0x46, 0x46] };
 // Badges a site administrator can give, and badges members earn on their own devices (kept in step with index.html)
 const APPOINTED = {
@@ -80,6 +81,10 @@ const SCHEMA = [
      user_id INTEGER PRIMARY KEY,
      mime TEXT NOT NULL,
      data TEXT NOT NULL,
+     updated_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS profiles (
+     user_id INTEGER PRIMARY KEY,
+     bio TEXT NOT NULL,
      updated_at INTEGER NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS news (
      id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -228,6 +233,7 @@ export async function onRequest({ request, env }){
     }
     if(path === 'account/avatar' && method === 'PUT') return await setAvatar(ctx);
     if(path === 'account/avatar' && method === 'DELETE') return await removeAvatar(ctx);
+    if(path === 'account/profile' && method === 'PUT') return await setProfile(ctx);
     if(path === 'posts' && method === 'GET') return await listPosts(ctx);
     if(path === 'posts' && method === 'POST') return await createPost(ctx);
     if((m = path.match(/^posts\/(\d+)$/))){
@@ -312,6 +318,7 @@ async function deleteAccount(ctx){
     ctx.db.prepare('DELETE FROM mod_sessions WHERE token_hash IN (SELECT token_hash FROM sessions WHERE user_id = ?)').bind(user.id),
     ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM avatars WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('DELETE FROM profiles WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM users WHERE id = ?').bind(user.id)
   ]);
   return json({ ok:true }, 200, { 'Set-Cookie':clearCookie() });
@@ -339,6 +346,23 @@ async function removeAvatar(ctx){
   const user = requireUser(ctx);
   await ctx.db.prepare('DELETE FROM avatars WHERE user_id = ?').bind(user.id).run();
   return json({ user:publicUser({ ...user, avatar_v:null }) });
+}
+
+/* ---------- The description on a member's profile ---------- */
+async function setProfile(ctx){
+  const user = requireUser(ctx);
+  const data = await readBody(ctx, 4000);
+  const bio = cleanText(data.bio).replace(/\n{3,}/g, '\n\n');
+  if(bio.length > BIO_MAX) throw new HttpError(400, `Your description can be up to ${BIO_MAX} characters.`);
+  if(bio){
+    try{ await checkPosting(ctx, user, [bio]); }
+    catch(err){ throw err.status === 400 ? new HttpError(400, 'Please rephrase: your description uses a word that isn’t allowed in the Community.') : err; }
+  }
+  await limit(ctx, 'profile:' + user.id, 20, 60 * 60 * 1000, 'You’ve changed your description several times recently. Please try again later.');
+  if(bio) await ctx.db.prepare('INSERT INTO profiles (user_id, bio, updated_at) VALUES (?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET bio = excluded.bio, updated_at = excluded.updated_at')
+    .bind(user.id, bio, ctx.now).run();
+  else await ctx.db.prepare('DELETE FROM profiles WHERE user_id = ?').bind(user.id).run();
+  return json({ bio });
 }
 
 // Serves a member's picture; the ?v= version in the URL changes whenever the picture does
@@ -603,7 +627,7 @@ async function markNotificationsSeen(ctx){
 }
 
 async function getProfile(ctx, name){
-  const u = await ctx.db.prepare('SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v FROM users u LEFT JOIN avatars a ON a.user_id = u.id WHERE u.username = ?').bind(name).first();
+  const u = await ctx.db.prepare('SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, pr.bio FROM users u LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN profiles pr ON pr.user_id = u.id WHERE u.username = ?').bind(name).first();
   if(!u) throw new HttpError(404, 'There’s no member by that name.');
   const counts = await ctx.db.prepare(
     'SELECT (SELECT COUNT(*) FROM posts WHERE user_id = ? AND deleted = 0) AS posts, (SELECT COUNT(*) FROM replies WHERE user_id = ? AND deleted = 0) AS replies, (SELECT COUNT(*) FROM prayers WHERE user_id = ?) AS prayers'
@@ -613,7 +637,7 @@ async function getProfile(ctx, name){
   ).bind(u.id).all();
   const badges = await badgesFor(ctx, u.id);
   return json({
-    profile:{ id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, posts:counts.posts, replies:counts.replies, prayers:counts.prayers, administrator:siteAdmin(ctx, u.username), badges },
+    profile:{ id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, bio:u.bio || '', posts:counts.posts, replies:counts.replies, prayers:counts.prayers, administrator:siteAdmin(ctx, u.username), badges },
     posts:results.map(p => ({ id:p.id, category:p.category, title:p.title, excerpt:p.excerpt, createdAt:p.created_at, lastActivity:p.created_at, replies:p.reply_count, prayers:p.prayer_count, author:u.username, authorAvatar:u.avatar_v || null }))
   });
 }
@@ -725,6 +749,8 @@ async function modRoute(ctx, sub, method){
     if(method === 'DELETE') return await unbanUser(ctx, Number(m[1]));
   }
   if((m = sub.match(/^users\/(\d+)\/content$/)) && method === 'DELETE') return await removeContent(ctx, Number(m[1]), true);
+  if((m = sub.match(/^users\/(\d+)\/bio$/)) && method === 'DELETE') return await clearBio(ctx, Number(m[1]));
+  if((m = sub.match(/^users\/(\d+)\/avatar$/)) && method === 'DELETE') return await clearAvatar(ctx, Number(m[1]));
   if(sub === 'reports' && method === 'GET') return await modReports(ctx);
   if((m = sub.match(/^reports\/(\d+)$/)) && method === 'DELETE') return await dismissReport(ctx, Number(m[1]));
   if(sub === 'log' && method === 'GET') return await modLogList(ctx);
@@ -887,14 +913,32 @@ async function modUser(ctx, id){
        FROM replies r LEFT JOIN posts p ON p.id = r.post_id WHERE r.user_id = ? ORDER BY r.created_at DESC LIMIT 50`).bind(id).all()).results;
   const warnings = (await ctx.db.prepare('SELECT w.id, w.message, w.created_at, w.seen_at, u.username FROM warnings w LEFT JOIN users u ON u.id = w.by_user WHERE w.user_id = ? ORDER BY w.created_at DESC LIMIT 30').bind(id).all()).results;
   const notes = (await ctx.db.prepare('SELECT n.id, n.note, n.created_at, u.username FROM mod_notes n LEFT JOIN users u ON u.id = n.by_user WHERE n.user_id = ? ORDER BY n.created_at DESC LIMIT 50').bind(id).all()).results;
+  const profile = await ctx.db.prepare('SELECT bio FROM profiles WHERE user_id = ?').bind(id).first();
   return json({
     user:modUserJson(ctx, row),
+    bio:profile ? profile.bio : '',
     badges:await badgesFor(ctx, id),
     warnings:warnings.map(w => ({ id:w.id, message:w.message, createdAt:w.created_at, seen:!!w.seen_at, by:w.username || null })),
     notes:notes.map(n => ({ id:n.id, note:n.note, createdAt:n.created_at, by:n.username || null })),
     posts:posts.map(p => ({ id:p.id, title:p.title, excerpt:p.excerpt, createdAt:p.created_at, removed:!!p.deleted })),
     replies:replies.map(r => ({ id:r.id, postId:r.post_id, postTitle:r.post_title, excerpt:r.excerpt, createdAt:r.created_at, removed:!!r.deleted }))
   });
+}
+
+async function clearBio(ctx, id){
+  const row = await ctx.db.prepare('SELECT u.username, pr.bio FROM users u LEFT JOIN profiles pr ON pr.user_id = u.id WHERE u.id = ?').bind(id).first();
+  if(!row) throw new HttpError(404, 'That account doesn’t exist.');
+  await ctx.db.prepare('DELETE FROM profiles WHERE user_id = ?').bind(id).run();
+  await logMod(ctx, 'clear-bio', row.username, (row.bio || '').slice(0, 120));
+  return modUser(ctx, id);
+}
+
+async function clearAvatar(ctx, id){
+  const row = await ctx.db.prepare('SELECT username FROM users WHERE id = ?').bind(id).first();
+  if(!row) throw new HttpError(404, 'That account doesn’t exist.');
+  await ctx.db.prepare('DELETE FROM avatars WHERE user_id = ?').bind(id).run();
+  await logMod(ctx, 'clear-avatar', row.username, '');
+  return modUser(ctx, id);
 }
 
 async function banUser(ctx, id){
