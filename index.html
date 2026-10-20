@@ -658,7 +658,6 @@
   nav.sidebar button.navlink[data-cat="theology"]{--cat-color:var(--purple);}
   nav.sidebar button.navlink[data-cat="news"]{--cat-color:var(--amber);}
   nav.sidebar button.navlink[data-cat="badges"]{--cat-color:var(--gold);}
-  nav.sidebar .nav-featured > .group-label{display:block; margin:6px 0 2px; padding:0 12px; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-soft);}
   nav.sidebar button.navlink[data-cat="moderate"]{--cat-color:var(--wine);}
 
   .side-actions{border-top:1px solid var(--line); padding-top:18px; display:flex; flex-direction:column; gap:8px;}
@@ -3299,25 +3298,24 @@
       <button class="group-label group-link" data-route="home">Home ›</button>
       <ul>
         <li><button class="navlink" data-route="today" data-cat="daily">Today</button></li>
-        <li><button class="navlink" data-route="calendar" data-cat="calendar">Calendar <span class="count" id="count-calendar"></span></button></li>
         <li><button class="navlink" data-route="mine" data-cat="mine">My Sanctify <span class="count" id="count-mine"></span></button></li>
       </ul>
     </div>
     <div class="nav-group">
-      <button class="group-label group-link" data-route="community">Community ›</button>
       <ul>
+        <li><button class="navlink" data-route="calendar" data-cat="calendar">Calendar <span class="count" id="count-calendar"></span></button></li>
+        <li><button class="navlink" data-route="community" data-cat="community">Community</button></li>
         <li><button class="navlink" data-route="wiki" data-cat="wiki">Community Wiki</button></li>
         <li><button class="navlink" data-route="news" data-cat="news">News</button></li>
         <li id="navModerate" hidden><button class="navlink" data-route="moderate" data-cat="moderate">Moderation</button></li>
       </ul>
     </div>
-    <div class="nav-group nav-featured">
-      <div class="group-label">Featured</div>
+    <div class="nav-group">
+      <button class="group-label group-link" data-route="saints">Saints ›</button>
       <ul>
-        <li><button class="navlink" data-route="saints/all" data-cat="saint">The Saints</button></li>
+        <li><button class="navlink" data-route="saints/all" data-cat="saint">All the Saints <span class="count" id="count-saint"></span></button></li>
         <li><button class="navlink" data-route="saints/patron-finder" data-cat="patronfinder">Find Your Patron Saint</button></li>
-        <li><button class="navlink" data-route="pray/rosary" data-cat="rosary">The Rosary</button></li>
-        <li><button class="navlink" data-route="library/bible" data-cat="bible">The Bible</button></li>
+        <li><button class="navlink" data-route="saints/quotes" data-cat="quotes">Quotes of the Saints</button></li>
       </ul>
     </div>
     <div class="nav-group">
@@ -3343,9 +3341,6 @@
       <button class="group-label group-link" data-route="history">History ›</button>
       <ul>
         <li><button class="navlink" data-route="history/timeline" data-cat="history">Church History <span class="count" id="count-history"></span></button></li>
-        <li><button class="navlink" data-route="saints/all" data-cat="saint">All the Saints <span class="count" id="count-saint"></span></button></li>
-        <li><button class="navlink" data-route="saints/patron-finder" data-cat="patronfinder">Find Your Patron Saint</button></li>
-        <li><button class="navlink" data-route="saints/quotes" data-cat="quotes">Quotes of the Saints</button></li>
         <li><button class="navlink" data-route="history/popes" data-cat="popes">The Popes</button></li>
         <li><button class="navlink" data-route="history/councils" data-cat="councils">The Ecumenical Councils</button></li>
         <li><button class="navlink" data-route="history/icons" data-cat="icons">Famous Icons</button></li>
@@ -3410,8 +3405,10 @@
       <div><h4>Pray</h4>
         <button data-route="pray/prayers">Prayers</button><button data-route="pray/rosary">Rosary</button><button data-route="pray/stations">Stations of the Cross</button>
         <button data-route="pray/chaplet">Divine Mercy Chaplet</button><button data-route="pray/sacred-heart">Sacred Heart Chaplet</button><button data-route="pray/examination">Examination of Conscience</button><button data-route="pray/timer">Prayer Timer</button><button data-route="pray/examen">Daily Examen</button><button data-route="pray/angelus">Angelus</button><button data-route="pray/lectio">Lectio Divina</button><button data-route="pray/devotions">Devotions</button><button data-route="pray/little-office">Little Office</button><button data-route="pray/hymns">Hymns & Chant</button><button data-route="pray/tracker">Prayer Tracker</button></div>
+      <div><h4>Saints</h4>
+        <button data-route="saints/all">All the Saints</button><button data-route="saints/patron-finder">Find Your Patron Saint</button><button data-route="saints/quotes">Quotes of the Saints</button><button data-route="mine">Novenas</button></div>
       <div><h4>History</h4>
-        <button data-route="history/timeline">Church History</button><button data-route="saints/all">All the Saints</button><button data-route="saints/patron-finder">Find Your Patron Saint</button><button data-route="saints/quotes">Quotes of the Saints</button><button data-route="history/timeline/apparitions">Marian Apparitions</button><button data-route="history/timeline/crusades">The Crusades</button><button data-route="history/popes">The Popes</button><button data-route="history/councils">The Councils</button><button data-route="history/icons">Famous Icons</button><button data-route="history/orders">Religious Orders</button><button data-route="history/eastern-churches">Eastern Catholic Churches</button></div>
+        <button data-route="history/timeline">Church History</button><button data-route="history/timeline/apparitions">Marian Apparitions</button><button data-route="history/timeline/crusades">The Crusades</button><button data-route="history/popes">The Popes</button><button data-route="history/councils">The Councils</button><button data-route="history/icons">Famous Icons</button><button data-route="history/orders">Religious Orders</button><button data-route="history/eastern-churches">Eastern Catholic Churches</button></div>
       <div><h4>Library</h4>
         <button data-route="library/bible">The Bible</button><button data-route="library/books">Books</button><button data-route="library/plans">Reading Plans</button><button data-route="library/shop">Shop</button><button data-route="library/all">Browse everything</button></div>
       <div><h4>Learn</h4>
@@ -16469,9 +16466,9 @@ document.addEventListener('keydown', e => { if(e.key === 'Escape' && document.bo
 document.getElementById('brandHome').addEventListener('click', () => goToSection('home'));
 
 // The menu's sections fold open: the one you are in opens by itself, and any you open stay open
-const SIDE_GROUPS = { home:['home', 'var(--wine)'], community:['community', 'var(--indigo)'], pray:['prayer', 'var(--wine)'], history:['history', 'var(--gold)'], library:['book', 'var(--indigo)'], learn:['theology', 'var(--purple)'] };
+const SIDE_GROUPS = { home:['home', 'var(--wine)'], saints:['saint', 'var(--rose)'], pray:['prayer', 'var(--wine)'], history:['history', 'var(--gold)'], library:['book', 'var(--indigo)'], learn:['theology', 'var(--purple)'] };
 // Pages whose address starts with something else but live in a section of the menu
-const SIDE_GROUP_OF = { today:'home', calendar:'home', mine:'home', wiki:'community', news:'community', moderate:'community', saints:'history' };
+const SIDE_GROUP_OF = { today:'home', mine:'home' };
 document.querySelectorAll('nav.sidebar .nav-group').forEach(g => {
   const link = g.querySelector(':scope > .group-link'), ul = g.querySelector(':scope > ul');
   if(!link || !ul) return;
@@ -16609,7 +16606,7 @@ const HUBS = {
   },
   history:{
     eyebrow:'Two thousand years', title:'History',
-    intro:'The story of the Church from Pentecost to today: her saints, councils and missions, her popes, her religious orders, her icons, and the Eastern Churches in communion with Rome.',
+    intro:'The story of the Church from Pentecost to today: her councils and missions, her popes, her religious orders, her icons, and the Eastern Churches in communion with Rome.',
     cards:() => [
       { route:'history/timeline', big:true, kicker:'From Pentecost to today', title:'Church History',
         desc:'Two thousand years on one timeline: councils, schisms, missions, martyrs, and the apparitions of Our Lady, each with the story behind it.',
@@ -16619,9 +16616,7 @@ const HUBS = {
       { route:'history/icons', desc:'The great icons of East and West, from the Sinai Pantocrator to Rublev’s Trinity, and what to look for in each.', meta:`${FAMOUS_ICONS.length} icons` },
       { route:'history/orders', desc:'Benedictines, Carmelites, Franciscans, Jesuits, Basilians, the Knights of Malta, and more.', meta:`${ORDER_GROUPS.reduce((n, g) => n + g.list.length, 0)} orders` },
       { route:'history/eastern-churches', desc:'The twenty-three Eastern Catholic Churches in communion with Rome: Byzantine, Syriac, Chaldean, Armenian, and Alexandrian.', meta:'23 Churches' },
-      { route:'saints/all', title:'The Saints', icon:'saint', desc:'Lives, feast days, and patronages of the saints, from the apostles to our own time.', meta:`${countOf('saint')} saints`, cta:'Browse the saints' },
-      { route:'saints/patron-finder', desc:'Pick your work, your needs, your name, and what you love in a saint to find friends in heaven.', meta:'Choose as many as you like' },
-      { route:'saints/quotes', desc:'The words of the saints, from the Church Fathers to our own day, with their sources.', meta:`${QUOTES.length} quotes` }
+      { route:'saints', title:'The Saints', icon:'saint', desc:'The lives of the saints, their words, and a patron finder have their own section.', meta:`${countOf('saint')} saints`, cta:'Go to Saints' }
     ]
   }
 };
@@ -16884,12 +16879,12 @@ function renderHome(){
 const ROUTES = {
   'home':                        { cat:'home' },
   'today':                       { cat:'daily', parent:'home' },
-  'calendar':                    { cat:'calendar', parent:'home' },
+  'calendar':                    { cat:'calendar' },
   'mine':                        { cat:'mine', parent:'home' },
-  'news':                        { cat:'news', parent:'community' },
+  'news':                        { cat:'news' },
   'moderate':                    { cat:'moderate', parent:'account' },
   'community':                   { cat:'community' },
-  'wiki':                        { cat:'wiki', parent:'community' },
+  'wiki':                        { cat:'wiki' },
   'wiki/new':                    { cat:'wikiedit', parent:'wiki', name:'New Wiki Page' },
   'wiki/page':                   { cat:'wikipage', parent:'wiki' },      // #/wiki/page/saint-joseph
   'wiki/edit':                   { cat:'wikiedit', parent:'wiki' },
@@ -16944,7 +16939,7 @@ const ROUTES = {
   'learn/church':                { cat:'church', parent:'learn' },
   'learn/quiz':                  { cat:'quiz', parent:'learn' },
   'history':                     { cat:'hub-history' },
-  'saints':                      { cat:'hub-saints', parent:'history' },
+  'saints':                      { cat:'hub-saints' },
   'saints/all':                  { cat:'saint', parent:'saints' },
   'saints/patron-finder':        { cat:'patronfinder', parent:'saints' },
   'saints/quotes':               { cat:'quotes', parent:'saints' },
