@@ -870,7 +870,7 @@ window.SANCTIFY_I18N = {
 "The Fifth Sorrowful Mystery": "El quinto misterio doloroso",
 "The Fifth Glorious Mystery": "El quinto misterio glorioso",
 "The Fifth Luminous Mystery": "El quinto misterio luminoso",
-"Sanctify is translated by hand into Spanish, Polish, French, Portuguese, and Italian: menus, pages, and the common prayers. Longer texts, such as the lives of the saints, are still in English.": "Sanctify está traducido a mano al español, el polaco, el francés, el portugués y el italiano: menús, páginas y las oraciones comunes. Los textos más largos, como las vidas de los santos, siguen en inglés."
+"Sanctify is translated by hand into Spanish, Polish, French, Portuguese, Italian, German, Russian, and Ukrainian: menus, pages, and the common prayers. Longer texts, such as the lives of the saints, are still in English.": "Sanctify está traducido a mano al español, el polaco, el francés, el portugués, el italiano, el alemán, el ruso y el ucraniano: menús, páginas y las oraciones comunes. Los textos más largos, como las vidas de los santos, siguen en inglés."
 },
 "rosary": {
 "cross": "En el nombre del Padre, y del Hijo, y del Espíritu Santo. Amén.",

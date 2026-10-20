@@ -462,7 +462,7 @@ window.SANCTIFY_I18N = {
 "Loading…": "Carregando…",
 "Badge earned": "Medalha conquistada",
 "Your language, how Sanctify looks, the edition you use, and the data kept on this device.": "Seu idioma, a aparência do Sanctify, a edição que você usa e os dados guardados neste dispositivo.",
-"Sanctify is translated by hand into Spanish, Polish, French, Portuguese, and Italian: menus, pages, and the common prayers. Longer texts, such as the lives of the saints, are still in English.": "O Sanctify é traduzido à mão para espanhol, polonês, francês, português e italiano: menus, páginas e as orações comuns. Os textos mais longos, como a vida dos santos, ainda estão em inglês.",
+"Sanctify is translated by hand into Spanish, Polish, French, Portuguese, Italian, German, Russian, and Ukrainian: menus, pages, and the common prayers. Longer texts, such as the lives of the saints, are still in English.": "O Sanctify é traduzido à mão para espanhol, polonês, francês, português, italiano, alemão, russo e ucraniano: menus, páginas e as orações comuns. Os textos mais longos, como as vidas dos santos, ainda estão em inglês.",
 "More languages (Google Translate)…": "Mais idiomas (Google Tradutor)…",
 "Edition": "Edição",
 "The Mass, calendar, and prayers Sanctify follows.": "A Missa, o calendário e as orações que o Sanctify segue.",
