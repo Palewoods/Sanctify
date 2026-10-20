@@ -2284,6 +2284,24 @@
   .bio-panel textarea{width:100%; margin-top:8px; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:var(--parchment); color:var(--ink); font:inherit; resize:vertical;}
   .bio-row{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:8px;}
   .crop-card{max-width:420px;}
+  .crop-card.wide{max-width:560px;}
+  .crop-stage canvas.wide{width:min(480px, 78vw); aspect-ratio:3; border-radius:8px;}
+  .profile-banner{position:relative; height:clamp(110px, 24vw, 190px); border:1px solid var(--line); border-bottom:none; border-radius:14px 14px 0 0; overflow:hidden; background:linear-gradient(135deg, var(--parchment-dark), var(--parchment)); background-size:cover; background-position:center;}
+  .profile-banner img{display:block; width:100%; height:100%; object-fit:cover;}
+  .profile-banner + .avatar-panel{border-top-left-radius:0; border-top-right-radius:0; align-items:flex-start;}
+  .profile-banner + .avatar-panel .avatar-big{margin-top:-60px; box-shadow:0 0 0 4px var(--parchment-light);}
+  @media (max-width:480px){ .profile-banner + .avatar-panel{align-items:center;} .member-panel h3, .member-panel .forum-form-actions{justify-content:center;} }
+  .banner-panel{margin-bottom:20px; padding:16px 18px; border:1px solid var(--line); border-radius:14px; background:var(--parchment-light);}
+  .banner-panel h3{margin:0 0 2px; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.3rem;}
+  .banner-panel .profile-banner{height:clamp(80px, 18vw, 130px); margin:12px 0 6px; border-bottom:1px solid var(--line); border-radius:12px;}
+  .banner-empty{display:flex; align-items:center; justify-content:center; color:var(--ink-soft); font-size:0.9rem; background:repeating-linear-gradient(45deg, rgba(var(--ink-rgb),0.04) 0 10px, transparent 10px 20px);}
+  .banner-presets{display:grid; grid-template-columns:repeat(auto-fill, minmax(118px, 1fr)); gap:10px; margin:12px 0;}
+  .banner-preset{display:flex; flex-direction:column; gap:5px; padding:0; border:none; background:none; color:var(--ink); font:inherit; font-size:0.82rem; text-align:left; cursor:pointer;}
+  .banner-preset span:first-child{display:block; height:40px; border-radius:8px; border:1px solid var(--line); background-size:cover; background-position:center; transition:transform 0.15s var(--ease), box-shadow 0.15s var(--ease);}
+  .banner-preset:hover span:first-child{transform:translateY(-1px); box-shadow:var(--shadow);}
+  .banner-preset[aria-pressed="true"] span:first-child{box-shadow:0 0 0 2px var(--parchment-light), 0 0 0 4px var(--wine);}
+  .banner-preset:focus-visible{outline:none;}
+  .banner-preset:focus-visible span:first-child{outline:3px solid var(--wine); outline-offset:3px;}
   .crop-stage{display:flex; justify-content:center; margin:6px 0 12px;}
   .crop-stage canvas{width:min(300px, 72vw); height:auto; aspect-ratio:1; border-radius:12px; cursor:grab; touch-action:none; background:#fff;}
   .crop-stage canvas.dragging{cursor:grabbing;}
@@ -9972,10 +9990,34 @@ function avatarFor(name, v, cls = ''){
 }
 document.addEventListener('error', ev => { if(ev.target.classList && ev.target.classList.contains('av-img')) ev.target.remove(); }, true);
 
-// Opens a picture in the editor: drag to move it, zoom to frame it in the circle. Resolves with a
-// 320-pixel JPEG ready to upload, or null if the member cancels.
+// Profile banners: a preset design or an uploaded picture (the server keeps the same list of names)
+const svgUrl = svg => `url("data:image/svg+xml,${encodeURIComponent(svg).replace(/'/g, '%27')}")`;
+const BANNER_CROSSES = svgUrl(`<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5 9h3v6h6v3h-6v10h-3V18h-6v-3h6z' fill='#fff' fill-opacity='.16'/></svg>`);
+const BANNER_PRESETS = {
+  'stained-glass':['Stained Glass', `repeating-linear-gradient(60deg, rgba(24,18,30,.85) 0 3px, transparent 3px 46px), repeating-linear-gradient(-60deg, rgba(24,18,30,.85) 0 3px, transparent 3px 46px), linear-gradient(90deg, #b8263c, #e8a83a 22%, #2f8a5b 45%, #2f5fc6 70%, #7a3fb0)`],
+  'starry-mantle':['Starry Mantle', `radial-gradient(#f2cf5e 1.6px, transparent 2.2px) 0 0 / 38px 38px, radial-gradient(#f2cf5e 1px, transparent 1.6px) 19px 19px / 38px 38px, linear-gradient(135deg, #0e3a3a, #14505e 55%, #102f48)`],
+  'gold-leaf':['Gold Leaf', `repeating-linear-gradient(45deg, rgba(255,255,255,.07) 0 2px, transparent 2px 7px), linear-gradient(115deg, #8a6420, #e8c46a 28%, #b88a2e 45%, #f3dc95 62%, #9c7426 88%)`],
+  'easter-dawn':['Easter Dawn', `radial-gradient(ellipse at 50% 115%, rgba(255,247,220,.95) 0 16%, rgba(255,214,150,.55) 32%, transparent 60%), linear-gradient(180deg, #8f6aa8, #e79a92 45%, #f6cf98 75%, #fbe8bd)`],
+  'roses':['Rose Garden', `radial-gradient(ellipse at 18% 30%, rgba(250,205,218,.9), transparent 45%), radial-gradient(ellipse at 82% 75%, rgba(170,30,70,.75), transparent 55%), radial-gradient(ellipse at 55% 50%, rgba(232,120,150,.6), transparent 50%), linear-gradient(120deg, #f2c4d0, #c5426a)`],
+  'cloister':['Cloister', `${svgUrl(`<svg xmlns='http://www.w3.org/2000/svg' width='52' height='80'><path d='M7 80V40a19 19 0 0 1 38 0v40' fill='none' stroke='#fff' stroke-opacity='.3' stroke-width='3'/></svg>`)} 0 100% / 52px 80px repeat-x, linear-gradient(180deg, #a9b99a, #6f8a68 60%, #4d6650)`],
+  'advent':['Advent Candle', `radial-gradient(circle at 78% 58%, rgba(255,214,140,.9) 0 3%, rgba(255,170,90,.35) 10%, transparent 28%), linear-gradient(135deg, #2e1a4e, #5b3f86 55%, #8f4f86)`],
+  'stella-maris':['Star of the Sea', `radial-gradient(circle at 84% 24%, #fff6d0 0 1.4%, rgba(255,240,190,.45) 3%, transparent 9%), ${svgUrl(`<svg xmlns='http://www.w3.org/2000/svg' width='80' height='24'><path d='M0 16q20-12 40 0t40 0' fill='none' stroke='#fff' stroke-opacity='.18' stroke-width='2'/></svg>`)} 0 0 / 80px 24px, linear-gradient(180deg, #0b2a44, #12506a 60%, #1d7a8a)`],
+  'byzantine':['Byzantine Gold', `linear-gradient(180deg, #6e1a1a 0 9%, #e2b44f 9% 11%, transparent 11% 89%, #e2b44f 89% 91%, #6e1a1a 91%), ${BANNER_CROSSES}, linear-gradient(115deg, #a77a26, #e2b44f 40%, #b8892c 75%)`],
+  'ordinary-time':['Ordinary Time', `${BANNER_CROSSES}, linear-gradient(135deg, #24472a, #3e6b3a 55%, #7f9c4f)`],
+  'pentecost':['Pentecost', `radial-gradient(ellipse at 30% 110%, rgba(255,190,90,.85), transparent 50%), radial-gradient(ellipse at 75% 105%, rgba(255,140,60,.7), transparent 45%), linear-gradient(170deg, #5a0f12, #9b1c1f 55%, #d2482c)`],
+  'lily':['Lily White', `${svgUrl(`<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5 9h3v6h6v3h-6v10h-3V18h-6v-3h6z' fill='#b8963e' fill-opacity='.18'/></svg>`)}, linear-gradient(135deg, #fffdf6, #f3e8c8 60%, #e3cb86)`]
+};
+function bannerHtml(name, banner, extra = ''){
+  if(banner && banner.image) return `<div class="profile-banner${extra}"><img src="/api/banner/${encodeURIComponent(name)}?v=${Number(banner.image)}" alt=""></div>`;
+  const preset = banner && BANNER_PRESETS[banner.preset];
+  return preset ? `<div class="profile-banner${extra}" style="background:${escapeHtml(preset[1])}"></div>` : '';
+}
+
+// Opens a picture in the editor: drag to move it, zoom to frame it in the circle (or, for a banner,
+// the wide strip). Resolves with a JPEG ready to upload, or null if the member cancels.
 const BIO_MAX = 300;
-function openAvatarEditor(src){
+function openAvatarEditor(src, opts = {}){
+  const wide = !!opts.banner;
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.onerror = () => reject(new Error('That picture couldn’t be opened. Please try a JPEG or PNG.'));
@@ -9983,38 +10025,38 @@ function openAvatarEditor(src){
       const box = document.createElement('div');
       box.className = 'rite-picker crop-modal';
       box.innerHTML = `
-        <div class="rp-card crop-card" role="dialog" aria-modal="true" aria-labelledby="cropTitle">
-          <h2 id="cropTitle">Frame your picture</h2>
+        <div class="rp-card crop-card${wide ? ' wide' : ''}" role="dialog" aria-modal="true" aria-labelledby="cropTitle">
+          <h2 id="cropTitle">${wide ? 'Frame your banner' : 'Frame your picture'}</h2>
           <p class="rp-intro">Drag the picture to move it, and use the slider (or your mouse wheel) to zoom. Arrow keys work too.</p>
-          <div class="crop-stage"><canvas width="560" height="560" tabindex="0" aria-label="Picture preview. Drag or use the arrow keys to move it."></canvas></div>
+          <div class="crop-stage"><canvas${wide ? ' class="wide"' : ''} width="${wide ? 900 : 560}" height="${wide ? 300 : 560}" tabindex="0" aria-label="Picture preview. Drag or use the arrow keys to move it."></canvas></div>
           <label class="crop-zoom"><span>Zoom</span><input type="range" min="1" max="4" step="0.01" value="1"></label>
           <div class="crop-actions">
             <button class="btn quiet" data-crop="reset" type="button">Reset</button>
             <span class="crop-gap"></span>
             <button class="btn quiet" data-crop="cancel" type="button">Cancel</button>
-            <button class="btn primary pill" data-crop="save" type="button">Save picture</button>
+            <button class="btn primary pill" data-crop="save" type="button">${wide ? 'Save banner' : 'Save picture'}</button>
           </div>
         </div>`;
       document.body.appendChild(box);
       const canvas = box.querySelector('canvas'), g = canvas.getContext('2d'), range = box.querySelector('input[type="range"]');
-      const S = canvas.width, W = img.naturalWidth, H = img.naturalHeight;
-      const base = S / Math.min(W, H);   // at zoom 1 the picture just fills the frame
+      const S = canvas.width, SH = canvas.height, W = img.naturalWidth, H = img.naturalHeight;
+      const base = Math.max(S / W, SH / H);   // at zoom 1 the picture just fills the frame
       let zoom = 1, cx = W / 2, cy = H / 2;   // the point of the picture at the center of the frame
       const clamp = () => {
-        const half = S / 2 / (base * zoom);
-        cx = Math.min(Math.max(cx, half), W - half);
-        cy = Math.min(Math.max(cy, half), H - half);
+        const halfW = S / 2 / (base * zoom), halfH = SH / 2 / (base * zoom);
+        cx = Math.min(Math.max(cx, halfW), W - halfW);
+        cy = Math.min(Math.max(cy, halfH), H - halfH);
       };
       const paint = (ctx, size, mask) => {
-        const k = base * zoom * size / S;
+        const k = base * zoom * size / S, h = size * SH / S;
         ctx.setTransform(1, 0, 0, 1, 0, 0);
         ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, size, size);
-        ctx.setTransform(k, 0, 0, k, size / 2 - cx * k, size / 2 - cy * k);
+        ctx.fillRect(0, 0, size, h);
+        ctx.setTransform(k, 0, 0, k, size / 2 - cx * k, h / 2 - cy * k);
         ctx.imageSmoothingQuality = 'high';
         ctx.drawImage(img, 0, 0);
         ctx.setTransform(1, 0, 0, 1, 0, 0);
-        if(!mask) return;
+        if(!mask || wide) return;
         ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
         ctx.beginPath();
         ctx.rect(0, 0, size, size);
@@ -10053,10 +10095,12 @@ function openAvatarEditor(src){
         if(!act) return;
         if(act.dataset.crop === 'reset'){ cx = W / 2; cy = H / 2; setZoom(1); return; }
         const out = document.createElement('canvas');
-        out.width = out.height = 320;
-        paint(out.getContext('2d'), 320, false);
+        out.width = wide ? 1200 : 320;
+        out.height = wide ? 400 : 320;
+        paint(out.getContext('2d'), out.width, false);
+        const most = wide ? 380000 : 140000;   // the server's limits, as base64
         let q = 0.88, data = out.toDataURL('image/jpeg', q);
-        while(data.length > 140000 && q > 0.4){ q -= 0.12; data = out.toDataURL('image/jpeg', q); }
+        while(data.length > most && q > 0.4){ q -= 0.12; data = out.toDataURL('image/jpeg', q); }
         close(data);
       });
       draw();
@@ -10222,7 +10266,7 @@ const MOD_ACTIONS = {
   'moderator-on':'turned on moderator tools', ban:'banned', unban:'unbanned', 'remove-all':'removed everything posted by',
   'remove-post':'removed', 'remove-reply':'removed', pin:'pinned', unpin:'unpinned', lock:'locked', unlock:'unlocked',
   'dismiss-report':'dismissed reports on', mute:'muted', unmute:'unmuted', warn:'warned', 'add-note':'added a note on',
-  move:'moved', settings:'changed the settings', 'give-badge':'gave a badge to', 'take-badge':'removed a badge from', 'clear-bio':'cleared the description of', 'clear-avatar':'removed the picture of', 'publish-news':'published', 'edit-news':'edited', 'delete-news':'deleted'
+  move:'moved', settings:'changed the settings', 'give-badge':'gave a badge to', 'take-badge':'removed a badge from', 'clear-bio':'cleared the description of', 'clear-avatar':'removed the picture of', 'clear-banner':'removed the banner of', 'publish-news':'published', 'edit-news':'edited', 'delete-news':'deleted'
 };
 function modDate(ms){ return new Date(ms).toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' }); }
 function banLabel(ban){ return ban ? (ban.until ? 'Banned until ' + modDate(ban.until) : 'Banned permanently') : ''; }
@@ -10436,6 +10480,7 @@ async function modUserView(body, still){
     <div class="forum-form-actions mod-actions">
       ${data.bio ? '<button class="btn quiet" data-clear-bio>Clear the description</button>' : ''}
       ${x.avatar ? '<button class="btn quiet" data-clear-avatar>Remove the picture</button>' : ''}
+      ${data.banner ? '<button class="btn quiet" data-clear-banner>Remove the banner</button>' : ''}
     </div>
     <h3 class="forum-replies-head">Badges</h3>
     <div class="mod-badge-list">${data.badges.appointed.map(b => `<span class="badge-pill" style="--b:var(--${b.color})"><span class="badge-pill-ic">${navIcon(APPOINTED_ICONS[b.key] || 'badge')}</span>${escapeHtml(b.label)}${me && me.siteAdmin ? `<button class="badge-x" data-take-badge="${b.key}" aria-label="Remove the ${escapeHtml(b.label)} badge">×</button>` : ''}</span>`).join('') || '<span class="forum-meta">No badges given yet.</span>'}</div>
@@ -10535,6 +10580,11 @@ async function modUserView(body, still){
     if(!confirm(`Remove ${x.username}’s profile picture?`)) return;
     try{ await api(`mod/users/${x.id}/avatar`, { method:'DELETE' }); after('Their picture was removed'); }catch(err){ toast(err.message); }
   });
+  const clearBanner = body.querySelector('[data-clear-banner]');
+  if(clearBanner) clearBanner.addEventListener('click', async () => {
+    if(!confirm(`Remove ${x.username}’s profile banner?`)) return;
+    try{ await api(`mod/users/${x.id}/banner`, { method:'DELETE' }); after('Their banner was removed'); }catch(err){ toast(err.message); }
+  });
   const removeAll = body.querySelector('[data-remove-all]');
   if(removeAll) removeAll.addEventListener('click', async () => {
     if(!confirm(`Remove every post and reply by ${x.username}? This can’t be undone.`)) return;
@@ -10600,6 +10650,7 @@ async function renderMemberProfile(){
   document.title = p.username + ' — Sanctify';
   entryListEl.innerHTML = `
     <div class="member-page">
+      ${bannerHtml(p.username, p.banner)}
       <section class="avatar-panel member-panel">
         ${avatarFor(p.username, p.avatar, 'avatar-big')}
         <div>
@@ -11125,6 +11176,19 @@ function renderProfile(){
           <p class="forum-error" id="avatarError" hidden></p>
         </div>
       </section>
+      <section class="banner-panel">
+        <h3>Profile banner</h3>
+        <p class="forum-meta">The wide strip across the top of your public profile. Choose a design, or use a picture of your own.</p>
+        <div id="bannerPreview"><div class="profile-banner banner-empty">Loading…</div></div>
+        <div class="banner-presets" role="group" aria-label="Banner designs">${Object.entries(BANNER_PRESETS).map(([k, [label, bg]]) =>
+          `<button class="banner-preset" type="button" data-banner="${k}" aria-pressed="false"><span style="background:${escapeHtml(bg)}"></span><span>${escapeHtml(label)}</span></button>`).join('')}</div>
+        <div class="avatar-actions">
+          <label class="btn quiet banner-upload">Use a picture<input type="file" id="bannerFile" accept="image/jpeg,image/png,image/webp,image/gif" hidden></label>
+          <button class="btn quiet" id="bannerAdjust" type="button" hidden>Adjust</button>
+          <button class="btn quiet" id="bannerRemove" type="button" hidden>Remove</button>
+        </div>
+        <p class="forum-error" id="bannerError" hidden></p>
+      </section>
       <section class="bio-panel">
         <h3><label for="bioText">About you</label></h3>
         <p class="forum-meta">A few words for your public profile: your parish, your patron saint, what brings you here.</p>
@@ -11207,12 +11271,55 @@ function renderProfile(){
   };
   api('users/' + encodeURIComponent(u.username)).then(res => {
     if(!bioText.isConnected) return;
+    showBanner(res.profile.banner);
     bioSaved = res.profile.bio || '';
     bioText.value = bioSaved;
     bioText.disabled = false;
     bioState();
   }).catch(err => { showFormError(bioError, err.message); });
   bioText.addEventListener('input', bioState);
+
+  // The banner across the top of your public profile
+  const bannerError = entryListEl.querySelector('#bannerError');
+  let banner = null;
+  const showBanner = b => {
+    banner = b;
+    entryListEl.querySelector('#bannerPreview').innerHTML = bannerHtml(u.username, b) || '<div class="profile-banner banner-empty">No banner yet</div>';
+    entryListEl.querySelectorAll('[data-banner]').forEach(x => x.setAttribute('aria-pressed', String(!!b && b.preset === x.dataset.banner)));
+    entryListEl.querySelector('#bannerAdjust').hidden = !(b && b.image);
+    entryListEl.querySelector('#bannerRemove').hidden = !b;
+  };
+  const saveBanner = async (body, message) => {
+    showFormError(bannerError, '');
+    try{
+      const res = await api('account/banner', { method:body ? 'PUT' : 'DELETE', body:body || undefined });
+      showBanner(res.banner);
+      toast(message);
+    }catch(err){ showFormError(bannerError, err.message || 'That didn’t work. Please try again.'); }
+  };
+  entryListEl.querySelectorAll('[data-banner]').forEach(x => x.addEventListener('click', () => {
+    if(banner && banner.preset === x.dataset.banner) return;
+    saveBanner({ preset:x.dataset.banner }, 'Your banner was changed.');
+  }));
+  const frameBanner = async src => {
+    showFormError(bannerError, '');
+    try{
+      const image = await openAvatarEditor(src, { banner:true });
+      if(image) await saveBanner({ image }, 'Your banner was saved.');
+    }catch(err){ showFormError(bannerError, err.message || 'That picture couldn’t be saved.'); }
+  };
+  entryListEl.querySelector('#bannerFile').addEventListener('change', async ev => {
+    const file = ev.target.files && ev.target.files[0];
+    ev.target.value = '';
+    if(!file) return;
+    if(!/^image\//.test(file.type)){ showFormError(bannerError, 'Please choose a picture file.'); return; }
+    if(file.size > 15 * 1024 * 1024){ showFormError(bannerError, 'That picture is very large. Please choose one under 15 MB.'); return; }
+    const url = URL.createObjectURL(file);
+    await frameBanner(url);
+    URL.revokeObjectURL(url);
+  });
+  entryListEl.querySelector('#bannerAdjust').addEventListener('click', () => frameBanner(`/api/banner/${encodeURIComponent(u.username)}?v=${Number(banner.image)}`));
+  entryListEl.querySelector('#bannerRemove').addEventListener('click', () => saveBanner(null, 'Your banner was removed.'));
   bioSave.addEventListener('click', async () => {
     bioSave.disabled = true;
     showFormError(bioError, '');

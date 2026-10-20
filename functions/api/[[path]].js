@@ -19,6 +19,8 @@
    HttpOnly cookie, and only a hash of each session token is stored.
    Profile pictures are small JPEG, PNG, or WebP images (resized in the
    browser before upload), checked by their file signature and stored in D1.
+   Profile banners are either one of the preset designs (stored by name)
+   or a wide picture, checked and stored the same way.
    ========================================================= */
 
 const CATEGORIES = ['general', 'prayer', 'faith', 'saints', 'study'];
@@ -27,6 +29,9 @@ const SESSION_DAYS = 30;
 const PAGE_SIZE = 20;
 const AVATAR_MAX_BYTES = 120 * 1024;
 const BIO_MAX = 300;
+const BANNER_MAX_BYTES = 300 * 1024;
+// The preset banner designs (kept in step with BANNER_PRESETS in index.html)
+const BANNER_PRESETS = ['stained-glass', 'starry-mantle', 'gold-leaf', 'easter-dawn', 'roses', 'cloister', 'advent', 'stella-maris', 'byzantine', 'ordinary-time', 'pentecost', 'lily'];
 const AVATAR_TYPES = { 'image/jpeg':[0xFF, 0xD8, 0xFF], 'image/png':[0x89, 0x50, 0x4E, 0x47], 'image/webp':[0x52, 0x49, 0x46, 0x46] };
 // Badges a site administrator can give, and badges members earn on their own devices (kept in step with index.html)
 const APPOINTED = {
@@ -81,6 +86,12 @@ const SCHEMA = [
      user_id INTEGER PRIMARY KEY,
      mime TEXT NOT NULL,
      data TEXT NOT NULL,
+     updated_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS banners (
+     user_id INTEGER PRIMARY KEY,
+     preset TEXT,
+     mime TEXT,
+     data TEXT,
      updated_at INTEGER NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS profiles (
      user_id INTEGER PRIMARY KEY,
@@ -208,6 +219,7 @@ export async function onRequest({ request, env }){
     const ctx = { request, env, db:env.DB, now:Date.now(), url };
     let m;
     if((m = path.match(/^avatar\/([A-Za-z0-9_]{3,20})$/)) && (method === 'GET' || method === 'HEAD')) return await getAvatar(ctx, m[1]);
+    if((m = path.match(/^banner\/([A-Za-z0-9_]{3,20})$/)) && (method === 'GET' || method === 'HEAD')) return await getBanner(ctx, m[1]);
     ctx.user = await currentUser(ctx);
     if(path === 'me' && method === 'GET') return await getMe(ctx);
     if(path === 'notifications' && method === 'GET') return await getNotifications(ctx);
@@ -234,6 +246,8 @@ export async function onRequest({ request, env }){
     if(path === 'account/avatar' && method === 'PUT') return await setAvatar(ctx);
     if(path === 'account/avatar' && method === 'DELETE') return await removeAvatar(ctx);
     if(path === 'account/profile' && method === 'PUT') return await setProfile(ctx);
+    if(path === 'account/banner' && method === 'PUT') return await setBanner(ctx);
+    if(path === 'account/banner' && method === 'DELETE') return await removeBanner(ctx);
     if(path === 'posts' && method === 'GET') return await listPosts(ctx);
     if(path === 'posts' && method === 'POST') return await createPost(ctx);
     if((m = path.match(/^posts\/(\d+)$/))){
@@ -319,26 +333,33 @@ async function deleteAccount(ctx){
     ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM avatars WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM profiles WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('DELETE FROM banners WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM users WHERE id = ?').bind(user.id)
   ]);
   return json({ ok:true }, 200, { 'Set-Cookie':clearCookie() });
 }
 
 /* ---------- Profile pictures ---------- */
-async function setAvatar(ctx){
-  const user = requireUser(ctx);
-  const { image } = await readBody(ctx, 200000);
+// Checks an uploaded picture (a data: URL) by its file signature; returns its type and base64 data
+function readPicture(image, maxBytes){
   const m = /^data:(image\/(?:jpeg|png|webp));base64,([A-Za-z0-9+\/]+={0,2})$/.exec(String(image || ''));
   if(!m) throw new HttpError(400, 'Please choose a JPEG, PNG, or WebP picture.');
   let bytes;
   try{ bytes = Uint8Array.from(atob(m[2]), c => c.charCodeAt(0)); }catch(err){ throw new HttpError(400, 'That picture couldn’t be read.'); }
-  if(bytes.length > AVATAR_MAX_BYTES) throw new HttpError(413, 'That picture is too large. Please choose a smaller one.');
+  if(bytes.length > maxBytes) throw new HttpError(413, 'That picture is too large. Please choose a smaller one.');
   const sig = AVATAR_TYPES[m[1]];
   const webpOk = m[1] !== 'image/webp' || String.fromCharCode(...bytes.slice(8, 12)) === 'WEBP';
   if(bytes.length < 12 || !sig.every((b, i) => bytes[i] === b) || !webpOk) throw new HttpError(400, 'That file isn’t a valid picture.');
+  return { mime:m[1], data:m[2] };
+}
+
+async function setAvatar(ctx){
+  const user = requireUser(ctx);
+  const { image } = await readBody(ctx, 200000);
+  const pic = readPicture(image, AVATAR_MAX_BYTES);
   await limit(ctx, 'avatar:' + user.id, 10, 60 * 60 * 1000, 'You’ve changed your picture several times recently. Please try again later.');
   await ctx.db.prepare('INSERT INTO avatars (user_id, mime, data, updated_at) VALUES (?, ?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET mime = excluded.mime, data = excluded.data, updated_at = excluded.updated_at')
-    .bind(user.id, m[1], m[2], ctx.now).run();
+    .bind(user.id, pic.mime, pic.data, ctx.now).run();
   return json({ user:publicUser({ ...user, avatar_v:ctx.now }) });
 }
 
@@ -346,6 +367,46 @@ async function removeAvatar(ctx){
   const user = requireUser(ctx);
   await ctx.db.prepare('DELETE FROM avatars WHERE user_id = ?').bind(user.id).run();
   return json({ user:publicUser({ ...user, avatar_v:null }) });
+}
+
+/* ---------- Profile banners ---------- */
+// What a profile shows: null, { preset:'name' }, or { image:version } for an uploaded picture
+function bannerJson(row){
+  if(!row || !row.banner_v) return null;
+  return row.banner_preset ? { preset:row.banner_preset } : { image:row.banner_v };
+}
+
+async function setBanner(ctx){
+  const user = requireUser(ctx);
+  const body = await readBody(ctx, 450000);
+  await limit(ctx, 'banner:' + user.id, 15, 60 * 60 * 1000, 'You’ve changed your banner several times recently. Please try again later.');
+  if(body.preset !== undefined){
+    if(!BANNER_PRESETS.includes(body.preset)) throw new HttpError(400, 'Please choose one of the banner designs.');
+    await ctx.db.prepare('INSERT INTO banners (user_id, preset, mime, data, updated_at) VALUES (?, ?, NULL, NULL, ?) ON CONFLICT(user_id) DO UPDATE SET preset = excluded.preset, mime = NULL, data = NULL, updated_at = excluded.updated_at')
+      .bind(user.id, body.preset, ctx.now).run();
+    return json({ banner:{ preset:body.preset } });
+  }
+  const pic = readPicture(body.image, BANNER_MAX_BYTES);
+  await ctx.db.prepare('INSERT INTO banners (user_id, preset, mime, data, updated_at) VALUES (?, NULL, ?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET preset = NULL, mime = excluded.mime, data = excluded.data, updated_at = excluded.updated_at')
+    .bind(user.id, pic.mime, pic.data, ctx.now).run();
+  return json({ banner:{ image:ctx.now } });
+}
+
+async function removeBanner(ctx){
+  const user = requireUser(ctx);
+  await ctx.db.prepare('DELETE FROM banners WHERE user_id = ?').bind(user.id).run();
+  return json({ banner:null });
+}
+
+// Serves an uploaded banner picture; like pictures, the ?v= version changes with it
+async function getBanner(ctx, name){
+  const row = await ctx.db.prepare('SELECT b.mime, b.data FROM banners b JOIN users u ON u.id = b.user_id WHERE u.username = ? AND b.data IS NOT NULL').bind(name).first();
+  if(!row) return new Response('Not found', { status:404, headers:{ 'Cache-Control':'no-store', 'X-Content-Type-Options':'nosniff' } });
+  const bytes = Uint8Array.from(atob(row.data), c => c.charCodeAt(0));
+  return new Response(bytes, { status:200, headers:{
+    'Content-Type':row.mime, 'Cache-Control':'public, max-age=86400', 'X-Content-Type-Options':'nosniff',
+    'Content-Security-Policy':"default-src 'none'; sandbox", 'Content-Disposition':'inline'
+  }});
 }
 
 /* ---------- The description on a member's profile ---------- */
@@ -627,7 +688,8 @@ async function markNotificationsSeen(ctx){
 }
 
 async function getProfile(ctx, name){
-  const u = await ctx.db.prepare('SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, pr.bio FROM users u LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN profiles pr ON pr.user_id = u.id WHERE u.username = ?').bind(name).first();
+  const u = await ctx.db.prepare(`SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, pr.bio, bn.preset AS banner_preset, bn.updated_at AS banner_v
+     FROM users u LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN profiles pr ON pr.user_id = u.id LEFT JOIN banners bn ON bn.user_id = u.id WHERE u.username = ?`).bind(name).first();
   if(!u) throw new HttpError(404, 'There’s no member by that name.');
   const counts = await ctx.db.prepare(
     'SELECT (SELECT COUNT(*) FROM posts WHERE user_id = ? AND deleted = 0) AS posts, (SELECT COUNT(*) FROM replies WHERE user_id = ? AND deleted = 0) AS replies, (SELECT COUNT(*) FROM prayers WHERE user_id = ?) AS prayers'
@@ -637,7 +699,7 @@ async function getProfile(ctx, name){
   ).bind(u.id).all();
   const badges = await badgesFor(ctx, u.id);
   return json({
-    profile:{ id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, bio:u.bio || '', posts:counts.posts, replies:counts.replies, prayers:counts.prayers, administrator:siteAdmin(ctx, u.username), badges },
+    profile:{ id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, banner:bannerJson(u), bio:u.bio || '', posts:counts.posts, replies:counts.replies, prayers:counts.prayers, administrator:siteAdmin(ctx, u.username), badges },
     posts:results.map(p => ({ id:p.id, category:p.category, title:p.title, excerpt:p.excerpt, createdAt:p.created_at, lastActivity:p.created_at, replies:p.reply_count, prayers:p.prayer_count, author:u.username, authorAvatar:u.avatar_v || null }))
   });
 }
@@ -751,6 +813,7 @@ async function modRoute(ctx, sub, method){
   if((m = sub.match(/^users\/(\d+)\/content$/)) && method === 'DELETE') return await removeContent(ctx, Number(m[1]), true);
   if((m = sub.match(/^users\/(\d+)\/bio$/)) && method === 'DELETE') return await clearBio(ctx, Number(m[1]));
   if((m = sub.match(/^users\/(\d+)\/avatar$/)) && method === 'DELETE') return await clearAvatar(ctx, Number(m[1]));
+  if((m = sub.match(/^users\/(\d+)\/banner$/)) && method === 'DELETE') return await clearBanner(ctx, Number(m[1]));
   if(sub === 'reports' && method === 'GET') return await modReports(ctx);
   if((m = sub.match(/^reports\/(\d+)$/)) && method === 'DELETE') return await dismissReport(ctx, Number(m[1]));
   if(sub === 'log' && method === 'GET') return await modLogList(ctx);
@@ -914,9 +977,11 @@ async function modUser(ctx, id){
   const warnings = (await ctx.db.prepare('SELECT w.id, w.message, w.created_at, w.seen_at, u.username FROM warnings w LEFT JOIN users u ON u.id = w.by_user WHERE w.user_id = ? ORDER BY w.created_at DESC LIMIT 30').bind(id).all()).results;
   const notes = (await ctx.db.prepare('SELECT n.id, n.note, n.created_at, u.username FROM mod_notes n LEFT JOIN users u ON u.id = n.by_user WHERE n.user_id = ? ORDER BY n.created_at DESC LIMIT 50').bind(id).all()).results;
   const profile = await ctx.db.prepare('SELECT bio FROM profiles WHERE user_id = ?').bind(id).first();
+  const banner = await ctx.db.prepare('SELECT preset AS banner_preset, updated_at AS banner_v FROM banners WHERE user_id = ?').bind(id).first();
   return json({
     user:modUserJson(ctx, row),
     bio:profile ? profile.bio : '',
+    banner:bannerJson(banner),
     badges:await badgesFor(ctx, id),
     warnings:warnings.map(w => ({ id:w.id, message:w.message, createdAt:w.created_at, seen:!!w.seen_at, by:w.username || null })),
     notes:notes.map(n => ({ id:n.id, note:n.note, createdAt:n.created_at, by:n.username || null })),
@@ -938,6 +1003,14 @@ async function clearAvatar(ctx, id){
   if(!row) throw new HttpError(404, 'That account doesn’t exist.');
   await ctx.db.prepare('DELETE FROM avatars WHERE user_id = ?').bind(id).run();
   await logMod(ctx, 'clear-avatar', row.username, '');
+  return modUser(ctx, id);
+}
+
+async function clearBanner(ctx, id){
+  const row = await ctx.db.prepare('SELECT username FROM users WHERE id = ?').bind(id).first();
+  if(!row) throw new HttpError(404, 'That account doesn’t exist.');
+  await ctx.db.prepare('DELETE FROM banners WHERE user_id = ?').bind(id).run();
+  await logMod(ctx, 'clear-banner', row.username, '');
   return modUser(ctx, id);
 }
 
