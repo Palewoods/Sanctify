@@ -240,7 +240,8 @@
 
   // Seed the search box from the missing URL, e.g. /saints/francis → "saints francis"
   try{
-    var guess = decodeURIComponent(location.pathname).replace(/\.html?$/i, '').split(/[\/_\-]+/).filter(Boolean).pop();
+    var from = new URLSearchParams(location.search).get('from');   // a page address inside the site that doesn't exist
+    var guess = (from !== null ? from : decodeURIComponent(location.pathname)).replace(/\.html?$/i, '').split(/[\/_\-#?=&]+/).filter(Boolean).pop();
     if(guess && /^https?:$/.test(location.protocol) && guess.toLowerCase() !== '404') document.getElementById('q').value = guess;
   }catch(e){}
 

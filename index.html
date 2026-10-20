@@ -2294,6 +2294,18 @@
   .account-nav-link.active{background:var(--wine); color:var(--parchment-light);}
   @media (max-width:480px){ .account-nav{width:100%; border-radius:16px;} .account-nav-link{flex:1; justify-content:center; padding:8px 8px; font-size:0.85rem;} }
   .crop-card.wide{max-width:560px;}
+  .lang-picker{max-width:560px; width:100%;}
+  .lang-picker .searchbar{margin:8px 0 10px; min-width:0;}
+  .lang-list{display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:4px; max-height:min(50vh, 420px); overflow:auto; padding:2px;}
+  .lang-item{display:flex; flex-direction:column; padding:8px 10px; border-radius:10px; color:var(--ink); text-decoration:none;}
+  .lang-item:hover, .lang-item:focus-visible{background:rgba(var(--ink-rgb),0.06);}
+  .lang-item.current{background:color-mix(in srgb, var(--wine) 12%, transparent); box-shadow:inset 0 0 0 1px var(--wine);}
+  .lang-item small{color:var(--ink-soft); font-size:0.8rem;}
+  .lang-item[hidden]{display:none;}
+  .lang-menu-btn{display:flex; align-items:center; gap:8px; width:100%; padding:8px 10px; border:1px solid var(--line); border-radius:10px; background:none; color:var(--ink); font:inherit; cursor:pointer;}
+  .lang-menu-btn svg{width:18px; height:18px; color:var(--wine);}
+  .lang-menu-btn .lang-change{margin-left:auto; color:var(--ink-soft); font-size:0.85rem;}
+  .lang-menu-btn:hover{background:rgba(var(--ink-rgb),0.05);}
   .shortcut{display:inline-flex; align-items:center; gap:5px; max-width:100%; margin:1px 1px; padding:1px 9px 1px 6px; border:1px solid color-mix(in srgb, var(--wine) 35%, var(--line)); border-radius:999px; background:color-mix(in srgb, var(--wine) 8%, var(--parchment-light)); color:var(--wine-dark); font:inherit; font-size:0.92em; line-height:1.5; vertical-align:baseline; cursor:pointer; text-align:left;}
   .shortcut svg{flex:none; width:14px; height:14px;}
   .shortcut span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
@@ -3375,6 +3387,7 @@
     </div>
     <div class="nav-group">
       <ul><li><a class="navlink nav-discord" href="https://discord.gg/QAcdHxc4" target="_blank" rel="noopener"><span class="nl-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#discordGlyph"/></svg></span>Join our Discord</a></li>
+        <li><button class="navlink lang-switch-link" type="button"><span class="nl-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span>Language</button></li>
         <li><button class="navlink" id="surpriseBtn" type="button"><span class="nl-icon nl-spark" aria-hidden="true">✦</span>Surprise me</button></li>
         <li><button class="navlink rite-switch-link" type="button"><span class="nl-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="currentColor"><path fill-rule="evenodd" d="M29 3L35 3L35 10L41.5 10L41.5 14.5L35 14.5L35 20L53 20L53 26L35 26L35 44.34L44.5 47.8L44.5 53.3L35 49.84L35 61L29 61L29 47.66L19.5 44.2L19.5 38.7L29 42.16L29 26L11 26L11 20L29 20L29 14.5L22.5 14.5L22.5 10L29 10z"/></svg></span><span data-rite-switch>Switch to the Eastern Catholic edition</span></button></li></ul>
     </div>
@@ -9335,7 +9348,7 @@ function saintInitial(title){
 }
 
 function portraitPlaceholder(title){
-  return `<span class="portrait-initial">${escapeHtml(saintInitial(title))}</span>`;
+  return `<span class="portrait-initial notranslate" translate="no">${escapeHtml(saintInitial(title))}</span>`;
 }
 
 function fillPortrait(el, s){
@@ -10028,10 +10041,16 @@ let profileName = null;      // the member whose profile is open
 let forumThreadId = null;
 let forumDraft = null;        // a new post in progress
 let replyDraft = { id:null, text:'' };
-let afterSignIn = null;       // page to return to after signing in
+let afterSignIn = null;
+const TRANSLATED_VIEW = /\.translate\.goog$/.test(location.hostname);       // page to return to after signing in
 let accountTab = 'signin';
 
 async function api(path, { method = 'GET', body } = {}){
+  if(TRANSLATED_VIEW){
+    const err = new Error('The Community, the wiki, and accounts work on the English site. Choose English under Language to read and post.');
+    err.translated = true;
+    throw err;
+  }
   let res, data = null;
   try{
     res = await fetch('/api/' + path, {
@@ -10080,7 +10099,7 @@ function avatarFor(name, v, cls = ''){
   if(!name) return `<span class="forum-avatar former ${cls}" aria-hidden="true">?</span>`;
   let h = 0;
   for(const ch of name.toLowerCase()) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
-  return `<span class="forum-avatar ${cls}" style="--av:${AVATAR_COLORS[h % AVATAR_COLORS.length]}" aria-hidden="true">${escapeHtml(name[0].toUpperCase())}${avatarImg(name, v)}</span>`;
+  return `<span class="forum-avatar notranslate ${cls}" translate="no" style="--av:${AVATAR_COLORS[h % AVATAR_COLORS.length]}" aria-hidden="true">${escapeHtml(name[0].toUpperCase())}${avatarImg(name, v)}</span>`;
 }
 document.addEventListener('error', ev => { if(ev.target.classList && ev.target.classList.contains('av-img')) ev.target.remove(); }, true);
 
@@ -12856,7 +12875,7 @@ function postureBadge(p, note){
 }
 
 function latinHtml(text){
-  return `<p class="mass-latin" lang="la">${text.split('\n').map(escapeHtml).join('<br>')}</p>`;
+  return `<p class="mass-latin notranslate" translate="no" lang="la">${text.split('\n').map(escapeHtml).join('<br>')}</p>`;
 }
 function renderMass(){
   const tlm = !!(ROUTES[currentRoute] || {}).tlm || isTraditional();
@@ -16383,6 +16402,7 @@ const NAV_ICONS = {
   community:'<circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.5"/><path d="M2.8 20c.6-3.8 3.1-5.9 6.2-5.9s5.6 2.1 6.2 5.9"/><path d="M15.4 14.4c.5-.2 1-.3 1.6-.3 2.3 0 4 1.5 4.4 4.4"/>',
   account:'<circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c.9-4 3.9-6.3 7.5-6.3s6.6 2.3 7.5 6.3"/>',
   reply:'<path d="M5.5 4h13A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H10l-4.5 4v-4A1.5 1.5 0 0 1 4 14.5v-9A1.5 1.5 0 0 1 5.5 4z"/>',
+  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/>',
   dice:'<rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><circle cx="8.5" cy="8.5" r="1" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1" fill="currentColor"/>',
   wiki:'<path d="M4 4.5h11.5L20 9v10.5H4z"/><path d="M15.5 4.5V9H20"/><path d="M7 12.5l1.5 4.5 1.8-4 1.8 4 1.5-4.5"/>',
   link:'<path d="M10 14a4 4 0 0 0 5.7.3l3-3a4 4 0 0 0-5.7-5.6l-1.5 1.4"/><path d="M14 10a4 4 0 0 0-5.7-.3l-3 3a4 4 0 0 0 5.7 5.6l1.5-1.4"/>'
@@ -16989,10 +17009,16 @@ function routeFromHash(){
   if(ROUTES[h] || POST_ROUTE.test(h) || PROFILE_ROUTE.test(h) || WIKI_ROUTE.test(h) || WIKI_REV_ROUTE.test(h) || BIBLE_ROUTE.test(h) || BOOK_ROUTE.test(h) || CCC_ROUTE.test(h)) return h;
   if(ROUTE_ALIASES[h]) return h;   // applyRoute moves it to the new address
   if(CAT_ROUTE[h]) return CAT_ROUTE[h];
-  return 'home';
+  return h ? NOT_FOUND : 'home';
+}
+// An address that isn't a page of the site opens the page-not-found page, which offers a search
+const NOT_FOUND = '\u0000404';
+function showNotFound(path){
+  location.replace('404.html?from=' + encodeURIComponent(path || location.hash.replace(/^#\/?/, '')));
 }
 
 function applyRoute(path){
+  if(path === NOT_FOUND){ showNotFound(); return; }
   stopSpeaking();
   if(ROUTE_ALIASES[path]){
     path = ROUTE_ALIASES[path];
@@ -17012,7 +17038,7 @@ function applyRoute(path){
   wikiSlugNow = wk ? wk[2] : null;
   wikiRevNow = wr ? Number(wr[1]) : null;
   let route = wk ? 'wiki/' + wk[1] : wr ? 'wiki/revision' : post ? 'community/post' : prof ? 'community/user' : bib ? 'library/bible/read' : bk ? 'library/books/read' : cc ? 'library/catechism' : path;
-  if(!ROUTES[route]) route = path = 'home';
+  if(!ROUTES[route]){ showNotFound(path); return; }
   const r = ROUTES[route];
   currentRoute = route;
   currentPath = path;
@@ -17106,10 +17132,18 @@ function navigate(route){
   applyRoute(route);
 }
 
-window.addEventListener('popstate', () => { if(!/^#read=/.test(location.hash)) applyRoute(routeFromHash()); });
+const inPageAnchor = () => { const a = location.hash.slice(1); return !!a && !a.startsWith('/') && !/^read=/.test(a) && !!document.getElementById(a); };
+window.addEventListener('popstate', () => { if(!/^#read=/.test(location.hash) && !inPageAnchor()) applyRoute(routeFromHash()); });
 window.addEventListener('hashchange', () => {
   if(/^#read=/.test(location.hash)){ const id = decodeURIComponent(location.hash.slice(6)); if(library.some(e => e.id === id)) openReadModal(id); return; }
+  if(inPageAnchor()) return;
   if(routeFromHash() !== currentPath) applyRoute(routeFromHash());
+});
+document.querySelector('.skip-link').addEventListener('click', ev => {
+  ev.preventDefault();
+  const main = document.getElementById('main');
+  main.focus();
+  main.scrollIntoView();
 });
 
 // Any element with data-route navigates there
@@ -17883,6 +17917,73 @@ themeMenu.querySelectorAll('.textsize-btn').forEach(b => b.addEventListener('cli
   applyTextSize(b.dataset.size);
 }));
 applyTextSize(store.get('textsize', 'md'));
+
+/* ---------- Language: Sanctify read in other languages through Google Translate ----------
+   Choosing a language opens the same page at Google's translation address for this site. The
+   translation is made by machine; the brand name, Latin texts, and initials are kept as they are. */
+const SITE_ORIGIN = 'https://sanctify.pages.dev';
+const LANGUAGES = [
+  ['en', 'English', 'English'], ['es', 'Español', 'Spanish'], ['pt', 'Português', 'Portuguese'], ['fr', 'Français', 'French'], ['it', 'Italiano', 'Italian'],
+  ['de', 'Deutsch', 'German'], ['pl', 'Polski', 'Polish'], ['tl', 'Filipino', 'Filipino'], ['vi', 'Tiếng Việt', 'Vietnamese'], ['ko', '한국어', 'Korean'],
+  ['zh-CN', '简体中文', 'Chinese (Simplified)'], ['zh-TW', '繁體中文', 'Chinese (Traditional)'], ['ja', '日本語', 'Japanese'], ['uk', 'Українська', 'Ukrainian'],
+  ['ru', 'Русский', 'Russian'], ['be', 'Беларуская', 'Belarusian'], ['sk', 'Slovenčina', 'Slovak'], ['cs', 'Čeština', 'Czech'], ['hu', 'Magyar', 'Hungarian'],
+  ['hr', 'Hrvatski', 'Croatian'], ['sl', 'Slovenščina', 'Slovenian'], ['sr', 'Српски', 'Serbian'], ['bs', 'Bosanski', 'Bosnian'], ['sq', 'Shqip', 'Albanian'],
+  ['ro', 'Română', 'Romanian'], ['bg', 'Български', 'Bulgarian'], ['mk', 'Македонски', 'Macedonian'], ['el', 'Ελληνικά', 'Greek'], ['lt', 'Lietuvių', 'Lithuanian'],
+  ['lv', 'Latviešu', 'Latvian'], ['et', 'Eesti', 'Estonian'], ['nl', 'Nederlands', 'Dutch'], ['ga', 'Gaeilge', 'Irish'], ['mt', 'Malti', 'Maltese'],
+  ['ca', 'Català', 'Catalan'], ['gl', 'Galego', 'Galician'], ['eu', 'Euskara', 'Basque'], ['sv', 'Svenska', 'Swedish'], ['no', 'Norsk', 'Norwegian'],
+  ['da', 'Dansk', 'Danish'], ['fi', 'Suomi', 'Finnish'], ['is', 'Íslenska', 'Icelandic'], ['la', 'Latina', 'Latin'], ['ar', 'العربية', 'Arabic'],
+  ['iw', 'עברית', 'Hebrew'], ['hy', 'Հայերեն', 'Armenian'], ['ka', 'ქართული', 'Georgian'], ['tr', 'Türkçe', 'Turkish'], ['fa', 'فارسی', 'Persian'],
+  ['hi', 'हिन्दी', 'Hindi'], ['ml', 'മലയാളം', 'Malayalam'], ['ta', 'தமிழ்', 'Tamil'], ['te', 'తెలుగు', 'Telugu'], ['kn', 'ಕನ್ನಡ', 'Kannada'],
+  ['mr', 'मराठी', 'Marathi'], ['bn', 'বাংলা', 'Bengali'], ['ur', 'اردو', 'Urdu'], ['si', 'සිංහල', 'Sinhala'], ['id', 'Bahasa Indonesia', 'Indonesian'],
+  ['ms', 'Bahasa Melayu', 'Malay'], ['th', 'ไทย', 'Thai'], ['my', 'မြန်မာ', 'Burmese'], ['km', 'ខ្មែរ', 'Khmer'], ['ceb', 'Cebuano', 'Cebuano'],
+  ['ilo', 'Ilokano', 'Ilocano'], ['sw', 'Kiswahili', 'Swahili'], ['rw', 'Kinyarwanda', 'Kinyarwanda'], ['ig', 'Igbo', 'Igbo'], ['yo', 'Yorùbá', 'Yoruba'],
+  ['ha', 'Hausa', 'Hausa'], ['am', 'አማርኛ', 'Amharic'], ['zu', 'isiZulu', 'Zulu'], ['af', 'Afrikaans', 'Afrikaans'], ['mg', 'Malagasy', 'Malagasy'],
+  ['ht', 'Kreyòl Ayisyen', 'Haitian Creole'], ['sm', 'Gagana Samoa', 'Samoan'], ['haw', 'ʻŌlelo Hawaiʻi', 'Hawaiian']
+];
+const TRANSLATED = /\.translate\.goog$/.test(location.hostname);
+function currentLanguage(){ return TRANSLATED ? (new URLSearchParams(location.search).get('_x_tr_tl') || 'en') : 'en'; }
+function languageUrl(code){
+  const here = location.pathname.replace(/index\.html$/, '') + location.hash;
+  if(code === 'en') return SITE_ORIGIN + here;
+  const host = new URL(SITE_ORIGIN).hostname.replace(/-/g, '--').replace(/\./g, '-') + '.translate.goog';
+  return `https://${host}${location.pathname.replace(/index\.html$/, '')}?_x_tr_sl=en&_x_tr_tl=${encodeURIComponent(code)}&_x_tr_hl=${encodeURIComponent(code)}${location.hash}`;
+}
+function openLanguagePicker(){
+  setNavOpen(false);
+  if(typeof setThemeMenuOpen === 'function') setThemeMenuOpen(false);
+  const now = currentLanguage();
+  const box = document.createElement('div');
+  box.className = 'rite-picker crop-modal';
+  box.innerHTML = `
+    <div class="rp-card lang-picker" role="dialog" aria-modal="true" aria-labelledby="langTitle">
+      <h2 id="langTitle">Language</h2>
+      <p class="rp-intro">Read Sanctify in your language. Pages are translated by Google, by machine: prayers and Scripture may not match the approved translations used in your country, and Latin texts stay in Latin.${TRANSLATED ? '' : ' Your saved items, settings, and the Community stay on the English site.'}</p>
+      <div class="searchbar"><svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input type="search" placeholder="Find a language…" aria-label="Find a language" autocomplete="off"></div>
+      <div class="lang-list">${LANGUAGES.map(([code, native, english]) => `
+        <a class="lang-item${code === now ? ' current' : ''}" href="${escapeHtml(languageUrl(code))}" data-lang="${code}" data-find="${escapeHtml((native + ' ' + english).toLowerCase())}" lang="${code === 'iw' ? 'he' : code}"${code === now ? ' aria-current="true"' : ''}>
+          <strong class="notranslate" translate="no">${escapeHtml(native)}</strong>${native !== english ? `<small class="notranslate" translate="no">${escapeHtml(english)}</small>` : ''}</a>`).join('')}</div>
+      <div class="crop-actions"><span class="crop-gap"></span><button class="btn quiet" type="button" data-lp="cancel">Close</button></div>
+    </div>`;
+  document.body.appendChild(box);
+  const input = box.querySelector('input');
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    box.querySelectorAll('.lang-item').forEach(a => { a.hidden = q && !a.dataset.find.includes(q); });
+  });
+  const close = () => { document.removeEventListener('keydown', onKey); box.remove(); };
+  const onKey = ev => { if(ev.key === 'Escape') close(); };
+  document.addEventListener('keydown', onKey);
+  box.addEventListener('click', ev => { if(ev.target === box || ev.target.closest('[data-lp="cancel"]')) close(); });
+  input.focus();
+}
+themeMenu.insertAdjacentHTML('beforeend', `
+  <div class="theme-menu-label" style="margin-top:6px">Language</div>
+  <button class="lang-menu-btn" type="button">${navIcon('globe')}<span class="notranslate" translate="no">${escapeHtml((LANGUAGES.find(l => l[0] === currentLanguage()) || LANGUAGES[0])[1])}</span><span class="lang-change">Change</span></button>`);
+themeMenu.querySelector('.lang-menu-btn').addEventListener('click', ev => { ev.stopPropagation(); openLanguagePicker(); });
+document.addEventListener('click', ev => { if(ev.target.closest('.lang-switch-link')){ ev.preventDefault(); openLanguagePicker(); } });
+// The brand name and single initials are never translated
+document.querySelectorAll('.brand span, .side-brand span, .footer-brand strong').forEach(el => { el.classList.add('notranslate'); el.setAttribute('translate', 'no'); });
 
 /* ---------- Offline support ---------- */
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
@@ -19915,7 +20016,7 @@ const HY_COLORS = { 'Our Lady':'rose', 'The Eucharist':'gold', 'The Mass':'amber
   'Lent & Holy Week':'amber', 'The Divine Liturgy':'gold', 'Vespers & Matins':'teal', 'The Theotokos':'indigo', 'Feasts & Seasons':'green' };
 function hymnWords(h){
   const lines = t => t.split('\n').map(escapeHtml).join('<br>');
-  if(h.pairs) return `<div class="hy-pairs${h.compact ? ' compact' : ''}">${h.pairs.map(([a, b]) => `<p class="hy-orig">${lines(a)}</p><p class="hy-en">${lines(b)}</p>`).join('')}</div>`;
+  if(h.pairs) return `<div class="hy-pairs${h.compact ? ' compact' : ''}">${h.pairs.map(([a, b]) => `<p class="hy-orig notranslate" translate="no">${lines(a)}</p><p class="hy-en">${lines(b)}</p>`).join('')}</div>`;
   return `<div class="hy-verses">${h.verses.map(v => `<p>${lines(v)}</p>`).join('')}</div>`;
 }
 function hymnCard(h){
@@ -20152,6 +20253,7 @@ document.addEventListener('click', e => {
 (function startRoute(){
   const shared = /^#read=/.test(location.hash);
   const route = shared ? 'home' : routeFromHash();
+  if(route === NOT_FOUND){ showNotFound(); return; }
   if(!shared && location.hash && location.hash !== '#/' + route) history.replaceState(null, '', route === 'home' ? location.pathname + location.search : '#/' + route);
   applyRoute(route);
   const q = new URLSearchParams(location.search).get('q');
