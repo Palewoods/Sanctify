@@ -2371,21 +2371,6 @@
   .automod-reports{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:10px; font-size:0.92rem;}
   .automod-reports input{width:64px; padding:6px 8px; border:1px solid var(--line); border-radius:8px; background:var(--parchment); color:var(--ink); font:inherit;}
   .sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
-  .gen-bar{display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-bottom:16px;}
-  .gen-bar .btn svg, .gen-card .btn svg{width:16px; height:16px; margin-right:6px; vertical-align:-3px;}
-  .gen-need{display:flex; align-items:center; gap:8px; flex:1 1 260px; font-size:0.92rem; color:var(--ink-soft);}
-  .gen-need input{flex:1; min-width:0; padding:9px 14px; border:1px solid var(--line); border-radius:999px; background:var(--parchment-light); color:var(--ink); font:inherit;}
-  .gen-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;}
-  .gen-card{display:flex; gap:16px; padding:18px; border:1px solid var(--line); border-radius:16px; background:var(--parchment-light); box-shadow:var(--shadow);}
-  .gen-card h3{margin:2px 0 6px; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.45rem; line-height:1.15;}
-  .gen-card p{margin:0 0 10px;}
-  .gen-card .saint-portrait{flex:0 0 84px; width:84px; height:104px;}
-  .gen-art{flex:0 0 72px; width:72px; height:72px; color:var(--wine);}
-  .gen-art svg{width:100%; height:100%;}
-  .gen-body{min-width:0;}
-  .gen-patron{font-size:0.88rem; color:var(--ink-soft);}
-  .gen-patron .patron-label{margin-right:4px;}
-  @media (max-width:480px){ .gen-card{flex-direction:column;} }
   .crop-stage canvas.wide{width:min(480px, 78vw); aspect-ratio:3; border-radius:8px;}
   .profile-banner{position:relative; height:clamp(110px, 24vw, 190px); border:1px solid var(--line); border-bottom:none; border-radius:14px 14px 0 0; overflow:hidden; background:linear-gradient(135deg, var(--parchment-dark), var(--parchment)); background-size:cover; background-position:center;}
   .profile-banner img{display:block; width:100%; height:100%; object-fit:cover;}
@@ -3277,6 +3262,7 @@
     </button>
     <nav class="topnav" id="topnav" aria-label="Main">
       <button class="topnav-link" data-route="today">Today</button>
+      <button class="topnav-link" data-route="calendar">Calendar</button>
       <button class="topnav-link" data-route="pray">Pray</button>
       <button class="topnav-link" data-route="history">History</button>
       <button class="topnav-link" data-route="library">Library</button>
@@ -3292,7 +3278,7 @@
     </div>
     <div class="top-actions">
       <button class="icon-btn top-action" data-route="account" aria-label="Sign in" title="Sign in" id="topAccount"></button>
-      <button class="icon-btn top-action" data-route="calendar" aria-label="Calendar" title="Calendar" id="topCalendar"></button>
+      <button class="icon-btn top-action" data-route="mine" aria-label="My Sanctify" title="My Sanctify" id="topSaved"><span class="top-badge" id="topSavedCount" hidden></span></button>
       <button class="icon-btn top-action rite-toggle" id="riteToggle" aria-label="Switch to the Eastern Catholic edition" title="Switch to the Eastern Catholic edition"></button>
       <a class="icon-btn top-action discord-top" id="topDiscord" href="https://discord.gg/QAcdHxc4" target="_blank" rel="noopener" aria-label="Join the Sanctify Discord" title="Join the Sanctify Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.11 13.11 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
       <button id="themeToggle" class="theme-toggle icon-btn" aria-label="Appearance" title="Appearance" aria-haspopup="menu" aria-expanded="false"></button>
@@ -3312,6 +3298,7 @@
       <ul>
         <li><button class="navlink" data-route="today" data-cat="daily">Today</button></li>
         <li><button class="navlink" data-route="calendar" data-cat="calendar">Calendar <span class="count" id="count-calendar"></span></button></li>
+        <li><button class="navlink" data-route="mine" data-cat="mine">My Sanctify <span class="count" id="count-mine"></span></button></li>
       </ul>
     </div>
     <div class="nav-group">
@@ -3329,14 +3316,12 @@
         <li><button class="navlink" data-route="saints/patron-finder" data-cat="patronfinder">Find Your Patron Saint</button></li>
         <li><button class="navlink" data-route="pray/rosary" data-cat="rosary">The Rosary</button></li>
         <li><button class="navlink" data-route="library/bible" data-cat="bible">The Bible</button></li>
-        <li><button class="navlink" data-route="pray/generator" data-cat="generator">Prayer & Saint Generator</button></li>
       </ul>
     </div>
     <div class="nav-group">
       <button class="group-label group-link" data-route="pray">Pray ›</button>
       <ul>
         <li><button class="navlink" data-route="pray/prayers" data-cat="prayer">Prayers <span class="count" id="count-prayer"></span></button></li>
-        <li><button class="navlink" data-route="pray/generator" data-cat="generator">Prayer & Saint Generator</button></li>
         <li><button class="navlink" data-route="pray/rosary" data-cat="rosary">Rosary</button></li>
         <li><button class="navlink" data-route="pray/stations" data-cat="stations">Stations of the Cross</button></li>
         <li><button class="navlink" data-route="pray/chaplet" data-cat="chaplet">Divine Mercy Chaplet</button></li>
@@ -3430,7 +3415,7 @@
       <div><h4>Learn</h4>
         <button data-route="learn/theology">Theology</button><button data-route="learn/theology/fathers">The Faith of the Fathers</button><button data-route="learn/theology/apologetics">Defending the Faith</button><button data-route="learn/mass">The Mass Explained</button><button data-route="learn/living-the-faith">Living the Faith</button><button data-route="learn/lists">Catholic Lists</button><button data-route="learn/church">Inside a Church</button><button data-route="learn/glossary">Glossary</button><button data-route="learn/quiz">Quiz</button></div>
       <div><h4>Sanctify</h4>
-        <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="community">Community</button><button data-route="wiki">Community Wiki</button><button data-route="news">News</button><button data-route="pray/generator">Prayer & Saint Generator</button><button data-route="account/saved">Saved & Novenas</button><button data-route="account/badges">Badges</button><button data-route="library/resources">Resources</button></div>
+        <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="community">Community</button><button data-route="wiki">Community Wiki</button><button data-route="news">News</button><button data-route="mine">My Sanctify</button><button data-route="account/badges">Badges</button><button data-route="library/resources">Resources</button></div>
     </div>
   </div>
   <p class="footer-note">Ad maiorem Dei gloriam. Scripture quotations are from the Revised Standard Version of the Bible: Catholic Edition, copyright © 1965, 1966 the Division of Christian Education of the National Council of the Churches of Christ in the United States of America. Used by permission. All rights reserved. Saint and book images come from Wikipedia and Wikimedia Commons.</p>
@@ -7384,6 +7369,11 @@ function updateCounts(){
     const el = document.getElementById('count-' + k);
     if(el) el.textContent = counts[k];
   });
+  const mineEl = document.getElementById('count-mine');
+  const savedCount = store.get('saved', []).length;
+  if(mineEl) mineEl.textContent = savedCount || '';
+  const topBadge = document.getElementById('topSavedCount');
+  if(topBadge){ topBadge.textContent = savedCount; topBadge.hidden = !savedCount; }
   const calEl = document.getElementById('count-calendar');
   if(calEl) calEl.textContent = CALENDAR_DATA.length;
 }
@@ -7447,7 +7437,7 @@ function render(){
       home:renderHome, calendar:renderCalendar, rosary:renderRosary, shop:renderShop, stations:renderStations,
       chaplet:renderChaplet, sacredheart:renderSacredHeart, history:renderHistory, daily:renderDaily, theology:renderTheology,
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
-      community:renderCommunity, resources:renderResources, generator:renderGenerator,
+      community:renderCommunity, resources:renderResources,
       wiki:renderWiki, wikipage:renderWikiPage, wikiedit:renderWikiEdit, wikihistory:renderWikiHistory, wikirev:renderWikiRevision,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
       tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, lists:renderLists, church:renderChurchGuide, councils:renderCouncils, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, badges:renderBadges, devotions:renderDevotions, littleoffice:renderLittleOffice, vocations:renderVocations, hymns:renderHymns, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
@@ -10364,7 +10354,7 @@ function openLinkPicker(textarea){
   const show = () => {
     const q = input.value.trim().toLowerCase();
     let items;
-    if(!q) items = ['saints/all', 'pray/rosary', 'saints/patron-finder', 'library/bible', 'learn/mass', 'history/timeline', 'pray/generator', 'calendar'].map(r => pages.find(p => p.token === '/' + r)).filter(Boolean);
+    if(!q) items = ['saints/all', 'pray/rosary', 'saints/patron-finder', 'library/bible', 'learn/mass', 'history/timeline', 'pray/prayers', 'calendar'].map(r => pages.find(p => p.token === '/' + r)).filter(Boolean);
     else {
       const hit = t => t.toLowerCase().includes(q);
       items = [
@@ -11710,10 +11700,10 @@ async function renderAccount(){
   else renderAuthForms();
 }
 
-// The tabs across the top of every account page; Saved & Novenas and Badges work without signing in
+// The tabs across the top of the account pages; Badges works without signing in
 function accountTabsHtml(active){
   const u = Community.user;
-  const tabs = [['account', u ? 'Profile' : 'Sign in', 'account'], ['account/saved', 'Saved & Novenas', 'mine'], ['account/badges', 'Badges', 'badge']];
+  const tabs = [['account', u ? 'Profile' : 'Sign in', 'account'], ['account/badges', 'Badges', 'badge']];
   return `<nav class="account-nav" aria-label="Your account">${tabs.map(([route, label, icon]) =>
     `<button class="account-nav-link${route === active ? ' active' : ''}" data-route="${route}"${route === active ? ' aria-current="page"' : ''}>${navIcon(icon)}${escapeHtml(label)}</button>`).join('')}</nav>`;
 }
@@ -15529,9 +15519,8 @@ function easternPrayCards(){
     { route:'pray/devotions', desc:'The icon corner, Theophany water, the baptismal cross, the prayer rope, the Paraklesis and Akathist, and the Pascha basket.', meta:`${DEVOTIONS_EAST.length} holy customs` },
     { route:'pray/examination', desc:'Prepare for the Holy Mystery of Repentance with a guided examination of conscience.', meta:'Private: nothing is saved' },
     { route:'pray/timer', desc:'Set aside time for silent prayer, with a gentle bell to begin and end.', meta:'5 minutes to an hour' },
-    { route:'pray/generator', desc:'A prayer and a saint chosen for you at random, or a saint for whatever you need. Tap again for another.', meta:'A new pair every time' },
     { route:'pray/tracker', desc:'A private record of your daily prayer, with streaks and a calendar of your faithfulness.', meta:streak ? `${streak}-day streak` : 'Stored only on this device' },
-    { route:'account/saved', title:'Novenas & Intentions', icon:'mine', desc:'Keep a list of your prayer intentions, and pray a nine-day novena with any saint.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' }
+    { route:'mine', title:'Novenas & Intentions', icon:'mine', desc:'Keep a list of your prayer intentions, and pray a nine-day novena with any saint.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' }
   ];
 }
 
@@ -16394,8 +16383,7 @@ document.querySelectorAll('.tab-link').forEach(b => b.insertAdjacentHTML('afterb
 const SECTIONS = {
   home:{ name:'Home', icon:'home', color:'var(--wine)' },
   daily:{ name:'Today', group:'Today', icon:'daily', color:'var(--gold)' },
-  mine:{ name:'Saved & Novenas', group:'Account', icon:'mine', color:'var(--rose)' },
-  generator:{ name:'Prayer & Saint Generator', group:'Pray', icon:'dice', color:'var(--gold)' },
+  mine:{ name:'My Sanctify', group:'Personal', icon:'mine', color:'var(--rose)' },
   wiki:{ name:'Community Wiki', group:'Community', icon:'wiki', color:'var(--teal)' },
   wikipage:{ name:'Community Wiki', group:'Community', icon:'wiki', color:'var(--teal)' },
   wikiedit:{ name:'Edit Wiki Page', group:'Community', icon:'pen', color:'var(--teal)' },
@@ -16465,7 +16453,7 @@ document.querySelectorAll('.navlink').forEach(btn => {
 });
 
 updateAccountButton();
-document.getElementById('topCalendar').insertAdjacentHTML('afterbegin', navIcon('calendar'));
+document.getElementById('topSaved').insertAdjacentHTML('afterbegin', navIcon('mine'));
 
 function setNavOpen(open){
   document.body.classList.toggle('nav-open', open);
@@ -16480,7 +16468,7 @@ document.getElementById('brandHome').addEventListener('click', () => goToSection
 // The menu's sections fold open: the one you are in opens by itself, and any you open stay open
 const SIDE_GROUPS = { home:['home', 'var(--wine)'], community:['community', 'var(--indigo)'], pray:['prayer', 'var(--wine)'], history:['history', 'var(--gold)'], library:['book', 'var(--indigo)'], learn:['theology', 'var(--purple)'] };
 // Pages whose address starts with something else but live in a section of the menu
-const SIDE_GROUP_OF = { today:'home', calendar:'home', wiki:'community', news:'community', moderate:'community', saints:'history' };
+const SIDE_GROUP_OF = { today:'home', calendar:'home', mine:'home', wiki:'community', news:'community', moderate:'community', saints:'history' };
 document.querySelectorAll('nav.sidebar .nav-group').forEach(g => {
   const link = g.querySelector(':scope > .group-link'), ul = g.querySelector(':scope > ul');
   if(!link || !ul) return;
@@ -16540,7 +16528,6 @@ const HUBS = {
           desc:'Pray the Rosary bead by bead, with a meditation for each mystery. The mysteries change with the day of the week.',
           extra:`<ol class="bento-list">${m.list.map(x => `<li>${escapeHtml(x.name)}</li>`).join('')}</ol>`, meta:'About 20 minutes', cta:'Begin praying' },
         { route:'pray/prayers', desc:'Every prayer as an illustrated card, from the Sign of the Cross to the Te Deum, some in Latin and Spanish.', meta:`${countOf('prayer')} prayer cards` },
-        { route:'pray/generator', desc:'A prayer and a saint chosen for you at random, or a saint for whatever you need. Tap again for another.', meta:'A new pair every time' },
         { route:'pray/stations', desc:'Walk the fourteen Stations with Christ, with a short meditation at each.', meta:'14 stations' },
         { route:'pray/chaplet', desc:'The Chaplet of Divine Mercy, as given to St. Faustina, prayed on rosary beads.', meta:'About 15 minutes' },
         { route:'pray/sacred-heart', desc:'Thirty-three beads for the years of Christ’s life: “Sweet Heart of Jesus, be my love.”', meta:'About 10 minutes' },
@@ -16553,7 +16540,7 @@ const HUBS = {
         { route:'pray/little-office', desc:'The Hours of Our Lady: psalms, hymns, and readings in honor of Mary, from Matins to Compline, following the seasons.', meta:'8 Hours' },
         { route:'pray/devotions', desc:'The Brown and Green Scapulars, the Miraculous and St. Benedict Medals, First Fridays and Saturdays, and holy water, with their prayers.', meta:`${DEVOTIONS.length} devotions` },
         { route:'pray/tracker', desc:'A private record of your daily prayer, with streaks and a calendar of your faithfulness.', meta:(() => { const n = prayerStats().current; return n ? `${n}-day streak` : 'Stored only on this device'; })() },
-        { route:'account/saved', title:'Novenas & Intentions', icon:'mine', desc:'Keep a list of your prayer intentions, and pray a nine-day novena with any saint.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' }
+        { route:'mine', title:'Novenas & Intentions', icon:'mine', desc:'Keep a list of your prayer intentions, and pray a nine-day novena with any saint.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' }
       ];
     }
   },
@@ -16612,7 +16599,7 @@ const HUBS = {
         { route:'saints/patron-finder', desc:'Pick your work, your needs, your name, and what you love in a saint to find friends in heaven.', meta:'Choose as many as you like', cta:'Find a patron' },
         { route:'saints/quotes', desc:'The words of the saints, from the Church Fathers to our own day, with their sources.', meta:`${QUOTES.length} quotes` },
         { route:'saints/quotes', icon:'quote', kicker:'Quote of the day', title:quote.saint, desc:`“${excerptOf(quote.text, 150)}”`, meta:quote.source || 'From the saints', cta:'More quotes' },
-        { route:'account/saved', title:'Pray a Novena', icon:'mine', desc:'Choose any saint as your patron and pray a nine-day novena. Sanctify keeps track of each day for you.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' },
+        { route:'mine', title:'Pray a Novena', icon:'mine', desc:'Choose any saint as your patron and pray a nine-day novena. Sanctify keeps track of each day for you.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' },
         { route:'calendar', title:'Feast Days', desc:isEastern() ? 'The saints of each day in the Byzantine year of feasts and fasts.' : 'Every saint’s feast on the calendar, with the saint of the day and the liturgical color.', meta:'The whole year' }
       ];
     }
@@ -16847,11 +16834,11 @@ function renderHome(){
   const lastBible = store.get('bible.last', null), lastBibleBook = lastBible && BIBLE_BY_SLUG[lastBible.slug];
   const lastBook = store.get('book.recent', null), lastBookB = lastBook && BOOK_BY_SLUG[lastBook.slug], lastBookE = lastBookB && bookEntry(lastBookB);
   if(recent.length || novenas.length || lastBibleBook || lastBookE){
-    cont.innerHTML = `<div class="home-heading"><h3>Continue</h3><button class="text-link" data-route="account/saved">Saved & Novenas →</button></div>
+    cont.innerHTML = `<div class="home-heading"><h3>Continue</h3><button class="text-link" data-route="mine">My Sanctify →</button></div>
       <div class="continue-row">
         ${lastBibleBook ? `<button class="continue-chip" data-route="library/bible/${lastBible.slug}/${lastBible.chapter}"><span class="daily-kicker">The Bible</span>${escapeHtml(bibleChapterName(lastBibleBook, lastBible.chapter))}</button>` : ''}
         ${lastBookE ? `<button class="continue-chip" data-route="library/books/${lastBook.slug}/${lastBook.section}"><span class="daily-kicker">Reading</span>${escapeHtml(lastBookE.title)}</button>` : ''}
-        ${novenas.slice(0, 2).map(n => { const e = library.find(x => x.id === n.id); return `<button class="continue-chip novena-chip" data-route="account/saved"><span class="daily-kicker">Novena · Day ${novenaDayNumber(n)} of 9</span>${escapeHtml(e.title)}</button>`; }).join('')}
+        ${novenas.slice(0, 2).map(n => { const e = library.find(x => x.id === n.id); return `<button class="continue-chip novena-chip" data-route="mine"><span class="daily-kicker">Novena · Day ${novenaDayNumber(n)} of 9</span>${escapeHtml(e.title)}</button>`; }).join('')}
         ${recent.map(e => `<button class="continue-chip" data-open="${e.id}"><span class="daily-kicker">${escapeHtml(CAT_LABEL[e.category] || e.category)}</span>${escapeHtml(e.title)}</button>`).join('')}
       </div>`;
   } else {
@@ -16895,6 +16882,7 @@ const ROUTES = {
   'home':                        { cat:'home' },
   'today':                       { cat:'daily', parent:'home' },
   'calendar':                    { cat:'calendar', parent:'home' },
+  'mine':                        { cat:'mine', parent:'home' },
   'news':                        { cat:'news', parent:'community' },
   'moderate':                    { cat:'moderate', parent:'account' },
   'community':                   { cat:'community' },
@@ -16908,11 +16896,9 @@ const ROUTES = {
   'community/post':              { cat:'thread', parent:'community' },   // #/community/post/42
   'community/user':              { cat:'profile', parent:'community' },  // #/community/user/Palewoods
   'account':                     { cat:'account' },
-  'account/saved':               { cat:'mine', parent:'account' },
   'account/badges':              { cat:'badges', parent:'account' },
   'pray':                        { cat:'hub-pray' },
   'pray/prayers':                { cat:'prayer', parent:'pray' },
-  'pray/generator':              { cat:'generator', parent:'pray' },
   'pray/rosary':                 { cat:'rosary', parent:'pray' },
   'pray/stations':               { cat:'stations', parent:'pray' },
   'pray/chaplet':                { cat:'chaplet', parent:'pray' },
@@ -16971,7 +16957,7 @@ const ROUTES = {
   'history/eastern-churches':    { cat:'easternchurches', parent:'history' }
 };
 // Older addresses keep working: they open the page at its new address
-const ROUTE_ALIASES = {'mine':'account/saved', 'badges':'account/badges', 'generator':'pray/generator', 'history/saints/patron-finder':'saints/patron-finder', 'history/saints':'saints/all', 'history/quotes':'saints/quotes', 'library/saints/patron-finder':'saints/patron-finder', 'library/saints':'saints/all', 'library/quotes':'saints/quotes', 'learn/icons':'history/icons', 'learn/history/popes':'history/popes', 'learn/history/apparitions':'history/timeline/apparitions', 'learn/history/crusades':'history/timeline/crusades', 'learn/history':'history/timeline', 'learn/orders':'history/orders', 'learn/eastern-churches':'history/eastern-churches', 'learn/plans':'library/plans', 'learn/resources':'library/resources', 'resources':'library/resources', 'church':'history', 'saints/icons':'history/icons', 'church/history/apparitions':'history/timeline/apparitions', 'church/history/crusades':'history/timeline/crusades', 'church/history':'history/timeline', 'church/popes':'history/popes', 'church/orders':'history/orders', 'church/eastern-churches':'history/eastern-churches' };
+const ROUTE_ALIASES = {'account/saved':'mine', 'pray/generator':'mine', 'generator':'mine', 'badges':'account/badges', 'history/saints/patron-finder':'saints/patron-finder', 'history/saints':'saints/all', 'history/quotes':'saints/quotes', 'library/saints/patron-finder':'saints/patron-finder', 'library/saints':'saints/all', 'library/quotes':'saints/quotes', 'learn/icons':'history/icons', 'learn/history/popes':'history/popes', 'learn/history/apparitions':'history/timeline/apparitions', 'learn/history/crusades':'history/timeline/crusades', 'learn/history':'history/timeline', 'learn/orders':'history/orders', 'learn/eastern-churches':'history/eastern-churches', 'learn/plans':'library/plans', 'learn/resources':'library/resources', 'resources':'library/resources', 'church':'history', 'saints/icons':'history/icons', 'church/history/apparitions':'history/timeline/apparitions', 'church/history/crusades':'history/timeline/crusades', 'church/history':'history/timeline', 'church/popes':'history/popes', 'church/orders':'history/orders', 'church/eastern-churches':'history/eastern-churches' };
 const CAT_ROUTE = {};
 Object.entries(ROUTES).forEach(([route, r]) => { if(!(r.cat in CAT_ROUTE)) CAT_ROUTE[r.cat] = route; });
 let currentRoute = 'home';   // the ROUTES key, e.g. 'community/post'
@@ -17333,7 +17319,7 @@ function renderReadActions(e){
   }));
   bar.querySelector('[data-act="save"]').addEventListener('click', () => {
     const nowSaved = toggleSaved(e.id);
-    toast(nowSaved ? 'Saved. Find it in Saved & Novenas on your account page.' : 'Removed from your saved list');
+    toast(nowSaved ? 'Saved to My Sanctify' : 'Removed from My Sanctify');
     renderReadActions(e);
     if(activeCategory === 'mine') renderMine();
   });
@@ -17356,7 +17342,7 @@ function renderReadActions(e){
   const nov = bar.querySelector('[data-act="novena"]');
   if(nov) nov.addEventListener('click', () => {
     startNovena(e.id);
-    toast('Novena started. Follow it in Saved & Novenas on your account page.');
+    toast('Novena started — see My Sanctify');
     renderReadActions(e);
   });
 }
@@ -17372,7 +17358,7 @@ function startNovena(id){
 }
 function novenaDayNumber(n){ return Math.min(9, Math.max(1, dayNumber(startOfToday()) - dayNumber(parseIsoDay(n.start)) + 1)); }
 
-/* ---------- Saved & Novenas (an account tab, kept on this device) ---------- */
+/* ---------- My Sanctify page ---------- */
 function miniRow(e, extraHtml){
   const row = document.createElement('div');
   row.className = 'mine-row';
@@ -17386,7 +17372,7 @@ function miniRow(e, extraHtml){
 }
 
 function renderMine(){
-  entryListEl.innerHTML = accountTabsHtml('account/saved');
+  entryListEl.innerHTML = '';
   entryListEl.insertAdjacentHTML('beforeend', homePrayerHtml());
   bindHomePrayer(entryListEl);
   const find = id => library.find(x => x.id === id);
@@ -17506,71 +17492,6 @@ function renderMine(){
   });
 
   entryListEl.insertAdjacentHTML('beforeend', `<p class="mine-privacy">🔒 Your saved items, intentions, and novenas are stored only on this device, in this browser. Nothing is sent anywhere.</p>`);
-}
-
-/* =========================================================
-   PRAYER & SAINT GENERATOR
-   ========================================================= */
-let genPrayer = null, genSaint = null, genNeed = '';
-function genPick(cat, avoid){
-  const need = genNeed.trim().toLowerCase();
-  let pool = library.filter(e => e.category === cat);
-  if(cat === 'saint' && need) pool = pool.filter(e => (e.patron || '').toLowerCase().includes(need) || e.title.toLowerCase().includes(need));
-  const fresh = pool.filter(e => e.id !== avoid);
-  const list = fresh.length ? fresh : pool;
-  return list.length ? list[Math.floor(Math.random() * list.length)].id : null;
-}
-function genCardHtml(kind, e){
-  if(!e) return `<article class="gen-card"><div class="daily-kicker">${kind === 'saint' ? 'A saint for you' : 'A prayer for you'}</div>
-    <p class="mine-empty">No saint is listed as a patron of “${escapeHtml(genNeed)}.” Try another word, such as travelers, students, or the sick.</p></article>`;
-  const patron = kind === 'saint' && e.patron ? `<p class="gen-patron"><span class="patron-label">Patron of</span> ${escapeHtml(e.patron.split(', ').slice(0, 6).join(', '))}</p>` : '';
-  return `<article class="gen-card gen-${kind}">
-    ${kind === 'saint' ? `<span class="saint-portrait" data-sid="${e.id}">${portraitPlaceholder(e.title)}</span>` : `<span class="gen-art">${cardArt((PRAYER_CARDS[e.id] || {}).art || 'cross')}</span>`}
-    <div class="gen-body">
-      <div class="daily-kicker">${kind === 'saint' ? 'A saint for you' : 'A prayer for you'}</div>
-      <h3>${escapeHtml(e.title)}</h3>
-      ${patron}
-      <p>${escapeHtml(excerptOf(e.content, kind === 'saint' ? 220 : 260))}</p>
-      <div class="forum-form-actions">
-        <button class="btn primary pill" data-open="${e.id}">${kind === 'saint' ? 'Read the life' : 'Pray it'}</button>
-        <button class="btn quiet" data-gen="${kind}">${navIcon('dice')}Another ${kind}</button>
-      </div>
-    </div>
-  </article>`;
-}
-function renderGenerator(){
-  if(!genPrayer || !library.some(e => e.id === genPrayer)) genPrayer = genPick('prayer');
-  if(genSaint === null || (genSaint && !library.some(e => e.id === genSaint))) genSaint = genPick('saint');
-  const find = id => library.find(e => e.id === id);
-  entryListEl.innerHTML = `
-    <div class="gen-page">
-      <div class="gen-bar">
-        <button class="btn primary pill" data-gen="both">${navIcon('dice')}Give me a new pair</button>
-        <label class="gen-need"><span>A saint for…</span><input type="search" id="genNeed" value="${escapeHtml(genNeed)}" placeholder="students, travelers, the sick…" list="genNeeds" autocomplete="off"></label>
-        <datalist id="genNeeds">${['students', 'travelers', 'the sick', 'mothers', 'fathers', 'children', 'teachers', 'soldiers', 'doctors', 'nurses', 'farmers', 'workers', 'priests', 'writers', 'musicians', 'animals', 'lost things', 'hopeless causes', 'a happy death', 'families'].map(n => `<option value="${n}">`).join('')}</datalist>
-      </div>
-      <div class="gen-grid">${genCardHtml('prayer', find(genPrayer))}${genCardHtml('saint', find(genSaint))}</div>
-      <p class="mine-privacy">Every prayer and saint opens in full, where you can save it or start a novena.</p>
-    </div>`;
-  entryListEl.querySelectorAll('.saint-portrait[data-sid]').forEach(el => observePortrait(el));
-  entryListEl.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openReadModal(b.dataset.open)));
-  entryListEl.querySelectorAll('[data-gen]').forEach(b => b.addEventListener('click', () => {
-    const k = b.dataset.gen;
-    if(k !== 'saint') genPrayer = genPick('prayer', genPrayer);
-    if(k !== 'prayer') genSaint = genPick('saint', genSaint);
-    renderGenerator();
-  }));
-  let t = null;
-  entryListEl.querySelector('#genNeed').addEventListener('input', ev => {
-    clearTimeout(t);
-    t = setTimeout(() => {
-      genNeed = ev.target.value;
-      genSaint = genPick('saint');
-      renderGenerator();
-      const box = document.getElementById('genNeed');
-      if(box){ box.focus(); box.setSelectionRange(box.value.length, box.value.length); }
-    }, 350);
-  });
 }
 
 /* =========================================================
