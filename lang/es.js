@@ -462,7 +462,6 @@ window.SANCTIFY_I18N = {
 "Loading…": "Cargando…",
 "Badge earned": "Insignia conseguida",
 "Your language, how Sanctify looks, the edition you use, and the data kept on this device.": "Tu idioma, el aspecto de Sanctify, la edición que usas y los datos guardados en este dispositivo.",
-"Sanctify is translated by hand into Spanish and Polish: menus, pages, and the common prayers. Longer texts, such as the lives of the saints, are still in English.": "Sanctify está traducido a mano al español y al polaco: menús, páginas y las oraciones comunes. Los textos más largos, como las vidas de los santos, siguen en inglés.",
 "More languages (Google Translate)…": "Más idiomas (Traductor de Google)…",
 "Edition": "Edición",
 "The Mass, calendar, and prayers Sanctify follows.": "La Misa, el calendario y las oraciones que sigue Sanctify.",
@@ -870,7 +869,8 @@ window.SANCTIFY_I18N = {
 "The Fifth Joyful Mystery": "El quinto misterio gozoso",
 "The Fifth Sorrowful Mystery": "El quinto misterio doloroso",
 "The Fifth Glorious Mystery": "El quinto misterio glorioso",
-"The Fifth Luminous Mystery": "El quinto misterio luminoso"
+"The Fifth Luminous Mystery": "El quinto misterio luminoso",
+"Sanctify is translated by hand into Spanish, Polish, French, Portuguese, and Italian: menus, pages, and the common prayers. Longer texts, such as the lives of the saints, are still in English.": "Sanctify está traducido a mano al español, el polaco, el francés, el portugués y el italiano: menús, páginas y las oraciones comunes. Los textos más largos, como las vidas de los santos, siguen en inglés."
 },
 "rosary": {
 "cross": "En el nombre del Padre, y del Hijo, y del Espíritu Santo. Amén.",

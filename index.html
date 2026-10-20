@@ -3267,11 +3267,11 @@
   try{
     // A language chosen on another address (?lang=es) is remembered; Spanish or Polish loads its words before the page is built
     var lq = new URLSearchParams(location.search).get('lang');
-    if(lq && /^(en|es|pl)$/.test(lq)) localStorage.setItem('sanctify.lang', JSON.stringify(lq));
+    if(lq && /^(en|es|pl|fr|pt|it)$/.test(lq)){ localStorage.setItem('sanctify.lang', JSON.stringify(lq)); localStorage.setItem('sanctify.prayerLang', JSON.stringify(lq)); }
     var ui = JSON.parse(localStorage.getItem('sanctify.lang') || '"en"');
-    if((ui === 'es' || ui === 'pl') && !/\.translate\.goog$/.test(location.hostname)){
+    if(/^(es|pl|fr|pt|it)$/.test(ui) && !/\.translate\.goog$/.test(location.hostname)){
       document.documentElement.lang = ui;
-      document.write('<script src="lang/' + ui + '.js?v=912710a5"><\/script>');
+      document.write('<script src="lang/' + ui + '.js?v=8e3d3d69"><\/script>');
     }
     if(JSON.parse(localStorage.getItem('sanctify.motion') || '""') === 'reduced') document.documentElement.setAttribute('data-motion', 'reduced');
     var t = localStorage.getItem('sanctify.theme');
@@ -3353,6 +3353,7 @@
         <li><button class="navlink" data-route="community" data-cat="community">Community</button></li>
         <li><button class="navlink" data-route="wiki" data-cat="wiki">Community Wiki</button></li>
         <li><button class="navlink" data-route="news" data-cat="news">News</button></li>
+        <li><button class="navlink" data-route="settings" data-cat="settings">Settings</button></li>
         <li id="navModerate" hidden><button class="navlink" data-route="moderate" data-cat="moderate">Moderation</button></li>
       </ul>
     </div>
@@ -3419,7 +3420,6 @@
     </div>
     <div class="nav-group">
       <ul><li><a class="navlink nav-discord" href="https://discord.gg/QAcdHxc4" target="_blank" rel="noopener"><span class="nl-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#discordGlyph"/></svg></span>Join our Discord</a></li>
-        <li><button class="navlink" data-route="settings" data-cat="settings">Settings</button></li>
         <li><button class="navlink" id="surpriseBtn" type="button"><span class="nl-icon nl-spark" aria-hidden="true">✦</span>Surprise me</button></li>
         <li><button class="navlink rite-switch-link" type="button"><span class="nl-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="currentColor"><path fill-rule="evenodd" d="M29 3L35 3L35 10L41.5 10L41.5 14.5L35 14.5L35 20L53 20L53 26L35 26L35 44.34L44.5 47.8L44.5 53.3L35 49.84L35 61L29 61L29 47.66L19.5 44.2L19.5 38.7L29 42.16L29 26L11 26L11 20L29 20L29 14.5L22.5 14.5L22.5 10L29 10z"/></svg></span><span data-rite-switch>Switch to the Eastern Catholic edition</span></button></li></ul>
     </div>
@@ -10044,7 +10044,7 @@ const PRAYER_ES = {
 // The languages an entry can be read in: the page's own, English, and Spanish where there's a Spanish text
 function prayerLangsFor(e){
   const out = [];
-  if(e._en && UI_LANG !== 'en' && UI_LANG !== 'es') out.push([UI_LANG, UI_LANG === 'pl' ? 'Polski' : UI_LANG]);
+  if(e._en && UI_LANG !== 'en' && UI_LANG !== 'es') out.push([UI_LANG, { pl:'Polski', fr:'Français', pt:'Português', it:'Italiano' }[UI_LANG] || UI_LANG]);
   if(e._en || PRAYER_ES[e.id]) out.push(['en', 'English']);
   if(PRAYER_ES[e.id]) out.push(['es', 'Español']);
   return out.length > 1 ? out : null;
@@ -18011,7 +18011,7 @@ function openLanguagePicker(){
     <div class="rp-card lang-picker" role="dialog" aria-modal="true" aria-labelledby="langTitle">
       <h2 id="langTitle">Language</h2>
       <div class="theme-menu-label">Translated by Sanctify</div>
-      <div class="lang-native">${[['en', 'English'], ['es', 'Español'], ['pl', 'Polski']].map(([code, name]) =>
+      <div class="lang-native">${[['en', 'English'], ['es', 'Español'], ['pl', 'Polski'], ['fr', 'Français'], ['pt', 'Português'], ['it', 'Italiano']].map(([code, name]) =>
         `<button class="lang-item${!TRANSLATED && code === now ? ' current' : ''}" type="button" data-native="${code}" lang="${code}"><strong class="notranslate" translate="no">${name}</strong></button>`).join('')}</div>
       <div class="theme-menu-label theme-menu-sep">Translated by machine (Google)</div>
       <p class="rp-intro">Read Sanctify in your language. Pages are translated by Google, by machine: prayers and Scripture may not match the approved translations used in your country, and Latin texts stay in Latin.${TRANSLATED ? '' : ' Your saved items, settings, and the Community stay on the English site.'}</p>
@@ -18064,9 +18064,9 @@ function renderSettings(){
     <div class="settings-page">
       <section class="settings-card">
         <h3>${navIcon('globe')}Language</h3>
-        <div class="settings-choices notranslate" translate="no">${[['en', 'English'], ['es', 'Español'], ['pl', 'Polski']].map(([code, name]) =>
+        <div class="settings-choices notranslate" translate="no">${[['en', 'English'], ['es', 'Español'], ['pl', 'Polski'], ['fr', 'Français'], ['pt', 'Português'], ['it', 'Italiano']].map(([code, name]) =>
           `<button class="settings-choice" type="button" data-set-lang="${code}" aria-pressed="${lang === code}" lang="${code}">${name}</button>`).join('')}</div>
-        <p class="forum-meta">Sanctify is translated by hand into Spanish and Polish: menus, pages, and the common prayers. Longer texts, such as the lives of the saints, are still in English.</p>
+        <p class="forum-meta">Sanctify is translated by hand into Spanish, Polish, French, Portuguese, and Italian: menus, pages, and the common prayers. Longer texts, such as the lives of the saints, are still in English.</p>
         <button class="btn quiet" type="button" data-more-langs>More languages (Google Translate)…</button>
       </section>
       <section class="settings-card">
