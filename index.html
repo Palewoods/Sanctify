@@ -3235,7 +3235,9 @@
       t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
     }
     document.documentElement.setAttribute('data-theme', t);
-    if(['dark','candlelight','liturgical-dark','midnight','stained-glass','compline','cathedral','byzantine','sacred-heart','stella-maris','hermitage','ember','tenebrae','obsidian','mono-dark','graphite','athos','lapis','gilded','ravenna','guadalupe','porphyry','advent','tabor','sainte-chapelle','iconostasis','noel','matins','carmel-dark','manuscript-dark','ivory-dark','marian-dark','cloister-dark','lily-dark','rose-window-dark','fresco-dark','pascha-dark','vyshyvanka-dark','sistine-dark','assisi-dark','vatican-dark','kyiv-dark','senanque-dark','theophany-dark','mission-dark','hagia-sophia-dark','iona-dark','lourdes-night','cova-da-iria','pontmain','beauraing','rue-du-bac-dark','knock-dark','la-salette-dark','banneux-dark','contrast-dark','laus-dark','walsingham-dark','siluva-dark','la-vang-dark','champion-dark','kibeho-dark','akita-dark','zarvanytsia-dark','sanctify-wine'].indexOf(t) >= 0) document.documentElement.setAttribute('data-mode', 'dark');
+    var isDark = ['dark','candlelight','liturgical-dark','midnight','stained-glass','compline','cathedral','byzantine','sacred-heart','stella-maris','hermitage','ember','tenebrae','obsidian','mono-dark','graphite','athos','lapis','gilded','ravenna','guadalupe','porphyry','advent','tabor','sainte-chapelle','iconostasis','noel','matins','carmel-dark','manuscript-dark','ivory-dark','marian-dark','cloister-dark','lily-dark','rose-window-dark','fresco-dark','pascha-dark','vyshyvanka-dark','sistine-dark','assisi-dark','vatican-dark','kyiv-dark','senanque-dark','theophany-dark','mission-dark','hagia-sophia-dark','iona-dark','lourdes-night','cova-da-iria','pontmain','beauraing','rue-du-bac-dark','knock-dark','la-salette-dark','banneux-dark','contrast-dark','laus-dark','walsingham-dark','siluva-dark','la-vang-dark','champion-dark','kibeho-dark','akita-dark','zarvanytsia-dark','sanctify-wine'].indexOf(t) >= 0;
+    if(isDark) document.documentElement.setAttribute('data-mode', 'dark');
+    try{ localStorage.setItem('sanctify.mode', isDark ? 'dark' : 'light'); }catch(e){}
     if(localStorage.getItem('sanctify.glow') === '1') document.documentElement.setAttribute('data-glow', '');
     if(localStorage.getItem('sanctify.shine') === '1' && ['ivory','manuscript','cathedral','byzantine','sacred-heart','obsidian','athos','lapis','gilded','ravenna','guadalupe','porphyry','sistine','vatican','kyiv','advent','tabor','sainte-chapelle','iconostasis','hagia-sophia','manuscript-dark','ivory-dark','sistine-dark','vatican-dark','kyiv-dark','hagia-sophia-dark','lourdes-night','fatima','cova-da-iria','tepeyac','rue-du-bac','pontmain','beauraing','rue-du-bac-dark','cathedral-light','byzantine-light','sacred-heart-light','obsidian-light','athos-light','lapis-light','gilded-light','ravenna-light','porphyry-light','advent-light','tabor-light','sainte-chapelle-light','iconostasis-light','pontmain-light','beauraing-light','laus-dark','walsingham-dark','siluva-dark','la-vang-dark','champion','champion-dark','zarvanytsia','zarvanytsia-dark'].indexOf(t) >= 0) document.documentElement.setAttribute('data-shine', '');
     var size = JSON.parse(localStorage.getItem('sanctify.textsize') || '"md"');
@@ -9636,7 +9638,7 @@ function applyTheme(key, save){
   else document.documentElement.removeAttribute('data-mode');
   if(SEASONAL_THEMES.has(key)) document.documentElement.setAttribute('data-season', todaysLiturgicalColor());
   else document.documentElement.removeAttribute('data-season');
-  if(save){ try{ localStorage.setItem('sanctify.theme', key); }catch(e){} }
+  if(save){ try{ localStorage.setItem('sanctify.theme', key); localStorage.setItem('sanctify.mode', theme && theme.mode === 'dark' ? 'dark' : 'light'); }catch(e){} }
   applyShine();
   themeMenu.querySelectorAll('.theme-option').forEach(o => o.setAttribute('aria-checked', o.dataset.theme === key ? 'true' : 'false'));
   const meta = document.querySelector('meta[name="theme-color"]');
@@ -9803,7 +9805,7 @@ function renderExam(){
       <h3 class="list-heading">How to go to Confession</h3>
       <ol>${CONFESSION_STEPS.map(([t, d]) => `<li><strong>${t}.</strong> ${escapeHtml(d)}</li>`).join('')}</ol>
       <div class="exam-links">
-        <button class="read-action" data-open="p6">Pray the Act of Contrition</button>
+        ${isEastern() ? '<button class="read-action" data-open="pe7">Pray the Prayer of St. Ephrem</button>' : '<button class="read-action" data-open="p6">Pray the Act of Contrition</button>'}
         <a class="read-action" href="https://masstimes.org/" target="_blank" rel="noopener">Find Confession times near you ↗</a>
       </div>
     </section>`;
@@ -10224,9 +10226,15 @@ function forumText(text){
    [[Saint Joseph]]                  a page of the Community Wiki
    Links to sanctify.pages.dev become shortcuts too. */
 const SITE_URL = /^(?:https?:\/\/)?(?:www\.)?sanctify\.pages\.dev\/?(?:index\.html)?(?:\?[^#\s]*)?#(\/[^\s]*|read=[^\s]+)$/i;
+// Made the same way as the server's wikiSlug, so [[Зарваниця]] finds the page called Зарваниця
 function wikiSlugify(title){
-  return String(title || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+  const clean = String(title || '').replace(/\s+/g, ' ').trim();
+  const latin = clean.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
     .replace(/[’']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80).replace(/-+$/, '');
+  if(latin.length >= 2 || !/\p{L}/u.test(clean)) return latin;
+  let h = 0x811c9dc5;
+  for(const ch of clean.toLowerCase()){ h ^= ch.codePointAt(0); h = Math.imul(h, 0x01000193) >>> 0; }
+  return 'page-' + h.toString(36);
 }
 function isSitePath(path){
   return !!(ROUTES[path] || ROUTE_ALIASES[path] || POST_ROUTE.test(path) || PROFILE_ROUTE.test(path) || WIKI_ROUTE.test(path) || WIKI_REV_ROUTE.test(path)
@@ -10297,7 +10305,7 @@ function inlineHtml(raw){
 // A wiki page: ## headings, - lists, 1. numbered lists, > quotations, and paragraphs
 function wikiHtml(text){
   const lines = String(text || '').replace(/\r/g, '').split('\n');
-  const out = [], heads = [];
+  const out = [], heads = [], usedIds = new Set();
   let para = [], list = null, quote = [];
   const flush = () => {
     if(para.length){ out.push(`<p>${para.map(inlineHtml).join('<br>')}</p>`); para = []; }
@@ -10309,7 +10317,9 @@ function wikiHtml(text){
     if(!line.trim()){ flush(); continue; }
     if((m = /^(#{1,3})\s+(.+)$/.exec(line))){
       flush();
-      const id = 'w-' + (wikiSlugify(m[2]) || heads.length);
+      let id = 'w-' + (wikiSlugify(m[2]) || heads.length);
+      while(usedIds.has(id)) id += '-2';
+      usedIds.add(id);
       const tag = m[1].length === 3 ? 'h4' : 'h3';
       if(tag === 'h3') heads.push([id, m[2]]);
       out.push(`<${tag} id="${id}">${inlineHtml(m[2])}</${tag}>`);
@@ -10329,6 +10339,8 @@ function wikiHtml(text){
 document.addEventListener('click', ev => {
   const open = ev.target.closest('.shortcut[data-open]');
   if(open){ ev.preventDefault(); ev.stopPropagation(); openReadModal(open.dataset.open); return; }
+  const wl = ev.target.closest('.wiki-link');
+  if(wl) wikiLinkTitle = wl.textContent.trim();   // so an unwritten page can be started under this title
   const toc = ev.target.closest('[data-toc]');
   if(toc){ ev.preventDefault(); const h = document.getElementById(toc.dataset.toc); if(h) h.scrollIntoView({ behavior:'smooth', block:'start' }); }
 }, true);
@@ -10999,7 +11011,7 @@ async function renderMemberProfile(){
 /* =========================================================
    THE COMMUNITY WIKI
    ========================================================= */
-let wikiSort = 'az', wikiSearch = '', wikiDraftTitle = '';
+let wikiSort = 'az', wikiSearch = '', wikiDraftTitle = '', wikiLinkTitle = '';
 function wikiDelta(n){ return `<span class="wiki-delta ${n > 0 ? 'up' : n < 0 ? 'down' : ''}">${n > 0 ? '+' : n < 0 ? '−' : '±'}${Math.abs(n).toLocaleString()}</span>`; }
 function wikiChangeHtml(c){
   return `<li><span class="forum-meta">${escapeHtml(timeAgo(c.createdAt))}</span>
@@ -11095,7 +11107,7 @@ async function renderWikiPage(){
   if(!stillShowing(seq, 'wikipage') || wikiSlugNow !== slug) return;
   const u = Community.user;
   if(!page){
-    const guess = slug.replace(/-/g, ' ').replace(/^./, c => c.toUpperCase());
+    const guess = wikiLinkTitle && wikiSlugify(wikiLinkTitle) === slug ? wikiLinkTitle : slug.replace(/-/g, ' ').replace(/^./, c => c.toUpperCase());
     sectionTitleEl.textContent = guess;
     sectionDescEl.textContent = 'This wiki page hasn’t been written yet.';
     entryListEl.innerHTML = forumNotice('Nobody has written this page yet', problem && problem.status !== 404 ? escapeHtml(problem.message) : `Would you like to start “${escapeHtml(guess)}”? Anyone with a free account can.`,

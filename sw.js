@@ -1,7 +1,7 @@
 // Sanctify service worker: lets the site open offline after a first visit.
 // Pages are fetched network-first (so updates appear right away) and fall back
 // to the cached copy when offline. Icons and fonts are served from cache.
-const VERSION = 'sanctify-v43';   // bump when icons or other cached files change
+const VERSION = 'sanctify-v44';   // bump when icons or other cached files change
 const BIBLE = 'sanctify-bible-1';   // Bible chapters never change, so they keep their own cache across updates
 const PRECACHE = [
   './',
@@ -24,6 +24,9 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
       .then(keys => Promise.all(keys.filter(k => k !== VERSION && k !== BIBLE).map(k => caches.delete(k))))
+      // Older versions kept data files without a version in their name (hymns.json and the like) for good; let them refresh
+      .then(() => caches.open(BIBLE)).then(cache => cache.keys().then(reqs => Promise.all(reqs
+        .filter(r => /\/data\/(?!texts\/)[^/]+\.json$/.test(new URL(r.url).pathname)).map(r => cache.delete(r)))))
       .then(() => self.clients.claim())
   );
 });
@@ -51,8 +54,9 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Bible chapters, book sections, the Catechism outline, and entry texts: from the device once read, with no background refresh, to save data
-  if(url.origin === location.origin && (url.pathname.includes('/bible/') || url.pathname.includes('/books/') || url.pathname.includes('/catechism/') || url.pathname.includes('/data/'))){
+  // Bible chapters, book sections, the Catechism outline, and entry texts (whose names change with their contents):
+  // from the device once read, with no background refresh, to save data. Other data files refresh like the rest of the site.
+  if(url.origin === location.origin && (url.pathname.includes('/bible/') || url.pathname.includes('/books/') || url.pathname.includes('/catechism/') || url.pathname.includes('/data/texts/'))){
     event.respondWith(
       caches.open(BIBLE).then(cache => cache.match(req).then(hit => hit || fetch(req).then(res => {
         if(res.ok) cache.put(req, res.clone());

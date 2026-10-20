@@ -165,7 +165,10 @@
     if(['liturgical-dark','compline','cathedral','byzantine','sacred-heart','stella-maris','hermitage','ember','tenebrae','obsidian','athos','lapis'].indexOf(t) >= 0) t = 'dark';
     if(['lily','rose-window','fresco','pascha','vyshyvanka'].indexOf(t) >= 0) t = 'light';
     if(['dark','candlelight','marian','cloister','contrast','midnight','stained-glass','ivory','manuscript','mono','gray','mono-dark','graphite'].indexOf(t) < 0){
+      // Any other theme: its light or dark look, as remembered by the site, else the device's setting
+      var mode = localStorage.getItem('sanctify.mode');
       t = (t === 'light' || t === 'liturgical') ? 'light'
+        : mode ? mode
         : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
     }
     document.documentElement.setAttribute('data-theme', t);

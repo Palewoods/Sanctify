@@ -843,9 +843,16 @@ async function getProfile(ctx, name){
 
 /* ---------- The Community Wiki ---------- */
 const WIKI_BODY_MAX = 20000;
+// The page's address: its title in plain letters, or for a title in another alphabet (Зарваниця, Θεοτόκος)
+// a short code made from it. index.html makes addresses the same way.
 function wikiSlug(title){
-  return String(title || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+  const clean = cleanLine(title);
+  const latin = clean.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
     .replace(/[’']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80).replace(/-+$/, '');
+  if(latin.length >= 2 || !/\p{L}/u.test(clean)) return latin;
+  let h = 0x811c9dc5;
+  for(const ch of clean.toLowerCase()){ h ^= ch.codePointAt(0); h = Math.imul(h, 0x01000193) >>> 0; }
+  return 'page-' + h.toString(36);
 }
 function wikiExcerpt(body){
   return String(body || '').replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, '$2').replace(/\[\[([^\]]+)\]\]/g, '$1').replace(/[#*>_`-]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 200);
