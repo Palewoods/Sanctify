@@ -2294,6 +2294,29 @@
   .account-nav-link.active{background:var(--wine); color:var(--parchment-light);}
   @media (max-width:480px){ .account-nav{width:100%; border-radius:16px;} .account-nav-link{flex:1; justify-content:center; padding:8px 8px; font-size:0.85rem;} }
   .crop-card.wide{max-width:560px;}
+  :root[data-motion="reduced"] *, :root[data-motion="reduced"] *::before, :root[data-motion="reduced"] *::after{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  .settings-page{display:grid; gap:16px; max-width:760px;}
+  .settings-card{padding:18px; border:1px solid var(--line); border-radius:16px; background:var(--parchment-light);}
+  .settings-card h3{display:flex; align-items:center; gap:10px; margin:0 0 8px; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.35rem;}
+  .settings-card h3 svg{width:22px; height:22px; color:var(--wine);}
+  .settings-card .forum-meta{margin:4px 0 12px;}
+  .settings-choices{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 12px;}
+  .settings-choice{min-width:56px; padding:8px 16px; border:1px solid var(--line); border-radius:999px; background:var(--parchment); color:var(--ink); font:inherit; cursor:pointer;}
+  .settings-choice[aria-pressed="true"]{background:var(--wine); border-color:var(--wine); color:var(--parchment-light);}
+  .settings-editions{display:grid; gap:8px;}
+  .settings-edition{display:flex; align-items:flex-start; gap:12px; padding:12px 14px; border:1px solid var(--line); border-radius:12px; background:var(--parchment); color:var(--ink); font:inherit; text-align:left; cursor:pointer;}
+  .settings-edition svg{flex:none; width:26px; height:26px; color:var(--wine);}
+  .settings-edition span{display:flex; flex-direction:column; gap:2px;}
+  .settings-edition small{color:var(--ink-soft); font-size:0.88rem;}
+  .settings-edition[aria-pressed="true"]{border-color:var(--wine); box-shadow:inset 0 0 0 1px var(--wine);}
+  .settings-theme{display:flex; align-items:center; gap:12px; margin-bottom:10px;}
+  .settings-theme > span:nth-child(2){display:flex; flex-direction:column; flex:1;}
+  .settings-theme small{color:var(--ink-soft); font-size:0.82rem;}
+  .settings-sub{margin-top:14px; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft);}
+  .settings-card .shine-row{padding:10px 0; border-top:1px solid var(--line);}
+  .lang-native{display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; margin:6px 0 12px;}
+  .lang-native .lang-item{border:1px solid var(--line); background:none; font:inherit; cursor:pointer; text-align:left;}
+  .settings-menu-btn{margin-top:8px;}
   .lang-picker{max-width:560px; width:100%;}
   .lang-picker .searchbar{margin:8px 0 10px; min-width:0;}
   .lang-list{display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:4px; max-height:min(50vh, 420px); overflow:auto; padding:2px;}
@@ -3242,6 +3265,15 @@
 </style>
 <script>
   try{
+    // A language chosen on another address (?lang=es) is remembered; Spanish or Polish loads its words before the page is built
+    var lq = new URLSearchParams(location.search).get('lang');
+    if(lq && /^(en|es|pl)$/.test(lq)) localStorage.setItem('sanctify.lang', JSON.stringify(lq));
+    var ui = JSON.parse(localStorage.getItem('sanctify.lang') || '"en"');
+    if((ui === 'es' || ui === 'pl') && !/\.translate\.goog$/.test(location.hostname)){
+      document.documentElement.lang = ui;
+      document.write('<script src="lang/' + ui + '.js?v=912710a5"><\/script>');
+    }
+    if(JSON.parse(localStorage.getItem('sanctify.motion') || '""') === 'reduced') document.documentElement.setAttribute('data-motion', 'reduced');
     var t = localStorage.getItem('sanctify.theme');
     if(['light','dark','candlelight','marian','cloister','liturgical','contrast','liturgical-dark','midnight','stained-glass','ivory','manuscript','compline','cathedral','byzantine','sacred-heart','stella-maris','hermitage','ember','tenebrae','obsidian','lily','rose-window','fresco','mono','gray','mono-dark','graphite','pascha','vyshyvanka','athos','lapis','gilded','ravenna','guadalupe','porphyry','sistine','assisi','carmel','vatican','kyiv','advent','tabor','sainte-chapelle','iconostasis','noel','matins','senanque','theophany','mission','hagia-sophia','iona','carmel-dark','manuscript-dark','ivory-dark','marian-dark','cloister-dark','lily-dark','rose-window-dark','fresco-dark','pascha-dark','vyshyvanka-dark','sistine-dark','assisi-dark','vatican-dark','kyiv-dark','senanque-dark','theophany-dark','mission-dark','hagia-sophia-dark','iona-dark','lourdes','lourdes-night','fatima','cova-da-iria','tepeyac','rue-du-bac','knock','la-salette','banneux','pontmain','beauraing','rue-du-bac-dark','knock-dark','la-salette-dark','banneux-dark','contrast-dark','candlelight-light','midnight-light','stained-glass-light','compline-light','cathedral-light','byzantine-light','sacred-heart-light','stella-maris-light','hermitage-light','ember-light','tenebrae-light','obsidian-light','athos-light','lapis-light','gilded-light','ravenna-light','porphyry-light','advent-light','tabor-light','sainte-chapelle-light','iconostasis-light','noel-light','matins-light','pontmain-light','beauraing-light','laus','laus-dark','walsingham','walsingham-dark','siluva','siluva-dark','la-vang','la-vang-dark','champion','champion-dark','kibeho','kibeho-dark','akita','akita-dark','zarvanytsia','zarvanytsia-dark','sanctify-wine'].indexOf(t) < 0){
       t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
@@ -3387,7 +3419,7 @@
     </div>
     <div class="nav-group">
       <ul><li><a class="navlink nav-discord" href="https://discord.gg/QAcdHxc4" target="_blank" rel="noopener"><span class="nl-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#discordGlyph"/></svg></span>Join our Discord</a></li>
-        <li><button class="navlink lang-switch-link" type="button"><span class="nl-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span>Language</button></li>
+        <li><button class="navlink" data-route="settings" data-cat="settings">Settings</button></li>
         <li><button class="navlink" id="surpriseBtn" type="button"><span class="nl-icon nl-spark" aria-hidden="true">✦</span>Surprise me</button></li>
         <li><button class="navlink rite-switch-link" type="button"><span class="nl-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="currentColor"><path fill-rule="evenodd" d="M29 3L35 3L35 10L41.5 10L41.5 14.5L35 14.5L35 20L53 20L53 26L35 26L35 44.34L44.5 47.8L44.5 53.3L35 49.84L35 61L29 61L29 47.66L19.5 44.2L19.5 38.7L29 42.16L29 26L11 26L11 20L29 20L29 14.5L22.5 14.5L22.5 10L29 10z"/></svg></span><span data-rite-switch>Switch to the Eastern Catholic edition</span></button></li></ul>
     </div>
@@ -3429,7 +3461,7 @@
       <div><h4>Learn</h4>
         <button data-route="learn/theology">Theology</button><button data-route="learn/theology/fathers">The Faith of the Fathers</button><button data-route="learn/theology/apologetics">Defending the Faith</button><button data-route="learn/mass">The Mass Explained</button><button data-route="learn/living-the-faith">Living the Faith</button><button data-route="learn/lists">Catholic Lists</button><button data-route="learn/church">Inside a Church</button><button data-route="learn/glossary">Glossary</button><button data-route="learn/quiz">Quiz</button></div>
       <div><h4>Sanctify</h4>
-        <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="community">Community</button><button data-route="wiki">Community Wiki</button><button data-route="news">News</button><button data-route="mine">My Sanctify</button><button data-route="account/badges">Badges</button><button data-route="library/resources">Resources</button></div>
+        <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="community">Community</button><button data-route="wiki">Community Wiki</button><button data-route="news">News</button><button data-route="mine">My Sanctify</button><button data-route="account/badges">Badges</button><button data-route="settings">Settings</button><button data-route="library/resources">Resources</button></div>
     </div>
   </div>
   <p class="footer-note">Ad maiorem Dei gloriam. Scripture quotations are from the Revised Standard Version of the Bible: Catholic Edition, copyright © 1965, 1966 the Division of Christian Education of the National Council of the Churches of Christ in the United States of America. Used by permission. All rights reserved. Saint and book images come from Wikipedia and Wikimedia Commons.</p>
@@ -3469,6 +3501,7 @@
    ========================================================= */
 const CAT_LABEL = { prayer:'Prayer', saint:'Saint', history:'History', book:'Book', bible:'Bible', theology:'Theology' };
 const CAT_DESC = {
+  settings:'Your language, how Sanctify looks, the edition you use, and the data kept on this device.',
   all: 'Every prayer, saint, book, event, and teaching in Sanctify, in one list.',
   daily: 'A saint, a prayer, a verse, and more for each day, chosen fresh every morning.',
   exam: 'A guided examination of conscience to prepare for the Sacrament of Reconciliation, following the Ten Commandments.',
@@ -7451,7 +7484,7 @@ function render(){
       home:renderHome, calendar:renderCalendar, rosary:renderRosary, shop:renderShop, stations:renderStations,
       chaplet:renderChaplet, sacredheart:renderSacredHeart, history:renderHistory, daily:renderDaily, theology:renderTheology,
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
-      community:renderCommunity, resources:renderResources,
+      community:renderCommunity, resources:renderResources, settings:renderSettings,
       wiki:renderWiki, wikipage:renderWikiPage, wikiedit:renderWikiEdit, wikihistory:renderWikiHistory, wikirev:renderWikiRevision,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
       tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, lists:renderLists, church:renderChurchGuide, councils:renderCouncils, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, badges:renderBadges, devotions:renderDevotions, littleoffice:renderLittleOffice, vocations:renderVocations, hymns:renderHymns, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
@@ -7739,7 +7772,19 @@ const CAL_TYPE_PLURAL = { Solemnity:'Solemnities', Feast:'Feasts', Memorial:'Mem
 
 function addDays(d, n){ return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n); }
 function sameDay(a, b){ return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate(); }
-function shortDate(d){ return MONTH_NAMES[d.getMonth()].slice(0,3) + ' ' + d.getDate(); }
+function shortDate(d){ return pageLang() === 'en' ? MONTH_NAMES[d.getMonth()].slice(0,3) + ' ' + d.getDate() : d.toLocaleDateString(pageLang(), { month:'short', day:'numeric' }); }
+// The language the page is shown in (Spanish and Polish are translated by hand; see lang/)
+function pageLang(){ return (window.SANCTIFY_I18N && !/\.translate\.goog$/.test(location.hostname)) ? window.SANCTIFY_I18N.lang : 'en'; }
+const capFirst = t => t.charAt(0).toUpperCase() + t.slice(1);
+// "Tuesday, October 20" in English, "martes, 20 de octubre" in Spanish, "wtorek, 20 października" in Polish
+function dayLabel(d, withYear){
+  if(pageLang() === 'en') return `${WEEKDAY_NAMES[d.getDay()]}, ${MONTH_NAMES[d.getMonth()]} ${d.getDate()}${withYear ? ', ' + d.getFullYear() : ''}`;
+  return capFirst(d.toLocaleDateString(pageLang(), { weekday:'long', month:'long', day:'numeric', year:withYear ? 'numeric' : undefined }));
+}
+function monthLabel(m, y){
+  if(pageLang() === 'en') return y === undefined ? MONTH_NAMES[m] : `${MONTH_NAMES[m]} ${y}`;
+  return capFirst(new Date(y === undefined ? 2000 : y, m, 1).toLocaleDateString(pageLang(), y === undefined ? { month:'long' } : { month:'long', year:'numeric' }));
+}
 function startOfToday(){ const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate()); }
 
 const easterCache = {};
@@ -7887,7 +7932,7 @@ function buildCalToolbar(){
   const bar = document.createElement('div');
   bar.className = 'cal-toolbar';
   const listMode = calView === 'list' || searchTerm.trim();
-  const title = listMode ? String(calYear) : `${MONTH_NAMES[calMonth]} ${calYear}`;
+  const title = listMode ? String(calYear) : monthLabel(calMonth, calYear);
   bar.innerHTML = `
     <div class="cal-nav">
       <button class="cal-nav-btn" data-nav="-1" aria-label="Previous ${listMode ? 'year' : 'month'}">‹</button>
@@ -7959,7 +8004,7 @@ function buildCalDetail(d){
   box.style.setProperty('--season', s.color);
   box.innerHTML = `
     <div class="cal-detail-head">
-      <div class="cal-detail-date">${WEEKDAY_NAMES[d.getDay()]}, ${MONTH_NAMES[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}</div>
+      <div class="cal-detail-date">${dayLabel(d, true)}</div>
       <span class="cal-pill"><span class="dot" style="background:${s.color}"></span>${escapeHtml(s.name)} · ${escapeHtml(s.colorName)}</span>
     </div>
     ${dayNotes(d, all).map(n => `<div class="cal-daynote">${escapeHtml(n)}</div>`).join('')}
@@ -8017,7 +8062,7 @@ function renderCalendar(){
     const cell = document.createElement('button');
     cell.className = cls.join(' ');
     cell.style.setProperty('--season', liturgicalSeason(d).color);
-    cell.setAttribute('aria-label', `${WEEKDAY_NAMES[d.getDay()]}, ${MONTH_NAMES[d.getMonth()]} ${d.getDate()}${obs.length ? ': ' + obs.map(o => o.name).join('; ') : ''}`);
+    cell.setAttribute('aria-label', `${dayLabel(d)}${obs.length ? ': ' + obs.map(o => o.name).join('; ') : ''}`);
     cell.innerHTML = `
       <span class="cal-num">${d.getDate()}</span>
       ${top ? `<span class="cal-cell-label">${escapeHtml(top.name)}</span>` : ''}
@@ -8086,7 +8131,7 @@ function renderCalendarList(){
       currentMonth = d.getMonth();
       group = document.createElement('div');
       group.className = 'month-group';
-      group.innerHTML = `<h3>${MONTH_NAMES[currentMonth]}</h3>`;
+      group.innerHTML = `<h3>${monthLabel(currentMonth)}</h3>`;
       entryListEl.appendChild(group);
     }
     const day = d;
@@ -8406,7 +8451,7 @@ function renderDaily(){
   head.innerHTML = `
     <div class="cal-nav">
       <button class="cal-nav-btn" data-step="-1" aria-label="Previous day">‹</button>
-      <div class="daily-date">${isToday ? 'Today, ' : ''}${WEEKDAY_NAMES[d.getDay()]}, ${MONTH_NAMES[d.getMonth()]} ${d.getDate()}${d.getFullYear() !== new Date().getFullYear() ? ', ' + d.getFullYear() : ''}</div>
+      <div class="daily-date">${isToday ? 'Today, ' : ''}${dayLabel(d, d.getFullYear() !== new Date().getFullYear())}</div>
       <button class="cal-nav-btn" data-step="1" aria-label="Next day">›</button>
       ${isToday ? '' : '<button class="cal-nav-btn cal-today-btn" data-step="0">Today</button>'}
     </div>
@@ -9996,12 +10041,23 @@ const PRAYER_ES = {
   p19:{ title:'Descanso Eterno', text:'Dales, Señor, el descanso eterno, y brille para ellos la luz perpetua. Descansen en paz. Amén.' }
 };
 
+// The languages an entry can be read in: the page's own, English, and Spanish where there's a Spanish text
+function prayerLangsFor(e){
+  const out = [];
+  if(e._en && UI_LANG !== 'en' && UI_LANG !== 'es') out.push([UI_LANG, UI_LANG === 'pl' ? 'Polski' : UI_LANG]);
+  if(e._en || PRAYER_ES[e.id]) out.push(['en', 'English']);
+  if(PRAYER_ES[e.id]) out.push(['es', 'Español']);
+  return out.length > 1 ? out : null;
+}
 function applyPrayerLang(e){
   const es = PRAYER_ES[e.id];
-  if(!es) return;
-  const lang = store.get('prayerLang', 'en');
-  const text = lang === 'es' ? es.text : e.content;
-  document.getElementById('readTitle').textContent = lang === 'es' ? es.title : e.title;
+  const langs = prayerLangsFor(e);
+  if(!langs) return;
+  let lang = store.get('prayerLang', UI_LANG);
+  if(!langs.some(l => l[0] === lang)) lang = langs[0][0];
+  const english = e._en || e;
+  const text = lang === 'es' ? es.text : lang === 'en' ? english.content : e.content;
+  document.getElementById('readTitle').textContent = lang === 'es' ? es.title : lang === 'en' ? english.title : e.title;
   document.getElementById('readBody').innerHTML = text.split(/\n\s*\n/).filter(Boolean)
     .map(p => `<p>${escapeHtml(p).replace(/\n/g, '<br>')}</p>`).join('');
   document.getElementById('readBody').lang = lang;
@@ -16402,6 +16458,7 @@ const NAV_ICONS = {
   community:'<circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.5"/><path d="M2.8 20c.6-3.8 3.1-5.9 6.2-5.9s5.6 2.1 6.2 5.9"/><path d="M15.4 14.4c.5-.2 1-.3 1.6-.3 2.3 0 4 1.5 4.4 4.4"/>',
   account:'<circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c.9-4 3.9-6.3 7.5-6.3s6.6 2.3 7.5 6.3"/>',
   reply:'<path d="M5.5 4h13A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H10l-4.5 4v-4A1.5 1.5 0 0 1 4 14.5v-9A1.5 1.5 0 0 1 5.5 4z"/>',
+  gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2.8l1.6 2.3 2.7-.7.4 2.8 2.6 1.1-1.2 2.5 1.2 2.5-2.6 1.1-.4 2.8-2.7-.7L12 21.2l-1.6-2.3-2.7.7-.4-2.8-2.6-1.1L5.9 12 4.7 9.5l2.6-1.1.4-2.8 2.7.7z"/>',
   globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/>',
   dice:'<rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><circle cx="8.5" cy="8.5" r="1" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1" fill="currentColor"/>',
   wiki:'<path d="M4 4.5h11.5L20 9v10.5H4z"/><path d="M15.5 4.5V9H20"/><path d="M7 12.5l1.5 4.5 1.8-4 1.8 4 1.5-4.5"/>',
@@ -16416,6 +16473,7 @@ const SECTIONS = {
   home:{ name:'Home', icon:'home', color:'var(--wine)' },
   daily:{ name:'Today', group:'Today', icon:'daily', color:'var(--gold)' },
   mine:{ name:'My Sanctify', group:'Personal', icon:'mine', color:'var(--rose)' },
+  settings:{ name:'Settings', icon:'gear', color:'var(--ink-soft)' },
   wiki:{ name:'Community Wiki', group:'Community', icon:'wiki', color:'var(--teal)' },
   wikipage:{ name:'Community Wiki', group:'Community', icon:'wiki', color:'var(--teal)' },
   wikiedit:{ name:'Edit Wiki Page', group:'Community', icon:'pen', color:'var(--teal)' },
@@ -16751,7 +16809,7 @@ function renderHome(){
   wrap.innerHTML = `
     <section class="home-hero dash-hero" style="--season:${season.color}">
       <div class="hero-text">
-        <div class="hero-date">${WEEKDAY_NAMES[d.getDay()]}, ${MONTH_NAMES[d.getMonth()]} ${d.getDate()}
+        <div class="hero-date">${dayLabel(d)}
           <span class="cal-pill"><span class="dot" style="background:${season.color}"></span>${escapeHtml(season.name)}</span>${isEastern() ? '<span class="rite-pill">Eastern Catholic edition</span>' : ''}</div>
         <h1 class="dash-greet">${greeting}.</h1>
         <p class="dash-feast">${feastLine}</p>
@@ -16883,7 +16941,7 @@ function renderHome(){
   }
   wrap.querySelector('#homeUpcoming').innerHTML = up.map((u, i) => `
     <button class="upcoming-item" data-i="${i}">
-      <span class="up-date"><span>${MONTH_NAMES[u.day.getMonth()].slice(0, 3)}</span><strong>${u.day.getDate()}</strong></span>
+      <span class="up-date"><span>${pageLang() === 'en' ? MONTH_NAMES[u.day.getMonth()].slice(0, 3) : u.day.toLocaleDateString(pageLang(), { month:'short' }).replace('.', '')}</span><strong>${u.day.getDate()}</strong></span>
       <span class="up-text"><span class="up-name">${escapeHtml(u.o.name)}</span><span class="up-type" style="color:${CAL_TYPE_COLOR[u.o.type]}">${escapeHtml(u.o.type)}</span></span>
     </button>`).join('');
   wrap.querySelectorAll('.upcoming-item').forEach(b => b.addEventListener('click', () => {
@@ -16926,6 +16984,7 @@ const ROUTES = {
   'community/post':              { cat:'thread', parent:'community' },   // #/community/post/42
   'community/user':              { cat:'profile', parent:'community' },  // #/community/user/Palewoods
   'account':                     { cat:'account' },
+  'settings':                    { cat:'settings' },
   'account/badges':              { cat:'badges', parent:'account' },
   'pray':                        { cat:'hub-pray' },
   'pray/prayers':                { cat:'prayer', parent:'pray' },
@@ -17118,6 +17177,7 @@ function dropIn(roots){
 }
 function startDropIn(){
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(document.documentElement.getAttribute('data-motion') === 'reduced') return;
   dropDone = new WeakSet();   // the page header is reused, so forget what was animated on the last page
   if(revealer) revealer.disconnect();
   dropUntil = Date.now() + 2500;   // content that arrives a moment later (the Community, an account) drops in too
@@ -17149,7 +17209,7 @@ document.querySelector('.skip-link').addEventListener('click', ev => {
 // Any element with data-route navigates there
 document.addEventListener('click', e => {
   const el = e.target.closest('[data-route]');
-  if(!el || el.closest('.theme-menu')) return;
+  if(!el || (el.closest('.theme-menu') && !el.classList.contains('settings-menu-btn'))) return;
   e.preventDefault();
   readOverlay.classList.remove('open');
   navigate(el.dataset.route);
@@ -17268,7 +17328,7 @@ function openReadModal(id, fetched){
   tagsEl.innerHTML = (e.tags||[]).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('');
 
   renderReadActions(e);
-  if(PRAYER_ES[e.id]) applyPrayerLang(e);
+  if(prayerLangsFor(e)) applyPrayerLang(e);
   addRecent(e.id);
   readOverlay.classList.add('open');
 }
@@ -17356,7 +17416,7 @@ function renderReadActions(e){
     <button class="read-action" data-act="discuss">Discuss</button>
     ${canSpeak ? '<button class="read-action" data-act="listen" aria-pressed="false">🔊 Listen</button>' : ''}
     ${canNovena ? `<button class="read-action" data-act="novena"${activeNovena ? ' disabled' : ''}>${activeNovena ? 'Novena in progress' : 'Start a novena'}</button>` : ''}
-    ${PRAYER_ES[e.id] ? `<span class="lang-toggle" role="group" aria-label="Language"><button class="lang-btn" data-lang="en" aria-pressed="true">English</button><button class="lang-btn" data-lang="es" aria-pressed="false" lang="es">Español</button></span>` : ''}`;
+    ${prayerLangsFor(e) ? `<span class="lang-toggle notranslate" translate="no" role="group" aria-label="Language">${prayerLangsFor(e).map(([code, label]) => `<button class="lang-btn" data-lang="${code}" aria-pressed="false" lang="${code}">${label}</button>`).join('')}</span>` : ''}`;
   bar.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
     store.set('prayerLang', b.dataset.lang);
     applyPrayerLang(e);
@@ -17907,15 +17967,8 @@ function applyTextSize(size){
   else document.documentElement.setAttribute('data-textsize', size);
   document.querySelectorAll('.textsize-btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.size === size)));
 }
-themeMenu.insertAdjacentHTML('beforeend', `
-  <div class="theme-menu-label" style="margin-top:6px">Text size</div>
-  <div class="textsize-row">${TEXT_SIZES.map(([k, l, name], i) =>
-    `<button class="textsize-btn" data-size="${k}" aria-label="${name}" style="font-size:${0.85 + i * 0.2}rem">${l}</button>`).join('')}</div>`);
-themeMenu.querySelectorAll('.textsize-btn').forEach(b => b.addEventListener('click', ev => {
-  ev.stopPropagation();
-  store.set('textsize', b.dataset.size);
-  applyTextSize(b.dataset.size);
-}));
+themeMenu.insertAdjacentHTML('beforeend', `<button class="lang-menu-btn settings-menu-btn" type="button" data-route="settings">${navIcon('gear')}<span>All settings</span><span class="lang-change">›</span></button>`);
+themeMenu.querySelector('.settings-menu-btn').addEventListener('click', () => setThemeMenuOpen(false));
 applyTextSize(store.get('textsize', 'md'));
 
 /* ---------- Language: Sanctify read in other languages through Google Translate ----------
@@ -17941,7 +17994,7 @@ const LANGUAGES = [
   ['ht', 'Kreyòl Ayisyen', 'Haitian Creole'], ['sm', 'Gagana Samoa', 'Samoan'], ['haw', 'ʻŌlelo Hawaiʻi', 'Hawaiian']
 ];
 const TRANSLATED = /\.translate\.goog$/.test(location.hostname);
-function currentLanguage(){ return TRANSLATED ? (new URLSearchParams(location.search).get('_x_tr_tl') || 'en') : 'en'; }
+function currentLanguage(){ return TRANSLATED ? (new URLSearchParams(location.search).get('_x_tr_tl') || 'en') : store.get('lang', 'en'); }
 function languageUrl(code){
   const here = location.pathname.replace(/index\.html$/, '') + location.hash;
   if(code === 'en') return SITE_ORIGIN + here;
@@ -17957,15 +18010,20 @@ function openLanguagePicker(){
   box.innerHTML = `
     <div class="rp-card lang-picker" role="dialog" aria-modal="true" aria-labelledby="langTitle">
       <h2 id="langTitle">Language</h2>
+      <div class="theme-menu-label">Translated by Sanctify</div>
+      <div class="lang-native">${[['en', 'English'], ['es', 'Español'], ['pl', 'Polski']].map(([code, name]) =>
+        `<button class="lang-item${!TRANSLATED && code === now ? ' current' : ''}" type="button" data-native="${code}" lang="${code}"><strong class="notranslate" translate="no">${name}</strong></button>`).join('')}</div>
+      <div class="theme-menu-label theme-menu-sep">Translated by machine (Google)</div>
       <p class="rp-intro">Read Sanctify in your language. Pages are translated by Google, by machine: prayers and Scripture may not match the approved translations used in your country, and Latin texts stay in Latin.${TRANSLATED ? '' : ' Your saved items, settings, and the Community stay on the English site.'}</p>
       <div class="searchbar"><svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
         <input type="search" placeholder="Find a language…" aria-label="Find a language" autocomplete="off"></div>
-      <div class="lang-list">${LANGUAGES.map(([code, native, english]) => `
-        <a class="lang-item${code === now ? ' current' : ''}" href="${escapeHtml(languageUrl(code))}" data-lang="${code}" data-find="${escapeHtml((native + ' ' + english).toLowerCase())}" lang="${code === 'iw' ? 'he' : code}"${code === now ? ' aria-current="true"' : ''}>
+      <div class="lang-list">${LANGUAGES.filter(([code]) => code !== 'en').map(([code, native, english]) => `
+        <a class="lang-item${TRANSLATED && code === now ? ' current' : ''}" href="${escapeHtml(languageUrl(code))}" data-lang="${code}" data-find="${escapeHtml((native + ' ' + english).toLowerCase())}" lang="${code === 'iw' ? 'he' : code}"${code === now ? ' aria-current="true"' : ''}>
           <strong class="notranslate" translate="no">${escapeHtml(native)}</strong>${native !== english ? `<small class="notranslate" translate="no">${escapeHtml(english)}</small>` : ''}</a>`).join('')}</div>
       <div class="crop-actions"><span class="crop-gap"></span><button class="btn quiet" type="button" data-lp="cancel">Close</button></div>
     </div>`;
   document.body.appendChild(box);
+  box.querySelectorAll('[data-native]').forEach(b => b.addEventListener('click', () => setUiLanguage(b.dataset.native)));
   const input = box.querySelector('input');
   input.addEventListener('input', () => {
     const q = input.value.trim().toLowerCase();
@@ -17977,13 +18035,178 @@ function openLanguagePicker(){
   box.addEventListener('click', ev => { if(ev.target === box || ev.target.closest('[data-lp="cancel"]')) close(); });
   input.focus();
 }
-themeMenu.insertAdjacentHTML('beforeend', `
-  <div class="theme-menu-label" style="margin-top:6px">Language</div>
-  <button class="lang-menu-btn" type="button">${navIcon('globe')}<span class="notranslate" translate="no">${escapeHtml((LANGUAGES.find(l => l[0] === currentLanguage()) || LANGUAGES[0])[1])}</span><span class="lang-change">Change</span></button>`);
-themeMenu.querySelector('.lang-menu-btn').addEventListener('click', ev => { ev.stopPropagation(); openLanguagePicker(); });
 document.addEventListener('click', ev => { if(ev.target.closest('.lang-switch-link')){ ev.preventDefault(); openLanguagePicker(); } });
 // The brand name and single initials are never translated
 document.querySelectorAll('.brand span, .side-brand span, .footer-brand strong').forEach(el => { el.classList.add('notranslate'); el.setAttribute('translate', 'no'); });
+
+/* ---------- Settings ---------- */
+function backupData(){
+  const data = {};
+  for(let i = 0; i < localStorage.length; i++){ const k = localStorage.key(i); if(k && k.startsWith('sanctify.')) data[k] = localStorage.getItem(k); }
+  const blob = new Blob([JSON.stringify({ sanctify:1, saved:new Date().toISOString(), data }, null, 1)], { type:'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'sanctify-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  toast(i18n('Your backup was downloaded.') || 'Your backup was downloaded.');
+}
+function switchRow(id, name, note, on, disabled){
+  return `<div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">${name}</span><span class="shine-row-note">${note}</span></span>
+    <button type="button" class="shine-switch" id="${id}" role="switch" aria-checked="${on}" aria-label="${name}"${disabled ? ' disabled' : ''}></button></div>`;
+}
+function renderSettings(){
+  const theme = THEMES.find(t => t.key === document.documentElement.dataset.theme) || THEMES[0];
+  const size = store.get('textsize', 'md'), motion = store.get('motion', '') === 'reduced';
+  const gold = GOLD_THEMES.has(theme.key);
+  const lang = TRANSLATED ? null : store.get('lang', 'en');
+  entryListEl.innerHTML = `
+    <div class="settings-page">
+      <section class="settings-card">
+        <h3>${navIcon('globe')}Language</h3>
+        <div class="settings-choices notranslate" translate="no">${[['en', 'English'], ['es', 'Español'], ['pl', 'Polski']].map(([code, name]) =>
+          `<button class="settings-choice" type="button" data-set-lang="${code}" aria-pressed="${lang === code}" lang="${code}">${name}</button>`).join('')}</div>
+        <p class="forum-meta">Sanctify is translated by hand into Spanish and Polish: menus, pages, and the common prayers. Longer texts, such as the lives of the saints, are still in English.</p>
+        <button class="btn quiet" type="button" data-more-langs>More languages (Google Translate)…</button>
+      </section>
+      <section class="settings-card">
+        <h3>${navIcon('eastcross')}Edition</h3>
+        <p class="forum-meta">The Mass, calendar, and prayers Sanctify follows.</p>
+        <div class="settings-editions">${EDITIONS.map(ed => `<button class="settings-edition" type="button" data-set-rite="${ed.key}" aria-pressed="${riteKey() === ed.key}">
+          <svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="${CROSS_PATHS[ed.key]}"/></svg><span><strong>${escapeHtml(ed.name)}</strong><small>${escapeHtml(ed.desc)}</small></span></button>`).join('')}</div>
+      </section>
+      <section class="settings-card">
+        <h3>${navIcon('palette')}Appearance</h3>
+        <div class="settings-theme"><span class="theme-swatch" style="--sw-bg:${theme.swatch[0]}; --sw-accent:${theme.swatch[1]}"></span>
+          <span><small>Current theme</small><strong class="notranslate" translate="no">${escapeHtml(theme.name)}</strong></span>
+          <button class="btn quiet" type="button" data-open-themes>Choose a theme</button></div>
+        ${switchRow('setShine', 'Gold shine', gold ? 'A metallic sheen on titles and cards, on themes with gold in them.' : 'Only on themes marked ✦', gold && shineWanted(), !gold)}
+        ${switchRow('setGlow', 'Background glow', 'A soft light behind pages and banners.', glowWanted(), false)}
+        ${switchRow('setMotion', 'Reduce motion', 'Pages appear without sliding or fading in.', motion, false)}
+        <div class="settings-sub">Text size</div>
+        <div class="settings-choices">${TEXT_SIZES.map(([k, l, name], i) => `<button class="settings-choice textsize-choice" type="button" data-set-size="${k}" aria-pressed="${size === k}" aria-label="${name}" style="font-size:${0.85 + i * 0.2}rem">${l}</button>`).join('')}</div>
+      </section>
+      <section class="settings-card">
+        <h3>${navIcon('shield')}Your data</h3>
+        <p class="forum-meta">Your saved entries, novenas, intentions, prayer record, badges, and settings are kept only in this browser. Save a backup to move them to another device.</p>
+        <div class="forum-form-actions">
+          <button class="btn quiet" type="button" data-backup>Download a backup</button>
+          <label class="btn quiet">Restore a backup<input type="file" accept="application/json,.json" data-restore hidden></label>
+          <button class="btn quiet" type="button" data-clear-recent>Clear recently viewed</button>
+          <button class="btn quiet danger-text" type="button" data-erase>Erase everything on this device</button>
+        </div>
+      </section>
+    </div>`;
+  const root = entryListEl;
+  root.querySelectorAll('[data-set-lang]').forEach(b => b.addEventListener('click', () => { if(b.getAttribute('aria-pressed') !== 'true') setUiLanguage(b.dataset.setLang); }));
+  root.querySelector('[data-more-langs]').addEventListener('click', openLanguagePicker);
+  root.querySelectorAll('[data-set-rite]').forEach(b => b.addEventListener('click', () => { setRite(b.dataset.setRite); renderSettings(); }));
+  root.querySelector('[data-open-themes]').addEventListener('click', ev => { ev.stopPropagation(); setThemeMenuOpen(true); });
+  root.querySelector('#setShine').addEventListener('click', () => { try{ localStorage.setItem('sanctify.shine', shineWanted() ? '0' : '1'); }catch(e){} applyShine(); renderSettings(); });
+  root.querySelector('#setGlow').addEventListener('click', () => { try{ localStorage.setItem('sanctify.glow', glowWanted() ? '0' : '1'); }catch(e){} applyGlow(); renderSettings(); });
+  root.querySelector('#setMotion').addEventListener('click', () => {
+    const on = store.get('motion', '') !== 'reduced';
+    store.set('motion', on ? 'reduced' : '');
+    if(on) document.documentElement.setAttribute('data-motion', 'reduced'); else document.documentElement.removeAttribute('data-motion');
+    renderSettings();
+  });
+  root.querySelectorAll('[data-set-size]').forEach(b => b.addEventListener('click', () => { store.set('textsize', b.dataset.setSize); applyTextSize(b.dataset.setSize); renderSettings(); }));
+  root.querySelector('[data-backup]').addEventListener('click', backupData);
+  root.querySelector('[data-restore]').addEventListener('change', async ev => {
+    const file = ev.target.files && ev.target.files[0];
+    ev.target.value = '';
+    if(!file) return;
+    let parsed = null;
+    try{ parsed = JSON.parse(await file.text()); }catch(e){}
+    if(!parsed || parsed.sanctify !== 1 || typeof parsed.data !== 'object'){ toast(i18n('That file isn’t a Sanctify backup.') || 'That file isn’t a Sanctify backup.'); return; }
+    if(!confirm('Replace what’s on this device with the backup from ' + new Date(parsed.saved).toLocaleDateString() + '?')) return;
+    Object.entries(parsed.data).forEach(([k, v]) => { if(k.startsWith('sanctify.') && typeof v === 'string') localStorage.setItem(k, v); });
+    toast(i18n('Your backup was restored.') || 'Your backup was restored.');
+    setTimeout(() => location.reload(), 600);
+  });
+  root.querySelector('[data-clear-recent]').addEventListener('click', () => { store.set('recent', []); toast(i18n('Recently viewed was cleared.') || 'Recently viewed was cleared.'); });
+  root.querySelector('[data-erase]').addEventListener('click', () => {
+    if(!confirm('Erase your saved entries, novenas, intentions, prayer record, badges, and settings from this device? This can’t be undone. You may want to download a backup first.')) return;
+    Object.keys(localStorage).filter(k => k.startsWith('sanctify.')).forEach(k => localStorage.removeItem(k));
+    location.reload();
+  });
+}
+
+/* ---------- Spanish and Polish, translated by hand ----------
+   lang/es.js and lang/pl.js map the English words on the page to their translation. Anything the
+   page shows is swapped as it appears; longer texts without a translation stay in English. The
+   common prayers are replaced by their Spanish and Polish texts, and dates follow the language. */
+const I18N = (window.SANCTIFY_I18N && !TRANSLATED) ? window.SANCTIFY_I18N : null;
+const UI_LANG = I18N ? I18N.lang : 'en';
+const I18N_PATTERNS = I18N ? Object.entries(I18N.strings).filter(([k]) => /\{[n*]\}/.test(k)).map(([k, v]) => {
+    const kinds = [...k.matchAll(/\{([n*])\}/g)].map(m => m[1]);
+    const re = new RegExp('^' + k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\\\{n\\\}/g, '([0-9][0-9.,\u00a0]*)').replace(/\\\{\\\*\\\}/g, '(.+?)') + '$');
+    return [re, v, kinds];
+  }) : [];
+function i18n(text){
+  if(!I18N) return null;
+  const k = text.replace(/\s+/g, ' ').trim();
+  if(!k) return null;
+  const v = I18N.strings[k];
+  if(v !== undefined) return v === k ? null : v;
+  for(const [re, tpl, kinds] of I18N_PATTERNS){
+    const m = re.exec(k);
+    if(!m) continue;
+    const caps = kinds.map((kind, i) => kind === '*' ? (i18n(m[i + 1]) || m[i + 1]) : m[i + 1]);
+    const byKind = { n:caps.filter((c, i) => kinds[i] === 'n'), '*':caps.filter((c, i) => kinds[i] === '*') };
+    return tpl.replace(/\{([n*])\}/g, (x, kind) => byKind[kind].shift());
+  }
+  return null;
+}
+const I18N_SKIP = '.notranslate, [translate="no"], script, style, textarea, code, #readBody, .forum-body, .wiki-body, .member-bio, .mine-title, .intention-text';
+function i18nTree(root){
+  if(!I18N || !root) return;
+  if(root.nodeType === 3){ const p = root.parentElement; if(p && !p.closest(I18N_SKIP)){ const v = i18n(root.nodeValue); if(v) root.nodeValue = root.nodeValue.replace(root.nodeValue.trim(), v); } return; }
+  if(root.nodeType !== 1 || root.closest(I18N_SKIP)) return;
+  const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode:n => n.parentElement && n.parentElement.closest(I18N_SKIP) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+  let n;
+  while((n = walk.nextNode())){ const v = i18n(n.nodeValue); if(v) n.nodeValue = n.nodeValue.replace(n.nodeValue.trim(), v); }
+  [root, ...root.querySelectorAll('[placeholder],[aria-label],[title]')].forEach(el => {
+    for(const a of ['placeholder', 'aria-label', 'title']){
+      if(!el.hasAttribute || !el.hasAttribute(a)) continue;
+      const v = i18n(el.getAttribute(a));
+      if(v && v !== el.getAttribute(a)) el.setAttribute(a, v);
+    }
+  });
+}
+function i18nTitle(){
+  const parts = document.title.split(' — ');
+  const t = parts.map(p => i18n(p) || p).join(' — ');
+  if(t !== document.title) document.title = t;
+}
+if(I18N){
+  // Dates in the chosen language wherever the page doesn't name one
+  for(const fn of ['toLocaleDateString', 'toLocaleString', 'toLocaleTimeString']){
+    const orig = Date.prototype[fn];
+    Date.prototype[fn] = function(loc, opts){ return orig.call(this, loc === undefined ? UI_LANG : loc, opts); };
+  }
+  // The common prayers in their Spanish and Polish wording (the English is kept for the language buttons)
+  const own = UI_LANG === 'es' ? Object.fromEntries(Object.entries(PRAYER_ES).map(([id, p]) => [id, { title:p.title, content:p.text }])) : (I18N.prayers || {});
+  for(const [id, p] of Object.entries(own)){
+    const e = LIBRARY_ALL.find(x => x.id === id);
+    if(e){ e._en = { title:e.title, content:e.content }; e.title = p.title; e.content = p.content; }
+  }
+  i18nTree(document.body);
+  i18nTitle();
+  new MutationObserver(list => {
+    for(const m of list){
+      if(m.type === 'attributes') i18nTree(m.target);
+      else if(m.target.nodeName === 'TITLE' || m.target === document.head) i18nTitle();
+      else m.addedNodes.forEach(i18nTree);
+    }
+  }).observe(document.documentElement, { childList:true, subtree:true, attributes:true, attributeFilter:['placeholder', 'aria-label', 'title'] });
+}
+function setUiLanguage(code){
+  if(TRANSLATED){ location.href = SITE_ORIGIN + '/?lang=' + code + location.hash; return; }
+  store.set('lang', code);
+  store.set('prayerLang', code);   // prayers open in the new language too
+  location.reload();
+}
 
 /* ---------- Offline support ---------- */
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
@@ -20230,6 +20453,7 @@ async function renderBadges(){
    INIT
    ========================================================= */
 // Deep links: #/library/saints opens a page (older #saint links still work); ?q=joseph runs a search
+if(I18N && I18N.rosary) Object.assign(ROSARY_PRAYERS, I18N.rosary);
 applyRite();
 setTimeout(checkBadges, 1500);
 // Keep the page clear of the phone tab bar at whatever height it really is (larger text, the iPhone home bar)
