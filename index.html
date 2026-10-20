@@ -616,12 +616,13 @@
     .topbar-inner{padding:0 14px; gap:10px;}
     .searchbar{max-width:none;}
   }
+  /* On narrow phones the edition switch lives in the menu, leaving room for the search box */
+  @media (max-width:420px){ #riteToggle{display:none;} }
   @media (max-width:600px){
     .brand span{display:none;}
     .search-kbd{display:none;}
     .layout{padding:20px 16px 70px;}
     .top-actions{gap:6px;}
-    #topSaved{display:none;}
     .searchbar{min-width:0;}
   }
 
@@ -655,6 +656,7 @@
   nav.sidebar button.navlink[data-cat="theology"]{--cat-color:var(--purple);}
   nav.sidebar button.navlink[data-cat="news"]{--cat-color:var(--amber);}
   nav.sidebar button.navlink[data-cat="badges"]{--cat-color:var(--gold);}
+  nav.sidebar .nav-featured > .group-label{display:block; margin:6px 0 2px; padding:0 12px; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-soft);}
   nav.sidebar button.navlink[data-cat="moderate"]{--cat-color:var(--wine);}
 
   .side-actions{border-top:1px solid var(--line); padding-top:18px; display:flex; flex-direction:column; gap:8px;}
@@ -2284,7 +2286,106 @@
   .bio-panel textarea{width:100%; margin-top:8px; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:var(--parchment); color:var(--ink); font:inherit; resize:vertical;}
   .bio-row{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:8px;}
   .crop-card{max-width:420px;}
+  .account-nav{display:flex; gap:6px; flex-wrap:wrap; margin:0 0 18px; padding:4px; border:1px solid var(--line); border-radius:999px; background:var(--parchment-light); width:max-content; max-width:100%;}
+  .account-nav-link{display:inline-flex; align-items:center; gap:7px; padding:8px 15px; border:none; border-radius:999px; background:none; color:var(--ink-soft); font:inherit; font-size:0.92rem; cursor:pointer;}
+  .account-nav-link svg{width:17px; height:17px;}
+  .account-nav-link:hover{color:var(--ink); background:rgba(var(--ink-rgb),0.05);}
+  .account-nav-link.active{background:var(--wine); color:var(--parchment-light);}
+  @media (max-width:480px){ .account-nav{width:100%; border-radius:16px;} .account-nav-link{flex:1; justify-content:center; padding:8px 8px; font-size:0.85rem;} }
   .crop-card.wide{max-width:560px;}
+  .shortcut{display:inline-flex; align-items:center; gap:5px; max-width:100%; margin:1px 1px; padding:1px 9px 1px 6px; border:1px solid color-mix(in srgb, var(--wine) 35%, var(--line)); border-radius:999px; background:color-mix(in srgb, var(--wine) 8%, var(--parchment-light)); color:var(--wine-dark); font:inherit; font-size:0.92em; line-height:1.5; vertical-align:baseline; cursor:pointer; text-align:left;}
+  .shortcut svg{flex:none; width:14px; height:14px;}
+  .shortcut span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .shortcut:hover{background:color-mix(in srgb, var(--wine) 15%, var(--parchment-light));}
+  .shortcut.wiki-link{border-color:color-mix(in srgb, var(--teal) 40%, var(--line)); background:color-mix(in srgb, var(--teal) 9%, var(--parchment-light)); color:var(--ink);}
+  .forum-body a, .wiki-body a{color:var(--wine-dark); text-decoration:underline; text-underline-offset:2px;}
+  .compose-tools{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:6px;}
+  .compose-link{display:inline-flex; align-items:center; gap:5px; font-size:0.9rem;}
+  .compose-link svg{width:16px; height:16px;}
+  .compose-tools code, .wiki-help code{padding:0 4px; border-radius:4px; background:rgba(var(--ink-rgb),0.07); font-size:0.88em;}
+  .link-picker{max-width:520px; width:100%;}
+  .link-picker .searchbar{margin:8px 0 10px; min-width:0;}
+  .lp-results{display:flex; flex-direction:column; gap:4px; max-height:min(46vh, 380px); overflow:auto;}
+  .lp-item{display:flex; align-items:center; gap:10px; padding:8px 10px; border:none; border-radius:10px; background:none; color:var(--ink); font:inherit; text-align:left; cursor:pointer;}
+  .lp-item:hover, .lp-item:focus-visible{background:rgba(var(--ink-rgb),0.06);}
+  .lp-item svg{flex:none; width:20px; height:20px; color:var(--wine);}
+  .lp-item span{display:flex; flex-direction:column;}
+  .lp-item small{color:var(--ink-soft); font-size:0.8rem;}
+  .forum-bar-actions{display:flex; gap:8px; align-items:center;}
+  .forum-bar-actions .btn svg, .wiki-page-actions .btn svg{width:16px; height:16px; margin-right:5px; vertical-align:-3px;}
+  .profile-tabs, .wiki-edit-tabs{display:flex; gap:4px; flex-wrap:wrap; margin:18px 0 12px; border-bottom:1px solid var(--line);}
+  .profile-tabs button, .wiki-edit-tabs button{padding:8px 14px; border:none; border-bottom:2px solid transparent; background:none; color:var(--ink-soft); font:inherit; cursor:pointer; margin-bottom:-1px;}
+  .profile-tabs button[aria-selected="true"], .wiki-edit-tabs button[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--wine);}
+  .profile-tabs .view-count{margin-left:4px;}
+  .wiki-contrib-sum{margin:0 0 10px;}
+  .wiki-intro{display:flex; gap:16px; align-items:flex-start; padding:18px; margin-bottom:18px; border:1px solid var(--line); border-radius:16px; background:var(--parchment-light);}
+  .wiki-intro h3{margin:0 0 4px; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.4rem;}
+  .wiki-intro p{margin:0 0 10px; max-width:62ch;}
+  .wiki-layout{display:grid; grid-template-columns:minmax(0, 1fr) 300px; gap:22px; align-items:start;}
+  @media (max-width:860px){ .wiki-layout{grid-template-columns:1fr;} }
+  .wiki-tools{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:12px;}
+  .wiki-tools .searchbar{flex:1 1 220px; min-width:0;}
+  .wiki-list{display:flex; flex-direction:column; gap:8px;}
+  .wiki-letter{margin:10px 0 0; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.2rem; color:var(--ink-soft);}
+  .wiki-item{display:flex; flex-direction:column; gap:3px; padding:12px 14px; border:1px solid var(--line); border-radius:12px; background:var(--parchment-light); color:var(--ink); font:inherit; text-align:left; cursor:pointer;}
+  .wiki-item:hover{border-color:var(--teal);}
+  .wiki-item strong{font-family:'Cormorant Garamond', Georgia, serif; font-size:1.2rem;}
+  .wiki-item-excerpt{color:var(--ink-soft); font-size:0.92rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+  .wiki-side{padding:16px; border:1px solid var(--line); border-radius:14px; background:var(--parchment-light);}
+  .wiki-side h3{margin:0 0 8px; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.25rem;}
+  .wiki-changes{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; font-size:0.9rem;}
+  .wiki-changes li{display:flex; flex-direction:column; gap:1px;}
+  .wiki-summary{color:var(--ink-soft); font-style:italic;}
+  .wiki-delta{font-size:0.8rem; font-variant-numeric:tabular-nums; color:var(--ink-soft);}
+  .wiki-delta.up{color:var(--green);}
+  .wiki-delta.down{color:var(--wine);}
+  .wiki-help{margin-top:12px; font-size:0.9rem;}
+  .wiki-help summary{cursor:pointer; color:var(--wine-dark);}
+  .wiki-help ul{margin:8px 0 0; padding-left:18px;}
+  .wiki-page-bar{display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--line);}
+  .wiki-page-actions{display:flex; flex-wrap:wrap; gap:8px;}
+  .danger-text{color:var(--wine);}
+  .wiki-body{max-width:72ch;}
+  .wiki-body h3{margin:24px 0 8px; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.5rem; scroll-margin-top:90px;}
+  .wiki-body h4{margin:18px 0 6px; font-size:1.05rem; scroll-margin-top:90px;}
+  .wiki-body ul, .wiki-body ol{margin:8px 0; padding-left:22px;}
+  .wiki-body blockquote{margin:12px 0; padding:4px 0 4px 14px; border-left:3px solid var(--gold); font-style:italic;}
+  .wiki-toc{float:right; margin:0 0 12px 18px; padding:12px 16px; max-width:260px; border:1px solid var(--line); border-radius:12px; background:var(--parchment-light); font-size:0.9rem;}
+  .wiki-toc ol{margin:6px 0 0; padding-left:18px;}
+  @media (max-width:600px){ .wiki-toc{float:none; margin:0 0 14px; max-width:none;} }
+  .wiki-foot{clear:both; margin-top:26px; padding-top:12px; border-top:1px solid var(--line);}
+  .wiki-form textarea{min-height:320px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:0.92rem; line-height:1.55;}
+  .wiki-preview{min-height:200px; padding:14px; border:1px dashed var(--line); border-radius:12px; margin-bottom:14px;}
+  .wiki-revs{list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column; gap:8px;}
+  .wiki-rev{padding:12px 14px; border:1px solid var(--line); border-radius:12px; background:var(--parchment-light);}
+  .wiki-rev-top{display:flex; flex-wrap:wrap; gap:8px; justify-content:space-between; align-items:center;}
+  .wiki-rev-actions{display:flex; gap:12px;}
+  .wiki-rev .wiki-summary{margin:4px 0 0;}
+  .wiki-diff{margin-top:10px; border:1px solid var(--line); border-radius:10px; overflow:auto; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:0.82rem; line-height:1.5;}
+  .wiki-diff div{padding:1px 10px; white-space:pre-wrap; overflow-wrap:anywhere;}
+  .wiki-diff span{display:inline-block; width:14px; color:var(--ink-soft);}
+  .diff-add{background:color-mix(in srgb, var(--green) 16%, transparent);}
+  .diff-del{background:color-mix(in srgb, var(--wine) 14%, transparent); text-decoration:line-through; text-decoration-color:rgba(var(--ink-rgb),0.35);}
+  .diff-gap{color:var(--ink-soft); text-align:center;}
+  .automod-name{color:var(--amber);}
+  .automod-reports{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:10px; font-size:0.92rem;}
+  .automod-reports input{width:64px; padding:6px 8px; border:1px solid var(--line); border-radius:8px; background:var(--parchment); color:var(--ink); font:inherit;}
+  .sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+  .gen-bar{display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-bottom:16px;}
+  .gen-bar .btn svg, .gen-card .btn svg{width:16px; height:16px; margin-right:6px; vertical-align:-3px;}
+  .gen-need{display:flex; align-items:center; gap:8px; flex:1 1 260px; font-size:0.92rem; color:var(--ink-soft);}
+  .gen-need input{flex:1; min-width:0; padding:9px 14px; border:1px solid var(--line); border-radius:999px; background:var(--parchment-light); color:var(--ink); font:inherit;}
+  .gen-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;}
+  .gen-card{display:flex; gap:16px; padding:18px; border:1px solid var(--line); border-radius:16px; background:var(--parchment-light); box-shadow:var(--shadow);}
+  .gen-card h3{margin:2px 0 6px; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.45rem; line-height:1.15;}
+  .gen-card p{margin:0 0 10px;}
+  .gen-card .saint-portrait{flex:0 0 84px; width:84px; height:104px;}
+  .gen-art{flex:0 0 72px; width:72px; height:72px; color:var(--wine);}
+  .gen-art svg{width:100%; height:100%;}
+  .gen-body{min-width:0;}
+  .gen-patron{font-size:0.88rem; color:var(--ink-soft);}
+  .gen-patron .patron-label{margin-right:4px;}
+  @media (max-width:480px){ .gen-card{flex-direction:column;} }
   .crop-stage canvas.wide{width:min(480px, 78vw); aspect-ratio:3; border-radius:8px;}
   .profile-banner{position:relative; height:clamp(110px, 24vw, 190px); border:1px solid var(--line); border-bottom:none; border-radius:14px 14px 0 0; overflow:hidden; background:linear-gradient(135deg, var(--parchment-dark), var(--parchment)); background-size:cover; background-position:center;}
   .profile-banner img{display:block; width:100%; height:100%; object-fit:cover;}
@@ -3176,13 +3277,12 @@
     </button>
     <nav class="topnav" id="topnav" aria-label="Main">
       <button class="topnav-link" data-route="today">Today</button>
-      <button class="topnav-link" data-route="calendar">Calendar</button>
       <button class="topnav-link" data-route="pray">Pray</button>
-      <button class="topnav-link" data-route="saints">Saints</button>
       <button class="topnav-link" data-route="history">History</button>
       <button class="topnav-link" data-route="library">Library</button>
       <button class="topnav-link" data-route="learn">Learn</button>
       <button class="topnav-link" data-route="community">Community</button>
+      <button class="topnav-link" data-route="wiki">Wiki</button>
     </nav>
     <div class="searchbar" role="search">
       <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
@@ -3191,8 +3291,8 @@
       <button id="searchClear" aria-label="Clear search">×</button>
     </div>
     <div class="top-actions">
-      <button class="icon-btn top-action" data-route="mine" aria-label="My Sanctify" title="My Sanctify" id="topSaved"><span class="top-badge" id="topSavedCount" hidden></span></button>
       <button class="icon-btn top-action" data-route="account" aria-label="Sign in" title="Sign in" id="topAccount"></button>
+      <button class="icon-btn top-action" data-route="calendar" aria-label="Calendar" title="Calendar" id="topCalendar"></button>
       <button class="icon-btn top-action rite-toggle" id="riteToggle" aria-label="Switch to the Eastern Catholic edition" title="Switch to the Eastern Catholic edition"></button>
       <a class="icon-btn top-action discord-top" id="topDiscord" href="https://discord.gg/QAcdHxc4" target="_blank" rel="noopener" aria-label="Join the Sanctify Discord" title="Join the Sanctify Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.11 13.11 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
       <button id="themeToggle" class="theme-toggle icon-btn" aria-label="Appearance" title="Appearance" aria-haspopup="menu" aria-expanded="false"></button>
@@ -3208,22 +3308,35 @@
   <button class="side-brand" data-route="home" aria-label="Sanctify home"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true" fill="currentColor"><path fill-rule="evenodd" d="M28.5 3h7v14h-7zM12 17h40v7H12zM28.5 24h7v37h-7z"/></svg><span>Sanctify</span><small>Eastern</small></button>
   <div id="navList">
     <div class="nav-group">
+      <button class="group-label group-link" data-route="home">Home ›</button>
       <ul>
-        <li><button class="navlink" data-route="home" data-cat="home">Home</button></li>
         <li><button class="navlink" data-route="today" data-cat="daily">Today</button></li>
         <li><button class="navlink" data-route="calendar" data-cat="calendar">Calendar <span class="count" id="count-calendar"></span></button></li>
+      </ul>
+    </div>
+    <div class="nav-group">
+      <button class="group-label group-link" data-route="community">Community ›</button>
+      <ul>
+        <li><button class="navlink" data-route="wiki" data-cat="wiki">Community Wiki</button></li>
         <li><button class="navlink" data-route="news" data-cat="news">News</button></li>
-        <li><button class="navlink" data-route="mine" data-cat="mine">My Sanctify <span class="count" id="count-mine"></span></button></li>
-        <li><button class="navlink" data-route="badges" data-cat="badges">Badges</button></li>
-        <li><button class="navlink" data-route="community" data-cat="community">Community</button></li>
-        <li><button class="navlink" data-route="account" data-cat="account">Account</button></li>
         <li id="navModerate" hidden><button class="navlink" data-route="moderate" data-cat="moderate">Moderation</button></li>
+      </ul>
+    </div>
+    <div class="nav-group nav-featured">
+      <div class="group-label">Featured</div>
+      <ul>
+        <li><button class="navlink" data-route="saints/all" data-cat="saint">The Saints</button></li>
+        <li><button class="navlink" data-route="saints/patron-finder" data-cat="patronfinder">Find Your Patron Saint</button></li>
+        <li><button class="navlink" data-route="pray/rosary" data-cat="rosary">The Rosary</button></li>
+        <li><button class="navlink" data-route="library/bible" data-cat="bible">The Bible</button></li>
+        <li><button class="navlink" data-route="pray/generator" data-cat="generator">Prayer & Saint Generator</button></li>
       </ul>
     </div>
     <div class="nav-group">
       <button class="group-label group-link" data-route="pray">Pray ›</button>
       <ul>
         <li><button class="navlink" data-route="pray/prayers" data-cat="prayer">Prayers <span class="count" id="count-prayer"></span></button></li>
+        <li><button class="navlink" data-route="pray/generator" data-cat="generator">Prayer & Saint Generator</button></li>
         <li><button class="navlink" data-route="pray/rosary" data-cat="rosary">Rosary</button></li>
         <li><button class="navlink" data-route="pray/stations" data-cat="stations">Stations of the Cross</button></li>
         <li><button class="navlink" data-route="pray/chaplet" data-cat="chaplet">Divine Mercy Chaplet</button></li>
@@ -3240,17 +3353,12 @@
       </ul>
     </div>
     <div class="nav-group">
-      <button class="group-label group-link" data-route="saints">Saints ›</button>
-      <ul>
-        <li><button class="navlink" data-route="saints/all" data-cat="saint">All the Saints <span class="count" id="count-saint"></span></button></li>
-        <li><button class="navlink" data-route="saints/patron-finder" data-cat="patronfinder">Find Your Patron Saint</button></li>
-        <li><button class="navlink" data-route="saints/quotes" data-cat="quotes">Quotes of the Saints</button></li>
-      </ul>
-    </div>
-    <div class="nav-group">
       <button class="group-label group-link" data-route="history">History ›</button>
       <ul>
         <li><button class="navlink" data-route="history/timeline" data-cat="history">Church History <span class="count" id="count-history"></span></button></li>
+        <li><button class="navlink" data-route="saints/all" data-cat="saint">All the Saints <span class="count" id="count-saint"></span></button></li>
+        <li><button class="navlink" data-route="saints/patron-finder" data-cat="patronfinder">Find Your Patron Saint</button></li>
+        <li><button class="navlink" data-route="saints/quotes" data-cat="quotes">Quotes of the Saints</button></li>
         <li><button class="navlink" data-route="history/popes" data-cat="popes">The Popes</button></li>
         <li><button class="navlink" data-route="history/councils" data-cat="councils">The Ecumenical Councils</button></li>
         <li><button class="navlink" data-route="history/icons" data-cat="icons">Famous Icons</button></li>
@@ -3315,16 +3423,14 @@
       <div><h4>Pray</h4>
         <button data-route="pray/prayers">Prayers</button><button data-route="pray/rosary">Rosary</button><button data-route="pray/stations">Stations of the Cross</button>
         <button data-route="pray/chaplet">Divine Mercy Chaplet</button><button data-route="pray/sacred-heart">Sacred Heart Chaplet</button><button data-route="pray/examination">Examination of Conscience</button><button data-route="pray/timer">Prayer Timer</button><button data-route="pray/examen">Daily Examen</button><button data-route="pray/angelus">Angelus</button><button data-route="pray/lectio">Lectio Divina</button><button data-route="pray/devotions">Devotions</button><button data-route="pray/little-office">Little Office</button><button data-route="pray/hymns">Hymns & Chant</button><button data-route="pray/tracker">Prayer Tracker</button></div>
-      <div><h4>Saints</h4>
-        <button data-route="saints/all">All the Saints</button><button data-route="saints/patron-finder">Find Your Patron Saint</button><button data-route="saints/quotes">Quotes of the Saints</button><button data-route="mine">Novenas</button></div>
       <div><h4>History</h4>
-        <button data-route="history/timeline">Church History</button><button data-route="history/timeline/apparitions">Marian Apparitions</button><button data-route="history/timeline/crusades">The Crusades</button><button data-route="history/popes">The Popes</button><button data-route="history/councils">The Councils</button><button data-route="history/icons">Famous Icons</button><button data-route="history/orders">Religious Orders</button><button data-route="history/eastern-churches">Eastern Catholic Churches</button></div>
+        <button data-route="history/timeline">Church History</button><button data-route="saints/all">All the Saints</button><button data-route="saints/patron-finder">Find Your Patron Saint</button><button data-route="saints/quotes">Quotes of the Saints</button><button data-route="history/timeline/apparitions">Marian Apparitions</button><button data-route="history/timeline/crusades">The Crusades</button><button data-route="history/popes">The Popes</button><button data-route="history/councils">The Councils</button><button data-route="history/icons">Famous Icons</button><button data-route="history/orders">Religious Orders</button><button data-route="history/eastern-churches">Eastern Catholic Churches</button></div>
       <div><h4>Library</h4>
         <button data-route="library/bible">The Bible</button><button data-route="library/books">Books</button><button data-route="library/plans">Reading Plans</button><button data-route="library/shop">Shop</button><button data-route="library/all">Browse everything</button></div>
       <div><h4>Learn</h4>
         <button data-route="learn/theology">Theology</button><button data-route="learn/theology/fathers">The Faith of the Fathers</button><button data-route="learn/theology/apologetics">Defending the Faith</button><button data-route="learn/mass">The Mass Explained</button><button data-route="learn/living-the-faith">Living the Faith</button><button data-route="learn/lists">Catholic Lists</button><button data-route="learn/church">Inside a Church</button><button data-route="learn/glossary">Glossary</button><button data-route="learn/quiz">Quiz</button></div>
       <div><h4>Sanctify</h4>
-        <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="news">News</button><button data-route="badges">Badges</button><button data-route="library/resources">Resources</button><button data-route="mine">My Sanctify</button><button data-route="community">Community</button><button data-route="account">Account</button><button class="footer-rite" data-rite-switch>Switch to the Eastern Catholic edition</button></div>
+        <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="community">Community</button><button data-route="wiki">Community Wiki</button><button data-route="news">News</button><button data-route="pray/generator">Prayer & Saint Generator</button><button data-route="account/saved">Saved & Novenas</button><button data-route="account/badges">Badges</button><button data-route="library/resources">Resources</button></div>
     </div>
   </div>
   <p class="footer-note">Ad maiorem Dei gloriam. Scripture quotations are from the Revised Standard Version of the Bible: Catholic Edition, copyright © 1965, 1966 the Division of Christian Education of the National Council of the Churches of Christ in the United States of America. Used by permission. All rights reserved. Saint and book images come from Wikipedia and Wikimedia Commons.</p>
@@ -3332,7 +3438,7 @@
 <nav class="tabbar" aria-label="Sections">
   <button class="tab-link" data-route="today" data-icon="daily"><span>Today</span></button>
   <button class="tab-link" data-route="pray" data-icon="prayer"><span>Pray</span></button>
-  <button class="tab-link" data-route="saints" data-icon="saint"><span>Saints</span></button>
+  <button class="tab-link" data-route="community" data-icon="community"><span>Community</span></button>
   <button class="tab-link" data-route="library" data-icon="book"><span>Library</span></button>
   <button class="tab-link" data-route="learn" data-icon="theology"><span>Learn</span></button>
   <button class="tab-link" data-route="history" data-icon="history"><span>History</span></button>
@@ -7278,11 +7384,6 @@ function updateCounts(){
     const el = document.getElementById('count-' + k);
     if(el) el.textContent = counts[k];
   });
-  const mineEl = document.getElementById('count-mine');
-  const savedCount = store.get('saved', []).length;
-  if(mineEl) mineEl.textContent = savedCount || '';
-  const topBadge = document.getElementById('topSavedCount');
-  if(topBadge){ topBadge.textContent = savedCount; topBadge.hidden = !savedCount; }
   const calEl = document.getElementById('count-calendar');
   if(calEl) calEl.textContent = CALENDAR_DATA.length;
 }
@@ -7333,8 +7434,8 @@ function render(){
     document.getElementById('sectionIcon').innerHTML = navIcon(sec.icon);
     // Breadcrumb: Home › Learn › Theology
     const trail = [];
-    for(let p = route.parent; p; p = (ROUTES[p] || {}).parent) trail.unshift(p);
-    crumbs.innerHTML = trail.length
+    for(let p = route.parent; p && p !== 'home'; p = (ROUTES[p] || {}).parent) trail.unshift(p);
+    crumbs.innerHTML = trail.length || route.parent === 'home'
       ? [`<button data-route="home">Home</button>`, ...trail.map(p => `<button data-route="${p}">${escapeHtml(routeName(p))}</button>`)].join('<span aria-hidden="true">›</span>')
       : '';
     sectionTitleEl.textContent = route.name || sec.name;
@@ -7346,7 +7447,8 @@ function render(){
       home:renderHome, calendar:renderCalendar, rosary:renderRosary, shop:renderShop, stations:renderStations,
       chaplet:renderChaplet, sacredheart:renderSacredHeart, history:renderHistory, daily:renderDaily, theology:renderTheology,
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
-      community:renderCommunity, resources:renderResources,
+      community:renderCommunity, resources:renderResources, generator:renderGenerator,
+      wiki:renderWiki, wikipage:renderWikiPage, wikiedit:renderWikiEdit, wikihistory:renderWikiHistory, wikirev:renderWikiRevision,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
       tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, lists:renderLists, church:renderChurchGuide, councils:renderCouncils, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, badges:renderBadges, devotions:renderDevotions, littleoffice:renderLittleOffice, vocations:renderVocations, hymns:renderHymns, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
       'hub-pray':() => renderHub('pray'), 'hub-library':() => renderHub('library'), 'hub-learn':() => renderHub('learn'), 'hub-history':() => renderHub('history'), 'hub-saints':() => renderHub('saints')
@@ -10123,8 +10225,199 @@ function forumTag(cat){
 }
 function forumText(text){
   return String(text || '').split(/\n\s*\n/).map(p => p.trim()).filter(Boolean)
-    .map(p => `<p>${escapeHtml(p).replace(/\n/g, '<br>')}</p>`).join('');
+    .map(p => `<p>${p.split('\n').map(inlineHtml).join('<br>')}</p>`).join('');
 }
+
+/* ---------- Page shortcuts: [[...]] links to anything on Sanctify ----------
+   [[s207]] or [[s207|St. Joseph]]   a prayer, saint, book, or other entry
+   [[/pray/rosary|the Rosary]]       any page of the site
+   [[Saint Joseph]]                  a page of the Community Wiki
+   Links to sanctify.pages.dev become shortcuts too. */
+const SITE_URL = /^(?:https?:\/\/)?(?:www\.)?sanctify\.pages\.dev\/?(?:index\.html)?(?:\?[^#\s]*)?#(\/[^\s]*|read=[^\s]+)$/i;
+function wikiSlugify(title){
+  return String(title || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+    .replace(/[’']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80).replace(/-+$/, '');
+}
+function isSitePath(path){
+  return !!(ROUTES[path] || ROUTE_ALIASES[path] || POST_ROUTE.test(path) || PROFILE_ROUTE.test(path) || WIKI_ROUTE.test(path) || WIKI_REV_ROUTE.test(path)
+    || BIBLE_ROUTE.test(path) || BOOK_ROUTE.test(path) || CCC_ROUTE.test(path));
+}
+function sitePathLabel(path){
+  const r = ROUTES[ROUTE_ALIASES[path] || path];
+  if(r) return routeName(ROUTE_ALIASES[path] || path);
+  let m;
+  if((m = PROFILE_ROUTE.exec(path))) return m[1];
+  if((m = WIKI_ROUTE.exec(path))) return m[2].replace(/-/g, ' ').replace(/^./, c => c.toUpperCase());
+  if(POST_ROUTE.test(path)) return 'A Community post';
+  if(BIBLE_ROUTE.test(path)) return 'The Bible';
+  if(BOOK_ROUTE.test(path)) return 'Books';
+  if(CCC_ROUTE.test(path)) return 'The Catechism';
+  return path;
+}
+function sitePathIcon(path){
+  const key = ROUTE_ALIASES[path] || path;
+  if(ROUTES[key]) return (SECTIONS[ROUTES[key].cat] || {}).icon || 'all';
+  if(PROFILE_ROUTE.test(path)) return 'account';
+  if(WIKI_ROUTE.test(path) || WIKI_REV_ROUTE.test(path)) return 'wiki';
+  if(POST_ROUTE.test(path)) return 'community';
+  if(BIBLE_ROUTE.test(path)) return 'bible';
+  if(BOOK_ROUTE.test(path)) return 'book';
+  if(CCC_ROUTE.test(path)) return 'catechism';
+  return 'all';
+}
+function shortcutHtml(target, label){
+  target = String(target || '').trim();
+  label = String(label || '').trim();
+  if(!target) return '';
+  const chip = (attr, icon, text, cls = '') => `<button type="button" class="shortcut${cls}" ${attr}>${navIcon(icon)}<span>${escapeHtml(text)}</span></button>`;
+  if(/^#?\//.test(target)){
+    const path = target.replace(/^#?\//, '').replace(/\/+$/, '');
+    if(/^read=/.test(path)) return shortcutHtml(decodeURIComponent(path.slice(5)), label);
+    if(isSitePath(path)) return chip(`data-route="${escapeHtml(path)}"`, sitePathIcon(path), label || sitePathLabel(path));
+    return escapeHtml(label || target);
+  }
+  const e = library.find(x => x.id === target);
+  if(e) return chip(`data-open="${escapeHtml(e.id)}"`, (SECTIONS[e.category] || {}).icon || 'all', label || e.title);
+  if(typeof LIBRARY_ALL !== 'undefined' && LIBRARY_ALL.some(x => x.id === target)) return escapeHtml(label || LIBRARY_ALL.find(x => x.id === target).title);
+  const slug = wikiSlugify(target);
+  return slug ? chip(`data-route="wiki/page/${slug}"`, 'wiki', label || target, ' wiki-link') : escapeHtml(label || target);
+}
+function linkHtml(url){
+  const site = SITE_URL.exec(url);
+  if(site) return shortcutHtml(site[1].startsWith('/') ? site[1] : '/' + site[1], '');
+  const href = /^www\./i.test(url) ? 'https://' + url : url;
+  return `<a href="${escapeHtml(href)}" target="_blank" rel="nofollow ugc noopener">${escapeHtml(url.replace(/^https?:\/\//i, ''))}</a>`;
+}
+function emphasisHtml(h){
+  return h.replace(/\*\*(?=\S)([^*\n]+?)\*\*/g, '<strong>$1</strong>').replace(/(^|[^*\w])\*(?=\S)([^*\n]+?)\*(?!\w)/g, '$1<em>$2</em>');
+}
+// One line of text, with shortcuts, links, **bold**, and *italics*; everything else is shown exactly as typed
+function inlineHtml(raw){
+  raw = String(raw || '');
+  const re = /\[\[([^\[\]\n]{1,200})\]\]|((?:https?:\/\/|www\.)[^\s<>]*[^\s<>.,;:!?)\]'"’”])/gi;
+  let out = '', last = 0, m;
+  while((m = re.exec(raw))){
+    out += emphasisHtml(escapeHtml(raw.slice(last, m.index)));
+    if(m[1]){ const [t, ...l] = m[1].split('|'); out += shortcutHtml(t, l.join('|')); }
+    else out += linkHtml(m[2]);
+    last = re.lastIndex;
+  }
+  return out + emphasisHtml(escapeHtml(raw.slice(last)));
+}
+// A wiki page: ## headings, - lists, 1. numbered lists, > quotations, and paragraphs
+function wikiHtml(text){
+  const lines = String(text || '').replace(/\r/g, '').split('\n');
+  const out = [], heads = [];
+  let para = [], list = null, quote = [];
+  const flush = () => {
+    if(para.length){ out.push(`<p>${para.map(inlineHtml).join('<br>')}</p>`); para = []; }
+    if(list){ out.push(`<${list.tag}>${list.items.map(i => `<li>${inlineHtml(i)}</li>`).join('')}</${list.tag}>`); list = null; }
+    if(quote.length){ out.push(`<blockquote>${quote.map(inlineHtml).join('<br>')}</blockquote>`); quote = []; }
+  };
+  for(const line of lines){
+    let m;
+    if(!line.trim()){ flush(); continue; }
+    if((m = /^(#{1,3})\s+(.+)$/.exec(line))){
+      flush();
+      const id = 'w-' + (wikiSlugify(m[2]) || heads.length);
+      const tag = m[1].length === 3 ? 'h4' : 'h3';
+      if(tag === 'h3') heads.push([id, m[2]]);
+      out.push(`<${tag} id="${id}">${inlineHtml(m[2])}</${tag}>`);
+      continue;
+    }
+    if((m = /^\s*[-*•]\s+(.+)$/.exec(line))){ if(list && list.tag !== 'ul' || para.length || quote.length) flush(); list = list || { tag:'ul', items:[] }; list.items.push(m[1]); continue; }
+    if((m = /^\s*\d+[.)]\s+(.+)$/.exec(line))){ if(list && list.tag !== 'ol' || para.length || quote.length) flush(); list = list || { tag:'ol', items:[] }; list.items.push(m[1]); continue; }
+    if((m = /^>\s?(.*)$/.exec(line))){ if(para.length || list) flush(); quote.push(m[1]); continue; }
+    if(list || quote.length) flush();
+    para.push(line);
+  }
+  flush();
+  const toc = heads.length >= 3 ? `<nav class="wiki-toc" aria-label="Contents"><strong>Contents</strong><ol>${heads.map(([id, t]) => `<li><a href="#${id}" data-toc="${id}">${escapeHtml(t)}</a></li>`).join('')}</ol></nav>` : '';
+  return toc + out.join('');
+}
+// Shortcuts to entries open the reading view; contents links scroll within the page
+document.addEventListener('click', ev => {
+  const open = ev.target.closest('.shortcut[data-open]');
+  if(open){ ev.preventDefault(); ev.stopPropagation(); openReadModal(open.dataset.open); return; }
+  const toc = ev.target.closest('[data-toc]');
+  if(toc){ ev.preventDefault(); const h = document.getElementById(toc.dataset.toc); if(h) h.scrollIntoView({ behavior:'smooth', block:'start' }); }
+}, true);
+
+/* ---------- "Link a page": find anything on Sanctify and drop a shortcut into what you're writing ---------- */
+const PICKER_SKIP = /^(community\/post|community\/user|wiki\/(page|edit|history|revision|new)|library\/(bible|books)\/read|moderate|account)/;
+function openLinkPicker(textarea){
+  const box = document.createElement('div');
+  box.className = 'rite-picker crop-modal';
+  box.innerHTML = `
+    <div class="rp-card link-picker" role="dialog" aria-modal="true" aria-labelledby="lpTitle">
+      <h2 id="lpTitle">Link a page</h2>
+      <p class="rp-intro">Search for a prayer, a saint, any page of Sanctify, or a wiki page. It goes into your text as a shortcut readers can tap.</p>
+      <div class="searchbar"><svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input type="search" placeholder="Rosary, St. Joseph, the Popes…" aria-label="Search for a page" autocomplete="off"></div>
+      <div class="lp-results" role="list"></div>
+      <div class="crop-actions"><span class="crop-gap"></span><button class="btn quiet" type="button" data-lp="cancel">Cancel</button></div>
+    </div>`;
+  document.body.appendChild(box);
+  const input = box.querySelector('input'), results = box.querySelector('.lp-results');
+  const pages = Object.keys(ROUTES).filter(r => !PICKER_SKIP.test(r) && r !== 'home').map(r => ({ token:'/' + r, label:routeName(r), kind:'Page', icon:sitePathIcon(r) }));
+  let wikiHits = [], timer = null, seq = 0;
+  const show = () => {
+    const q = input.value.trim().toLowerCase();
+    let items;
+    if(!q) items = ['saints/all', 'pray/rosary', 'saints/patron-finder', 'library/bible', 'learn/mass', 'history/timeline', 'pray/generator', 'calendar'].map(r => pages.find(p => p.token === '/' + r)).filter(Boolean);
+    else {
+      const hit = t => t.toLowerCase().includes(q);
+      items = [
+        ...pages.filter(p => hit(p.label)).slice(0, 6),
+        ...wikiHits.map(w => ({ token:w.title, label:w.title, kind:'Wiki page', icon:'wiki' })),
+        ...library.filter(e => hit(e.title)).sort((a, b) => a.title.toLowerCase().indexOf(q) - b.title.toLowerCase().indexOf(q)).slice(0, 14)
+          .map(e => ({ token:e.id, label:e.title, kind:CAT_LABEL[e.category] || 'Entry', icon:(SECTIONS[e.category] || {}).icon || 'all' }))
+      ];
+    }
+    results.innerHTML = items.length ? items.map((it, i) => `<button type="button" class="lp-item" role="listitem" data-i="${i}">${navIcon(it.icon)}<span><strong>${escapeHtml(it.label)}</strong><small>${escapeHtml(it.kind)}</small></span></button>`).join('')
+      : '<p class="forum-meta">Nothing matches yet. Try a shorter word.</p>';
+    results.querySelectorAll('.lp-item').forEach(b => b.addEventListener('click', () => {
+      const it = items[Number(b.dataset.i)];
+      const token = it.kind === 'Wiki page' ? `[[${it.label}]]` : `[[${it.token}|${it.label}]]`;
+      close();
+      textarea.focus();
+      const start = textarea.selectionStart ?? textarea.value.length, end = textarea.selectionEnd ?? start;
+      const before = textarea.value.slice(0, start), pad = before && !/\s$/.test(before) ? ' ' : '';
+      textarea.setRangeText(pad + token, start, end, 'end');
+      textarea.dispatchEvent(new Event('input', { bubbles:true }));
+    }));
+  };
+  const close = () => { document.removeEventListener('keydown', onKey); box.remove(); };
+  const onKey = ev => { if(ev.key === 'Escape') close(); };
+  document.addEventListener('keydown', onKey);
+  box.addEventListener('click', ev => { if(ev.target === box || ev.target.closest('[data-lp="cancel"]')) close(); });
+  input.addEventListener('input', () => {
+    show();
+    clearTimeout(timer);
+    const q = input.value.trim();
+    if(q.length < 2 || !Community.available){ wikiHits = []; return; }
+    const mine = ++seq;
+    timer = setTimeout(async () => {
+      try{ const res = await api('wiki?q=' + encodeURIComponent(q)); if(mine === seq){ wikiHits = res.pages.slice(0, 5); show(); } }catch(err){}
+    }, 300);
+  });
+  show();
+  input.focus();
+}
+// Every box for writing a post, reply, news item, or wiki page gets a "Link a page" button
+const COMPOSERS = '#postBody, #replyInput, #newsBody, #wikiBody, .forum-edit textarea';
+function addLinkTools(root){
+  root.querySelectorAll(COMPOSERS).forEach(ta => {
+    if(ta.dataset.linkTools) return;
+    ta.dataset.linkTools = '1';
+    const bar = document.createElement('div');
+    bar.className = 'compose-tools';
+    bar.innerHTML = `<button type="button" class="text-link compose-link">${navIcon('link')}Link a page</button><span class="forum-meta">or type <code>[[</code>a page name<code>]]</code></span>`;
+    bar.querySelector('button').addEventListener('click', () => openLinkPicker(ta));
+    ta.insertAdjacentElement('afterend', bar);
+  });
+}
+new MutationObserver(() => addLinkTools(entryListEl)).observe(entryListEl, { childList:true, subtree:true });
 function plural(n, one, many){ return n + ' ' + (n === 1 ? one : many); }
 function fullDate(ms){ return new Date(ms).toLocaleString(undefined, { dateStyle:'long', timeStyle:'short' }); }
 function timeAgo(ms){
@@ -10223,7 +10516,7 @@ async function renderCommunity(){
       <p class="forum-status">${u
         ? `Signed in as <button class="text-link" data-route="account">${escapeHtml(u.username)}</button>`
         : '<button class="text-link" data-auth="signin">Sign in</button> or <button class="text-link" data-auth="signup">create a free account</button> to post and reply.'}</p>
-      <button class="btn primary pill" data-route="community/new">New post</button>
+      <span class="forum-bar-actions"><button class="btn quiet" data-route="wiki">${navIcon('wiki')}Wiki</button><button class="btn primary pill" data-route="community/new">New post</button></span>
     </div>
     ${Community.readonly ? '<p class="forum-locked">The Community is read-only for a little while. You can still read and pray.</p>' : ''}
     ${u && u.muted ? `<p class="forum-locked">${escapeHtml(postingBlock(u))}</p>` : ''}
@@ -10266,7 +10559,8 @@ const MOD_ACTIONS = {
   'moderator-on':'turned on moderator tools', ban:'banned', unban:'unbanned', 'remove-all':'removed everything posted by',
   'remove-post':'removed', 'remove-reply':'removed', pin:'pinned', unpin:'unpinned', lock:'locked', unlock:'unlocked',
   'dismiss-report':'dismissed reports on', mute:'muted', unmute:'unmuted', warn:'warned', 'add-note':'added a note on',
-  move:'moved', settings:'changed the settings', 'give-badge':'gave a badge to', 'take-badge':'removed a badge from', 'clear-bio':'cleared the description of', 'clear-avatar':'removed the picture of', 'clear-banner':'removed the banner of', 'publish-news':'published', 'edit-news':'edited', 'delete-news':'deleted'
+  move:'moved', settings:'changed the settings', 'give-badge':'gave a badge to', 'take-badge':'removed a badge from', 'clear-bio':'cleared the description of', 'clear-avatar':'removed the picture of', 'clear-banner':'removed the banner of', 'publish-news':'published', 'edit-news':'edited', 'delete-news':'deleted',
+  'automod-block':'turned back a post by', 'automod-hide':'hid', restore:'restored', 'wiki-lock':'locked the wiki page', 'wiki-unlock':'unlocked the wiki page', 'wiki-delete':'removed the wiki page'
 };
 function modDate(ms){ return new Date(ms).toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' }); }
 function banLabel(ban){ return ban ? (ban.until ? 'Banned until ' + modDate(ban.until) : 'Banned permanently') : ''; }
@@ -10348,7 +10642,7 @@ async function modReportsView(body, still){
   body.innerHTML = `<div class="mod-list">${reports.map(r => `
     <article class="mod-card" data-report="${r.id}">
       <div class="mod-card-top">
-        <span class="forum-tag" style="--tag-color:var(--wine)">${r.kind === 'post' ? 'Post' : 'Reply'}</span>
+        <span class="forum-tag" style="--tag-color:var(--wine)">${r.kind === 'post' ? 'Post' : 'Reply'}</span>${r.hidden ? '<span class="forum-tag" style="--tag-color:var(--amber)">Hidden by AutoMod</span>' : ''}
         <span class="forum-meta">by <button class="text-link" data-user="${r.authorId || ''}">${authorHtml(r.author)}</button> · reported ${escapeHtml(timeAgo(r.createdAt))} by ${authorHtml(r.reporter)}${r.times > 1 ? ` · <strong>${r.times} reports</strong>` : ''}</span>
       </div>
       <h4>${r.kind === 'post' ? escapeHtml(r.postTitle || '') : 'On “' + escapeHtml(r.postTitle || '') + '”'}</h4>
@@ -10356,8 +10650,9 @@ async function modReportsView(body, still){
       ${r.reason ? `<p class="mod-reason"><strong>Reason:</strong> ${escapeHtml(r.reason)}</p>` : ''}
       <div class="forum-form-actions">
         <button class="btn quiet" data-route="community/post/${r.postId}">Open the thread</button>
-        <button class="btn danger" data-remove="${r.kind}:${r.targetId}">Remove ${r.kind === 'post' ? 'post' : 'reply'}</button>
-        <button class="btn quiet" data-dismiss="${r.id}">Dismiss</button>
+        ${r.hidden ? `<button class="btn primary pill" data-restore-held="${r.kind}:${r.targetId}">Restore it</button>
+        <button class="btn quiet" data-dismiss="${r.id}">Keep it removed</button>` : `<button class="btn danger" data-remove="${r.kind}:${r.targetId}">Remove ${r.kind === 'post' ? 'post' : 'reply'}</button>
+        <button class="btn quiet" data-dismiss="${r.id}">Dismiss</button>`}
       </div>
     </article>`).join('')}</div>`;
   body.querySelectorAll('[data-user]').forEach(b => b.addEventListener('click', () => { if(!b.dataset.user) return; modTab = 'accounts'; modUserId = Number(b.dataset.user); renderModerate(); }));
@@ -10365,6 +10660,11 @@ async function modReportsView(body, still){
     const [kind, id] = b.dataset.remove.split(':');
     if(!confirm(`Remove this ${kind} for everyone?`)) return;
     try{ await api((kind === 'post' ? 'posts/' : 'replies/') + id, { method:'DELETE' }); toast(kind === 'post' ? 'Post removed' : 'Reply removed'); renderModerate(); }
+    catch(err){ toast(err.message); }
+  }));
+  body.querySelectorAll('[data-restore-held]').forEach(b => b.addEventListener('click', async () => {
+    const [kind, id] = b.dataset.restoreHeld.split(':');
+    try{ await api(`mod/restore/${kind}/${id}`, { method:'POST' }); toast(kind === 'post' ? 'Post restored' : 'Reply restored'); renderModerate(); }
     catch(err){ toast(err.message); }
   }));
   body.querySelectorAll('[data-dismiss]').forEach(b => b.addEventListener('click', async () => {
@@ -10600,6 +10900,13 @@ async function modSettingsView(body, still){
       <div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">Read-only Community</span><span class="shine-row-note">Pause all new posts and replies from members. Moderators can still post.</span></span>
         <button type="button" class="shine-switch" id="roSwitch" role="switch" aria-checked="${st.readonly}" aria-label="Read-only Community"></button></div>
     </section>
+    <section class="mod-setting">
+      <div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">AutoMod</span><span class="shine-row-note">Turns back spam before it’s posted, in posts, replies, descriptions, and wiki pages: links to other sites from accounts less than a day old, more than four links, writing in all capitals, long runs of one character, and the same text posted twice within an hour. Moderators aren’t affected. Everything it does is in the log.</span></span>
+        <button type="button" class="shine-switch" id="amSwitch" role="switch" aria-checked="${st.automod}" aria-label="AutoMod"></button></div>
+      <form class="automod-reports" id="amForm"><label for="amReports">Hide a post or reply until a moderator looks at it once</label>
+        <input id="amReports" type="number" min="2" max="20" value="${st.automodReports}"><span>different members report it.</span>
+        <button class="btn quiet" type="submit">Save</button></form>
+    </section>
     <form class="mod-setting" id="wordsForm">
       <h3>Blocked words</h3>
       <p class="forum-meta">Posts and replies that use any of these words (as a whole word) are turned back with a request to rephrase. One word or phrase per line. Moderators aren’t affected.</p>
@@ -10610,6 +10917,16 @@ async function modSettingsView(body, still){
     const on = ev.currentTarget.getAttribute('aria-checked') !== 'true';
     if(on && !confirm('Make the Community read-only? Members won’t be able to post or reply until you turn this off.')) return;
     try{ await api('mod/settings', { method:'PUT', body:{ readonly:on } }); Community.readonly = on; toast(on ? 'The Community is read-only' : 'The Community is open again'); renderModerate(); }
+    catch(err){ toast(err.message); }
+  });
+  body.querySelector('#amSwitch').addEventListener('click', async ev => {
+    const on = ev.currentTarget.getAttribute('aria-checked') !== 'true';
+    try{ await api('mod/settings', { method:'PUT', body:{ automod:on } }); toast(on ? 'AutoMod is on' : 'AutoMod is off'); renderModerate(); }
+    catch(err){ toast(err.message); }
+  });
+  body.querySelector('#amForm').addEventListener('submit', async ev => {
+    ev.preventDefault();
+    try{ await api('mod/settings', { method:'PUT', body:{ automodReports:Number(body.querySelector('#amReports').value) } }); toast('Saved'); renderModerate(); }
     catch(err){ toast(err.message); }
   });
   body.querySelector('#wordsForm').addEventListener('submit', async ev => {
@@ -10625,7 +10942,7 @@ async function modLogView(body, still){
   if(!still()) return;
   body.innerHTML = log.length ? `<ol class="mod-log">${log.map(l => `
     <li><span class="forum-meta">${escapeHtml(fullDate(l.createdAt))}</span>
-      <span><strong>${authorHtml(l.by)}</strong> ${escapeHtml(MOD_ACTIONS[l.action] || l.action)} <strong>${escapeHtml(l.target)}</strong>${l.detail ? ` <span class="forum-meta">· ${escapeHtml(l.detail)}</span>` : ''}</span></li>`).join('')}</ol>`
+      <span><strong>${/^automod/.test(l.action) && !l.by ? '<span class="automod-name">AutoMod</span>' : authorHtml(l.by)}</strong> ${escapeHtml(MOD_ACTIONS[l.action] || l.action)} <strong>${escapeHtml(l.target)}</strong>${l.detail ? ` <span class="forum-meta">· ${escapeHtml(l.detail)}</span>` : ''}</span></li>`).join('')}</ol>`
     : '<div class="forum-empty">Nothing in the log yet.</div>';
 }
 
@@ -10655,23 +10972,328 @@ async function renderMemberProfile(){
         ${avatarFor(p.username, p.avatar, 'avatar-big')}
         <div>
           <h3>${escapeHtml(p.username)}${p.administrator ? adminIcon() : ''}${badgePills(p.badges.appointed)}</h3>
-          ${p.bio ? `<p class="member-bio">${escapeHtml(p.bio)}</p>` : ''}
+          ${p.bio ? `<p class="member-bio">${inlineHtml(p.bio)}</p>` : ''}
           ${badgeRow([...p.badges.earned, ...communityBadgeKeys(p)])}
-          <div class="member-stats"><span><strong>${p.posts}</strong> ${p.posts === 1 ? 'post' : 'posts'}</span><span><strong>${p.replies}</strong> ${p.replies === 1 ? 'reply' : 'replies'}</span><span><strong>${p.prayers}</strong> ${p.prayers === 1 ? 'prayer offered' : 'prayers offered'}</span></div>
+          <div class="member-stats"><span><strong>${p.posts}</strong> ${p.posts === 1 ? 'post' : 'posts'}</span><span><strong>${p.replies}</strong> ${p.replies === 1 ? 'reply' : 'replies'}</span><span><strong>${p.prayers}</strong> ${p.prayers === 1 ? 'prayer offered' : 'prayers offered'}</span>${data.wiki ? `<span><strong>${data.wiki.edits}</strong> wiki ${data.wiki.edits === 1 ? 'edit' : 'edits'}</span>` : ''}</div>
           <div class="forum-form-actions">
             ${me && me.username.toLowerCase() === p.username.toLowerCase() ? '<button class="btn quiet" data-route="account">Edit your account</button>' : ''}
             ${me && me.admin ? `<button class="btn quiet" data-mod-open="${p.id}">Open in moderation</button>` : ''}
           </div>
         </div>
       </section>
-      <h3 class="forum-replies-head">Posts</h3>
-      <div class="forum-list" id="memberPosts"></div>
+      <div class="profile-tabs" role="tablist" aria-label="${escapeHtml(p.username)}’s activity">
+        <button role="tab" aria-selected="true" data-ptab="posts">Posts <span class="view-count">${p.posts}</span></button>
+        <button role="tab" aria-selected="false" data-ptab="replies">Replies <span class="view-count">${p.replies}</span></button>
+        <button role="tab" aria-selected="false" data-ptab="wiki">Wiki contributions <span class="view-count">${data.wiki ? data.wiki.edits : 0}</span></button>
+      </div>
+      <div class="forum-list" data-ppanel="posts" id="memberPosts"></div>
+      <div class="forum-list" data-ppanel="replies" hidden>${(data.replies || []).length ? data.replies.map(r => `
+        <button class="notify-item" data-route="community/post/${r.postId}"><span><span class="forum-meta">Replied to <strong>“${escapeHtml(r.postTitle)}”</strong> · ${escapeHtml(timeAgo(r.createdAt))}</span><span class="notify-excerpt">${escapeHtml(r.excerpt)}</span></span></button>`).join('')
+        : '<div class="forum-empty">No replies yet.</div>'}</div>
+      <div data-ppanel="wiki" hidden>${data.wiki && data.wiki.edits ? `
+        <p class="wiki-contrib-sum">${escapeHtml(p.username)} started <strong>${plural(data.wiki.pages, 'page', 'pages')}</strong> and made <strong>${plural(data.wiki.edits, 'edit', 'edits')}</strong> to ${plural(data.wiki.touched, 'page', 'pages')} of the <button class="text-link" data-route="wiki">Community Wiki</button>.</p>
+        <ol class="wiki-changes">${data.wiki.recent.map(c => wikiChangeHtml({ ...c, user:null })).join('')}</ol>`
+        : `<div class="forum-empty">No wiki edits yet.${me && me.username.toLowerCase() === p.username.toLowerCase() ? ' <button class="text-link" data-route="wiki">Visit the Community Wiki</button>' : ''}</div>`}</div>
     </div>`;
   const list = entryListEl.querySelector('#memberPosts');
   if(data.posts.length) data.posts.forEach(x => list.appendChild(forumPostCard(x)));
   else list.innerHTML = '<div class="forum-empty">No posts yet.</div>';
+  entryListEl.querySelectorAll('[data-ptab]').forEach(b => b.addEventListener('click', () => {
+    entryListEl.querySelectorAll('[data-ptab]').forEach(x => x.setAttribute('aria-selected', String(x === b)));
+    entryListEl.querySelectorAll('[data-ppanel]').forEach(x => { x.hidden = x.dataset.ppanel !== b.dataset.ptab; });
+  }));
   const open = entryListEl.querySelector('[data-mod-open]');
   if(open) open.addEventListener('click', () => { modTab = 'accounts'; modUserId = Number(open.dataset.modOpen); navigate('moderate'); });
+}
+
+/* =========================================================
+   THE COMMUNITY WIKI
+   ========================================================= */
+let wikiSort = 'az', wikiSearch = '', wikiDraftTitle = '';
+function wikiDelta(n){ return `<span class="wiki-delta ${n > 0 ? 'up' : n < 0 ? 'down' : ''}">${n > 0 ? '+' : n < 0 ? '−' : '±'}${Math.abs(n).toLocaleString()}</span>`; }
+function wikiChangeHtml(c){
+  return `<li><span class="forum-meta">${escapeHtml(timeAgo(c.createdAt))}</span>
+    <span><button class="text-link" data-route="wiki/page/${c.slug}">${escapeHtml(c.title)}</button>${c.created ? ' <span class="forum-tag" style="--tag-color:var(--teal)">New page</span>' : ''}
+    ${c.user !== null && c.user !== undefined ? `· ${authorHtml(c.user)}` : ''} ${wikiDelta(c.delta)}${c.summary ? ` <span class="wiki-summary">${escapeHtml(c.summary)}</span>` : ''}</span></li>`;
+}
+function wikiHelpHtml(){
+  return `<details class="wiki-help"><summary>How to format a page</summary>
+    <ul>
+      <li><code>## Heading</code> starts a section, and <code>### Smaller heading</code> a part of one.</li>
+      <li><code>- item</code> makes a bulleted list, and <code>1. item</code> a numbered one.</li>
+      <li><code>**bold**</code>, <code>*italics*</code>, and <code>&gt; a quotation</code>.</li>
+      <li><code>[[Another wiki page]]</code> links a wiki page, even one nobody has written yet.</li>
+      <li>Use <strong>Link a page</strong> to add a shortcut to a prayer, a saint, or any page of Sanctify.</li>
+      <li>Leave a blank line between paragraphs.</li>
+    </ul></details>`;
+}
+
+async function renderWiki(){
+  const seq = ++viewSeq;
+  entryListEl.innerHTML = '<div class="forum-loading">Loading the wiki…</div>';
+  await ensureAccount();
+  if(!stillShowing(seq, 'wiki')) return;
+  if(!Community.available){ showProblem(entryListEl, Community.problem); return; }
+  let pages, changes;
+  try{
+    [pages, changes] = await Promise.all([
+      api('wiki?' + new URLSearchParams({ sort:wikiSort === 'recent' ? 'recent' : 'az', q:wikiSearch })),
+      api('wiki/changes')
+    ]);
+  }catch(err){ if(stillShowing(seq, 'wiki')) showProblem(entryListEl, err); return; }
+  if(!stillShowing(seq, 'wiki')) return;
+  const u = Community.user;
+  let lastLetter = '';
+  const items = pages.pages.map(p => {
+    const letter = (p.title[0] || '#').toUpperCase();
+    const head = wikiSort === 'az' && !wikiSearch && letter !== lastLetter ? `<h4 class="wiki-letter">${escapeHtml(letter)}</h4>` : '';
+    lastLetter = letter;
+    return `${head}<button class="wiki-item" data-route="wiki/page/${p.slug}"><strong>${escapeHtml(p.title)}${p.locked ? ' <span class="forum-tag" style="--tag-color:var(--ink-soft)">Locked</span>' : ''}</strong>
+      <span class="wiki-item-excerpt">${escapeHtml(p.excerpt)}</span>
+      <span class="forum-meta">Edited ${escapeHtml(timeAgo(p.updatedAt))}${p.updatedBy ? ' by ' + escapeHtml(p.updatedBy) : ''} · ${plural(p.revisions, 'revision', 'revisions')}</span></button>`;
+  }).join('');
+  entryListEl.innerHTML = `
+    <div class="wiki">
+      <section class="wiki-intro">
+        <span class="tile-icon" style="--tile-color:var(--teal)">${navIcon('wiki')}</span>
+        <div><h3>Written by the Community</h3>
+          <p>Pages anyone with a free account can start and improve: parishes and shrines, devotions, local customs, how-tos, and anything else worth knowing. Every change is kept, so nothing is ever lost.</p>
+          <div class="forum-form-actions">${u ? '<button class="btn primary pill" data-route="wiki/new">Start a page</button>' : '<button class="btn primary pill" data-auth="signin">Sign in to write</button><button class="btn quiet" data-auth="signup">Create an account</button>'}
+            <button class="btn quiet" data-route="community">The Community</button></div></div>
+      </section>
+      <div class="wiki-layout">
+        <div>
+          <div class="wiki-tools">
+            <div class="searchbar forum-search" role="search"><svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+              <input type="search" id="wikiSearch" placeholder="Search the wiki…" value="${escapeHtml(wikiSearch)}" aria-label="Search the wiki"></div>
+            <div class="patron-filters-row" role="group" aria-label="Order">
+              <button class="patron-chip${wikiSort === 'az' ? ' active' : ''}" data-wsort="az" aria-pressed="${wikiSort === 'az'}">A to Z</button>
+              <button class="patron-chip${wikiSort === 'recent' ? ' active' : ''}" data-wsort="recent" aria-pressed="${wikiSort === 'recent'}">Recently edited</button>
+            </div>
+          </div>
+          <div class="wiki-list">${items || `<div class="forum-empty"><p>${wikiSearch ? `No pages match “${escapeHtml(wikiSearch)}.”` : 'The wiki is empty so far. Be the first to start a page!'}</p>${u ? `<button class="btn primary pill" data-wiki-start>${wikiSearch ? `Start “${escapeHtml(wikiSearch)}”` : 'Start a page'}</button>` : ''}</div>`}</div>
+        </div>
+        <aside class="wiki-side">
+          <h3>Recent changes</h3>
+          ${changes.changes.length ? `<ol class="wiki-changes">${changes.changes.slice(0, 15).map(wikiChangeHtml).join('')}</ol>` : '<p class="forum-meta">No edits yet.</p>'}
+          ${wikiHelpHtml()}
+        </aside>
+      </div>
+    </div>`;
+  bindAuthButtons(entryListEl, 'wiki');
+  entryListEl.querySelectorAll('[data-wsort]').forEach(b => b.addEventListener('click', () => { wikiSort = b.dataset.wsort; renderWiki(); }));
+  const start = entryListEl.querySelector('[data-wiki-start]');
+  if(start) start.addEventListener('click', () => { wikiDraftTitle = wikiSearch; navigate('wiki/new'); });
+  let t = null;
+  entryListEl.querySelector('#wikiSearch').addEventListener('input', ev => {
+    clearTimeout(t);
+    t = setTimeout(() => {
+      wikiSearch = ev.target.value.trim();
+      renderWiki().then(() => { const box = document.getElementById('wikiSearch'); if(box){ box.focus(); box.setSelectionRange(box.value.length, box.value.length); } });
+    }, 400);
+  });
+}
+
+async function renderWikiPage(){
+  const seq = ++viewSeq, slug = wikiSlugNow;
+  entryListEl.innerHTML = '<div class="forum-loading">Loading…</div>';
+  await ensureAccount();
+  if(!stillShowing(seq, 'wikipage') || wikiSlugNow !== slug) return;
+  if(!Community.available){ showProblem(entryListEl, Community.problem); return; }
+  let page = null, problem = null;
+  try{ page = (await api('wiki/pages/' + slug)).page; }catch(err){ problem = err; }
+  if(!stillShowing(seq, 'wikipage') || wikiSlugNow !== slug) return;
+  const u = Community.user;
+  if(!page){
+    const guess = slug.replace(/-/g, ' ').replace(/^./, c => c.toUpperCase());
+    sectionTitleEl.textContent = guess;
+    sectionDescEl.textContent = 'This wiki page hasn’t been written yet.';
+    entryListEl.innerHTML = forumNotice('Nobody has written this page yet', problem && problem.status !== 404 ? escapeHtml(problem.message) : `Would you like to start “${escapeHtml(guess)}”? Anyone with a free account can.`,
+      (u ? '<button class="btn primary pill" data-wiki-start>Start this page</button>' : '<button class="btn primary pill" data-auth="signin">Sign in to write it</button>') + '<button class="btn quiet" data-route="wiki">All wiki pages</button>');
+    bindAuthButtons(entryListEl, 'wiki/page/' + slug);
+    const st = entryListEl.querySelector('[data-wiki-start]');
+    if(st) st.addEventListener('click', () => { wikiDraftTitle = guess; navigate('wiki/new'); });
+    return;
+  }
+  sectionTitleEl.textContent = page.title;
+  sectionDescEl.textContent = 'Community Wiki · written by Sanctify members';
+  document.title = page.title + ' — Sanctify Wiki';
+  const canEdit = u && (!page.locked || u.admin);
+  entryListEl.innerHTML = `
+    <article class="wiki-page">
+      <div class="wiki-page-bar">
+        <span class="forum-meta">Last edited ${escapeHtml(timeAgo(page.updatedAt))}${page.updatedBy ? ` by ${authorHtml(page.updatedBy)}` : ''} · ${plural(page.revisions, 'revision', 'revisions')}${page.locked ? ' · <strong>Locked by the moderators</strong>' : ''}</span>
+        <span class="wiki-page-actions">
+          ${canEdit ? `<button class="btn primary pill" data-route="wiki/edit/${page.slug}">${navIcon('pen')}Edit</button>` : !u ? '<button class="btn quiet" data-auth="signin">Sign in to edit</button>' : ''}
+          <button class="btn quiet" data-route="wiki/history/${page.slug}">History</button>
+          ${u && u.admin ? `<button class="btn quiet" data-wiki-lock="${page.locked ? 0 : 1}">${page.locked ? 'Unlock' : 'Lock'}</button><button class="btn quiet danger-text" data-wiki-delete>Remove</button>` : ''}
+        </span>
+      </div>
+      <div class="wiki-body forum-body">${wikiHtml(page.body)}</div>
+      <p class="wiki-foot forum-meta">Started ${escapeHtml(new Date(page.createdAt).toLocaleDateString(undefined, { month:'long', day:'numeric', year:'numeric' }))}${page.createdBy ? ` by ${authorHtml(page.createdBy)}` : ''}. The Community Wiki is written by members and isn’t official Church teaching; check what matters against the Catechism and your pastor.</p>
+    </article>`;
+  bindAuthButtons(entryListEl, 'wiki/page/' + slug);
+  const lock = entryListEl.querySelector('[data-wiki-lock]');
+  if(lock) lock.addEventListener('click', async () => {
+    try{ await api(`mod/wiki/${slug}/lock`, { method:'POST', body:{ on:lock.dataset.wikiLock === '1' } }); toast(lock.dataset.wikiLock === '1' ? 'Page locked' : 'Page unlocked'); renderWikiPage(); }catch(err){ toast(err.message); }
+  });
+  const del = entryListEl.querySelector('[data-wiki-delete]');
+  if(del) del.addEventListener('click', async () => {
+    if(!confirm(`Remove “${page.title}” from the wiki for everyone?`)) return;
+    try{ await api('mod/wiki/' + slug, { method:'DELETE' }); toast('Page removed'); navigate('wiki'); }catch(err){ toast(err.message); }
+  });
+}
+
+async function renderWikiEdit(){
+  const seq = ++viewSeq, slug = wikiSlugNow, isNew = !slug;
+  entryListEl.innerHTML = '<div class="forum-loading">Loading…</div>';
+  await ensureAccount();
+  if(!stillShowing(seq, 'wikiedit') || wikiSlugNow !== slug) return;
+  if(!Community.available){ showProblem(entryListEl, Community.problem); return; }
+  const u = Community.user;
+  if(!u){
+    entryListEl.innerHTML = signInPromptHtml('You need a free Sanctify account to write in the wiki. It only takes a moment, and no email address is needed.');
+    bindAuthButtons(entryListEl, isNew ? 'wiki/new' : 'wiki/edit/' + slug);
+    return;
+  }
+  let page = null;
+  if(!isNew){
+    try{ page = (await api('wiki/pages/' + slug)).page; }catch(err){ if(stillShowing(seq, 'wikiedit')) showProblem(entryListEl, err); return; }
+    if(!stillShowing(seq, 'wikiedit') || wikiSlugNow !== slug) return;
+    if(page.locked && !u.admin){ entryListEl.innerHTML = forumNotice('This page is locked', 'The moderators have locked this page, so only they can edit it.', `<button class="btn quiet" data-route="wiki/page/${slug}">Back to the page</button>`); return; }
+  }
+  sectionTitleEl.textContent = isNew ? 'Start a Wiki Page' : 'Editing: ' + page.title;
+  sectionDescEl.textContent = isNew ? 'Write about something worth knowing. Other members can add to it and correct it.' : 'Your change is saved as a new revision, and the earlier ones are kept.';
+  const block = postingBlock(u);
+  entryListEl.innerHTML = `
+    <form class="forum-form wiki-form" id="wikiForm" novalidate>
+      ${block ? `<p class="forum-locked">${escapeHtml(block)}</p>` : ''}
+      <div class="field"><label for="wikiTitle">Title</label><input id="wikiTitle" maxlength="100" value="${escapeHtml(page ? page.title : wikiDraftTitle)}" placeholder="For example: Our Lady of Lourdes Grotto in Notre Dame"></div>
+      <div class="wiki-edit-tabs" role="tablist"><button type="button" role="tab" aria-selected="true" data-wtab="write">Write</button><button type="button" role="tab" aria-selected="false" data-wtab="preview">Preview</button></div>
+      <div class="field" data-wpanel="write"><label for="wikiBody" class="sr-only">Page text</label><textarea id="wikiBody" maxlength="20000" rows="18" placeholder="Start with a sentence or two saying what the page is about.&#10;&#10;## A section&#10;- A point&#10;- Another point">${escapeHtml(page ? page.body : '')}</textarea></div>
+      <div class="wiki-body forum-body wiki-preview" data-wpanel="preview" hidden></div>
+      <div class="field"><label for="wikiSummary">What did you change?</label><input id="wikiSummary" maxlength="200" placeholder="${isNew ? 'Started the page' : 'For example: added the Mass times, fixed a date'}"></div>
+      ${wikiHelpHtml()}
+      <p class="forum-error" id="wikiError" hidden></p>
+      <div class="forum-form-actions">
+        <button class="btn primary pill" type="submit"${block ? ' disabled' : ''}>${isNew ? 'Publish the page' : 'Save changes'}</button>
+        <button class="btn quiet" type="button" data-route="${isNew ? 'wiki' : 'wiki/page/' + slug}">Cancel</button>
+        <span class="forum-meta" id="wikiCount"></span>
+      </div>
+    </form>`;
+  wikiDraftTitle = '';
+  const form = entryListEl.querySelector('#wikiForm'), body = form.querySelector('#wikiBody'), count = form.querySelector('#wikiCount'), error = form.querySelector('#wikiError');
+  const counted = () => { count.textContent = `${body.value.length.toLocaleString()} / 20,000`; };
+  body.addEventListener('input', counted); counted();
+  form.querySelectorAll('[data-wtab]').forEach(b => b.addEventListener('click', () => {
+    form.querySelectorAll('[data-wtab]').forEach(x => x.setAttribute('aria-selected', String(x === b)));
+    const preview = b.dataset.wtab === 'preview';
+    form.querySelector('[data-wpanel="write"]').hidden = preview;
+    const pv = form.querySelector('[data-wpanel="preview"]');
+    pv.hidden = !preview;
+    if(preview) pv.innerHTML = wikiHtml(body.value) || '<p class="forum-meta">Nothing to preview yet.</p>';
+  }));
+  form.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    showFormError(error, '');
+    const payload = { title:form.querySelector('#wikiTitle').value, body:body.value, summary:form.querySelector('#wikiSummary').value };
+    try{
+      const res = isNew ? await api('wiki/pages', { method:'POST', body:payload }) : await api('wiki/pages/' + slug, { method:'PUT', body:{ ...payload, base:page.revision } });
+      toast(isNew ? 'Your page is published. Thank you!' : 'Your changes are saved.');
+      navigate('wiki/page/' + res.page.slug);
+    }catch(err){ showFormError(error, err.message); btn.disabled = false; }
+  });
+}
+
+// A small line-by-line comparison of two versions
+function wikiDiffHtml(a, b){
+  const A = String(a || '').split('\n'), B = String(b || '').split('\n');
+  if(A.length * B.length > 400000) return '<p class="forum-meta">These versions are too long to compare here.</p>';
+  const L = Array.from({ length:A.length + 1 }, () => new Uint16Array(B.length + 1));
+  for(let i = A.length - 1; i >= 0; i--) for(let j = B.length - 1; j >= 0; j--) L[i][j] = A[i] === B[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+  const rows = [];
+  let i = 0, j = 0;
+  while(i < A.length || j < B.length){
+    if(i < A.length && j < B.length && A[i] === B[j]){ rows.push(['same', A[i]]); i++; j++; }
+    else if(j < B.length && (i >= A.length || L[i][j + 1] >= L[i + 1][j])){ rows.push(['add', B[j]]); j++; }
+    else { rows.push(['del', A[i]]); i++; }
+  }
+  // Show the changes with two lines of context around them
+  const keep = rows.map((r, k) => r[0] !== 'same' || rows.slice(Math.max(0, k - 2), k + 3).some(x => x[0] !== 'same'));
+  let html = '', gap = false;
+  rows.forEach((r, k) => {
+    if(!keep[k]){ if(!gap){ html += '<div class="diff-gap">⋯</div>'; gap = true; } return; }
+    gap = false;
+    html += `<div class="diff-${r[0]}"><span aria-hidden="true">${r[0] === 'add' ? '+' : r[0] === 'del' ? '−' : ' '}</span>${escapeHtml(r[1]) || '&nbsp;'}</div>`;
+  });
+  return rows.some(r => r[0] !== 'same') ? `<div class="wiki-diff">${html}</div>` : '<p class="forum-meta">The text didn’t change.</p>';
+}
+
+async function renderWikiHistory(){
+  const seq = ++viewSeq, slug = wikiSlugNow;
+  entryListEl.innerHTML = '<div class="forum-loading">Loading…</div>';
+  await ensureAccount();
+  if(!stillShowing(seq, 'wikihistory') || wikiSlugNow !== slug) return;
+  if(!Community.available){ showProblem(entryListEl, Community.problem); return; }
+  let data;
+  try{ data = await api(`wiki/pages/${slug}/history`); }catch(err){ if(stillShowing(seq, 'wikihistory')) showProblem(entryListEl, err); return; }
+  if(!stillShowing(seq, 'wikihistory') || wikiSlugNow !== slug) return;
+  const u = Community.user, revs = data.revisions;
+  sectionTitleEl.textContent = 'History: ' + data.page.title;
+  sectionDescEl.textContent = `Every version of this page, newest first. ${plural(revs.length, 'revision', 'revisions')}.`;
+  entryListEl.innerHTML = `
+    <div class="wiki-history">
+      <div class="forum-form-actions"><button class="btn quiet" data-route="wiki/page/${slug}">Back to the page</button></div>
+      <ol class="wiki-revs">${revs.map((r, k) => `
+        <li class="wiki-rev" data-rev="${r.id}">
+          <div class="wiki-rev-top">
+            <span><strong>${escapeHtml(fullDate(r.createdAt))}</strong> · ${authorHtml(r.user)} ${wikiDelta(r.delta)}${k === 0 ? ' <span class="forum-tag" style="--tag-color:var(--teal)">Current</span>' : ''}</span>
+            <span class="wiki-rev-actions">
+              ${k < revs.length - 1 ? `<button class="text-link" data-diff="${r.id}" data-prev="${revs[k + 1].id}">Changes</button>` : ''}
+              <button class="text-link" data-route="wiki/revision/${r.id}">View</button>
+              ${k > 0 && u && (!data.page.locked || u.admin) ? `<button class="text-link" data-restore="${r.id}">Restore</button>` : ''}
+            </span>
+          </div>
+          ${r.summary ? `<p class="wiki-summary">${escapeHtml(r.summary)}</p>` : ''}
+          <div class="wiki-rev-diff" hidden></div>
+        </li>`).join('')}</ol>
+    </div>`;
+  entryListEl.querySelectorAll('[data-diff]').forEach(b => b.addEventListener('click', async () => {
+    const box = b.closest('.wiki-rev').querySelector('.wiki-rev-diff');
+    if(!box.hidden){ box.hidden = true; return; }
+    box.hidden = false;
+    box.innerHTML = '<div class="forum-loading">Comparing…</div>';
+    try{
+      const [now, before] = await Promise.all([api('wiki/revisions/' + b.dataset.diff), api('wiki/revisions/' + b.dataset.prev)]);
+      box.innerHTML = (now.revision.title !== before.revision.title ? `<p class="forum-meta">Title: “${escapeHtml(before.revision.title)}” → “${escapeHtml(now.revision.title)}”</p>` : '') + wikiDiffHtml(before.revision.body, now.revision.body);
+    }catch(err){ box.innerHTML = `<p class="forum-error">${escapeHtml(err.message)}</p>`; }
+  }));
+  entryListEl.querySelectorAll('[data-restore]').forEach(b => b.addEventListener('click', async () => {
+    if(!confirm('Make this version the current page again? The newer versions stay in the history.')) return;
+    try{ await api(`wiki/pages/${slug}/restore`, { method:'POST', body:{ revision:Number(b.dataset.restore) } }); toast('That version is the current page again.'); navigate('wiki/page/' + slug); }
+    catch(err){ toast(err.message); }
+  }));
+}
+
+async function renderWikiRevision(){
+  const seq = ++viewSeq, id = wikiRevNow;
+  entryListEl.innerHTML = '<div class="forum-loading">Loading…</div>';
+  await ensureAccount();
+  if(!stillShowing(seq, 'wikirev') || wikiRevNow !== id) return;
+  if(!Community.available){ showProblem(entryListEl, Community.problem); return; }
+  let r;
+  try{ r = (await api('wiki/revisions/' + id)).revision; }catch(err){ if(stillShowing(seq, 'wikirev')) showProblem(entryListEl, err); return; }
+  if(!stillShowing(seq, 'wikirev') || wikiRevNow !== id) return;
+  sectionTitleEl.textContent = r.title;
+  sectionDescEl.textContent = (r.latest ? 'The current version' : 'An earlier version') + ` · ${fullDate(r.createdAt)}`;
+  entryListEl.innerHTML = `
+    <article class="wiki-page">
+      <p class="forum-locked">${r.latest ? 'This is the current version of the page.' : `You’re reading an earlier version, saved by ${authorHtml(r.user)} on ${escapeHtml(fullDate(r.createdAt))}.`}${r.summary ? ` <em>${escapeHtml(r.summary)}</em>` : ''}</p>
+      <div class="forum-form-actions"><button class="btn quiet" data-route="wiki/page/${r.slug}">The current page</button><button class="btn quiet" data-route="wiki/history/${r.slug}">All versions</button></div>
+      <div class="wiki-body forum-body">${wikiHtml(r.body)}</div>
+    </article>`;
 }
 
 // The Account page's list of replies to your posts and messages from moderators
@@ -11088,6 +11710,14 @@ async function renderAccount(){
   else renderAuthForms();
 }
 
+// The tabs across the top of every account page; Saved & Novenas and Badges work without signing in
+function accountTabsHtml(active){
+  const u = Community.user;
+  const tabs = [['account', u ? 'Profile' : 'Sign in', 'account'], ['account/saved', 'Saved & Novenas', 'mine'], ['account/badges', 'Badges', 'badge']];
+  return `<nav class="account-nav" aria-label="Your account">${tabs.map(([route, label, icon]) =>
+    `<button class="account-nav-link${route === active ? ' active' : ''}" data-route="${route}"${route === active ? ' aria-current="page"' : ''}>${navIcon(icon)}${escapeHtml(label)}</button>`).join('')}</nav>`;
+}
+
 function renderAuthForms(){
   const signup = accountTab === 'signup';
   sectionTitleEl.textContent = signup ? 'Create an Account' : 'Sign In';
@@ -11095,7 +11725,7 @@ function renderAuthForms(){
     ? 'A free account lets you post and reply in the Community. No email address is needed.'
     : 'Welcome back! Sign in to post and reply in the Community.';
   document.title = (signup ? 'Create an Account' : 'Sign In') + ' — Sanctify';
-  entryListEl.innerHTML = `
+  entryListEl.innerHTML = `${accountTabsHtml('account')}
     <div class="account-card">
       <div class="account-tabs" role="tablist" aria-label="Account">
         <button role="tab" aria-selected="${!signup}" data-tab="signin">Sign in</button>
@@ -11160,7 +11790,7 @@ function renderProfile(){
   sectionTitleEl.textContent = u.username;
   sectionDescEl.textContent = 'Member since ' + new Date(u.createdAt).toLocaleDateString(undefined, { month:'long', year:'numeric' }) + (u.admin ? ' · Moderator' : '');
   document.title = u.username + ' — Sanctify';
-  entryListEl.innerHTML = `
+  entryListEl.innerHTML = `${accountTabsHtml('account')}
     <div class="account-page">
       ${u.muted ? `<p class="forum-locked">${escapeHtml(postingBlock(u))}</p>` : ''}
       <section class="notify-box" id="notifyBox"><div class="forum-loading">Loading notifications…</div></section>
@@ -14899,8 +15529,9 @@ function easternPrayCards(){
     { route:'pray/devotions', desc:'The icon corner, Theophany water, the baptismal cross, the prayer rope, the Paraklesis and Akathist, and the Pascha basket.', meta:`${DEVOTIONS_EAST.length} holy customs` },
     { route:'pray/examination', desc:'Prepare for the Holy Mystery of Repentance with a guided examination of conscience.', meta:'Private: nothing is saved' },
     { route:'pray/timer', desc:'Set aside time for silent prayer, with a gentle bell to begin and end.', meta:'5 minutes to an hour' },
+    { route:'pray/generator', desc:'A prayer and a saint chosen for you at random, or a saint for whatever you need. Tap again for another.', meta:'A new pair every time' },
     { route:'pray/tracker', desc:'A private record of your daily prayer, with streaks and a calendar of your faithfulness.', meta:streak ? `${streak}-day streak` : 'Stored only on this device' },
-    { route:'mine', title:'Novenas & Intentions', icon:'mine', desc:'Keep a list of your prayer intentions, and pray a nine-day novena with any saint.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' }
+    { route:'account/saved', title:'Novenas & Intentions', icon:'mine', desc:'Keep a list of your prayer intentions, and pray a nine-day novena with any saint.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' }
   ];
 }
 
@@ -15750,7 +16381,10 @@ const NAV_ICONS = {
   resources:'<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
   community:'<circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.5"/><path d="M2.8 20c.6-3.8 3.1-5.9 6.2-5.9s5.6 2.1 6.2 5.9"/><path d="M15.4 14.4c.5-.2 1-.3 1.6-.3 2.3 0 4 1.5 4.4 4.4"/>',
   account:'<circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c.9-4 3.9-6.3 7.5-6.3s6.6 2.3 7.5 6.3"/>',
-  reply:'<path d="M5.5 4h13A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H10l-4.5 4v-4A1.5 1.5 0 0 1 4 14.5v-9A1.5 1.5 0 0 1 5.5 4z"/>'
+  reply:'<path d="M5.5 4h13A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H10l-4.5 4v-4A1.5 1.5 0 0 1 4 14.5v-9A1.5 1.5 0 0 1 5.5 4z"/>',
+  dice:'<rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><circle cx="8.5" cy="8.5" r="1" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1" fill="currentColor"/>',
+  wiki:'<path d="M4 4.5h11.5L20 9v10.5H4z"/><path d="M15.5 4.5V9H20"/><path d="M7 12.5l1.5 4.5 1.8-4 1.8 4 1.5-4.5"/>',
+  link:'<path d="M10 14a4 4 0 0 0 5.7.3l3-3a4 4 0 0 0-5.7-5.6l-1.5 1.4"/><path d="M14 10a4 4 0 0 0-5.7-.3l-3 3a4 4 0 0 0 5.7 5.6l1.5-1.4"/>'
 };
 function navIcon(key){
   return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${NAV_ICONS[key] || ''}</svg>`;
@@ -15760,7 +16394,13 @@ document.querySelectorAll('.tab-link').forEach(b => b.insertAdjacentHTML('afterb
 const SECTIONS = {
   home:{ name:'Home', icon:'home', color:'var(--wine)' },
   daily:{ name:'Today', group:'Today', icon:'daily', color:'var(--gold)' },
-  mine:{ name:'My Sanctify', group:'Personal', icon:'mine', color:'var(--rose)' },
+  mine:{ name:'Saved & Novenas', group:'Account', icon:'mine', color:'var(--rose)' },
+  generator:{ name:'Prayer & Saint Generator', group:'Pray', icon:'dice', color:'var(--gold)' },
+  wiki:{ name:'Community Wiki', group:'Community', icon:'wiki', color:'var(--teal)' },
+  wikipage:{ name:'Community Wiki', group:'Community', icon:'wiki', color:'var(--teal)' },
+  wikiedit:{ name:'Edit Wiki Page', group:'Community', icon:'pen', color:'var(--teal)' },
+  wikihistory:{ name:'Page History', group:'Community', icon:'wiki', color:'var(--teal)' },
+  wikirev:{ name:'An Earlier Version', group:'Community', icon:'wiki', color:'var(--teal)' },
   community:{ name:'Community', group:'Community', icon:'community', color:'var(--indigo)' },
   thread:{ name:'Discussion', group:'Community', icon:'community', color:'var(--indigo)' },
   'forum-new':{ name:'New Post', group:'Community', icon:'community', color:'var(--indigo)' },
@@ -15780,7 +16420,7 @@ const SECTIONS = {
   bookreader:{ name:'Books', group:'Library', icon:'book', color:'var(--indigo)' },
   catechism:{ name:'The Catechism', group:'Library', icon:'catechism', color:'var(--wine)' },
   news:{ name:'News', group:'Community', icon:'news', color:'var(--amber)' },
-  badges:{ name:'Badges', group:'Pray', icon:'badge', color:'var(--gold)' },
+  badges:{ name:'Your Badges', group:'Account', icon:'badge', color:'var(--gold)' },
   moderate:{ name:'Moderation', group:'Community', icon:'shield', color:'var(--wine)' },
   profile:{ name:'Member', group:'Community', icon:'account', color:'var(--indigo)' },
   all:{ name:'Browse Everything', group:'Library', icon:'all', color:'var(--ink-soft)' },
@@ -15825,7 +16465,7 @@ document.querySelectorAll('.navlink').forEach(btn => {
 });
 
 updateAccountButton();
-document.getElementById('topSaved').insertAdjacentHTML('afterbegin', navIcon('mine'));
+document.getElementById('topCalendar').insertAdjacentHTML('afterbegin', navIcon('calendar'));
 
 function setNavOpen(open){
   document.body.classList.toggle('nav-open', open);
@@ -15838,7 +16478,9 @@ document.addEventListener('keydown', e => { if(e.key === 'Escape' && document.bo
 document.getElementById('brandHome').addEventListener('click', () => goToSection('home'));
 
 // The menu's sections fold open: the one you are in opens by itself, and any you open stay open
-const SIDE_GROUPS = { pray:['prayer', 'var(--wine)'], saints:['saint', 'var(--rose)'], history:['history', 'var(--gold)'], library:['book', 'var(--indigo)'], learn:['theology', 'var(--purple)'] };
+const SIDE_GROUPS = { home:['home', 'var(--wine)'], community:['community', 'var(--indigo)'], pray:['prayer', 'var(--wine)'], history:['history', 'var(--gold)'], library:['book', 'var(--indigo)'], learn:['theology', 'var(--purple)'] };
+// Pages whose address starts with something else but live in a section of the menu
+const SIDE_GROUP_OF = { today:'home', calendar:'home', wiki:'community', news:'community', moderate:'community', saints:'history' };
 document.querySelectorAll('nav.sidebar .nav-group').forEach(g => {
   const link = g.querySelector(':scope > .group-link'), ul = g.querySelector(':scope > ul');
   if(!link || !ul) return;
@@ -15876,7 +16518,7 @@ function setSideGroupOpen(g, open){
 function syncSideGroups(top){
   const saved = store.get('side.open', {});
   document.querySelectorAll('nav.sidebar .nav-group.collapsible').forEach(g => {
-    const here = g.dataset.group === top;
+    const here = g.dataset.group === (SIDE_GROUP_OF[top] || top);
     g.querySelector('.group-link').classList.toggle('active', here);
     setSideGroupOpen(g, here || saved[g.dataset.group] === true);
   });
@@ -15898,6 +16540,7 @@ const HUBS = {
           desc:'Pray the Rosary bead by bead, with a meditation for each mystery. The mysteries change with the day of the week.',
           extra:`<ol class="bento-list">${m.list.map(x => `<li>${escapeHtml(x.name)}</li>`).join('')}</ol>`, meta:'About 20 minutes', cta:'Begin praying' },
         { route:'pray/prayers', desc:'Every prayer as an illustrated card, from the Sign of the Cross to the Te Deum, some in Latin and Spanish.', meta:`${countOf('prayer')} prayer cards` },
+        { route:'pray/generator', desc:'A prayer and a saint chosen for you at random, or a saint for whatever you need. Tap again for another.', meta:'A new pair every time' },
         { route:'pray/stations', desc:'Walk the fourteen Stations with Christ, with a short meditation at each.', meta:'14 stations' },
         { route:'pray/chaplet', desc:'The Chaplet of Divine Mercy, as given to St. Faustina, prayed on rosary beads.', meta:'About 15 minutes' },
         { route:'pray/sacred-heart', desc:'Thirty-three beads for the years of Christ’s life: “Sweet Heart of Jesus, be my love.”', meta:'About 10 minutes' },
@@ -15910,7 +16553,7 @@ const HUBS = {
         { route:'pray/little-office', desc:'The Hours of Our Lady: psalms, hymns, and readings in honor of Mary, from Matins to Compline, following the seasons.', meta:'8 Hours' },
         { route:'pray/devotions', desc:'The Brown and Green Scapulars, the Miraculous and St. Benedict Medals, First Fridays and Saturdays, and holy water, with their prayers.', meta:`${DEVOTIONS.length} devotions` },
         { route:'pray/tracker', desc:'A private record of your daily prayer, with streaks and a calendar of your faithfulness.', meta:(() => { const n = prayerStats().current; return n ? `${n}-day streak` : 'Stored only on this device'; })() },
-        { route:'mine', title:'Novenas & Intentions', icon:'mine', desc:'Keep a list of your prayer intentions, and pray a nine-day novena with any saint.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' }
+        { route:'account/saved', title:'Novenas & Intentions', icon:'mine', desc:'Keep a list of your prayer intentions, and pray a nine-day novena with any saint.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' }
       ];
     }
   },
@@ -15969,14 +16612,14 @@ const HUBS = {
         { route:'saints/patron-finder', desc:'Pick your work, your needs, your name, and what you love in a saint to find friends in heaven.', meta:'Choose as many as you like', cta:'Find a patron' },
         { route:'saints/quotes', desc:'The words of the saints, from the Church Fathers to our own day, with their sources.', meta:`${QUOTES.length} quotes` },
         { route:'saints/quotes', icon:'quote', kicker:'Quote of the day', title:quote.saint, desc:`“${excerptOf(quote.text, 150)}”`, meta:quote.source || 'From the saints', cta:'More quotes' },
-        { route:'mine', title:'Pray a Novena', icon:'mine', desc:'Choose any saint as your patron and pray a nine-day novena. Sanctify keeps track of each day for you.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' },
+        { route:'account/saved', title:'Pray a Novena', icon:'mine', desc:'Choose any saint as your patron and pray a nine-day novena. Sanctify keeps track of each day for you.', meta:novenas ? `${novenas} novena${novenas > 1 ? 's' : ''} in progress` : 'Stored only on this device' },
         { route:'calendar', title:'Feast Days', desc:isEastern() ? 'The saints of each day in the Byzantine year of feasts and fasts.' : 'Every saint’s feast on the calendar, with the saint of the day and the liturgical color.', meta:'The whole year' }
       ];
     }
   },
   history:{
     eyebrow:'Two thousand years', title:'History',
-    intro:'The story of the Church from Pentecost to today: her councils and missions, her popes, her religious orders, her icons, and the Eastern Churches in communion with Rome.',
+    intro:'The story of the Church from Pentecost to today: her saints, councils and missions, her popes, her religious orders, her icons, and the Eastern Churches in communion with Rome.',
     cards:() => [
       { route:'history/timeline', big:true, kicker:'From Pentecost to today', title:'Church History',
         desc:'Two thousand years on one timeline: councils, schisms, missions, martyrs, and the apparitions of Our Lady, each with the story behind it.',
@@ -15986,7 +16629,9 @@ const HUBS = {
       { route:'history/icons', desc:'The great icons of East and West, from the Sinai Pantocrator to Rublev’s Trinity, and what to look for in each.', meta:`${FAMOUS_ICONS.length} icons` },
       { route:'history/orders', desc:'Benedictines, Carmelites, Franciscans, Jesuits, Basilians, the Knights of Malta, and more.', meta:`${ORDER_GROUPS.reduce((n, g) => n + g.list.length, 0)} orders` },
       { route:'history/eastern-churches', desc:'The twenty-three Eastern Catholic Churches in communion with Rome: Byzantine, Syriac, Chaldean, Armenian, and Alexandrian.', meta:'23 Churches' },
-      { route:'saints', title:'The Saints', icon:'saint', desc:'The lives of the saints, their words, and a patron finder now have their own section.', meta:`${countOf('saint')} saints`, cta:'Go to Saints' }
+      { route:'saints/all', title:'The Saints', icon:'saint', desc:'Lives, feast days, and patronages of the saints, from the apostles to our own time.', meta:`${countOf('saint')} saints`, cta:'Browse the saints' },
+      { route:'saints/patron-finder', desc:'Pick your work, your needs, your name, and what you love in a saint to find friends in heaven.', meta:'Choose as many as you like' },
+      { route:'saints/quotes', desc:'The words of the saints, from the Church Fathers to our own day, with their sources.', meta:`${QUOTES.length} quotes` }
     ]
   }
 };
@@ -16202,11 +16847,11 @@ function renderHome(){
   const lastBible = store.get('bible.last', null), lastBibleBook = lastBible && BIBLE_BY_SLUG[lastBible.slug];
   const lastBook = store.get('book.recent', null), lastBookB = lastBook && BOOK_BY_SLUG[lastBook.slug], lastBookE = lastBookB && bookEntry(lastBookB);
   if(recent.length || novenas.length || lastBibleBook || lastBookE){
-    cont.innerHTML = `<div class="home-heading"><h3>Continue</h3><button class="text-link" data-route="mine">My Sanctify →</button></div>
+    cont.innerHTML = `<div class="home-heading"><h3>Continue</h3><button class="text-link" data-route="account/saved">Saved & Novenas →</button></div>
       <div class="continue-row">
         ${lastBibleBook ? `<button class="continue-chip" data-route="library/bible/${lastBible.slug}/${lastBible.chapter}"><span class="daily-kicker">The Bible</span>${escapeHtml(bibleChapterName(lastBibleBook, lastBible.chapter))}</button>` : ''}
         ${lastBookE ? `<button class="continue-chip" data-route="library/books/${lastBook.slug}/${lastBook.section}"><span class="daily-kicker">Reading</span>${escapeHtml(lastBookE.title)}</button>` : ''}
-        ${novenas.slice(0, 2).map(n => { const e = library.find(x => x.id === n.id); return `<button class="continue-chip novena-chip" data-route="mine"><span class="daily-kicker">Novena · Day ${novenaDayNumber(n)} of 9</span>${escapeHtml(e.title)}</button>`; }).join('')}
+        ${novenas.slice(0, 2).map(n => { const e = library.find(x => x.id === n.id); return `<button class="continue-chip novena-chip" data-route="account/saved"><span class="daily-kicker">Novena · Day ${novenaDayNumber(n)} of 9</span>${escapeHtml(e.title)}</button>`; }).join('')}
         ${recent.map(e => `<button class="continue-chip" data-open="${e.id}"><span class="daily-kicker">${escapeHtml(CAT_LABEL[e.category] || e.category)}</span>${escapeHtml(e.title)}</button>`).join('')}
       </div>`;
   } else {
@@ -16248,19 +16893,26 @@ function renderHome(){
 /* ---------- Routes: every page has its own address, e.g. #/learn/theology/apologetics ---------- */
 const ROUTES = {
   'home':                        { cat:'home' },
-  'today':                       { cat:'daily' },
-  'calendar':                    { cat:'calendar' },
-  'news':                        { cat:'news' },
-  'badges':                      { cat:'badges' },
+  'today':                       { cat:'daily', parent:'home' },
+  'calendar':                    { cat:'calendar', parent:'home' },
+  'news':                        { cat:'news', parent:'community' },
   'moderate':                    { cat:'moderate', parent:'account' },
-  'mine':                        { cat:'mine' },
   'community':                   { cat:'community' },
+  'wiki':                        { cat:'wiki', parent:'community' },
+  'wiki/new':                    { cat:'wikiedit', parent:'wiki', name:'New Wiki Page' },
+  'wiki/page':                   { cat:'wikipage', parent:'wiki' },      // #/wiki/page/saint-joseph
+  'wiki/edit':                   { cat:'wikiedit', parent:'wiki' },
+  'wiki/history':                { cat:'wikihistory', parent:'wiki' },
+  'wiki/revision':               { cat:'wikirev', parent:'wiki' },       // #/wiki/revision/12
   'community/new':               { cat:'forum-new', parent:'community' },
   'community/post':              { cat:'thread', parent:'community' },   // #/community/post/42
   'community/user':              { cat:'profile', parent:'community' },  // #/community/user/Palewoods
   'account':                     { cat:'account' },
+  'account/saved':               { cat:'mine', parent:'account' },
+  'account/badges':              { cat:'badges', parent:'account' },
   'pray':                        { cat:'hub-pray' },
   'pray/prayers':                { cat:'prayer', parent:'pray' },
+  'pray/generator':              { cat:'generator', parent:'pray' },
   'pray/rosary':                 { cat:'rosary', parent:'pray' },
   'pray/stations':               { cat:'stations', parent:'pray' },
   'pray/chaplet':                { cat:'chaplet', parent:'pray' },
@@ -16303,7 +16955,7 @@ const ROUTES = {
   'learn/church':                { cat:'church', parent:'learn' },
   'learn/quiz':                  { cat:'quiz', parent:'learn' },
   'history':                     { cat:'hub-history' },
-  'saints':                      { cat:'hub-saints' },
+  'saints':                      { cat:'hub-saints', parent:'history' },
   'saints/all':                  { cat:'saint', parent:'saints' },
   'saints/patron-finder':        { cat:'patronfinder', parent:'saints' },
   'saints/quotes':               { cat:'quotes', parent:'saints' },
@@ -16319,13 +16971,16 @@ const ROUTES = {
   'history/eastern-churches':    { cat:'easternchurches', parent:'history' }
 };
 // Older addresses keep working: they open the page at its new address
-const ROUTE_ALIASES = {'history/saints/patron-finder':'saints/patron-finder', 'history/saints':'saints/all', 'history/quotes':'saints/quotes', 'library/saints/patron-finder':'saints/patron-finder', 'library/saints':'saints/all', 'library/quotes':'saints/quotes', 'learn/icons':'history/icons', 'learn/history/popes':'history/popes', 'learn/history/apparitions':'history/timeline/apparitions', 'learn/history/crusades':'history/timeline/crusades', 'learn/history':'history/timeline', 'learn/orders':'history/orders', 'learn/eastern-churches':'history/eastern-churches', 'learn/plans':'library/plans', 'learn/resources':'library/resources', 'resources':'library/resources', 'church':'history', 'saints/icons':'history/icons', 'church/history/apparitions':'history/timeline/apparitions', 'church/history/crusades':'history/timeline/crusades', 'church/history':'history/timeline', 'church/popes':'history/popes', 'church/orders':'history/orders', 'church/eastern-churches':'history/eastern-churches' };
+const ROUTE_ALIASES = {'mine':'account/saved', 'badges':'account/badges', 'generator':'pray/generator', 'history/saints/patron-finder':'saints/patron-finder', 'history/saints':'saints/all', 'history/quotes':'saints/quotes', 'library/saints/patron-finder':'saints/patron-finder', 'library/saints':'saints/all', 'library/quotes':'saints/quotes', 'learn/icons':'history/icons', 'learn/history/popes':'history/popes', 'learn/history/apparitions':'history/timeline/apparitions', 'learn/history/crusades':'history/timeline/crusades', 'learn/history':'history/timeline', 'learn/orders':'history/orders', 'learn/eastern-churches':'history/eastern-churches', 'learn/plans':'library/plans', 'learn/resources':'library/resources', 'resources':'library/resources', 'church':'history', 'saints/icons':'history/icons', 'church/history/apparitions':'history/timeline/apparitions', 'church/history/crusades':'history/timeline/crusades', 'church/history':'history/timeline', 'church/popes':'history/popes', 'church/orders':'history/orders', 'church/eastern-churches':'history/eastern-churches' };
 const CAT_ROUTE = {};
 Object.entries(ROUTES).forEach(([route, r]) => { if(!(r.cat in CAT_ROUTE)) CAT_ROUTE[r.cat] = route; });
 let currentRoute = 'home';   // the ROUTES key, e.g. 'community/post'
 let currentPath = 'home';    // the full address, e.g. 'community/post/42'
 const POST_ROUTE = /^community\/post\/(\d+)$/;
 const PROFILE_ROUTE = /^community\/user\/([A-Za-z0-9_]{3,20})$/;
+const WIKI_ROUTE = /^wiki\/(page|edit|history)\/([a-z0-9-]{1,80})$/;
+const WIKI_REV_ROUTE = /^wiki\/revision\/(\d+)$/;
+let wikiSlugNow = null, wikiRevNow = null;
 
 function routeName(route){
   const r = ROUTES[route];
@@ -16335,7 +16990,7 @@ function routeName(route){
 // Accepts #/pray/rosary, and older links like #saint or #rosary
 function routeFromHash(){
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
-  if(ROUTES[h] || POST_ROUTE.test(h) || PROFILE_ROUTE.test(h) || BIBLE_ROUTE.test(h) || BOOK_ROUTE.test(h) || CCC_ROUTE.test(h)) return h;
+  if(ROUTES[h] || POST_ROUTE.test(h) || PROFILE_ROUTE.test(h) || WIKI_ROUTE.test(h) || WIKI_REV_ROUTE.test(h) || BIBLE_ROUTE.test(h) || BOOK_ROUTE.test(h) || CCC_ROUTE.test(h)) return h;
   if(ROUTE_ALIASES[h]) return h;   // applyRoute moves it to the new address
   if(CAT_ROUTE[h]) return CAT_ROUTE[h];
   return 'home';
@@ -16357,7 +17012,10 @@ function applyRoute(path){
   bookRef = bk ? { slug:bk[1], section:Number(bk[2]) || 0 } : null;
   const cc = CCC_ROUTE.exec(path);
   cccRef = cc ? parseCccInput(cc[1] + (cc[2] ? '-' + cc[2] : '')) : null;
-  let route = post ? 'community/post' : prof ? 'community/user' : bib ? 'library/bible/read' : bk ? 'library/books/read' : cc ? 'library/catechism' : path;
+  const wk = WIKI_ROUTE.exec(path), wr = WIKI_REV_ROUTE.exec(path);
+  wikiSlugNow = wk ? wk[2] : null;
+  wikiRevNow = wr ? Number(wr[1]) : null;
+  let route = wk ? 'wiki/' + wk[1] : wr ? 'wiki/revision' : post ? 'community/post' : prof ? 'community/user' : bib ? 'library/bible/read' : bk ? 'library/books/read' : cc ? 'library/catechism' : path;
   if(!ROUTES[route]) route = path = 'home';
   const r = ROUTES[route];
   currentRoute = route;
@@ -16376,7 +17034,7 @@ function applyRoute(path){
   document.querySelectorAll('.topnav-link').forEach(b => b.classList.toggle('active', b.dataset.route === top));
   if(typeof syncSideGroups === 'function') syncSideGroups(top);
   document.querySelectorAll('.tab-link').forEach(b => { const on = b.dataset.route === top; b.classList.toggle('active', on); if(on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
-  document.querySelectorAll('.top-action').forEach(b => b.classList.toggle('active', b.dataset.route === top));
+  document.querySelectorAll('.top-action').forEach(b => b.classList.toggle('active', b.dataset.route === top || (b.dataset.route === 'account' && route === 'moderate')));
   document.querySelectorAll('.navlink[data-route]').forEach(b => b.classList.toggle('active',
     b.dataset.route === route || (route.startsWith(b.dataset.route + '/') && !document.querySelector(`.navlink[data-route="${route}"]`))));
   document.title = route === 'home' ? 'Sanctify — A Catholic Repository' : `${routeName(route)} — Sanctify`;
@@ -16675,7 +17333,7 @@ function renderReadActions(e){
   }));
   bar.querySelector('[data-act="save"]').addEventListener('click', () => {
     const nowSaved = toggleSaved(e.id);
-    toast(nowSaved ? 'Saved to My Sanctify' : 'Removed from My Sanctify');
+    toast(nowSaved ? 'Saved. Find it in Saved & Novenas on your account page.' : 'Removed from your saved list');
     renderReadActions(e);
     if(activeCategory === 'mine') renderMine();
   });
@@ -16698,7 +17356,7 @@ function renderReadActions(e){
   const nov = bar.querySelector('[data-act="novena"]');
   if(nov) nov.addEventListener('click', () => {
     startNovena(e.id);
-    toast('Novena started — see My Sanctify');
+    toast('Novena started. Follow it in Saved & Novenas on your account page.');
     renderReadActions(e);
   });
 }
@@ -16714,7 +17372,7 @@ function startNovena(id){
 }
 function novenaDayNumber(n){ return Math.min(9, Math.max(1, dayNumber(startOfToday()) - dayNumber(parseIsoDay(n.start)) + 1)); }
 
-/* ---------- My Sanctify page ---------- */
+/* ---------- Saved & Novenas (an account tab, kept on this device) ---------- */
 function miniRow(e, extraHtml){
   const row = document.createElement('div');
   row.className = 'mine-row';
@@ -16728,7 +17386,7 @@ function miniRow(e, extraHtml){
 }
 
 function renderMine(){
-  entryListEl.innerHTML = '';
+  entryListEl.innerHTML = accountTabsHtml('account/saved');
   entryListEl.insertAdjacentHTML('beforeend', homePrayerHtml());
   bindHomePrayer(entryListEl);
   const find = id => library.find(x => x.id === id);
@@ -16848,6 +17506,71 @@ function renderMine(){
   });
 
   entryListEl.insertAdjacentHTML('beforeend', `<p class="mine-privacy">🔒 Your saved items, intentions, and novenas are stored only on this device, in this browser. Nothing is sent anywhere.</p>`);
+}
+
+/* =========================================================
+   PRAYER & SAINT GENERATOR
+   ========================================================= */
+let genPrayer = null, genSaint = null, genNeed = '';
+function genPick(cat, avoid){
+  const need = genNeed.trim().toLowerCase();
+  let pool = library.filter(e => e.category === cat);
+  if(cat === 'saint' && need) pool = pool.filter(e => (e.patron || '').toLowerCase().includes(need) || e.title.toLowerCase().includes(need));
+  const fresh = pool.filter(e => e.id !== avoid);
+  const list = fresh.length ? fresh : pool;
+  return list.length ? list[Math.floor(Math.random() * list.length)].id : null;
+}
+function genCardHtml(kind, e){
+  if(!e) return `<article class="gen-card"><div class="daily-kicker">${kind === 'saint' ? 'A saint for you' : 'A prayer for you'}</div>
+    <p class="mine-empty">No saint is listed as a patron of “${escapeHtml(genNeed)}.” Try another word, such as travelers, students, or the sick.</p></article>`;
+  const patron = kind === 'saint' && e.patron ? `<p class="gen-patron"><span class="patron-label">Patron of</span> ${escapeHtml(e.patron.split(', ').slice(0, 6).join(', '))}</p>` : '';
+  return `<article class="gen-card gen-${kind}">
+    ${kind === 'saint' ? `<span class="saint-portrait" data-sid="${e.id}">${portraitPlaceholder(e.title)}</span>` : `<span class="gen-art">${cardArt((PRAYER_CARDS[e.id] || {}).art || 'cross')}</span>`}
+    <div class="gen-body">
+      <div class="daily-kicker">${kind === 'saint' ? 'A saint for you' : 'A prayer for you'}</div>
+      <h3>${escapeHtml(e.title)}</h3>
+      ${patron}
+      <p>${escapeHtml(excerptOf(e.content, kind === 'saint' ? 220 : 260))}</p>
+      <div class="forum-form-actions">
+        <button class="btn primary pill" data-open="${e.id}">${kind === 'saint' ? 'Read the life' : 'Pray it'}</button>
+        <button class="btn quiet" data-gen="${kind}">${navIcon('dice')}Another ${kind}</button>
+      </div>
+    </div>
+  </article>`;
+}
+function renderGenerator(){
+  if(!genPrayer || !library.some(e => e.id === genPrayer)) genPrayer = genPick('prayer');
+  if(genSaint === null || (genSaint && !library.some(e => e.id === genSaint))) genSaint = genPick('saint');
+  const find = id => library.find(e => e.id === id);
+  entryListEl.innerHTML = `
+    <div class="gen-page">
+      <div class="gen-bar">
+        <button class="btn primary pill" data-gen="both">${navIcon('dice')}Give me a new pair</button>
+        <label class="gen-need"><span>A saint for…</span><input type="search" id="genNeed" value="${escapeHtml(genNeed)}" placeholder="students, travelers, the sick…" list="genNeeds" autocomplete="off"></label>
+        <datalist id="genNeeds">${['students', 'travelers', 'the sick', 'mothers', 'fathers', 'children', 'teachers', 'soldiers', 'doctors', 'nurses', 'farmers', 'workers', 'priests', 'writers', 'musicians', 'animals', 'lost things', 'hopeless causes', 'a happy death', 'families'].map(n => `<option value="${n}">`).join('')}</datalist>
+      </div>
+      <div class="gen-grid">${genCardHtml('prayer', find(genPrayer))}${genCardHtml('saint', find(genSaint))}</div>
+      <p class="mine-privacy">Every prayer and saint opens in full, where you can save it or start a novena.</p>
+    </div>`;
+  entryListEl.querySelectorAll('.saint-portrait[data-sid]').forEach(el => observePortrait(el));
+  entryListEl.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openReadModal(b.dataset.open)));
+  entryListEl.querySelectorAll('[data-gen]').forEach(b => b.addEventListener('click', () => {
+    const k = b.dataset.gen;
+    if(k !== 'saint') genPrayer = genPick('prayer', genPrayer);
+    if(k !== 'prayer') genSaint = genPick('saint', genSaint);
+    renderGenerator();
+  }));
+  let t = null;
+  entryListEl.querySelector('#genNeed').addEventListener('input', ev => {
+    clearTimeout(t);
+    t = setTimeout(() => {
+      genNeed = ev.target.value;
+      genSaint = genPick('saint');
+      renderGenerator();
+      const box = document.getElementById('genNeed');
+      if(box){ box.focus(); box.setSelectionRange(box.value.length, box.value.length); }
+    }, 350);
+  });
 }
 
 /* =========================================================
@@ -19454,7 +20177,7 @@ async function renderBadges(){
   if(!stillShowing(seq, 'badges')) return;
   if(profile){ communityBadgeKeys(profile).forEach(k => have.add(k)); (profile.badges.earned || []).forEach(k => have.add(k)); }
   const total = BADGES.length, got = BADGES.filter(b => have.has(b.key)).length;
-  entryListEl.innerHTML = `
+  entryListEl.innerHTML = `${accountTabsHtml('account/badges')}
     <div class="badges-page">
       <section class="badges-head">
         <div class="badges-score"><strong>${got}</strong><span>of ${total} badges earned</span></div>
@@ -19468,7 +20191,7 @@ async function renderBadges(){
           <div class="badge-grid">${list.map(b => badgeMedal(b, have.has(b.key), g === 'community' ? (profile ? b.metric(profile) : null) : b.metric(m))).join('')}</div></section>`;
       }).join('')}
     </div>`;
-  bindAuthButtons(entryListEl, 'badges');
+  bindAuthButtons(entryListEl, 'account/badges');
 }
 
 /* =========================================================

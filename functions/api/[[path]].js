@@ -21,6 +21,15 @@
    browser before upload), checked by their file signature and stored in D1.
    Profile banners are either one of the preset designs (stored by name)
    or a wide picture, checked and stored the same way.
+
+   AutoMod turns back spam (links from brand-new accounts, too many links,
+   shouting, long runs of one character, the same text posted twice) and
+   hides a post or reply once several members report it, until a moderator
+   restores it or keeps it removed. Moderators can switch it off.
+
+   The Community Wiki: pages any member can write and edit, with every
+   revision kept so a page can be compared or restored. Moderators can lock
+   or remove a page.
    ========================================================= */
 
 const CATEGORIES = ['general', 'prayer', 'faith', 'saints', 'study'];
@@ -93,6 +102,36 @@ const SCHEMA = [
      mime TEXT,
      data TEXT,
      updated_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS held (
+     kind TEXT NOT NULL,
+     target_id INTEGER NOT NULL,
+     created_at INTEGER NOT NULL,
+     PRIMARY KEY (kind, target_id))`,
+  `CREATE TABLE IF NOT EXISTS wiki_pages (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     slug TEXT NOT NULL UNIQUE,
+     title TEXT NOT NULL,
+     body TEXT NOT NULL,
+     created_by INTEGER,
+     created_at INTEGER NOT NULL,
+     updated_by INTEGER,
+     updated_at INTEGER NOT NULL,
+     revisions INTEGER NOT NULL DEFAULT 1,
+     locked INTEGER NOT NULL DEFAULT 0,
+     deleted INTEGER NOT NULL DEFAULT 0)`,
+  `CREATE INDEX IF NOT EXISTS wiki_pages_by_update ON wiki_pages (deleted, updated_at DESC)`,
+  `CREATE TABLE IF NOT EXISTS wiki_revisions (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     page_id INTEGER NOT NULL,
+     user_id INTEGER,
+     title TEXT NOT NULL,
+     body TEXT NOT NULL,
+     summary TEXT NOT NULL DEFAULT '',
+     delta INTEGER NOT NULL DEFAULT 0,
+     created_at INTEGER NOT NULL)`,
+  `CREATE INDEX IF NOT EXISTS wiki_revisions_by_page ON wiki_revisions (page_id, id DESC)`,
+  `CREATE INDEX IF NOT EXISTS wiki_revisions_by_user ON wiki_revisions (user_id, id DESC)`,
+  `CREATE INDEX IF NOT EXISTS wiki_revisions_by_date ON wiki_revisions (created_at DESC)`,
   `CREATE TABLE IF NOT EXISTS profiles (
      user_id INTEGER PRIMARY KEY,
      bio TEXT NOT NULL,
@@ -246,6 +285,16 @@ export async function onRequest({ request, env }){
     if(path === 'account/avatar' && method === 'PUT') return await setAvatar(ctx);
     if(path === 'account/avatar' && method === 'DELETE') return await removeAvatar(ctx);
     if(path === 'account/profile' && method === 'PUT') return await setProfile(ctx);
+    if(path === 'wiki' && method === 'GET') return await listWiki(ctx);
+    if(path === 'wiki/changes' && method === 'GET') return await wikiChanges(ctx);
+    if(path === 'wiki/pages' && method === 'POST') return await createWikiPage(ctx);
+    if((m = path.match(/^wiki\/pages\/([a-z0-9-]{1,80})$/))){
+      if(method === 'GET') return await getWikiPage(ctx, m[1]);
+      if(method === 'PUT') return await editWikiPage(ctx, m[1]);
+    }
+    if((m = path.match(/^wiki\/pages\/([a-z0-9-]{1,80})\/history$/)) && method === 'GET') return await wikiHistory(ctx, m[1]);
+    if((m = path.match(/^wiki\/pages\/([a-z0-9-]{1,80})\/restore$/)) && method === 'POST') return await restoreWikiRevision(ctx, m[1]);
+    if((m = path.match(/^wiki\/revisions\/(\d+)$/)) && method === 'GET') return await getWikiRevision(ctx, Number(m[1]));
     if(path === 'account/banner' && method === 'PUT') return await setBanner(ctx);
     if(path === 'account/banner' && method === 'DELETE') return await removeBanner(ctx);
     if(path === 'posts' && method === 'GET') return await listPosts(ctx);
@@ -417,7 +466,7 @@ async function setProfile(ctx){
   if(bio.length > BIO_MAX) throw new HttpError(400, `Your description can be up to ${BIO_MAX} characters.`);
   if(bio){
     try{ await checkPosting(ctx, user, [bio]); }
-    catch(err){ throw err.status === 400 ? new HttpError(400, 'Please rephrase: your description uses a word that isn’t allowed in the Community.') : err; }
+    catch(err){ throw err.status === 400 && /isn’t allowed/.test(err.message) ? new HttpError(400, 'Please rephrase: your description uses a word that isn’t allowed in the Community.') : err; }
   }
   await limit(ctx, 'profile:' + user.id, 20, 60 * 60 * 1000, 'You’ve changed your description several times recently. Please try again later.');
   if(bio) await ctx.db.prepare('INSERT INTO profiles (user_id, bio, updated_at) VALUES (?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET bio = excluded.bio, updated_at = excluded.updated_at')
@@ -523,6 +572,7 @@ async function createPost(ctx){
   const body = cleanText(data.body);
   if(body.length < 1 || body.length > 5000) throw new HttpError(400, 'Posts are 1 to 5,000 characters.');
   await checkPosting(ctx, user, [title, body]);
+  await noRepeat(ctx, user, 'posts', body);
   await limit(ctx, 'post:' + user.id, 5, 15 * 60 * 1000, 'You’ve posted several times in a short while. Please wait a few minutes before posting again.');
   const result = await ctx.db.prepare(
     'INSERT INTO posts (user_id, category, title, body, created_at, last_activity) VALUES (?, ?, ?, ?, ?, ?)'
@@ -536,6 +586,7 @@ async function createReply(ctx, postId){
   const body = cleanText(data.body);
   if(body.length < 1 || body.length > 3000) throw new HttpError(400, 'Replies are 1 to 3,000 characters.');
   await checkPosting(ctx, user, [body]);
+  await noRepeat(ctx, user, 'replies', body);
   const post = await ctx.db.prepare('SELECT p.id, COALESCE(f.locked, 0) AS locked FROM posts p LEFT JOIN post_flags f ON f.post_id = p.id WHERE p.id = ? AND p.deleted = 0').bind(postId).first();
   if(!post) throw new HttpError(404, 'This post doesn’t exist or has been removed.');
   if(post.locked && !user.admin) throw new HttpError(403, 'This thread is locked, so it can’t take new replies.');
@@ -610,6 +661,79 @@ async function checkPosting(ctx, user, texts){
     const w = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     if(new RegExp('(^|[^\\p{L}\\p{N}])' + w + '($|[^\\p{L}\\p{N}])', 'u').test(hay)) throw new HttpError(400, 'Please rephrase: your post uses a word that isn’t allowed in the Community.');
   }
+  await autoMod(ctx, user, texts);
+}
+
+/* ---------- AutoMod ---------- */
+const AUTOMOD_LINK_DAYS = 1;      // new accounts wait this long before sharing links to other sites
+const AUTOMOD_MAX_LINKS = 4;
+const AUTOMOD_REPORTS = 3;        // default number of reports that hides a post or reply
+async function autoModOn(ctx){ return await setting(ctx, 'automod') !== '0'; }
+// Links to other sites (links to Sanctify itself are always welcome)
+function outsideLinks(text){
+  return (text.match(/\b(?:https?:\/\/|www\.)[^\s<>()]+/gi) || []).filter(u => !/^(?:https?:\/\/)?(?:www\.)?sanctify\.pages\.dev(?:[\/?#]|$)/i.test(u)).length;
+}
+async function autoMod(ctx, user, texts){
+  if(!(await autoModOn(ctx))) return;
+  const text = texts.join('\n');
+  const block = async (rule, message) => {
+    await logAuto(ctx, 'automod-block', user.username, rule + ': ' + text.replace(/\s+/g, ' ').slice(0, 120));
+    throw new HttpError(400, message);
+  };
+  const links = outsideLinks(text);
+  if(links && ctx.now - user.created_at < AUTOMOD_LINK_DAYS * 86400000)
+    await block('link from a new account', 'New accounts can share links to other sites after their first day. Links to pages on Sanctify are always fine: use “Link a page.”');
+  if(links > AUTOMOD_MAX_LINKS) await block('too many links', `Please share no more than ${AUTOMOD_MAX_LINKS} links to other sites at a time.`);
+  const letters = text.match(/\p{L}/gu) || [];
+  const upper = text.match(/\p{Lu}/gu) || [];
+  if(letters.length >= 30 && upper.length / letters.length > 0.7) await block('shouting', 'Please don’t write in all capital letters: it reads as shouting.');
+  if(/(\S)\1{11,}/u.test(text)) await block('repeated characters', 'Please remove the long run of repeated characters.');
+}
+// AutoMod's own entries in the moderation log
+async function logAuto(ctx, action, target, detail){
+  await ctx.db.prepare('INSERT INTO mod_log (mod_id, action, target, detail, created_at) VALUES (NULL, ?, ?, ?, ?)')
+    .bind(action, String(target || '').slice(0, 200), String(detail || '').slice(0, 300), ctx.now).run();
+}
+// The same words posted twice within an hour are almost always a double tap or spam
+async function noRepeat(ctx, user, table, body){
+  if(user.admin || !(await autoModOn(ctx))) return;
+  const dup = await ctx.db.prepare(`SELECT 1 AS x FROM ${table} WHERE user_id = ? AND body = ? AND deleted = 0 AND created_at > ? LIMIT 1`).bind(user.id, body, ctx.now - 3600000).first();
+  if(dup) throw new HttpError(400, 'You’ve already posted that. If it didn’t appear, try refreshing the page.');
+}
+// Hides a reported post or reply once enough different members have reported it
+async function autoHide(ctx, kind, id){
+  if(!(await autoModOn(ctx))) return;
+  const need = Number(await setting(ctx, 'automod_reports')) || AUTOMOD_REPORTS;
+  const n = await ctx.db.prepare(`SELECT COUNT(DISTINCT reporter_id) AS n FROM reports WHERE status = 'open' AND kind = ? AND target_id = ?`).bind(kind, id).first();
+  if(!n || n.n < need) return;
+  const row = kind === 'post'
+    ? await ctx.db.prepare('SELECT p.id, p.user_id, p.title AS label, u.username FROM posts p LEFT JOIN users u ON u.id = p.user_id WHERE p.id = ? AND p.deleted = 0').bind(id).first()
+    : await ctx.db.prepare('SELECT r.id, r.user_id, r.post_id, substr(r.body, 1, 80) AS label, u.username FROM replies r LEFT JOIN users u ON u.id = r.user_id WHERE r.id = ? AND r.deleted = 0').bind(id).first();
+  if(!row) return;
+  if(row.username && siteAdmin(ctx, row.username)) return;
+  const steps = [ctx.db.prepare('INSERT OR IGNORE INTO held (kind, target_id, created_at) VALUES (?, ?, ?)').bind(kind, id, ctx.now)];
+  if(kind === 'post') steps.push(ctx.db.prepare('UPDATE posts SET deleted = 1 WHERE id = ?').bind(id));
+  else steps.push(ctx.db.prepare('UPDATE replies SET deleted = 1 WHERE id = ?').bind(id), ctx.db.prepare('UPDATE posts SET reply_count = MAX(reply_count - 1, 0) WHERE id = ?').bind(row.post_id));
+  await ctx.db.batch(steps);
+  await logAuto(ctx, 'automod-hide', kind + ' ' + id, `${n.n} reports · ${row.username || 'former member'} · ${row.label || ''}`);
+}
+// A moderator brings back something AutoMod hid
+async function restoreHeld(ctx, kind, id){
+  const held = await ctx.db.prepare('SELECT 1 AS x FROM held WHERE kind = ? AND target_id = ?').bind(kind, id).first();
+  if(!held) throw new HttpError(404, 'Only posts and replies hidden by AutoMod can be restored.');
+  const steps = [
+    ctx.db.prepare('DELETE FROM held WHERE kind = ? AND target_id = ?').bind(kind, id),
+    ctx.db.prepare(`UPDATE reports SET status = 'dismissed' WHERE status = 'open' AND kind = ? AND target_id = ?`).bind(kind, id)
+  ];
+  if(kind === 'post') steps.push(ctx.db.prepare('UPDATE posts SET deleted = 0 WHERE id = ?').bind(id));
+  else {
+    const r = await ctx.db.prepare('SELECT post_id FROM replies WHERE id = ?').bind(id).first();
+    steps.push(ctx.db.prepare('UPDATE replies SET deleted = 0 WHERE id = ?').bind(id));
+    if(r) steps.push(ctx.db.prepare('UPDATE posts SET reply_count = reply_count + 1 WHERE id = ?').bind(r.post_id));
+  }
+  await ctx.db.batch(steps);
+  await logMod(ctx, 'restore', kind + ' ' + id, 'hidden by AutoMod');
+  return json({ ok:true });
 }
 
 /* ---------- Editing your own posts and replies ---------- */
@@ -698,10 +822,168 @@ async function getProfile(ctx, name){
     `SELECT id, category, title, substr(body, 1, 200) AS excerpt, created_at, reply_count, prayer_count FROM posts WHERE user_id = ? AND deleted = 0 ORDER BY created_at DESC LIMIT 20`
   ).bind(u.id).all();
   const badges = await badgesFor(ctx, u.id);
+  const replies = (await ctx.db.prepare(
+    `SELECT r.id, r.post_id, p.title, substr(r.body, 1, 200) AS excerpt, r.created_at FROM replies r JOIN posts p ON p.id = r.post_id AND p.deleted = 0
+      WHERE r.user_id = ? AND r.deleted = 0 ORDER BY r.created_at DESC LIMIT 20`).bind(u.id).all()).results;
+  const wikiCounts = await ctx.db.prepare(
+    `SELECT (SELECT COUNT(*) FROM wiki_revisions r JOIN wiki_pages p ON p.id = r.page_id AND p.deleted = 0 WHERE r.user_id = ?) AS edits,
+            (SELECT COUNT(*) FROM wiki_pages WHERE created_by = ? AND deleted = 0) AS pages,
+            (SELECT COUNT(DISTINCT r.page_id) FROM wiki_revisions r JOIN wiki_pages p ON p.id = r.page_id AND p.deleted = 0 WHERE r.user_id = ?) AS touched`).bind(u.id, u.id, u.id).first();
+  const wikiEdits = (await ctx.db.prepare(
+    `SELECT r.id, r.summary, r.delta, r.created_at, p.slug, p.title, (r.id = (SELECT MIN(id) FROM wiki_revisions x WHERE x.page_id = r.page_id)) AS created
+       FROM wiki_revisions r JOIN wiki_pages p ON p.id = r.page_id AND p.deleted = 0 WHERE r.user_id = ? ORDER BY r.id DESC LIMIT 25`).bind(u.id).all()).results;
   return json({
+    replies:replies.map(r => ({ id:r.id, postId:r.post_id, postTitle:r.title, excerpt:r.excerpt, createdAt:r.created_at })),
+    wiki:{ edits:wikiCounts.edits, pages:wikiCounts.pages, touched:wikiCounts.touched,
+      recent:wikiEdits.map(r => ({ id:r.id, slug:r.slug, title:r.title, summary:r.summary, delta:r.delta, createdAt:r.created_at, created:!!r.created })) },
     profile:{ id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, banner:bannerJson(u), bio:u.bio || '', posts:counts.posts, replies:counts.replies, prayers:counts.prayers, administrator:siteAdmin(ctx, u.username), badges },
     posts:results.map(p => ({ id:p.id, category:p.category, title:p.title, excerpt:p.excerpt, createdAt:p.created_at, lastActivity:p.created_at, replies:p.reply_count, prayers:p.prayer_count, author:u.username, authorAvatar:u.avatar_v || null }))
   });
+}
+
+/* ---------- The Community Wiki ---------- */
+const WIKI_BODY_MAX = 20000;
+function wikiSlug(title){
+  return String(title || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+    .replace(/[’']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80).replace(/-+$/, '');
+}
+function wikiExcerpt(body){
+  return String(body || '').replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, '$2').replace(/\[\[([^\]]+)\]\]/g, '$1').replace(/[#*>_`-]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 200);
+}
+async function wikiPageRow(ctx, slug, withDeleted){
+  return ctx.db.prepare(`SELECT p.*, cu.username AS creator, uu.username AS editor,
+      (SELECT MAX(id) FROM wiki_revisions r WHERE r.page_id = p.id) AS rev
+    FROM wiki_pages p LEFT JOIN users cu ON cu.id = p.created_by LEFT JOIN users uu ON uu.id = p.updated_by
+    WHERE p.slug = ?${withDeleted ? '' : ' AND p.deleted = 0'}`).bind(slug).first();
+}
+function wikiPageJson(p){
+  return { slug:p.slug, title:p.title, body:p.body, createdAt:p.created_at, createdBy:p.creator || null, updatedAt:p.updated_at,
+    updatedBy:p.editor || null, revisions:p.revisions, locked:!!p.locked, revision:p.rev };
+}
+function readWikiInput(data){
+  const title = cleanLine(data.title), body = cleanText(data.body), summary = cleanLine(data.summary).slice(0, 200);
+  if(title.length < 2 || title.length > 100) throw new HttpError(400, 'Page titles are 2 to 100 characters.');
+  if(!wikiSlug(title)) throw new HttpError(400, 'Please give the page a title with some letters or numbers in it.');
+  if(body.length < 20) throw new HttpError(400, 'Please write at least a sentence or two.');
+  if(body.length > WIKI_BODY_MAX) throw new HttpError(400, `Wiki pages can be up to ${WIKI_BODY_MAX.toLocaleString('en-US')} characters.`);
+  return { title, body, summary };
+}
+
+async function listWiki(ctx){
+  const q = cleanLine(ctx.url.searchParams.get('q')).slice(0, 80);
+  const sort = ctx.url.searchParams.get('sort') === 'recent' ? 'p.updated_at DESC' : 'p.title COLLATE NOCASE';
+  const args = [];
+  let where = 'p.deleted = 0';
+  if(q){ where += ' AND (p.title LIKE ? OR p.body LIKE ?)'; args.push('%' + q + '%', '%' + q + '%'); }
+  const { results } = await ctx.db.prepare(
+    `SELECT p.slug, p.title, substr(p.body, 1, 400) AS body, p.updated_at, p.revisions, p.locked, u.username AS editor
+       FROM wiki_pages p LEFT JOIN users u ON u.id = p.updated_by WHERE ${where} ORDER BY ${sort} LIMIT 300`).bind(...args).all();
+  return json({ pages:results.map(p => ({ slug:p.slug, title:p.title, excerpt:wikiExcerpt(p.body), updatedAt:p.updated_at, updatedBy:p.editor || null, revisions:p.revisions, locked:!!p.locked })) });
+}
+
+async function wikiChanges(ctx){
+  const { results } = await ctx.db.prepare(
+    `SELECT r.id, r.summary, r.delta, r.created_at, p.slug, p.title, u.username,
+            (r.id = (SELECT MIN(id) FROM wiki_revisions x WHERE x.page_id = r.page_id)) AS created
+       FROM wiki_revisions r JOIN wiki_pages p ON p.id = r.page_id AND p.deleted = 0 LEFT JOIN users u ON u.id = r.user_id
+      ORDER BY r.id DESC LIMIT 50`).all();
+  return json({ changes:results.map(r => ({ id:r.id, slug:r.slug, title:r.title, summary:r.summary, delta:r.delta, createdAt:r.created_at, user:r.username || null, created:!!r.created })) });
+}
+
+async function getWikiPage(ctx, slug){
+  const p = await wikiPageRow(ctx, slug, false);
+  if(!p) throw new HttpError(404, 'There’s no wiki page by that name yet.');
+  return json({ page:wikiPageJson(p) });
+}
+
+async function createWikiPage(ctx){
+  const user = requireUser(ctx);
+  const data = await readBody(ctx, 60000);
+  const { title, body, summary } = readWikiInput(data);
+  await checkPosting(ctx, user, [title, body, summary]);
+  const slug = wikiSlug(title);
+  const existing = await ctx.db.prepare('SELECT slug, deleted FROM wiki_pages WHERE slug = ?').bind(slug).first();
+  if(existing) throw new HttpError(409, existing.deleted ? 'A page with that title was removed by the moderators. Please choose another title.' : 'There’s already a page with that title. You can edit it instead.');
+  await limit(ctx, 'wikinew:' + user.id, 6, 60 * 60 * 1000, 'You’ve started several pages recently. Please wait a little before starting another.');
+  await limit(ctx, 'wiki:' + user.id, 40, 60 * 60 * 1000, 'You’ve made many edits in a short while. Please wait a little.');
+  const res = await ctx.db.prepare('INSERT INTO wiki_pages (slug, title, body, created_by, created_at, updated_by, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)')
+    .bind(slug, title, body, user.id, ctx.now, user.id, ctx.now).run();
+  await ctx.db.prepare('INSERT INTO wiki_revisions (page_id, user_id, title, body, summary, delta, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)')
+    .bind(res.meta.last_row_id, user.id, title, body, summary || 'Started the page', body.length, ctx.now).run();
+  return json({ page:wikiPageJson(await wikiPageRow(ctx, slug, false)) }, 201);
+}
+
+async function saveWikiRevision(ctx, user, p, title, body, summary){
+  await ctx.db.batch([
+    ctx.db.prepare('INSERT INTO wiki_revisions (page_id, user_id, title, body, summary, delta, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)')
+      .bind(p.id, user.id, title, body, summary, body.length - p.body.length, ctx.now),
+    ctx.db.prepare('UPDATE wiki_pages SET title = ?, body = ?, updated_by = ?, updated_at = ?, revisions = revisions + 1 WHERE id = ?')
+      .bind(title, body, user.id, ctx.now, p.id)
+  ]);
+  return json({ page:wikiPageJson(await wikiPageRow(ctx, p.slug, false)) });
+}
+
+async function editWikiPage(ctx, slug){
+  const user = requireUser(ctx);
+  const p = await wikiPageRow(ctx, slug, false);
+  if(!p) throw new HttpError(404, 'There’s no wiki page by that name.');
+  if(p.locked && !user.admin) throw new HttpError(403, 'The moderators have locked this page, so only they can edit it.');
+  const data = await readBody(ctx, 60000);
+  const { title, body, summary } = readWikiInput(data);
+  if(data.base !== undefined && Number(data.base) !== p.rev) throw new HttpError(409, 'Someone else changed this page while you were editing. Copy your changes, reload the page, and add them again.');
+  if(title === p.title && body === p.body) throw new HttpError(400, 'You haven’t changed anything yet.');
+  await checkPosting(ctx, user, [title, body, summary]);
+  await limit(ctx, 'wiki:' + user.id, 40, 60 * 60 * 1000, 'You’ve made many edits in a short while. Please wait a little.');
+  return saveWikiRevision(ctx, user, p, title, body, summary);
+}
+
+async function wikiHistory(ctx, slug){
+  const p = await wikiPageRow(ctx, slug, false);
+  if(!p) throw new HttpError(404, 'There’s no wiki page by that name.');
+  const { results } = await ctx.db.prepare(
+    'SELECT r.id, r.title, r.summary, r.delta, r.created_at, u.username FROM wiki_revisions r LEFT JOIN users u ON u.id = r.user_id WHERE r.page_id = ? ORDER BY r.id DESC LIMIT 200'
+  ).bind(p.id).all();
+  return json({ page:{ slug:p.slug, title:p.title, locked:!!p.locked, revision:p.rev },
+    revisions:results.map(r => ({ id:r.id, title:r.title, summary:r.summary, delta:r.delta, createdAt:r.created_at, user:r.username || null })) });
+}
+
+async function getWikiRevision(ctx, id){
+  const r = await ctx.db.prepare(
+    `SELECT r.id, r.title, r.body, r.summary, r.created_at, u.username, p.slug, p.title AS page_title, (SELECT MAX(id) FROM wiki_revisions x WHERE x.page_id = r.page_id) AS latest
+       FROM wiki_revisions r JOIN wiki_pages p ON p.id = r.page_id AND p.deleted = 0 LEFT JOIN users u ON u.id = r.user_id WHERE r.id = ?`).bind(id).first();
+  if(!r) throw new HttpError(404, 'That version doesn’t exist.');
+  return json({ revision:{ id:r.id, title:r.title, body:r.body, summary:r.summary, createdAt:r.created_at, user:r.username || null, slug:r.slug, pageTitle:r.page_title, latest:r.id === r.latest } });
+}
+
+async function restoreWikiRevision(ctx, slug){
+  const user = requireUser(ctx);
+  const p = await wikiPageRow(ctx, slug, false);
+  if(!p) throw new HttpError(404, 'There’s no wiki page by that name.');
+  if(p.locked && !user.admin) throw new HttpError(403, 'The moderators have locked this page, so only they can change it.');
+  const data = await readBody(ctx, 200);
+  const r = await ctx.db.prepare('SELECT title, body, created_at FROM wiki_revisions WHERE id = ? AND page_id = ?').bind(Number(data.revision), p.id).first();
+  if(!r) throw new HttpError(404, 'That version doesn’t exist.');
+  if(r.title === p.title && r.body === p.body) throw new HttpError(400, 'The page already reads like that version.');
+  await checkPosting(ctx, user, [r.title, r.body]);
+  await limit(ctx, 'wiki:' + user.id, 40, 60 * 60 * 1000, 'You’ve made many edits in a short while. Please wait a little.');
+  return saveWikiRevision(ctx, user, p, r.title, r.body, 'Restored the version of ' + new Date(r.created_at).toISOString().slice(0, 10));
+}
+
+async function lockWikiPage(ctx, slug){
+  const p = await wikiPageRow(ctx, slug, false);
+  if(!p) throw new HttpError(404, 'There’s no wiki page by that name.');
+  const on = (await readBody(ctx, 200)).on ? 1 : 0;
+  await ctx.db.prepare('UPDATE wiki_pages SET locked = ? WHERE id = ?').bind(on, p.id).run();
+  await logMod(ctx, on ? 'wiki-lock' : 'wiki-unlock', p.title, '');
+  return json({ ok:true, locked:!!on });
+}
+
+async function deleteWikiPage(ctx, slug){
+  const p = await wikiPageRow(ctx, slug, false);
+  if(!p) throw new HttpError(404, 'There’s no wiki page by that name.');
+  await ctx.db.prepare('UPDATE wiki_pages SET deleted = 1 WHERE id = ?').bind(p.id).run();
+  await logMod(ctx, 'wiki-delete', p.title, `${p.revisions} revisions`);
+  return json({ ok:true });
 }
 
 /* ---------- Badges ---------- */
@@ -785,6 +1067,7 @@ async function report(ctx, kind, id){
   await limit(ctx, 'report:' + user.id, 10, 60 * 60 * 1000, 'You’ve sent several reports. Please wait a little before sending more.');
   await ctx.db.prepare('INSERT OR IGNORE INTO reports (kind, target_id, post_id, reporter_id, reason, created_at) VALUES (?, ?, ?, ?, ?, ?)')
     .bind(kind, id, row.post_id, user.id, reason, ctx.now).run();
+  await autoHide(ctx, kind, id);
   return json({ ok:true });
 }
 
@@ -814,6 +1097,9 @@ async function modRoute(ctx, sub, method){
   if((m = sub.match(/^users\/(\d+)\/bio$/)) && method === 'DELETE') return await clearBio(ctx, Number(m[1]));
   if((m = sub.match(/^users\/(\d+)\/avatar$/)) && method === 'DELETE') return await clearAvatar(ctx, Number(m[1]));
   if((m = sub.match(/^users\/(\d+)\/banner$/)) && method === 'DELETE') return await clearBanner(ctx, Number(m[1]));
+  if((m = sub.match(/^restore\/(post|reply)\/(\d+)$/)) && method === 'POST') return await restoreHeld(ctx, m[1], Number(m[2]));
+  if((m = sub.match(/^wiki\/([a-z0-9-]{1,80})\/lock$/)) && method === 'POST') return await lockWikiPage(ctx, m[1]);
+  if((m = sub.match(/^wiki\/([a-z0-9-]{1,80})$/)) && method === 'DELETE') return await deleteWikiPage(ctx, m[1]);
   if(sub === 'reports' && method === 'GET') return await modReports(ctx);
   if((m = sub.match(/^reports\/(\d+)$/)) && method === 'DELETE') return await dismissReport(ctx, Number(m[1]));
   if(sub === 'log' && method === 'GET') return await modLogList(ctx);
@@ -898,7 +1184,8 @@ async function deleteNote(ctx, id){
 
 async function getSettings(ctx){
   const { results } = await ctx.db.prepare('SELECT word FROM blocked_words ORDER BY word').all();
-  return json({ readonly:await setting(ctx, 'readonly') === '1', words:results.map(r => r.word) });
+  return json({ readonly:await setting(ctx, 'readonly') === '1', words:results.map(r => r.word),
+    automod:await autoModOn(ctx), automodReports:Number(await setting(ctx, 'automod_reports')) || AUTOMOD_REPORTS });
 }
 
 async function putSettings(ctx){
@@ -907,6 +1194,16 @@ async function putSettings(ctx){
   if(typeof data.readonly === 'boolean'){
     await ctx.db.prepare('INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value').bind('readonly', data.readonly ? '1' : '0').run();
     changes.push(data.readonly ? 'Community read-only' : 'Community open');
+  }
+  if(typeof data.automod === 'boolean'){
+    await ctx.db.prepare('INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value').bind('automod', data.automod ? '1' : '0').run();
+    changes.push(data.automod ? 'AutoMod on' : 'AutoMod off');
+  }
+  if(data.automodReports !== undefined){
+    const n = Math.round(Number(data.automodReports));
+    if(!(n >= 2 && n <= 20)) throw new HttpError(400, 'AutoMod can hide after 2 to 20 reports.');
+    await ctx.db.prepare('INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value').bind('automod_reports', String(n)).run();
+    changes.push(`AutoMod hides after ${n} reports`);
   }
   if(Array.isArray(data.words)){
     const words = [...new Set(data.words.map(w => cleanLine(w).toLowerCase()).filter(w => w.length >= 2 && w.length <= 40))].slice(0, 300);
@@ -1067,7 +1364,8 @@ async function modReports(ctx){
             CASE rp.kind WHEN 'post' THEN substr(p.body, 1, 400) ELSE substr(rr.body, 1, 400) END AS excerpt,
             CASE rp.kind WHEN 'post' THEN pu.username ELSE rru.username END AS author,
             CASE rp.kind WHEN 'post' THEN p.user_id ELSE rr.user_id END AS author_id,
-            (SELECT COUNT(*) FROM reports x WHERE x.status = 'open' AND x.kind = rp.kind AND x.target_id = rp.target_id) AS times
+            (SELECT COUNT(*) FROM reports x WHERE x.status = 'open' AND x.kind = rp.kind AND x.target_id = rp.target_id) AS times,
+            (SELECT 1 FROM held h WHERE h.kind = rp.kind AND h.target_id = rp.target_id) AS hidden
        FROM reports rp
        LEFT JOIN users ru ON ru.id = rp.reporter_id
        LEFT JOIN posts p ON p.id = rp.post_id
@@ -1078,7 +1376,7 @@ async function modReports(ctx){
   ).all();
   return json({ reports:results.map(r => ({
     id:r.id, kind:r.kind, targetId:r.target_id, postId:r.post_id, postTitle:r.post_title, reason:r.reason, createdAt:r.created_at,
-    reporter:r.reporter || null, author:r.author || null, authorId:r.author_id || null, excerpt:r.excerpt || '', times:r.times
+    reporter:r.reporter || null, author:r.author || null, authorId:r.author_id || null, excerpt:r.excerpt || '', times:r.times, hidden:!!r.hidden
   })) });
 }
 
