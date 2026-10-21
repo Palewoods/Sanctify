@@ -195,30 +195,30 @@
       <path d="M110 22l2-5 2 5 5 2-5 2-2 5-2-5-5-2z" fill="currentColor" stroke="none" opacity="0.6"/>
     </svg>
 
-    <h1>This page has wandered off</h1>
-    <p class="lede">We couldn’t find what you were looking for. It may have moved, or the link may be mistyped.</p>
+    <h1 data-t="h1">This page has wandered off</h1>
+    <p class="lede" data-t="lede">We couldn’t find what you were looking for. It may have moved, or the link may be mistyped.</p>
 
-    <p class="verse">“Rejoice with me, for I have found my sheep which was lost.”<cite>Luke 15:6</cite></p>
+    <p class="verse"><span data-t="verse">“Rejoice with me, for I have found my sheep which was lost.”</span><cite data-t="cite">Luke 15:6</cite></p>
 
     <div class="rule" aria-hidden="true"><span></span><span></span><span></span></div>
 
     <form id="searchForm" role="search">
-      <label for="q" style="position:absolute; left:-9999px;">Search Sanctify</label>
+      <label for="q" style="position:absolute; left:-9999px;" data-t="label">Search Sanctify</label>
       <input id="q" name="q" type="search" placeholder="Search prayers, saints, history…" autocomplete="off">
-      <button type="submit">Search</button>
+      <button type="submit" data-t="search">Search</button>
     </form>
 
     <nav class="links" aria-label="Popular sections">
-      <a href="/" data-home>Home</a>
-      <a href="/#/pray" data-home="#/pray">Pray</a>
-      <a href="/#/history" data-home="#/library/saints">Saints</a>
-      <a href="/#/learn" data-home="#/learn">Learn</a>
-      <a href="/#/calendar" data-home="#/calendar">Calendar</a>
+      <a href="/" data-home data-t="home">Home</a>
+      <a href="/#/pray" data-home="#/pray" data-t="pray">Pray</a>
+      <a href="/#/saints" data-home="#/saints" data-t="saints">Saints</a>
+      <a href="/#/learn" data-home="#/learn" data-t="learn">Learn</a>
+      <a href="/#/calendar" data-home="#/calendar" data-t="calendar">Calendar</a>
     </nav>
 
     <div class="prayer">
-      <strong>A little prayer to St. Anthony, finder of lost things</strong>
-      <em>“Dear St. Anthony, please come around; something is lost and cannot be found.”</em>
+      <strong data-t="anthony">A little prayer to St. Anthony, finder of lost things</strong>
+      <em data-t="rhyme">“Dear St. Anthony, please come around; something is lost and cannot be found.”</em>
     </div>
   </main>
 
@@ -249,6 +249,18 @@
   var crosses = { eastern:'M29 3L35 3L35 10L41.5 10L41.5 14.5L35 14.5L35 20L53 20L53 26L35 26L35 44.34L44.5 47.8L44.5 53.3L35 49.84L35 61L29 61L29 47.66L19.5 44.2L19.5 38.7L29 42.16L29 26L11 26L11 20L29 20L29 14.5L22.5 14.5L22.5 10L29 10z', traditional:'M28.9 19.9L28.9 14.93A3.8 3.8 0 1 1 28.3 7.69A3.8 3.8 0 1 1 35.7 7.69A3.8 3.8 0 1 1 35.1 14.93L35.1 19.9L42.07 19.9A3.8 3.8 0 1 1 49.31 19.3A3.8 3.8 0 1 1 49.31 26.7A3.8 3.8 0 1 1 42.07 26.1L35.1 26.1L35.1 49.07A3.8 3.8 0 1 1 35.7 56.31A3.8 3.8 0 1 1 28.3 56.31A3.8 3.8 0 1 1 28.9 49.07L28.9 26.1L21.93 26.1A3.8 3.8 0 1 1 14.69 26.7A3.8 3.8 0 1 1 14.69 19.3A3.8 3.8 0 1 1 21.93 19.9z' };
   var riteCross = crosses[document.documentElement.getAttribute('data-rite')];
   if(riteCross) document.querySelectorAll('.mark path').forEach(function(p){ p.setAttribute('d', riteCross); });
+  // The page in the language chosen on the main site
+  try{
+    var L = {"es": {"title": "Página no encontrada", "h1": "Esta página se ha extraviado", "lede": "No encontramos lo que buscabas. Puede que se haya movido o que el enlace esté mal escrito.", "verse": "«Alegraos conmigo, porque he hallado la oveja que se me había perdido».", "cite": "Lucas 15,6", "label": "Buscar en Sanctify", "placeholder": "Busca oraciones, santos, historia…", "search": "Buscar", "home": "Inicio", "pray": "Orar", "saints": "Santos", "learn": "Aprender", "calendar": "Calendario", "anthony": "Una breve oración a san Antonio, que encuentra lo perdido", "rhyme": "«Querido san Antonio, ven a ayudarme: algo se ha perdido y no lo puedo encontrar»."}, "pl": {"title": "Nie znaleziono strony", "h1": "Ta strona się zabłąkała", "lede": "Nie znaleźliśmy tego, czego szukasz. Strona mogła zostać przeniesiona albo link zawiera błąd.", "verse": "„Cieszcie się ze mną, bo znalazłem owcę, która mi zginęła”.", "cite": "Łk 15,6", "label": "Szukaj w Sanctify", "placeholder": "Szukaj modlitw, świętych, historii…", "search": "Szukaj", "home": "Strona główna", "pray": "Modlitwa", "saints": "Święci", "learn": "Nauka", "calendar": "Kalendarz", "anthony": "Krótka modlitwa do św. Antoniego, który odnajduje zguby", "rhyme": "„Święty Antoni, pomóż mi odnaleźć to, co zgubiłem”."}, "fr": {"title": "Page introuvable", "h1": "Cette page s’est égarée", "lede": "Nous n’avons pas trouvé ce que vous cherchiez. La page a peut-être été déplacée, ou le lien est mal saisi.", "verse": "« Réjouissez-vous avec moi, car j’ai retrouvé ma brebis, celle qui était perdue ! »", "cite": "Luc 15,6", "label": "Rechercher dans Sanctify", "placeholder": "Prières, saints, histoire…", "search": "Rechercher", "home": "Accueil", "pray": "Prier", "saints": "Saints", "learn": "Apprendre", "calendar": "Calendrier", "anthony": "Une petite prière à saint Antoine, qui retrouve les objets perdus", "rhyme": "« Saint Antoine de Padoue, vous qui retrouvez tout, faites-moi retrouver ce que j’ai perdu. »"}, "pt": {"title": "Página não encontrada", "h1": "Esta página se perdeu", "lede": "Não encontramos o que você procurava. A página pode ter mudado de lugar, ou o link pode estar errado.", "verse": "“Alegrai-vos comigo! Encontrei a minha ovelha que estava perdida!”", "cite": "Lucas 15,6", "label": "Pesquisar no Sanctify", "placeholder": "Pesquise orações, santos, história…", "search": "Pesquisar", "home": "Início", "pray": "Rezar", "saints": "Santos", "learn": "Aprender", "calendar": "Calendário", "anthony": "Uma pequena oração a santo Antônio, que encontra as coisas perdidas", "rhyme": "“Santo Antônio, por favor, ajudai-me a encontrar o que perdi.”"}, "it": {"title": "Pagina non trovata", "h1": "Questa pagina si è smarrita", "lede": "Non abbiamo trovato ciò che cercavi. Forse è stata spostata, o il link è scritto male.", "verse": "“Rallegratevi con me, perché ho trovato la mia pecora, quella che si era perduta.”", "cite": "Luca 15,6", "label": "Cerca in Sanctify", "placeholder": "Cerca preghiere, santi, storia…", "search": "Cerca", "home": "Home", "pray": "Pregare", "saints": "Santi", "learn": "Imparare", "calendar": "Calendario", "anthony": "Una piccola preghiera a sant’Antonio, che ritrova le cose perdute", "rhyme": "“Sant’Antonio dalla barba bianca, fammi trovare quel che mi manca.”"}, "de": {"title": "Seite nicht gefunden", "h1": "Diese Seite hat sich verirrt", "lede": "Wir konnten nicht finden, was du gesucht hast. Vielleicht wurde die Seite verschoben, oder der Link ist falsch geschrieben.", "verse": "„Freut euch mit mir, denn ich habe mein Schaf gefunden, das verloren war!“", "cite": "Lukas 15,6", "label": "Sanctify durchsuchen", "placeholder": "Gebete, Heilige, Geschichte suchen…", "search": "Suchen", "home": "Start", "pray": "Beten", "saints": "Heilige", "learn": "Lernen", "calendar": "Kalender", "anthony": "Ein kleines Gebet zum hl. Antonius, der Verlorenes wiederfindet", "rhyme": "„Heiliger Antonius, kreuzbraver Mann, führ mich dahin, wo ich’s finden kann.“"}, "ru": {"title": "Страница не найдена", "h1": "Эта страница заблудилась", "lede": "Мы не нашли то, что вы искали. Возможно, страница переехала или в ссылке ошибка.", "verse": "«Порадуйтесь со мною: я нашёл мою пропавшую овцу».", "cite": "Лк 15:6", "label": "Поиск по Sanctify", "placeholder": "Молитвы, святые, история…", "search": "Найти", "home": "Главная", "pray": "Молиться", "saints": "Святые", "learn": "Учиться", "calendar": "Календарь", "anthony": "Короткая молитва святому Антонию, помогающему находить потерянное", "rhyme": "«Святой Антоний, помоги мне найти то, что я потерял»."}, "uk": {"title": "Сторінку не знайдено", "h1": "Ця сторінка заблукала", "lede": "Ми не знайшли того, що ви шукали. Можливо, сторінку перенесено або в посиланні помилка.", "verse": "«Радійте зо мною, бо я знайшов мою вівцю, що пропала».", "cite": "Лк 15:6", "label": "Пошук у Sanctify", "placeholder": "Молитви, святі, історія…", "search": "Шукати", "home": "Головна", "pray": "Молитися", "saints": "Святі", "learn": "Навчання", "calendar": "Календар", "anthony": "Коротка молитва до святого Антонія, що допомагає знаходити загублене", "rhyme": "«Святий Антоніє, допоможи мені знайти те, що я загубив»."}};
+    var lang = JSON.parse(localStorage.getItem('sanctify.lang') || '"en"');
+    var tr = L[lang];
+    if(tr){
+      document.documentElement.lang = lang;
+      document.title = tr.title + ' — Sanctify';
+      document.querySelectorAll('[data-t]').forEach(function(el){ var v = tr[el.getAttribute('data-t')]; if(v) el.textContent = v; });
+      document.getElementById('q').placeholder = tr.placeholder;
+    }
+  }catch(e){}
 </script>
 </body>
 </html>

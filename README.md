@@ -4,6 +4,8 @@
 
 Visit it at **https://sanctify.pages.dev/**. It is free, has no ads, and works on phones. You can also install it like an app.
 
+The current version is **Sanctify 3.0**.
+
 ## What’s inside
 
 - **Today:** the liturgical day and season, the saint of the day, the Verse of the Day, and the day’s prayer.
@@ -11,7 +13,7 @@ Visit it at **https://sanctify.pages.dev/**. It is free, has no ads, and works o
   - Prayers and litanies, the Rosary, the Stations of the Cross, the Divine Mercy and Sacred Heart chaplets, the Angelus, and the Examen.
   - Lectio Divina, an examination of conscience, novenas, a prayer timer, and a prayer tracker.
   - The Little Office of Our Lady, devotions and sacramentals, and Hymns & Chant with recordings.
-- **Saints:** hundreds of saints with their lives, feast days, patronages, and icons; a patron saint finder; and quotes of the saints.
+- **Saints:** more than 800 saints with their lives, feast days, patronages, and icons; a patron saint finder; and quotes of the saints.
 - **Library:**
   - The whole Bible (Douay-Rheims) and the Catechism.
   - Classic books to read on the site, and Bible reading plans.
@@ -20,7 +22,10 @@ Visit it at **https://sanctify.pages.dev/**. It is free, has no ads, and works o
   - Theology: core beliefs, the Church Fathers, apologetics, and the faith in simple words.
   - The Mass explained, Living the Faith, Catholic Lists, Inside a Church, a glossary, and a quiz.
 - **History:** a timeline of Church history, the popes, the ecumenical councils, famous icons, religious orders, and the Eastern Catholic Churches.
-- **Community:** a forum for prayer requests and questions, with accounts, badges, and moderation.
+- **Calendar:** every feast and season, in the calendar of each edition.
+- **Community:** a forum for prayer requests and questions, with accounts, profiles, badges, and moderation, and links to any page of the site inside posts.
+- **Community Wiki** and **News**, each with its own page.
+- **Settings:** language, edition, theme, text size, and a backup of what you keep on your device.
 
 ### Three editions
 
@@ -32,10 +37,15 @@ The edition button in the top bar switches Sanctify between three editions:
 
 Sanctify also has many color themes, including dark versions and themes that follow the liturgical season.
 
+### Languages
+
+Sanctify is translated by hand into Spanish, Polish, French, Portuguese, Italian, German, Russian, and Ukrainian: menus, pages, and the common prayers, in the forms Catholics pray them in each language. Longer texts, such as the lives of the saints, are still in English. Other languages are available through Google Translate. The translations live in `lang/`, one file per language, mapping the English text on the page to its translation.
+
 ## How it’s built
 
 - `index.html`: the whole site, a single-page app with no build step.
 - `data/`: the hymns, the Akathist, and the Little Office, plus the book texts.
+- `lang/`: the hand translations, one file per language.
 - `bible/`, `books/`, `catechism/`: pages for reading the Bible, books, and Catechism.
 - `functions/api/`: a Cloudflare Pages Function that serves the community forum, accounts, and badges, backed by a Cloudflare D1 database.
 - `sw.js`: the service worker that lets the site work offline. Bump its `VERSION` when anything in `data/` changes.

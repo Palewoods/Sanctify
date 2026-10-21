@@ -1322,6 +1322,13 @@
   .rite-banner .btn{flex:0 0 auto;}
   .rite-banner-cross.two{flex-basis:66px; width:66px; display:flex; gap:2px; border-radius:19px;}
   .rite-banner-cross.two svg{width:50%;}
+  .release-banner{position:relative; padding-right:44px; border-style:solid; border-color:color-mix(in srgb, var(--gold) 45%, var(--line));}
+  .release-banner .rite-banner-cross{color:var(--gold-deep, var(--gold)); background:color-mix(in srgb, var(--gold) 14%, transparent);}
+  .release-banner strong{margin-right:4px;}
+  .release-close{position:absolute; top:6px; right:10px; border:0; background:none; color:var(--ink-soft); font-size:1.3rem; line-height:1; cursor:pointer; padding:4px;}
+  .release-close:hover{color:var(--ink);}
+  .settings-version{margin:4px 0 10px; font-size:1.1rem;}
+  .settings-news{margin:6px 0 12px; padding-left:1.2em; display:grid; gap:6px;}
   .rite-picker{position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center; padding:16px; background:rgba(0,0,0,0.45);}
   .rp-card{width:100%; max-width:520px; max-height:calc(100dvh - 32px); overflow:auto; padding:22px 22px 16px; border-radius:18px; border:1px solid var(--line); background:var(--parchment); color:var(--ink); box-shadow:0 18px 48px rgba(0,0,0,0.3);}
   .rp-card h2{margin:0 0 4px; font-family:'Cormorant Garamond', serif; font-size:1.6rem;}
@@ -3271,7 +3278,7 @@
     var ui = JSON.parse(localStorage.getItem('sanctify.lang') || '"en"');
     if(/^(es|pl|fr|pt|it|de|ru|uk)$/.test(ui) && !/\.translate\.goog$/.test(location.hostname)){
       document.documentElement.lang = ui;
-      document.write('<script src="lang/' + ui + '.js?v=170093f5"><\/script>');
+      document.write('<script src="lang/' + ui + '.js?v=e829000b"><\/script>');
     }
     if(JSON.parse(localStorage.getItem('sanctify.motion') || '""') === 'reduced') document.documentElement.setAttribute('data-motion', 'reduced');
     var t = localStorage.getItem('sanctify.theme');
@@ -16974,6 +16981,7 @@ function renderHome(){
       </div>
       ${heroRosette()}
     </section>
+    ${releaseBannerHtml()}
 
     <div id="homeNews"></div>
     <div class="dash-grid">
@@ -17067,6 +17075,7 @@ function renderHome(){
 
     ${riteBannerHtml()}`;
   entryListEl.appendChild(wrap);
+  wireReleaseBanner(wrap);
 
   // Continue where you left off
   const cont = wrap.querySelector('#homeContinue');
@@ -18208,6 +18217,36 @@ function switchRow(id, name, note, on, disabled){
   return `<div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">${name}</span><span class="shine-row-note">${note}</span></span>
     <button type="button" class="shine-switch" id="${id}" role="switch" aria-checked="${on}" aria-label="${name}"${disabled ? ' disabled' : ''}></button></div>`;
 }
+const SANCTIFY_VERSION = '3.0';
+const RELEASE_NOTES = () => [
+  'Sanctify in eight languages, translated by hand: Spanish, Polish, French, Portuguese, Italian, German, Russian, and Ukrainian.',
+  'A Settings page for your language, edition, theme, text size, and data.',
+  `${library.filter(e => e.category === 'saint').length} saints, 75 of them new in this release.`,
+  'The Community Wiki and News, each with its own page.',
+  'Fuller profiles, with banners, badges, and your wiki contributions.',
+  'Links to any page of Sanctify inside posts and wiki pages.',
+  `${THEMES.length} color themes, with light and dark versions.`,
+  'A clearer menu, and a friendly page for links that lead nowhere.'
+];
+// Shown once on Home after an update, until it is opened or dismissed
+function releaseBannerHtml(){
+  if(store.get('release', '') === SANCTIFY_VERSION) return '';
+  return `<section class="rite-banner release-banner"><span class="rite-banner-cross">${navIcon('star')}</span>
+    <div><strong class="notranslate" translate="no">Sanctify ${SANCTIFY_VERSION}</strong> <span>Eight languages, a Settings page, the Community Wiki, and 75 more saints.</span></div>
+    <button class="btn quiet" type="button" data-release-open>See what’s new</button>
+    <button class="release-close" type="button" data-release-dismiss aria-label="Dismiss">×</button></section>`;
+}
+function wireReleaseBanner(root){
+  const b = root.querySelector('.release-banner');
+  if(!b) return;
+  const done = () => { store.set('release', SANCTIFY_VERSION); b.remove(); };
+  b.querySelector('[data-release-dismiss]').addEventListener('click', done);
+  b.querySelector('[data-release-open]').addEventListener('click', () => {
+    done();
+    navigate('settings');
+    setTimeout(() => { const a = document.getElementById('settingsAbout'); if(a) a.scrollIntoView({ behavior:'smooth', block:'start' }); }, 120);
+  });
+}
 function renderSettings(){
   const theme = THEMES.find(t => t.key === document.documentElement.dataset.theme) || THEMES[0];
   const size = store.get('textsize', 'md'), motion = store.get('motion', '') === 'reduced';
@@ -18249,7 +18288,15 @@ function renderSettings(){
           <button class="btn quiet danger-text" type="button" data-erase>Erase everything on this device</button>
         </div>
       </section>
+      <section class="settings-card" id="settingsAbout">
+        <h3>${navIcon('star')}About</h3>
+        <p class="settings-version"><strong class="notranslate" translate="no">Sanctify ${SANCTIFY_VERSION}</strong></p>
+        <div class="settings-sub">What’s new in ${SANCTIFY_VERSION}</div>
+        <ul class="settings-news">${RELEASE_NOTES().map(n => `<li>${escapeHtml(n)}</li>`).join('')}</ul>
+        <p class="forum-meta">Free, without ads, for the greater glory of God.</p>
+      </section>
     </div>`;
+  store.set('release', SANCTIFY_VERSION);
   const root = entryListEl;
   root.querySelectorAll('[data-set-lang]').forEach(b => b.addEventListener('click', () => { if(b.getAttribute('aria-pressed') !== 'true') setUiLanguage(b.dataset.setLang); }));
   root.querySelector('[data-more-langs]').addEventListener('click', openLanguagePicker);
@@ -18272,14 +18319,16 @@ function renderSettings(){
     let parsed = null;
     try{ parsed = JSON.parse(await file.text()); }catch(e){}
     if(!parsed || parsed.sanctify !== 1 || typeof parsed.data !== 'object'){ toast(i18n('That file isn’t a Sanctify backup.') || 'That file isn’t a Sanctify backup.'); return; }
-    if(!confirm('Replace what’s on this device with the backup from ' + new Date(parsed.saved).toLocaleDateString() + '?')) return;
+    const ask = 'Replace what’s on this device with the backup from ' + new Date(parsed.saved).toLocaleDateString() + '?';
+    if(!confirm(i18n(ask) || ask)) return;
     Object.entries(parsed.data).forEach(([k, v]) => { if(k.startsWith('sanctify.') && typeof v === 'string') localStorage.setItem(k, v); });
     toast(i18n('Your backup was restored.') || 'Your backup was restored.');
     setTimeout(() => location.reload(), 600);
   });
   root.querySelector('[data-clear-recent]').addEventListener('click', () => { store.set('recent', []); toast(i18n('Recently viewed was cleared.') || 'Recently viewed was cleared.'); });
   root.querySelector('[data-erase]').addEventListener('click', () => {
-    if(!confirm('Erase your saved entries, novenas, intentions, prayer record, badges, and settings from this device? This can’t be undone. You may want to download a backup first.')) return;
+    const ask = 'Erase your saved entries, novenas, intentions, prayer record, badges, and settings from this device? This can’t be undone. You may want to download a backup first.';
+    if(!confirm(i18n(ask) || ask)) return;
     Object.keys(localStorage).filter(k => k.startsWith('sanctify.')).forEach(k => localStorage.removeItem(k));
     location.reload();
   });
@@ -18844,7 +18893,7 @@ function renderStationsStart(){
         <div class="devo-kicker">Via Crucis</div>
         <h3 class="devo-title">Walk the Way of the Cross</h3>
         <div class="devo-rule" aria-hidden="true"></div>
-        <p class="devo-closing">Follow Jesus from Pilate’s judgment to the tomb in fourteen stations. At each one, pray the versicle, meditate on the moment, and offer an Our Father, a Hail Mary, and a Glory Be. A verse of the <em>Stabat Mater</em> carries you on to the next station.</p>
+        <p class="devo-closing">Follow Jesus from Pilate’s judgment to the tomb in fourteen stations. At each one, pray the versicle, meditate on the moment, and offer an Our Father, a Hail Mary, and a Glory Be. A verse of the Stabat Mater carries you on to the next station.</p>
         <div class="devo-actions"><button class="btn primary pill" id="stationsBeginBtn">Begin at the First Station</button></div>
         <p class="devo-small">Traditionally prayed on Fridays, and especially during Lent · about 25 minutes</p>
       </article>
@@ -20589,8 +20638,8 @@ async function renderBadges(){
     <div class="badges-page">
       <section class="badges-head">
         <div class="badges-score"><strong>${got}</strong><span>of ${total} badges earned</span></div>
-        <p>${u ? 'Your badges show on your public profile.' : 'Prayer and reading badges come from this device. <button class="text-link" data-auth="signin">Sign in</button> to show them on a public profile and earn Community badges.'}
-          Prayer badges count the days you mark in the <button class="text-link" data-route="pray/tracker">prayer tracker</button>; finishing a Rosary, chaplet, or other guided prayer marks it for you.</p>
+        <p>${u ? '<span>Your badges show on your public profile.</span>' : '<span>Prayer and reading badges come from this device.</span> <button class="text-link" data-auth="signin">Sign in</button> <span>to show them on a public profile and earn Community badges.</span>'}
+          <span>Prayer badges count the days you mark in your prayer tracker; finishing a Rosary, chaplet, or other guided prayer marks it for you.</span> <button class="text-link" data-route="pray/tracker">Prayer tracker →</button></p>
       </section>
       ${profile && profile.badges.appointed.length ? `<section class="badges-group"><h3>Given to you</h3><div class="badge-pills-big">${badgePills(profile.badges.appointed, true)}</div></section>` : ''}
       ${BADGE_GROUPS.map(([g, title]) => {
