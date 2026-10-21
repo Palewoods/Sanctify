@@ -1280,6 +1280,7 @@ window.SANCTIFY_I18N = {
 "News post updated.": "Новость обновлена.",
 "News post deleted.": "Новость удалена.",
 "What’s new in {n}": "Что нового в {n}",
+"Prayers, saints, Scripture, and two thousand years of Church history, gathered in one place. Free, with no ads, and no account needed to read or pray.": "Молитвы, святые, Писание и две тысячи лет истории Церкви в одном месте. Бесплатно, без рекламы и без учётной записи для чтения и молитвы.",
 "{*} · {*}": "{*} · {*}"
 },
 "rosary": {

@@ -1280,6 +1280,7 @@ window.SANCTIFY_I18N = {
 "News post updated.": "Aktualność zaktualizowana.",
 "News post deleted.": "Aktualność usunięta.",
 "What’s new in {n}": "Nowości w wersji {n}",
+"Prayers, saints, Scripture, and two thousand years of Church history, gathered in one place. Free, with no ads, and no account needed to read or pray.": "Modlitwy, święci, Pismo Święte i dwa tysiące lat historii Kościoła w jednym miejscu. Za darmo, bez reklam i bez zakładania konta, by czytać i się modlić.",
 "{*} · {*}": "{*} · {*}"
 },
 "rosary": {
