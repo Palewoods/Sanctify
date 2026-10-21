@@ -3030,6 +3030,9 @@
       font-family:'Source Serif 4', serif; font-size:0.7rem; font-weight:600; letter-spacing:0.01em;
       transition:color 0.25s var(--ease);
     }
+    .tab-link{min-width:0;}
+    /* Labels stay on one line in every language: long ones are shrunk to fit (see fitTabLabels), an ellipsis is the last resort */
+    .tab-link span{display:block; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; letter-spacing:0;}
     .tab-link svg{width:22px; height:22px; transition:transform 0.4s var(--ease-spring);}
     .tab-link::before{content:''; position:absolute; top:-5px; left:32%; right:32%; height:3px; border-radius:0 0 3px 3px; background:var(--wine); transform:scaleX(0); transition:transform 0.35s var(--ease);}
     .tab-link.active{color:var(--wine);}
@@ -20666,8 +20669,22 @@ setTimeout(checkBadges, 1500);
     const h = bar.offsetHeight;
     if(h) document.documentElement.style.setProperty('--tabbar-space', h + 'px');
     else document.documentElement.style.removeProperty('--tabbar-space');
+    fitTabLabels();
   }).observe(bar);
 })();
+// Shrinks only the tab labels too wide for their tab (long words in some languages), never below 9px
+function fitTabLabels(){
+  document.querySelectorAll('.tab-link span').forEach(s => {
+    s.style.fontSize = '';
+    const base = parseFloat(getComputedStyle(s.parentElement).fontSize);
+    s.style.lineHeight = Math.round(base * 1.3) + 'px';   // the same line for every label, shrunk or not
+    const room = s.parentElement.clientWidth - 6, need = s.scrollWidth;   // a little air between neighbors
+    if(room > 0 && need > room) s.style.fontSize = Math.max(9, Math.floor(base * room / need * 10) / 10) + 'px';
+  });
+}
+fitTabLabels();
+window.addEventListener('resize', fitTabLabels);
+if(document.fonts) document.fonts.ready.then(fitTabLabels);
 document.addEventListener('click', e => {
   const el = e.target.closest('#riteToggle, .rite-switch-link, [data-rite-switch]');
   if(!el) return;
