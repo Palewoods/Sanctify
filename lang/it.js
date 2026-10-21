@@ -1219,7 +1219,6 @@ window.SANCTIFY_I18N = {
 "Dismiss": "Chiudi",
 "See what’s new": "Scopri le novità",
 "Eight languages, a Settings page, the Community Wiki, and 75 more saints.": "Otto lingue, una pagina Impostazioni, la Wiki della Comunità e 75 santi in più.",
-"What’s new in 3.0": "Novità della 3.0",
 "Sanctify in eight languages, translated by hand: Spanish, Polish, French, Portuguese, Italian, German, Russian, and Ukrainian.": "Sanctify in otto lingue, tradotto a mano: spagnolo, polacco, francese, portoghese, italiano, tedesco, russo e ucraino.",
 "A Settings page for your language, edition, theme, text size, and data.": "Una pagina Impostazioni per lingua, edizione, tema, dimensione del testo e dati.",
 "{n} saints, {n} of them new in this release.": "{n} santi, {n} dei quali nuovi in questa versione.",
@@ -1280,6 +1279,7 @@ window.SANCTIFY_I18N = {
 "News published.": "Notizia pubblicata.",
 "News post updated.": "Notizia aggiornata.",
 "News post deleted.": "Notizia eliminata.",
+"What’s new in {n}": "Novità della {n}",
 "{*} · {*}": "{*} · {*}"
 },
 "rosary": {

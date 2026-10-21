@@ -3278,7 +3278,7 @@
     var ui = JSON.parse(localStorage.getItem('sanctify.lang') || '"en"');
     if(/^(es|pl|fr|pt|it|de|ru|uk)$/.test(ui) && !/\.translate\.goog$/.test(location.hostname)){
       document.documentElement.lang = ui;
-      document.write('<script src="lang/' + ui + '.js?v=e829000b"><\/script>');
+      document.write('<script src="lang/' + ui + '.js?v=28eb3a3a"><\/script>');
     }
     if(JSON.parse(localStorage.getItem('sanctify.motion') || '""') === 'reduced') document.documentElement.setAttribute('data-motion', 'reduced');
     var t = localStorage.getItem('sanctify.theme');
@@ -18217,7 +18217,7 @@ function switchRow(id, name, note, on, disabled){
   return `<div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">${name}</span><span class="shine-row-note">${note}</span></span>
     <button type="button" class="shine-switch" id="${id}" role="switch" aria-checked="${on}" aria-label="${name}"${disabled ? ' disabled' : ''}></button></div>`;
 }
-const SANCTIFY_VERSION = '3.0';
+const SANCTIFY_VERSION = '0.8';
 const RELEASE_NOTES = () => [
   'Sanctify in eight languages, translated by hand: Spanish, Polish, French, Portuguese, Italian, German, Russian, and Ukrainian.',
   'A Settings page for your language, edition, theme, text size, and data.',
