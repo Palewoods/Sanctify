@@ -2319,6 +2319,7 @@
   .settings-theme{display:flex; align-items:center; gap:12px; margin-bottom:10px;}
   .settings-theme > span:nth-child(2){display:flex; flex-direction:column; flex:1;}
   .settings-theme small{color:var(--ink-soft); font-size:0.82rem;}
+  .verse-image{display:block; margin-top:10px; padding:0; text-align:left; font-size:0.9rem;}
   .settings-select{display:block; width:100%; max-width:420px; margin:8px 0 4px; padding:10px 14px; border:1px solid var(--line); border-radius:12px; background:var(--parchment); color:var(--ink); font-family:'Source Serif 4', serif; font-size:0.95rem;}
   #settingsVoice .btn{margin-top:2px;}
   .settings-sub{margin-top:14px; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft);}
@@ -8666,6 +8667,7 @@ function renderDaily(){
       <blockquote>“${escapeHtml(verse.text)}”</blockquote>
       <cite>${escapeHtml(verse.ref)} · RSV-CE</cite>
       ${isEastern() ? '' : `<a class="daily-more" href="${massReadingsUrl(d)}" target="_blank" rel="noopener">Today’s full readings ↗</a>`}
+      <button class="text-link verse-image" type="button" data-verse-image data-text="${escapeHtml(verse.text)}" data-ref="${escapeHtml(verse.ref)}">Share as image</button>
     </article>
 
     <article class="daily-card daily-prayer" data-open="${prayer.id}" tabindex="0" style="--accent:${card.accent}">
@@ -17045,6 +17047,7 @@ function renderHome(){
         <div class="daily-kicker">Verse of the Day</div>
         <blockquote>“${escapeHtml(verse.text)}”</blockquote>
         <cite>${escapeHtml(verse.ref)}</cite>
+        <button class="text-link verse-image" type="button" data-verse-image data-text="${escapeHtml(verse.text)}" data-ref="${escapeHtml(verse.ref)}">Share as image</button>
       </article>
       <article class="feature-card feature-prayer" data-open="${prayer.id}" tabindex="0" style="--accent:${card.accent}">
         <span class="pc-art">${cardArt(card.art)}</span>
@@ -17782,6 +17785,13 @@ async function shareCardImage(card, name){
   setTimeout(() => URL.revokeObjectURL(a.href), 4000);
   toast(i18n('Image saved') || 'Image saved');
 }
+// The Verse of the Day, on Home and Today
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('[data-verse-image]');
+  if(!b) return;
+  ev.preventDefault(); ev.stopPropagation();
+  shareCardImage({ kicker:i18n('Verse of the Day') || 'Verse of the Day', quote:b.dataset.text, title:b.dataset.ref, byline:'Revised Standard Version, Catholic Edition' }, 'verse-' + b.dataset.ref);
+});
 async function shareEntryImage(e){
   await withFullText(e);
   const kicker = i18n(CAT_LABEL[e.category] || '') || CAT_LABEL[e.category] || '';
