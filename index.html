@@ -3284,7 +3284,7 @@
     var ui = JSON.parse(localStorage.getItem('sanctify.lang') || '"en"');
     if(/^(es|pl|fr|pt|it|de|ru|uk)$/.test(ui) && !/\.translate\.goog$/.test(location.hostname)){
       document.documentElement.lang = ui;
-      document.write('<script src="lang/' + ui + '.js?v=6f167568"><\/script>');
+      document.write('<script src="lang/' + ui + '.js?v=f8054f26"><\/script>');
     }
     if(JSON.parse(localStorage.getItem('sanctify.motion') || '""') === 'reduced') document.documentElement.setAttribute('data-motion', 'reduced');
     var t = localStorage.getItem('sanctify.theme');
@@ -18249,7 +18249,7 @@ function buildFeastFinder(){
   box.innerHTML = `
     <label class="patron-filters-label" for="feastDate">Find the saints for any day (a birthday, anniversary, or baptism):</label>
     <div class="feast-finder-row">
-      <select id="feastMonth" aria-label="Month">${MONTH_NAMES.map((m, i) => `<option value="${i + 1}">${m}</option>`).join('')}</select>
+      <select id="feastMonth" aria-label="Month">${MONTH_NAMES.map((m, i) => `<option value="${i + 1}">${monthLabel(i)}</option>`).join('')}</select>
       <select id="feastDay" aria-label="Day"></select>
     </div>
     <div class="feast-results" id="feastResults"></div>`;
