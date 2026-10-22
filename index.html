@@ -2319,6 +2319,8 @@
   .settings-theme{display:flex; align-items:center; gap:12px; margin-bottom:10px;}
   .settings-theme > span:nth-child(2){display:flex; flex-direction:column; flex:1;}
   .settings-theme small{color:var(--ink-soft); font-size:0.82rem;}
+  .settings-select{display:block; width:100%; max-width:420px; margin:8px 0 4px; padding:10px 14px; border:1px solid var(--line); border-radius:12px; background:var(--parchment); color:var(--ink); font-family:'Source Serif 4', serif; font-size:0.95rem;}
+  #settingsVoice .btn{margin-top:2px;}
   .settings-sub{margin-top:14px; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft);}
   .settings-card .shine-row{padding:10px 0; border-top:1px solid var(--line);}
   .lang-native{display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; margin:6px 0 12px;}
@@ -3281,7 +3283,7 @@
     var ui = JSON.parse(localStorage.getItem('sanctify.lang') || '"en"');
     if(/^(es|pl|fr|pt|it|de|ru|uk)$/.test(ui) && !/\.translate\.goog$/.test(location.hostname)){
       document.documentElement.lang = ui;
-      document.write('<script src="lang/' + ui + '.js?v=a8fffb50"><\/script>');
+      document.write('<script src="lang/' + ui + '.js?v=1ec807a1"><\/script>');
     }
     if(JSON.parse(localStorage.getItem('sanctify.motion') || '""') === 'reduced') document.documentElement.setAttribute('data-motion', 'reduced');
     var t = localStorage.getItem('sanctify.theme');
@@ -14345,13 +14347,51 @@ function stopSpeaking(){
   if(speakingButton){ speakingButton.textContent = speakingButton.dataset.label; speakingButton.setAttribute('aria-pressed', 'false'); }
   speakingButton = null;
 }
-function toggleSpeak(button, text){
+// The browser's voices load late, so they are read whenever they change
+let speechVoices = [];
+function loadVoices(){ if(canSpeak) speechVoices = window.speechSynthesis.getVoices() || []; return speechVoices; }
+if(canSpeak){ loadVoices(); window.speechSynthesis.addEventListener('voiceschanged', () => { loadVoices(); if(activeCategory === 'settings') renderSettings(); }); }
+function voicesFor(lang){
+  const code = (lang || 'en').toLowerCase().split('-')[0];
+  return loadVoices().filter(v => (v.lang || '').toLowerCase().replace('_', '-').split('-')[0] === code);
+}
+// The most natural voice the browser offers for a language: neural and enhanced voices first, the old robotic ones last
+function voiceScore(v){
+  const n = v.name || '';
+  let s = 0;
+  if(/natural|neural|premium|enhanced|siri/i.test(n)) s += 6;
+  if(/online/i.test(n)) s += 3;
+  if(/^google/i.test(n)) s += 4;
+  if(!v.localService) s += 1;
+  if(/espeak|compact|zira|david|mark|hazel|george/i.test(n) && !/natural|online/i.test(n)) s -= 2;
+  if(v.default) s += 0.5;
+  return s;
+}
+function chosenVoice(lang){
+  const list = voicesFor(lang);
+  if(!list.length) return null;
+  const pick = (store.get('voices', {}) || {})[(lang || 'en').split('-')[0]];
+  return list.find(v => v.voiceURI === pick) || list.slice().sort((a, b) => voiceScore(b) - voiceScore(a))[0];
+}
+function speechRate(){ return Number(store.get('speechRate', 0.95)) || 0.95; }
+function speakNow(text, lang, done){
+  const u = new SpeechSynthesisUtterance(text.replace(/[℣℟]\./g, '').replace(/\s+/g, ' ').trim());
+  u.lang = lang || 'en';
+  const v = chosenVoice(u.lang);
+  if(v){ u.voice = v; u.lang = v.lang; }
+  u.rate = speechRate();
+  u.onend = u.onerror = () => { if(done) done(); };
+  window.speechSynthesis.speak(u);
+}
+function toggleSpeak(button, text, lang){
   if(!canSpeak) return;
   if(speakingButton === button){ stopSpeaking(); return; }
   stopSpeaking();
   const u = new SpeechSynthesisUtterance(text.replace(/[℣℟]\./g, '').replace(/\s+/g, ' ').trim());
-  u.rate = 0.92;
-  u.lang = document.getElementById('readBody').lang || 'en';
+  u.lang = lang || document.getElementById('readBody').lang || 'en';
+  const voice = chosenVoice(u.lang);
+  if(voice){ u.voice = voice; u.lang = voice.lang; }
+  u.rate = speechRate();
   u.onend = u.onerror = () => { if(speakingButton === button) stopSpeaking(); };
   speakingButton = button;
   button.dataset.label = button.dataset.label || button.textContent;
@@ -14544,6 +14584,7 @@ function quoteCard(q, i, big){
     <div class="quote-actions">
       <button class="quote-btn" data-copy="${i}" aria-label="Copy quote">Copy</button>
       <button class="quote-btn" data-share="${i}" aria-label="Share quote">Share</button>
+      <button class="quote-btn" data-quote-image="${i}" aria-label="Share quote as image">Image</button>
       ${q.attributed ? '<span class="quote-flag" title="Known from witnesses or tradition rather than the saint’s own writings">Attributed</span>' : ''}
     </div>
   </figure>`;
@@ -14583,6 +14624,10 @@ function renderQuotes(){
   root.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openReadModal(b.dataset.open)));
   root.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => toast(await copyText(quoteText(QUOTES[b.dataset.copy])) ? 'Quote copied' : 'Could not copy')));
   root.querySelectorAll('[data-share]').forEach(b => b.addEventListener('click', () => shareQuote(QUOTES[b.dataset.share])));
+  root.querySelectorAll('[data-quote-image]').forEach(b => b.addEventListener('click', () => {
+    const q = QUOTES[b.dataset.quoteImage];
+    shareCardImage({ kicker:i18n('From the saints') || 'From the saints', quote:q.text, title:q.saint, byline:q.source || '' }, q.saint);
+  }));
   root.querySelector('[data-act="another"]').addEventListener('click', () => { quoteOffset++; renderQuotes(); });
   root.querySelectorAll('[data-qtheme]').forEach(b => b.addEventListener('click', () => { quoteTheme = b.dataset.qtheme; renderQuotes(); }));
   root.querySelector('#quoteSaint').addEventListener('change', ev => { quoteSaint = ev.target.value; renderQuotes(); });
@@ -17578,6 +17623,7 @@ function renderReadActions(e){
     <button class="read-action${saved ? ' on' : ''}" data-act="save" aria-pressed="${saved}">${saved ? '★ Saved' : '☆ Save'}</button>
     <button class="read-action" data-act="copy">Copy text</button>
     <button class="read-action" data-act="share">Share</button>
+    <button class="read-action" data-act="image">Share as image</button>
     <button class="read-action" data-act="discuss">Discuss</button>
     ${canSpeak ? '<button class="read-action" data-act="listen" aria-pressed="false">🔊 Listen</button>' : ''}
     ${canNovena ? `<button class="read-action" data-act="novena"${activeNovena ? ' disabled' : ''}>${activeNovena ? 'Novena in progress' : 'Start a novena'}</button>` : ''}
@@ -17593,6 +17639,7 @@ function renderReadActions(e){
     if(activeCategory === 'mine') renderMine();
   });
   bar.querySelector('[data-act="discuss"]').addEventListener('click', () => discussEntry(e));
+  bar.querySelector('[data-act="image"]').addEventListener('click', () => shareEntryImage(e));
   const listen = bar.querySelector('[data-act="listen"]');
   if(listen) listen.addEventListener('click', () => {
     const extra = document.getElementById('readIntercession');
@@ -17614,6 +17661,135 @@ function renderReadActions(e){
     toast('Novena started — see My Sanctify');
     renderReadActions(e);
   });
+}
+
+/* ---------- Share as an image: a story-size card in the reader's own theme ---------- */
+function cutText(text, max){
+  const t = (text || '').replace(/\s+/g, ' ').trim();
+  if(t.length <= max) return t;
+  const part = t.slice(0, max), end = Math.max(part.lastIndexOf('. '), part.lastIndexOf('! '), part.lastIndexOf('? '));
+  return end > max * 0.5 ? part.slice(0, end + 1) : part.slice(0, part.lastIndexOf(' ')).replace(/[,;:—–-]$/, '') + '…';
+}
+function wrapLines(g, text, width, maxLines){
+  const lines = []; let line = '';
+  for(const word of text.split(' ')){
+    const test = line ? line + ' ' + word : word;
+    if(g.measureText(test).width > width && line){ lines.push(line); line = word; } else line = test;
+  }
+  if(line) lines.push(line);
+  if(lines.length > maxLines){
+    lines.length = maxLines;
+    let last = lines[maxLines - 1];
+    while(g.measureText(last + '…').width > width && last.includes(' ')) last = last.slice(0, last.lastIndexOf(' '));
+    lines[maxLines - 1] = last.replace(/[,;:.]$/, '') + '…';
+  }
+  return lines;
+}
+function loadImage(src){
+  return new Promise((ok, fail) => { const im = new Image(); im.crossOrigin = 'anonymous'; im.onload = () => ok(im); im.onerror = fail; im.src = src; });
+}
+// card: { kicker, title, byline, body, quote, image }
+async function drawShareCard(card, withImage = true){
+  const W = 1080, H = 1920;
+  const css = getComputedStyle(document.documentElement);
+  const v = (n, f) => (css.getPropertyValue(n) || '').trim() || f;
+  const page = v('--parchment', '#efe6d0'), paper = v('--parchment-light', '#f6f0dc'), ink = v('--ink', '#2b2118'),
+        soft = v('--ink-soft', '#6b5a48'), accent = v('--wine', '#7a2426'), gold = v('--gold', '#a6824a');
+  const serif = "'Cormorant Garamond', Georgia, serif", text = "'Source Serif 4', Georgia, serif";
+  try{ await Promise.all([document.fonts.load(`700 80px ${serif}`), document.fonts.load(`italic 500 60px ${serif}`), document.fonts.load(`400 40px ${text}`), document.fonts.load(`italic 400 36px ${text}`)]); }catch(e){}
+  const c = document.createElement('canvas'); c.width = W; c.height = H;
+  const g = c.getContext('2d');
+  g.fillStyle = page; g.fillRect(0, 0, W, H);
+  const glowG = g.createRadialGradient(W / 2, 420, 40, W / 2, 420, 900);
+  glowG.addColorStop(0, accent + '22'); glowG.addColorStop(1, accent + '00');
+  g.fillStyle = glowG; g.fillRect(0, 0, W, H);
+  const rr = (x, y, w, h, r) => { g.beginPath(); if(g.roundRect) g.roundRect(x, y, w, h, r); else g.rect(x, y, w, h); };
+  rr(56, 56, W - 112, H - 112, 44); g.fillStyle = paper; g.fill(); g.lineWidth = 3; g.strokeStyle = gold; g.stroke();
+  // The edition's cross and the name
+  g.save(); g.translate(W / 2 - 42, 112); g.scale(84 / 64, 84 / 64); g.fillStyle = accent; g.fill(new Path2D(crossPath()), 'evenodd'); g.restore();
+  g.fillStyle = soft; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+  g.font = `600 34px ${serif}`; if('letterSpacing' in g) g.letterSpacing = '12px';
+  g.fillText('SANCTIFY', W / 2 + 6, 250);
+  if('letterSpacing' in g) g.letterSpacing = '0px';
+  let y = 330;
+  if(card.kicker){
+    g.font = `600 26px ${text}`; g.fillStyle = accent; if('letterSpacing' in g) g.letterSpacing = '6px';
+    g.fillText(card.kicker.toUpperCase(), W / 2 + 3, y); if('letterSpacing' in g) g.letterSpacing = '0px';
+    y += 40;
+  }
+  // A saint's portrait, in an arch
+  if(card.image && withImage){
+    const im = await loadImage(card.image);
+    const aw = 470, ah = 580, ax = W / 2 - aw / 2, ay = y + 10;
+    g.save(); g.beginPath(); g.arc(W / 2, ay + aw / 2, aw / 2, Math.PI, 0); g.lineTo(ax + aw, ay + ah); g.lineTo(ax, ay + ah); g.closePath(); g.clip();
+    const s = Math.max(aw / im.width, ah / im.height), dw = im.width * s, dh = im.height * s;
+    g.drawImage(im, W / 2 - dw / 2, ay + (ah - dh) * 0.25, dw, dh); g.restore();
+    g.beginPath(); g.arc(W / 2, ay + aw / 2, aw / 2, Math.PI, 0); g.lineTo(ax + aw, ay + ah); g.lineTo(ax, ay + ah); g.closePath();
+    g.lineWidth = 4; g.strokeStyle = gold; g.stroke();
+    y = ay + ah + 40;
+  } else y += 30;
+  const room = 1920 - 330;   // the footer starts here
+  if(card.quote){
+    g.font = `italic 500 64px ${serif}`; g.fillStyle = ink;
+    const lines = wrapLines(g, '“' + card.quote + '”', W - 220, 11);
+    y = Math.max(y + 40, (room - lines.length * 84) / 2 + 120);
+    lines.forEach(l => { g.fillText(l, W / 2, y + 60); y += 84; });
+    if(card.title){ g.font = `600 40px ${text}`; g.fillStyle = accent; g.fillText('— ' + card.title, W / 2, y + 70); y += 80; }
+    if(card.byline){ g.font = `italic 400 30px ${text}`; g.fillStyle = soft; wrapLines(g, card.byline, W - 260, 2).forEach(l => { g.fillText(l, W / 2, y + 60); y += 40; }); }
+  } else {
+    // Measure first, so a card without a picture can center its text between the header and the address
+    const size = card.image ? 34 : 38, lh = Math.round(size * 1.5);
+    g.font = `700 76px ${serif}`; const titleLines = wrapLines(g, card.title, W - 220, 3);
+    g.font = `italic 400 32px ${text}`; const byLines = card.byline ? wrapLines(g, card.byline, W - 240, 2) : [];
+    const head = titleLines.length * 82 + byLines.length * 44 + 66;
+    g.font = `400 ${size}px ${text}`;
+    const bodyLines = card.body ? wrapLines(g, card.body, W - 240, Math.max(3, Math.floor((room - y - head) / lh))) : [];
+    if(!card.image) y = Math.max(y, Math.round((y + room) / 2 - (head + bodyLines.length * lh) / 2));
+    g.font = `700 76px ${serif}`; g.fillStyle = ink;
+    titleLines.forEach(l => { g.fillText(l, W / 2, y + 66); y += 82; });
+    g.font = `italic 400 32px ${text}`; g.fillStyle = soft;
+    byLines.forEach(l => { g.fillText(l, W / 2, y + 44); y += 44; });
+    y += 36;
+    g.strokeStyle = gold; g.lineWidth = 2; g.beginPath(); g.moveTo(W / 2 - 60, y); g.lineTo(W / 2 + 60, y); g.stroke();
+    y += 30;
+    g.font = `400 ${size}px ${text}`; g.fillStyle = ink;
+    bodyLines.forEach(l => { g.fillText(l, W / 2, y + size); y += lh; });
+  }
+  // The address
+  g.font = `600 40px ${text}`;
+  const url = 'sanctify.pages.dev', uw = g.measureText(url).width + 90;
+  rr(W / 2 - uw / 2, H - 230, uw, 84, 42); g.fillStyle = accent; g.fill();
+  g.fillStyle = paper; g.fillText(url, W / 2, H - 175);
+  return c;
+}
+async function shareCardImage(card, name){
+  toast(i18n('Making the image…') || 'Making the image…');
+  let canvas, blob;
+  try{
+    canvas = await drawShareCard(card, true);
+    blob = await new Promise(r => canvas.toBlob(r, 'image/png'));
+  }catch(err){ blob = null; }
+  if(!blob){   // a picture that won't load (or can't be drawn) is left out
+    canvas = await drawShareCard(card, false);
+    blob = await new Promise(r => canvas.toBlob(r, 'image/png'));
+  }
+  const file = new File([blob], 'sanctify-' + (name || 'card').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 50) + '.png', { type:'image/png' });
+  if(navigator.canShare && navigator.canShare({ files:[file] })){
+    try{ await navigator.share({ files:[file], title:card.title || 'Sanctify' }); return; }catch(err){ if(err && err.name === 'AbortError') return; }
+  }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = file.name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  toast(i18n('Image saved') || 'Image saved');
+}
+async function shareEntryImage(e){
+  await withFullText(e);
+  const kicker = i18n(CAT_LABEL[e.category] || '') || CAT_LABEL[e.category] || '';
+  let body = e.category === 'prayer' ? (document.getElementById('readBody').innerText || e.content) : e.content;
+  body = cutText(body.replace(/\n+/g, ' '), e.category === 'saint' ? 380 : 620);
+  let image = null;
+  if(e.category === 'saint'){ try{ const p = await fetchSaintPortrait(e); image = p && p.src || null; }catch(err){} }
+  await shareCardImage({ kicker, title:e.title, byline:e.author || '', body, image }, e.title);
 }
 
 /* ---------- Novenas ---------- */
@@ -18126,6 +18302,26 @@ document.body.appendChild(backToTop);
 window.addEventListener('scroll', () => { backToTop.classList.toggle('show', window.scrollY > 900); document.body.classList.toggle('scrolled', window.scrollY > 4); }, { passive:true });
 
 /* ---------- Text size ---------- */
+// Read aloud: the voice and speed used by every Listen button
+const SPEECH_RATES = [[0.8, 'Slower'], [0.95, 'Normal'], [1.1, 'Faster']];
+function readAloudSettingsHtml(){
+  const lang = pageLang(), code = lang.split('-')[0];
+  const list = voicesFor(lang).slice().sort((a, b) => voiceScore(b) - voiceScore(a));
+  const pick = (store.get('voices', {}) || {})[code] || '';
+  const rate = speechRate();
+  return `<section class="settings-card" id="settingsVoice">
+        <h3>${navIcon('music')}Read aloud</h3>
+        <p class="forum-meta">The voice that reads prayers and pages when you press Listen. Sanctify picks the most natural voice your device has, or you can choose one.</p>
+        <div class="settings-sub">Voice</div>
+        ${list.length ? `<select class="settings-select notranslate" translate="no" data-voice aria-label="Voice">
+          <option value="">${escapeHtml(i18n('Automatic (the most natural voice)') || 'Automatic (the most natural voice)')}</option>
+          ${list.map(v => `<option value="${escapeHtml(v.voiceURI)}"${v.voiceURI === pick ? ' selected' : ''}>${escapeHtml(v.name + (v.localService ? '' : ' ☁'))}</option>`).join('')}
+        </select>` : '<p class="forum-meta">Your device has no voice for this language yet. You can add one in your device’s speech settings.</p>'}
+        <div class="settings-sub">Speed</div>
+        <div class="settings-choices">${SPEECH_RATES.map(([r, label]) => `<button class="settings-choice" type="button" data-set-rate="${r}" aria-pressed="${Math.abs(rate - r) < 0.01}">${label}</button>`).join('')}</div>
+        <button class="btn quiet" type="button" data-try-voice aria-pressed="false">▶ Try it</button>
+      </section>`;
+}
 const TEXT_SIZES = [['md', 'A', 'Normal text'], ['lg', 'A', 'Larger text'], ['xl', 'A', 'Largest text']];
 function applyTextSize(size){
   if(size === 'md') document.documentElement.removeAttribute('data-textsize');
@@ -18281,6 +18477,7 @@ function renderSettings(){
         <div class="settings-sub">Text size</div>
         <div class="settings-choices">${TEXT_SIZES.map(([k, l, name], i) => `<button class="settings-choice textsize-choice" type="button" data-set-size="${k}" aria-pressed="${size === k}" aria-label="${name}" style="font-size:${0.85 + i * 0.2}rem">${l}</button>`).join('')}</div>
       </section>
+      ${canSpeak ? readAloudSettingsHtml() : ''}
       <section class="settings-card">
         <h3>${navIcon('shield')}Your data</h3>
         <p class="forum-meta">Your saved entries, novenas, intentions, prayer record, badges, and settings are kept only in this browser. Save a backup to move them to another device.</p>
@@ -18314,6 +18511,17 @@ function renderSettings(){
     renderSettings();
   });
   root.querySelectorAll('[data-set-size]').forEach(b => b.addEventListener('click', () => { store.set('textsize', b.dataset.setSize); applyTextSize(b.dataset.setSize); renderSettings(); }));
+  const voiceSel = root.querySelector('[data-voice]');
+  if(voiceSel) voiceSel.addEventListener('change', () => {
+    const all = store.get('voices', {}) || {}; all[pageLang().split('-')[0]] = voiceSel.value; store.set('voices', all);
+    stopSpeaking();
+  });
+  root.querySelectorAll('[data-set-rate]').forEach(b => b.addEventListener('click', () => { store.set('speechRate', Number(b.dataset.setRate)); stopSpeaking(); renderSettings(); }));
+  const tryBtn = root.querySelector('[data-try-voice]');
+  if(tryBtn) tryBtn.addEventListener('click', () => {
+    const glory = library.find(x => x.id === 'p4');
+    toggleSpeak(tryBtn, glory ? glory.content : 'Glory be to the Father, and to the Son, and to the Holy Spirit.', pageLang());
+  });
   root.querySelector('[data-backup]').addEventListener('click', backupData);
   root.querySelector('[data-restore]').addEventListener('change', async ev => {
     const file = ev.target.files && ev.target.files[0];
@@ -18583,7 +18791,7 @@ function renderDevotionStep(o){
   if(listen) listen.addEventListener('click', () => {
     const card = root.querySelector('.devo-card');
     const stanza = card.querySelector('.devo-stanza');
-    toggleSpeak(listen, o.title + '. ' + card.querySelector('.devo-text').innerText + (stanza ? ' ' + stanza.innerText.replace(/^Stabat Mater/i, '') : ''));
+    toggleSpeak(listen, o.title + '. ' + card.querySelector('.devo-text').innerText + (stanza ? ' ' + stanza.innerText.replace(/^Stabat Mater/i, '') : ''), pageLang());
   });
   devoKeys = { back, next };
   if(hadFocus) root.querySelector('.devo-next').focus({ preventScroll:true });
