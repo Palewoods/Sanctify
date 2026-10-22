@@ -3284,7 +3284,7 @@
     var ui = JSON.parse(localStorage.getItem('sanctify.lang') || '"en"');
     if(/^(es|pl|fr|pt|it|de|ru|uk)$/.test(ui) && !/\.translate\.goog$/.test(location.hostname)){
       document.documentElement.lang = ui;
-      document.write('<script src="lang/' + ui + '.js?v=f8054f26"><\/script>');
+      document.write('<script src="lang/' + ui + '.js?v=bb68e852"><\/script>');
     }
     if(JSON.parse(localStorage.getItem('sanctify.motion') || '""') === 'reduced') document.documentElement.setAttribute('data-motion', 'reduced');
     var t = localStorage.getItem('sanctify.theme');
@@ -7448,7 +7448,7 @@ function saintSortName(e){ return e.title.replace(/^(Pope\s+)?Sts?\.\s+/, ''); }
 
 function patronMatches(e, term){
   if(!term) return true;
-  const hay = ((e.patron || '') + ' ' + (e.tags || []).join(' ')).toLowerCase();
+  const hay = ((e.patron || '') + ' ' + patronText(e.patron) + ' ' + (e.tags || []).join(' ')).toLowerCase();
   return term.toLowerCase().split('|').some(t => t.trim() && hay.includes(t.trim()));
 }
 
@@ -7604,6 +7604,7 @@ function currentEntries(){
       (e.content||'').toLowerCase().includes(t) ||
       (e.intercession||'').toLowerCase().includes(t) ||
       (e.patron||'').toLowerCase().includes(t) ||
+      (pageLang() !== 'en' && ((i18n(e.title)||'').toLowerCase().includes(t) || patronText(e.patron).toLowerCase().includes(t))) ||
       (e.points||[]).some(p => p.toLowerCase().includes(t)) ||
       (e.objections||[]).some(o => (o.q + ' ' + o.a).toLowerCase().includes(t)) ||
       (e.tags||[]).some(tag => tag.toLowerCase().includes(t))
@@ -7750,7 +7751,7 @@ function renderRows(entries, container){
         <span class="cat-badge">${CAT_LABEL[entry.category] || entry.category}</span>
       </div>
       ${entry.author ? `<div class="byline">${escapeHtml(entry.author)}</div>` : ''}
-      ${entry.patron ? `<div class="row-patron">Patron of ${escapeHtml(entry.patron)}</div>` : ''}
+      ${entry.patron ? `<div class="row-patron">${escapeHtml(patronOf(entry.patron))}</div>` : ''}
       <div class="excerpt">${escapeHtml(excerptOf(entry.content, 190))}</div>
       ${(entry.tags && entry.tags.length) ? `<div class="tags">${entry.tags.map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
     `;
@@ -7833,7 +7834,7 @@ function renderGallery(entries, cat, container){
         <div class="saint-portrait g-portrait" data-sid="${e.id}">${portraitPlaceholder(e.title)}</div>
         <span class="g-title">${escapeHtml(e.title)}</span>
         <span class="g-meta">${escapeHtml(feastLabel(e))}</span>
-        ${e.patron ? `<span class="g-patron" title="Patron of ${escapeHtml(e.patron)}">Patron of ${escapeHtml(e.patron)}</span>` : ''}`;
+        ${e.patron ? `<span class="g-patron" title="${escapeHtml(patronOf(e.patron))}">${escapeHtml(patronOf(e.patron))}</span>` : ''}`;
     }
     card.addEventListener('click', () => openReadModal(e.id));
     grid.appendChild(card);
@@ -7940,6 +7941,16 @@ function sameDay(a, b){ return a.getFullYear() === b.getFullYear() && a.getMonth
 function shortDate(d){ return pageLang() === 'en' ? MONTH_NAMES[d.getMonth()].slice(0,3) + ' ' + d.getDate() : d.toLocaleDateString(pageLang(), { month:'short', day:'numeric' }); }
 // The language the page is shown in (Spanish and Polish are translated by hand; see lang/)
 function pageLang(){ return (window.SANCTIFY_I18N && !/\.translate\.goog$/.test(location.hostname)) ? window.SANCTIFY_I18N.lang : 'en'; }
+// A saint's patronages in the page's language, each one on its own ("enfermeras, Irlanda"), for showing and for search
+function patronText(p){
+  if(!p || pageLang() === 'en') return p || '';
+  const S = window.SANCTIFY_I18N.strings;
+  return p.split(', ').map(x => S[x] || x).join(', ');
+}
+// "Patron of nurses, Ireland" in English, "Patronazgo: enfermeras, Irlanda" in Spanish
+function patronOf(p){
+  return pageLang() === 'en' ? 'Patron of ' + p : (window.SANCTIFY_I18N.strings['Patron of'] || 'Patron of') + ' ' + patronText(p);
+}
 const capFirst = t => t.charAt(0).toUpperCase() + t.slice(1);
 // "Tuesday, October 20" in English, "martes, 20 de octubre" in Spanish, "wtorek, 20 października" in Polish
 function dayLabel(d, withYear){
@@ -13572,8 +13583,8 @@ function pfWhy(x, words, fallback){
   const re = pfRegex(words);
   const phrase = x.phrases.find(p => re.test(pfFold(p)));
   if(!phrase) return fallback;
-  const m = phrase.match(/^protection (?:from|against) (.*)/i);
-  return m ? 'Protects from ' + m[1] : 'Patron of ' + phrase;
+  const m = pageLang() === 'en' && phrase.match(/^protection (?:from|against) (.*)/i);
+  return m ? 'Protects from ' + m[1] : patronOf(phrase);
 }
 const pfFlat = groups => groups.flatMap(g => g[1]);
 const PF_WORK_ALL = pfFlat(PF_WORK), PF_NEED_ALL = pfFlat(PF_NEED);
