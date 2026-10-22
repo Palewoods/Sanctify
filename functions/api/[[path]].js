@@ -233,6 +233,10 @@ const SCHEMA = [
        FROM mod_sessions m JOIN sessions s ON s.token_hash = m.token_hash
       WHERE m.expires_at > CAST(strftime('%s', 'now') AS INTEGER) * 1000`,
   `DELETE FROM mod_sessions`,
+  `CREATE TABLE IF NOT EXISTS favorites (
+     user_id INTEGER PRIMARY KEY,
+     ids TEXT NOT NULL,
+     updated_at INTEGER NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS limits (
      key TEXT PRIMARY KEY,
      count INTEGER NOT NULL,
@@ -284,6 +288,7 @@ export async function onRequest({ request, env }){
     if((m = path.match(/^posts\/(\d+)\/(pin|lock)$/)) && method === 'POST') return await flagPost(ctx, Number(m[1]), m[2]);
     if((m = path.match(/^posts\/(\d+)\/move$/)) && method === 'POST') return await movePost(ctx, Number(m[1]));
     if((m = path.match(/^replies\/(\d+)$/)) && method === 'PUT') return await editReply(ctx, Number(m[1]));
+    if(path === 'team' && method === 'GET') return await getTeam(ctx);
     if(path === 'news' && method === 'GET') return await listNews(ctx);
     if(path === 'news' && method === 'POST') return await saveNews(ctx, null);
     if((m = path.match(/^news\/(\d+)$/))){
@@ -293,6 +298,7 @@ export async function onRequest({ request, env }){
     if(path === 'account/avatar' && method === 'PUT') return await setAvatar(ctx);
     if(path === 'account/avatar' && method === 'DELETE') return await removeAvatar(ctx);
     if(path === 'account/profile' && method === 'PUT') return await setProfile(ctx);
+    if(path === 'account/favorites' && method === 'PUT') return await setFavorites(ctx);
     if(path === 'wiki' && method === 'GET') return await listWiki(ctx);
     if(path === 'wiki/changes' && method === 'GET') return await wikiChanges(ctx);
     if(path === 'wiki/pages' && method === 'POST') return await createWikiPage(ctx);
@@ -384,6 +390,7 @@ async function deleteAccount(ctx){
   if(!row || !sameHash(await hashPassword(String(password || ''), row.salt), row.pass_hash)) throw new HttpError(401, 'That password isn’t right.');
   await ctx.db.batch([
     ctx.db.prepare('DELETE FROM roles WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('DELETE FROM favorites WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM avatars WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM profiles WHERE user_id = ?').bind(user.id),
@@ -481,6 +488,22 @@ async function setProfile(ctx){
 }
 
 // Serves a member's picture; the ?v= version in the URL changes whenever the picture does
+// The prayers, saints, and readings a member has saved, shown on their profile only if they choose
+const FAVORITES_MAX = 60;
+async function setFavorites(ctx){
+  const user = requireUser(ctx);
+  const data = await readBody(ctx, 4000);
+  await limit(ctx, 'favorites:' + user.id, 60, 60 * 60 * 1000, 'Please try again in a little while.');
+  if(!data.show){
+    await ctx.db.prepare('DELETE FROM favorites WHERE user_id = ?').bind(user.id).run();
+    return json({ favorites:null });
+  }
+  const ids = [...new Set((Array.isArray(data.ids) ? data.ids : []).map(String).filter(id => /^[A-Za-z0-9_-]{1,40}$/.test(id)))].slice(0, FAVORITES_MAX);
+  await ctx.db.prepare('INSERT INTO favorites (user_id, ids, updated_at) VALUES (?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET ids = excluded.ids, updated_at = excluded.updated_at')
+    .bind(user.id, JSON.stringify(ids), ctx.now).run();
+  return json({ favorites:ids });
+}
+
 async function getAvatar(ctx, name){
   const row = await ctx.db.prepare('SELECT a.mime, a.data FROM avatars a JOIN users u ON u.id = a.user_id WHERE u.username = ?').bind(name).first();
   if(!row) return new Response('Not found', { status:404, headers:{ 'Cache-Control':'no-store', 'X-Content-Type-Options':'nosniff' } });
@@ -513,16 +536,18 @@ async function listPosts(ctx){
   }
   const { results } = await ctx.db.prepare(
     `SELECT p.id, p.category, p.title, substr(p.body, 1, 240) AS excerpt, p.created_at, p.last_activity,
-            p.reply_count, p.prayer_count, u.username, a.updated_at AS avatar_v, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked
+            p.reply_count, p.prayer_count, u.username, a.updated_at AS avatar_v, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked,
+            (mp.user_id IS NOT NULL) AS prayed
        FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id LEFT JOIN post_flags f ON f.post_id = p.id
+            LEFT JOIN prayers mp ON mp.post_id = p.id AND mp.user_id = ?
       WHERE ${where.join(' AND ')}
       ORDER BY COALESCE(f.pinned, 0) DESC, p.last_activity DESC, p.id DESC
       LIMIT ? OFFSET ?`
-  ).bind(...args, PAGE_SIZE + 1, page * PAGE_SIZE).all();
+  ).bind(ctx.user ? ctx.user.id : 0, ...args, PAGE_SIZE + 1, page * PAGE_SIZE).all();
   return json({
     posts:results.slice(0, PAGE_SIZE).map(r => ({
       id:r.id, category:r.category, title:r.title, excerpt:r.excerpt, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null,
-      createdAt:r.created_at, lastActivity:r.last_activity, replies:r.reply_count, prayers:r.prayer_count, pinned:!!r.pinned, locked:!!r.locked
+      createdAt:r.created_at, lastActivity:r.last_activity, replies:r.reply_count, prayers:r.prayer_count, prayed:!!r.prayed, pinned:!!r.pinned, locked:!!r.locked
     })),
     more:results.length > PAGE_SIZE
   });
@@ -817,8 +842,8 @@ async function markNotificationsSeen(ctx){
 }
 
 async function getProfile(ctx, name){
-  const u = await ctx.db.prepare(`SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, pr.bio, bn.preset AS banner_preset, bn.updated_at AS banner_v, ro.role
-     FROM users u LEFT JOIN roles ro ON ro.user_id = u.id LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN profiles pr ON pr.user_id = u.id LEFT JOIN banners bn ON bn.user_id = u.id WHERE u.username = ?`).bind(name).first();
+  const u = await ctx.db.prepare(`SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, pr.bio, bn.preset AS banner_preset, bn.updated_at AS banner_v, ro.role, fv.ids AS favorites
+     FROM users u LEFT JOIN roles ro ON ro.user_id = u.id LEFT JOIN favorites fv ON fv.user_id = u.id LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN profiles pr ON pr.user_id = u.id LEFT JOIN banners bn ON bn.user_id = u.id WHERE u.username = ?`).bind(name).first();
   if(!u) throw new HttpError(404, 'There’s no member by that name.');
   const counts = await ctx.db.prepare(
     'SELECT (SELECT COUNT(*) FROM posts WHERE user_id = ? AND deleted = 0) AS posts, (SELECT COUNT(*) FROM replies WHERE user_id = ? AND deleted = 0) AS replies, (SELECT COUNT(*) FROM prayers WHERE user_id = ?) AS prayers'
@@ -841,9 +866,14 @@ async function getProfile(ctx, name){
     replies:replies.map(r => ({ id:r.id, postId:r.post_id, postTitle:r.title, excerpt:r.excerpt, createdAt:r.created_at })),
     wiki:{ edits:wikiCounts.edits, pages:wikiCounts.pages, touched:wikiCounts.touched,
       recent:wikiEdits.map(r => ({ id:r.id, slug:r.slug, title:r.title, summary:r.summary, delta:r.delta, createdAt:r.created_at, created:!!r.created })) },
-    profile:{ id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, banner:bannerJson(u), bio:u.bio || '', posts:counts.posts, replies:counts.replies, prayers:counts.prayers, administrator:siteAdmin(ctx, u.username), moderator:u.role === 'moderator', badges },
+    profile:{ id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, banner:bannerJson(u), bio:u.bio || '', posts:counts.posts, replies:counts.replies, prayers:counts.prayers, administrator:siteAdmin(ctx, u.username), moderator:u.role === 'moderator', badges, favorites:readFavorites(u.favorites) },
     posts:results.map(p => ({ id:p.id, category:p.category, title:p.title, excerpt:p.excerpt, createdAt:p.created_at, lastActivity:p.created_at, replies:p.reply_count, prayers:p.prayer_count, author:u.username, authorAvatar:u.avatar_v || null }))
   });
+}
+
+function readFavorites(text){
+  if(!text) return null;
+  try{ const ids = JSON.parse(text); return Array.isArray(ids) ? ids : null; }catch(err){ return null; }
 }
 
 /* ---------- The Community Wiki ---------- */
@@ -1461,6 +1491,23 @@ async function deleteNews(ctx, id){
   await ctx.db.prepare('UPDATE news SET deleted = 1 WHERE id = ?').bind(id).run();
   await logMod(ctx, 'delete-news', 'news ' + id, '');
   return json({ ok:true });
+}
+
+/* ---------- The team, for the Credits page ---------- */
+// The site administrators, the moderators, and members with the Founder or Sanctify Team badge
+async function getTeam(ctx){
+  const admins = String(ctx.env.ADMINS || '').split(',').map(x => x.trim()).filter(Boolean).slice(0, 20);
+  const { results } = await ctx.db.prepare(
+    `SELECT u.username, u.created_at, a.updated_at AS avatar_v, r.role,
+            EXISTS (SELECT 1 FROM user_badges b WHERE b.user_id = u.id AND b.badge = 'founder') AS founder,
+            EXISTS (SELECT 1 FROM user_badges b WHERE b.user_id = u.id AND b.badge = 'team') AS team
+       FROM users u LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN roles r ON r.user_id = u.id
+      WHERE r.role = 'moderator' ${admins.length ? `OR u.username IN (${admins.map(() => '?').join(', ')})` : ''}
+         OR EXISTS (SELECT 1 FROM user_badges b WHERE b.user_id = u.id AND b.badge IN ('founder', 'team'))
+      ORDER BY u.created_at LIMIT 60`).bind(...admins).all();
+  return json({ members:results.map(r => ({
+    username:r.username, avatar:r.avatar_v || null, admin:siteAdmin(ctx, r.username), moderator:r.role === 'moderator', founder:!!r.founder, team:!!r.team
+  })) });
 }
 
 /* ---------- Moderators ---------- */
