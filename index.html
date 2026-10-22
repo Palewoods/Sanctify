@@ -2568,7 +2568,16 @@
   .account-page{max-width:860px;}
   .account-danger{margin-top:34px; padding:14px 18px; border:1px solid var(--line); border-radius:14px; max-width:560px;}
   .account-mod{margin-top:34px; padding:14px 18px; border:1px solid var(--line); border-radius:14px; max-width:560px;}
-  .account-mod summary{cursor:pointer; font-weight:600; color:var(--ink);}
+  .account-mod h3{margin:0 0 6px; font-size:1rem;}
+  .pass-wrap{position:relative;}
+  .pass-wrap input{padding-right:64px;}
+  .pass-show{position:absolute; right:6px; top:50%; transform:translateY(-50%); border:0; background:none; color:var(--wine); font:inherit; font-size:0.82rem; font-weight:600; padding:6px 8px; cursor:pointer; border-radius:8px;}
+  .pass-show:hover{background:color-mix(in srgb, var(--wine) 10%, transparent);}
+  .auth-check[data-state="good"]{color:var(--green);}
+  .auth-check[data-state="good"]::before{content:'✓ ';}
+  .auth-check[data-state="bad"]{color:var(--wine);}
+  .account-agree{margin:12px 0 0; font-size:0.85rem; color:var(--ink-soft);}
+  .account-agree .text-link{font-size:inherit;}
   .account-mod p{font-size:0.9rem; color:var(--ink-soft);}
   .account-mod + .account-danger{margin-top:14px;}
   .account-danger summary{cursor:pointer; color:var(--wine); font-weight:600;}
@@ -10811,7 +10820,7 @@ let modTab = 'overview';
 let modUserId = null;
 let modQuery = { q:'', filter:'all', sort:'new' };
 const MOD_ACTIONS = {
-  'moderator-on':'turned on moderator tools', ban:'banned', unban:'unbanned', 'remove-all':'removed everything posted by',
+  'moderator-on':'turned on moderator tools', 'make-moderator':'made a moderator:', 'remove-moderator':'removed as a moderator:', ban:'banned', unban:'unbanned', 'remove-all':'removed everything posted by',
   'remove-post':'removed', 'remove-reply':'removed', pin:'pinned', unpin:'unpinned', lock:'locked', unlock:'unlocked',
   'dismiss-report':'dismissed reports on', mute:'muted', unmute:'unmuted', warn:'warned', 'add-note':'added a note on',
   move:'moved', settings:'changed the settings', 'give-badge':'gave a badge to', 'take-badge':'removed a badge from', 'clear-bio':'cleared the description of', 'clear-avatar':'removed the picture of', 'clear-banner':'removed the banner of', 'publish-news':'published', 'edit-news':'edited', 'delete-news':'deleted',
@@ -11000,7 +11009,15 @@ async function modUserView(body, still){
         ${x.mute && x.mute.reason ? `<p class="mod-reason"><strong>Mute reason:</strong> ${escapeHtml(x.mute.reason)}</p>` : ''}
       </div>
     </section>
-    ${self || x.siteAdmin ? `<p class="forum-meta">${self ? 'This is your account.' : 'Site administrators can’t be banned.'}</p>` : x.ban ? `
+    ${me && me.siteAdmin && !self && !x.siteAdmin ? `
+      <section class="mod-tool mod-role">
+        <h4>Moderator</h4>
+        <p class="forum-meta">${x.moderator
+          ? `${escapeHtml(x.username)} is a moderator: they can remove posts and replies, review reports, and mute, warn, or ban members.`
+          : `Moderators can remove posts and replies, review reports, and mute, warn, or ban members. They get the Moderator badge.`}</p>
+        <button class="btn ${x.moderator ? 'quiet' : 'primary pill'}" data-role="${x.moderator ? '0' : '1'}"${x.ban ? ' disabled' : ''}>${x.moderator ? 'Remove as moderator' : 'Make moderator'}</button>
+      </section>` : ''}
+    ${self || x.siteAdmin || (x.moderator && !(me && me.siteAdmin)) ? `<p class="forum-meta">${self ? 'This is your account.' : x.siteAdmin ? 'Site administrators can’t be banned.' : 'Only the site administrators can ban or mute a moderator.'}</p>` : x.ban ? `
       <div class="forum-form-actions mod-actions"><button class="btn primary pill" data-unban>Lift the ban</button></div>` : `
       <form class="mod-ban" id="modBan">
         <h4>Ban this account</h4>
@@ -11013,7 +11030,7 @@ async function modUserView(body, still){
         <p class="forum-error" id="banError" hidden></p>
         <button class="btn danger" type="submit">Ban ${escapeHtml(x.username)}</button>
       </form>`}
-    ${self || x.siteAdmin || x.ban ? '' : `
+    ${self || x.siteAdmin || x.ban || (x.moderator && !(me && me.siteAdmin)) ? '' : `
       <div class="mod-tools">
         ${x.mute ? `<div class="mod-tool"><h4>Muted</h4><p class="forum-meta">${escapeHtml(x.username)} can read and pray but can’t post or reply.</p><button class="btn quiet" data-unmute>Lift the mute</button></div>` : `
         <form class="mod-tool" id="modMute">
@@ -11078,6 +11095,14 @@ async function modUserView(body, still){
     if(!confirm(`Ban ${x.username} ${days ? 'for ' + plural(days, 'day', 'days') : 'permanently'}${remove ? ' and remove everything they have posted' : ''}?`)) return;
     try{ await api(`mod/users/${x.id}/ban`, { method:'POST', body:{ days, reason:ban.querySelector('#banReason').value, removeContent:remove } }); after(`${x.username} has been banned`); }
     catch(err){ showFormError(ban.querySelector('#banError'), err.message); }
+  });
+  const role = body.querySelector('[data-role]');
+  if(role) role.addEventListener('click', async () => {
+    const make = role.dataset.role === '1';
+    if(!make && !confirm(`Remove ${x.username} as a moderator?`)) return;
+    role.disabled = true;
+    try{ await api(`mod/users/${x.id}/role`, { method:'PUT', body:{ moderator:make } }); after(make ? `${x.username} is now a moderator` : `${x.username} is no longer a moderator`); }
+    catch(err){ toast(err.message); role.disabled = false; }
   });
   const unban = body.querySelector('[data-unban]');
   if(unban) unban.addEventListener('click', async () => {
@@ -11987,37 +12012,80 @@ function renderAuthForms(){
         <button role="tab" aria-selected="${signup}" data-tab="signup">Create account</button>
       </div>
       <form id="authForm" novalidate>
-        <div class="field"><label for="authUser">Username</label>
-          <input id="authUser" name="username" autocomplete="username" maxlength="20" autocapitalize="off" spellcheck="false">
-          ${signup ? '<div class="hint">3 to 20 letters, numbers, or underscores. This is the name others will see.</div>' : ''}</div>
-        <div class="field"><label for="authPass">Password</label>
-          <input id="authPass" name="password" type="password" autocomplete="${signup ? 'new-password' : 'current-password'}" maxlength="128">
-          ${signup ? '<div class="hint">At least 8 characters.</div>' : ''}</div>
-        ${signup ? `
-        <div class="field"><label for="authPass2">Confirm password</label>
-          <input id="authPass2" type="password" autocomplete="new-password" maxlength="128"></div>
-        <label class="forum-check"><input type="checkbox" id="authAgree"><span>I’ll follow the community guidelines below.</span></label>` : ''}
+        <div class="field"><label for="authUser">${signup ? 'Choose a username' : 'Username'}</label>
+          <input id="authUser" name="username" autocomplete="username" maxlength="20" autocapitalize="off" spellcheck="false"${signup ? ' aria-describedby="userCheck"' : ''}>
+          ${signup ? '<div class="hint auth-check" id="userCheck" aria-live="polite">3 to 20 letters, numbers, or underscores. This is the name others will see.</div>' : ''}</div>
+        <div class="field"><label for="authPass">${signup ? 'Choose a password' : 'Password'}</label>
+          <div class="pass-wrap"><input id="authPass" name="password" type="password" autocomplete="${signup ? 'new-password' : 'current-password'}" maxlength="128"${signup ? ' aria-describedby="passCheck"' : ''}>
+            <button class="pass-show" type="button" aria-pressed="false" aria-controls="authPass">Show</button></div>
+          ${signup ? '<div class="hint auth-check" id="passCheck" aria-live="polite">At least 8 characters.</div>' : ''}</div>
         <p class="forum-error" id="authError" hidden></p>
-        <button class="btn primary pill account-submit" type="submit">${signup ? 'Create account' : 'Sign in'}</button>
+        <button class="btn primary pill account-submit" type="submit">${signup ? 'Create my account' : 'Sign in'}</button>
+        ${signup ? '<p class="account-agree">By creating an account, you agree to follow the <button class="text-link" type="button" data-guidelines>community guidelines</button>.</p>' : ''}
       </form>
       <p class="account-note">${signup
-        ? 'Sanctify doesn’t ask for an email address, so a forgotten password can’t be recovered. Keep it somewhere safe, or let your browser save it.'
-        : 'New here? <button class="text-link" data-tab="signup">Create a free account</button>.'}</p>
+        ? 'No email address is needed. That also means a forgotten password can’t be recovered, so let your browser save it or keep it somewhere safe.'
+        : 'New here? <button class="text-link" data-tab="signup">Create a free account</button>. It takes a few seconds.'}</p>
     </div>
-    ${signup ? guidelinesHtml() : ''}`;
+    ${signup ? `<div id="authGuidelines" hidden>${guidelinesHtml()}</div>` : ''}`;
   entryListEl.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { accountTab = b.dataset.tab; renderAuthForms(); }));
 
   const form = entryListEl.querySelector('#authForm');
   const user = form.querySelector('#authUser'), pass = form.querySelector('#authPass'), error = form.querySelector('#authError');
   user.focus();
+  const show = form.querySelector('.pass-show');
+  show.addEventListener('click', () => {
+    const on = pass.type === 'password';
+    pass.type = on ? 'text' : 'password';
+    show.textContent = on ? 'Hide' : 'Show';
+    show.setAttribute('aria-pressed', String(on));
+    pass.focus();
+  });
+  const guide = form.querySelector('[data-guidelines]');
+  if(guide) guide.addEventListener('click', () => {
+    const box = entryListEl.querySelector('#authGuidelines');
+    box.hidden = !box.hidden;
+    if(!box.hidden) box.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  });
+  // While choosing a name and password, say right away whether they'll work
+  let nameOk = null;
+  if(signup){
+    const userCheck = form.querySelector('#userCheck'), passCheck = form.querySelector('#passCheck');
+    const setCheck = (el, state, text) => { el.textContent = text; el.dataset.state = state; };
+    let timer = 0, asked = '';
+    user.addEventListener('input', () => {
+      clearTimeout(timer);
+      const name = user.value.trim();
+      nameOk = null;
+      if(!name){ setCheck(userCheck, '', '3 to 20 letters, numbers, or underscores. This is the name others will see.'); return; }
+      if(/[^A-Za-z0-9_]/.test(name)){ setCheck(userCheck, 'bad', 'Use only letters, numbers, and underscores (no spaces).'); nameOk = false; return; }
+      if(name.length < 3){ setCheck(userCheck, '', 'At least 3 characters.'); return; }
+      setCheck(userCheck, '', 'Checking…');
+      timer = setTimeout(async () => {
+        asked = name;
+        let taken;
+        try{ await api('users/' + encodeURIComponent(name)); taken = true; }
+        catch(err){ taken = err.status === 404 ? false : null; }
+        if(asked !== user.value.trim()) return;
+        if(taken === null){ setCheck(userCheck, '', '3 to 20 letters, numbers, or underscores. This is the name others will see.'); return; }
+        nameOk = !taken;
+        setCheck(userCheck, taken ? 'bad' : 'good', taken ? `${name} is taken. Try another, or add a number.` : `${name} is available.`);
+      }, 350);
+    });
+    pass.addEventListener('input', () => {
+      const n = pass.value.length;
+      if(!n) setCheck(passCheck, '', 'At least 8 characters.');
+      else if(n < 8) setCheck(passCheck, '', `${8 - n} more ${8 - n === 1 ? 'character' : 'characters'} needed.`);
+      else setCheck(passCheck, 'good', 'Long enough.');
+    });
+  }
   form.addEventListener('submit', async ev => {
     ev.preventDefault();
     const name = user.value.trim();
     if(signup){
       if(!/^[A-Za-z0-9_]{3,20}$/.test(name)){ showFormError(error, 'Usernames are 3 to 20 letters, numbers, or underscores.'); user.focus(); return; }
+      if(nameOk === false){ showFormError(error, 'That username is taken. Please choose another.'); user.focus(); return; }
       if(pass.value.length < 8){ showFormError(error, 'Passwords need at least 8 characters.'); pass.focus(); return; }
-      if(pass.value !== form.querySelector('#authPass2').value){ showFormError(error, 'The two passwords don’t match.'); form.querySelector('#authPass2').focus(); return; }
-      if(!form.querySelector('#authAgree').checked){ showFormError(error, 'Please agree to follow the community guidelines.'); return; }
     } else if(!name || !pass.value){
       showFormError(error, 'Please enter your username and password.');
       return;
@@ -12089,18 +12157,14 @@ function renderProfile(){
       </div>
       <h3 class="forum-replies-head">Your posts</h3>
       <div class="forum-list" id="myPosts"><div class="forum-loading">Loading your posts…</div></div>
-      <details class="account-mod"${u.admin ? ' open' : ''}>
-        <summary>Moderator${u.admin ? ' · on' : ''}</summary>
-        ${u.admin
-          ? `<p>You’re a moderator. You can remove any post or reply, pin and lock threads, review reports, see every account, and ban members.</p>
-             <div class="forum-form-actions"><button class="btn primary pill" data-route="moderate" type="button">Open moderation tools</button>${u.modMode ? '<button class="btn quiet" id="modLeave" type="button">Leave moderator mode</button>' : ''}</div>`
-          : `<p>Moderators can remove any post or reply. Enter the moderator password to turn on moderator tools on this device.</p>
-             <form id="modForm">
-               <div class="field"><label for="modPass">Moderator password</label><input id="modPass" type="password" autocomplete="off" maxlength="128"></div>
-               <p class="forum-error" id="modError" hidden></p>
-               <button class="btn primary pill" type="submit">Turn on moderator tools</button>
-             </form>`}
-      </details>
+      ${u.admin ? `
+      <section class="account-mod">
+        <h3>${u.siteAdmin ? 'Site administrator' : 'Moderator'}</h3>
+        <p>${u.siteAdmin
+          ? 'You can do everything a moderator can, and choose the moderators from a member’s page in Moderate.'
+          : 'You can remove any post or reply, pin and lock threads, review reports, see every account, and mute, warn, or ban members.'}</p>
+        <div class="forum-form-actions"><button class="btn primary pill" data-route="moderate" type="button">Open moderation tools</button></div>
+      </section>` : ''}
       <details class="account-danger">
         <summary>Delete my account</summary>
         <p>This signs you out everywhere and frees up your username. Your posts and replies stay up, shown as written by a “Former member.” If you’d like any of them gone, delete them first.</p>
@@ -12227,37 +12291,6 @@ function renderProfile(){
     }catch(err){ showAvatarError(err.message || 'That didn’t work. Please try again.'); }
   });
 
-  const modForm = entryListEl.querySelector('#modForm');
-  if(modForm) modForm.addEventListener('submit', async ev => {
-    ev.preventDefault();
-    const pass = modForm.querySelector('#modPass'), error = modForm.querySelector('#modError'), btn = modForm.querySelector('button[type="submit"]');
-    if(!pass.value){ showFormError(error, 'Please enter the moderator password.'); pass.focus(); return; }
-    btn.disabled = true;
-    showFormError(error, '');
-    try{
-      const res = await api('moderator', { method:'POST', body:{ password:pass.value } });
-      Community.user = res.user;
-      updateAccountButton();
-      toast('Moderator tools are on.');
-      renderProfile();
-    }catch(err){
-      showFormError(error, err.message);
-      pass.value = '';
-      btn.disabled = false;
-      pass.focus();
-    }
-  });
-  const modLeave = entryListEl.querySelector('#modLeave');
-  if(modLeave) modLeave.addEventListener('click', async () => {
-    modLeave.disabled = true;
-    try{
-      const res = await api('moderator', { method:'DELETE' });
-      Community.user = res.user;
-      updateAccountButton();
-      toast('Moderator tools are off.');
-      renderProfile();
-    }catch(err){ toast(err.message); modLeave.disabled = false; }
-  });
   entryListEl.querySelector('#signOutBtn').addEventListener('click', async () => {
     try{ await api('logout', { method:'POST' }); }catch(err){ /* signed out locally either way */ }
     Community.user = null;

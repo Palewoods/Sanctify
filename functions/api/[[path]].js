@@ -7,11 +7,10 @@
    The tables are created automatically on the first request.
 
    Optional environment variables (Settings → Variables and Secrets):
-     ADMINS         comma-separated usernames allowed to remove any post or reply
-     MOD_PASSWORD   a secret: any signed-in member who enters it on their Account page
-                    becomes a moderator on that device, until they sign out or leave moderator mode
+     ADMINS         comma-separated usernames of the site administrators. They can do everything a
+                    moderator can, and they choose the moderators (on a member's page in Moderate).
 
-   Moderators can also see and search every account, ban members (for a time or for good), remove
+   Moderators can remove any post or reply. They can also see and search every account, ban members (for a time or for good), remove
    everything a member has posted, review reported posts and replies, pin and lock threads, and read a
    log of every moderator action.
 
@@ -224,6 +223,16 @@ const SCHEMA = [
   `CREATE TABLE IF NOT EXISTS mod_sessions (
      token_hash TEXT PRIMARY KEY,
      expires_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS roles (
+     user_id INTEGER PRIMARY KEY,
+     role TEXT NOT NULL,
+     by_user INTEGER,
+     created_at INTEGER NOT NULL)`,
+  `INSERT OR IGNORE INTO roles (user_id, role, by_user, created_at)
+     SELECT DISTINCT s.user_id, 'moderator', NULL, CAST(strftime('%s', 'now') AS INTEGER) * 1000
+       FROM mod_sessions m JOIN sessions s ON s.token_hash = m.token_hash
+      WHERE m.expires_at > CAST(strftime('%s', 'now') AS INTEGER) * 1000`,
+  `DELETE FROM mod_sessions`,
   `CREATE TABLE IF NOT EXISTS limits (
      key TEXT PRIMARY KEY,
      count INTEGER NOT NULL,
@@ -269,8 +278,7 @@ export async function onRequest({ request, env }){
     if(path === 'login' && method === 'POST') return await login(ctx);
     if(path === 'logout' && method === 'POST') return await logout(ctx);
     if(path === 'account' && method === 'DELETE') return await deleteAccount(ctx);
-    if(path === 'moderator' && method === 'POST') return await enterModerator(ctx);
-    if(path === 'moderator' && method === 'DELETE') return await leaveModerator(ctx);
+    if(path === 'moderator') throw new HttpError(410, 'Moderators are now chosen by the site administrators, so there’s no password to enter.');
     if(path.startsWith('mod/')) return await modRoute(ctx, path.slice(4), method);
     if((m = path.match(/^(posts|replies)\/(\d+)\/report$/)) && method === 'POST') return await report(ctx, m[1] === 'posts' ? 'post' : 'reply', Number(m[2]));
     if((m = path.match(/^posts\/(\d+)\/(pin|lock)$/)) && method === 'POST') return await flagPost(ctx, Number(m[1]), m[2]);
@@ -347,7 +355,7 @@ async function login(ctx){
   await limit(ctx, 'login:' + await ipKey(ctx), 10, 15 * 60 * 1000, 'Too many sign-in attempts. Please wait a few minutes and try again.');
   await limit(ctx, 'login-user:' + name.toLowerCase(), 10, 15 * 60 * 1000, 'Too many sign-in attempts for this account. Please wait a few minutes and try again.');
 
-  const row = name ? await ctx.db.prepare('SELECT u.id, u.username, u.pass_hash, u.salt, u.created_at, a.updated_at AS avatar_v FROM users u LEFT JOIN avatars a ON a.user_id = u.id WHERE u.username = ?').bind(name).first() : null;
+  const row = name ? await ctx.db.prepare('SELECT u.id, u.username, u.pass_hash, u.salt, u.created_at, a.updated_at AS avatar_v, r.role FROM users u LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN roles r ON r.user_id = u.id WHERE u.username = ?').bind(name).first() : null;
   // Hash even when the user doesn't exist, so the response time doesn't reveal which usernames are real
   const hash = await hashPassword(String(password || ''), row ? row.salt : '00'.repeat(16));
   if(!row || !sameHash(hash, row.pass_hash)) throw new HttpError(401, 'That username and password don’t match.');
@@ -355,7 +363,7 @@ async function login(ctx){
   if(ban) throw new HttpError(403, banMessage(ban));
 
   await ctx.db.prepare('DELETE FROM sessions WHERE expires_at < ?').bind(ctx.now).run();
-  const user = { id:row.id, username:row.username, created_at:row.created_at, avatar_v:row.avatar_v };
+  const user = { id:row.id, username:row.username, created_at:row.created_at, avatar_v:row.avatar_v, role:row.role };
   return json({ user:publicUser(withRole(ctx, user)) }, 200, { 'Set-Cookie':await startSession(ctx, row.id) });
 }
 
@@ -363,10 +371,7 @@ async function logout(ctx){
   const token = readCookie(ctx.request, COOKIE);
   if(token){
     const hash = await sha256(token);
-    await ctx.db.batch([
-      ctx.db.prepare('DELETE FROM sessions WHERE token_hash = ?').bind(hash),
-      ctx.db.prepare('DELETE FROM mod_sessions WHERE token_hash = ?').bind(hash)
-    ]);
+    await ctx.db.prepare('DELETE FROM sessions WHERE token_hash = ?').bind(hash).run();
   }
   return json({ ok:true }, 200, { 'Set-Cookie':clearCookie() });
 }
@@ -378,7 +383,7 @@ async function deleteAccount(ctx){
   const row = await ctx.db.prepare('SELECT pass_hash, salt FROM users WHERE id = ?').bind(user.id).first();
   if(!row || !sameHash(await hashPassword(String(password || ''), row.salt), row.pass_hash)) throw new HttpError(401, 'That password isn’t right.');
   await ctx.db.batch([
-    ctx.db.prepare('DELETE FROM mod_sessions WHERE token_hash IN (SELECT token_hash FROM sessions WHERE user_id = ?)').bind(user.id),
+    ctx.db.prepare('DELETE FROM roles WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM avatars WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM profiles WHERE user_id = ?').bind(user.id),
@@ -812,8 +817,8 @@ async function markNotificationsSeen(ctx){
 }
 
 async function getProfile(ctx, name){
-  const u = await ctx.db.prepare(`SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, pr.bio, bn.preset AS banner_preset, bn.updated_at AS banner_v
-     FROM users u LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN profiles pr ON pr.user_id = u.id LEFT JOIN banners bn ON bn.user_id = u.id WHERE u.username = ?`).bind(name).first();
+  const u = await ctx.db.prepare(`SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, pr.bio, bn.preset AS banner_preset, bn.updated_at AS banner_v, ro.role
+     FROM users u LEFT JOIN roles ro ON ro.user_id = u.id LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN profiles pr ON pr.user_id = u.id LEFT JOIN banners bn ON bn.user_id = u.id WHERE u.username = ?`).bind(name).first();
   if(!u) throw new HttpError(404, 'There’s no member by that name.');
   const counts = await ctx.db.prepare(
     'SELECT (SELECT COUNT(*) FROM posts WHERE user_id = ? AND deleted = 0) AS posts, (SELECT COUNT(*) FROM replies WHERE user_id = ? AND deleted = 0) AS replies, (SELECT COUNT(*) FROM prayers WHERE user_id = ?) AS prayers'
@@ -836,7 +841,7 @@ async function getProfile(ctx, name){
     replies:replies.map(r => ({ id:r.id, postId:r.post_id, postTitle:r.title, excerpt:r.excerpt, createdAt:r.created_at })),
     wiki:{ edits:wikiCounts.edits, pages:wikiCounts.pages, touched:wikiCounts.touched,
       recent:wikiEdits.map(r => ({ id:r.id, slug:r.slug, title:r.title, summary:r.summary, delta:r.delta, createdAt:r.created_at, created:!!r.created })) },
-    profile:{ id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, banner:bannerJson(u), bio:u.bio || '', posts:counts.posts, replies:counts.replies, prayers:counts.prayers, administrator:siteAdmin(ctx, u.username), badges },
+    profile:{ id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, banner:bannerJson(u), bio:u.bio || '', posts:counts.posts, replies:counts.replies, prayers:counts.prayers, administrator:siteAdmin(ctx, u.username), moderator:u.role === 'moderator', badges },
     posts:results.map(p => ({ id:p.id, category:p.category, title:p.title, excerpt:p.excerpt, createdAt:p.created_at, lastActivity:p.created_at, replies:p.reply_count, prayers:p.prayer_count, author:u.username, authorAvatar:u.avatar_v || null }))
   });
 }
@@ -1117,6 +1122,7 @@ async function modRoute(ctx, sub, method){
   if((m = sub.match(/^users\/(\d+)\/warn$/)) && method === 'POST') return await warnUser(ctx, Number(m[1]));
   if((m = sub.match(/^users\/(\d+)\/notes$/)) && method === 'POST') return await addNote(ctx, Number(m[1]));
   if((m = sub.match(/^notes\/(\d+)$/)) && method === 'DELETE') return await deleteNote(ctx, Number(m[1]));
+  if((m = sub.match(/^users\/(\d+)\/role$/)) && method === 'PUT') return await setRole(ctx, Number(m[1]));
   if((m = sub.match(/^users\/(\d+)\/badges$/)) && method === 'POST') return await giveBadge(ctx, Number(m[1]));
   if((m = sub.match(/^users\/(\d+)\/badges\/([a-z0-9-]{1,40})$/)) && method === 'DELETE') return await takeBadge(ctx, Number(m[1]), m[2]);
   if(sub === 'settings' && method === 'GET') return await getSettings(ctx);
@@ -1140,6 +1146,7 @@ async function guardTarget(ctx, id, verb){
   if(!target) throw new HttpError(404, 'That account doesn’t exist.');
   if(target.id === ctx.user.id) throw new HttpError(400, `You can’t ${verb} your own account.`);
   if(siteAdmin(ctx, target.username)) throw new HttpError(403, `Site administrators can’t be ${verb === 'mute' ? 'muted' : 'warned'}.`);
+  if(!ctx.user.site && await isModerator(ctx, target.id)) throw new HttpError(403, `Only the site administrators can ${verb} a moderator.`);
   return target;
 }
 
@@ -1240,7 +1247,7 @@ const USER_COLUMNS = `u.id, u.username, u.created_at, a.updated_at AS avatar_v,
   (SELECT COUNT(*) FROM replies r WHERE r.user_id = u.id AND r.deleted = 0) AS replies,
   (SELECT MAX(t) FROM (SELECT MAX(created_at) AS t FROM posts WHERE user_id = u.id UNION ALL SELECT MAX(created_at) FROM replies WHERE user_id = u.id)) AS last_post,
   (SELECT COUNT(*) FROM reports rp WHERE rp.status = 'open' AND ((rp.kind = 'post' AND rp.target_id IN (SELECT id FROM posts WHERE user_id = u.id)) OR (rp.kind = 'reply' AND rp.target_id IN (SELECT id FROM replies WHERE user_id = u.id)))) AS reports,
-  EXISTS (SELECT 1 FROM mod_sessions ms JOIN sessions s ON s.token_hash = ms.token_hash WHERE s.user_id = u.id AND ms.expires_at > ?) AS mod_now,
+  EXISTS (SELECT 1 FROM roles ro WHERE ro.user_id = u.id AND ro.role = 'moderator') AS mod_now,
   b.reason AS ban_reason, b.until AS ban_until, b.created_at AS banned_at,
   mu.reason AS mute_reason, mu.until AS mute_until, mu.created_at AS muted_at`;
 const USER_JOINS = `FROM users u LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN bans b ON b.user_id = u.id AND (b.until IS NULL OR b.until > ?)
@@ -1266,13 +1273,13 @@ async function modUsers(ctx){
   const order = q.get('sort') === 'active' ? 'last_post DESC NULLS LAST, u.id DESC' : q.get('sort') === 'name' ? 'u.username COLLATE NOCASE ASC' : 'u.created_at DESC, u.id DESC';
   const { results } = await ctx.db.prepare(
     `SELECT ${USER_COLUMNS} ${USER_JOINS} WHERE ${where.join(' AND ')} ORDER BY ${order} LIMIT ? OFFSET ?`
-  ).bind(ctx.now, ctx.now, ctx.now, '%' + search + '%', 31, page * 30).all();
+  ).bind(ctx.now, ctx.now, '%' + search + '%', 31, page * 30).all();
   const total = (await ctx.db.prepare('SELECT COUNT(*) AS n FROM users').first()).n;
   return json({ users:results.slice(0, 30).map(r => modUserJson(ctx, r)), more:results.length > 30, total });
 }
 
 async function modUser(ctx, id){
-  const row = await ctx.db.prepare(`SELECT ${USER_COLUMNS} ${USER_JOINS} WHERE u.id = ?`).bind(ctx.now, ctx.now, ctx.now, id).first();
+  const row = await ctx.db.prepare(`SELECT ${USER_COLUMNS} ${USER_JOINS} WHERE u.id = ?`).bind(ctx.now, ctx.now, id).first();
   if(!row) throw new HttpError(404, 'That account doesn’t exist.');
   const posts = (await ctx.db.prepare('SELECT id, title, substr(body, 1, 200) AS excerpt, created_at, deleted FROM posts WHERE user_id = ? ORDER BY created_at DESC LIMIT 50').bind(id).all()).results;
   const replies = (await ctx.db.prepare(
@@ -1324,6 +1331,7 @@ async function banUser(ctx, id){
   if(!target) throw new HttpError(404, 'That account doesn’t exist.');
   if(target.id === me.id) throw new HttpError(400, 'You can’t ban your own account.');
   if(siteAdmin(ctx, target.username)) throw new HttpError(403, 'Site administrators can’t be banned.');
+  if(!me.site && await isModerator(ctx, target.id)) throw new HttpError(403, 'Only the site administrators can ban a moderator.');
   const data = await readBody(ctx, 2000);
   const days = Number(data.days) || 0;
   if(days && (days < 0 || days > 3650)) throw new HttpError(400, 'Choose how long the ban lasts.');
@@ -1332,7 +1340,7 @@ async function banUser(ctx, id){
   await ctx.db.batch([
     ctx.db.prepare('INSERT INTO bans (user_id, reason, until, by_user, created_at) VALUES (?, ?, ?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET reason = excluded.reason, until = excluded.until, by_user = excluded.by_user, created_at = excluded.created_at')
       .bind(id, reason, until, me.id, ctx.now),
-    ctx.db.prepare('DELETE FROM mod_sessions WHERE token_hash IN (SELECT token_hash FROM sessions WHERE user_id = ?)').bind(id),
+    ctx.db.prepare('DELETE FROM roles WHERE user_id = ?').bind(id),
     ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(id)
   ]);
   await logMod(ctx, 'ban', target.username, (days ? days + (days === 1 ? ' day' : ' days') : 'permanent') + (reason ? ' · ' + reason : ''));
@@ -1455,30 +1463,36 @@ async function deleteNews(ctx, id){
   return json({ ok:true });
 }
 
-/* ---------- Moderator mode ---------- */
-// The password is the Cloudflare secret MOD_PASSWORD. Both sides are hashed before comparing, so the
-// comparison takes the same time however many characters match. Tries are limited per device and per member.
-async function enterModerator(ctx){
-  const user = requireUser(ctx);
-  const secret = ctx.env.MOD_PASSWORD;
-  if(!secret) throw new HttpError(503, 'Moderator access isn’t set up yet.');
-  await limit(ctx, 'mod-ip:' + await ipKey(ctx), 5, 15 * 60 * 1000, 'Too many tries. Please wait 15 minutes and try again.');
-  await limit(ctx, 'mod-user:' + user.id, 5, 15 * 60 * 1000, 'Too many tries. Please wait 15 minutes and try again.');
-  const body = await readBody(ctx, 1000);
-  const password = typeof body.password === 'string' ? body.password : '';
-  if(!password || password.length > 128 || !sameHash(await sha256(password), await sha256(secret))){
-    throw new HttpError(403, 'That moderator password isn’t right.');
-  }
-  await ctx.db.prepare('INSERT INTO mod_sessions (token_hash, expires_at) VALUES (?, ?) ON CONFLICT(token_hash) DO UPDATE SET expires_at = excluded.expires_at')
-    .bind(ctx.tokenHash, user.session_expires).run();
-  await logMod(ctx, 'moderator-on', '', '');
-  return json({ user:publicUser(withRole(ctx, { ...user, mod_token:ctx.tokenHash })) });
+/* ---------- Moderators ---------- */
+// Moderators are members the site administrators (ADMINS) have chosen. Making someone a moderator also
+// gives them the Moderator badge, and taking the role away removes it.
+async function isModerator(ctx, userId){
+  return !!(await ctx.db.prepare(`SELECT 1 FROM roles WHERE user_id = ? AND role = 'moderator'`).bind(userId).first());
 }
 
-async function leaveModerator(ctx){
-  const user = requireUser(ctx);
-  await ctx.db.prepare('DELETE FROM mod_sessions WHERE token_hash = ?').bind(ctx.tokenHash).run();
-  return json({ user:publicUser(withRole(ctx, { ...user, mod_token:null })) });
+async function setRole(ctx, id){
+  const me = requireUser(ctx);
+  if(!me.site) throw new HttpError(403, 'Only the site administrators can choose moderators.');
+  const target = await ctx.db.prepare('SELECT id, username FROM users WHERE id = ?').bind(id).first();
+  if(!target) throw new HttpError(404, 'That account doesn’t exist.');
+  if(siteAdmin(ctx, target.username)) throw new HttpError(400, 'Site administrators already have every moderator tool.');
+  const data = await readBody(ctx, 200);
+  const [label, color] = APPOINTED.moderator;
+  if(data.moderator){
+    if(await ctx.db.prepare('SELECT 1 FROM bans WHERE user_id = ? AND (until IS NULL OR until > ?)').bind(id, ctx.now).first()) throw new HttpError(400, 'Lift the ban before making this member a moderator.');
+    await ctx.db.batch([
+      ctx.db.prepare(`INSERT INTO roles (user_id, role, by_user, created_at) VALUES (?, 'moderator', ?, ?) ON CONFLICT(user_id) DO UPDATE SET role = excluded.role, by_user = excluded.by_user, created_at = excluded.created_at`).bind(id, me.id, ctx.now),
+      ctx.db.prepare(`INSERT OR IGNORE INTO user_badges (user_id, badge, label, color, by_user, created_at) VALUES (?, 'moderator', ?, ?, ?, ?)`).bind(id, label, color, me.id, ctx.now)
+    ]);
+    await logMod(ctx, 'make-moderator', target.username, '');
+  } else {
+    await ctx.db.batch([
+      ctx.db.prepare('DELETE FROM roles WHERE user_id = ?').bind(id),
+      ctx.db.prepare(`DELETE FROM user_badges WHERE user_id = ? AND badge = 'moderator'`).bind(id)
+    ]);
+    await logMod(ctx, 'remove-moderator', target.username, '');
+  }
+  return modUser(ctx, id);
 }
 
 /* ---------- Sessions ---------- */
@@ -1487,12 +1501,12 @@ async function currentUser(ctx){
   if(!token || !/^[0-9a-f]{64}$/.test(token)) return null;
   ctx.tokenHash = await sha256(token);
   const row = await ctx.db.prepare(
-    `SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, s.expires_at AS session_expires, m.token_hash AS mod_token
+    `SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, s.expires_at AS session_expires, r.role
      FROM sessions s JOIN users u ON u.id = s.user_id LEFT JOIN avatars a ON a.user_id = u.id
-     LEFT JOIN mod_sessions m ON m.token_hash = s.token_hash AND m.expires_at > ?
+     LEFT JOIN roles r ON r.user_id = u.id
      LEFT JOIN bans b ON b.user_id = u.id AND (b.until IS NULL OR b.until > ?)
      WHERE s.token_hash = ? AND s.expires_at > ? AND b.user_id IS NULL`
-  ).bind(ctx.now, ctx.now, ctx.tokenHash, ctx.now).first();
+  ).bind(ctx.now, ctx.tokenHash, ctx.now).first();
   return row ? withRole(ctx, row) : null;
 }
 
@@ -1508,12 +1522,12 @@ function clearCookie(){ return `${COOKIE}=; Path=/; HttpOnly; Secure; SameSite=L
 
 function withRole(ctx, user){
   const admins = String(ctx.env.ADMINS || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
-  const modMode = !!user.mod_token, site = admins.includes(user.username.toLowerCase());
-  return { ...user, modMode, site, admin:modMode || site };
+  const moderator = user.role === 'moderator', site = admins.includes(user.username.toLowerCase());
+  return { ...user, moderator, site, admin:moderator || site };
 }
 
 function publicUser(user){
-  return user ? { username:user.username, createdAt:user.created_at, admin:!!user.admin, modMode:!!user.modMode, siteAdmin:!!user.site, avatar:user.avatar_v || null } : null;
+  return user ? { username:user.username, createdAt:user.created_at, admin:!!user.admin, moderator:!!user.moderator, siteAdmin:!!user.site, avatar:user.avatar_v || null } : null;
 }
 
 function requireUser(ctx){
