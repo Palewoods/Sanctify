@@ -247,6 +247,32 @@ class HttpError extends Error {
   constructor(status, message){ super(message); this.status = status; }
 }
 
+/* ---------- The Discord invite (/api/discord) ----------
+   Invites can expire, so every Discord link on the site comes here instead. With the server's widget
+   switched on (Server Settings → Widget, with an invite channel chosen), Discord keeps a working invite
+   in the widget's data, and we send people to it. Without it, they go to DISCORD_INVITE. */
+const DISCORD_SERVER_ID = '';
+const DISCORD_INVITE = 'https://discord.gg/QAcdHxc4';
+const DISCORD_CACHE = 'https://sanctify.pages.dev/api/discord?cached';
+
+async function discordInvite(){
+  const cache = typeof caches !== 'undefined' ? caches.default : null;
+  let invite = null;
+  if(cache){ const hit = await cache.match(DISCORD_CACHE); if(hit) invite = await hit.text(); }
+  if(!invite && DISCORD_SERVER_ID){
+    try{
+      const res = await fetch(`https://discord.com/api/guilds/${DISCORD_SERVER_ID}/widget.json`);
+      const data = res.ok ? await res.json() : null;
+      if(data && /^https:\/\/discord\.(com|gg)\//.test(data.instant_invite || '')){
+        invite = data.instant_invite;
+        // Asked again at most every ten minutes, so a busy day doesn't run into Discord's rate limits
+        if(cache) await cache.put(DISCORD_CACHE, new Response(invite, { headers:{ 'Cache-Control':'max-age=600' } }));
+      }
+    }catch(err){ console.error('Discord widget', err); }
+  }
+  return new Response(null, { status:302, headers:{ Location:invite || DISCORD_INVITE, 'Cache-Control':'no-store' } });
+}
+
 let schemaReady = null;
 function ensureSchema(db){
   if(!schemaReady) schemaReady = db.batch(SCHEMA.map(sql => db.prepare(sql))).catch(err => { schemaReady = null; throw err; });
@@ -258,6 +284,7 @@ export async function onRequest({ request, env }){
   const path = url.pathname.replace(/^\/api\/?/, '').replace(/\/+$/, '');
   const method = request.method;
 
+  if(path === 'discord' && (method === 'GET' || method === 'HEAD')) return await discordInvite();
   if(!env.DB) return json({ error:'The Community isn’t switched on yet. Please check back soon.', setup:true }, 503);
 
   // Only this site may change anything (a second line of defense after SameSite cookies)
