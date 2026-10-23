@@ -3403,7 +3403,7 @@
     var ui = JSON.parse(localStorage.getItem('sanctify.lang') || '"en"');
     if(/^(es|pl|fr|pt|it|de|ru|uk)$/.test(ui) && !/\.translate\.goog$/.test(location.hostname)){
       document.documentElement.lang = ui;
-      document.write('<script src="lang/' + ui + '.js?v=27ae6c17"><\/script>');
+      document.write('<script src="lang/' + ui + '.js?v=d0684a2c"><\/script>');
     }
     if(JSON.parse(localStorage.getItem('sanctify.motion') || '""') === 'reduced') document.documentElement.setAttribute('data-motion', 'reduced');
     var t = localStorage.getItem('sanctify.theme');
@@ -11325,7 +11325,7 @@ async function renderModerate(){
   if(!Community.available){ showProblem(entryListEl, Community.problem); return; }
   const u = Community.user;
   if(!u || !u.admin){
-    entryListEl.innerHTML = forumNotice('Moderators only', 'Turn on moderator tools from your Account page to use this page.', '<button class="btn primary pill" data-route="account">Go to your account</button>');
+    entryListEl.innerHTML = forumNotice('Moderators only', 'This page is for the Community’s moderators, who are chosen by the site administrators.', '<button class="btn primary pill" data-route="account">Go to your account</button>');
     return;
   }
   const tabs = [['overview', 'Overview'], ['reports', 'Reports'], ['accounts', 'Accounts'], ['settings', 'Settings'], ['log', 'Log']];
@@ -11393,7 +11393,7 @@ async function modReportsView(body, still){
   body.innerHTML = `<div class="mod-list">${reports.map(r => `
     <article class="mod-card" data-report="${r.id}">
       <div class="mod-card-top">
-        <span class="forum-tag" style="--tag-color:var(--wine)">${r.kind === 'post' ? 'Post' : 'Reply'}</span>${r.hidden ? '<span class="forum-tag" style="--tag-color:var(--amber)">Hidden by AutoMod</span>' : ''}
+        <span class="forum-tag" style="--tag-color:var(--wine)">${r.kind === 'post' ? 'Reported post' : 'Reported reply'}</span>${r.hidden ? '<span class="forum-tag" style="--tag-color:var(--amber)">Hidden by AutoMod</span>' : ''}
         <span class="forum-meta">by <button class="text-link" data-user="${r.authorId || ''}">${authorHtml(r.author)}</button> · reported ${escapeHtml(timeAgo(r.createdAt))} by ${authorHtml(r.reporter)}${r.times > 1 ? ` · <strong>${r.times} reports</strong>` : ''}</span>
       </div>
       <h4>${r.kind === 'post' ? escapeHtml(r.postTitle || '') : 'On “' + escapeHtml(r.postTitle || '') + '”'}</h4>
@@ -11409,7 +11409,7 @@ async function modReportsView(body, still){
   body.querySelectorAll('[data-user]').forEach(b => b.addEventListener('click', () => { if(!b.dataset.user) return; modTab = 'accounts'; modUserId = Number(b.dataset.user); renderModerate(); }));
   body.querySelectorAll('[data-remove]').forEach(b => b.addEventListener('click', async () => {
     const [kind, id] = b.dataset.remove.split(':');
-    if(!confirm(`Remove this ${kind} for everyone?`)) return;
+    if(!confirm(kind === 'post' ? 'Remove this post for everyone?' : 'Remove this reply for everyone?')) return;
     try{ await api((kind === 'post' ? 'posts/' : 'replies/') + id, { method:'DELETE' }); toast(kind === 'post' ? 'Post removed' : 'Reply removed'); renderModerate(); }
     catch(err){ toast(err.message); }
   }));
@@ -11579,7 +11579,9 @@ async function modUserView(body, still){
   if(ban) ban.addEventListener('submit', async ev => {
     ev.preventDefault();
     const days = Number(ban.querySelector('#banDays').value), remove = ban.querySelector('#banRemove').checked;
-    if(!confirm(`Ban ${x.username} ${days ? 'for ' + plural(days, 'day', 'days') : 'permanently'}${remove ? ' and remove everything they have posted' : ''}?`)) return;
+    const length = days ? plural(days, 'day', 'days') : '';
+    if(!confirm(days ? (remove ? `Ban ${x.username} for ${length} and remove everything they have posted?` : `Ban ${x.username} for ${length}?`)
+      : (remove ? `Ban ${x.username} permanently and remove everything they have posted?` : `Ban ${x.username} permanently?`))) return;
     try{ await api(`mod/users/${x.id}/ban`, { method:'POST', body:{ days, reason:ban.querySelector('#banReason').value, removeContent:remove } }); after(`${x.username} has been banned`); }
     catch(err){ showFormError(ban.querySelector('#banError'), err.message); }
   });
@@ -11760,7 +11762,7 @@ async function renderMemberProfile(){
         <button class="notify-item" data-route="community/post/${r.postId}"><span><span class="forum-meta">Replied to <strong>“${escapeHtml(r.postTitle)}”</strong> · ${escapeHtml(timeAgo(r.createdAt))}</span><span class="notify-excerpt">${escapeHtml(r.excerpt)}</span></span></button>`).join('')
         : '<div class="forum-empty">No replies yet.</div>'}</div>
       <div data-ppanel="wiki" hidden>${data.wiki && data.wiki.edits ? `
-        <p class="wiki-contrib-sum">${escapeHtml(p.username)} started <strong>${plural(data.wiki.pages, 'page', 'pages')}</strong> and made <strong>${plural(data.wiki.edits, 'edit', 'edits')}</strong> to ${plural(data.wiki.touched, 'page', 'pages')} of the <button class="text-link" data-route="wiki">Community Wiki</button>.</p>
+        <p class="wiki-contrib-sum"><span>${escapeHtml(`${p.username} started ${plural(data.wiki.pages, 'page', 'pages')} and made ${plural(data.wiki.edits, 'edit', 'edits')} to ${plural(data.wiki.touched, 'page', 'pages')} of the wiki.`)}</span> <button class="text-link" data-route="wiki">Visit the Community Wiki</button></p>
         <ol class="wiki-changes">${data.wiki.recent.map(c => wikiChangeHtml({ ...c, user:null })).join('')}</ol>`
         : `<div class="forum-empty">No wiki edits yet.${me && me.username.toLowerCase() === p.username.toLowerCase() ? ' <button class="text-link" data-route="wiki">Visit the Community Wiki</button>' : ''}</div>`}</div>
       ${saved.length ? `<div class="profile-saved" data-ppanel="saved" hidden>${saved.map(e => `
@@ -11917,7 +11919,7 @@ async function renderWikiPage(){
       <nav class="wiki-tabs" aria-label="This page">
         <span class="wiki-tab active" aria-current="page">Read</span>
         ${canEdit ? `<button class="wiki-tab" data-route="wiki/edit/${page.slug}">${navIcon('pen')}Edit</button>` : !u ? '<button class="wiki-tab" data-auth="signin">Sign in to edit</button>' : ''}
-        <button class="wiki-tab" data-route="wiki/history/${page.slug}">History</button>
+        <button class="wiki-tab" data-route="wiki/history/${page.slug}">View history</button>
         <span class="wiki-tabs-spacer"></span>
         ${u && u.admin ? `<button class="wiki-tab" data-wiki-lock="${page.locked ? 0 : 1}">${page.locked ? 'Unlock' : 'Lock'}</button><button class="wiki-tab danger-text" data-wiki-delete>Remove</button>` : ''}
       </nav>
@@ -11963,7 +11965,7 @@ async function renderWikiEdit(){
     <nav class="wiki-tabs" aria-label="This page">
       <button class="wiki-tab" data-route="wiki/page/${slug}">Read</button>
       <span class="wiki-tab active" aria-current="page">${navIcon('pen')}Edit</span>
-      <button class="wiki-tab" data-route="wiki/history/${slug}">History</button>
+      <button class="wiki-tab" data-route="wiki/history/${slug}">View history</button>
     </nav>`}
     <form class="forum-form wiki-form" id="wikiForm" novalidate>
       ${block ? `<p class="forum-locked">${escapeHtml(block)}</p>` : ''}
@@ -12048,7 +12050,7 @@ async function renderWikiHistory(){
       <nav class="wiki-tabs" aria-label="This page">
         <button class="wiki-tab" data-route="wiki/page/${slug}">Read</button>
         ${u && (!data.page.locked || u.admin) ? `<button class="wiki-tab" data-route="wiki/edit/${slug}">${navIcon('pen')}Edit</button>` : ''}
-        <span class="wiki-tab active" aria-current="page">History</span>
+        <span class="wiki-tab active" aria-current="page">View history</span>
       </nav>
       <ol class="wiki-revs">${revs.map((r, k) => `
         <li class="wiki-rev" data-rev="${r.id}">
@@ -12369,7 +12371,7 @@ async function renderThread(){
   }));
   const move = wrap.querySelector('[data-act="move"]');
   if(move) move.addEventListener('change', async () => {
-    try{ await api(`posts/${id}/move`, { method:'POST', body:{ category:move.value } }); toast('Moved to ' + FORUM_CATS[move.value].name); renderThread(); }
+    try{ await api(`posts/${id}/move`, { method:'POST', body:{ category:move.value } }); toast(`Moved to ${FORUM_CATS[move.value].name}`); renderThread(); }
     catch(err){ toast(err.message); }
   });
   const sendReport = async (path) => {
@@ -19179,6 +19181,8 @@ function i18n(text){
   }
   return null;
 }
+// Questions asked with confirm() never reach the page, so they're translated on the way out
+if(I18N){ const ask = window.confirm.bind(window); window.confirm = message => ask(i18n(String(message)) || message); }
 const I18N_SKIP = '.notranslate, [translate="no"], script, style, textarea, code, #readBody, .forum-body, .wiki-body, .member-bio, .mine-title, .intention-text';
 function i18nTree(root){
   if(!I18N || !root) return;
@@ -21437,7 +21441,7 @@ function adminIcon(){ return `<span class="badge-ic admin" style="--b:var(--teal
 // A profile's earned badges as a row of small medals
 function badgeRow(keys){
   const list = BADGES.filter(b => keys.includes(b.key));
-  return list.length ? `<div class="badge-row">${list.map(b => `<span class="badge-mini" style="--b:var(--${b.color})" title="${escapeHtml(badgeName(b) + ': ' + badgeDesc(b))}">${navIcon(badgeIcon(b))}</span>`).join('')}</div>` : '';
+  return list.length ? `<div class="badge-row">${list.map(b => `<span class="badge-mini" style="--b:var(--${b.color})" title="${escapeHtml((i18n(badgeName(b)) || badgeName(b)) + ': ' + (i18n(badgeDesc(b)) || badgeDesc(b)))}">${navIcon(badgeIcon(b))}</span>`).join('')}</div>` : '';
 }
 function communityBadgeKeys(p){ return BADGES.filter(b => b.group === 'community' && (b.metric(p) || 0) >= b.need).map(b => b.key); }
 
