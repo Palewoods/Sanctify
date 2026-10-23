@@ -4605,6 +4605,16 @@ window.SANCTIFY_I18N = {
 "1 post, {n} replies": "сообщений: 1, ответов: {n}",
 "{n} posts, 1 reply": "сообщений: {n}, ответов: 1",
 "1 post, 1 reply": "сообщений: 1, ответов: 1",
+"A Community home, an encyclopedia wiki, themes of your own, and sharing as an image.": "Главная страница сообщества, вики-энциклопедия, собственные темы и возможность поделиться картинкой.",
+"A Community home: write a post from the top of the page, pray for one another’s intentions, and see the forum, wiki, and news at a glance.": "Главная страница сообщества: пишите сообщение прямо вверху страницы, молитесь о намерениях друг друга и видите форум, вики и новости с первого взгляда.",
+"Moderators chosen by the site administrators, and an easier sign-up that checks your username as you type.": "Модераторов назначают администраторы сайта, а регистрация стала проще и проверяет имя пользователя прямо при вводе.",
+"A Community Wiki laid out like an encyclopedia, with an A to Z index, tabs to read, edit, and see a page’s history, and a random page.": "Вики сообщества, устроенная как энциклопедия: указатель от А до Я, вкладки для чтения, правки и истории страницы и случайная страница.",
+"Themes of your own: pick a background, an accent, and a text color, and Sanctify works out the rest.": "Собственные темы: выберите фон, акцентный цвет и цвет текста, а остальное Sanctify подберёт сам.",
+"Share any saint, prayer, quote, or the Verse of the Day as an image.": "Делитесь любым святым, молитвой, цитатой или Стихом дня в виде картинки.",
+"Read aloud in the most natural voice your device has, with a voice and speed of your choosing.": "Чтение вслух самым естественным голосом вашего устройства, с выбранными вами голосом и скоростью.",
+"Feasts, saints’ names, patronages, the 1962 calendar, the Community, and every theme in all eight languages.": "Праздники, имена святых, покровительства, календарь 1962 года, сообщество и все темы на всех восьми языках.",
+"Show the things you’ve saved on your profile, if you like.": "Показывайте в профиле то, что сохранили, если хотите.",
+"A simpler menu, and a Credits page.": "Более простое меню и страница «Авторы».",
 "{*} · {*}": "{*} · {*}"
 },
 "rosary": {

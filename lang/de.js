@@ -4605,6 +4605,16 @@ window.SANCTIFY_I18N = {
 "1 post, {n} replies": "1 Beitrag, {n} Antworten",
 "{n} posts, 1 reply": "{n} Beiträge, 1 Antwort",
 "1 post, 1 reply": "1 Beitrag, 1 Antwort",
+"A Community home, an encyclopedia wiki, themes of your own, and sharing as an image.": "Eine Startseite für die Community, ein Wiki wie ein Lexikon, eigene Designs und Teilen als Bild.",
+"A Community home: write a post from the top of the page, pray for one another’s intentions, and see the forum, wiki, and news at a glance.": "Eine Startseite für die Community: Schreib einen Beitrag direkt oben auf der Seite, bete für die Anliegen der anderen und sieh Forum, Wiki und Neuigkeiten auf einen Blick.",
+"Moderators chosen by the site administrators, and an easier sign-up that checks your username as you type.": "Moderatoren, die von den Website-Administratoren ausgewählt werden, und eine einfachere Anmeldung, die deinen Benutzernamen schon beim Tippen prüft.",
+"A Community Wiki laid out like an encyclopedia, with an A to Z index, tabs to read, edit, and see a page’s history, and a random page.": "Ein Community-Wiki, aufgebaut wie ein Lexikon, mit Register von A bis Z, Reitern zum Lesen, Bearbeiten und für den Verlauf einer Seite und einer Zufallsseite.",
+"Themes of your own: pick a background, an accent, and a text color, and Sanctify works out the rest.": "Eigene Designs: Wähle einen Hintergrund, eine Akzentfarbe und eine Textfarbe, den Rest erledigt Sanctify.",
+"Share any saint, prayer, quote, or the Verse of the Day as an image.": "Teile jeden Heiligen, jedes Gebet, jedes Zitat oder den Vers des Tages als Bild.",
+"Read aloud in the most natural voice your device has, with a voice and speed of your choosing.": "Vorlesen mit der natürlichsten Stimme deines Geräts, mit Stimme und Tempo deiner Wahl.",
+"Feasts, saints’ names, patronages, the 1962 calendar, the Community, and every theme in all eight languages.": "Feste, Namen der Heiligen, Patronate, der Kalender von 1962, die Community und alle Designs in allen acht Sprachen.",
+"Show the things you’ve saved on your profile, if you like.": "Zeig auf deinem Profil, was du gespeichert hast, wenn du möchtest.",
+"A simpler menu, and a Credits page.": "Ein einfacheres Menü und eine Seite „Mitwirkende“.",
 "{*} · {*}": "{*} · {*}"
 },
 "rosary": {

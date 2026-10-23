@@ -4605,6 +4605,16 @@ window.SANCTIFY_I18N = {
 "1 post, {n} replies": "posty: 1, odpowiedzi: {n}",
 "{n} posts, 1 reply": "posty: {n}, odpowiedzi: 1",
 "1 post, 1 reply": "posty: 1, odpowiedzi: 1",
+"A Community home, an encyclopedia wiki, themes of your own, and sharing as an image.": "Strona główna Wspólnoty, wiki jak encyklopedia, własne motywy i udostępnianie jako obraz.",
+"A Community home: write a post from the top of the page, pray for one another’s intentions, and see the forum, wiki, and news at a glance.": "Strona główna Wspólnoty: napisz post od razu na górze strony, módl się w intencjach innych i zobacz forum, wiki i aktualności na pierwszy rzut oka.",
+"Moderators chosen by the site administrators, and an easier sign-up that checks your username as you type.": "Moderatorzy wybierani przez administratorów strony i łatwiejsza rejestracja, która sprawdza nazwę użytkownika w trakcie pisania.",
+"A Community Wiki laid out like an encyclopedia, with an A to Z index, tabs to read, edit, and see a page’s history, and a random page.": "Wiki Wspólnoty ułożona jak encyklopedia: indeks od A do Z, karty do czytania, edycji i historii strony oraz losowa strona.",
+"Themes of your own: pick a background, an accent, and a text color, and Sanctify works out the rest.": "Własne motywy: wybierz tło, kolor akcentu i kolor tekstu, a Sanctify dopasuje resztę.",
+"Share any saint, prayer, quote, or the Verse of the Day as an image.": "Udostępniaj dowolnego świętego, modlitwę, cytat lub Werset dnia jako obraz.",
+"Read aloud in the most natural voice your device has, with a voice and speed of your choosing.": "Czytanie na głos najbardziej naturalnym głosem urządzenia, z wybranym przez ciebie głosem i tempem.",
+"Feasts, saints’ names, patronages, the 1962 calendar, the Community, and every theme in all eight languages.": "Święta, imiona świętych, patronaty, kalendarz z 1962 roku, Wspólnota i wszystkie motywy we wszystkich ośmiu językach.",
+"Show the things you’ve saved on your profile, if you like.": "Pokaż na profilu to, co zapisałeś, jeśli chcesz.",
+"A simpler menu, and a Credits page.": "Prostsze menu i strona „Twórcy”.",
 "{*} · {*}": "{*} · {*}"
 },
 "rosary": {

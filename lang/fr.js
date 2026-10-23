@@ -4605,6 +4605,16 @@ window.SANCTIFY_I18N = {
 "1 post, {n} replies": "1 message, {n} réponses",
 "{n} posts, 1 reply": "{n} messages, 1 réponse",
 "1 post, 1 reply": "1 message, 1 réponse",
+"A Community home, an encyclopedia wiki, themes of your own, and sharing as an image.": "Un accueil pour la Communauté, un wiki encyclopédique, vos propres thèmes et le partage en image.",
+"A Community home: write a post from the top of the page, pray for one another’s intentions, and see the forum, wiki, and news at a glance.": "Un accueil pour la Communauté : écrivez un message dès le haut de la page, priez aux intentions des autres et voyez d’un coup d’œil le forum, le wiki et les actualités.",
+"Moderators chosen by the site administrators, and an easier sign-up that checks your username as you type.": "Des modérateurs choisis par les administrateurs du site, et une inscription plus simple qui vérifie votre nom d’utilisateur pendant la saisie.",
+"A Community Wiki laid out like an encyclopedia, with an A to Z index, tabs to read, edit, and see a page’s history, and a random page.": "Un wiki de la Communauté organisé comme une encyclopédie, avec un index de A à Z, des onglets pour lire, modifier et voir l’historique d’une page, et une page au hasard.",
+"Themes of your own: pick a background, an accent, and a text color, and Sanctify works out the rest.": "Vos propres thèmes : choisissez un fond, une couleur d’accent et une couleur de texte, et Sanctify s’occupe du reste.",
+"Share any saint, prayer, quote, or the Verse of the Day as an image.": "Partagez n’importe quel saint, prière, citation ou le Verset du jour en image.",
+"Read aloud in the most natural voice your device has, with a voice and speed of your choosing.": "La lecture à voix haute avec la voix la plus naturelle de votre appareil, avec la voix et la vitesse de votre choix.",
+"Feasts, saints’ names, patronages, the 1962 calendar, the Community, and every theme in all eight languages.": "Les fêtes, les noms des saints, les patronages, le calendrier de 1962, la Communauté et tous les thèmes dans les huit langues.",
+"Show the things you’ve saved on your profile, if you like.": "Affichez sur votre profil ce que vous avez enregistré, si vous le souhaitez.",
+"A simpler menu, and a Credits page.": "Un menu plus simple et une page « Crédits ».",
 "{*} · {*}": "{*} · {*}"
 },
 "rosary": {

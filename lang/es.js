@@ -4605,6 +4605,16 @@ window.SANCTIFY_I18N = {
 "1 post, {n} replies": "1 publicación, {n} respuestas",
 "{n} posts, 1 reply": "{n} publicaciones, 1 respuesta",
 "1 post, 1 reply": "1 publicación, 1 respuesta",
+"A Community home, an encyclopedia wiki, themes of your own, and sharing as an image.": "Un inicio para la Comunidad, una wiki enciclopédica, temas propios y compartir como imagen.",
+"A Community home: write a post from the top of the page, pray for one another’s intentions, and see the forum, wiki, and news at a glance.": "Un inicio para la Comunidad: escribe una publicación desde arriba de la página, reza por las intenciones de los demás y ve de un vistazo el foro, la wiki y las noticias.",
+"Moderators chosen by the site administrators, and an easier sign-up that checks your username as you type.": "Moderadores elegidos por los administradores del sitio y un registro más sencillo que comprueba tu nombre de usuario mientras escribes.",
+"A Community Wiki laid out like an encyclopedia, with an A to Z index, tabs to read, edit, and see a page’s history, and a random page.": "Una wiki de la comunidad organizada como una enciclopedia, con índice de la A a la Z, pestañas para leer, editar y ver el historial de una página, y una página al azar.",
+"Themes of your own: pick a background, an accent, and a text color, and Sanctify works out the rest.": "Temas propios: elige un fondo, un color de acento y un color de texto, y Sanctify se encarga del resto.",
+"Share any saint, prayer, quote, or the Verse of the Day as an image.": "Comparte cualquier santo, oración, cita o el Versículo del día como imagen.",
+"Read aloud in the most natural voice your device has, with a voice and speed of your choosing.": "Lectura en voz alta con la voz más natural de tu dispositivo, con la voz y la velocidad que elijas.",
+"Feasts, saints’ names, patronages, the 1962 calendar, the Community, and every theme in all eight languages.": "Fiestas, nombres de santos, patronazgos, el calendario de 1962, la Comunidad y todos los temas en los ocho idiomas.",
+"Show the things you’ve saved on your profile, if you like.": "Muestra en tu perfil lo que has guardado, si quieres.",
+"A simpler menu, and a Credits page.": "Un menú más sencillo y una página de Créditos.",
 "{*} · {*}": "{*} · {*}"
 },
 "rosary": {

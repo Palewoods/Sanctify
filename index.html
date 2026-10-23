@@ -3403,7 +3403,7 @@
     var ui = JSON.parse(localStorage.getItem('sanctify.lang') || '"en"');
     if(/^(es|pl|fr|pt|it|de|ru|uk)$/.test(ui) && !/\.translate\.goog$/.test(location.hostname)){
       document.documentElement.lang = ui;
-      document.write('<script src="lang/' + ui + '.js?v=d0684a2c"><\/script>');
+      document.write('<script src="lang/' + ui + '.js?v=57e2fea7"><\/script>');
     }
     if(JSON.parse(localStorage.getItem('sanctify.motion') || '""') === 'reduced') document.documentElement.setAttribute('data-motion', 'reduced');
     var t = localStorage.getItem('sanctify.theme');
@@ -19026,22 +19026,23 @@ function switchRow(id, name, note, on, disabled){
   return `<div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">${name}</span><span class="shine-row-note">${note}</span></span>
     <button type="button" class="shine-switch" id="${id}" role="switch" aria-checked="${on}" aria-label="${name}"${disabled ? ' disabled' : ''}></button></div>`;
 }
-const SANCTIFY_VERSION = '0.8';
+const SANCTIFY_VERSION = '0.9';
 const RELEASE_NOTES = () => [
-  'Sanctify in eight languages, translated by hand: Spanish, Polish, French, Portuguese, Italian, German, Russian, and Ukrainian.',
-  'A Settings page for your language, edition, theme, text size, and data.',
-  `${library.filter(e => e.category === 'saint').length} saints, 75 of them new in this release.`,
-  'The Community Wiki and News, each with its own page.',
-  'Fuller profiles, with banners, badges, and your wiki contributions.',
-  'Links to any page of Sanctify inside posts and wiki pages.',
-  `${THEMES.length} color themes, with light and dark versions.`,
-  'A clearer menu, and a friendly page for links that lead nowhere.'
+  'A Community home: write a post from the top of the page, pray for one another’s intentions, and see the forum, wiki, and news at a glance.',
+  'Moderators chosen by the site administrators, and an easier sign-up that checks your username as you type.',
+  'A Community Wiki laid out like an encyclopedia, with an A to Z index, tabs to read, edit, and see a page’s history, and a random page.',
+  'Themes of your own: pick a background, an accent, and a text color, and Sanctify works out the rest.',
+  'Share any saint, prayer, quote, or the Verse of the Day as an image.',
+  'Read aloud in the most natural voice your device has, with a voice and speed of your choosing.',
+  'Feasts, saints’ names, patronages, the 1962 calendar, the Community, and every theme in all eight languages.',
+  'Show the things you’ve saved on your profile, if you like.',
+  'A simpler menu, and a Credits page.'
 ];
 // Shown once on Home after an update, until it is opened or dismissed
 function releaseBannerHtml(){
   if(store.get('release', '') === SANCTIFY_VERSION) return '';
   return `<section class="rite-banner release-banner"><span class="rite-banner-cross">${navIcon('star')}</span>
-    <div><strong class="notranslate" translate="no">Sanctify ${SANCTIFY_VERSION}</strong> <span>Eight languages, a Settings page, the Community Wiki, and 75 more saints.</span></div>
+    <div><strong class="notranslate" translate="no">Sanctify ${SANCTIFY_VERSION}</strong> <span>A Community home, an encyclopedia wiki, themes of your own, and sharing as an image.</span></div>
     <button class="btn quiet" type="button" data-release-open>See what’s new</button>
     <button class="release-close" type="button" data-release-dismiss aria-label="Dismiss">×</button></section>`;
 }

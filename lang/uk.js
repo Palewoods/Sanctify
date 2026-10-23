@@ -4605,6 +4605,16 @@ window.SANCTIFY_I18N = {
 "1 post, {n} replies": "дописів: 1, відповідей: {n}",
 "{n} posts, 1 reply": "дописів: {n}, відповідей: 1",
 "1 post, 1 reply": "дописів: 1, відповідей: 1",
+"A Community home, an encyclopedia wiki, themes of your own, and sharing as an image.": "Головна сторінка спільноти, вікі-енциклопедія, власні теми й можливість поділитися зображенням.",
+"A Community home: write a post from the top of the page, pray for one another’s intentions, and see the forum, wiki, and news at a glance.": "Головна сторінка спільноти: пишіть допис просто вгорі сторінки, моліться в намерених одне одного й бачте форум, вікі та новини з першого погляду.",
+"Moderators chosen by the site administrators, and an easier sign-up that checks your username as you type.": "Модераторів призначають адміністратори сайту, а реєстрація стала простішою й перевіряє ім’я користувача просто під час введення.",
+"A Community Wiki laid out like an encyclopedia, with an A to Z index, tabs to read, edit, and see a page’s history, and a random page.": "Вікі спільноти, влаштована як енциклопедія: покажчик від А до Я, вкладки для читання, редагування й історії сторінки та випадкова сторінка.",
+"Themes of your own: pick a background, an accent, and a text color, and Sanctify works out the rest.": "Власні теми: виберіть тло, акцентний колір і колір тексту, а решту Sanctify підбере сам.",
+"Share any saint, prayer, quote, or the Verse of the Day as an image.": "Діліться будь-яким святим, молитвою, цитатою чи Віршем дня у вигляді зображення.",
+"Read aloud in the most natural voice your device has, with a voice and speed of your choosing.": "Читання вголос найприроднішим голосом вашого пристрою, з вибраними вами голосом і швидкістю.",
+"Feasts, saints’ names, patronages, the 1962 calendar, the Community, and every theme in all eight languages.": "Свята, імена святих, покровительства, календар 1962 року, спільнота й усі теми всіма вісьмома мовами.",
+"Show the things you’ve saved on your profile, if you like.": "Показуйте в профілі те, що зберегли, якщо хочете.",
+"A simpler menu, and a Credits page.": "Простіше меню й сторінка «Автори».",
 "{*} · {*}": "{*} · {*}"
 },
 "rosary": {
