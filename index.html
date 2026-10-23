@@ -1332,6 +1332,18 @@
   .rite-picker{position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center; padding:16px; background:rgba(0,0,0,0.45);}
   .rp-card{width:100%; max-width:520px; max-height:calc(100dvh - 32px); overflow:auto; padding:22px 22px 16px; border-radius:18px; border:1px solid var(--line); background:var(--parchment); color:var(--ink); box-shadow:0 18px 48px rgba(0,0,0,0.3);}
   .rp-card h2{margin:0 0 4px; font-family:'Cormorant Garamond', serif; font-size:1.6rem;}
+  .tour-card{max-width:460px; text-align:center; padding:28px 26px 18px;}
+  .tour-icon{display:inline-flex; width:64px; height:64px; align-items:center; justify-content:center; border-radius:20px; margin-bottom:10px;
+    color:var(--tile-color); background:color-mix(in srgb, var(--tile-color) 14%, transparent);}
+  .tour-icon svg{width:32px; height:32px;}
+  .tour-card .rp-intro{line-height:1.6;}
+  .tour-actions{display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin:6px 0 4px;}
+  .tour-dots{display:flex; justify-content:center; gap:7px; margin:18px 0 14px;}
+  .tour-dots span{width:8px; height:8px; border-radius:50%; background:var(--line);}
+  .tour-dots span.on{background:var(--tile-color); transform:scale(1.25);}
+  .tour-nav{display:flex; justify-content:space-between; gap:10px;}
+  .feedback-card .field{margin-bottom:12px;}
+  .feedback-card textarea{width:100%;}
   .rp-intro{margin:0 0 14px; color:var(--ink-soft); font-size:0.92rem;}
   .rp-list{display:grid; gap:10px;}
   .rp-option{display:flex; gap:14px; align-items:flex-start; width:100%; text-align:left; padding:12px 14px; border:1px solid var(--line); border-radius:14px; background:var(--parchment-light); color:var(--ink); font:inherit; cursor:pointer;}
@@ -2692,6 +2704,16 @@
   .account-mod + .account-danger{margin-top:14px;}
   .account-danger summary{cursor:pointer; color:var(--wine); font-weight:600;}
   .account-danger p{font-size:0.9rem; color:var(--ink-soft);}
+  .account-security{max-width:560px; margin-top:34px;}
+  .account-security + .account-danger{margin-top:14px;}
+  .account-pass{margin:4px 0 14px; padding:12px 16px; border:1px solid var(--line); border-radius:12px;}
+  .account-pass summary{cursor:pointer; font-weight:600;}
+  .account-pass form{margin-top:12px;}
+  .reset-steps{margin:0 0 18px; padding-left:20px; font-size:0.92rem; color:var(--ink-soft); display:grid; gap:6px;}
+  .reset-steps .text-link{font-size:inherit;}
+  .mod-reset-out{display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin:8px 0 12px;}
+  .reset-code{font-size:1.25rem; letter-spacing:0.08em; padding:6px 12px; border-radius:10px; background:var(--parchment-light); border:1px solid var(--line); user-select:all;}
+  .mod-reset-out .forum-meta{flex-basis:100%;}
   .home-community{padding:22px; border-radius:18px; border:1px solid var(--line); background:var(--parchment-light); margin:34px 0;}
   .home-community-head{display:flex; align-items:center; gap:16px;}
   .home-community-head h3{font-size:1.4rem;}
@@ -3601,7 +3623,7 @@
       <div><h4>Learn</h4>
         <button data-route="learn/theology">Theology</button><button data-route="learn/theology/fathers">The Faith of the Fathers</button><button data-route="learn/theology/apologetics">Defending the Faith</button><button data-route="learn/mass">The Mass Explained</button><button data-route="learn/living-the-faith">Living the Faith</button><button data-route="learn/lists">Catholic Lists</button><button data-route="learn/church">Inside a Church</button><button data-route="learn/glossary">Glossary</button><button data-route="learn/quiz">Quiz</button></div>
       <div><h4>Sanctify</h4>
-        <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="community">Community</button><button data-route="community/forum">Forum</button><button data-route="wiki">Community Wiki</button><button data-route="news">News</button><button data-route="mine">My Sanctify</button><button data-route="account/badges">Badges</button><button data-route="settings">Settings</button><button data-route="library/resources">Resources</button><button data-route="credits">Credits</button></div>
+        <button data-route="today">Today</button><button data-route="calendar">Calendar</button><button data-route="community">Community</button><button data-route="community/forum">Forum</button><button data-route="wiki">Community Wiki</button><button data-route="news">News</button><button data-route="mine">My Sanctify</button><button data-route="account/badges">Badges</button><button data-route="settings">Settings</button><button data-route="library/resources">Resources</button><button data-route="credits">Credits</button><button data-route="privacy">Privacy</button><button data-route="terms">Terms of Use</button><button data-feedback>Report a problem</button></div>
     </div>
   </div>
   <p class="footer-note">Ad maiorem Dei gloriam. Scripture quotations are from the Revised Standard Version of the Bible: Catholic Edition, copyright © 1965, 1966 the Division of Christian Education of the National Council of the Churches of Christ in the United States of America. Used by permission. All rights reserved. Saint and book images come from Wikipedia and Wikimedia Commons.</p>
@@ -3647,6 +3669,8 @@ const CAT_DESC = {
   exam: 'A guided examination of conscience to prepare for the Sacrament of Reconciliation, following the Ten Commandments.',
   news: 'Announcements and updates from the Sanctify team.',
   credits: 'The people who make Sanctify, and the sources it is built on.',
+  privacy: 'What Sanctify keeps, where it keeps it, and the choices you have.',
+  terms: 'The plain-language rules for using Sanctify and its Community.',
   badges: 'Badges for prayer, reading, and the Community, with your progress toward each.',
   moderate: 'Reports, accounts, bans, and the moderation log.',
   plan: 'Read through the Gospels, the Psalms, the New Testament, or the whole Bible, a little each day.',
@@ -7781,7 +7805,7 @@ function render(){
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
       tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, lists:renderLists, church:renderChurchGuide, councils:renderCouncils, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, badges:renderBadges, devotions:renderDevotions, littleoffice:renderLittleOffice, vocations:renderVocations, hymns:renderHymns, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
       'hub-pray':() => renderHub('pray'), 'hub-library':() => renderHub('library'), 'hub-learn':() => renderHub('learn'), 'hub-history':() => renderHub('history'), 'hub-saints':() => renderHub('saints'),
-      'hub-community':renderCommunityHome, credits:renderCredits
+      'hub-community':renderCommunityHome, credits:renderCredits, privacy:renderPrivacy, terms:renderTerms
     };
     const needsNoSearch = new Set(['home', 'daily', 'theology', 'hub-pray', 'hub-library', 'hub-learn']);
     if(special[activeCategory] && !(searching && needsNoSearch.has(activeCategory))){
@@ -11229,6 +11253,64 @@ async function loadForumPosts(list, query, emptyHtml){
   }
 }
 
+/* ---------- Privacy and Terms of Use ----------
+   Written to match what the site actually does: change them together with the code they describe
+   (what's kept on the device, the Community's tables in functions/api, the one sign-in cookie). */
+const POLICY_UPDATED = Date.UTC(2026, 9, 23);
+function policyPage(sections){
+  const section = (icon, color, title, body) => `<section class="credits-card" style="--tile-color:${color}">
+      <span class="tile-icon">${navIcon(icon)}</span><div><h3>${title}</h3>${body}</div></section>`;
+  entryListEl.innerHTML = `<div class="credits policy">
+    <p class="forum-meta">Last updated ${escapeHtml(new Date(POLICY_UPDATED).toLocaleDateString(undefined, { month:'long', day:'numeric', year:'numeric', timeZone:'UTC' }))}</p>
+    ${sections.map(s => section(...s)).join('')}
+    <p class="credits-amdg"><em>Ad maiorem Dei gloriam.</em></p>
+  </div>`;
+}
+function renderPrivacy(){
+  policyPage([
+    ['heart', 'var(--wine)', 'The short version', `<p>Sanctify is free, has no ads, and doesn’t track you. You can use all of it without an account, and it never asks for your email address, your real name, or your phone number.</p>`],
+    ['home', 'var(--gold)', 'Kept on your device', `<p>Your saved entries, novenas, intentions, prayer record, reading progress, badges, and settings (language, edition, theme, text size, and read-aloud voice) are kept only in this browser. They don’t leave your device unless you choose to move them.</p>
+      <p>You can download a backup of them, or erase them, in Settings.</p>
+      <div class="forum-form-actions"><button class="btn quiet" data-route="settings">Open Settings</button></div>`],
+    ['account', 'var(--rose)', 'If you make a Community account', `<p>Sanctify keeps your username, the date you joined, and your password in a securely scrambled (hashed) form that can’t be turned back into the password. It also keeps what you choose to add: your posts and replies, the posts you pray for, your wiki edits, your profile picture, banner, and description, your badges, the saved pages you show on your profile, and any reports you make.</p>
+      <p>Moderators can see the list of accounts, reports, and the warnings and private notes they write about an account, so they can keep the Community safe.</p>
+      <p>If you send a note with Report a problem, the moderators see your note, the page you were on if you include it, how to reach you if you say, and your username if you’re signed in.</p>`],
+    ['shield', 'var(--teal)', 'One cookie, for signing in', `<p>When you sign in, Sanctify sets a single cookie that keeps you signed in for up to 30 days. There are no advertising or tracking cookies.</p>`],
+    ['globe', 'var(--indigo)', 'Your network address', `<p>To stop spam and guessing at passwords, Sanctify counts sign-ups, sign-ins, and a few other actions from each network for a short time. It stores a scrambled form of the network address, not the address itself, and the counts are cleared when they expire.</p>
+      <p>Sanctify is hosted by Cloudflare, which handles every visit to the site and may keep short-term technical logs of its own.</p>`],
+    ['link', 'var(--green)', 'Other services', `<p>Some parts of Sanctify load things from other sites as you use them: fonts from Google Fonts, pictures of saints, icons, and books and the hymn recordings from Wikipedia and Wikimedia Commons, and Google Translate if you choose a language Sanctify isn’t translated into. Those sites can see that your browser asked them for something, under their own privacy policies.</p>
+      <p>Read aloud uses the voices on your device; some of them are provided online by your browser or system. Links to shops, resources, and the Discord take you to those sites.</p>`],
+    ['gear', 'var(--purple)', 'Your choices', `<p>On your account page you can change your password, download everything the Community keeps about you as one file, and delete your account at any time.</p>
+      <p>Deleting your account signs you out everywhere and removes your profile, picture, banner, description, badges, the posts you prayed for, and your saved pages. Your posts, replies, and wiki edits stay so conversations still make sense, shown as written by a “Former member.” If you’d like any of them gone, delete them first.</p>
+      <div class="forum-form-actions"><button class="btn quiet" data-route="account">Your account</button></div>`],
+    ['reply', 'var(--wine)', 'Questions', `<p>Ask in the <a class="text-link" href="/api/discord" target="_blank" rel="noopener">Sanctify Discord</a>, or send a note with <button class="text-link" type="button" data-feedback>Report a problem</button>. If this page changes, the date at the top will too.</p>`]
+  ]);
+}
+function renderTerms(){
+  policyPage([
+    ['heart', 'var(--wine)', 'Using Sanctify', `<p>Sanctify is free for anyone to use, with or without an account. Please use it for what it’s for: prayer, learning, and friendship in the faith.</p>`],
+    ['cross', 'var(--gold)', 'Not official Church teaching', `<p>Sanctify is an independent project, not an official publication of the Catholic Church. We work to make it faithful and accurate, but mistakes can happen. Check what matters against the Catechism and with your pastor, and tell us when something is wrong.</p>
+      <p>The Community Wiki and the forum are written by members, and their words are their own.</p>`],
+    ['account', 'var(--rose)', 'Your account', `<p>You need to be at least 13 to make an account. Keep your password to yourself; you’re responsible for what’s posted from your account. Usernames that impersonate someone, or that are rude, may be changed or removed.</p>`],
+    ['community', 'var(--indigo)', 'The Community', `<p>Everyone who posts agrees to follow the community guidelines. Moderators may remove posts and replies, and mute, warn, or ban accounts that break them.</p>
+      <div class="forum-form-actions"><button class="btn quiet" type="button" data-terms-guidelines>Read the community guidelines</button></div>
+      <div class="terms-guidelines" hidden>${guidelinesHtml()}</div>`],
+    ['pen', 'var(--teal)', 'What you post', `<p>You keep the rights to what you write. By posting it, you let Sanctify show it on the site, and by writing in the Community Wiki you let other members edit and build on it there. Posts, replies, and wiki edits stay after an account is deleted, shown as written by a “Former member.”</p>
+      <p>Only post what you have the right to share, and don’t post anyone’s private information.</p>`],
+    ['link', 'var(--green)', 'Other people’s work and other sites', `<p>Scripture, images, recordings, and books on Sanctify belong to their owners and are used by permission or under their licenses, as the Credits page and each item say. Links to other sites are offered to help, and Sanctify isn’t responsible for what’s on them.</p>
+      <div class="forum-form-actions"><button class="btn quiet" data-route="credits">Credits</button></div>`],
+    ['shield', 'var(--purple)', 'No guarantees', `<p>Sanctify is offered as it is. It may change, pause, or go offline, and features can come and go. Keep a backup of anything on your device that matters to you.</p>`],
+    ['news', 'var(--wine)', 'Changes', `<p>These terms may be updated as Sanctify grows. When they are, the date at the top changes. The Privacy page says what Sanctify keeps and why.</p>
+      <div class="forum-form-actions"><button class="btn quiet" data-route="privacy">Privacy</button></div>`]
+  ]);
+  const btn = entryListEl.querySelector('[data-terms-guidelines]');
+  btn.addEventListener('click', () => {
+    const box = entryListEl.querySelector('.terms-guidelines');
+    box.hidden = !box.hidden;
+    btn.textContent = box.hidden ? 'Read the community guidelines' : 'Hide the guidelines';
+  });
+}
+
 /* ---------- Credits: the people behind Sanctify, and its sources ---------- */
 async function renderCredits(){
   const seq = ++viewSeq;
@@ -11311,7 +11393,7 @@ const MOD_ACTIONS = {
   'remove-post':'removed', 'remove-reply':'removed', pin:'pinned', unpin:'unpinned', lock:'locked', unlock:'unlocked',
   'dismiss-report':'dismissed reports on', mute:'muted', unmute:'unmuted', warn:'warned', 'add-note':'added a note on',
   move:'moved', settings:'changed the settings', 'give-badge':'gave a badge to', 'take-badge':'removed a badge from', 'clear-bio':'cleared the description of', 'clear-avatar':'removed the picture of', 'clear-banner':'removed the banner of', 'publish-news':'published', 'edit-news':'edited', 'delete-news':'deleted',
-  'automod-block':'turned back a post by', 'automod-hide':'hid', restore:'restored', 'wiki-lock':'locked the wiki page', 'wiki-unlock':'unlocked the wiki page', 'wiki-delete':'removed the wiki page'
+  'automod-block':'turned back a post by', 'automod-hide':'hid', restore:'restored', 'wiki-lock':'locked the wiki page', 'wiki-unlock':'unlocked the wiki page', 'wiki-delete':'removed the wiki page', 'reset-code':'made a password reset code for', 'close-feedback':'marked as handled'
 };
 function modDate(ms){ return new Date(ms).toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' }); }
 function banLabel(ban){ return ban ? (ban.until ? 'Banned until ' + modDate(ban.until) : 'Banned permanently') : ''; }
@@ -11328,7 +11410,7 @@ async function renderModerate(){
     entryListEl.innerHTML = forumNotice('Moderators only', 'This page is for the Community’s moderators, who are chosen by the site administrators.', '<button class="btn primary pill" data-route="account">Go to your account</button>');
     return;
   }
-  const tabs = [['overview', 'Overview'], ['reports', 'Reports'], ['accounts', 'Accounts'], ['settings', 'Settings'], ['log', 'Log']];
+  const tabs = [['overview', 'Overview'], ['reports', 'Reports'], ['feedback', 'Notes'], ['accounts', 'Accounts'], ['settings', 'Settings'], ['log', 'Log']];
   entryListEl.innerHTML = `
     <div class="mod-page">
       <div class="cal-viewtoggle mod-tabs" role="tablist" aria-label="Moderation">${tabs.map(([k, label]) =>
@@ -11339,10 +11421,15 @@ async function renderModerate(){
   const body = entryListEl.querySelector('.mod-body');
   const still = () => stillShowing(seq, 'moderate');
   const fail = err => { if(still()) body.innerHTML = forumNotice('Couldn’t load this', escapeHtml(err.message), '<button class="btn quiet" data-mod-retry>Try again</button>'); body.querySelectorAll('[data-mod-retry]').forEach(b => b.addEventListener('click', renderModerate)); };
-  api('mod/overview').then(o => { if(still() && o.reports) entryListEl.querySelector('[data-count="reports"]').textContent = o.reports; }).catch(() => {});
+  api('mod/overview').then(o => {
+    if(!still()) return;
+    if(o.reports) entryListEl.querySelector('[data-count="reports"]').textContent = o.reports;
+    if(o.feedback) entryListEl.querySelector('[data-count="feedback"]').textContent = o.feedback;
+  }).catch(() => {});
   try{
     if(modTab === 'overview') await modOverviewView(body, still);
     else if(modTab === 'reports') await modReportsView(body, still);
+    else if(modTab === 'feedback') await modFeedbackView(body, still);
     else if(modTab === 'accounts') await (modUserId ? modUserView(body, still) : modAccountsView(body, still));
     else if(modTab === 'settings') await modSettingsView(body, still);
     else await modLogView(body, still);
@@ -11356,6 +11443,7 @@ async function modOverviewView(body, still){
   body.innerHTML = `
     <div class="mod-stats">
       ${stat(o.reports, o.reports === 1 ? 'open report' : 'open reports', 'reports')}
+      ${stat(o.feedback || 0, o.feedback === 1 ? 'note from a member' : 'notes from members', 'feedback')}
       ${stat(o.accounts, o.accounts === 1 ? 'account' : 'accounts', 'accounts')}
       ${stat(o.banned, 'banned', 'banned')}
       ${stat(o.muted, 'muted', 'muted')}
@@ -11368,6 +11456,7 @@ async function modOverviewView(body, still){
       <h3>What moderators can do</h3>
       <ul>
         <li><strong>Reports:</strong> members can report a post or reply. Review them here, then remove it or dismiss the report.</li>
+        <li><strong>Notes:</strong> anyone can send a note with Report a problem: a mistake on a page, a translation that reads oddly, an idea, or a request for a password reset code. Mark each one handled once it’s taken care of.</li>
         <li><strong>Accounts:</strong> see every account with its posts and replies, ban a member for a day, a week, a month, or for good, and remove everything they have posted.</li>
         <li><strong>Members:</strong> mute a member so they can read and pray but not post, send them a private warning, and keep private notes on their account.</li>
         <li><strong>Threads:</strong> open any Community post to remove it, pin it to the top, lock it so it takes no new replies, or move it to another category.</li>
@@ -11423,6 +11512,87 @@ async function modReportsView(body, still){
     catch(err){ toast(err.message); }
   }));
 }
+
+const FEEDBACK_KINDS = [['problem', 'Something’s wrong on a page'], ['translation', 'A translation reads oddly'], ['idea', 'An idea for Sanctify'], ['account', 'Help with my account'], ['other', 'Something else']];
+const FEEDBACK_COLORS = { problem:'var(--wine)', translation:'var(--teal)', idea:'var(--gold)', account:'var(--rose)', other:'var(--indigo)' };
+
+async function modFeedbackView(body, still){
+  const { feedback } = await api('mod/feedback');
+  if(!still()) return;
+  if(!feedback.length){ body.innerHTML = '<div class="forum-empty">No notes waiting. All is quiet.</div>'; return; }
+  const kinds = Object.fromEntries(FEEDBACK_KINDS);
+  body.innerHTML = `<div class="mod-list">${feedback.map(f => `
+    <article class="mod-card">
+      <div class="mod-card-top">
+        <span class="forum-tag" style="--tag-color:${FEEDBACK_COLORS[f.kind] || 'var(--indigo)'}">${escapeHtml(kinds[f.kind] || f.kind)}</span>
+        <span class="forum-meta">${f.by ? `from ${authorHtml(f.by.username)}` : 'from a visitor'} · ${escapeHtml(timeAgo(f.createdAt))}</span>
+      </div>
+      <p class="mod-excerpt">${escapeHtml(f.message)}</p>
+      ${f.contact ? `<p class="mod-reason"><strong>How to reach them:</strong> ${escapeHtml(f.contact)}</p>` : ''}
+      <div class="forum-form-actions">
+        ${f.page ? `<button class="btn quiet" data-route="${escapeHtml(f.page)}">Open the page they were on</button>` : ''}
+        <button class="btn primary pill" data-close-note="${f.id}">Mark as handled</button>
+      </div>
+    </article>`).join('')}</div>`;
+  body.querySelectorAll('[data-close-note]').forEach(b => b.addEventListener('click', async () => {
+    try{ await api('mod/feedback/' + b.dataset.closeNote, { method:'DELETE' }); toast('Marked as handled'); renderModerate(); }
+    catch(err){ toast(err.message); }
+  }));
+}
+
+// Report a problem: a short note to the moderators, from any page, signed in or not
+function openFeedback(kind){
+  closeFeedback();
+  const page = currentPath && currentPath !== 'home' ? currentPath : '';
+  const box = document.createElement('div');
+  box.className = 'rite-picker';
+  box.id = 'feedbackBox';
+  box.innerHTML = `
+    <form class="rp-card feedback-card" role="dialog" aria-modal="true" aria-labelledby="fbTitle" novalidate>
+      <h2 id="fbTitle">Report a problem</h2>
+      <p class="rp-intro">Tell the moderators about a mistake, a translation that reads oddly, or an idea. Thank you for helping make Sanctify better.</p>
+      <div class="field"><label for="fbKind">What is it about?</label>
+        <select id="fbKind">${FEEDBACK_KINDS.map(([k, label]) => `<option value="${k}"${k === kind ? ' selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></div>
+      <div class="field"><label for="fbMessage">Your note</label>
+        <textarea id="fbMessage" rows="5" maxlength="2000" placeholder="What happened, or what would you change?"></textarea></div>
+      <div class="field"><label for="fbContact">How can we reach you? <span class="forum-meta">(optional)</span></label>
+        <input id="fbContact" maxlength="120" placeholder="Username or Discord name"></div>
+      ${page ? `<label class="forum-check"><input type="checkbox" id="fbPage" checked><span>Include the page I’m on (${escapeHtml(routeName(currentRoute))})</span></label>` : ''}
+      <p class="forum-error" id="fbError" hidden></p>
+      <div class="forum-form-actions">
+        <button class="btn primary pill" type="submit">Send</button>
+        <button class="btn quiet" type="button" data-fb-close>Cancel</button>
+      </div>
+    </form>`;
+  document.body.appendChild(box);
+  const form = box.querySelector('form'), error = box.querySelector('#fbError');
+  if(Community.user) box.querySelector('#fbContact').value = Community.user.username;
+  box.addEventListener('click', ev => { if(ev.target === box || ev.target.closest('[data-fb-close]')) closeFeedback(); });
+  form.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const message = box.querySelector('#fbMessage').value.trim();
+    if(message.length < 10){ showFormError(error, 'Please tell us a little more (at least 10 characters).'); return; }
+    const btn = form.querySelector('[type="submit"]');
+    btn.disabled = true;
+    try{
+      const pageBox = box.querySelector('#fbPage');
+      await api('feedback', { method:'POST', body:{ kind:box.querySelector('#fbKind').value, message,
+        contact:box.querySelector('#fbContact').value, page:pageBox && pageBox.checked ? page : '' } });
+      closeFeedback();
+      toast('Thank you! The moderators will read your note.');
+    }catch(err){ showFormError(error, err.message); btn.disabled = false; }
+  });
+  box.querySelector(kind ? '#fbMessage' : '#fbKind').focus();
+}
+function closeFeedback(){ const box = document.getElementById('feedbackBox'); if(box) box.remove(); }
+document.addEventListener('keydown', ev => { if(ev.key === 'Escape') closeFeedback(); });
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('[data-feedback]');
+  if(!b) return;
+  ev.preventDefault();
+  if(typeof readOverlay !== 'undefined') readOverlay.classList.remove('open');
+  openFeedback(b.dataset.feedback || '');
+});
 
 async function modAccountsView(body, still){
   const params = new URLSearchParams({ q:modQuery.q, filter:modQuery.filter, sort:modQuery.sort, page:'0' });
@@ -11503,6 +11673,13 @@ async function modUserView(body, still){
           ? `${escapeHtml(x.username)} is a moderator: they can remove posts and replies, review reports, and mute, warn, or ban members.`
           : `Moderators can remove posts and replies, review reports, and mute, warn, or ban members. They get the Moderator badge.`}</p>
         <button class="btn ${x.moderator ? 'quiet' : 'primary pill'}" data-role="${x.moderator ? '0' : '1'}"${x.ban ? ' disabled' : ''}>${x.moderator ? 'Remove as moderator' : 'Make moderator'}</button>
+      </section>` : ''}
+    ${me && me.siteAdmin && !self ? `
+      <section class="mod-tool mod-reset">
+        <h4>Password reset code</h4>
+        <p class="forum-meta">If ${escapeHtml(x.username)} has forgotten their password, make a one-time code and give it to them privately. It works once, for two days, and a new code replaces the old one.</p>
+        <div class="mod-reset-out" hidden></div>
+        <button class="btn quiet" type="button" data-reset-code>Make a reset code</button>
       </section>` : ''}
     ${self || x.siteAdmin || (x.moderator && !(me && me.siteAdmin)) ? `<p class="forum-meta">${self ? 'This is your account.' : x.siteAdmin ? 'Site administrators can’t be banned.' : 'Only the site administrators can ban or mute a moderator.'}</p>` : x.ban ? `
       <div class="forum-form-actions mod-actions"><button class="btn primary pill" data-unban>Lift the ban</button></div>` : `
@@ -11592,6 +11769,24 @@ async function modUserView(body, still){
     role.disabled = true;
     try{ await api(`mod/users/${x.id}/role`, { method:'PUT', body:{ moderator:make } }); after(make ? `${x.username} is now a moderator` : `${x.username} is no longer a moderator`); }
     catch(err){ toast(err.message); role.disabled = false; }
+  });
+  const reset = body.querySelector('[data-reset-code]');
+  if(reset) reset.addEventListener('click', async () => {
+    if(!confirm(`Make a password reset code for ${x.username}? Give it only to them.`)) return;
+    reset.disabled = true;
+    try{
+      const res = await api(`mod/users/${x.id}/reset-code`, { method:'POST', body:{} });
+      const out = body.querySelector('.mod-reset-out');
+      out.innerHTML = `<code class="reset-code notranslate" translate="no">${escapeHtml(res.code)}</code>
+        <button class="btn quiet" type="button" data-copy-code>Copy</button>
+        <span class="forum-meta">Works until ${escapeHtml(fullDate(res.expiresAt))}. They enter it on the sign-in page under “Forgot your password?”</span>`;
+      out.hidden = false;
+      out.querySelector('[data-copy-code]').addEventListener('click', () => {
+        navigator.clipboard.writeText(res.code).then(() => toast('Code copied'), () => toast('Couldn’t copy. Select the code and copy it instead.'));
+      });
+      reset.textContent = 'Make a new code';
+    }catch(err){ toast(err.message); }
+    reset.disabled = false;
   });
   const unban = body.querySelector('[data-unban]');
   if(unban) unban.addEventListener('click', async () => {
@@ -12525,6 +12720,7 @@ function accountTabsHtml(active){
 }
 
 function renderAuthForms(){
+  if(accountTab === 'reset'){ renderResetForm(); return; }
   const signup = accountTab === 'signup';
   sectionTitleEl.textContent = signup ? 'Create an Account' : 'Sign In';
   sectionDescEl.textContent = signup
@@ -12547,11 +12743,11 @@ function renderAuthForms(){
           ${signup ? '<div class="hint auth-check" id="passCheck" aria-live="polite">At least 8 characters.</div>' : ''}</div>
         <p class="forum-error" id="authError" hidden></p>
         <button class="btn primary pill account-submit" type="submit">${signup ? 'Create my account' : 'Sign in'}</button>
-        ${signup ? '<p class="account-agree">By creating an account, you agree to follow the <button class="text-link" type="button" data-guidelines>community guidelines</button>.</p>' : ''}
+        ${signup ? '<p class="account-agree">By creating an account, you agree to the <button class="text-link" type="button" data-route="terms">Terms of Use</button> and the <button class="text-link" type="button" data-guidelines>community guidelines</button>. The <button class="text-link" type="button" data-route="privacy">Privacy</button> page says what Sanctify keeps.</p>' : ''}
       </form>
       <p class="account-note">${signup
-        ? 'No email address is needed. That also means a forgotten password can’t be recovered, so let your browser save it or keep it somewhere safe.'
-        : 'New here? <button class="text-link" data-tab="signup">Create a free account</button>. It takes a few seconds.'}</p>
+        ? 'No email address is needed. If you ever forget your password, a site administrator can give you a one-time reset code, but it’s easiest to let your browser save it.'
+        : 'New here? <button class="text-link" data-tab="signup">Create a free account</button>. It takes a few seconds. <button class="text-link" data-tab="reset">Forgot your password?</button>'}</p>
     </div>
     ${signup ? `<div id="authGuidelines" hidden>${guidelinesHtml()}</div>` : ''}`;
   entryListEl.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { accountTab = b.dataset.tab; renderAuthForms(); }));
@@ -12559,14 +12755,7 @@ function renderAuthForms(){
   const form = entryListEl.querySelector('#authForm');
   const user = form.querySelector('#authUser'), pass = form.querySelector('#authPass'), error = form.querySelector('#authError');
   user.focus();
-  const show = form.querySelector('.pass-show');
-  show.addEventListener('click', () => {
-    const on = pass.type === 'password';
-    pass.type = on ? 'text' : 'password';
-    show.textContent = on ? 'Hide' : 'Show';
-    show.setAttribute('aria-pressed', String(on));
-    pass.focus();
-  });
+  bindPassShow(form);
   const guide = form.querySelector('[data-guidelines]');
   if(guide) guide.addEventListener('click', () => {
     const box = entryListEl.querySelector('#authGuidelines');
@@ -12634,6 +12823,89 @@ function renderAuthForms(){
   });
 }
 
+// A member locked out of their account signs in again with a one-time code from a site administrator
+function renderResetForm(){
+  sectionTitleEl.textContent = 'Forgot Your Password?';
+  sectionDescEl.textContent = 'Sanctify doesn’t keep email addresses, so a site administrator gives you a one-time reset code instead.';
+  document.title = 'Forgot Your Password? — Sanctify';
+  entryListEl.innerHTML = `${accountTabsHtml('account')}
+    <div class="account-card">
+      <ol class="reset-steps">
+        <li>Ask a site administrator for a reset code, in the <a class="text-link" href="/api/discord" target="_blank" rel="noopener">Sanctify Discord</a> or with <button class="text-link" type="button" data-feedback="account">Report a problem</button>. Tell them your username.</li>
+        <li>Enter the code here with a new password. Codes work once, for two days.</li>
+      </ol>
+      <form id="resetForm" novalidate>
+        <div class="field"><label for="resetUser">Username</label>
+          <input id="resetUser" autocomplete="username" maxlength="20" autocapitalize="off" spellcheck="false"></div>
+        <div class="field"><label for="resetCode">Reset code</label>
+          <input id="resetCode" autocomplete="one-time-code" maxlength="20" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX-XXXX"></div>
+        <div class="field"><label for="resetPass">New password</label>
+          <div class="pass-wrap"><input id="resetPass" type="password" autocomplete="new-password" maxlength="128" aria-describedby="resetPassHint">
+            <button class="pass-show" type="button" aria-pressed="false" aria-controls="resetPass">Show</button></div>
+          <div class="hint" id="resetPassHint">At least 8 characters.</div></div>
+        <p class="forum-error" id="resetError" hidden></p>
+        <button class="btn primary pill account-submit" type="submit">Set my new password</button>
+      </form>
+      <p class="account-note"><button class="text-link" data-tab="signin">Back to sign in</button></p>
+    </div>`;
+  entryListEl.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { accountTab = b.dataset.tab; renderAuthForms(); }));
+  const form = entryListEl.querySelector('#resetForm'), error = form.querySelector('#resetError');
+  const user = form.querySelector('#resetUser'), code = form.querySelector('#resetCode'), pass = form.querySelector('#resetPass');
+  bindPassShow(form);
+  user.focus();
+  form.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    if(!user.value.trim() || !code.value.trim()){ showFormError(error, 'Please enter your username and the reset code.'); return; }
+    if(pass.value.length < 8){ showFormError(error, 'Passwords need at least 8 characters.'); pass.focus(); return; }
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    showFormError(error, '');
+    try{
+      const res = await api('reset', { method:'POST', body:{ username:user.value.trim(), code:code.value, password:pass.value } });
+      Community.user = res.user;
+      updateAccountButton();
+      accountTab = 'signin';
+      toast('Your new password is set. Welcome back!');
+      navigate('account');
+    }catch(err){
+      showFormError(error, err.message);
+      btn.disabled = false;
+    }
+  });
+}
+
+// Every Show/Hide button beside a password field in a form
+function bindPassShow(root){
+  root.querySelectorAll('.pass-show').forEach(show => {
+    const pass = root.querySelector('#' + show.getAttribute('aria-controls'));
+    show.addEventListener('click', () => {
+      const on = pass.type === 'password';
+      pass.type = on ? 'text' : 'password';
+      show.textContent = on ? 'Hide' : 'Show';
+      show.setAttribute('aria-pressed', String(on));
+      pass.focus();
+    });
+  });
+}
+
+// Your Community data as a file: posts, replies, wiki edits, badges, and profile
+async function downloadMyData(btn){
+  btn.disabled = true;
+  try{
+    const data = await api('account/export');
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type:'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `sanctify-${data.account.username}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    toast('Your data is downloading');
+  }catch(err){ toast(err.message); }
+  btn.disabled = false;
+}
+
 function renderProfile(){
   const u = Community.user;
   sectionTitleEl.textContent = u.username;
@@ -12696,6 +12968,26 @@ function renderProfile(){
           : 'You can remove any post or reply, pin and lock threads, review reports, see every account, and mute, warn, or ban members.'}</p>
         <div class="forum-form-actions"><button class="btn primary pill" data-route="moderate" type="button">Open moderation tools</button></div>
       </section>` : ''}
+      <section class="bio-panel account-security">
+        <h3>Password and your data</h3>
+        <details class="account-pass">
+          <summary>Change my password</summary>
+          <form id="passForm" novalidate>
+            <div class="field"><label for="passCurrent">Current password</label>
+              <div class="pass-wrap"><input id="passCurrent" type="password" autocomplete="current-password" maxlength="128">
+                <button class="pass-show" type="button" aria-pressed="false" aria-controls="passCurrent">Show</button></div></div>
+            <div class="field"><label for="passNew">New password</label>
+              <div class="pass-wrap"><input id="passNew" type="password" autocomplete="new-password" maxlength="128" aria-describedby="passNewHint">
+                <button class="pass-show" type="button" aria-pressed="false" aria-controls="passNew">Show</button></div>
+              <div class="hint" id="passNewHint">At least 8 characters. Your other devices will be signed out.</div></div>
+            <p class="forum-error" id="passError" hidden></p>
+            <button class="btn primary pill" type="submit">Change password</button>
+          </form>
+        </details>
+        <p class="forum-meta">Download everything the Community keeps about you, including your posts, replies, wiki edits, badges, and profile, as one file.</p>
+        <div class="forum-form-actions"><button class="btn quiet" id="exportBtn" type="button">Download my data</button>
+          <button class="btn quiet" type="button" data-route="privacy">Privacy</button></div>
+      </section>
       <details class="account-danger">
         <summary>Delete my account</summary>
         <p>This signs you out everywhere and frees up your username. Your posts and replies stay up, shown as written by a “Former member.” If you’d like any of them gone, delete them first.</p>
@@ -12844,6 +13136,26 @@ function renderProfile(){
     toast('Signed out');
     navigate('community');
   });
+  const passForm = entryListEl.querySelector('#passForm');
+  bindPassShow(passForm);
+  passForm.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const error = passForm.querySelector('#passError');
+    const current = passForm.querySelector('#passCurrent').value, password = passForm.querySelector('#passNew').value;
+    if(!current){ showFormError(error, 'Please enter your current password.'); return; }
+    if(password.length < 8){ showFormError(error, 'Passwords need at least 8 characters.'); return; }
+    const btn = passForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    try{
+      await api('account/password', { method:'PUT', body:{ current, password } });
+      passForm.reset();
+      passForm.closest('details').open = false;
+      showFormError(error, '');
+      toast('Your password has been changed');
+    }catch(err){ showFormError(error, err.message); }
+    btn.disabled = false;
+  });
+  entryListEl.querySelector('#exportBtn').addEventListener('click', ev => downloadMyData(ev.currentTarget));
   const del = entryListEl.querySelector('#deleteForm');
   del.addEventListener('submit', async ev => {
     ev.preventDefault();
@@ -17281,6 +17593,8 @@ const SECTIONS = {
   community:{ name:'Forum', group:'Community', icon:'community', color:'var(--indigo)' },
   'hub-community':{ name:'Community', icon:'community', color:'var(--indigo)' },
   credits:{ name:'Credits', icon:'star', color:'var(--gold)' },
+  privacy:{ name:'Privacy', icon:'shield', color:'var(--teal)' },
+  terms:{ name:'Terms of Use', icon:'list', color:'var(--indigo)' },
   thread:{ name:'Discussion', group:'Community', icon:'community', color:'var(--indigo)' },
   'forum-new':{ name:'New Post', group:'Community', icon:'community', color:'var(--indigo)' },
   account:{ name:'Your Account', group:'Community', icon:'account', color:'var(--rose)' },
@@ -17578,6 +17892,81 @@ function heroRosette(){
   </svg>`;
 }
 
+/* ---------- The welcome tour ----------
+   Shown once, on a first visit to Home, and any time from Settings. Six short steps that end with
+   the choices that make Sanctify one's own: edition, language, and theme. */
+function tourSteps(){
+  const eastern = isEastern();
+  return [
+    { icon:'cross', color:'var(--wine)', title:'Welcome to Sanctify',
+      text:'A Catholic home for prayer, the saints, Scripture, and two thousand years of the Church’s history. It’s free, with no ads, and you don’t need an account to read or pray.' },
+    { icon:'daily', color:'var(--gold)', title:'Each day',
+      text:'Today brings a saint, a prayer, and a verse for the day. The Calendar shows every feast and season in the calendar of your edition.' },
+    { icon:'prayer', color:'var(--rose)', title:'Pray',
+      text:eastern
+        ? 'Prayers for every day, the Jesus Prayer on a prayer rope, the Akathist and the Paraklesis, and a tracker to help you keep a rule of prayer.'
+        : 'Prayers on illustrated cards, the Rosary, the Stations of the Cross, chaplets, and the Examen, with a tracker to help you pray every day.' },
+    { icon:'saint', color:'var(--indigo)', title:'Read and learn',
+      text:'More than 800 saints, the Bible and the Catechism, classic books, the Mass explained part by part, and the history of the Church. Tap ☆ Save on anything to keep it in My Sanctify.' },
+    { icon:'community', color:'var(--teal)', title:'The Community',
+      text:'Ask for prayers, ask questions, and write in the Community Wiki. A free account takes a few seconds, with no email address needed.' },
+    { icon:'gear', color:'var(--purple)', title:'Make it yours',
+      text:'Choose your edition (Roman, Traditional Latin, or Eastern Catholic), your language, and one of more than a hundred themes. You can change them any time in Settings.',
+      actions:[['Choose an edition', 'edition'], ['Language and Settings', 'settings'], ['Pick a theme', 'theme']] }
+  ];
+}
+function openTour(){
+  closeTour();
+  store.set('tour', 1);
+  store.set('release', SANCTIFY_VERSION);   // a first visit doesn't need the What's new notice too
+  document.querySelectorAll('.release-banner').forEach(b => b.remove());
+  let step = 0;
+  const box = document.createElement('div');
+  box.className = 'rite-picker';
+  box.id = 'tourBox';
+  document.body.appendChild(box);
+  const draw = () => {
+    const steps = tourSteps(), st = steps[step], last = step === steps.length - 1;
+    box.innerHTML = `
+      <div class="rp-card tour-card" role="dialog" aria-modal="true" aria-labelledby="tourTitle" style="--tile-color:${st.color}">
+        <span class="tour-icon">${navIcon(st.icon)}</span>
+        <h2 id="tourTitle">${st.title}</h2>
+        <p class="rp-intro">${st.text}</p>
+        ${st.actions ? `<div class="tour-actions">${st.actions.map(([label, act]) => `<button class="btn quiet" type="button" data-tour-act="${act}">${label}</button>`).join('')}</div>` : ''}
+        <div class="tour-dots" aria-hidden="true">${steps.map((x, i) => `<span class="${i === step ? 'on' : ''}"></span>`).join('')}</div>
+        <p class="sr-only">${step + 1} / ${steps.length}</p>
+        <div class="tour-nav">
+          ${step ? '<button class="btn quiet" type="button" data-tour="back">Back</button>' : '<button class="btn quiet" type="button" data-tour="skip">Skip</button>'}
+          <button class="btn primary pill" type="button" data-tour="${last ? 'done' : 'next'}">${last ? 'Start exploring' : 'Next'}</button>
+        </div>
+      </div>`;
+    box.querySelector('[data-tour="' + (last ? 'done' : 'next') + '"]').focus();
+  };
+  box.addEventListener('click', ev => {
+    const nav = ev.target.closest('[data-tour]'), act = ev.target.closest('[data-tour-act]');
+    if(nav){
+      const k = nav.dataset.tour;
+      if(k === 'next'){ step++; draw(); }
+      else if(k === 'back'){ step--; draw(); }
+      else closeTour();
+    } else if(act){
+      closeTour();
+      if(act.dataset.tourAct === 'edition') openRitePicker();
+      else if(act.dataset.tourAct === 'settings') navigate('settings');
+      else setThemeMenuOpen(true);
+    } else if(ev.target === box) closeTour();
+  });
+  draw();
+}
+function closeTour(){ const box = document.getElementById('tourBox'); if(box) box.remove(); }
+document.addEventListener('keydown', ev => {
+  const box = document.getElementById('tourBox');
+  if(!box) return;
+  if(ev.key === 'Escape') closeTour();
+  else if(ev.key === 'ArrowRight'){ const b = box.querySelector('[data-tour="next"]'); if(b) b.click(); }
+  else if(ev.key === 'ArrowLeft'){ const b = box.querySelector('[data-tour="back"]'); if(b) b.click(); }
+});
+
 function renderHome(){
   entryListEl.innerHTML = '';
   const d = startOfToday();
@@ -17596,6 +17985,7 @@ function renderHome(){
   const hour = new Date().getHours();
   const greeting = hour < 5 ? 'Peace be with you' : hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
   const newcomer = !store.get('recent', []).length && !Object.keys(trackerLog()).length;
+  if(newcomer && !store.get('tour', 0) && !store.get('release', '')) setTimeout(() => { if(currentRoute === 'home') openTour(); }, 700);
   const pillar = (icon, color, title, text, route) => `
     <button class="pillar" data-route="${route}" style="--tile-color:${color}">
       <span class="pillar-icon">${navIcon(icon)}</span>
@@ -17790,6 +18180,8 @@ const ROUTES = {
   'account':                     { cat:'account' },
   'settings':                    { cat:'settings' },
   'credits':                     { cat:'credits' },
+  'privacy':                     { cat:'privacy' },
+  'terms':                       { cat:'terms' },
   'account/badges':              { cat:'badges', parent:'account' },
   'pray':                        { cat:'hub-pray' },
   'pray/prayers':                { cat:'prayer', parent:'pray' },
@@ -19105,12 +19497,14 @@ function renderSettings(){
         <div class="settings-sub">What’s new in ${SANCTIFY_VERSION}</div>
         <ul class="settings-news">${RELEASE_NOTES().map(n => `<li>${escapeHtml(n)}</li>`).join('')}</ul>
         <p class="forum-meta">Free, without ads, for the greater glory of God.</p>
+        <div class="forum-form-actions"><button class="btn quiet" type="button" data-route="credits">Credits</button><button class="btn quiet" type="button" data-route="privacy">Privacy</button><button class="btn quiet" type="button" data-route="terms">Terms of Use</button><button class="btn quiet" type="button" data-feedback>Report a problem</button><button class="btn quiet" type="button" data-tour-open>Take the tour</button></div>
       </section>
     </div>`;
   store.set('release', SANCTIFY_VERSION);
   const root = entryListEl;
   root.querySelectorAll('[data-set-lang]').forEach(b => b.addEventListener('click', () => { if(b.getAttribute('aria-pressed') !== 'true') setUiLanguage(b.dataset.setLang); }));
   root.querySelector('[data-more-langs]').addEventListener('click', openLanguagePicker);
+  root.querySelector('[data-tour-open]').addEventListener('click', openTour);
   root.querySelectorAll('[data-set-rite]').forEach(b => b.addEventListener('click', () => { setRite(b.dataset.setRite); renderSettings(); }));
   root.querySelector('[data-open-themes]').addEventListener('click', ev => { ev.stopPropagation(); setThemeMenuOpen(true); });
   root.querySelector('#setShine').addEventListener('click', () => { try{ localStorage.setItem('sanctify.shine', shineWanted() ? '0' : '1'); }catch(e){} applyShine(); renderSettings(); });

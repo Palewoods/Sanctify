@@ -237,6 +237,22 @@ const SCHEMA = [
      user_id INTEGER PRIMARY KEY,
      ids TEXT NOT NULL,
      updated_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS reset_codes (
+     user_id INTEGER PRIMARY KEY,
+     code_hash TEXT NOT NULL,
+     expires_at INTEGER NOT NULL,
+     by_user INTEGER,
+     created_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS feedback (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     user_id INTEGER,
+     kind TEXT NOT NULL,
+     message TEXT NOT NULL,
+     page TEXT NOT NULL DEFAULT '',
+     contact TEXT NOT NULL DEFAULT '',
+     status TEXT NOT NULL DEFAULT 'open',
+     created_at INTEGER NOT NULL)`,
+  `CREATE INDEX IF NOT EXISTS feedback_open ON feedback (status, created_at DESC)`,
   `CREATE TABLE IF NOT EXISTS limits (
      key TEXT PRIMARY KEY,
      count INTEGER NOT NULL,
@@ -307,6 +323,10 @@ export async function onRequest({ request, env }){
     if(path === 'login' && method === 'POST') return await login(ctx);
     if(path === 'logout' && method === 'POST') return await logout(ctx);
     if(path === 'account' && method === 'DELETE') return await deleteAccount(ctx);
+    if(path === 'account/password' && method === 'PUT') return await changePassword(ctx);
+    if(path === 'account/export' && method === 'GET') return await exportAccount(ctx);
+    if(path === 'reset' && method === 'POST') return await resetPassword(ctx);
+    if(path === 'feedback' && method === 'POST') return await sendFeedback(ctx);
     if(path === 'moderator') throw new HttpError(410, 'Moderators are now chosen by the site administrators, so there’s no password to enter.');
     if(path.startsWith('mod/')) return await modRoute(ctx, path.slice(4), method);
     if((m = path.match(/^(posts|replies)\/(\d+)\/report$/)) && method === 'POST') return await report(ctx, m[1] === 'posts' ? 'post' : 'reply', Number(m[2]));
@@ -414,6 +434,16 @@ async function deleteAccount(ctx){
   const row = await ctx.db.prepare('SELECT pass_hash, salt FROM users WHERE id = ?').bind(user.id).first();
   if(!row || !sameHash(await hashPassword(String(password || ''), row.salt), row.pass_hash)) throw new HttpError(401, 'That password isn’t right.');
   await ctx.db.batch([
+    ctx.db.prepare('UPDATE posts SET prayer_count = MAX(0, prayer_count - 1) WHERE id IN (SELECT post_id FROM prayers WHERE user_id = ?)').bind(user.id),
+    ctx.db.prepare('DELETE FROM prayers WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('DELETE FROM notify_seen WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('DELETE FROM earned_badges WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('DELETE FROM user_badges WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('DELETE FROM mutes WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('DELETE FROM warnings WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('DELETE FROM mod_notes WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('DELETE FROM reset_codes WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('UPDATE feedback SET user_id = NULL WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM roles WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM favorites WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(user.id),
@@ -423,6 +453,109 @@ async function deleteAccount(ctx){
     ctx.db.prepare('DELETE FROM users WHERE id = ?').bind(user.id)
   ]);
   return json({ ok:true }, 200, { 'Set-Cookie':clearCookie() });
+}
+
+// A new password for the signed-in member; other devices are signed out, this one stays signed in
+async function changePassword(ctx){
+  const user = requireUser(ctx);
+  const { current, password } = await readBody(ctx);
+  await limit(ctx, 'password:' + user.id, 10, 15 * 60 * 1000, 'Too many tries. Please wait a few minutes and try again.');
+  const row = await ctx.db.prepare('SELECT pass_hash, salt FROM users WHERE id = ?').bind(user.id).first();
+  if(!row || !sameHash(await hashPassword(String(current || ''), row.salt), row.pass_hash)) throw new HttpError(401, 'Your current password isn’t right.');
+  checkPassword(password);
+  const salt = toHex(crypto.getRandomValues(new Uint8Array(16)));
+  await ctx.db.batch([
+    ctx.db.prepare('UPDATE users SET pass_hash = ?, salt = ? WHERE id = ?').bind(await hashPassword(password, salt), salt, user.id),
+    ctx.db.prepare('DELETE FROM sessions WHERE user_id = ? AND token_hash != ?').bind(user.id, ctx.tokenHash || ''),
+    ctx.db.prepare('DELETE FROM reset_codes WHERE user_id = ?').bind(user.id)
+  ]);
+  return json({ ok:true });
+}
+
+/* ---------- Reset codes ----------
+   Sanctify never asks for an email address, so a member who forgets their password asks a site
+   administrator, who makes a one-time code here and passes it along privately. Only its hash is kept. */
+const RESET_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';   // no 0/O or 1/I to mix up
+const RESET_HOURS = 48;
+function normalizeCode(code){ return String(code || '').toUpperCase().replace(/[^A-Z0-9]/g, ''); }
+
+async function makeResetCode(ctx, id){
+  const me = requireUser(ctx);
+  if(!me.site) throw new HttpError(403, 'Only the site administrators can make reset codes.');
+  const target = await ctx.db.prepare('SELECT id, username FROM users WHERE id = ?').bind(id).first();
+  if(!target) throw new HttpError(404, 'That account doesn’t exist.');
+  const bytes = crypto.getRandomValues(new Uint8Array(12));
+  const raw = Array.from(bytes, b => RESET_ALPHABET[b % RESET_ALPHABET.length]).join('');
+  const expires = ctx.now + RESET_HOURS * 60 * 60 * 1000;
+  await ctx.db.prepare(`INSERT INTO reset_codes (user_id, code_hash, expires_at, by_user, created_at) VALUES (?, ?, ?, ?, ?)
+      ON CONFLICT(user_id) DO UPDATE SET code_hash = excluded.code_hash, expires_at = excluded.expires_at, by_user = excluded.by_user, created_at = excluded.created_at`)
+    .bind(id, await sha256('reset:' + raw), expires, me.id, ctx.now).run();
+  await logMod(ctx, 'reset-code', target.username, '');
+  return json({ code:raw.match(/.{4}/g).join('-'), expiresAt:expires });
+}
+
+async function resetPassword(ctx){
+  const { username, code, password } = await readBody(ctx);
+  const name = String(username || '').trim();
+  await limit(ctx, 'reset:' + await ipKey(ctx), 10, 15 * 60 * 1000, 'Too many tries. Please wait a few minutes and try again.');
+  await limit(ctx, 'reset-user:' + name.toLowerCase(), 5, 15 * 60 * 1000, 'Too many tries for this account. Please wait a few minutes and try again.');
+  const row = name ? await ctx.db.prepare('SELECT u.id, u.username, u.created_at, c.code_hash, c.expires_at FROM users u JOIN reset_codes c ON c.user_id = u.id WHERE u.username = ?').bind(name).first() : null;
+  const hash = await sha256('reset:' + normalizeCode(code));
+  if(!row || row.expires_at < ctx.now || !sameHash(hash, row.code_hash)) throw new HttpError(401, 'That reset code isn’t right, or it has run out. Please ask a site administrator for a new one.');
+  checkPassword(password);
+  const ban = await ctx.db.prepare('SELECT reason, until FROM bans WHERE user_id = ? AND (until IS NULL OR until > ?)').bind(row.id, ctx.now).first();
+  if(ban) throw new HttpError(403, banMessage(ban));
+  const salt = toHex(crypto.getRandomValues(new Uint8Array(16)));
+  await ctx.db.batch([
+    ctx.db.prepare('UPDATE users SET pass_hash = ?, salt = ? WHERE id = ?').bind(await hashPassword(password, salt), salt, row.id),
+    ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(row.id),
+    ctx.db.prepare('DELETE FROM reset_codes WHERE user_id = ?').bind(row.id)
+  ]);
+  const user = await ctx.db.prepare('SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, r.role FROM users u LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN roles r ON r.user_id = u.id WHERE u.id = ?').bind(row.id).first();
+  return json({ user:publicUser(withRole(ctx, user)) }, 200, { 'Set-Cookie':await startSession(ctx, row.id) });
+}
+
+// Everything the Community keeps about the signed-in member, as one file. Moderators' private notes stay out.
+async function exportAccount(ctx){
+  const user = requireUser(ctx);
+  await limit(ctx, 'export:' + user.id, 5, 60 * 60 * 1000, 'You’ve downloaded your data a few times already. Please try again in an hour.');
+  const all = async (sql) => (await ctx.db.prepare(sql).bind(user.id).all()).results || [];
+  const one = async (sql) => await ctx.db.prepare(sql).bind(user.id).first();
+  const when = t => t ? new Date(t).toISOString() : null;
+  const account = await one('SELECT username, created_at FROM users WHERE id = ?');
+  const profile = await one('SELECT bio FROM profiles WHERE user_id = ?');
+  const avatar = await one('SELECT mime, data FROM avatars WHERE user_id = ?');
+  const banner = await one('SELECT preset, mime, data FROM banners WHERE user_id = ?');
+  const fav = await one('SELECT ids FROM favorites WHERE user_id = ?');
+  const data = {
+    exported: when(ctx.now),
+    site: 'Sanctify Community',
+    account: { username:account.username, joined:when(account.created_at), moderator:user.role === 'moderator', siteAdministrator:!!user.site },
+    profile: {
+      description: profile ? profile.bio : '',
+      picture: avatar ? `data:${avatar.mime};base64,${avatar.data}` : null,
+      banner: banner ? (banner.preset || `data:${banner.mime};base64,${banner.data}`) : null,
+      savedShownOnProfile: (fav && readFavorites(fav.ids)) || []
+    },
+    posts: (await all('SELECT id, category, title, body, created_at FROM posts WHERE user_id = ? AND deleted = 0 ORDER BY id'))
+      .map(p => ({ id:p.id, category:p.category, title:p.title, body:p.body, posted:when(p.created_at) })),
+    replies: (await all('SELECT r.id, r.post_id, p.title, r.body, r.created_at FROM replies r LEFT JOIN posts p ON p.id = r.post_id WHERE r.user_id = ? AND r.deleted = 0 ORDER BY r.id'))
+      .map(r => ({ id:r.id, post:r.post_id, postTitle:r.title, body:r.body, posted:when(r.created_at) })),
+    prayedFor: (await all('SELECT p.id, p.title FROM prayers x JOIN posts p ON p.id = x.post_id WHERE x.user_id = ? ORDER BY p.id'))
+      .map(p => ({ post:p.id, title:p.title })),
+    wikiEdits: (await all('SELECT w.id, p.title AS page, w.title, w.summary, w.body, w.created_at FROM wiki_revisions w LEFT JOIN wiki_pages p ON p.id = w.page_id WHERE w.user_id = ? ORDER BY w.id'))
+      .map(w => ({ revision:w.id, page:w.page, title:w.title, summary:w.summary, text:w.body, saved:when(w.created_at) })),
+    badges: [
+      ...(await all('SELECT badge, earned_at FROM earned_badges WHERE user_id = ? ORDER BY earned_at')).map(b => ({ badge:b.badge, earned:when(b.earned_at) })),
+      ...(await all('SELECT label, created_at FROM user_badges WHERE user_id = ? ORDER BY created_at')).map(b => ({ badge:b.label, given:when(b.created_at) }))
+    ],
+    warnings: (await all('SELECT message, created_at FROM warnings WHERE user_id = ? ORDER BY id')).map(w => ({ message:w.message, given:when(w.created_at) })),
+    reportsYouMade: (await all('SELECT kind, target_id, reason, status, created_at FROM reports WHERE reporter_id = ? ORDER BY id'))
+      .map(r => ({ kind:r.kind, id:r.target_id, reason:r.reason, status:r.status, made:when(r.created_at) })),
+    notesYouSent: (await all('SELECT kind, message, page, contact, status, created_at FROM feedback WHERE user_id = ? ORDER BY id'))
+      .map(f => ({ kind:f.kind, message:f.message, page:f.page, contact:f.contact, status:f.status, sent:when(f.created_at) }))
+  };
+  return json(data, 200, { 'Content-Disposition':`attachment; filename="sanctify-${account.username}.json"` });
 }
 
 /* ---------- Profile pictures ---------- */
@@ -1168,6 +1301,8 @@ async function modRoute(ctx, sub, method){
   if((m = sub.match(/^wiki\/([a-z0-9-]{1,80})\/lock$/)) && method === 'POST') return await lockWikiPage(ctx, m[1]);
   if((m = sub.match(/^wiki\/([a-z0-9-]{1,80})$/)) && method === 'DELETE') return await deleteWikiPage(ctx, m[1]);
   if(sub === 'reports' && method === 'GET') return await modReports(ctx);
+  if(sub === 'feedback' && method === 'GET') return await listFeedback(ctx);
+  if((m = sub.match(/^feedback\/(\d+)$/)) && method === 'DELETE') return await closeFeedback(ctx, Number(m[1]));
   if((m = sub.match(/^reports\/(\d+)$/)) && method === 'DELETE') return await dismissReport(ctx, Number(m[1]));
   if(sub === 'log' && method === 'GET') return await modLogList(ctx);
   if((m = sub.match(/^users\/(\d+)\/mute$/))){
@@ -1178,6 +1313,7 @@ async function modRoute(ctx, sub, method){
   if((m = sub.match(/^users\/(\d+)\/notes$/)) && method === 'POST') return await addNote(ctx, Number(m[1]));
   if((m = sub.match(/^notes\/(\d+)$/)) && method === 'DELETE') return await deleteNote(ctx, Number(m[1]));
   if((m = sub.match(/^users\/(\d+)\/role$/)) && method === 'PUT') return await setRole(ctx, Number(m[1]));
+  if((m = sub.match(/^users\/(\d+)\/reset-code$/)) && method === 'POST') return await makeResetCode(ctx, Number(m[1]));
   if((m = sub.match(/^users\/(\d+)\/badges$/)) && method === 'POST') return await giveBadge(ctx, Number(m[1]));
   if((m = sub.match(/^users\/(\d+)\/badges\/([a-z0-9-]{1,40})$/)) && method === 'DELETE') return await takeBadge(ctx, Number(m[1]), m[2]);
   if(sub === 'settings' && method === 'GET') return await getSettings(ctx);
@@ -1290,6 +1426,7 @@ async function modOverview(ctx){
     posts:await n('SELECT COUNT(*) AS n FROM posts WHERE deleted = 0'),
     replies:await n('SELECT COUNT(*) AS n FROM replies WHERE deleted = 0'),
     reports:await n(`SELECT COUNT(*) AS n FROM reports WHERE status = 'open'`),
+    feedback:await n(`SELECT COUNT(*) AS n FROM feedback WHERE status = 'open'`),
     banned:await n('SELECT COUNT(*) AS n FROM bans WHERE until IS NULL OR until > ?'),
     muted:await n('SELECT COUNT(*) AS n FROM mutes WHERE until IS NULL OR until > ?'),
     readonly:await setting(ctx, 'readonly') === '1',
@@ -1455,6 +1592,39 @@ async function dismissReport(ctx, id){
   if(!r) throw new HttpError(404, 'That report has already been handled.');
   await ctx.db.prepare(`UPDATE reports SET status = 'dismissed' WHERE status = 'open' AND kind = ? AND target_id = ?`).bind(r.kind, r.target_id).run();
   await logMod(ctx, 'dismiss-report', r.kind + ' ' + r.target_id, '');
+  return json({ ok:true });
+}
+
+/* ---------- Report a problem ----------
+   Anyone can send a note to the moderators, signed in or not: a mistake on a page, a translation that reads
+   oddly, an idea, or a request for a password reset code. */
+const FEEDBACK_KINDS = ['problem', 'translation', 'idea', 'account', 'other'];
+async function sendFeedback(ctx){
+  const data = await readBody(ctx, 6000);
+  const kind = FEEDBACK_KINDS.includes(data.kind) ? data.kind : 'other';
+  const message = cleanText(data.message);
+  if(message.length < 10) throw new HttpError(400, 'Please tell us a little more (at least 10 characters).');
+  if(message.length > 2000) throw new HttpError(400, 'Notes can be up to 2,000 characters.');
+  await limit(ctx, 'feedback:' + await ipKey(ctx), 6, 60 * 60 * 1000, 'You’ve sent several notes already. Thank you! Please try again in an hour.');
+  await ctx.db.prepare('INSERT INTO feedback (user_id, kind, message, page, contact, created_at) VALUES (?, ?, ?, ?, ?, ?)')
+    .bind(ctx.user ? ctx.user.id : null, kind, message, cleanLine(data.page).slice(0, 200), cleanLine(data.contact).slice(0, 120), ctx.now).run();
+  return json({ ok:true }, 201);
+}
+
+async function listFeedback(ctx){
+  const { results } = await ctx.db.prepare(
+    `SELECT f.id, f.kind, f.message, f.page, f.contact, f.created_at, u.username, a.updated_at AS avatar_v
+     FROM feedback f LEFT JOIN users u ON u.id = f.user_id LEFT JOIN avatars a ON a.user_id = f.user_id
+     WHERE f.status = 'open' ORDER BY f.created_at DESC LIMIT 100`).all();
+  return json({ feedback:results.map(r => ({ id:r.id, kind:r.kind, message:r.message, page:r.page, contact:r.contact, createdAt:r.created_at,
+    by:r.username ? { username:r.username, avatar:r.avatar_v || null } : null })) });
+}
+
+async function closeFeedback(ctx, id){
+  const r = await ctx.db.prepare(`SELECT kind FROM feedback WHERE id = ? AND status = 'open'`).bind(id).first();
+  if(!r) throw new HttpError(404, 'That note has already been handled.');
+  await ctx.db.prepare(`UPDATE feedback SET status = 'done' WHERE id = ?`).bind(id).run();
+  await logMod(ctx, 'close-feedback', 'note ' + id, r.kind);
   return json({ ok:true });
 }
 
