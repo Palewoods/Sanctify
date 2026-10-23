@@ -16325,12 +16325,24 @@ function applyRite(){
   Object.keys(guidedState).forEach(k => { guidedState[k] = null; });
 }
 
-// The favicon wears the chosen theme: its page color for the tile, its gold for the edge, its accent for the cross
-// (the Liturgical Season themes' accent follows the season, so their cross does too)
+// The favicon is the edition's cross on a parchment tile, in the color of today's liturgical season
+// (violet in Advent and Lent, rose on Gaudete and Laetare, black on Good Friday in the 1962 calendar,
+// blue in the Dormition Fast, and so on). In Settings it can wear the chosen theme's colors instead.
+const SEASON_ICON_COLORS = { green:'#3e6b3a', violet:'#5b3f86', purple:'#5b3f86', white:'#94701a', gold:'#94701a',
+  rose:'#b04a73', red:'#9b1c1f', black:'#2a2118', dark:'#3b2c4d', blue:'#2f5597' };
+function seasonIconColor(){
+  try{
+    const name = String(liturgicalSeason(startOfToday()).colorName || '');
+    // "white and red" (the Triduum) shows red; "gold or white", "purple or dark", and the like show the first color
+    return SEASON_ICON_COLORS[name === 'white and red' ? 'red' : name.split(' ')[0]] || SEASON_ICON_COLORS.green;
+  }catch(e){ return SEASON_ICON_COLORS.green; }
+}
 function setSeasonFavicon(){
   const css = getComputedStyle(document.documentElement);
   const v = (name, fallback) => (css.getPropertyValue(name) || '').trim() || fallback;
-  const tile = v('--parchment-light', '#f6f0dc'), edge = v('--gold', '#a6824a'), color = v('--wine', '#7a2426');
+  const byTheme = store.get('tabIcon', 'season') === 'theme';
+  const tile = byTheme ? v('--parchment-light', '#f6f0dc') : '#f6f0dc', edge = byTheme ? v('--gold', '#a6824a') : '#a6824a';
+  const color = byTheme ? v('--wine', '#7a2426') : seasonIconColor();
   const path = crossPath();
   const svg = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
   if(svg) svg.setAttribute('href', 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="2" y="2" width="60" height="60" rx="13" fill="${tile}" stroke="${edge}" stroke-width="2.5"/><path fill="${color}" fill-rule="evenodd" transform="translate(32 32) scale(0.86) translate(-32 -32)" d="${path}"/></svg>`));
@@ -19472,11 +19484,12 @@ function renderSettings(){
       <section class="settings-card">
         <h3>${navIcon('palette')}Appearance</h3>
         <div class="settings-theme"><span class="theme-swatch" style="--sw-bg:${theme.swatch[0]}; --sw-accent:${theme.swatch[1]}"></span>
-          <span><small>Current theme</small><strong class="notranslate" translate="no">${escapeHtml(theme.name)}</strong></span>
+          <span><small>Current theme</small><strong>${escapeHtml(theme.name)}</strong></span>
           <button class="btn quiet" type="button" data-open-themes>Choose a theme</button></div>
         ${switchRow('setShine', 'Gold shine', gold ? 'A metallic sheen on titles and cards, on themes with gold in them.' : 'Only on themes marked ✦', gold && shineWanted(), !gold)}
         ${switchRow('setGlow', 'Background glow', 'A soft light behind pages and banners.', glowWanted(), false)}
         ${switchRow('setMotion', 'Reduce motion', 'Pages appear without sliding or fading in.', motion, false)}
+        ${switchRow('setTabIcon', 'Seasonal tab icon', 'The cross on the browser tab takes the color of the liturgical season. Off, it takes your theme’s colors.', store.get('tabIcon', 'season') !== 'theme', false)}
         <div class="settings-sub">Text size</div>
         <div class="settings-choices">${TEXT_SIZES.map(([k, l, name], i) => `<button class="settings-choice textsize-choice" type="button" data-set-size="${k}" aria-pressed="${size === k}" aria-label="${name}" style="font-size:${0.85 + i * 0.2}rem">${l}</button>`).join('')}</div>
       </section>
@@ -19513,6 +19526,11 @@ function renderSettings(){
     const on = store.get('motion', '') !== 'reduced';
     store.set('motion', on ? 'reduced' : '');
     if(on) document.documentElement.setAttribute('data-motion', 'reduced'); else document.documentElement.removeAttribute('data-motion');
+    renderSettings();
+  });
+  root.querySelector('#setTabIcon').addEventListener('click', () => {
+    store.set('tabIcon', store.get('tabIcon', 'season') === 'theme' ? 'season' : 'theme');
+    setSeasonFavicon();
     renderSettings();
   });
   root.querySelectorAll('[data-set-size]').forEach(b => b.addEventListener('click', () => { store.set('textsize', b.dataset.setSize); applyTextSize(b.dataset.setSize); renderSettings(); }));
