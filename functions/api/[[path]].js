@@ -251,8 +251,8 @@ class HttpError extends Error {
    Invites can expire, so every Discord link on the site comes here instead. With the server's widget
    switched on (Server Settings → Widget, with an invite channel chosen), Discord keeps a working invite
    in the widget's data, and we send people to it. Without it, they go to DISCORD_INVITE. */
-const DISCORD_SERVER_ID = '';
-const DISCORD_INVITE = 'https://discord.gg/QAcdHxc4';
+const DISCORD_SERVER_ID = '1552865357860184195';
+const DISCORD_INVITE = 'https://discord.gg/9a4Y9QvxRS';
 const DISCORD_CACHE = 'https://sanctify.pages.dev/api/discord?cached';
 
 async function discordInvite(){
@@ -263,11 +263,9 @@ async function discordInvite(){
     try{
       const res = await fetch(`https://discord.com/api/guilds/${DISCORD_SERVER_ID}/widget.json`);
       const data = res.ok ? await res.json() : null;
-      if(data && /^https:\/\/discord\.(com|gg)\//.test(data.instant_invite || '')){
-        invite = data.instant_invite;
-        // Asked again at most every ten minutes, so a busy day doesn't run into Discord's rate limits
-        if(cache) await cache.put(DISCORD_CACHE, new Response(invite, { headers:{ 'Cache-Control':'max-age=600' } }));
-      }
+      invite = data && /^https:\/\/discord\.(com|gg)\//.test(data.instant_invite || '') ? data.instant_invite : DISCORD_INVITE;
+      // Asked again at most every ten minutes, so a busy day doesn't run into Discord's rate limits
+      if(cache) await cache.put(DISCORD_CACHE, new Response(invite, { headers:{ 'Cache-Control':'max-age=600' } }));
     }catch(err){ console.error('Discord widget', err); }
   }
   return new Response(null, { status:302, headers:{ Location:invite || DISCORD_INVITE, 'Cache-Control':'no-store' } });
