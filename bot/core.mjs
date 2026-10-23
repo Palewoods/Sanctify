@@ -1,10 +1,10 @@
-// Builds Sanctify's daily Discord post from the website's own code and data (index.html),
+// Builds Sanctify's daily Discord post from the website's own code and data (app/data.js and app/app.js),
 // so the server always shows the same saint, verse, and feasts as sanctify.pages.dev/#/today.
 // Works in Node (bot/daily.mjs) and in a browser.
 
 const SITE = 'https://sanctify.pages.dev';
 
-// Top-level declarations copied out of index.html, in an order where each only uses earlier ones
+// Top-level declarations copied out of the site's code, in an order where each only uses earlier ones
 const NEEDED = [
   'MONTH_NAMES', 'SEED_DATA', 'CALENDAR_DATA', 'SAINT_PATRONS', 'WEEKDAY_NAMES', 'CAL_TYPE_RANK', 'excerptOf',
   'addDays', 'sameDay', 'easterCache', 'easterDate', 'adventStart', 'baptismOfLord', 'holyFamily', 'fromEaster',
@@ -32,7 +32,7 @@ function extract(html){
   const parts = ['const isEastern = () => false;', 'const isTraditional = () => false;'];
   for(const name of NEEDED){
     const i = find(new RegExp(`^(const|let|function) ${name}\\b`));
-    if(i < 0) throw new Error('Could not find ' + name + ' in index.html');
+    if(i < 0) throw new Error('Could not find ' + name + ' in the site’s code');
     parts.push(statementAt(lines, i));
     if(name === 'SEED_DATA') parts.push('const library = SEED_DATA;');
     if(name === 'SAINT_PATRONS') parts.push("SEED_DATA.forEach(e => { if(SAINT_PATRONS[e.id]) e.patron = SAINT_PATRONS[e.id]; });");

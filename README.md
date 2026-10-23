@@ -43,12 +43,13 @@ Sanctify is translated by hand into Spanish, Polish, French, Portuguese, Italian
 
 ## How it’s built
 
-- `index.html`: the whole site, a single-page app with no build step.
-- `data/`: the hymns, the Akathist, and the Little Office, plus the book texts.
+- `index.html`: the page itself, a single-page app with no build step.
+- `app/`: the site's stylesheet (`style.css`), library of prayers, saints, books, and teachings (`data.js`), and code (`app.js`). After changing any of them, or a file in `lang/`, run `python tools/stamp.py` so browsers fetch the new version.
+- `data/`: the hymns, the Akathist, and the Little Office, plus the long texts of saints, books, and history entries (`data/texts/`, kept up to date by `python tools/slim_texts.py`).
 - `lang/`: the hand translations, one file per language.
 - `bible/`, `books/`, `catechism/`: pages for reading the Bible, books, and Catechism.
 - `functions/api/`: a Cloudflare Pages Function that serves the community forum, accounts, and badges, backed by a Cloudflare D1 database.
-- `sw.js`: the service worker that lets the site work offline. Bump its `VERSION` when anything in `data/` changes.
+- `sw.js`: the service worker that lets the site work offline, and keeps everything a reader saves with Settings → Offline. Bump its `VERSION` when an icon or a file in `data/` (outside `data/texts/`) changes; the files in `app/` and `lang/` carry fingerprints and replace their old versions by themselves.
 - `bot/`: the daily Discord post (see [bot/README.md](bot/README.md)).
 - `tools/`: maintenance scripts.
 

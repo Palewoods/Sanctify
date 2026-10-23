@@ -1,0 +1,10 @@
+# Cloudflare Pages response headers.
+# The site's own files carry a fingerprint of their contents in their address (index.html links app/app.js?v=…,
+# tools/stamp.py keeps it current) or in their name (data/texts/saint-3.1a2b3c4d.json), so a browser can keep
+# them for good: a changed file always arrives under a new address.
+/app/*
+  Cache-Control: public, max-age=31536000, immutable
+/lang/*
+  Cache-Control: public, max-age=31536000, immutable
+/data/texts/*
+  Cache-Control: public, max-age=31536000, immutable

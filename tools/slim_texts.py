@@ -1,4 +1,4 @@
-"""Keeps index.html light: moves the long texts of saints (life and prayer), books, and history entries
+"""Keeps the library (app/data.js) light: moves the long texts of saints (life and prayer), books, and history entries
 into data/texts/*.json, leaving a short preview in the page. The site loads a file of about forty entries
 only when one of them is opened (or when searching), and the service worker keeps it on the device.
 
@@ -10,7 +10,7 @@ moved keep their text, and the files are rebuilt with new content-hashed names.
 import hashlib, json, os, re, sys
 sys.stdout.reconfigure(encoding='utf-8')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-INDEX = os.path.join(ROOT, 'index.html')
+INDEX = os.path.join(ROOT, 'app', 'data.js')
 OUT = os.path.join(ROOT, 'data', 'texts')
 CATS = ('saint', 'book', 'history')
 PREVIEW = 200      # long enough for every excerpt shown before an entry is opened (lists and cards show at most 200 characters)

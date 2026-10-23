@@ -1,3 +1,5 @@
 bible/** text eol=lf
 books/** text eol=lf
 data/** text eol=lf
+app/** text eol=lf
+lang/** text eol=lf

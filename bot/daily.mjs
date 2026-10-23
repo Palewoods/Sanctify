@@ -12,7 +12,8 @@ const given = args.find(a => /^\d{4}-\d{2}-\d{2}$/.test(a));
 const now = given ? new Date(given + 'T12:00:00') : new Date();
 const day = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+// The site's library and code (index.html loads app/data.js, then app/app.js)
+const html = (await readFile(new URL('../app/data.js', import.meta.url), 'utf8')) + '\n' + (await readFile(new URL('../app/app.js', import.meta.url), 'utf8'));
 // Saints' lives and prayers live in data/texts/ (see tools/slim_texts.py)
 const textsDir = new URL('../data/texts/', import.meta.url);
 const texts = {};
