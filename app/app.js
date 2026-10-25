@@ -12676,12 +12676,22 @@ const I18N_PATTERNS = I18N ? Object.entries(I18N.strings).filter(([k]) => /\{[n*
     const re = new RegExp('^' + k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\\\{n\\\}/g, '([0-9][0-9.,\u00a0]*)').replace(/\\\{\\\*\\\}/g, '(.+?)') + '$');
     return [re, v, kinds];
   }) : [];
+// "John 3:16" becomes "Juan 3:16", "J 3,16" or "Ин 3:16"; the verses themselves stay in the RSV-CE
+const REF_RE = /^((?:[1-4] )?[A-Z][a-z]+(?: of (?:Songs|Solomon|Canticles))?) (\d+(?:[:–-][\d:–,\- ]*\d)?)((?: \(RSV-CE\))?)$/;
+function i18nRef(k){
+  const refs = I18N && I18N.refs, m = refs && REF_RE.exec(k);
+  if(!m || !refs.books[m[1]]) return null;
+  const nums = refs.sep === ':' ? m[2] : m[2].replace(/, /g, '.').replace(/:/g, ',');
+  return refs.books[m[1]] + ' ' + nums + m[3];
+}
 function i18n(text){
   if(!I18N) return null;
   const k = text.replace(/\s+/g, ' ').trim();
   if(!k) return null;
   const v = I18N.strings[k];
   if(v !== undefined) return v === k ? null : v;
+  const ref = i18nRef(k);
+  if(ref) return ref;
   for(const [re, tpl, kinds] of I18N_PATTERNS){
     const m = re.exec(k);
     if(!m) continue;

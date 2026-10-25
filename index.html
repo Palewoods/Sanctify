@@ -34,7 +34,7 @@
     var ui = JSON.parse(localStorage.getItem('sanctify.lang') || '"en"');
     if(/^(es|pl|fr|pt|it|de|ru|uk)$/.test(ui) && !/\.translate\.goog$/.test(location.hostname)){
       document.documentElement.lang = ui;
-      document.write('<script src="lang/' + ui + '.js?v=c26f4ae0"><\/script>');
+      document.write('<script src="lang/' + ui + '.js?v=ad9ba00c"><\/script>');
     }
     if(JSON.parse(localStorage.getItem('sanctify.motion') || '""') === 'reduced') document.documentElement.setAttribute('data-motion', 'reduced');
     var t = localStorage.getItem('sanctify.theme');
@@ -59,7 +59,7 @@
   }catch(e){}
 </script>
 <script src="app/data.js?v=6a24f0b7" defer></script>
-<script src="app/app.js?v=77a287bc" defer></script>
+<script src="app/app.js?v=ba91d401" defer></script>
 </head>
 <body>
 
