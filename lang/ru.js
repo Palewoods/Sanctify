@@ -7685,6 +7685,382 @@ window.SANCTIFY_I18N = {
 "2 John": "2 Послание Иоанна",
 "3 John": "3 Послание Иоанна",
 "Jude": "Послание Иуды",
+"{*}: no prayers logged": "{*}: молитв не отмечено",
+"{*}: 1 prayer": "{*}: 1 молитва",
+"{*}: {n} prayers": "{*}: молитв — {n}",
+"Kontakion {n}": "Кондак {n}",
+"Ikos {n}": "Икос {n}",
+"Tone {n}": "Глас {n}",
+"Alleluia!": "Аллилуиа!",
+"Rejoice, O Bride unwedded!": "Радуйся, Невесто Неневестная!",
+"To you, our champion and leader, O Theotokos, I, your city, delivered from terrible things, dedicate songs of victory and thanksgiving. Since your power is invincible, set me free from every kind of danger, so that I may cry out to you: Rejoice, O Bride unwedded!": "Взбранной Воеводе победительная, яко избавльшеся от злых, благодарственная восписуем Ти раби Твои, Богородице; но яко имущая державу непобедимую, от всяких нас бед свободи, да зовем Ти: Радуйся, Невесто Неневестная!",
+"Stand while you pray it, as its name says. After the last Kontakion, it is customary to repeat it three times, then the first Ikos and the first Kontakion.": "Его поют стоя, как и говорит его название. После последнего кондака его по обычаю повторяют трижды, а затем читают первый икос и первый кондак.",
+"The Greek books also give this kontakion of the Annunciation at the beginning of the hymn.": "Греческие книги дают в начале акафиста также этот кондак Благовещения.",
+"Modern English": "Современный английский",
+"With the Greek": "С греческим",
+"Woodward’s verse (1917)": "Стихотворный перевод Вудворда (1917)",
+"Translation": "Перевод",
+"Hours": "Часы",
+"Night or early morning": "Ночью или рано утром",
+"At daybreak": "На рассвете",
+"Early morning": "Рано утром",
+"Mid-morning": "До полудня",
+"Mid-afternoon": "После полудня",
+"Evening": "Вечером",
+"Before the Office": "Перед службой",
+"Before and After the Office": "До и после службы",
+"Prime": "Первый час",
+"Terce": "Третий час",
+"Sext": "Шестой час",
+"None": "Девятый час",
+"Compline →": "Повечерие →",
+"← {*}": "← {*}",
+"{*} →": "{*} →",
+"The Hours of Our Lady: a short form of the Church’s daily prayer, with psalms, hymns, and readings in honor of Mary. Pray one Hour or all of them. It is often prayed by religious, tertiaries, and those who wear the": "Часы Богородицы: краткая форма ежедневной молитвы Церкви, с псалмами, гимнами и чтениями в честь Марии. Молитесь одним Часом или всеми. Их часто читают монашествующие, терциарии и те, кто носит",
+"Brown Scapular": "коричневый скапулярий",
+"The Brown Scapular →": "Коричневый скапулярий →",
+"The Little Office of Our Lady →": "Малый Богородичный оффиций →",
+"Pray the Little Office of Our Lady →": "Молиться Малым Богородичным оффицием →",
+"Pray the Sacred Heart Chaplet →": "Молиться чётками Святейшего Сердца →",
+"Pray the whole Akathist →": "Читать весь акафист →",
+"Prepare for Confession →": "Подготовиться к исповеди →",
+"Find a patron saint →": "Найти святого покровителя →",
+"Holy customs for the home →": "Благочестивые домашние обычаи →",
+"Holy customs →": "Благочестивые обычаи →",
+"Keep a prayer tracker →": "Вести дневник молитвы →",
+"Open the Catechism →": "Открыть Катехизис →",
+"The Mass Explained →": "Месса: объяснение →",
+"Pray it anyway": "Всё равно молиться",
+"Clear all answers": "Очистить все ответы",
+"the Crusades and the military orders": "Крестовые походы и военные ордены",
+"Previous month": "Предыдущий месяц",
+"Next month": "Следующий месяц",
+"Calendar view": "Вид календаря",
+"On this page": "На этой странице",
+"Kinds of hymns": "Виды гимнов",
+"← None": "← Нет",
+"Find": "Найти",
+"Visit site ↗": "Перейти на сайт ↗",
+"Read here": "Читать здесь",
+"Words": "Слова",
+"Recording:": "Запись:",
+"No recording yet.": "Записи пока нет.",
+", via Wikimedia Commons": ", через Викисклад",
+", Public domain, via Wikimedia Commons": ", общественное достояние, через Викисклад",
+", Copyrighted free use, via Wikimedia Commons": ", свободное использование с сохранением авторских прав, через Викисклад",
+"Public Domain": "Общественное достояние",
+"Wikimedia Commons contributor": "Участник Викисклада",
+"Orgelmusik (organ)": "Orgelmusik (орган)",
+"Pracchia-78 (synthesized organ)": "Pracchia-78 (синтезированный орган)",
+"Pracchia-78 (synthesized)": "Pracchia-78 (синтезированная запись)",
+"grosasm (computer performance)": "grosasm (компьютерное исполнение)",
+"Choir of A. A. Arkhangelsky (historic recording)": "Хор А. А. Архангельского (историческая запись)",
+"Marie Rappold and Albert Spalding (Edison cylinder)": "Мари Рапполд и Альберт Сполдинг (валик Эдисона)",
+"Ukrainian National Chorus, conducted by Oleksandr Koshetz": "Украинская национальная капелла под управлением Александра Кошица",
+"Moscow Patriarchal Choir": "Московский патриарший хор",
+"Choir and orchestra of Senftenberg": "Хор и оркестр Зенфтенберга",
+"Church of the Missionary Fathers, Kraków": "Церковь отцов-миссионеров, Краков",
+"Cistercians of Vyšší Brod Monastery": "Цистерцианцы монастыря Вишши-Брод",
+"Schola Gregoriana of the Pallottine Seminary, Ołtarzew": "Григорианская схола паллотинской семинарии в Ольтажеве",
+"Chorus of the U.S. Army Band “Pershing’s Own”": "Хор оркестра армии США «Pershing’s Own»",
+"The Sea Chanters, United States Navy Band": "The Sea Chanters, оркестр ВМС США",
+"The Singing Sergeants, United States Air Force Band": "The Singing Sergeants, оркестр ВВС США",
+"United States Air Force Band of the Golden West": "Оркестр ВВС США «Golden West»",
+"Icons": "Иконы",
+"Catholic goods": "Католические товары",
+"Belief": "Вера",
+"Church Fathers": "Отцы Церкви",
+"Find a paragraph": "Найти параграф",
+"1324, or 1324–1327": "1324 или 1324–1327",
+"The Catechism, part by part": "Катехизис, часть за частью",
+"The Catechism’s text belongs to the Vatican’s publisher, so it stays on the Vatican’s website. Sanctify keeps the whole outline here, and every heading and paragraph number opens the right page there.": "Текст Катехизиса принадлежит ватиканскому издательству, поэтому он остаётся на сайте Ватикана. Sanctify хранит здесь всю структуру, и каждый заголовок и номер параграфа открывает там нужную страницу.",
+"Prologue": "Пролог",
+"Part One: The Profession of Faith": "Часть первая: Исповедание веры",
+"Part Two: The Celebration of the Christian Mystery": "Часть вторая: Празднование христианского таинства",
+"Part Three: Life in Christ": "Часть третья: Жизнь во Христе",
+"Part Four: Christian Prayer": "Часть четвёртая: Христианская молитва",
+"All {n}": "Все ({n})",
+"Advent & Christmas": "Адвент и Рождество",
+"Feasts & Seasons": "Праздники и времена",
+"For the Dead": "За усопших",
+"Lent & Holy Week": "Великий пост и Страстная седмица",
+"Our Lady": "Богородица",
+"The Holy Spirit": "Святой Дух",
+"The Mass": "Месса",
+"The Theotokos": "Богородица",
+"Vespers & Matins": "Вечерня и утреня",
+"CEC refers to the paragraphs of the Catechism of the Catholic Church.": "ККЦ отсылает к параграфам Катехизиса Католической Церкви.",
+"Some Eastern Catholics also keep devotions from the Latin Church, such as the scapular or the Miraculous Medal. You can read about them in the": "Некоторые восточные католики хранят и благочестивые обычаи Латинской Церкви, например скапулярий или Чудотворный медальон. О них можно прочитать в",
+"The Eastern Catholic Churches have their own beautiful arrangement, with the iconostasis and the Holy Table. Read about it in the": "У Восточных Католических Церквей своё прекрасное устройство храма, с иконостасом и Святым Престолом. Прочитайте о нём в",
+"The Little Office of the Blessed Virgin Mary is the Marian office of the Latin Church.": "Малый оффиций Пресвятой Девы Марии — богородичное правило Латинской Церкви.",
+"The words of these hymns are in the public domain. The recordings are freely licensed from Wikimedia Commons; tap a recording’s name to see who made it and its license.": "Слова этих гимнов находятся в общественном достоянии. Записи взяты с Викисклада под свободными лицензиями; нажмите на название записи, чтобы увидеть автора и лицензию.",
+"These guides are a starting place. Your parish priest and your diocese or eparchy can tell you exactly what applies where you live.": "Эти руководства — лишь отправная точка. Ваш настоятель и ваша епархия или эпархия точно скажут, что действует там, где вы живёте.",
+"Want to see a Latin church? Read the guide in the": "Хотите увидеть латинский храм? Прочитайте путеводитель в",
+"An icon is not simply a picture of a holy person but, as the Eastern Churches say, a window onto heaven: what Scripture says in words, the icon shows in color. See also": "Икона — не просто изображение святого, но, как говорят Восточные Церкви, окно в небо: то, что Писание говорит словами, икона показывает красками. См. также",
+"See also": "См. также",
+"in Church History, and": "в Истории Церкви и",
+"in Theology.": "в Богословии.",
+"Dates of the earliest popes are traditional and approximate. List and dates from the Annuario Pontificio as given by Wikipedia; names without a Sanctify page link to Wikipedia.": "Даты первых пап традиционны и приблизительны. Список и даты по Annuario Pontificio согласно Википедии; имена без страницы в Sanctify ведут в Википедию.",
+"Many people choose a Confirmation saint whose virtues they want to imitate. Read about a few, ask them for their prayers, and see which one becomes a friend.": "Многие выбирают святого покровителя на конфирмацию, чьим добродетелям хотят подражать. Прочитайте о нескольких, попросите их молитв и посмотрите, кто станет вам другом.",
+"These are independent retailers, not affiliated with this site. Some icon makers are Orthodox; their icons follow the same ancient tradition. We do our best to point to established, reputable shops, but always use your own judgment before buying.": "Это независимые магазины, не связанные с этим сайтом. Некоторые иконописцы — православные; их иконы следуют той же древней традиции. Мы стараемся указывать проверенные магазины с хорошей репутацией, но перед покупкой всегда полагайтесь на собственное суждение.",
+"All the Churches share one faith, the same seven sacraments, and communion with the pope.": "Все Церкви разделяют одну веру, те же семь таинств и общение с Папой.",
+"Catholics may attend the liturgy of any Catholic Church and fulfill their Sunday obligation there.": "Католики могут присутствовать на литургии любой Католической Церкви и исполнять там воскресную обязанность.",
+"Eastern Catholics celebrate the Holy Mysteries of Baptism, Chrismation, and the Eucharist together, even for infants.": "Восточные католики совершают Святые Таинства Крещения, Миропомазания и Евхаристии вместе, даже для младенцев.",
+"It begins in this life and is completed in the vision of God.": "Оно начинается в этой жизни и завершается в созерцании Бога.",
+"Many Eastern Catholic Churches ordain married men to the priesthood.": "Многие Восточные Католические Церкви рукополагают в священники женатых мужчин.",
+"Theosis is the Eastern way of speaking of sanctifying grace and holiness.": "Обожение — восточный способ говорить об освящающей благодати и святости.",
+"We become by grace what God is by nature.": "Мы становимся по благодати тем, что Бог есть по природе.",
+"31 years": "31 год",
+"blesseds": "блаженных",
+"longest reign after St. Peter: Bl. Pius IX": "самый долгий понтификат после святого Петра: блаженный Пий IX",
+"most common names ({*} popes)": "самые частые имена ({*} пап)",
+"John, Gregory, Benedict": "Иоанн, Григорий, Бенедикт",
+"shortest reign: Urban VII, 1590": "самый короткий понтификат: Урбан VII, 1590",
+"Find a pope by name, number, or year…": "Найти папу по имени, номеру или году…",
+"Search the popes": "Поиск по папам",
+"Saints for you": "Святые для вас",
+"What you are praying for": "О чём вы молитесь",
+"What you love in a saint": "Что вы любите в святых",
+"Your heritage": "Ваши корни",
+"Your work or calling": "Ваша работа или призвание",
+"Choose everything that fits: your job, your studies, your role at home.": "Выберите всё, что подходит: работу, учёбу, роль в семье.",
+"Choose the needs on your heart, for yourself or for someone you love.": "Выберите нужды, которые у вас на сердце, — за себя или за близкого человека.",
+"Leave blank for any time, or choose the eras that interest you.": "Оставьте пустым для любой эпохи или выберите интересующие вас.",
+"Saints from your homeland or your family’s.": "Святые с вашей родины или родины вашей семьи.",
+"Which kinds of holiness draw you?": "Какие виды святости вас привлекают?",
+"Maria, John, Teresa…": "Мария, Иоанн, Тереза…",
+"Your birthday": "Ваш день рождения",
+"Your first name": "Ваше имя",
+"Arts and media": "Искусство и СМИ",
+"Business and money": "Бизнес и деньги",
+"Daily life": "Повседневная жизнь",
+"Family and love": "Семья и любовь",
+"Food and hospitality": "Еда и гостеприимство",
+"Health": "Здоровье",
+"Health and care": "Здоровье и уход",
+"Home and family": "Дом и семья",
+"Justice and mercy": "Справедливость и милосердие",
+"Land, sea, and animals": "Земля, море и животные",
+"Law and public service": "Право и госслужба",
+"Other work": "Другие профессии",
+"School and learning": "Школа и учёба",
+"Science and technology": "Наука и техника",
+"Serving the Church": "Служение Церкви",
+"The soul": "Душа",
+"Trades and crafts": "Ремёсла",
+"Travel and transport": "Путешествия и транспорт",
+"Prayer before the Office": "Молитва перед службой",
+"Prayer after the Office": "Молитва после службы",
+"O Lord, open Thou my mouth, that it may bless Thy holy name; cleanse my heart, too, from all vain, evil, or wandering thoughts. Enlighten mine understanding, kindle mine affections, that I may be able to say this Office meetly with attention and devotion and may deserve to be heard before the presence of Thy divine Majesty. Through Christ our Lord.": "Отверзи, Господи, уста мои, да благословят святое имя Твое; очисти и сердце мое от всяких суетных, дурных и рассеянных помыслов. Просвети разум мой, воспламени чувства мои, чтобы я мог достойно, внимательно и благоговейно совершить эту службу и удостоился быть услышанным пред лицем Твоего Божественного Величия. Через Христа, Господа нашего.",
+"Amen.": "Аминь.",
+"O Lord, in union with that divine intention wherewith Thou Thyself, while on earth, didst offer praises unto God, I offer these Hours unto Thee.": "Господи, в единении с тем божественным намерением, с которым Ты Сам на земле воздавал хвалу Богу, приношу Тебе эти Часы.",
+"Said kneeling at the end of the Office.": "Читается на коленях в конце службы.",
+"To the most holy and undivided Trinity, to the manhood of our crucified Lord Jesus Christ, to the fruitful virginity of the most blessed and glorious Mary, ever a virgin, to the entire assembly of the saints, be ascribed everlasting praise, honor, power, and glory, by every creature; and to us be granted the remission of all our sins, world without end. Amen.": "Пресвятой и нераздельной Троице, человечеству распятого Господа нашего Иисуса Христа, плодоносному девству преблаженной и преславной Приснодевы Марии и всему собору святых да воздаётся от всякой твари вечная хвала, честь, сила и слава, а нам да будет дано отпущение всех грехов во веки веков. Аминь.",
+"Blessed is the Virgin Mary’s womb, which bore the Son of the everlasting Father.": "Блаженно чрево Девы Марии, носившее Сына Отца Предвечного.",
+"And blessed are the breasts which nourished Christ our Lord.": "И блаженны сосцы, питавшие Христа Господа.",
+"Our Father, Who art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done on earth, as it is in heaven. Give us this day our daily bread. And forgive us our trespasses, as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil. Amen.": "Отче наш, Иже еси на небесех! Да святится имя Твое, да приидет Царствие Твое, да будет воля Твоя, яко на небеси и на земли. Хлеб наш насущный даждь нам днесь; и остави нам долги наша, якоже и мы оставляем должником нашим; и не введи нас во искушение, но избави нас от лукаваго. Аминь.",
+"Hail, Mary, full of grace, the Lord is with thee: blessed art thou amongst women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.": "Радуйся, Мария, благодати полная! Господь с Тобою; благословенна Ты между жёнами, и благословен плод чрева Твоего Иисус. Святая Мария, Матерь Божия, молись о нас, грешных, ныне и в час смерти нашей. Аминь.",
+"Hail Mary, in silence.": "«Радуйся, Мария» про себя.",
+"Our Father, in silence.": "«Отче наш» про себя.",
+"Our Father, Hail Mary, and the Creed, in silence.": "«Отче наш», «Радуйся, Мария» и Символ веры про себя.",
+"Lord, Thou shalt open my lips.": "Господи, отверзи уста мои.",
+"And my mouth shall declare Thy praise.": "И уста мои возвестят хвалу Твою.",
+"O God, hasten to mine aid.": "Боже, приди мне на помощь.",
+"O Lord, make haste to help me.": "Господи, поспеши помочь мне.",
+"Glory be to the Father, and to the Son, and to the Holy Ghost. As it was in the beginning, is now, and ever shall be, world without end. Amen.": "Слава Отцу, и Сыну, и Святому Духу. Как было в начале, так и ныне, и всегда, и во веки веков. Аминь.",
+"Alleluia.": "Аллилуиа.",
+"Praise be to Thee, O Lord, King of everlasting glory.": "Хвала Тебе, Господи, Царю вечной славы.",
+"Invitatory": "Призывание",
+"Hail, Mary, full of grace, the Lord is with thee. Hail, Mary, full of grace, the Lord is with thee.": "Радуйся, Мария, благодати полная, Господь с Тобою. Радуйся, Мария, благодати полная, Господь с Тобою.",
+"Hail, Mary, full of grace, the Lord is with thee.": "Радуйся, Мария, благодати полная, Господь с Тобою.",
+"Hail, Mary, full of grace; the Lord is with thee.": "Радуйся, Мария, благодати полная; Господь с Тобою.",
+"The Lord is with thee.": "Господь с Тобою.",
+"Hymn": "Гимн",
+"The Nocturn": "Ноктюрн",
+"The three following Psalms are said on Sunday, Monday, and Thursday.": "Три следующих псалма читаются в воскресенье, понедельник и четверг.",
+"The three following Psalms are said on Tuesday and Friday.": "Три следующих псалма читаются во вторник и пятницу.",
+"The three following Psalms are said on Wednesday and Saturday.": "Три следующих псалма читаются в среду и субботу.",
+"Psalm {n}": "Псалом {n}",
+"Psalm {n} ({n})": "Псалом {n} ({n})",
+"An invitation to praise God, and to obey Him": "Призыв хвалить Бога и повиноваться Ему",
+"God is wonderful in His works; especially in mankind, singularly exalted by the Incarnation of Christ": "Бог дивен в делах Своих, особенно в человеке, особо возвышенном Воплощением Христа",
+"The works of God show forth His glory": "Дела Божии возвещают славу Его",
+"A song of triumph for the translation of the Ark to Mount Sion": "Победная песнь о перенесении Ковчега на гору Сион",
+"The excellence of Christ’s kingdom, and the endowments of His Church": "Превосходство Царства Христова и дары Его Церкви",
+"The Church in persecution trusteth in the protection of God": "Гонимая Церковь уповает на защиту Божию",
+"The glory of the Church of Christ": "Слава Церкви Христовой",
+"An exhortation to all creatures to praise God": "Призыв ко всякой твари хвалить Бога",
+"Joy at the coming and reign of Christ": "Радость о пришествии и царствовании Христа",
+"Invitation to praise the Lord for the victories of Christ": "Призыв хвалить Господа за победы Христовы",
+"Grace is poured forth on thy lips.": "Излилась благодать в устах Твоих.",
+"Therefore hath God blessed thee for ever.": "Посему благословил Тебя Бог вовек.",
+"And lead us not into temptation.": "И не введи нас во искушение.",
+"But deliver us from evil.": "Но избави нас от лукаваго.",
+"The Lessons": "Чтения",
+"Said throughout the year, except during Advent.": "Читаются круглый год, кроме Адвента.",
+"Said during Advent.": "Читаются в Адвент.",
+"Through the prayers and merits of blessed Mary, ever a virgin, and of all the saints, may the Lord bring us to the kingdom of heaven.": "Молитвами и заслугами блаженной Приснодевы Марии и всех святых да приведёт нас Господь в Царство Небесное.",
+"Pray, a blessing.": "Благослови.",
+"May the Virgin Mary with her loving Child bless us.": "Да благословит нас Дева Мария с возлюбленным Младенцем Своим.",
+"Lesson I": "Чтение I",
+"Lesson II": "Чтение II",
+"Lesson III": "Чтение III",
+"Ecclesiasticus {n}": "Сирах {n}",
+"In all these I sought rest, and I shall abide in the inheritance of the Lord. Then the Creator of all things commanded and said to me; and He that made me rested in my tabernacle, and He said to me: Let thy dwelling be in Jacob, and thine inheritance in Israel, and take root in My chosen people. Do Thou, Lord, have mercy on us.": "Во всех них искала я покоя и пребуду в наследии Господнем. Тогда Создатель всего повелел мне и сказал; и Сотворивший меня успокоился в скинии моей и сказал мне: Вселись в Иакова, и в Израиле наследуй, и укоренись в избранных Моих. Ты же, Господи, помилуй нас.",
+"O holy and immaculate virginity, I know not with what praises to extol thee. For Him Whom heaven could not hold thou didst carry at thy bosom.": "О святое и непорочное девство, не знаю, какими похвалами превознести тебя. Ибо Того, Кого не могли вместить небеса, ты носила в недрах своих.",
+"Blessed art thou amongst women, and blessed is the fruit of thy womb. For Him Whom heaven could not hold thou didst carry at thy bosom.": "Благословенна ты в жёнах, и благословен плод чрева твоего. Ибо Того, Кого не могли вместить небеса, ты носила в недрах своих.",
+"May the Virgin of virgins herself plead for us before the Lord.": "Сама Дева дев да ходатайствует о нас пред Господом.",
+"And so was I established in Sion, and in the holy city likewise I rested; and my power was in Jerusalem. And I took root in an honorable people, and in the portion of my God is His inheritance, and my abode is in the full assembly of saints. Do Thou, Lord, have mercy on us.": "И так утвердилась я на Сионе, и во граде святом также успокоилась, и в Иерусалиме власть моя. И укоренилась я в народе прославленном, в уделе Бога моего — наследие Его, и обитель моя в полном собрании святых. Ты же, Господи, помилуй нас.",
+"Blessed art thou, O Virgin Mary, who didst bear the Lord, the Creator of the world. Thou didst bring forth Him that made thee and remainest a virgin for ever.": "Блаженна ты, Дева Мария, носившая Господа, Творца мира. Ты родила Сотворившего тебя и пребываешь Девою вовек.",
+"Hail, Mary, full of grace, the Lord is with thee. Thou didst bring forth Him that made thee, and remainest a virgin for ever.": "Радуйся, Мария, благодати полная, Господь с Тобою. Ты родила Сотворившего тебя и пребываешь Девою вовек.",
+"Glory be to the Father, and to the Son, and to the Holy Ghost. Thou didst bring forth Him that made thee, and remainest a virgin for ever.": "Слава Отцу, и Сыну, и Святому Духу. Ты родила Сотворившего тебя и пребываешь Девою вовек.",
+"Through the Virgin Mother may the Lord grant us salvation and peace.": "Ради Девы Матери да дарует нам Господь спасение и мир.",
+"I was exalted like a cedar in Lebanon, and as a cypress-tree on Mount Sion. I was exalted like a palm-tree in Cades, and as a rose-plant in Jericho. As a fair olive-tree in the plains, and as a plane-tree by the water in the streets, was I exalted. I gave forth a sweet fragrance like cinnamon and aromatic balm. I yielded a sweet smell like choicest myrrh. Do Thou, Lord, have mercy on us.": "Я возвысилась, как кедр на Ливане и как кипарис на горе Сионской. Я возвысилась, как пальма в Кадесе и как розовый куст в Иерихоне. Как прекрасная маслина на равнине и как платан у воды на площадях, я возвысилась. Как корица и благовонный бальзам я издала благоухание; как отборная смирна я разлила сладкий запах. Ты же, Господи, помилуй нас.",
+"Happy indeed art thou, O holy Virgin Mary, and most worthy of all praise: For out of thee arose the Sun of righteousness, Christ our God.": "Поистине блаженна ты, святая Дева Мария, и всякой хвалы достойнейшая: ибо из тебя воссияло Солнце правды, Христос Бог наш.",
+"Pray for the people, intercede for the clergy, plead for religious women. Let all enjoy thine aid who keep holy commemoration of thee. For out of thee arose the Sun of righteousness, Christ our God.": "Молись о народе, ходатайствуй о клире, заступись за посвящённых Богу жён. Да ощутят твою помощь все, кто совершает святую память твою. Ибо из тебя воссияло Солнце правды, Христос Бог наш.",
+"Glory be to the Father, and to the Son, and to the Holy Ghost. Christ our God.": "Слава Отцу, и Сыну, и Святому Духу. Христос Бог наш.",
+"Luke {n}": "Лука {n}",
+"The angel Gabriel was sent from God into a city of Galilee called Nazareth, to a virgin espoused to a man whose name was Joseph, of the house of David; and the Virgin’s name was Mary. And the angel being come in, said unto her: Hail, full of grace, the Lord is with thee: blessed art thou amongst women. Do Thou, Lord, have mercy on us.": "Послан был Ангел Гавриил от Бога в город Галилейский, называемый Назарет, к Деве, обручённой мужу, именем Иосифу, из дома Давидова; имя же Деве: Мария. Ангел, войдя к Ней, сказал: Радуйся, Благодатная! Господь с Тобою; благословенна Ты между жёнами. Ты же, Господи, помилуй нас.",
+"The angel Gabriel was sent to Mary, the Virgin, who was espoused to Joseph, declaring to her the word, and the Virgin trembles at the light. Fear not, Mary, thou hast found grace with the Lord: Behold, thou shalt conceive, and shalt bring forth, and He shall be called the Son of the Most High.": "Ангел Гавриил был послан к Марии Деве, обручённой Иосифу, возвестить Ей слово, и Дева трепещет пред светом. Не бойся, Мария, Ты обрела благодать у Господа: вот, Ты зачнёшь и родишь, и наречётся Он Сыном Всевышнего.",
+"The Lord shall give unto Him the throne of David His father, and He shall reign in the house of Jacob for ever. Behold, thou shalt conceive, and shalt bring forth, and He shall be called the Son of the Most High.": "И даст Ему Господь престол Давида, отца Его, и будет царствовать над домом Иакова вовеки. Вот, Ты зачнёшь и родишь, и наречётся Он Сыном Всевышнего.",
+"And when she had heard these things, she was troubled at his saying, and thought within herself what manner of salutation this should be. And the angel said unto her: Fear not, Mary, for thou hast found grace with God. Behold, thou shalt conceive in the womb, and shalt bring forth a Son, and thou shalt call His name Jesus. He shall be great, and shall be called the Son of the Most High. And the Lord God will give unto Him the throne of David His father, and He shall reign in the house of Jacob for ever; and of His kingdom there shall be no end. Do Thou, Lord, have mercy on us.": "Она же, услышав, смутилась от слов его и размышляла, что бы это было за приветствие. И сказал Ей Ангел: Не бойся, Мария, ибо Ты обрела благодать у Бога. И вот, зачнёшь во чреве и родишь Сына, и наречёшь Ему имя Иисус. Он будет велик и наречётся Сыном Всевышнего, и даст Ему Господь Бог престол Давида, отца Его, и будет царствовать над домом Иакова вовеки, и Царству Его не будет конца. Ты же, Господи, помилуй нас.",
+"Hail, Mary, full of grace, the Lord is with thee. The Holy Ghost shall come upon thee, and the power of the Most High shall overshadow thee; for the Holy which shall be born of thee shall be called the Son of God.": "Радуйся, Мария, благодати полная, Господь с Тобою. Дух Святый найдёт на Тебя, и сила Всевышнего осенит Тебя; посему и рождаемое Святое наречётся Сыном Божиим.",
+"How shall this be done, seeing I know not man? And the angel answering said unto her: The Holy Ghost shall come upon thee, and the power of the Most High shall overshadow thee; for the Holy which shall be born of thee shall be called the Son of God.": "Как будет это, когда Я мужа не знаю? Ангел сказал Ей в ответ: Дух Святый найдёт на Тебя, и сила Всевышнего осенит Тебя; посему и рождаемое Святое наречётся Сыном Божиим.",
+"Glory be to the Father, and to the Son, and to the Holy Ghost. The Holy Ghost shall come upon thee, and the power of the Most High shall overshadow thee; for the Holy which shall be born of thee shall be called the Son of God.": "Слава Отцу, и Сыну, и Святому Духу. Дух Святый найдёт на Тебя, и сила Всевышнего осенит Тебя; посему и рождаемое Святое наречётся Сыном Божиим.",
+"And Mary said to the angel: How shall this be done, seeing I know not man? And the angel answering said unto her: The Holy Ghost shall come upon thee, and the power of the Most High shall overshadow thee. And therefore also the Holy which shall be born of thee shall be called the Son of God. And behold, thy cousin Elizabeth, she also hath conceived a son in her old age, and this is the sixth month with her who is called barren; for no word shall be impossible with God. And Mary said: Behold the handmaid of the Lord, be it done to me according to Thy word. Do Thou, Lord, have mercy on us.": "Мария же сказала Ангелу: Как будет это, когда Я мужа не знаю? Ангел сказал Ей в ответ: Дух Святый найдёт на Тебя, и сила Всевышнего осенит Тебя; посему и рождаемое Святое наречётся Сыном Божиим. Вот и Елисавета, родственница Твоя, называемая неплодною, и она зачала сына в старости своей, и ей уже шестой месяц, ибо у Бога не останется бессильным никакое слово. Тогда Мария сказала: Се, Раба Господня; да будет Мне по слову твоему. Ты же, Господи, помилуй нас.",
+"Receive, O Virgin Mary, the word which the Lord hath sent thee through an angel: Thou shalt conceive, and shalt bring forth both God and man, that thou mayest be called blessed amongst all women.": "Прими, Дева Мария, слово, которое Господь послал Тебе через Ангела: Ты зачнёшь и родишь Бога и человека, чтобы Тебе называться благословенной между всеми жёнами.",
+"Yea, thou shalt bring forth a Son, and shalt suffer no loss of virginity: thou shalt be with child, and shalt be a mother ever undefiled. That thou mayest be called blessed amongst all women.": "Да, Ты родишь Сына без ущерба для девства: зачнёшь и будешь Матерью вечно непорочной. Чтобы Тебе называться благословенной между всеми жёнами.",
+"Glory be to the Father, and to the Son, and to the Holy Ghost. That thou mayest be called blessed amongst all women.": "Слава Отцу, и Сыну, и Святому Духу. Чтобы Тебе называться благословенной между всеми жёнами.",
+"Te Deum": "Te Deum",
+"Hymn of SS. Ambrose and Augustine": "Гимн святых Амвросия и Августина",
+"Said from Christmas until Septuagesima, and from Easter Sunday until Advent. In Advent and from Septuagesima until Easter it is said only on feasts of the Blessed Virgin.": "Читается от Рождества до Септуагесимы и от Пасхи до Адвента. В Адвент и от Септуагесимы до Пасхи — только в праздники Пресвятой Девы.",
+"Kneel at the following verse.": "На следующем стихе встаньте на колени.",
+"Kneel for the first verse.": "На первой строфе встаньте на колени.",
+"Lauds follows.": "Далее Хвалитны.",
+"When Lauds follows Matins immediately, the silent Hail Mary is left out.": "Когда Хвалитны следуют сразу за Утреней, «Радуйся, Мария» про себя опускается.",
+"If the next Hour does not follow at once, a Hail Mary is said in silence.": "Если следующий Час не следует сразу, про себя читается «Радуйся, Мария».",
+"Glory be is not said after this canticle.": "После этой песни «Слава» не читается.",
+"The glory and the stability of the Church of Christ": "Слава и прочность Церкви Христовой",
+"All are invited to praise the Lord": "Все призываются хвалить Господа",
+"A prayer in desolation and distress": "Молитва в скорби и тесноте",
+"Canticle of the Three Children": "Песнь трёх отроков",
+"Daniel {n}": "Даниил {n}",
+"All creatures invited to praise God": "Все творения призываются хвалить Бога",
+"Little Chapter": "Краткое чтение",
+"Canticle of Canticles {n}": "Песнь Песней {n}",
+"Isaias {n}": "Исаия {n}",
+"The daughters of Sion saw her, and declared her most blessed; and queens praised her.": "Увидели её дщери Сиона и ублажили её, и царицы восхвалили её.",
+"There shall come forth a rod out of the root of Jesse, and a flower shall rise up out of his root. And the Spirit of the Lord shall rest upon Him.": "И произойдёт отрасль от корня Иессеева, и цвет поднимется от корня его. И почиет на Нём Дух Господень.",
+"There shall come forth a rod out of the root of Jesse, and a flower shall rise up out of his root, and the Spirit of the Lord shall rest upon him.": "И произойдёт отрасль от корня Иессеева, и цвет поднимется от корня его, и почиет на нём Дух Господень.",
+"There shall come forth a rod out of the root of Jesse, and a flower shall rise up out of his root, and the Spirit of the Lord shall rest upon Him.": "И произойдёт отрасль от корня Иессеева, и цвет поднимется от корня его, и почиет на Нём Дух Господень.",
+"Blessed art thou amongst women.": "Благословенна ты в жёнах.",
+"And blessed is the fruit of thy womb.": "И благословен плод чрева твоего.",
+"Canticle of Zachary": "Песнь Захарии",
+"The Benedictus · Luke {n}": "Benedictus · Лука {n}",
+"The Magnificat · Luke {n}": "Magnificat · Лука {n}",
+"The Nunc Dimittis · Luke {n}": "Nunc dimittis · Лука {n}",
+"Lord, have mercy on us. Christ, have mercy on us. Lord, have mercy on us.": "Господи, помилуй нас. Христе, помилуй нас. Господи, помилуй нас.",
+"O Lord, hear my prayer.": "Господи, услыши молитву мою.",
+"And let my cry come unto Thee.": "И вопль мой к Тебе да приидет.",
+"Commemoration of the Saints": "Поминовение святых",
+"Be glad in the Lord, and rejoice, ye just.": "Веселитесь о Господе и радуйтесь, праведные.",
+"And be joyful, all ye that are right of heart.": "И хвалитесь, все правые сердцем.",
+"Let us pray. Shield, O Lord, Thy people, and ever keep them in Thy care, who put their trust in the pleading of Thine apostles Peter and Paul, and of the other apostles. May all Thy saints, we beseech Thee, O Lord, everywhere come to our help, that while we do honor to their merits, we may also enjoy their intercession: grant Thine own peace unto our times, and drive away all wickedness from Thy Church; direct our way, our actions, and our wishes and those of all Thy servants in the way of salvation; to our benefactors render everlasting blessings, and to all the faithful departed grant eternal rest. Through Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Помолимся. Защити, Господи, народ Твой и всегда храни его Твоим попечением, ибо он уповает на заступничество апостолов Твоих Петра и Павла и прочих апостолов. Просим Тебя, Господи, да помогают нам повсюду все святые Твои, чтобы, почитая их заслуги, мы ощущали и их заступничество: даруй мир Твой нашим временам и изгони из Церкви Твоей всякое беззаконие; направь путь наш, дела и желания наши и всех рабов Твоих на стезю спасения; благодетелям нашим воздай вечными благами и всем усопшим верным даруй вечный покой. Через Господа нашего Иисуса Христа, Сына Твоего, Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"Behold, the Lord shall appear upon a shining cloud.": "Се, Господь явится на облаке светлом.",
+"And with Him thousands of saints.": "И с Ним тысячи святых.",
+"Let us pray. Cleanse our consciences, we beseech Thee, O Lord, by Thy visitation, that when Jesus Christ, Thy Son, Our Lord, shall come with all the saints, He may find within us a resting-place made ready for Him. Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Помолимся. Очисти, просим Тебя, Господи, совесть нашу посещением Твоим, чтобы Иисус Христос, Сын Твой, Господь наш, придя со всеми святыми, обрёл в нас уготованную Ему обитель. Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"Let us bless the Lord.": "Благословим Господа.",
+"May the souls of the faithful departed, through the mercy of God, rest in peace.": "Души усопших верных по милосердию Божию да почиют в мире.",
+"May the Lord give us His peace.": "Господь да дарует нам мир Свой.",
+"And life everlasting. Amen.": "И жизнь вечную. Аминь.",
+"Anthem of the Blessed Virgin Mary": "Антифон Пресвятой Деве Марии",
+"Said after Lauds and Compline, according to the season.": "Читается после Хвалитн и Повечерия, по времени года.",
+"The angel of the Lord declared unto Mary.": "Ангел Господень возвестил Марии.",
+"And she conceived of the Holy Ghost.": "И Она зачала от Духа Святого.",
+"Let us pray. Pour forth, we beseech Thee, O Lord, Thy grace into our hearts, that we, to whom the Incarnation of Christ, Thy Son, was made known by the message of an angel, may by His passion and cross be brought to the glory of His Resurrection. Through the same Christ our Lord.": "Помолимся. Излей, просим Тебя, Господи, благодать Твою в сердца наши, чтобы мы, через ангельское благовестие познавшие воплощение Христа, Сына Твоего, Его страданиями и крестом были приведены к славе воскресения. Через того же Христа, Господа нашего.",
+"After childbirth, O Virgin, thou didst remain inviolate.": "По рождестве, Дево, Ты пребыла нетленной.",
+"O Mother of God, plead for us.": "Богородице, ходатайствуй о нас.",
+"Plead for us, O Mother of God.": "Ходатайствуй о нас, Богородице.",
+"Let us pray. O God, Who by the fruitful virginity of blessed Mary hast given to mankind the rewards of eternal salvation; grant, we beseech Thee, that we may experience her intercession for us, by whom we deserved to receive the Author of life, Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Помолимся. Боже, Ты плодоносным девством блаженной Марии даровал роду человеческому награды вечного спасения; даруй, просим Тебя, чтобы мы ощутили заступничество Той, через Которую удостоились принять Начальника жизни, Господа нашего Иисуса Христа, Сына Твоего, Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"Vouchsafe that I may praise thee, O Blessed Virgin.": "Сподоби меня хвалить Тебя, Дево блаженная.",
+"Vouchsafe that I may praise thee, O holy Virgin.": "Сподоби меня хвалить Тебя, Дево святая.",
+"Grant me strength against thine enemies.": "Дай мне силу против врагов Твоих.",
+"Let us pray. O most merciful God, grant succor unto our frailty; that as we celebrate the memory of the holy Mother of God, so by the help of her intercession we may rise again from our sins. Through the same Christ our Lord.": "Помолимся. Всемилостивый Боже, помоги нашей немощи, чтобы мы, совершая память святой Богородицы, с помощью Её заступничества восстали от грехов наших. Через того же Христа, Господа нашего.",
+"Rejoice and be glad, O Virgin Mary, Alleluia.": "Радуйся и веселись, Дева Мария, аллилуиа.",
+"For the Lord hath risen indeed, Alleluia.": "Ибо воистину воскрес Господь, аллилуиа.",
+"Let us pray. O God, Who didst vouchsafe to give joy to the world through the Resurrection of Thy Son, Our Lord Jesus Christ; grant, we beseech Thee, that, through His Mother, the Virgin Mary, we may obtain the joys of everlasting life. Through the same Christ our Lord.": "Помолимся. Боже, Ты благоволил возвеселить мир воскресением Сына Твоего, Господа нашего Иисуса Христа; даруй, просим Тебя, чтобы мы через Его Матерь, Деву Марию, достигли радостей вечной жизни. Через того же Христа, Господа нашего.",
+"Let us pray. Almighty, everlasting God, Who, by the co-operation of the Holy Ghost, didst so make ready the body and soul of the glorious Virgin Mother Mary that she deserved to become a meet dwelling for Thy Son; grant that we, who rejoice in her memory, may through her loving intercession be delivered from the evils that hang over us, and from everlasting death. Through the same Christ our Lord.": "Помолимся. Всемогущий вечный Боже, Ты содействием Святого Духа так уготовал тело и душу преславной Девы Матери Марии, что Она удостоилась стать достойным жилищем Сыну Твоему; даруй нам, радующимся Её памяти, по Её любящему заступничеству избавиться от грозящих нам зол и от вечной смерти. Через того же Христа, Господа нашего.",
+"May the divine assistance remain always with us.": "Божественная помощь да пребудет всегда с нами.",
+"A prayer for help in distress": "Молитва о помощи в беде",
+"Prayer to obtain the complete restoration of Israel": "Молитва о полном восстановлении Израиля",
+"Exhortation to praise God": "Призыв к хвале Бога",
+"Who is she that cometh forth as the morning rising, fair as the moon, bright as the sun, terrible as an army set in array?": "Кто эта, блистающая, как заря, прекрасная, как луна, светлая, как солнце, грозная, как полки со знамёнами?",
+"Behold, a Virgin shall conceive and shall bear a Son, and His name shall be called Emmanuel: butter and honey shall He eat, that He may know to refuse the evil and choose the good.": "Се, Дева во чреве приимет и родит Сына, и нарекут имя Ему: Еммануил. Он будет питаться молоком и мёдом, доколе не будет разуметь отвергать худое и избирать доброе.",
+"Behold, a virgin shall conceive, and bear a Son, and His name shall be called Emmanuel: Butter and honey shall He eat, that He may know to refuse evil and to choose good.": "Се, Дева во чреве приимет и родит Сына, и нарекут имя Ему: Еммануил. Он будет питаться молоком и мёдом, доколе не будет разуметь отвергать худое и избирать доброе.",
+"Behold a virgin shall conceive, and shall bear a son; and His name shall be called Emmanuel. Butter and honey shall He eat, that He may know to refuse the evil, and to choose the good.": "Се, Дева во чреве приимет и родит Сына, и нарекут имя Ему: Еммануил. Он будет питаться молоком и мёдом, доколе не будет разуметь отвергать худое и избирать доброе.",
+"O God, Who didst vouchsafe to choose the virgin palace of blessed Mary for Thy dwelling; grant, we beseech Thee, that we, who are shielded by her protection, may by Thy grace join with gladness in her commemoration. Who livest and reignest with God the Father, in the unity of the Holy Ghost, God, world without end.": "Боже, Ты благоволил избрать для Своего обитания девственный чертог блаженной Марии; даруй, просим Тебя, чтобы мы, хранимые Её покровом, по благодати Твоей с радостью участвовали в Её поминовении. Живущий и царствующий с Богом Отцом в единстве Святого Духа, Бог, во веки веков.",
+"Grace is poured forth upon thy lips.": "Излилась благодать в устах Твоих.",
+"Wherefore God hath blessed thee for ever.": "Посему благословил Тебя Бог вовек.",
+"Therefore God hath blessed thee for ever.": "Посему благословил Тебя Бог вовек.",
+"A prayer against perfidious enemies": "Молитва против коварных врагов",
+"God is the keeper of His servants": "Бог — хранитель рабов Своих",
+"Joy of the pilgrim entering Jerusalem": "Радость паломника, входящего в Иерусалим",
+"And so was I established in Sion, and in the holy city likewise I rested; and my power was in Jerusalem.": "И так утвердилась я на Сионе, и во граде святом также успокоилась, и в Иерусалиме власть моя.",
+"A prayer in affliction": "Молитва в скорби",
+"The Church gives glory to God for her deliverance from her enemies": "Церковь славит Бога за избавление от врагов",
+"God protects the just who have confidence in Him": "Бог защищает праведных, уповающих на Него",
+"And I took root in an honorable people, and in the portion of my God, His inheritance: and my abode is in the full assembly of saints.": "И укоренилась я в народе прославленном, в уделе Бога моего, в наследии Его; и обитель моя в полном собрании святых.",
+"The Lord God shall give Him the throne of David His father; and He shall reign in the house of Jacob for ever, and of His kingdom there shall be no end.": "И даст Ему Господь Бог престол Давида, отца Его; и будет царствовать над домом Иакова вовеки, и Царству Его не будет конца.",
+"The people of God rejoice at their delivery from captivity": "Народ Божий радуется избавлению из плена",
+"Man can do nothing without God": "Человек ничего не может без Бога",
+"Man can do nothing without God’s help": "Человек ничего не может без помощи Божией",
+"The happiness of the just": "Блаженство праведных",
+"In the ways, like cinnamon and aromatic balm, I gave forth a sweet fragrance: like the choicest myrrh, I yielded a sweet smell.": "На путях, как корица и благовонный бальзам, я издала благоухание; как отборная смирна, я разлила сладкий запах.",
+"Forgive, O Lord, we beseech Thee, the sins of Thy servants; so that we who cannot become pleasing to Thee from our own actions, may be saved by the pleading of the Mother of Thy Son, Our Lord, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Прости, просим Тебя, Господи, грехи рабов Твоих, чтобы мы, не могущие угодить Тебе своими делами, были спасены ходатайством Матери Сына Твоего, Господа нашего, Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"The Messias, King and Priest, victorious over His enemies": "Мессия, Царь и Священник, побеждающий врагов Своих",
+"Glory to God, so infinitely great and so admirably condescending": "Слава Богу, бесконечно великому и дивно снисходящему",
+"Song of the pilgrims in honor of Jerusalem": "Песнь паломников во славу Иерусалима",
+"Thanksgiving for the restoration of Jerusalem": "Благодарение за восстановление Иерусалима",
+"From the beginning, and before the world was I created, and unto the world to come I shall not cease to be, and in the holy dwelling-place have I ministered before Him.": "От начала, прежде века, Он произвёл меня, и до века не скончаюсь, и во святой скинии служила я пред Ним.",
+"Canticle of the Blessed Virgin Mary": "Песнь Пресвятой Девы Марии",
+"Grant, we beseech Thee, O Lord God, that we, Thy servants, may enjoy perpetual health of mind and body; and, by the glorious intercession of the Blessed Mary, ever virgin, be delivered from present sorrow and possess eternal joy. Through Christ our Lord.": "Даруй, просим Тебя, Господи Боже, чтобы мы, рабы Твои, наслаждались непрестанным здравием души и тела и по славному заступничеству блаженной Приснодевы Марии избавились от нынешней печали и вкусили вечной радости. Через Христа, Господа нашего.",
+"Convert us, O God, our Saviour.": "Обрати нас, Боже, Спасителю наш.",
+"And turn away Thine anger from us.": "И отврати гнев Твой от нас.",
+"Confidence in God; the persecutors of the Church come to nothing": "Упование на Бога; гонители Церкви обращаются в ничто",
+"Prayer of a sinner trusting in the mercies of God": "Молитва грешника, уповающего на милосердие Божие",
+"A psalm of childlike resignation to God’s will": "Псалом детской преданности воле Божией",
+"I am the Mother of fair love, and of fear, and of knowledge, and of holy hope.": "Я матерь прекрасной любви, и страха, и познания, и святой надежды.",
+"Canticle of Simeon": "Песнь Симеона",
+"May the glorious pleading of the blessed and glorious Mary, ever a virgin, shield us, we beseech Thee, O Lord, and bring us to life everlasting. Through Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Да защитит нас, просим Тебя, Господи, славное заступничество блаженной и преславной Приснодевы Марии и да приведёт нас к жизни вечной. Через Господа нашего Иисуса Христа, Сына Твоего, Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"The Blessing": "Благословение",
+"May the almighty and merciful Lord, Father and Son and Holy Ghost, bless and keep us.": "Всемогущий и милосердный Господь, Отец, и Сын, и Святой Дух, да благословит и сохранит нас.",
+"O God, Who by the fruitful virginity of blessed Mary hast given to mankind the rewards of eternal salvation; grant, we beseech Thee, that we may experience her intercession for us, by whom we deserved to receive the Author of life, Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee, in the unity of the Holy Ghost, God, world without end.": "Боже, Ты плодоносным девством блаженной Марии даровал роду человеческому награды вечного спасения; даруй, просим Тебя, чтобы мы ощутили заступничество Той, через Которую удостоились принять Начальника жизни, Господа нашего Иисуса Христа, Сына Твоего, Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"O God, Who didst will that Thine eternal Word should take flesh in the womb of the Blessed Virgin Mary, when the angel delivered his message: grant that Thy petitioners, who verily believe her to be the Mother of God, may be assisted by her intercession with Thee. Through the same Jesus Christ, Thy Son, Our Lord, Who liveth and reigneth with Thee, in the unity of the Holy Ghost, God, world without end.": "Боже, Ты восхотел, чтобы вечное Слово Твоё по благовестию Ангела приняло плоть во чреве блаженной Девы Марии; даруй молящим Тебя, истинно верующим, что Она Матерь Божия, получить помощь Её заступничеством пред Тобою. Через того же Иисуса Христа, Сына Твоего, Господа нашего, Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"O God, Who didst will that Thine eternal Word should take flesh in the womb of the Blessed Virgin Mary, when the angel delivered his message: grant that Thy petitioners, who verily believe her to be the Mother of God, may be assisted by her intercession. Through the same Christ our Lord.": "Боже, Ты восхотел, чтобы вечное Слово Твоё по благовестию Ангела приняло плоть во чреве блаженной Девы Марии; даруй молящим Тебя, истинно верующим, что Она Матерь Божия, получить помощь Её заступничеством. Через того же Христа, Господа нашего.",
+"O God, Who didst will that Thine eternal Word should take flesh in the womb of the Blessed Virgin Mary, when the angel delivered his message: grant that Thy petitioners, who verily believe her to be the Mother of God, may be assisted by her intercession. Through the same Jesus Christ Thy Son, our Lord, Who liveth and reigneth with Thee in the unity of the Holy Spirit, God, world without end.": "Боже, Ты восхотел, чтобы вечное Слово Твоё по благовестию Ангела приняло плоть во чреве блаженной Девы Марии; даруй молящим Тебя, истинно верующим, что Она Матерь Божия, получить помощь Её заступничеством. Через того же Иисуса Христа, Сына Твоего, Господа нашего, Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"O God, Who didst will that Thine eternal Word should take flesh in the womb of the Blessed Virgin Mary, when the angel delivered his message; grant that Thy petitioners, who verily believe her to be the Mother of God, may be assisted by her intercession with Thee. Through the same Jesus Christ our Lord, Who liveth and reigneth with Thee, in the unity of the Holy Ghost, God, world without end.": "Боже, Ты восхотел, чтобы вечное Слово Твоё по благовестию Ангела приняло плоть во чреве блаженной Девы Марии; даруй молящим Тебя, истинно верующим, что Она Матерь Божия, получить помощь Её заступничеством пред Тобою. Через того же Иисуса Христа, Сына Твоего, Господа нашего, Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"O God, Who didst will that Thine eternal Word should take flesh in the womb of the Blessed Virgin Mary, when the angel delivered his message; grant that Thy petitioners, who verily believe her to be the Mother of God, may be assisted by her intercession. Through the same Jesus Christ, Thy Son, Who liveth and reigneth with Thee, in the unity of the Holy Ghost, God, world without end.": "Боже, Ты восхотел, чтобы вечное Слово Твоё по благовестию Ангела приняло плоть во чреве блаженной Девы Марии; даруй молящим Тебя, истинно верующим, что Она Матерь Божия, получить помощь Её заступничеством. Через того же Иисуса Христа, Сына Твоего, Господа нашего, Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"O God, Who, by the fruitful virginity of blessed Mary, hast given to mankind the rewards of eternal salvation: grant, we beseech Thee, that we may experience her intercession for us, by whom we deserved to receive the Author of life, Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Боже, Ты плодоносным девством блаженной Марии даровал роду человеческому награды вечного спасения; даруй, просим Тебя, чтобы мы ощутили заступничество Той, через Которую удостоились принять Начальника жизни, Господа нашего Иисуса Христа, Сына Твоего, Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"O God, Who, by the fruitful virginity of blessed Mary, hast given to mankind the rewards of eternal salvation: grant, we beseech Thee, that we may experience her intercession for us, by whom we deserved to receive the Author of life, Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, world without end.": "Боже, Ты плодоносным девством блаженной Марии даровал роду человеческому награды вечного спасения; даруй, просим Тебя, чтобы мы ощутили заступничество Той, через Которую удостоились принять Начальника жизни, Господа нашего Иисуса Христа, Сына Твоего, Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"O God, Who, by the fruitful virginity of blessed Mary, hast given to mankind the rewards of eternal salvation; grant, we beseech Thee, that we may experience her intercession for us, by whom we deserved to receive the Author of life, Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee, in the unity of the Holy Ghost, God, world without end.": "Боже, Ты плодоносным девством блаженной Марии даровал роду человеческому награды вечного спасения; даруй, просим Тебя, чтобы мы ощутили заступничество Той, через Которую удостоились принять Начальника жизни, Господа нашего Иисуса Христа, Сына Твоего, Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"O God, Who, by the fruitful virginity of blessed Mary, hast given to mankind the rewards of eternal salvation; grant, we beseech Thee, that we may experience her intercession for us, by whom we deserved to receive the Author of life, Our Lord Jesus Christ, Thy Son.": "Боже, Ты плодоносным девством блаженной Марии даровал роду человеческому награды вечного спасения; даруй, просим Тебя, чтобы мы ощутили заступничество Той, через Которую удостоились принять Начальника жизни, Господа нашего Иисуса Христа, Сына Твоего.",
+"O most merciful God, grant succor unto our frailty; that as we celebrate the memory of the holy Mother of God, so by the help of her intercession we may rise again from our transgressions. Through the same Jesus Christ, Thy Son, Our Lord, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Всемилостивый Боже, помоги нашей немощи, чтобы мы, совершая память святой Богородицы, с помощью Её заступничества восстали от прегрешений наших. Через того же Иисуса Христа, Сына Твоего, Господа нашего, Который с Тобою живёт и царствует в единстве Святого Духа, Бог, во веки веков.",
+"Today’s season": "Нынешнее время года",
+"Throughout the year": "В течение года",
+"Christmas to Candlemas": "От Рождества до Сретения",
+"Septuagesima to Easter: “Praise be to Thee” in place of Alleluia": "От Септуагесимы до Пасхи: «Хвала Тебе» вместо «Аллилуиа»",
+"Te Deum said at Matins": "Te Deum на Утрени",
+"no Te Deum": "без Te Deum",
+"Loading the Little Office…": "Загрузка оффиция…",
+"Couldn’t load the Little Office": "Не удалось загрузить оффиций",
+"Loading the Akathist…": "Загрузка акафиста…",
+"Couldn’t load the Akathist": "Не удалось загрузить акафист",
+"The Little Office of the Blessed Virgin Mary, Benziger Brothers, New York, 1915 (public domain). Psalms are numbered as in the Latin Vulgate, with the usual modern numbering in brackets.": "The Little Office of the Blessed Virgin Mary, Benziger Brothers, Нью-Йорк, 1915 (общественное достояние), в переводе Sanctify. Псалмы, антифоны и гимны оставлены на английском языке этого издания. Псалмы пронумерованы по латинской Вульгате, привычная современная нумерация дана в скобках.",
+"The Akathist Hymn to the Most Holy Mother of God": "Акафист Пресвятой Богородице",
+"Another kontakion": "Другой кондак",
+"Old words in this translation": "Старинные слова в этом переводе",
+"A new translation from the Greek, made for Sanctify. The Greek text is from Wikisource. The refrain “Chaire,” translated here “Rejoice,” is the angel’s greeting to Mary.": "Новый английский перевод с греческого, сделанный для Sanctify; гимн оставлен на английском. Греческий текст взят из Викитеки. Припев «Хере», переведённый здесь как «Rejoice» (Радуйся), — это приветствие Ангела Марии.",
+"Done into English verse by G. R. Woodward, edited with W. J. Birkbeck (Oxford, 1917). Public domain. Woodward wrote it in easy metres so that it could be sung; in place of “Rejoice” he uses “Hail Mary!”": "Переложен английским стихом Г. Р. Вудвордом, издан вместе с У. Дж. Биркбеком (Оксфорд, 1917). Общественное достояние. Вудворд написал его простыми размерами, чтобы его можно было петь; вместо «Rejoice» он пишет «Hail Mary!».",
 "{*}; {*}": "{*}; {*}",
 "{*}: {*}": "{*}: {*}",
 "{*} · {*}": "{*} · {*}"
@@ -7832,5 +8208,247 @@ window.SANCTIFY_I18N = {
 "Qoheleth": "Еккл",
 "Canticle of Canticles": "Песн"
 }
+},
+"entries": {
+"bib1": {
+"content": "Повествует о происхождении мира, грехопадении человечества и завете Бога с патриархами Авраамом, Исааком и Иаковом и завершается поселением семьи Иосифа в Египте."
+},
+"bib2": {
+"content": "Избавление Израиля от египетского рабства под водительством Моисея, завет и Десять заповедей, данные на Синае, и наставления о скинии."
+},
+"bib3": {
+"content": "Священнические законы о жертвоприношении, ритуальной чистоте и святости, а также календарь священных праздников Израиля."
+},
+"bib4": {
+"content": "Переписи и повествования о сорока годах странствий Израиля по пустыне между Синаем и Землёй обетованной."
+},
+"bib5": {
+"content": "Прощальные речи Моисея, повторяющего Закон новому поколению на равнинах Моава перед входом в Землю обетованную."
+},
+"bib6": {
+"content": "Завоевание Земли обетованной и её раздел между двенадцатью коленами Израиля под водительством Иисуса Навина."
+},
+"bib7": {
+"content": "Повторяющиеся круги неверности Израиля, угнетения соседними народами и избавления через харизматических судей, таких как Девора, Гедеон и Самсон."
+},
+"bib8": {
+"content": "Верность вдовы-моавитянки своей свекрови-израильтянке Ноемини, которая приводит её к браку и в родословие царя Давида."
+},
+"bib9": {
+"content": "Переход Израиля от правления судей к царской власти: пророк Самуил, смутное царствование Саула и возвышение Давида."
+},
+"bib10": {
+"content": "Царствование Давида над Израилем, его военные победы, грех с Вирсавией и распад его семьи и царства."
+},
+"bib11": {
+"content": "Царствование Соломона и построение Иерусалимского храма, а затем разделение царства на Израиль и Иудею."
+},
+"bib12": {
+"content": "Упадок разделённых царств, завершившийся ассирийским завоеванием Израиля и вавилонским завоеванием и пленом Иудеи."
+},
+"bib13": {
+"content": "Священнический пересказ истории Израиля от Адама до царя Давида, с обширными родословиями и вниманием к храмовому богослужению."
+},
+"bib14": {
+"content": "Продолжает историю Летописца о Соломоне и царях Иудеи и завершается указом, разрешающим возвращение из вавилонского плена."
+},
+"bib15": {
+"content": "Возвращение иудейских изгнанников из Вавилона и восстановление Иерусалимского храма под руководством Ездры."
+},
+"bib16": {
+"content": "Руководство Неемии в восстановлении стен Иерусалима и обновлении завета среди вернувшихся изгнанников."
+},
+"bib17": {
+"content": "Испытания благочестивой израильской семьи в изгнании и сокровенное водительство ангела Рафаила к исцелению, браку и промыслу Божию."
+},
+"bib18": {
+"content": "Отважная вдова, которая верой и хитростью спасает осаждённый город, выступив против военачальника захватчиков."
+},
+"bib19": {
+"content": "Иудейская царица Персии рискует жизнью, чтобы спасти свой народ от замысла истребления."
+},
+"bib20": {
+"content": "Иудейское восстание во главе с семьёй Маккавеев против греческого гонения и возвращение религиозной и политической независимости."
+},
+"bib21": {
+"content": "Богословский пересказ восстания Маккавеев, содержащий одно из самых ясных библейских свидетельств о молитве за усопших."
+},
+"bib22": {
+"content": "Незаслуженное страдание праведника и его напряжённый спор с друзьями, а в конце и с Самим Богом о смысле скорби."
+},
+"bib23": {
+"content": "Собрание ста пятидесяти песнопений хвалы, плача и прошения, составляющих сердце богослужения Израиля и молитвы Церкви."
+},
+"bib24": {
+"content": "Практические изречения о добродетели, глупости, труде и семейной жизни, основанные на «страхе Господнем» как начале мудрости."
+},
+"bib25": {
+"content": "Размышление о мимолётности земных успехов и удовольствий, призывающее трезво и благодарно радоваться жизни как дару Божию."
+},
+"bib26": {
+"content": "Лирическая поэма о любви невесты и жениха, которую предание читает как образ заветной любви Бога к Своему народу."
+},
+"bib27": {
+"content": "Размышление о божественной премудрости и конечной участи праведных, написанное для укрепления иудейской общины, которую принуждали к ассимиляции."
+},
+"bib28": {
+"content": "Обширные практические и религиозные наставления иудейского мудреца о семье, дружбе, труде и богослужении."
+},
+"bib29": {
+"content": "Величественные пророчества о суде и надежде, с предсказаниями о грядущем Мессии, глубоко вплетёнными в христианское богослужение, искусство и чтения Адвента."
+},
+"bib30": {
+"content": "Предостережения «плачущего пророка» перед падением Иерусалима под ударами Вавилона и его обетование нового завета, написанного на сердце."
+},
+"bib31": {
+"content": "Пять поэтических плачей о разрушении Иерусалима и его храма вавилонянами."
+},
+"bib32": {
+"content": "Размышление об изгнании, приписываемое писцу Иеремии: исповедание греха Израиля и надежда на восстановление."
+},
+"bib33": {
+"content": "Пророческие видения времён вавилонского плена, среди них поле сухих костей и видение восстановленного храма."
+},
+"bib34": {
+"content": "Повествования о верности в гонениях, как ров со львами и огненная печь, наряду с апокалиптическими видениями грядущего Царства Божия."
+},
+"bib35": {
+"content": "Тяжёлый брак самого пророка становится живым образом верной любви Бога к неверному Израилю."
+},
+"bib36": {
+"content": "Призыв к покаянию после опустошительного нашествия саранчи, завершающийся обетованием излияния Духа Божия."
+},
+"bib37": {
+"content": "Резкое обличение пророком-пастухом социальной несправедливости и пустой обрядности в северном Израильском царстве."
+},
+"bib38": {
+"content": "Самая короткая книга Ветхого Завета, осуждающая соседний народ Едома за предательство Израиля в его бедствии."
+},
+"bib39": {
+"content": "Неохотный пророк, проглоченный большой рыбой, прежде чем он был послан проповедовать покаяние чужому городу Ниневии."
+},
+"bib40": {
+"content": "Пророчества о суде и надежде, в том числе непреходящий призыв «поступать справедливо, любить милосердие и смиренномудренно ходить пред Богом твоим»."
+},
+"bib41": {
+"content": "Пророчество, торжествующее о грядущем падении Ниневии, ассирийской столицы, долго угнетавшей Израиль."
+},
+"bib42": {
+"content": "Откровенный диалог пророка с Богом, борющийся с вопросом о зле и безнаказанной несправедливости."
+},
+"bib43": {
+"content": "Предостережение о грядущем «дне Господнем», смягчённое обетованием о верном остатке, который будет спасён."
+},
+"bib44": {
+"content": "Краткий, но настоятельный призыв к вернувшимся изгнанникам возобновить восстановление Иерусалимского храма."
+},
+"bib45": {
+"content": "Видения, ободряющие к восстановлению храма, полные образов, которые христиане позднее читали как указание на Христа."
+},
+"bib46": {
+"content": "Призыв последнего ветхозаветного пророка к обновлению богослужения и верности завету, завершающийся обетованием о возвращении Илии."
+},
+"bib47": {
+"content": "Представляет Иисуса как исполнение иудейских пророчеств и нового Моисея; построено вокруг пяти больших бесед, включая Нагорную проповедь."
+},
+"bib48": {
+"content": "Самое раннее и самое короткое Евангелие, рассказанное стремительно и напряжённо, в центре которого Иисус как страдающий Сын Божий."
+},
+"bib49": {
+"content": "Тщательно исследованное Евангелие, подчёркивающее сострадание Иисуса к бедным и отверженным; в нём притчи о блудном сыне и милосердном самарянине."
+},
+"bib50": {
+"content": "Богословски насыщенное Евангелие, открывающееся Воплощённым Словом и построенное вокруг семи знамений и великих бесед Иисуса «Я есмь»."
+},
+"bib51": {
+"content": "История роста первоначальной Церкви от Пятидесятницы через служение Петра и миссионерские путешествия Павла до Рима."
+},
+"bib52": {
+"content": "Самое систематическое послание Павла, объясняющее спасение по благодати через веру как для иудеев, так и для язычников."
+},
+"bib53": {
+"content": "Павел говорит о разделениях, нравственности и беспорядке в богослужении в Коринфе; здесь и знаменитый гимн любви в тринадцатой главе."
+},
+"bib54": {
+"content": "Глубоко личное послание, в котором Павел среди страданий защищает своё апостольское служение и ищет примирения с Коринфской церковью."
+},
+"bib55": {
+"content": "Решительная защита Павлом спасения верой во Христа против требований, чтобы обращённые язычники соблюдали Моисеев закон."
+},
+"bib56": {
+"content": "Размышление о Церкви как Теле Христовом и о примиряющем единстве иудеев и язычников в один народ."
+},
+"bib57": {
+"content": "Тёплое, радостное послание, написанное в узах, с великим древним гимном о смирении Христа, Который уничижил Себя."
+},
+"bib58": {
+"content": "Подчёркивает первенство Христа над всем творением в ответ на заблуждения, угрожавшие молодой Колосской церкви."
+},
+"bib59": {
+"content": "Вероятно, самое раннее из сохранившихся посланий Павла: оно ободряет молодую церковь и отвечает на вопросы о времени возвращения Христа."
+},
+"bib60": {
+"content": "Разъясняет недоумения о дне Господнем и призывает общину к постоянному, верному труду в ожидании."
+},
+"bib61": {
+"content": "Пастырские наставления ученику Павла Тимофею о руководстве в Церкви, здравом учении и порядке в общине."
+},
+"bib62": {
+"content": "Последнее послание Павла, личное прощание, в котором он призывает Тимофея хранить здравое учение и продолжать миссионерский труд."
+},
+"bib63": {
+"content": "Наставления спутнику Павла Титу об установлении руководства и порядка в общинах Крита."
+},
+"bib64": {
+"content": "Краткое личное письмо с просьбой о прощении и примирении для Онисима, беглого раба, возвращающегося к своему господину."
+},
+"bib65": {
+"content": "Развёрнутое доказательство превосходства Христа как вечного Первосвященника, единая жертва Которого исполняет и превосходит ветхий завет."
+},
+"bib66": {
+"content": "Практическое учение о живой вере, проявляющейся в добрых делах, о терпении в испытаниях и обуздании языка."
+},
+"bib67": {
+"content": "Ободрение гонимых христиан твёрдо держаться надежды, святой жизни и упования на обетования Божии."
+},
+"bib68": {
+"content": "Предостережение от лжеучителей и напоминание, что обещанное возвращение Христа, хотя и медлит, несомненно."
+},
+"bib69": {
+"content": "Размышление о любви Божией, грехе и призыве любить друг друга как свидетельстве подлинной веры."
+},
+"bib70": {
+"content": "Краткое послание, предостерегающее от лжеучителей и призывающее хранить верность истине Христовой."
+},
+"bib71": {
+"content": "Короткое личное письмо, одобряющее гостеприимство, оказанное странствующим проповедникам Евангелия."
+},
+"bib72": {
+"content": "Краткое и настоятельное предостережение от лжеучителей, проникших в общину, перекликающееся с темами 2 Петра."
+},
+"bib73": {
+"content": "Апокалиптические видения вселенской борьбы и окончательной победы Бога, дающие надежду и стойкость гонимой Церкви."
+},
+"s1": {
+"content": "Сын богатого торговца сукном из Ассизи, Франциск после ряда обращений оставил благополучную жизнь, избрал крайнюю бедность и основал францисканский орден. Он проповедовал бедным, восстанавливал…"
+},
+"s2": {
+"content": "Французская кармелитка, умершая от туберкулёза в двадцать четыре года, Тереза известна своим «малым путём» — убеждением, что святость заключается не в великих подвигах, а в малых делах любви…"
+},
+"s3": {
+"content": "Уроженец Северной Африки, Августин провёл юность в погоне за мирским честолюбием и в увлечении манихейской философией, пока в 386 году не обратился ко Христу, о чём рассказал в «Исповеди». Он стал…"
+},
+"s4": {
+"content": "Итальянский монах-доминиканец, один из величайших философов и богословов Средневековья, Фома Аквинский стремился согласовать веру с заново открытой философией Аристотеля. Его главный труд, «Сумма…"
+},
+"s5": {
+"content": "Испанская монахиня-кармелитка и мистик, Тереза реформировала свой орден, вернув его к более строгому созерцательному уставу, и вместе со святым Иоанном Креста основала босых кармелитов. Её сочинения…"
+},
+"s6": {
+"content": "Крестьянская девушка из Домреми, Жанна верила, что в видениях ей было велено поддержать Карла VII и возглавить французские войска в Столетней войне. В 1429 году она привела армию к решающей победе…"
+}
+},
+"texts": {
+"saint-0": "saint-0.dd971ceb"
 }
 };

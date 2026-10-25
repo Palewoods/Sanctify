@@ -7685,6 +7685,382 @@ window.SANCTIFY_I18N = {
 "2 John": "2 Jean",
 "3 John": "3 Jean",
 "Jude": "Jude",
+"{*}: no prayers logged": "{*} : aucune prière notée",
+"{*}: 1 prayer": "{*} : 1 prière",
+"{*}: {n} prayers": "{*} : {n} prières",
+"Kontakion {n}": "Kondakion {n}",
+"Ikos {n}": "Ikos {n}",
+"Tone {n}": "Ton {n}",
+"Alleluia!": "Alléluia !",
+"Rejoice, O Bride unwedded!": "Réjouis-toi, Épouse inépousée !",
+"To you, our champion and leader, O Theotokos, I, your city, delivered from terrible things, dedicate songs of victory and thanksgiving. Since your power is invincible, set me free from every kind of danger, so that I may cry out to you: Rejoice, O Bride unwedded!": "À toi, Mère de Dieu, notre championne et notre guide, moi, ta cité, délivrée de terribles maux, je dédie des chants de victoire et d’action de grâce. Puisque ta puissance est invincible, délivre-moi de tout danger, afin que je te crie : Réjouis-toi, Épouse inépousée !",
+"Stand while you pray it, as its name says. After the last Kontakion, it is customary to repeat it three times, then the first Ikos and the first Kontakion.": "On le prie debout, comme son nom l’indique. Après le dernier kondakion, il est d’usage de le répéter trois fois, puis le premier ikos et le premier kondakion.",
+"The Greek books also give this kontakion of the Annunciation at the beginning of the hymn.": "Les livres grecs donnent aussi ce kondakion de l’Annonciation au début de l’hymne.",
+"Modern English": "Anglais moderne",
+"With the Greek": "Avec le grec",
+"Woodward’s verse (1917)": "Version en vers de Woodward (1917)",
+"Translation": "Traduction",
+"Hours": "Heures",
+"Night or early morning": "La nuit ou tôt le matin",
+"At daybreak": "À l’aube",
+"Early morning": "Tôt le matin",
+"Mid-morning": "Au milieu de la matinée",
+"Mid-afternoon": "Au milieu de l’après-midi",
+"Evening": "Le soir",
+"Before the Office": "Avant l’Office",
+"Before and After the Office": "Avant et après l’Office",
+"Prime": "Prime",
+"Terce": "Tierce",
+"Sext": "Sexte",
+"None": "None",
+"Compline →": "Complies →",
+"← {*}": "← {*}",
+"{*} →": "{*} →",
+"The Hours of Our Lady: a short form of the Church’s daily prayer, with psalms, hymns, and readings in honor of Mary. Pray one Hour or all of them. It is often prayed by religious, tertiaries, and those who wear the": "Les Heures de Notre-Dame : une forme brève de la prière quotidienne de l’Église, avec des psaumes, des hymnes et des lectures en l’honneur de Marie. Priez une Heure ou toutes. Il est souvent prié par les religieux, les tertiaires et ceux qui portent le",
+"Brown Scapular": "scapulaire brun",
+"The Brown Scapular →": "Le scapulaire brun →",
+"The Little Office of Our Lady →": "Le Petit Office de Notre-Dame →",
+"Pray the Little Office of Our Lady →": "Priez le Petit Office de Notre-Dame →",
+"Pray the Sacred Heart Chaplet →": "Priez le chapelet du Sacré-Cœur →",
+"Pray the whole Akathist →": "Priez tout l’Acathiste →",
+"Prepare for Confession →": "Préparez-vous à la confession →",
+"Find a patron saint →": "Trouvez un saint patron →",
+"Holy customs for the home →": "Saintes coutumes pour la maison →",
+"Holy customs →": "Saintes coutumes →",
+"Keep a prayer tracker →": "Tenez un suivi de prière →",
+"Open the Catechism →": "Ouvrez le Catéchisme →",
+"The Mass Explained →": "La messe expliquée →",
+"Pray it anyway": "Le prier quand même",
+"Clear all answers": "Effacer toutes les réponses",
+"the Crusades and the military orders": "les croisades et les ordres militaires",
+"Previous month": "Mois précédent",
+"Next month": "Mois suivant",
+"Calendar view": "Vue du calendrier",
+"On this page": "Sur cette page",
+"Kinds of hymns": "Types d’hymnes",
+"← None": "← Aucun",
+"Find": "Chercher",
+"Visit site ↗": "Visiter le site ↗",
+"Read here": "Lire ici",
+"Words": "Paroles",
+"Recording:": "Enregistrement :",
+"No recording yet.": "Pas encore d’enregistrement.",
+", via Wikimedia Commons": ", via Wikimedia Commons",
+", Public domain, via Wikimedia Commons": ", domaine public, via Wikimedia Commons",
+", Copyrighted free use, via Wikimedia Commons": ", libre d’utilisation sous droit d’auteur, via Wikimedia Commons",
+"Public Domain": "Domaine public",
+"Wikimedia Commons contributor": "Contributeur de Wikimedia Commons",
+"Orgelmusik (organ)": "Orgelmusik (orgue)",
+"Pracchia-78 (synthesized organ)": "Pracchia-78 (orgue synthétisé)",
+"Pracchia-78 (synthesized)": "Pracchia-78 (synthétisé)",
+"grosasm (computer performance)": "grosasm (interprétation par ordinateur)",
+"Choir of A. A. Arkhangelsky (historic recording)": "Chœur d’A. A. Arkhangelski (enregistrement historique)",
+"Marie Rappold and Albert Spalding (Edison cylinder)": "Marie Rappold et Albert Spalding (cylindre Edison)",
+"Ukrainian National Chorus, conducted by Oleksandr Koshetz": "Chœur national ukrainien, sous la direction d’Oleksandr Koshetz",
+"Moscow Patriarchal Choir": "Chœur patriarcal de Moscou",
+"Choir and orchestra of Senftenberg": "Chœur et orchestre de Senftenberg",
+"Church of the Missionary Fathers, Kraków": "Église des Pères missionnaires, Cracovie",
+"Cistercians of Vyšší Brod Monastery": "Cisterciens de l’abbaye de Vyšší Brod",
+"Schola Gregoriana of the Pallottine Seminary, Ołtarzew": "Schola grégorienne du séminaire pallottin d’Ołtarzew",
+"Chorus of the U.S. Army Band “Pershing’s Own”": "Chœur de la musique de l’armée américaine « Pershing’s Own »",
+"The Sea Chanters, United States Navy Band": "The Sea Chanters, musique de la marine américaine",
+"The Singing Sergeants, United States Air Force Band": "The Singing Sergeants, musique de l’armée de l’air américaine",
+"United States Air Force Band of the Golden West": "Musique de l’armée de l’air américaine du Golden West",
+"Icons": "Icônes",
+"Catholic goods": "Articles catholiques",
+"Belief": "Croyance",
+"Church Fathers": "Pères de l’Église",
+"Find a paragraph": "Trouver un paragraphe",
+"1324, or 1324–1327": "1324, ou 1324–1327",
+"The Catechism, part by part": "Le Catéchisme, partie par partie",
+"The Catechism’s text belongs to the Vatican’s publisher, so it stays on the Vatican’s website. Sanctify keeps the whole outline here, and every heading and paragraph number opens the right page there.": "Le texte du Catéchisme appartient à l’éditeur du Vatican ; il reste donc sur le site du Vatican. Sanctify conserve ici tout le plan, et chaque titre et chaque numéro ouvre la bonne page là-bas.",
+"Prologue": "Prologue",
+"Part One: The Profession of Faith": "Première partie : La profession de la foi",
+"Part Two: The Celebration of the Christian Mystery": "Deuxième partie : La célébration du mystère chrétien",
+"Part Three: Life in Christ": "Troisième partie : La vie dans le Christ",
+"Part Four: Christian Prayer": "Quatrième partie : La prière chrétienne",
+"All {n}": "Tous ({n})",
+"Advent & Christmas": "Avent et Noël",
+"Feasts & Seasons": "Fêtes et temps",
+"For the Dead": "Pour les défunts",
+"Lent & Holy Week": "Carême et Semaine sainte",
+"Our Lady": "Notre-Dame",
+"The Holy Spirit": "L’Esprit Saint",
+"The Mass": "La messe",
+"The Theotokos": "La Théotokos",
+"Vespers & Matins": "Vêpres et matines",
+"CEC refers to the paragraphs of the Catechism of the Catholic Church.": "CEC renvoie aux paragraphes du Catéchisme de l’Église catholique.",
+"Some Eastern Catholics also keep devotions from the Latin Church, such as the scapular or the Miraculous Medal. You can read about them in the": "Certains catholiques orientaux gardent aussi des dévotions de l’Église latine, comme le scapulaire ou la Médaille miraculeuse. Vous pouvez les découvrir dans l’",
+"The Eastern Catholic Churches have their own beautiful arrangement, with the iconostasis and the Holy Table. Read about it in the": "Les Églises catholiques orientales ont leur propre et belle disposition, avec l’iconostase et la Sainte Table. Découvrez-la dans l’",
+"The Little Office of the Blessed Virgin Mary is the Marian office of the Latin Church.": "Le Petit Office de la Bienheureuse Vierge Marie est l’office marial de l’Église latine.",
+"The words of these hymns are in the public domain. The recordings are freely licensed from Wikimedia Commons; tap a recording’s name to see who made it and its license.": "Les paroles de ces hymnes sont dans le domaine public. Les enregistrements viennent de Wikimedia Commons sous licence libre ; touchez le nom d’un enregistrement pour voir qui l’a fait et sa licence.",
+"These guides are a starting place. Your parish priest and your diocese or eparchy can tell you exactly what applies where you live.": "Ces guides sont un point de départ. Votre curé et votre diocèse ou éparchie peuvent vous dire exactement ce qui s’applique là où vous vivez.",
+"Want to see a Latin church? Read the guide in the": "Vous voulez voir une église latine ? Lisez le guide dans l’",
+"An icon is not simply a picture of a holy person but, as the Eastern Churches say, a window onto heaven: what Scripture says in words, the icon shows in color. See also": "Une icône n’est pas simplement l’image d’une personne sainte mais, comme disent les Églises orientales, une fenêtre sur le ciel : ce que l’Écriture dit en paroles, l’icône le montre en couleurs. Voir aussi",
+"See also": "Voir aussi",
+"in Church History, and": "dans Histoire de l’Église, et",
+"in Theology.": "dans Théologie.",
+"Dates of the earliest popes are traditional and approximate. List and dates from the Annuario Pontificio as given by Wikipedia; names without a Sanctify page link to Wikipedia.": "Les dates des premiers papes sont traditionnelles et approximatives. Liste et dates de l’Annuario Pontificio d’après Wikipédia ; les noms sans page Sanctify renvoient à Wikipédia.",
+"Many people choose a Confirmation saint whose virtues they want to imitate. Read about a few, ask them for their prayers, and see which one becomes a friend.": "Beaucoup choisissent un saint de confirmation dont ils veulent imiter les vertus. Lisez sur quelques-uns, demandez leurs prières et voyez lequel devient un ami.",
+"These are independent retailers, not affiliated with this site. Some icon makers are Orthodox; their icons follow the same ancient tradition. We do our best to point to established, reputable shops, but always use your own judgment before buying.": "Ce sont des commerces indépendants, sans lien avec ce site. Certains iconographes sont orthodoxes ; leurs icônes suivent la même tradition ancienne. Nous faisons de notre mieux pour indiquer des boutiques établies et réputées, mais faites toujours preuve de discernement avant d’acheter.",
+"All the Churches share one faith, the same seven sacraments, and communion with the pope.": "Toutes les Églises partagent une même foi, les mêmes sept sacrements et la communion avec le pape.",
+"Catholics may attend the liturgy of any Catholic Church and fulfill their Sunday obligation there.": "Les catholiques peuvent assister à la liturgie de n’importe quelle Église catholique et y satisfaire à l’obligation dominicale.",
+"Eastern Catholics celebrate the Holy Mysteries of Baptism, Chrismation, and the Eucharist together, even for infants.": "Les catholiques orientaux célèbrent ensemble les saints Mystères du baptême, de la chrismation et de l’Eucharistie, même pour les nourrissons.",
+"It begins in this life and is completed in the vision of God.": "Il commence en cette vie et s’achève dans la vision de Dieu.",
+"Many Eastern Catholic Churches ordain married men to the priesthood.": "Beaucoup d’Églises catholiques orientales ordonnent prêtres des hommes mariés.",
+"Theosis is the Eastern way of speaking of sanctifying grace and holiness.": "La théosis est la manière orientale de parler de la grâce sanctifiante et de la sainteté.",
+"We become by grace what God is by nature.": "Nous devenons par grâce ce que Dieu est par nature.",
+"31 years": "31 ans",
+"blesseds": "bienheureux",
+"longest reign after St. Peter: Bl. Pius IX": "le plus long pontificat après saint Pierre : bienheureux Pie IX",
+"most common names ({*} popes)": "noms les plus fréquents ({*} papes)",
+"John, Gregory, Benedict": "Jean, Grégoire, Benoît",
+"shortest reign: Urban VII, 1590": "le plus court pontificat : Urbain VII, 1590",
+"Find a pope by name, number, or year…": "Trouver un pape par nom, numéro ou année…",
+"Search the popes": "Rechercher parmi les papes",
+"Saints for you": "Des saints pour vous",
+"What you are praying for": "Ce pour quoi vous priez",
+"What you love in a saint": "Ce que vous aimez chez un saint",
+"Your heritage": "Vos origines",
+"Your work or calling": "Votre travail ou votre vocation",
+"Choose everything that fits: your job, your studies, your role at home.": "Choisissez tout ce qui convient : votre métier, vos études, votre rôle à la maison.",
+"Choose the needs on your heart, for yourself or for someone you love.": "Choisissez les besoins que vous portez dans votre cœur, pour vous ou pour quelqu’un que vous aimez.",
+"Leave blank for any time, or choose the eras that interest you.": "Laissez vide pour toute époque, ou choisissez celles qui vous intéressent.",
+"Saints from your homeland or your family’s.": "Des saints de votre pays ou de celui de votre famille.",
+"Which kinds of holiness draw you?": "Quelles formes de sainteté vous attirent ?",
+"Maria, John, Teresa…": "Marie, Jean, Thérèse…",
+"Your birthday": "Votre anniversaire",
+"Your first name": "Votre prénom",
+"Arts and media": "Arts et médias",
+"Business and money": "Affaires et argent",
+"Daily life": "Vie quotidienne",
+"Family and love": "Famille et amour",
+"Food and hospitality": "Alimentation et hospitalité",
+"Health": "Santé",
+"Health and care": "Santé et soins",
+"Home and family": "Maison et famille",
+"Justice and mercy": "Justice et miséricorde",
+"Land, sea, and animals": "Terre, mer et animaux",
+"Law and public service": "Droit et service public",
+"Other work": "Autres métiers",
+"School and learning": "École et études",
+"Science and technology": "Sciences et technologie",
+"Serving the Church": "Au service de l’Église",
+"The soul": "L’âme",
+"Trades and crafts": "Métiers et artisanat",
+"Travel and transport": "Voyages et transports",
+"Prayer before the Office": "Prière avant l’Office",
+"Prayer after the Office": "Prière après l’Office",
+"O Lord, open Thou my mouth, that it may bless Thy holy name; cleanse my heart, too, from all vain, evil, or wandering thoughts. Enlighten mine understanding, kindle mine affections, that I may be able to say this Office meetly with attention and devotion and may deserve to be heard before the presence of Thy divine Majesty. Through Christ our Lord.": "Ouvrez, Seigneur, ma bouche pour bénir votre saint nom ; purifiez aussi mon cœur de toute pensée vaine, mauvaise ou distraite. Éclairez mon intelligence, enflammez mon cœur, afin que je puisse réciter cet Office dignement, avec attention et dévotion, et mériter d’être exaucé en présence de votre divine Majesté. Par le Christ notre Seigneur.",
+"Amen.": "Amen.",
+"O Lord, in union with that divine intention wherewith Thou Thyself, while on earth, didst offer praises unto God, I offer these Hours unto Thee.": "Seigneur, en union avec cette divine intention par laquelle vous-même, sur la terre, avez rendu louange à Dieu, je vous offre ces Heures.",
+"Said kneeling at the end of the Office.": "Se dit à genoux à la fin de l’Office.",
+"To the most holy and undivided Trinity, to the manhood of our crucified Lord Jesus Christ, to the fruitful virginity of the most blessed and glorious Mary, ever a virgin, to the entire assembly of the saints, be ascribed everlasting praise, honor, power, and glory, by every creature; and to us be granted the remission of all our sins, world without end. Amen.": "À la très sainte et indivisible Trinité, à l’humanité de notre Seigneur Jésus-Christ crucifié, à la féconde virginité de la très bienheureuse et glorieuse Marie toujours vierge, et à l’assemblée de tous les saints, que toute créature rende éternellement louange, honneur, puissance et gloire ; et qu’à nous soit accordée la rémission de tous nos péchés, dans les siècles des siècles. Amen.",
+"Blessed is the Virgin Mary’s womb, which bore the Son of the everlasting Father.": "Bienheureux le sein de la Vierge Marie, qui a porté le Fils du Père éternel.",
+"And blessed are the breasts which nourished Christ our Lord.": "Et bienheureuses les mamelles qui ont nourri le Christ notre Seigneur.",
+"Our Father, Who art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done on earth, as it is in heaven. Give us this day our daily bread. And forgive us our trespasses, as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil. Amen.": "Notre Père, qui êtes aux cieux, que votre nom soit sanctifié, que votre règne arrive, que votre volonté soit faite sur la terre comme au ciel. Donnez-nous aujourd’hui notre pain de chaque jour. Pardonnez-nous nos offenses, comme nous pardonnons à ceux qui nous ont offensés. Et ne nous laissez pas succomber à la tentation, mais délivrez-nous du mal. Amen.",
+"Hail, Mary, full of grace, the Lord is with thee: blessed art thou amongst women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.": "Je vous salue, Marie, pleine de grâce, le Seigneur est avec vous ; vous êtes bénie entre toutes les femmes, et Jésus, le fruit de vos entrailles, est béni. Sainte Marie, Mère de Dieu, priez pour nous, pauvres pécheurs, maintenant et à l’heure de notre mort. Amen.",
+"Hail Mary, in silence.": "Je vous salue Marie, en silence.",
+"Our Father, in silence.": "Notre Père, en silence.",
+"Our Father, Hail Mary, and the Creed, in silence.": "Notre Père, Je vous salue Marie et Credo, en silence.",
+"Lord, Thou shalt open my lips.": "Seigneur, vous ouvrirez mes lèvres.",
+"And my mouth shall declare Thy praise.": "Et ma bouche annoncera votre louange.",
+"O God, hasten to mine aid.": "Dieu, venez à mon aide.",
+"O Lord, make haste to help me.": "Seigneur, hâtez-vous de me secourir.",
+"Glory be to the Father, and to the Son, and to the Holy Ghost. As it was in the beginning, is now, and ever shall be, world without end. Amen.": "Gloire au Père, et au Fils, et au Saint-Esprit. Comme il était au commencement, maintenant et toujours, et dans les siècles des siècles. Amen.",
+"Alleluia.": "Alléluia.",
+"Praise be to Thee, O Lord, King of everlasting glory.": "Louange à vous, Seigneur, Roi d’éternelle gloire.",
+"Invitatory": "Invitatoire",
+"Hail, Mary, full of grace, the Lord is with thee. Hail, Mary, full of grace, the Lord is with thee.": "Je vous salue, Marie, pleine de grâce, le Seigneur est avec vous. Je vous salue, Marie, pleine de grâce, le Seigneur est avec vous.",
+"Hail, Mary, full of grace, the Lord is with thee.": "Je vous salue, Marie, pleine de grâce, le Seigneur est avec vous.",
+"Hail, Mary, full of grace; the Lord is with thee.": "Je vous salue, Marie, pleine de grâce ; le Seigneur est avec vous.",
+"The Lord is with thee.": "Le Seigneur est avec vous.",
+"Hymn": "Hymne",
+"The Nocturn": "Le Nocturne",
+"The three following Psalms are said on Sunday, Monday, and Thursday.": "Les trois psaumes suivants se disent le dimanche, le lundi et le jeudi.",
+"The three following Psalms are said on Tuesday and Friday.": "Les trois psaumes suivants se disent le mardi et le vendredi.",
+"The three following Psalms are said on Wednesday and Saturday.": "Les trois psaumes suivants se disent le mercredi et le samedi.",
+"Psalm {n}": "Psaume {n}",
+"Psalm {n} ({n})": "Psaume {n} ({n})",
+"An invitation to praise God, and to obey Him": "Invitation à louer Dieu et à lui obéir",
+"God is wonderful in His works; especially in mankind, singularly exalted by the Incarnation of Christ": "Dieu est admirable dans ses œuvres, surtout dans l’homme, singulièrement élevé par l’Incarnation du Christ",
+"The works of God show forth His glory": "Les œuvres de Dieu proclament sa gloire",
+"A song of triumph for the translation of the Ark to Mount Sion": "Chant de triomphe pour la translation de l’Arche sur le mont Sion",
+"The excellence of Christ’s kingdom, and the endowments of His Church": "L’excellence du royaume du Christ et les dons de son Église",
+"The Church in persecution trusteth in the protection of God": "L’Église persécutée se confie en la protection de Dieu",
+"The glory of the Church of Christ": "La gloire de l’Église du Christ",
+"An exhortation to all creatures to praise God": "Exhortation à toutes les créatures à louer Dieu",
+"Joy at the coming and reign of Christ": "Joie de la venue et du règne du Christ",
+"Invitation to praise the Lord for the victories of Christ": "Invitation à louer le Seigneur pour les victoires du Christ",
+"Grace is poured forth on thy lips.": "La grâce est répandue sur tes lèvres.",
+"Therefore hath God blessed thee for ever.": "C’est pourquoi Dieu t’a bénie pour toujours.",
+"And lead us not into temptation.": "Et ne nous laissez pas succomber à la tentation.",
+"But deliver us from evil.": "Mais délivrez-nous du mal.",
+"The Lessons": "Les Leçons",
+"Said throughout the year, except during Advent.": "Se disent toute l’année, sauf pendant l’Avent.",
+"Said during Advent.": "Se disent pendant l’Avent.",
+"Through the prayers and merits of blessed Mary, ever a virgin, and of all the saints, may the Lord bring us to the kingdom of heaven.": "Par les prières et les mérites de la bienheureuse Marie toujours vierge et de tous les saints, que le Seigneur nous conduise au royaume des cieux.",
+"Pray, a blessing.": "Daignez me bénir.",
+"May the Virgin Mary with her loving Child bless us.": "Que la Vierge Marie avec son tendre Enfant nous bénisse.",
+"Lesson I": "Leçon I",
+"Lesson II": "Leçon II",
+"Lesson III": "Leçon III",
+"Ecclesiasticus {n}": "Ecclésiastique {n}",
+"In all these I sought rest, and I shall abide in the inheritance of the Lord. Then the Creator of all things commanded and said to me; and He that made me rested in my tabernacle, and He said to me: Let thy dwelling be in Jacob, and thine inheritance in Israel, and take root in My chosen people. Do Thou, Lord, have mercy on us.": "En tous ces lieux j’ai cherché le repos, et je demeurerai dans l’héritage du Seigneur. Alors le Créateur de toutes choses m’a donné ses ordres et m’a parlé ; et celui qui m’a créée a reposé dans ma tente, et il m’a dit : Habite en Jacob, qu’Israël soit ton héritage, et prends racine dans mes élus. Et vous, Seigneur, ayez pitié de nous.",
+"O holy and immaculate virginity, I know not with what praises to extol thee. For Him Whom heaven could not hold thou didst carry at thy bosom.": "Ô sainte et immaculée virginité, je ne sais par quelles louanges t’exalter. Car celui que les cieux ne pouvaient contenir, tu l’as porté en ton sein.",
+"Blessed art thou amongst women, and blessed is the fruit of thy womb. For Him Whom heaven could not hold thou didst carry at thy bosom.": "Tu es bénie entre les femmes, et le fruit de ton sein est béni. Car celui que les cieux ne pouvaient contenir, tu l’as porté en ton sein.",
+"May the Virgin of virgins herself plead for us before the Lord.": "Que la Vierge des vierges intercède elle-même pour nous auprès du Seigneur.",
+"And so was I established in Sion, and in the holy city likewise I rested; and my power was in Jerusalem. And I took root in an honorable people, and in the portion of my God is His inheritance, and my abode is in the full assembly of saints. Do Thou, Lord, have mercy on us.": "Ainsi j’ai été affermie en Sion, et dans la cité sainte j’ai trouvé aussi mon repos, et ma puissance est dans Jérusalem. J’ai pris racine dans un peuple honoré ; dans la part de mon Dieu est son héritage, et ma demeure est dans l’assemblée des saints. Et vous, Seigneur, ayez pitié de nous.",
+"Blessed art thou, O Virgin Mary, who didst bear the Lord, the Creator of the world. Thou didst bring forth Him that made thee and remainest a virgin for ever.": "Tu es bienheureuse, Vierge Marie, toi qui as porté le Seigneur, Créateur du monde. Tu as enfanté celui qui t’a faite, et tu demeures vierge pour toujours.",
+"Hail, Mary, full of grace, the Lord is with thee. Thou didst bring forth Him that made thee, and remainest a virgin for ever.": "Je vous salue, Marie, pleine de grâce, le Seigneur est avec vous. Tu as enfanté celui qui t’a faite, et tu demeures vierge pour toujours.",
+"Glory be to the Father, and to the Son, and to the Holy Ghost. Thou didst bring forth Him that made thee, and remainest a virgin for ever.": "Gloire au Père, et au Fils, et au Saint-Esprit. Tu as enfanté celui qui t’a faite, et tu demeures vierge pour toujours.",
+"Through the Virgin Mother may the Lord grant us salvation and peace.": "Par la Vierge Mère, que le Seigneur nous accorde le salut et la paix.",
+"I was exalted like a cedar in Lebanon, and as a cypress-tree on Mount Sion. I was exalted like a palm-tree in Cades, and as a rose-plant in Jericho. As a fair olive-tree in the plains, and as a plane-tree by the water in the streets, was I exalted. I gave forth a sweet fragrance like cinnamon and aromatic balm. I yielded a sweet smell like choicest myrrh. Do Thou, Lord, have mercy on us.": "Je me suis élevée comme le cèdre du Liban et comme le cyprès sur la montagne de Sion. Je me suis élevée comme le palmier de Cadès et comme le rosier de Jéricho. Comme un bel olivier dans la plaine, comme un platane au bord des eaux sur les places, je me suis élevée. Comme le cinnamome et le baume odorant j’ai répandu mon parfum ; comme une myrrhe de choix j’ai exhalé une douce odeur. Et vous, Seigneur, ayez pitié de nous.",
+"Happy indeed art thou, O holy Virgin Mary, and most worthy of all praise: For out of thee arose the Sun of righteousness, Christ our God.": "Tu es vraiment heureuse, ô sainte Vierge Marie, et très digne de toute louange : car de toi s’est levé le Soleil de justice, le Christ notre Dieu.",
+"Pray for the people, intercede for the clergy, plead for religious women. Let all enjoy thine aid who keep holy commemoration of thee. For out of thee arose the Sun of righteousness, Christ our God.": "Prie pour le peuple, intercède pour le clergé, plaide pour les religieuses. Que tous ressentent ton secours, ceux qui célèbrent ta sainte mémoire. Car de toi s’est levé le Soleil de justice, le Christ notre Dieu.",
+"Glory be to the Father, and to the Son, and to the Holy Ghost. Christ our God.": "Gloire au Père, et au Fils, et au Saint-Esprit. Le Christ notre Dieu.",
+"Luke {n}": "Luc {n}",
+"The angel Gabriel was sent from God into a city of Galilee called Nazareth, to a virgin espoused to a man whose name was Joseph, of the house of David; and the Virgin’s name was Mary. And the angel being come in, said unto her: Hail, full of grace, the Lord is with thee: blessed art thou amongst women. Do Thou, Lord, have mercy on us.": "L’ange Gabriel fut envoyé par Dieu dans une ville de Galilée appelée Nazareth, à une vierge fiancée à un homme nommé Joseph, de la maison de David ; et le nom de la vierge était Marie. L’ange, étant entré auprès d’elle, lui dit : Je vous salue, pleine de grâce, le Seigneur est avec vous ; vous êtes bénie entre les femmes. Et vous, Seigneur, ayez pitié de nous.",
+"The angel Gabriel was sent to Mary, the Virgin, who was espoused to Joseph, declaring to her the word, and the Virgin trembles at the light. Fear not, Mary, thou hast found grace with the Lord: Behold, thou shalt conceive, and shalt bring forth, and He shall be called the Son of the Most High.": "L’ange Gabriel fut envoyé à Marie, la Vierge fiancée à Joseph, pour lui annoncer la parole, et la Vierge tremble devant la lumière. Ne crains pas, Marie, tu as trouvé grâce auprès du Seigneur : voici que tu concevras et tu enfanteras, et il sera appelé Fils du Très-Haut.",
+"The Lord shall give unto Him the throne of David His father, and He shall reign in the house of Jacob for ever. Behold, thou shalt conceive, and shalt bring forth, and He shall be called the Son of the Most High.": "Le Seigneur lui donnera le trône de David son père, et il régnera sur la maison de Jacob éternellement. Voici que tu concevras et tu enfanteras, et il sera appelé Fils du Très-Haut.",
+"And when she had heard these things, she was troubled at his saying, and thought within herself what manner of salutation this should be. And the angel said unto her: Fear not, Mary, for thou hast found grace with God. Behold, thou shalt conceive in the womb, and shalt bring forth a Son, and thou shalt call His name Jesus. He shall be great, and shall be called the Son of the Most High. And the Lord God will give unto Him the throne of David His father, and He shall reign in the house of Jacob for ever; and of His kingdom there shall be no end. Do Thou, Lord, have mercy on us.": "Ayant entendu ces paroles, elle fut troublée et se demandait ce que pouvait être cette salutation. L’ange lui dit : Ne crains pas, Marie, car tu as trouvé grâce auprès de Dieu. Voici que tu concevras en ton sein et tu enfanteras un fils, et tu lui donneras le nom de Jésus. Il sera grand et sera appelé Fils du Très-Haut. Le Seigneur Dieu lui donnera le trône de David son père ; il régnera sur la maison de Jacob éternellement, et son règne n’aura pas de fin. Et vous, Seigneur, ayez pitié de nous.",
+"Hail, Mary, full of grace, the Lord is with thee. The Holy Ghost shall come upon thee, and the power of the Most High shall overshadow thee; for the Holy which shall be born of thee shall be called the Son of God.": "Je vous salue, Marie, pleine de grâce, le Seigneur est avec vous. L’Esprit Saint viendra sur toi, et la puissance du Très-Haut te couvrira de son ombre ; c’est pourquoi le Saint qui naîtra de toi sera appelé Fils de Dieu.",
+"How shall this be done, seeing I know not man? And the angel answering said unto her: The Holy Ghost shall come upon thee, and the power of the Most High shall overshadow thee; for the Holy which shall be born of thee shall be called the Son of God.": "Comment cela se fera-t-il, puisque je ne connais point d’homme ? Et l’ange lui répondit : L’Esprit Saint viendra sur toi, et la puissance du Très-Haut te couvrira de son ombre ; c’est pourquoi le Saint qui naîtra de toi sera appelé Fils de Dieu.",
+"Glory be to the Father, and to the Son, and to the Holy Ghost. The Holy Ghost shall come upon thee, and the power of the Most High shall overshadow thee; for the Holy which shall be born of thee shall be called the Son of God.": "Gloire au Père, et au Fils, et au Saint-Esprit. L’Esprit Saint viendra sur toi, et la puissance du Très-Haut te couvrira de son ombre ; c’est pourquoi le Saint qui naîtra de toi sera appelé Fils de Dieu.",
+"And Mary said to the angel: How shall this be done, seeing I know not man? And the angel answering said unto her: The Holy Ghost shall come upon thee, and the power of the Most High shall overshadow thee. And therefore also the Holy which shall be born of thee shall be called the Son of God. And behold, thy cousin Elizabeth, she also hath conceived a son in her old age, and this is the sixth month with her who is called barren; for no word shall be impossible with God. And Mary said: Behold the handmaid of the Lord, be it done to me according to Thy word. Do Thou, Lord, have mercy on us.": "Marie dit à l’ange : Comment cela se fera-t-il, puisque je ne connais point d’homme ? L’ange lui répondit : L’Esprit Saint viendra sur toi, et la puissance du Très-Haut te couvrira de son ombre. C’est pourquoi le Saint qui naîtra de toi sera appelé Fils de Dieu. Et voici qu’Élisabeth, ta cousine, a conçu elle aussi un fils dans sa vieillesse, et elle en est à son sixième mois, elle qu’on appelait stérile ; car rien n’est impossible à Dieu. Marie dit alors : Voici la servante du Seigneur ; qu’il me soit fait selon votre parole. Et vous, Seigneur, ayez pitié de nous.",
+"Receive, O Virgin Mary, the word which the Lord hath sent thee through an angel: Thou shalt conceive, and shalt bring forth both God and man, that thou mayest be called blessed amongst all women.": "Reçois, Vierge Marie, la parole que le Seigneur t’a envoyée par l’ange : tu concevras et tu enfanteras celui qui est à la fois Dieu et homme, afin que tu sois appelée bénie entre toutes les femmes.",
+"Yea, thou shalt bring forth a Son, and shalt suffer no loss of virginity: thou shalt be with child, and shalt be a mother ever undefiled. That thou mayest be called blessed amongst all women.": "Oui, tu enfanteras un Fils sans rien perdre de ta virginité : tu concevras et tu seras mère toujours sans tache. Afin que tu sois appelée bénie entre toutes les femmes.",
+"Glory be to the Father, and to the Son, and to the Holy Ghost. That thou mayest be called blessed amongst all women.": "Gloire au Père, et au Fils, et au Saint-Esprit. Afin que tu sois appelée bénie entre toutes les femmes.",
+"Te Deum": "Te Deum",
+"Hymn of SS. Ambrose and Augustine": "Hymne de saint Ambroise et saint Augustin",
+"Said from Christmas until Septuagesima, and from Easter Sunday until Advent. In Advent and from Septuagesima until Easter it is said only on feasts of the Blessed Virgin.": "Se dit de Noël à la Septuagésime, et du dimanche de Pâques à l’Avent. Pendant l’Avent et de la Septuagésime à Pâques, on ne le dit qu’aux fêtes de la Sainte Vierge.",
+"Kneel at the following verse.": "Agenouillez-vous au verset suivant.",
+"Kneel for the first verse.": "Agenouillez-vous pour la première strophe.",
+"Lauds follows.": "Les Laudes suivent.",
+"When Lauds follows Matins immediately, the silent Hail Mary is left out.": "Quand les Laudes suivent immédiatement les Matines, on omet le Je vous salue Marie en silence.",
+"If the next Hour does not follow at once, a Hail Mary is said in silence.": "Si l’Heure suivante ne suit pas aussitôt, on dit un Je vous salue Marie en silence.",
+"Glory be is not said after this canticle.": "On ne dit pas le Gloire au Père après ce cantique.",
+"The glory and the stability of the Church of Christ": "La gloire et la stabilité de l’Église du Christ",
+"All are invited to praise the Lord": "Tous sont invités à louer le Seigneur",
+"A prayer in desolation and distress": "Prière dans la désolation et la détresse",
+"Canticle of the Three Children": "Cantique des trois enfants",
+"Daniel {n}": "Daniel {n}",
+"All creatures invited to praise God": "Toutes les créatures invitées à louer Dieu",
+"Little Chapter": "Capitule",
+"Canticle of Canticles {n}": "Cantique des Cantiques {n}",
+"Isaias {n}": "Isaïe {n}",
+"The daughters of Sion saw her, and declared her most blessed; and queens praised her.": "Les filles de Sion l’ont vue et l’ont proclamée bienheureuse ; et les reines l’ont louée.",
+"There shall come forth a rod out of the root of Jesse, and a flower shall rise up out of his root. And the Spirit of the Lord shall rest upon Him.": "Un rejeton sortira de la racine de Jessé, et une fleur s’élèvera de sa racine. Et l’Esprit du Seigneur reposera sur lui.",
+"There shall come forth a rod out of the root of Jesse, and a flower shall rise up out of his root, and the Spirit of the Lord shall rest upon him.": "Un rejeton sortira de la racine de Jessé, et une fleur s’élèvera de sa racine, et l’Esprit du Seigneur reposera sur lui.",
+"There shall come forth a rod out of the root of Jesse, and a flower shall rise up out of his root, and the Spirit of the Lord shall rest upon Him.": "Un rejeton sortira de la racine de Jessé, et une fleur s’élèvera de sa racine, et l’Esprit du Seigneur reposera sur lui.",
+"Blessed art thou amongst women.": "Tu es bénie entre les femmes.",
+"And blessed is the fruit of thy womb.": "Et le fruit de ton sein est béni.",
+"Canticle of Zachary": "Cantique de Zacharie",
+"The Benedictus · Luke {n}": "Le Benedictus · Luc {n}",
+"The Magnificat · Luke {n}": "Le Magnificat · Luc {n}",
+"The Nunc Dimittis · Luke {n}": "Le Nunc dimittis · Luc {n}",
+"Lord, have mercy on us. Christ, have mercy on us. Lord, have mercy on us.": "Seigneur, ayez pitié de nous. Christ, ayez pitié de nous. Seigneur, ayez pitié de nous.",
+"O Lord, hear my prayer.": "Seigneur, exaucez ma prière.",
+"And let my cry come unto Thee.": "Et que mon cri parvienne jusqu’à vous.",
+"Commemoration of the Saints": "Mémoire des saints",
+"Be glad in the Lord, and rejoice, ye just.": "Réjouissez-vous dans le Seigneur et exultez, justes.",
+"And be joyful, all ye that are right of heart.": "Et soyez dans la joie, vous tous qui avez le cœur droit.",
+"Let us pray. Shield, O Lord, Thy people, and ever keep them in Thy care, who put their trust in the pleading of Thine apostles Peter and Paul, and of the other apostles. May all Thy saints, we beseech Thee, O Lord, everywhere come to our help, that while we do honor to their merits, we may also enjoy their intercession: grant Thine own peace unto our times, and drive away all wickedness from Thy Church; direct our way, our actions, and our wishes and those of all Thy servants in the way of salvation; to our benefactors render everlasting blessings, and to all the faithful departed grant eternal rest. Through Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Prions. Protégez, Seigneur, votre peuple, et gardez-le toujours sous votre garde, lui qui se confie en l’intercession de vos apôtres Pierre et Paul et des autres apôtres. Que tous vos saints, nous vous en prions, Seigneur, nous secourent en tout lieu, afin qu’en honorant leurs mérites nous ressentions aussi leur intercession : accordez votre paix à notre temps, et chassez de votre Église toute iniquité ; dirigez dans la voie du salut notre route, nos actions et nos désirs, et ceux de tous vos serviteurs ; rendez à nos bienfaiteurs les biens éternels, et accordez à tous les fidèles défunts le repos éternel. Par notre Seigneur Jésus-Christ, votre Fils, qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"Behold, the Lord shall appear upon a shining cloud.": "Voici que le Seigneur apparaîtra sur une nuée lumineuse.",
+"And with Him thousands of saints.": "Et avec lui des milliers de saints.",
+"Let us pray. Cleanse our consciences, we beseech Thee, O Lord, by Thy visitation, that when Jesus Christ, Thy Son, Our Lord, shall come with all the saints, He may find within us a resting-place made ready for Him. Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Prions. Purifiez nos consciences, nous vous en prions, Seigneur, par votre visite, afin que Jésus-Christ, votre Fils, notre Seigneur, venant avec tous les saints, trouve en nous une demeure préparée pour lui. Lui qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"Let us bless the Lord.": "Bénissons le Seigneur.",
+"May the souls of the faithful departed, through the mercy of God, rest in peace.": "Que les âmes des fidèles défunts, par la miséricorde de Dieu, reposent en paix.",
+"May the Lord give us His peace.": "Que le Seigneur nous donne sa paix.",
+"And life everlasting. Amen.": "Et la vie éternelle. Amen.",
+"Anthem of the Blessed Virgin Mary": "Antienne à la Sainte Vierge Marie",
+"Said after Lauds and Compline, according to the season.": "Se dit après Laudes et Complies, selon le temps.",
+"The angel of the Lord declared unto Mary.": "L’ange du Seigneur annonça à Marie.",
+"And she conceived of the Holy Ghost.": "Et elle conçut du Saint-Esprit.",
+"Let us pray. Pour forth, we beseech Thee, O Lord, Thy grace into our hearts, that we, to whom the Incarnation of Christ, Thy Son, was made known by the message of an angel, may by His passion and cross be brought to the glory of His Resurrection. Through the same Christ our Lord.": "Prions. Répandez, Seigneur, votre grâce dans nos cœurs, afin qu’ayant connu par le message de l’ange l’Incarnation du Christ, votre Fils, nous parvenions par sa passion et par sa croix à la gloire de sa résurrection. Par le même Christ notre Seigneur.",
+"After childbirth, O Virgin, thou didst remain inviolate.": "Après l’enfantement, ô Vierge, tu es demeurée inviolée.",
+"O Mother of God, plead for us.": "Mère de Dieu, intercédez pour nous.",
+"Plead for us, O Mother of God.": "Intercédez pour nous, Mère de Dieu.",
+"Let us pray. O God, Who by the fruitful virginity of blessed Mary hast given to mankind the rewards of eternal salvation; grant, we beseech Thee, that we may experience her intercession for us, by whom we deserved to receive the Author of life, Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Prions. Ô Dieu, qui, par la virginité féconde de la bienheureuse Marie, avez donné au genre humain les récompenses du salut éternel, accordez-nous, nous vous en prions, d’éprouver l’intercession de celle par qui nous avons mérité de recevoir l’Auteur de la vie, notre Seigneur Jésus-Christ, votre Fils, qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"Vouchsafe that I may praise thee, O Blessed Virgin.": "Daignez agréer mes louanges, Vierge bénie.",
+"Vouchsafe that I may praise thee, O holy Virgin.": "Daignez agréer mes louanges, Vierge sainte.",
+"Grant me strength against thine enemies.": "Donnez-moi la force contre vos ennemis.",
+"Let us pray. O most merciful God, grant succor unto our frailty; that as we celebrate the memory of the holy Mother of God, so by the help of her intercession we may rise again from our sins. Through the same Christ our Lord.": "Prions. Ô Dieu très miséricordieux, venez au secours de notre faiblesse, afin qu’en célébrant la mémoire de la sainte Mère de Dieu, nous nous relevions de nos péchés avec l’aide de son intercession. Par le même Christ notre Seigneur.",
+"Rejoice and be glad, O Virgin Mary, Alleluia.": "Réjouissez-vous et soyez dans l’allégresse, Vierge Marie, alléluia.",
+"For the Lord hath risen indeed, Alleluia.": "Car le Seigneur est vraiment ressuscité, alléluia.",
+"Let us pray. O God, Who didst vouchsafe to give joy to the world through the Resurrection of Thy Son, Our Lord Jesus Christ; grant, we beseech Thee, that, through His Mother, the Virgin Mary, we may obtain the joys of everlasting life. Through the same Christ our Lord.": "Prions. Ô Dieu, qui avez daigné réjouir le monde par la résurrection de votre Fils, notre Seigneur Jésus-Christ, accordez-nous, nous vous en prions, d’obtenir par sa Mère, la Vierge Marie, les joies de la vie éternelle. Par le même Christ notre Seigneur.",
+"Let us pray. Almighty, everlasting God, Who, by the co-operation of the Holy Ghost, didst so make ready the body and soul of the glorious Virgin Mother Mary that she deserved to become a meet dwelling for Thy Son; grant that we, who rejoice in her memory, may through her loving intercession be delivered from the evils that hang over us, and from everlasting death. Through the same Christ our Lord.": "Prions. Dieu tout-puissant et éternel, qui, par l’action du Saint-Esprit, avez préparé le corps et l’âme de la glorieuse Vierge Mère Marie pour qu’elle méritât de devenir une digne demeure de votre Fils, accordez-nous, à nous qui nous réjouissons de sa mémoire, d’être délivrés par sa tendre intercession des maux qui nous menacent et de la mort éternelle. Par le même Christ notre Seigneur.",
+"May the divine assistance remain always with us.": "Que le secours divin demeure toujours avec nous.",
+"A prayer for help in distress": "Prière pour demander secours dans la détresse",
+"Prayer to obtain the complete restoration of Israel": "Prière pour obtenir la pleine restauration d’Israël",
+"Exhortation to praise God": "Exhortation à louer Dieu",
+"Who is she that cometh forth as the morning rising, fair as the moon, bright as the sun, terrible as an army set in array?": "Qui est celle-ci qui s’avance comme l’aurore à son lever, belle comme la lune, éclatante comme le soleil, terrible comme une armée rangée en bataille ?",
+"Behold, a Virgin shall conceive and shall bear a Son, and His name shall be called Emmanuel: butter and honey shall He eat, that He may know to refuse the evil and choose the good.": "Voici qu’une Vierge concevra et enfantera un Fils, et on lui donnera le nom d’Emmanuel : il mangera du beurre et du miel, pour qu’il sache rejeter le mal et choisir le bien.",
+"Behold, a virgin shall conceive, and bear a Son, and His name shall be called Emmanuel: Butter and honey shall He eat, that He may know to refuse evil and to choose good.": "Voici qu’une vierge concevra et enfantera un Fils, et on lui donnera le nom d’Emmanuel : il mangera du beurre et du miel, pour qu’il sache rejeter le mal et choisir le bien.",
+"Behold a virgin shall conceive, and shall bear a son; and His name shall be called Emmanuel. Butter and honey shall He eat, that He may know to refuse the evil, and to choose the good.": "Voici qu’une vierge concevra et enfantera un fils, et on lui donnera le nom d’Emmanuel. Il mangera du beurre et du miel, pour qu’il sache rejeter le mal et choisir le bien.",
+"O God, Who didst vouchsafe to choose the virgin palace of blessed Mary for Thy dwelling; grant, we beseech Thee, that we, who are shielded by her protection, may by Thy grace join with gladness in her commemoration. Who livest and reignest with God the Father, in the unity of the Holy Ghost, God, world without end.": "Ô Dieu, qui avez daigné choisir pour demeure le palais virginal de la bienheureuse Marie, accordez-nous, nous vous en prions, à nous que protège sa garde, de prendre part avec joie, par votre grâce, à sa mémoire. Vous qui vivez et régnez avec Dieu le Père dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"Grace is poured forth upon thy lips.": "La grâce est répandue sur tes lèvres.",
+"Wherefore God hath blessed thee for ever.": "C’est pourquoi Dieu t’a bénie pour toujours.",
+"Therefore God hath blessed thee for ever.": "C’est pourquoi Dieu t’a bénie pour toujours.",
+"A prayer against perfidious enemies": "Prière contre les ennemis perfides",
+"God is the keeper of His servants": "Dieu est le gardien de ses serviteurs",
+"Joy of the pilgrim entering Jerusalem": "Joie du pèlerin qui entre à Jérusalem",
+"And so was I established in Sion, and in the holy city likewise I rested; and my power was in Jerusalem.": "Ainsi j’ai été affermie en Sion, et dans la cité sainte j’ai trouvé aussi mon repos, et ma puissance est dans Jérusalem.",
+"A prayer in affliction": "Prière dans l’affliction",
+"The Church gives glory to God for her deliverance from her enemies": "L’Église rend gloire à Dieu pour sa délivrance de ses ennemis",
+"God protects the just who have confidence in Him": "Dieu protège les justes qui se confient en lui",
+"And I took root in an honorable people, and in the portion of my God, His inheritance: and my abode is in the full assembly of saints.": "J’ai pris racine dans un peuple honoré, dans la part de mon Dieu, son héritage ; et ma demeure est dans l’assemblée des saints.",
+"The Lord God shall give Him the throne of David His father; and He shall reign in the house of Jacob for ever, and of His kingdom there shall be no end.": "Le Seigneur Dieu lui donnera le trône de David son père ; il régnera sur la maison de Jacob éternellement, et son règne n’aura pas de fin.",
+"The people of God rejoice at their delivery from captivity": "Le peuple de Dieu se réjouit de sa délivrance de la captivité",
+"Man can do nothing without God": "L’homme ne peut rien sans Dieu",
+"Man can do nothing without God’s help": "L’homme ne peut rien sans l’aide de Dieu",
+"The happiness of the just": "Le bonheur des justes",
+"In the ways, like cinnamon and aromatic balm, I gave forth a sweet fragrance: like the choicest myrrh, I yielded a sweet smell.": "Sur les chemins, comme le cinnamome et le baume odorant, j’ai répandu mon parfum ; comme une myrrhe de choix, j’ai exhalé une douce odeur.",
+"Forgive, O Lord, we beseech Thee, the sins of Thy servants; so that we who cannot become pleasing to Thee from our own actions, may be saved by the pleading of the Mother of Thy Son, Our Lord, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Pardonnez, Seigneur, nous vous en prions, les péchés de vos serviteurs, afin que nous, qui ne pouvons vous plaire par nos propres actions, soyons sauvés par l’intercession de la Mère de votre Fils, notre Seigneur, qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"The Messias, King and Priest, victorious over His enemies": "Le Messie, Roi et Prêtre, vainqueur de ses ennemis",
+"Glory to God, so infinitely great and so admirably condescending": "Gloire à Dieu, si infiniment grand et si admirablement condescendant",
+"Song of the pilgrims in honor of Jerusalem": "Chant des pèlerins en l’honneur de Jérusalem",
+"Thanksgiving for the restoration of Jerusalem": "Action de grâce pour la restauration de Jérusalem",
+"From the beginning, and before the world was I created, and unto the world to come I shall not cease to be, and in the holy dwelling-place have I ministered before Him.": "Dès le commencement et avant les siècles j’ai été créée, et jusqu’au siècle à venir je ne cesserai pas d’être, et dans la demeure sainte j’ai exercé mon ministère devant lui.",
+"Canticle of the Blessed Virgin Mary": "Cantique de la Sainte Vierge Marie",
+"Grant, we beseech Thee, O Lord God, that we, Thy servants, may enjoy perpetual health of mind and body; and, by the glorious intercession of the Blessed Mary, ever virgin, be delivered from present sorrow and possess eternal joy. Through Christ our Lord.": "Accordez-nous, Seigneur Dieu, nous vous en prions, à nous vos serviteurs, de jouir d’une continuelle santé de l’âme et du corps ; et, par la glorieuse intercession de la bienheureuse Marie toujours vierge, d’être délivrés de la tristesse présente et de goûter la joie éternelle. Par le Christ notre Seigneur.",
+"Convert us, O God, our Saviour.": "Convertissez-nous, ô Dieu notre Sauveur.",
+"And turn away Thine anger from us.": "Et détournez de nous votre colère.",
+"Confidence in God; the persecutors of the Church come to nothing": "Confiance en Dieu ; les persécuteurs de l’Église sont réduits à rien",
+"Prayer of a sinner trusting in the mercies of God": "Prière du pécheur qui se confie en la miséricorde de Dieu",
+"A psalm of childlike resignation to God’s will": "Psaume d’abandon filial à la volonté de Dieu",
+"I am the Mother of fair love, and of fear, and of knowledge, and of holy hope.": "Je suis la Mère du bel amour, et de la crainte, et de la connaissance, et de la sainte espérance.",
+"Canticle of Simeon": "Cantique de Siméon",
+"May the glorious pleading of the blessed and glorious Mary, ever a virgin, shield us, we beseech Thee, O Lord, and bring us to life everlasting. Through Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Que la glorieuse intercession de la bienheureuse et glorieuse Marie toujours vierge nous protège, nous vous en prions, Seigneur, et nous conduise à la vie éternelle. Par notre Seigneur Jésus-Christ, votre Fils, qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"The Blessing": "La bénédiction",
+"May the almighty and merciful Lord, Father and Son and Holy Ghost, bless and keep us.": "Que le Seigneur tout-puissant et miséricordieux, Père, Fils et Saint-Esprit, nous bénisse et nous garde.",
+"O God, Who by the fruitful virginity of blessed Mary hast given to mankind the rewards of eternal salvation; grant, we beseech Thee, that we may experience her intercession for us, by whom we deserved to receive the Author of life, Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee, in the unity of the Holy Ghost, God, world without end.": "Ô Dieu, qui, par la virginité féconde de la bienheureuse Marie, avez donné au genre humain les récompenses du salut éternel, accordez-nous, nous vous en prions, d’éprouver l’intercession de celle par qui nous avons mérité de recevoir l’Auteur de la vie, notre Seigneur Jésus-Christ, votre Fils, qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"O God, Who didst will that Thine eternal Word should take flesh in the womb of the Blessed Virgin Mary, when the angel delivered his message: grant that Thy petitioners, who verily believe her to be the Mother of God, may be assisted by her intercession with Thee. Through the same Jesus Christ, Thy Son, Our Lord, Who liveth and reigneth with Thee, in the unity of the Holy Ghost, God, world without end.": "Ô Dieu, qui avez voulu que votre Verbe éternel prenne chair dans le sein de la bienheureuse Vierge Marie, à l’annonce de l’ange, accordez à vos suppliants, qui la croient vraiment Mère de Dieu, d’être aidés par son intercession auprès de vous. Par le même Jésus-Christ, votre Fils, notre Seigneur, qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"O God, Who didst will that Thine eternal Word should take flesh in the womb of the Blessed Virgin Mary, when the angel delivered his message: grant that Thy petitioners, who verily believe her to be the Mother of God, may be assisted by her intercession. Through the same Christ our Lord.": "Ô Dieu, qui avez voulu que votre Verbe éternel prenne chair dans le sein de la bienheureuse Vierge Marie, à l’annonce de l’ange, accordez à vos suppliants, qui la croient vraiment Mère de Dieu, d’être aidés par son intercession. Par le même Christ notre Seigneur.",
+"O God, Who didst will that Thine eternal Word should take flesh in the womb of the Blessed Virgin Mary, when the angel delivered his message: grant that Thy petitioners, who verily believe her to be the Mother of God, may be assisted by her intercession. Through the same Jesus Christ Thy Son, our Lord, Who liveth and reigneth with Thee in the unity of the Holy Spirit, God, world without end.": "Ô Dieu, qui avez voulu que votre Verbe éternel prenne chair dans le sein de la bienheureuse Vierge Marie, à l’annonce de l’ange, accordez à vos suppliants, qui la croient vraiment Mère de Dieu, d’être aidés par son intercession. Par le même Jésus-Christ, votre Fils, notre Seigneur, qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"O God, Who didst will that Thine eternal Word should take flesh in the womb of the Blessed Virgin Mary, when the angel delivered his message; grant that Thy petitioners, who verily believe her to be the Mother of God, may be assisted by her intercession with Thee. Through the same Jesus Christ our Lord, Who liveth and reigneth with Thee, in the unity of the Holy Ghost, God, world without end.": "Ô Dieu, qui avez voulu que votre Verbe éternel prenne chair dans le sein de la bienheureuse Vierge Marie, à l’annonce de l’ange, accordez à vos suppliants, qui la croient vraiment Mère de Dieu, d’être aidés par son intercession auprès de vous. Par le même Jésus-Christ, votre Fils, notre Seigneur, qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"O God, Who didst will that Thine eternal Word should take flesh in the womb of the Blessed Virgin Mary, when the angel delivered his message; grant that Thy petitioners, who verily believe her to be the Mother of God, may be assisted by her intercession. Through the same Jesus Christ, Thy Son, Who liveth and reigneth with Thee, in the unity of the Holy Ghost, God, world without end.": "Ô Dieu, qui avez voulu que votre Verbe éternel prenne chair dans le sein de la bienheureuse Vierge Marie, à l’annonce de l’ange, accordez à vos suppliants, qui la croient vraiment Mère de Dieu, d’être aidés par son intercession. Par le même Jésus-Christ, votre Fils, notre Seigneur, qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"O God, Who, by the fruitful virginity of blessed Mary, hast given to mankind the rewards of eternal salvation: grant, we beseech Thee, that we may experience her intercession for us, by whom we deserved to receive the Author of life, Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Ô Dieu, qui, par la virginité féconde de la bienheureuse Marie, avez donné au genre humain les récompenses du salut éternel, accordez-nous, nous vous en prions, d’éprouver l’intercession de celle par qui nous avons mérité de recevoir l’Auteur de la vie, notre Seigneur Jésus-Christ, votre Fils, qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"O God, Who, by the fruitful virginity of blessed Mary, hast given to mankind the rewards of eternal salvation: grant, we beseech Thee, that we may experience her intercession for us, by whom we deserved to receive the Author of life, Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee in the unity of the Holy Ghost, world without end.": "Ô Dieu, qui, par la virginité féconde de la bienheureuse Marie, avez donné au genre humain les récompenses du salut éternel, accordez-nous, nous vous en prions, d’éprouver l’intercession de celle par qui nous avons mérité de recevoir l’Auteur de la vie, notre Seigneur Jésus-Christ, votre Fils, qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"O God, Who, by the fruitful virginity of blessed Mary, hast given to mankind the rewards of eternal salvation; grant, we beseech Thee, that we may experience her intercession for us, by whom we deserved to receive the Author of life, Our Lord Jesus Christ, Thy Son, Who liveth and reigneth with Thee, in the unity of the Holy Ghost, God, world without end.": "Ô Dieu, qui, par la virginité féconde de la bienheureuse Marie, avez donné au genre humain les récompenses du salut éternel, accordez-nous, nous vous en prions, d’éprouver l’intercession de celle par qui nous avons mérité de recevoir l’Auteur de la vie, notre Seigneur Jésus-Christ, votre Fils, qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"O God, Who, by the fruitful virginity of blessed Mary, hast given to mankind the rewards of eternal salvation; grant, we beseech Thee, that we may experience her intercession for us, by whom we deserved to receive the Author of life, Our Lord Jesus Christ, Thy Son.": "Ô Dieu, qui, par la virginité féconde de la bienheureuse Marie, avez donné au genre humain les récompenses du salut éternel, accordez-nous, nous vous en prions, d’éprouver l’intercession de celle par qui nous avons mérité de recevoir l’Auteur de la vie, notre Seigneur Jésus-Christ, votre Fils.",
+"O most merciful God, grant succor unto our frailty; that as we celebrate the memory of the holy Mother of God, so by the help of her intercession we may rise again from our transgressions. Through the same Jesus Christ, Thy Son, Our Lord, Who liveth and reigneth with Thee in the unity of the Holy Ghost, God, world without end.": "Ô Dieu très miséricordieux, venez au secours de notre faiblesse, afin qu’en célébrant la mémoire de la sainte Mère de Dieu, nous nous relevions de nos fautes avec l’aide de son intercession. Par le même Jésus-Christ, votre Fils, notre Seigneur, qui vit et règne avec vous dans l’unité du Saint-Esprit, Dieu, pour les siècles des siècles.",
+"Today’s season": "Le temps d’aujourd’hui",
+"Throughout the year": "Pendant l’année",
+"Christmas to Candlemas": "De Noël à la Chandeleur",
+"Septuagesima to Easter: “Praise be to Thee” in place of Alleluia": "De la Septuagésime à Pâques : « Louange à vous » au lieu de l’Alléluia",
+"Te Deum said at Matins": "Te Deum aux Matines",
+"no Te Deum": "pas de Te Deum",
+"Loading the Little Office…": "Chargement du Petit Office…",
+"Couldn’t load the Little Office": "Impossible de charger le Petit Office",
+"Loading the Akathist…": "Chargement de l’Acathiste…",
+"Couldn’t load the Akathist": "Impossible de charger l’Acathiste",
+"The Little Office of the Blessed Virgin Mary, Benziger Brothers, New York, 1915 (public domain). Psalms are numbered as in the Latin Vulgate, with the usual modern numbering in brackets.": "The Little Office of the Blessed Virgin Mary, Benziger Brothers, New York, 1915 (domaine public), traduit par Sanctify. Les psaumes, antiennes et hymnes restent dans l’anglais de cette édition. Les psaumes sont numérotés comme dans la Vulgate latine, avec la numérotation moderne habituelle entre parenthèses.",
+"The Akathist Hymn to the Most Holy Mother of God": "L’hymne acathiste à la très sainte Mère de Dieu",
+"Another kontakion": "Un autre kondakion",
+"Old words in this translation": "Mots anciens de cette traduction",
+"A new translation from the Greek, made for Sanctify. The Greek text is from Wikisource. The refrain “Chaire,” translated here “Rejoice,” is the angel’s greeting to Mary.": "Une nouvelle traduction anglaise du grec, faite pour Sanctify ; l’hymne reste en anglais. Le texte grec vient de Wikisource. Le refrain « Chaire », traduit ici « Rejoice » (Réjouis-toi), est la salutation de l’ange à Marie.",
+"Done into English verse by G. R. Woodward, edited with W. J. Birkbeck (Oxford, 1917). Public domain. Woodward wrote it in easy metres so that it could be sung; in place of “Rejoice” he uses “Hail Mary!”": "Mis en vers anglais par G. R. Woodward, édité avec W. J. Birkbeck (Oxford, 1917). Domaine public. Woodward l’a écrit en mètres simples pour qu’il puisse être chanté ; au lieu de « Rejoice », il emploie « Hail Mary! ».",
 "{*}; {*}": "{*}; {*}",
 "{*}: {*}": "{*}: {*}",
 "{*} · {*}": "{*} · {*}"
@@ -7832,5 +8208,247 @@ window.SANCTIFY_I18N = {
 "Qoheleth": "Ecclésiaste",
 "Canticle of Canticles": "Cantique"
 }
+},
+"entries": {
+"bib1": {
+"content": "Retrace les origines du monde, la chute de l’humanité et l’alliance de Dieu avec les patriarches Abraham, Isaac et Jacob, et s’achève avec la famille de Joseph établie en Égypte."
+},
+"bib2": {
+"content": "La libération d’Israël de l’esclavage en Égypte sous Moïse, l’alliance et les Dix Commandements donnés au Sinaï, et les instructions pour la Demeure."
+},
+"bib3": {
+"content": "Une législation sacerdotale sur le sacrifice, la pureté rituelle et la sainteté, avec le calendrier des fêtes sacrées d’Israël."
+},
+"bib4": {
+"content": "Des recensements et des récits des quarante années d’errance d’Israël au désert, entre le Sinaï et la Terre promise."
+},
+"bib5": {
+"content": "Les discours d’adieu de Moïse, qui redit la Loi à une nouvelle génération dans les plaines de Moab avant l’entrée en Terre promise."
+},
+"bib6": {
+"content": "La conquête de la Terre promise et son partage entre les douze tribus d’Israël sous la conduite de Josué."
+},
+"bib7": {
+"content": "Des cycles répétés d’infidélité d’Israël, d’oppression par les peuples voisins et de délivrance par des juges charismatiques comme Débora, Gédéon et Samson."
+},
+"bib8": {
+"content": "La fidélité d’une veuve moabite à sa belle-mère israélite Noémi, qui la conduit à un mariage dans la lignée ancestrale du roi David."
+},
+"bib9": {
+"content": "Le passage d’Israël du temps des juges à la monarchie : le prophète Samuel, le règne tourmenté de Saül et l’ascension de David."
+},
+"bib10": {
+"content": "Le règne de David sur Israël, ses victoires militaires, son péché avec Bethsabée et la désagrégation de sa famille et de son royaume."
+},
+"bib11": {
+"content": "Le règne de Salomon et la construction du Temple de Jérusalem, suivis de la division du royaume entre Israël et Juda."
+},
+"bib12": {
+"content": "Le déclin des royaumes divisés, jusqu’à la conquête assyrienne d’Israël, puis la conquête babylonienne et l’exil de Juda."
+},
+"bib13": {
+"content": "Une relecture sacerdotale de l’histoire d’Israël d’Adam au roi David, avec de longues généalogies et une grande attention au culte du Temple."
+},
+"bib14": {
+"content": "Poursuit l’histoire du Chroniste avec Salomon et les rois de Juda, et s’achève sur le décret qui permet le retour de l’exil à Babylone."
+},
+"bib15": {
+"content": "Le retour des exilés juifs de Babylone et la reconstruction du Temple de Jérusalem sous la conduite d’Esdras."
+},
+"bib16": {
+"content": "La conduite de Néhémie dans la reconstruction des murailles de Jérusalem et le renouvellement de l’alliance parmi les exilés revenus."
+},
+"bib17": {
+"content": "Les épreuves d’une pieuse famille israélite en exil, et la conduite cachée de l’ange Raphaël vers la guérison, le mariage et la providence."
+},
+"bib18": {
+"content": "Une veuve courageuse qui délivre sa ville assiégée par sa foi et sa ruse en affrontant un général envahisseur."
+},
+"bib19": {
+"content": "Une reine juive de Perse risque sa vie pour sauver son peuple d’un complot d’extermination."
+},
+"bib20": {
+"content": "La révolte juive menée par la famille des Maccabées contre la persécution grecque, et le recouvrement de l’indépendance religieuse et politique."
+},
+"bib21": {
+"content": "Une relecture théologique de la révolte des Maccabées, avec l’un des témoignages bibliques les plus clairs de la prière pour les défunts."
+},
+"bib22": {
+"content": "La souffrance imméritée d’un homme juste et son dialogue profond avec ses amis puis, enfin, avec Dieu lui-même sur le sens de l’épreuve."
+},
+"bib23": {
+"content": "Un recueil de cent cinquante poèmes et chants de louange, de lamentation et de supplication, au cœur du culte d’Israël et de la prière de l’Église."
+},
+"bib24": {
+"content": "Des maximes pratiques sur la vertu, la sottise, le travail et la vie de famille, fondées sur « la crainte du Seigneur », commencement de la sagesse."
+},
+"bib25": {
+"content": "Une méditation sur le caractère passager de la réussite et du plaisir terrestres, qui invite à jouir de la vie avec sobriété et gratitude comme d’un don de Dieu."
+},
+"bib26": {
+"content": "Un poème lyrique d’amour entre l’épouse et l’époux, lu dans la tradition comme une image de l’amour d’alliance de Dieu pour son peuple."
+},
+"bib27": {
+"content": "Une réflexion sur la sagesse divine et la destinée ultime des justes, écrite pour affermir une communauté juive poussée à s’assimiler."
+},
+"bib28": {
+"content": "Un vaste enseignement pratique et religieux d’un sage juif sur la famille, l’amitié, le travail et le culte."
+},
+"bib29": {
+"content": "De vastes oracles de jugement et d’espérance, avec des prophéties d’un Messie à venir profondément tissées dans la liturgie, l’art et les lectures de l’Avent chrétiens."
+},
+"bib30": {
+"content": "Les avertissements du « prophète des larmes » avant la chute de Jérusalem devant Babylone, avec sa promesse d’une alliance nouvelle écrite dans le cœur."
+},
+"bib31": {
+"content": "Cinq complaintes poétiques pleurant la destruction de Jérusalem et de son Temple par les Babyloniens."
+},
+"bib32": {
+"content": "Une réflexion sur l’exil attribuée au scribe de Jérémie, qui confesse le péché d’Israël et exprime l’espérance de la restauration."
+},
+"bib33": {
+"content": "Des prophéties visionnaires prononcées pendant l’exil à Babylone, dont la vallée des ossements desséchés et la vision d’un Temple restauré."
+},
+"bib34": {
+"content": "Des récits de fidélité dans la persécution, comme la fosse aux lions et la fournaise ardente, à côté de visions apocalyptiques du royaume de Dieu à venir."
+},
+"bib35": {
+"content": "Le mariage tourmenté du prophète lui-même devient une image vivante de l’amour fidèle de Dieu pour un Israël infidèle."
+},
+"bib36": {
+"content": "Un appel à la conversion après une dévastatrice invasion de sauterelles, qui s’achève sur la promesse de l’effusion de l’Esprit de Dieu."
+},
+"bib37": {
+"content": "La dénonciation sévère, par un prophète berger, de l’injustice sociale et des rites religieux creux dans le royaume du Nord, Israël."
+},
+"bib38": {
+"content": "Le livre le plus court de l’Ancien Testament, qui condamne la nation voisine d’Édom pour avoir trahi Israël dans sa détresse."
+},
+"bib39": {
+"content": "Un prophète réticent, avalé par un grand poisson avant d’être envoyé prêcher la conversion à la ville étrangère de Ninive."
+},
+"bib40": {
+"content": "Des prophéties de jugement et d’espérance, dont l’appel toujours actuel à « pratiquer la justice, aimer la miséricorde et marcher humblement avec ton Dieu »."
+},
+"bib41": {
+"content": "Une prophétie qui célèbre la chute prochaine de Ninive, la capitale assyrienne qui avait longtemps opprimé Israël."
+},
+"bib42": {
+"content": "Un dialogue franc entre le prophète et Dieu, aux prises avec le problème du mal et de l’injustice qui reste impunie."
+},
+"bib43": {
+"content": "Un avertissement sur le « jour du Seigneur » qui vient, adouci par la promesse d’un reste fidèle qui sera sauvé."
+},
+"bib44": {
+"content": "Un appel bref mais pressant aux exilés revenus, pour qu’ils reprennent la reconstruction du Temple de Jérusalem."
+},
+"bib45": {
+"content": "Des visions qui encouragent la reconstruction du Temple, riches en images que les chrétiens ont ensuite lues comme annonçant le Christ."
+},
+"bib46": {
+"content": "L’appel du dernier prophète de l’Ancien Testament à renouveler le culte et la fidélité à l’alliance, qui s’achève sur la promesse du retour d’Élie."
+},
+"bib47": {
+"content": "Présente Jésus comme l’accomplissement des prophéties juives et un nouveau Moïse, autour de cinq grands discours dont le Sermon sur la montagne."
+},
+"bib48": {
+"content": "Le plus ancien et le plus court des Évangiles, raconté dans un récit pressant et rapide, centré sur Jésus, Fils de Dieu souffrant."
+},
+"bib49": {
+"content": "Un Évangile soigneusement documenté, qui souligne la compassion de Jésus pour les pauvres et les exclus, et où se trouvent les paraboles du fils prodigue et du bon Samaritain."
+},
+"bib50": {
+"content": "Un Évangile d’une grande richesse théologique, qui s’ouvre sur le Verbe incarné et s’articule autour de sept signes et des grands discours « Je suis » de Jésus."
+},
+"bib51": {
+"content": "L’histoire de la croissance de l’Église primitive, de la Pentecôte au ministère de Pierre et aux voyages missionnaires de Paul jusqu’à Rome."
+},
+"bib52": {
+"content": "La lettre la plus systématique de Paul, qui explique le salut par la grâce au moyen de la foi, pour les Juifs comme pour les païens."
+},
+"bib53": {
+"content": "Paul traite des divisions, de la morale et du désordre dans le culte à Corinthe, avec le célèbre hymne à l’amour du chapitre treize."
+},
+"bib54": {
+"content": "Une lettre très personnelle où Paul défend son ministère apostolique au milieu des souffrances et cherche la réconciliation avec l’Église de Corinthe."
+},
+"bib55": {
+"content": "La défense vigoureuse, par Paul, du salut par la foi au Christ contre ceux qui exigeaient que les convertis païens suivent la loi de Moïse."
+},
+"bib56": {
+"content": "Une méditation sur l’Église, corps du Christ, et sur l’unité réconciliatrice des Juifs et des païens en un seul peuple."
+},
+"bib57": {
+"content": "Une lettre chaleureuse et joyeuse écrite de prison, qui contient le grand hymne ancien à l’humilité du Christ qui s’est dépouillé lui-même."
+},
+"bib58": {
+"content": "Souligne la primauté du Christ sur toute la création, face à des erreurs qui menaçaient la jeune Église de Colosses."
+},
+"bib59": {
+"content": "Probablement la plus ancienne lettre conservée de Paul ; elle encourage une jeune Église et répond aux questions sur le moment du retour du Christ."
+},
+"bib60": {
+"content": "Dissipe la confusion sur le jour du Seigneur et exhorte la communauté à un travail constant et fidèle pendant l’attente."
+},
+"bib61": {
+"content": "Des conseils pastoraux à Timothée, disciple de Paul, sur la direction de l’Église, la saine doctrine et l’ordre de la communauté."
+},
+"bib62": {
+"content": "La dernière lettre de Paul, un adieu personnel qui exhorte Timothée à garder la saine doctrine et à poursuivre l’œuvre missionnaire."
+},
+"bib63": {
+"content": "Des instructions à Tite, compagnon de Paul, pour établir la direction et l’ordre de l’Église dans les communautés de Crète."
+},
+"bib64": {
+"content": "Une brève lettre personnelle qui demande le pardon et la réconciliation pour Onésime, un esclave fugitif qui retourne chez son maître."
+},
+"bib65": {
+"content": "Une longue démonstration de la supériorité du Christ, grand prêtre éternel dont l’unique sacrifice accomplit et dépasse l’ancienne alliance."
+},
+"bib66": {
+"content": "Un enseignement pratique sur la foi vivante qui se montre dans les bonnes œuvres, la patience dans l’épreuve et la maîtrise de la langue."
+},
+"bib67": {
+"content": "Un encouragement aux chrétiens persécutés à tenir ferme dans l’espérance, la sainteté de vie et la confiance dans les promesses de Dieu."
+},
+"bib68": {
+"content": "Une mise en garde contre les faux docteurs et un rappel que le retour promis du Christ, même s’il tarde, demeure certain."
+},
+"bib69": {
+"content": "Une méditation sur l’amour de Dieu, le péché et l’appel à nous aimer les uns les autres, preuve d’une foi authentique."
+},
+"bib70": {
+"content": "Une brève lettre qui met en garde contre les faux docteurs et exhorte à rester fidèle à la vérité du Christ."
+},
+"bib71": {
+"content": "Une courte lettre personnelle qui loue l’hospitalité offerte aux missionnaires itinérants de l’Évangile."
+},
+"bib72": {
+"content": "Une mise en garde brève et pressante contre les faux docteurs infiltrés dans la communauté, qui fait écho aux thèmes de 2 Pierre."
+},
+"bib73": {
+"content": "Des visions apocalyptiques d’un combat cosmique et de la victoire finale de Dieu, qui offrent espérance et persévérance à une Église persécutée."
+},
+"s1": {
+"content": "Fils d’un riche marchand de drap d’Assise, François abandonna une vie confortable après une série de conversions, embrassa la pauvreté radicale et fonda l’ordre franciscain. Il prêcha aux pauvres…"
+},
+"s2": {
+"content": "Carmélite française morte de la tuberculose à vingt-quatre ans, Thérèse est connue pour sa « petite voie » : la conviction que la sainteté ne se trouve pas dans de grands exploits mais dans de petits…"
+},
+"s3": {
+"content": "Né en Afrique du Nord, Augustin passa sa jeunesse à poursuivre l’ambition mondaine et la philosophie manichéenne avant sa conversion spectaculaire au christianisme en 386, racontée dans ses…"
+},
+"s4": {
+"content": "Frère dominicain italien et l’un des plus grands philosophes et théologiens du Moyen Âge, Thomas d’Aquin chercha à concilier la foi avec la philosophie d’Aristote, alors redécouverte. Son…"
+},
+"s5": {
+"content": "Carmélite et mystique espagnole, Thérèse réforma son ordre pour le ramener à une observance contemplative plus stricte, fondant les Carmes déchaux avec saint Jean de la Croix. Ses écrits sur la…"
+},
+"s6": {
+"content": "Jeune paysanne de Domrémy, Jeanne crut recevoir des visions lui demandant de soutenir Charles VII et de conduire les troupes françaises pendant la guerre de Cent Ans. Elle mena l’armée à une victoire…"
+}
+},
+"texts": {
+"saint-0": "saint-0.51403587"
 }
 };

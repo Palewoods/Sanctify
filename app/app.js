@@ -343,11 +343,25 @@ const library = SEED_DATA.concat(BIBLE_DATA);
 const textLoads = new Map();
 function loadTexts(key){
   if(!TEXT_FILES[key]) return Promise.resolve();
-  if(!textLoads.has(key)) textLoads.set(key, fetch(`data/texts/${TEXT_FILES[key]}.json`)
-    .then(r => { if(!r.ok) throw new Error(r.status); return r.json(); })
-    .then(map => { SEED_DATA.forEach(e => { if(e._t === key && map[e.id]){ Object.assign(e, map[e.id]); delete e._t; } }); })
+  const getJson = path => fetch(path).then(r => { if(!r.ok) throw new Error(r.status); return r.json(); });
+  // In another language, its translations come with the English (see tools/lang_texts.py)
+  const own = window.SANCTIFY_I18N && window.SANCTIFY_I18N.texts && window.SANCTIFY_I18N.texts[key];
+  if(!textLoads.has(key)) textLoads.set(key, Promise.all([getJson(`data/texts/${TEXT_FILES[key]}.json`), own && UI_LANG !== 'en' ? getJson(`data/texts/${UI_LANG}/${own}.json`).catch(() => null) : null])
+    .then(([map, mine]) => { SEED_DATA.forEach(e => {
+      if(e._t !== key || !map[e.id]) return;
+      const tr = mine && mine[e.id];
+      if(e._en){ Object.assign(e._en, map[e.id]); if(!tr) Object.assign(e, map[e.id]); }
+      else Object.assign(e, map[e.id]);
+      if(tr) entryLang(e, tr);
+      delete e._t;
+    }); })
     .catch(err => { textLoads.delete(key); throw err; }));
   return textLoads.get(key);
+}
+// Puts an entry's text in the page's language, keeping the English for the reader's language buttons
+function entryLang(e, t){
+  if(!e._en) e._en = Object.fromEntries(['title', 'content', 'intercession', 'notable'].filter(f => e[f] !== undefined).map(f => [f, e[f]]));
+  Object.assign(e, t);
 }
 // Resolves once the entry has its full text (or with the preview, if offline and never fetched)
 function withFullText(e){ return e && e._t ? loadTexts(e._t).then(() => e, () => e) : Promise.resolve(e); }
@@ -3579,10 +3593,10 @@ const PRAYER_ES = {
 
 // The languages an entry can be read in: the page's own, English, and Spanish where there's a Spanish text
 function prayerLangsFor(e){
-  const out = [];
-  if(e._en && UI_LANG !== 'en' && UI_LANG !== 'es') out.push([UI_LANG, { pl:'Polski', fr:'Français', pt:'Português', it:'Italiano', de:'Deutsch', ru:'Русский', uk:'Українська' }[UI_LANG] || UI_LANG]);
-  if(e._en || PRAYER_ES[e.id]) out.push(['en', 'English']);
-  if(PRAYER_ES[e.id]) out.push(['es', 'Español']);
+  const out = [], es = PRAYER_ES[e.id];
+  if(e._en && UI_LANG !== 'en' && !(UI_LANG === 'es' && es)) out.push([UI_LANG, { es:'Español', pl:'Polski', fr:'Français', pt:'Português', it:'Italiano', de:'Deutsch', ru:'Русский', uk:'Українська' }[UI_LANG] || UI_LANG]);
+  if(e._en || es) out.push(['en', 'English']);
+  if(es) out.push(['es', 'Español']);
   return out.length > 1 ? out : null;
 }
 function applyPrayerLang(e){
@@ -3591,12 +3605,18 @@ function applyPrayerLang(e){
   if(!langs) return;
   let lang = store.get('prayerLang', UI_LANG);
   if(!langs.some(l => l[0] === lang)) lang = langs[0][0];
-  const english = e._en || e;
-  const text = lang === 'es' ? es.text : lang === 'en' ? english.content : e.content;
-  document.getElementById('readTitle').textContent = lang === 'es' ? es.title : lang === 'en' ? english.title : e.title;
-  document.getElementById('readBody').innerHTML = text.split(/\n\s*\n/).filter(Boolean)
+  const english = e._en || e, mine = lang === 'es' && es ? { title:es.title, content:es.text } : lang === 'en' ? english : e;
+  const titleEl = document.getElementById('readTitle');
+  titleEl.classList.toggle('notranslate', lang === 'en');
+  titleEl.textContent = mine.title;
+  document.getElementById('readBody').innerHTML = mine.content.split(/\n\s*\n/).filter(Boolean)
     .map(p => `<p>${escapeHtml(p).replace(/\n/g, '<br>')}</p>`).join('');
   document.getElementById('readBody').lang = lang;
+  const prayer = document.querySelector('#readIntercession p');
+  if(prayer && english.intercession){
+    prayer.textContent = lang === 'en' ? english.intercession : e.intercession;
+    prayer.classList.toggle('notranslate', lang === 'en');
+  }
   document.querySelectorAll('#readActions .lang-btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
 }
 
@@ -11478,6 +11498,7 @@ function openReadModal(id, fetched){
   if(e.category === 'saint') markRead('read.saints', id);
   currentReadId = id;
   document.getElementById('readCat').textContent = CAT_LABEL[e.category] || e.category;
+  document.getElementById('readTitle').classList.remove('notranslate');
   document.getElementById('readTitle').textContent = e.title;
   document.getElementById('readByline').textContent = e.author || '';
   document.getElementById('readByline').style.display = e.author ? 'block' : 'none';
@@ -12736,6 +12757,9 @@ if(I18N){
     const e = LIBRARY_ALL.find(x => x.id === id);
     if(e){ e._en = { title:e.title, content:e.content }; e.title = p.title; e.content = p.content; }
   }
+  // The library's own texts: short ones and the previews of long ones (the rest arrive with loadTexts)
+  const byId = new Map(LIBRARY_ALL.map(e => [e.id, e]));
+  for(const [id, t] of Object.entries(I18N.entries || {})) if(byId.has(id)) entryLang(byId.get(id), t);
   i18nTree(document.body);
   i18nTitle();
   new MutationObserver(list => {
