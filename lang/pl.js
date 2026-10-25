@@ -8061,6 +8061,251 @@ window.SANCTIFY_I18N = {
 "Old words in this translation": "Dawne słowa w tym przekładzie",
 "A new translation from the Greek, made for Sanctify. The Greek text is from Wikisource. The refrain “Chaire,” translated here “Rejoice,” is the angel’s greeting to Mary.": "Nowy angielski przekład z greki, przygotowany dla Sanctify; hymn pozostaje po angielsku. Tekst grecki pochodzi z Wikiźródeł. Refren „Chaire”, przetłumaczony tu jako „Rejoice” (Raduj się), to pozdrowienie anioła skierowane do Maryi.",
 "Done into English verse by G. R. Woodward, edited with W. J. Birkbeck (Oxford, 1917). Public domain. Woodward wrote it in easy metres so that it could be sung; in place of “Rejoice” he uses “Hail Mary!”": "Przełożony na angielski wiersz przez G. R. Woodwarda, wydany wraz z W. J. Birkbeckiem (Oksford, 1917). Domena publiczna. Woodward napisał go prostym metrum, aby można go było śpiewać; zamiast „Rejoice” używa „Hail Mary!”.",
+"The Incarnation makes images of Christ possible.": "Wcielenie sprawia, że możliwe są wizerunki Chrystusa.",
+"Veneration (honor) is different from worship, which belongs to God alone.": "Cześć (szacunek) różni się od uwielbienia, które należy się jedynie Bogu.",
+"God himself commanded images of cherubim for the Ark of the Covenant.": "Sam Bóg nakazał umieścić wizerunki cherubów na Arce Przymierza.",
+"Doesn’t the Bible forbid images?": "Czy Biblia nie zakazuje wizerunków?",
+"The commandment forbids making idols to worship. God himself commanded images of cherubim for the Ark (Exodus 25:18–22) and the bronze serpent (Numbers 21:8–9). Since God became man in Christ, he can be shown in images, as the Second Council of Nicaea taught.": "Przykazanie zakazuje czynienia bożków, by oddawać im cześć. Sam Bóg nakazał wykonać wizerunki cherubów na Arce (Wj 25,18–22) i węża z brązu (Lb 21,8–9). Skoro Bóg stał się człowiekiem w Chrystusie, można Go przedstawiać na obrazach, jak nauczał Sobór Nicejski II.",
+"God is the uncreated source of everything that exists.": "Bóg jest niestworzonym źródłem wszystkiego, co istnieje.",
+"Human reason can know that God exists (First Vatican Council, Dei Filius).": "Rozum ludzki może poznać, że Bóg istnieje (Sobór Watykański I, Dei Filius).",
+"Faith does not contradict reason but completes it.": "Wiara nie sprzeciwia się rozumowi, lecz go dopełnia.",
+"One God in three Persons, equal in glory and co-eternal.": "Jeden Bóg w trzech Osobach, równych w chwale i współwiecznych.",
+"Christians are baptized \"in the name\" (singular) of the Father, Son, and Holy Spirit.": "Chrześcijanie są chrzczeni „w imię” (w liczbie pojedynczej) Ojca i Syna, i Ducha Świętego.",
+"God is love because, from all eternity, he is a communion of Persons.": "Bóg jest miłością, ponieważ od wieków jest wspólnotą Osób.",
+"Creation is good, and matter is not evil.": "Stworzenie jest dobre, a materia nie jest zła.",
+"Original sin is a state we inherit, not a personal act we committed (CCC 405).": "Grzech pierworodny to stan, który dziedziczymy, a nie osobisty czyn, który popełniliśmy (KKK 405).",
+"Grace does more than undo the Fall: \"where sin increased, grace abounded all the more\" (Romans 5:20).": "Łaska czyni więcej, niż tylko naprawia upadek: „gdzie wszakże wzmógł się grzech, tam jeszcze obficiej rozlała się łaska” (Rz 5,20).",
+"The Incarnation reveals God’s love and makes our salvation possible.": "Wcielenie objawia miłość Boga i umożliwia nasze zbawienie.",
+"Because Jesus is truly God, his death has infinite worth; because he is truly man, he dies in our place.": "Ponieważ Jezus jest prawdziwym Bogiem, Jego śmierć ma nieskończoną wartość; ponieważ jest prawdziwym człowiekiem, umiera w naszym zastępstwie.",
+"The early councils defended both his divinity (Nicaea) and the unity of his Person (Ephesus, Chalcedon).": "Pierwsze sobory broniły zarówno Jego Bóstwa (Nicea), jak i jedności Jego Osoby (Efez, Chalcedon).",
+"Christ died for all people, without exception.": "Chrystus umarł za wszystkich ludzi, bez wyjątku.",
+"The Cross reveals both the seriousness of sin and the greatness of God’s mercy.": "Krzyż objawia zarówno powagę grzechu, jak i wielkość Bożego miłosierdzia.",
+"We share in his death and Resurrection through Baptism (Romans 6:3–4).": "Uczestniczymy w Jego śmierci i zmartwychwstaniu przez chrzest (Rz 6,3–4).",
+"The Spirit is a Person, not an impersonal force.": "Duch jest Osobą, a nie bezosobową siłą.",
+"He is the \"soul\" of the Church, giving life to her sacraments and mission.": "Jest „duszą” Kościoła, ożywiającą jego sakramenty i misję.",
+"Confirmation strengthens the gift of the Spirit first received in Baptism.": "Bierzmowanie umacnia dar Ducha otrzymany najpierw na chrzcie.",
+"Tradition is not a second revelation but the living handing-on of the one Gospel.": "Tradycja nie jest drugim objawieniem, lecz żywym przekazywaniem jednej Ewangelii.",
+"The Church discerned which books belong in the Bible.": "Kościół rozeznał, które księgi należą do Biblii.",
+"Catholics are encouraged to read Scripture daily; the Council called ignorance of Scripture \"ignorance of Christ\" (St. Jerome, quoted in Dei Verbum 25).": "Katolików zachęca się do codziennej lektury Pisma; Sobór nazwał nieznajomość Pisma „nieznajomością Chrystusa” (św. Hieronim, cytowany w Dei Verbum 25).",
+"The Church is a sacrament, a sign and instrument of communion with God.": "Kościół jest sakramentem, znakiem i narzędziem komunii z Bogiem.",
+"Its holiness comes from Christ, not from the perfection of its members.": "Jego świętość pochodzi od Chrystusa, a nie z doskonałości jego członków.",
+"Christian unity was Christ’s own prayer: \"that they may all be one\" (John 17:21).": "Jedność chrześcijan była modlitwą samego Chrystusa: „aby wszyscy stanowili jedno” (J 17,21).",
+"Peter’s name means \"rock\"; Christ built his Church on him.": "Imię Piotr znaczy „skała”; Chrystus na nim zbudował swój Kościół.",
+"The \"keys\" recall the royal steward’s office in Isaiah 22, a lasting office with successors.": "„Klucze” przypominają urząd królewskiego zarządcy z Iz 22, urząd trwały, mający następców.",
+"Infallibility is rarely invoked. Recent examples include the Immaculate Conception (1854) and the Assumption (1950).": "Na nieomylność powołuje się rzadko. Niedawnymi przykładami są Niepokalane Poczęcie (1854) i Wniebowzięcie (1950).",
+"God, who became flesh, uses material signs such as water, bread, wine, and oil to give grace.": "Bóg, który stał się ciałem, posługuje się materialnymi znakami, takimi jak woda, chleb, wino i olej, by udzielać łaski.",
+"Each sacrament meets us at a key moment of life.": "Każdy sakrament spotyka nas w kluczowym momencie życia.",
+"The Eucharist is the \"source and summit\" of Christian life.": "Eucharystia jest „źródłem i szczytem” życia chrześcijańskiego.",
+"\"This is my body\": Christ’s words are taken at face value.": "„To jest Ciało moje”: słowa Chrystusa przyjmuje się dosłownie.",
+"The sacrifice of the Cross and the sacrifice of the Mass are one sacrifice (CCC 1367).": "Ofiara krzyża i Ofiara Mszy Świętej są jedną ofiarą (KKK 1367).",
+"Sunday Mass is the heart of Catholic life.": "Niedzielna Msza Święta jest sercem życia katolickiego.",
+"Only God forgives sins, and he chose to do so through the ministry of the Church.": "Tylko Bóg odpuszcza grzechy, a postanowił czynić to przez posługę Kościoła.",
+"Contrition, confession, and satisfaction are the penitent’s part.": "Żal, wyznanie i zadośćuczynienie są częścią penitenta.",
+"It restores friendship with God and with the Church.": "Przywraca przyjaźń z Bogiem i z Kościołem.",
+"\"Mother of God\" protects the truth that Jesus is one divine Person (Council of Ephesus, 431).": "„Matka Boża” chroni prawdę, że Jezus jest jedną Osobą Boską (Sobór Efeski, 431).",
+"Mary needed a Savior and was saved in a singular way, before sin could touch her.": "Maryja potrzebowała Zbawiciela i została zbawiona w szczególny sposób, zanim grzech mógł Jej dotknąć.",
+"Veneration of Mary (hyperdulia) is essentially different from the worship given to God alone (CCC 971).": "Cześć oddawana Maryi (hiperdulia) zasadniczo różni się od uwielbienia należnego jedynie Bogu (KKK 971).",
+"The saints are alive in God, who \"is not God of the dead, but of the living.\"": "Święci żyją w Bogu, który „nie jest Bogiem umarłych, lecz żywych”.",
+"Their prayers are powerful because they are fully united with God.": "Ich modlitwa ma wielką moc, ponieważ są w pełni zjednoczeni z Bogiem.",
+"Canonization declares that a person is in heaven and proposes them as a model.": "Kanonizacja ogłasza, że ktoś jest w niebie, i stawia go za wzór.",
+"Grace comes first: every good act begins with God’s initiative.": "Łaska jest pierwsza: każdy dobry czyn zaczyna się od Bożej inicjatywy.",
+"Justification is both forgiveness and inner renewal.": "Usprawiedliwienie jest zarówno przebaczeniem, jak i wewnętrzną odnową.",
+"In 1999, Catholics and Lutherans signed a Joint Declaration on the Doctrine of Justification affirming a shared basic understanding.": "W 1999 roku katolicy i luteranie podpisali Wspólną deklarację w sprawie nauki o usprawiedliwieniu, potwierdzającą wspólne podstawowe rozumienie.",
+"Some acts are wrong in themselves, whatever the intention or circumstances.": "Niektóre czyny są złe same w sobie, bez względu na intencję czy okoliczności.",
+"The virtues (prudence, justice, fortitude, temperance; faith, hope, love) make goodness easier and joyful.": "Cnoty (roztropność, sprawiedliwość, męstwo, umiarkowanie; wiara, nadzieja, miłość) czynią dobro łatwiejszym i radosnym.",
+"Catholic social teaching applies these principles to society.": "Katolicka nauka społeczna stosuje te zasady do życia społecznego.",
+"Heaven is the fulfillment of the deepest human longings.": "Niebo jest spełnieniem najgłębszych ludzkich pragnień.",
+"God predestines no one to hell (CCC 1037). It is the result of a free and persistent refusal of love.": "Bóg nikogo nie przeznacza do piekła (KKK 1037). Jest ono skutkiem wolnego i uporczywego odrzucenia miłości.",
+"We rise with our own bodies, glorified like the risen Christ (1 Corinthians 15:42–44).": "Zmartwychwstaniemy we własnych ciałach, uwielbionych jak zmartwychwstały Chrystus (1 Kor 15,42–44).",
+"Contingency: everything around us could have not existed. Something must exist necessarily, by its own nature, to explain why anything exists at all.": "Przygodność: wszystko wokół nas mogłoby nie istnieć. Coś musi istnieć koniecznie, z własnej natury, aby wyjaśnić, dlaczego w ogóle cokolwiek istnieje.",
+"First cause: the universe had a beginning, as Big Bang cosmology suggests. What begins to exist has a cause beyond itself.": "Pierwsza przyczyna: wszechświat miał początek, jak sugeruje kosmologia Wielkiego Wybuchu. To, co zaczyna istnieć, ma przyczynę poza sobą.",
+"Order and fine-tuning: the physical constants of the universe fall within narrow ranges that allow life, which suggests intelligence rather than chance.": "Porządek i precyzyjne dostrojenie: stałe fizyczne wszechświata mieszczą się w wąskich przedziałach umożliwiających życie, co wskazuje raczej na inteligencję niż na przypadek.",
+"Moral law: objective moral obligations point to a moral Lawgiver.": "Prawo moralne: obiektywne zobowiązania moralne wskazują na moralnego Prawodawcę.",
+"Desire: we long for perfect goodness, truth, and beauty that nothing in this world satisfies. \"Our heart is restless until it rests in you\" (St. Augustine).": "Pragnienie: tęsknimy za doskonałym dobrem, prawdą i pięknem, których nic na tym świecie nie zaspokaja. „Niespokojne jest serce nasze, dopóki nie spocznie w Tobie” (św. Augustyn).",
+"Evil is not a thing God created but a lack of a good that should be there (St. Augustine).": "Zło nie jest czymś, co Bóg stworzył, lecz brakiem dobra, które powinno być obecne (św. Augustyn).",
+"Love requires freedom, and freedom makes moral evil possible. God permits it rather than create robots.": "Miłość wymaga wolności, a wolność umożliwia zło moralne. Bóg je dopuszcza, zamiast stwarzać roboty.",
+"A world of stable natural laws, needed for meaningful choice, also brings natural disasters and disease.": "Świat stałych praw natury, potrzebny, by wybory miały sens, niesie ze sobą także klęski żywiołowe i choroby.",
+"God can bring greater good out of evil, as he did through the Cross, the worst evil ever done.": "Bóg potrafi wyprowadzić ze zła większe dobro, jak uczynił przez krzyż, największe zło, jakie kiedykolwiek popełniono.",
+"God is not distant from our suffering: in Christ he entered it, and he promises to wipe away every tear.": "Bóg nie jest daleko od naszego cierpienia: w Chrystusie w nie wszedł i obiecuje otrzeć wszelką łzę.",
+"Early dating: Paul’s letters date from the 50s AD, and the creed he quotes in 1 Corinthians 15 dates within a few years of the Crucifixion. The Gospels were written within the lifetimes of eyewitnesses.": "Wczesne datowanie: listy Pawła pochodzą z lat 50. po Chr., a wyznanie wiary cytowane w 1 Kor 15 powstało w ciągu kilku lat od ukrzyżowania. Ewangelie spisano za życia naocznych świadków.",
+"Manuscripts: the New Testament survives in thousands of ancient Greek manuscripts, far more than any other ancient work. One fragment of John (P52) is usually dated to the early second century.": "Rękopisy: Nowy Testament zachował się w tysiącach starożytnych rękopisów greckich, znacznie więcej niż jakiekolwiek inne dzieło starożytne. Fragment Ewangelii Jana (P52) datuje się zwykle na początek II wieku.",
+"Embarrassing details: the Gospels record things no one would invent, such as Peter’s denial, the disciples’ cowardice, and women as the first witnesses to the Resurrection.": "Niewygodne szczegóły: Ewangelie zapisują rzeczy, których nikt by nie wymyślił, jak zaparcie się Piotra, tchórzostwo uczniów czy kobiety jako pierwsi świadkowie zmartwychwstania.",
+"Outside sources: Roman and Jewish writers such as Tacitus (Annals 15.44) and Josephus mention Jesus and his execution under Pontius Pilate.": "Źródła zewnętrzne: pisarze rzymscy i żydowscy, tacy jak Tacyt (Roczniki 15,44) i Józef Flawiusz, wspominają Jezusa i Jego stracenie za Poncjusza Piłata.",
+"The empty tomb: even Jesus’ opponents did not deny it; they claimed the body was stolen (Matthew 28:13).": "Pusty grób: nawet przeciwnicy Jezusa mu nie zaprzeczali; twierdzili, że ciało zostało skradzione (Mt 28,13).",
+"The appearances: Paul lists witnesses, including more than 500 people at once, most of them still alive when he wrote.": "Ukazania: Paweł wymienia świadków, w tym ponad 500 osób naraz, z których większość jeszcze żyła, gdy pisał.",
+"The transformation of the disciples: frightened men who had fled became bold preachers willing to die for their testimony.": "Przemiana uczniów: przestraszeni ludzie, którzy uciekli, stali się odważnymi głosicielami gotowymi umrzeć za swoje świadectwo.",
+"Converted skeptics: Paul, a persecutor, and James, the doubting relative of Jesus, both came to believe after seeing the risen Lord.": "Nawróceni sceptycy: Paweł, prześladowca, i Jakub, powątpiewający krewny Jezusa, obaj uwierzyli, gdy zobaczyli zmartwychwstałego Pana.",
+"The birth of the Church in Jerusalem, the very city where Jesus was executed and buried.": "Narodziny Kościoła w Jerozolimie, w tym samym mieście, w którym Jezus został stracony i pochowany.",
+"Christ founded a visible Church on Peter and promised that the powers of death would not prevail against it.": "Chrystus założył widzialny Kościół na Piotrze i obiecał, że bramy piekielne go nie przemogą.",
+"The apostles appointed successors, as seen in Matthias (Acts 1) and Timothy and Titus. Around 96, Clement of Rome wrote that the apostles set rules for bishops to succeed them.": "Apostołowie ustanawiali następców, jak widać na przykładzie Macieja (Dz 1) oraz Tymoteusza i Tytusa. Około 96 roku Klemens Rzymski napisał, że apostołowie ustalili zasady sukcesji biskupów.",
+"Around 107, Ignatius of Antioch called it \"the Catholic Church,\" and around 180, Irenaeus listed the bishops of Rome from Peter onward.": "Około 107 roku Ignacy Antiocheński nazwał go „Kościołem katolickim”, a około 180 roku Ireneusz wymienił biskupów Rzymu od Piotra.",
+"The Church that recognized the New Testament canon in the 4th century was the same Church with bishops, the Eucharist, and communion with Rome.": "Kościół, który w IV wieku uznał kanon Nowego Testamentu, był tym samym Kościołem z biskupami, Eucharystią i komunią z Rzymem.",
+"The Catholic Church has maintained one faith across two thousand years and every culture.": "Kościół katolicki zachował jedną wiarę przez dwa tysiące lat i we wszystkich kulturach.",
+"The Bible itself never teaches that Scripture alone is the only authority.": "Sama Biblia nigdy nie naucza, że jedynie Pismo jest jedynym autorytetem.",
+"Paul tells Christians to hold fast to traditions passed on \"by word of mouth\" as well as \"by letter\".": "Paweł poleca chrześcijanom trzymać się tradycji przekazanych „bądź słowem, bądź listem”.",
+"The list of books in the Bible is not in the Bible; the Church discerned the canon over several centuries.": "Spisu ksiąg Biblii nie ma w Biblii; Kościół rozeznawał kanon przez kilka stuleci.",
+"The first Christians lived for decades before the New Testament was written or collected.": "Pierwsi chrześcijanie żyli przez dziesięciolecia, zanim Nowy Testament został spisany i zebrany.",
+"Scripture says it can be hard to understand and twisted (2 Peter 3:16), and the Ethiopian official needed a guide (Acts 8:31).": "Pismo mówi, że bywa trudne do zrozumienia i przekręcane (2 P 3,16), a etiopski dworzanin potrzebował przewodnika (Dz 8,31).",
+"The only place the Bible uses the phrase \"faith alone\" is James 2:24: \"a man is justified by works and not by faith alone.\"": "Jedyne miejsce, w którym Biblia używa wyrażenia „sama wiara”, to Jk 2,24: „człowiek dostępuje usprawiedliwienia na podstawie uczynków, a nie samej tylko wiary”.",
+"Paul describes the faith that saves as \"faith working through love\" (Galatians 5:6).": "Paweł opisuje wiarę, która zbawia, jako „wiarę, która działa przez miłość” (Ga 5,6).",
+"Good works are the fruit of grace, prepared by God \"that we should walk in them\" (Ephesians 2:10).": "Dobre uczynki są owocem łaski, przygotowanymi przez Boga, „abyśmy je pełnili” (Ef 2,10).",
+"Jesus’ description of the final judgment focuses on love shown in deeds (Matthew 25).": "Opis sądu ostatecznego w słowach Jezusa skupia się na miłości okazanej czynami (Mt 25).",
+"They were part of the Septuagint, the Greek Old Testament most often quoted by the New Testament writers.": "Były częścią Septuaginty, greckiego Starego Testamentu najczęściej cytowanego przez autorów Nowego Testamentu.",
+"Hebrews 11:35 alludes to the martyrs of 2 Maccabees 7, and Jesus celebrated the Feast of Dedication (Hanukkah, John 10:22), whose origin is recorded in Maccabees.": "Hbr 11,35 nawiązuje do męczenników z 2 Mch 7, a Jezus obchodził święto Poświęcenia (Chanuka, J 10,22), którego początki opisują Księgi Machabejskie.",
+"Councils at Rome (382), Hippo (393), and Carthage (397) listed them in the canon, as did the Council of Florence (1442) and the Council of Trent (1546).": "Synody w Rzymie (382), Hipponie (393) i Kartaginie (397) umieściły je w kanonie, podobnie jak Sobór Florencki (1442) i Sobór Trydencki (1546).",
+"Martin Luther moved them to an appendix in his 1534 Bible; later Protestant Bibles often dropped them entirely.": "Marcin Luter przeniósł je do dodatku w swojej Biblii z 1534 roku; późniejsze Biblie protestanckie często całkowicie je pomijały.",
+"In John 6, Jesus repeats that his flesh is \"food indeed\" and that we must eat it, using a Greek verb meaning to gnaw or chew.": "W J 6 Jezus powtarza, że Jego ciało jest „prawdziwym pokarmem” i że musimy je spożywać, używając greckiego czasownika oznaczającego gryźć lub żuć.",
+"When many disciples left because the teaching was hard, Jesus let them go rather than explain it as a metaphor.": "Gdy wielu uczniów odeszło, bo nauka była trudna, Jezus pozwolił im odejść, zamiast wyjaśnić ją jako przenośnię.",
+"Paul says whoever eats unworthily is \"guilty of profaning the body and blood of the Lord,\" which is hard to understand if it is only bread.": "Paweł mówi, że kto spożywa niegodnie, „winny będzie Ciała i Krwi Pańskiej”, co trudno zrozumieć, jeśli to tylko chleb.",
+"Around 107, St. Ignatius of Antioch wrote of heretics who \"confess not the Eucharist to be the flesh of our Saviour.\" Around 155, St. Justin Martyr wrote that the Eucharist is \"the flesh and blood of that Jesus who was made flesh.\"": "Około 107 roku św. Ignacy Antiocheński pisał o heretykach, którzy „nie wyznają, że Eucharystia jest ciałem naszego Zbawiciela”. Około 155 roku św. Justyn Męczennik napisał, że Eucharystia jest „ciałem i krwią tego Jezusa, który stał się ciałem”.",
+"The risen Jesus breathed on the apostles and said, \"If you forgive the sins of any, they are forgiven.\" They cannot forgive or retain sins without hearing them.": "Zmartwychwstały Jezus tchnął na apostołów i powiedział: „Którym odpuścicie grzechy, są im odpuszczone”. Nie mogą odpuszczać ani zatrzymywać grzechów, nie słysząc ich.",
+"Crowds \"glorified God, who had given such authority to men\" (Matthew 9:8), in the plural.": "Tłumy „wielbiły Boga, który takiej władzy udzielił ludziom” (Mt 9,8), w liczbie mnogiej.",
+"Paul says God gave the apostles \"the ministry of reconciliation.\"": "Paweł mówi, że Bóg dał apostołom „posługę jednania”.",
+"Early Christians practiced public and then private confession; the Didache (c. 100) says \"confess your sins in the church.\"": "Pierwsi chrześcijanie praktykowali spowiedź publiczną, a potem prywatną; Didache (ok. 100) mówi: „wyznawaj swoje grzechy w zgromadzeniu”.",
+"\"All generations will call me blessed\" (Luke 1:48). Honoring Mary fulfills Scripture.": "„Błogosławić mnie będą odtąd wszystkie pokolenia” (Łk 1,48). Czcząc Maryję, wypełniamy Pismo.",
+"\"Full of grace\" (Luke 1:28) translates a Greek perfect participle (kecharitomene) meaning one already filled with grace. It is the basis of the Immaculate Conception, a grace Mary received through Christ’s merits.": "„Pełna łaski” (Łk 1,28) tłumaczy grecki imiesłów czasu przeszłego dokonanego (kecharitomene), oznaczający kogoś już napełnionego łaską. Jest to podstawa Niepokalanego Poczęcia, łaski, którą Maryja otrzymała dzięki zasługom Chrystusa.",
+"The Assumption has biblical precedents in Enoch and Elijah, taken up by God (Genesis 5:24; 2 Kings 2:11).": "Wniebowzięcie ma biblijne precedensy w Henochu i Eliaszu, zabranych przez Boga (Rdz 5,24; 2 Krl 2,11).",
+"Jesus gave his mother into John’s care from the Cross, which would be strange if she had other sons to care for her.": "Z krzyża Jezus powierzył swoją Matkę opiece Jana, co byłoby dziwne, gdyby miała innych synów, którzy mogliby się Nią zająć.",
+"Scripture urges us to intercede for one another; the prayer of a righteous person has great power (James 5:16).": "Pismo wzywa nas do wstawiania się jedni za drugimi; wytrwała modlitwa sprawiedliwego wiele może (Jk 5,16).",
+"The saints are not dead but alive in God (Mark 12:27), part of the \"cloud of witnesses\" (Hebrews 12:1).": "Święci nie są umarli, lecz żyją w Bogu (Mk 12,27), należąc do „mnóstwa świadków” (Hbr 12,1).",
+"In Revelation, the elders in heaven offer golden bowls of incense, \"which are the prayers of the saints\" (Revelation 5:8).": "W Apokalipsie starsi w niebie składają złote czasze pełne kadzideł, „którymi są modlitwy świętych” (Ap 5,8).",
+"Christians have asked the martyrs’ prayers since the catacombs, where early inscriptions ask the departed to pray for the living.": "Chrześcijanie proszą męczenników o modlitwę od czasów katakumb, gdzie dawne inskrypcje proszą zmarłych o modlitwę za żyjących.",
+"God commanded golden cherubim on the Ark of the Covenant and carvings throughout Solomon’s Temple.": "Bóg nakazał umieścić złote cheruby na Arce Przymierza i rzeźby w całej Świątyni Salomona.",
+"The bronze serpent (Numbers 21) was a God-given image that Jesus applied to himself (John 3:14).": "Wąż z brązu (Lb 21) był danym przez Boga wizerunkiem, który Jezus odniósł do siebie (J 3,14).",
+"Christ is \"the image of the invisible God.\" The Second Council of Nicaea (787) taught that honor paid to an image passes to the one it represents.": "Chrystus jest „obrazem Boga niewidzialnego”. Sobór Nicejski II (787) nauczał, że cześć oddawana wizerunkowi przechodzi na tego, kogo on przedstawia.",
+"Relics: a dead man came to life on touching Elisha’s bones (2 Kings 13:21), and cloths touched by Paul brought healing (Acts 19:11–12).": "Relikwie: zmarły ożył, dotknąwszy kości Elizeusza (2 Krl 13,21), a chusty, których dotykał Paweł, przynosiły uzdrowienie (Dz 19,11–12).",
+"Nothing unclean will enter heaven (Revelation 21:27), yet few of us are perfectly holy at death.": "Nic nieczystego nie wejdzie do nieba (Ap 21,27), a jednak niewielu z nas umiera doskonale świętymi.",
+"Paul describes a person whose work is burned up yet \"he himself will be saved, but only as through fire\" (1 Corinthians 3:15).": "Paweł opisuje kogoś, czyje dzieło spłonie, a jednak „sam będzie zbawiony, tak jednak jakby przez ogień” (1 Kor 3,15).",
+"Judas Maccabeus offered sacrifice for the dead, \"that they might be delivered from their sin\" (2 Maccabees 12:45).": "Juda Machabeusz złożył ofiarę za zmarłych, „aby zostali uwolnieni od grzechu” (2 Mch 12,45).",
+"Early Christians prayed for the dead: Tertullian mentions offerings on the anniversary of a death, and St. Monica asked Augustine to remember her at the altar (Confessions 9).": "Pierwsi chrześcijanie modlili się za zmarłych: Tertulian wspomina ofiary w rocznicę śmierci, a św. Monika prosiła Augustyna, by pamiętał o niej przy ołtarzu (Wyznania 9).",
+"Whole households were baptized, which likely included children (Acts 16; 1 Corinthians 1:16).": "Chrzczono całe domy, co prawdopodobnie obejmowało dzieci (Dz 16; 1 Kor 1,16).",
+"Baptism fulfills circumcision (Colossians 2:11–12), which was given to eight-day-old infants.": "Chrzest wypełnia obrzezanie (Kol 2,11–12), którego udzielano ośmiodniowym niemowlętom.",
+"Peter said the promise was \"to you and to your children\" (Acts 2:39).": "Piotr powiedział, że obietnica jest „dla was i dla dzieci waszych” (Dz 2,39).",
+"Around 215, the Apostolic Tradition (attributed to Hippolytus) gives instructions for baptizing children who cannot answer for themselves. Origen called infant baptism a tradition received from the apostles.": "Około 215 roku Tradycja apostolska (przypisywana Hipolitowi) podaje wskazania dotyczące chrztu dzieci, które nie mogą odpowiadać za siebie. Orygenes nazwał chrzest niemowląt tradycją otrzymaną od apostołów.",
+"The Church founded the university system in the Middle Ages.": "Kościół stworzył w średniowieczu system uniwersytecki.",
+"Many pioneers of science were Catholic: Copernicus (a church canon), Mendel (an Augustinian friar, father of genetics), Steno (a bishop and founder of geology), and Georges Lemaître (a priest who proposed the Big Bang theory).": "Wielu pionierów nauki było katolikami: Kopernik (kanonik), Mendel (augustianin, ojciec genetyki), Steno (biskup i twórca geologii) oraz Georges Lemaître (kapłan, który zaproponował teorię Wielkiego Wybuchu).",
+"The Vatican Observatory is one of the oldest astronomical research institutions in the world.": "Obserwatorium Watykańskie jest jedną z najstarszych instytucji badań astronomicznych na świecie.",
+"The Church accepts that evolution can be studied scientifically, while holding that each human soul is directly created by God.": "Kościół przyjmuje, że ewolucję można badać naukowo, utrzymując zarazem, że każda dusza ludzka jest stwarzana bezpośrednio przez Boga.",
+"In the same passage Jesus says not to call anyone \"teacher,\" yet Christians rightly call people teachers.": "W tym samym fragmencie Jezus mówi, by nikogo nie nazywać „nauczycielem”, a jednak chrześcijanie słusznie nazywają ludzi nauczycielami.",
+"Paul calls himself a father to the Corinthians: \"I became your father in Christ Jesus through the gospel\" (1 Corinthians 4:15).": "Paweł nazywa siebie ojcem Koryntian: „to ja przez Ewangelię zrodziłem was w Chrystusie Jezusie” (1 Kor 4,15).",
+"Stephen addressed the Jewish council as \"brethren and fathers\" (Acts 7:2), and John writes to \"fathers\" in the Church (1 John 2:13).": "Szczepan zwrócił się do Sanhedrynu słowami „bracia i ojcowie” (Dz 7,2), a Jan pisze do „ojców” w Kościele (1 J 2,13).",
+"Abraham is called \"the father of us all\" (Romans 4:16).": "Abraham jest nazwany „ojcem nas wszystkich” (Rz 4,16).",
+"Baptism brings forgiveness of sins and new birth in the Holy Spirit.": "Chrzest przynosi odpuszczenie grzechów i nowe narodzenie w Duchu Świętym.",
+"It incorporates us into the Church, the Body of Christ.": "Wszczepia nas w Kościół, Ciało Chrystusa.",
+"Christians of almost every tradition recognize one another’s Trinitarian baptisms.": "Chrześcijanie niemal wszystkich tradycji wzajemnie uznają swoje chrzty trynitarne.",
+"It is the Christian’s own Pentecost.": "Jest osobistą Pięćdziesiątnicą chrześcijanina.",
+"It binds the confirmed more closely to the Church and to its mission.": "Ściślej łączy bierzmowanych z Kościołem i jego misją.",
+"Its effects include the gifts of the Holy Spirit: wisdom, understanding, counsel, fortitude, knowledge, piety, and fear of the Lord.": "Jego skutkami są dary Ducha Świętego: mądrość, rozum, rada, męstwo, umiejętność, pobożność i bojaźń Boża.",
+"Christ, the divine physician, continues to heal through his Church.": "Chrystus, Boski Lekarz, nadal uzdrawia przez swój Kościół.",
+"It prepares the soul for its final journey when death is near.": "Przygotowuje duszę do ostatniej drogi, gdy zbliża się śmierć.",
+"The \"Last Rites\" are three sacraments together: Penance, Anointing, and the Eucharist given as Viaticum (\"food for the journey\").": "„Ostatnie namaszczenie” w szerszym sensie to trzy sakramenty razem: pokuta, namaszczenie i Eucharystia udzielana jako Wiatyk („pokarm na drogę”).",
+"Priests act \"in the person of Christ the Head\" when they celebrate the sacraments.": "Kapłani działają „w osobie Chrystusa Głowy”, gdy sprawują sakramenty.",
+"Bishops ordained in apostolic succession form an unbroken chain back to the apostles.": "Biskupi wyświęceni w sukcesji apostolskiej tworzą nieprzerwany łańcuch sięgający apostołów.",
+"The ministerial priesthood exists to serve the common priesthood of all the baptized.": "Kapłaństwo służebne istnieje, by służyć wspólnemu kapłaństwu wszystkich ochrzczonych.",
+"Marriage is a vocation and a path to holiness.": "Małżeństwo jest powołaniem i drogą do świętości.",
+"Its marks are unity, indissolubility, and openness to life.": "Jego cechy to jedność, nierozerwalność i otwartość na życie.",
+"The family is called the \"domestic church\" (CCC 1655–1658).": "Rodzina jest nazywana „Kościołem domowym” (KKK 1655–1658).",
+"\"Beside each believer stands an angel as protector and shepherd\" (St. Basil, quoted in CCC 336).": "„Każdy wierny ma u swego boku anioła jako opiekuna i pasterza” (św. Bazyli, cytowany w KKK 336).",
+"The devil is a personal being, not only a symbol of evil (CCC 391).": "Diabeł jest bytem osobowym, a nie tylko symbolem zła (KKK 391).",
+"Christians need not fear the devil: prayer, the sacraments, and trust in Christ are stronger.": "Chrześcijanie nie muszą bać się diabła: modlitwa, sakramenty i ufność w Chrystusa są silniejsze.",
+"Prayer is both a gift of grace and a response of faith.": "Modlitwa jest zarazem darem łaski i odpowiedzią wiary.",
+"The liturgy of the Church, especially the Mass and the Liturgy of the Hours, is the heart of Christian prayer.": "Liturgia Kościoła, zwłaszcza Msza Święta i Liturgia Godzin, jest sercem modlitwy chrześcijańskiej.",
+"Distraction and dryness are normal; perseverance is what matters.": "Roztargnienie i oschłość są czymś normalnym; liczy się wytrwałość.",
+"Virtue makes goodness easier, more joyful, and more consistent.": "Cnota czyni dobro łatwiejszym, radośniejszym i bardziej stałym.",
+"Prudence is called the \"charioteer of the virtues\" because it guides the others.": "Roztropność nazywa się „woźnicą cnót”, ponieważ kieruje pozostałymi.",
+"Grace heals and elevates our natural efforts to be good.": "Łaska uzdrawia i podnosi nasze naturalne wysiłki, by być dobrymi.",
+"Grave matter is specified by the Ten Commandments.": "Materię ciężką określa Dziesięć Przykazań.",
+"Ignorance, fear, and strong passion can reduce responsibility.": "Niewiedza, lęk i silna namiętność mogą zmniejszać odpowiedzialność.",
+"No sin is too great for God’s mercy for anyone who repents.": "Dla tego, kto żałuje, żaden grzech nie jest zbyt wielki dla Bożego miłosierdzia.",
+"Indulgences flow from the communion of saints: we help one another toward holiness.": "Odpusty wypływają z obcowania świętych: pomagamy sobie nawzajem w drodze do świętości.",
+"They encourage prayer, pilgrimage, and works of charity.": "Zachęcają do modlitwy, pielgrzymowania i uczynków miłosierdzia.",
+"They never forgive sin itself; only God forgives sin, through repentance and Confession.": "Nigdy nie odpuszczają samego grzechu; grzech odpuszcza tylko Bóg, przez skruchę i spowiedź.",
+"Each season has its own color, readings, and spirit.": "Każdy okres ma własny kolor, czytania i ducha.",
+"The liturgy makes Christ’s saving mysteries present, not merely remembered.": "Liturgia uobecnia zbawcze misteria Chrystusa, a nie tylko je wspomina.",
+"The Sanctify Calendar follows the liturgical year day by day.": "Kalendarz Sanctify śledzi rok liturgiczny dzień po dniu.",
+"Every baptized person is called to be a blessing and to bless (CCC 1669).": "Każdy ochrzczony jest powołany, by być błogosławieństwem i błogosławić (KKK 1669).",
+"Blessings of people, meals, homes, and objects consecrate ordinary life to God.": "Błogosławieństwa osób, posiłków, domów i przedmiotów poświęcają Bogu codzienne życie.",
+"Sacramentals should always lead to the sacraments, not replace them.": "Sakramentalia powinny zawsze prowadzić do sakramentów, a nie je zastępować.",
+"Christ’s return is certain; its timing is unknown.": "Powrót Chrystusa jest pewny; jego czas jest nieznany.",
+"Each Mass anticipates his coming: \"until you come again.\"": "Każda Msza Święta zapowiada Jego przyjście: „oczekujemy Twego przyjścia w chwale”.",
+"The Last Judgment reveals that God’s justice triumphs over every injustice.": "Sąd Ostateczny objawia, że Boża sprawiedliwość triumfuje nad wszelką niesprawiedliwością.",
+"Charity and justice go together.": "Miłość i sprawiedliwość idą w parze.",
+"Subsidiarity and solidarity balance each other.": "Pomocniczość i solidarność wzajemnie się równoważą.",
+"\"The Church’s love for the poor... is a part of her constant tradition\" (CCC 2444).": "„Miłość Kościoła do ubogich... należy do jego stałej tradycji” (KKK 2444).",
+"Those who knowingly refuse to enter or remain in the Church that they know Christ founded cannot be saved (CCC 846).": "Nie mogą być zbawieni ci, którzy wiedząc, że Chrystus założył Kościół, odmawiają wejścia do niego lub wytrwania w nim (KKK 846).",
+"Those who, through no fault of their own, do not know Christ or his Church, but seek God sincerely and try to follow their conscience, \"may achieve eternal salvation\" (CCC 847).": "Ci, którzy bez własnej winy nie znają Chrystusa ani Jego Kościoła, lecz szczerze szukają Boga i starają się iść za głosem sumienia, „mogą osiągnąć wieczne zbawienie” (KKK 847).",
+"Other Christians are truly united to the Church through Baptism, though imperfectly (CCC 838).": "Inni chrześcijanie są przez chrzest prawdziwie, choć niedoskonale, złączeni z Kościołem (KKK 838).",
+"This never removes the Church’s duty to proclaim the Gospel to all (CCC 848).": "Nigdy nie znosi to obowiązku Kościoła głoszenia Ewangelii wszystkim (KKK 848).",
+"Paul himself disciplined his body \"lest after preaching to others I myself should be disqualified\" (1 Corinthians 9:27).": "Sam Paweł poskramiał swoje ciało, „abym innym głosząc naukę, sam nie został odrzucony” (1 Kor 9,27).",
+"\"He who endures to the end will be saved\" (Matthew 24:13).": "„Kto wytrwa do końca, ten będzie zbawiony” (Mt 24,13).",
+"Our hope rests on God’s grace, not on our own strength, and final perseverance is itself a gift to be prayed for.": "Nasza nadzieja opiera się na Bożej łasce, a nie na własnych siłach, a wytrwanie do końca samo jest darem, o który trzeba się modlić.",
+"Anyone who falls can return through repentance and Confession.": "Każdy, kto upadnie, może powrócić przez skruchę i spowiedź.",
+"Peter writes from \"Babylon\" (1 Peter 5:13), a common early Christian code name for Rome (compare Revelation 17–18).": "Piotr pisze z „Babilonu” (1 P 5,13), powszechnego wśród pierwszych chrześcijan kryptonimu Rzymu (por. Ap 17–18).",
+"Around 96, Clement of Rome wrote of the martyrdoms of Peter and Paul among the Roman Christians.": "Około 96 roku Klemens Rzymski pisał o męczeństwie Piotra i Pawła wśród chrześcijan Rzymu.",
+"Around 107, Ignatius of Antioch told the Roman Christians that he did not give them commands as Peter and Paul had.": "Około 107 roku Ignacy Antiocheński napisał do chrześcijan Rzymu, że nie wydaje im poleceń, jak czynili to Piotr i Paweł.",
+"Around 200, the Roman priest Gaius pointed to the \"trophies\" (tombs) of Peter on the Vatican Hill and Paul on the road to Ostia.": "Około 200 roku rzymski prezbiter Gajusz wskazywał „trofea” (groby) Piotra na Wzgórzu Watykańskim i Pawła przy drodze do Ostii.",
+"Excavations under St. Peter’s Basilica in the 1940s found an ancient shrine over a first-century grave, venerated since the second century.": "Wykopaliska pod Bazyliką św. Piotra w latach 40. XX wieku odsłoniły starożytne sanktuarium nad grobem z I wieku, czczonym od II wieku.",
+"Jesus himself was celibate, and he praised those who renounce marriage \"for the sake of the kingdom of heaven\" (Matthew 19:12).": "Sam Jezus żył w celibacie i chwalił tych, którzy wyrzekają się małżeństwa „dla królestwa niebieskiego” (Mt 19,12).",
+"Paul explains that the unmarried can give undivided attention to the Lord (1 Corinthians 7:32–35).": "Paweł wyjaśnia, że nieżonaci mogą poświęcić Panu niepodzielną uwagę (1 Kor 7,32–35).",
+"Celibacy is a sign of the kingdom to come, where \"they neither marry nor are given in marriage.\"": "Celibat jest znakiem przyszłego królestwa, gdzie „nie będą się ani żenić, ani za mąż wychodzić”.",
+"Eastern Catholic Churches ordain married men as priests, and married Protestant ministers who become Catholic may sometimes be ordained.": "Wschodnie Kościoły katolickie święcą na kapłanów żonatych mężczyzn, a żonaci duchowni protestanccy, którzy przechodzą na katolicyzm, mogą czasem otrzymać święcenia.",
+"Christ freely chose twelve men as apostles, though he broke many social conventions in his treatment of women (CCC 1577).": "Chrystus w sposób wolny wybrał na apostołów dwunastu mężczyzn, choć w traktowaniu kobiet łamał wiele społecznych konwenansów (KKK 1577).",
+"The apostles did the same when choosing successors, and the Church has always done so.": "Apostołowie czynili tak samo, wybierając następców, i Kościół zawsze tak postępował.",
+"In 1994, Pope St. John Paul II declared in Ordinatio Sacerdotalis that the Church \"has no authority whatsoever to confer priestly ordination on women.\"": "W 1994 roku papież św. Jan Paweł II oświadczył w Ordinatio Sacerdotalis, że Kościół „nie ma żadnej władzy udzielania święceń kapłańskich kobietom”.",
+"The greatest of all creatures, the Virgin Mary, was not an apostle or priest. Holiness, not office, is the true measure of greatness in the Church.": "Największe ze stworzeń, Maryja Dziewica, nie była apostołem ani kapłanem. Prawdziwą miarą wielkości w Kościele jest świętość, a nie urząd.",
+"The Crusades began in 1095 in response to the conquest of Christian lands and an appeal from the Byzantine emperor for help. They also included grave crimes, such as the massacre at Jerusalem in 1099 and the sack of Constantinople in 1204.": "Wyprawy krzyżowe rozpoczęły się w 1095 roku w odpowiedzi na podbój ziem chrześcijańskich i prośbę cesarza bizantyjskiego o pomoc. Towarzyszyły im też ciężkie zbrodnie, jak rzeź w Jerozolimie w 1099 roku i złupienie Konstantynopola w 1204 roku.",
+"The Inquisition was a set of Church tribunals. The best-known, the Spanish Inquisition, was largely controlled by the Spanish crown. Modern historians estimate that it executed a few thousand people over three and a half centuries, far fewer than popular myth suggests, though every unjust death is a real wrong.": "Inkwizycja była zespołem trybunałów kościelnych. Najbardziej znana, inkwizycja hiszpańska, była w dużej mierze kontrolowana przez koronę hiszpańską. Współcześni historycy szacują, że w ciągu trzech i pół wieku straciła kilka tysięcy osób, znacznie mniej, niż głosi popularny mit, choć każda niesprawiedliwa śmierć jest prawdziwym złem.",
+"On the Day of Pardon in 2000, Pope St. John Paul II publicly asked God’s forgiveness for sins committed by Christians, including violence in the service of truth.": "W Dniu Przebaczenia w 2000 roku papież św. Jan Paweł II publicznie prosił Boga o przebaczenie grzechów popełnionych przez chrześcijan, w tym przemocy w służbie prawdy.",
+"For over a thousand years, monks copied the Scriptures by hand. Without them, the Bible would not have survived.": "Przez ponad tysiąc lat mnisi przepisywali Pismo ręcznie. Bez nich Biblia by nie przetrwała.",
+"St. Jerome’s Vulgate was a translation into Latin, the common language of the Western world at the time.": "Wulgata św. Hieronima była przekładem na łacinę, wspólny język ówczesnego świata zachodniego.",
+"Before Luther’s German New Testament of 1522, at least 18 printed editions of the Bible in German had already appeared, as well as translations in other languages.": "Przed niemieckim Nowym Testamentem Lutra z 1522 roku ukazało się już co najmniej 18 drukowanych wydań Biblii po niemiecku, a także przekłady na inne języki.",
+"Bibles were chained in churches because hand-copied books were enormously valuable, so that they could be read by all, not hidden.": "Biblie przykuwano łańcuchami w kościołach, bo ręcznie przepisywane księgi były niezwykle cenne, aby wszyscy mogli je czytać, a nie po to, by je ukryć.",
+"Scripture was proclaimed at every Mass and depicted in stained glass, art, and plays for people who could not read.": "Pismo było głoszone na każdej Mszy i przedstawiane w witrażach, sztuce i misteriach dla tych, którzy nie umieli czytać.",
+"The Encyclopedia of Wars (Phillips and Axelrod, 2004) classifies only about 7% of the 1,763 wars it catalogues as primarily religious.": "Encyclopedia of Wars (Phillips i Axelrod, 2004) klasyfikuje jako przede wszystkim religijne jedynie około 7% z 1763 opisanych w niej wojen.",
+"The deadliest conflicts of the twentieth century were driven by nationalist, racial, and explicitly atheistic ideologies.": "Najkrwawsze konflikty XX wieku napędzały ideologie nacjonalistyczne, rasowe i otwarcie ateistyczne.",
+"The medieval Church promoted the \"Peace of God\" and \"Truce of God\" movements to limit warfare and protect non-combatants.": "Średniowieczny Kościół propagował ruchy „pokoju Bożego” i „rozejmu Bożego”, by ograniczać wojny i chronić ludność cywilną.",
+"Catholic just war teaching, developed by Augustine and Aquinas, sets strict limits on when and how force may be used (CCC 2307–2317).": "Katolicka nauka o wojnie sprawiedliwej, rozwinięta przez Augustyna i Tomasza z Akwinu, wyznacza ścisłe granice tego, kiedy i jak można użyć siły (KKK 2307–2317).",
+"Paul wrote: \"Now I rejoice in my sufferings for your sake, and in my flesh I complete what is lacking in Christ’s afflictions for the sake of his body, that is, the church\" (Colossians 1:24).": "Paweł napisał: „Teraz raduję się w cierpieniach za was i ze swej strony w moim ciele dopełniam braki udręk Chrystusa dla dobra Jego Ciała, którym jest Kościół” (Kol 1,24).",
+"Christ’s sacrifice is complete, but he invites us to share in it, just as he invites us to share in his mission (CCC 618).": "Ofiara Chrystusa jest pełna, ale On zaprasza nas do udziału w niej, tak jak zaprasza nas do udziału w swojej misji (KKK 618).",
+"Suffering united to Christ can be offered for others, as the Fatima children and countless saints did.": "Cierpienie złączone z Chrystusem można ofiarować za innych, jak czyniły dzieci z Fatimy i niezliczeni święci.",
+"The Church also calls us to relieve suffering wherever we can. Offering it up is never an excuse for indifference.": "Kościół wzywa nas też, by łagodzić cierpienie wszędzie, gdzie możemy. Ofiarowanie go nigdy nie usprawiedliwia obojętności.",
+"The Apostolic Fathers knew the apostles or their disciples: St. Clement of Rome, St. Ignatius of Antioch, and St. Polycarp of Smyrna.": "Ojcowie apostolscy znali apostołów lub ich uczniów: św. Klemens Rzymski, św. Ignacy Antiocheński i św. Polikarp ze Smyrny.",
+"The apologists of the second century, such as St. Justin Martyr, defended the faith to pagans and explained Christian worship.": "Apologeci II wieku, jak św. Justyn Męczennik, bronili wiary wobec pogan i wyjaśniali chrześcijański kult.",
+"The great Fathers of the fourth and fifth centuries defended the Trinity and the divinity of Christ: in the East, Sts. Athanasius, Basil, Gregory of Nazianzus, and John Chrysostom; in the West, Sts. Ambrose, Jerome, Augustine, and Gregory the Great.": "Wielcy Ojcowie IV i V wieku bronili Trójcy i Bóstwa Chrystusa: na Wschodzie święci Atanazy, Bazyli, Grzegorz z Nazjanzu i Jan Chryzostom; na Zachodzie święci Ambroży, Hieronim, Augustyn i Grzegorz Wielki.",
+"The Catechism teaches that the Fathers are \"always timely witnesses\" of the living Tradition of the Church (CCC 688).": "Katechizm naucza, że Ojcowie są „zawsze aktualnymi świadkami” żywej Tradycji Kościoła (KKK 688).",
+"Some early Christian writers, such as Tertullian and Origen, are important witnesses but are not counted as saints or Fathers in the full sense, because of errors in some of their teaching.": "Niektórzy wczesnochrześcijańscy pisarze, jak Tertulian i Orygenes, są ważnymi świadkami, ale nie zalicza się ich do świętych ani Ojców w pełnym sensie z powodu błędów w części ich nauczania.",
+"St. Ignatius of Antioch, a disciple of the apostle John, c. 107: \"They abstain from the Eucharist and from prayer, because they confess not the Eucharist to be the flesh of our Saviour Jesus Christ, which suffered for our sins, and which the Father, of His goodness, raised up again.\" (Letter to the Smyrnaeans 7)": "Św. Ignacy Antiocheński, uczeń apostoła Jana, ok. 107: „Powstrzymują się od Eucharystii i modlitwy, ponieważ nie wyznają, że Eucharystia jest ciałem naszego Zbawiciela Jezusa Chrystusa, które cierpiało za nasze grzechy i które Ojciec w swojej dobroci wskrzesił”. (List do Smyrneńczyków 7)",
+"St. Justin Martyr, c. 155: \"For not as common bread and common drink do we receive these; but in like manner as Jesus Christ our Saviour, having been made flesh by the Word of God, had both flesh and blood for our salvation, so likewise have we been taught that the food which is blessed by the prayer of His word... is the flesh and blood of that Jesus who was made flesh.\" (First Apology 66)": "Św. Justyn Męczennik, ok. 155: „Nie przyjmujemy tego jako zwykłego chleba ani zwykłego napoju; ale jak Jezus Chrystus, nasz Zbawiciel, stawszy się ciałem przez Słowo Boże, miał ciało i krew dla naszego zbawienia, tak też zostaliśmy pouczeni, że pokarm, nad którym odmówiono modlitwę Jego słowami... jest ciałem i krwią tego Jezusa, który stał się ciałem”. (I Apologia 66)",
+"St. Cyril of Jerusalem, c. 350: \"Consider therefore the Bread and the Wine not as bare elements, for they are, according to the Lord's declaration, the Body and Blood of Christ.\" (Catechetical Lecture 22)": "Św. Cyryl Jerozolimski, ok. 350: „Nie uważaj więc chleba i wina za zwykłe pokarmy, są bowiem, według słów Pana, Ciałem i Krwią Chrystusa”. (Katecheza 22)",
+"Justin also describes the Sunday Eucharist in detail: readings from the apostles and prophets, a homily, prayers, the offering of bread and wine, the great thanksgiving, the people's \"Amen,\" and Communion brought to the absent.": "Justyn opisuje też szczegółowo niedzielną Eucharystię: czytania z apostołów i proroków, homilię, modlitwy, przyniesienie chleba i wina, wielkie dziękczynienie, „Amen” ludu i Komunię zanoszoną nieobecnym.",
+"Didn't belief in the Real Presence develop only in the Middle Ages?": "Czy wiara w rzeczywistą obecność nie rozwinęła się dopiero w średniowieczu?",
+"No. The word \"transubstantiation\" was formally adopted in the Middle Ages to explain the change, but the belief itself is clearly stated by Ignatius, Justin, Irenaeus, Cyril, Ambrose, and many others in the first centuries.": "Nie. Słowo „przeistoczenie” (transsubstancjacja) przyjęto formalnie w średniowieczu, by wyjaśnić tę przemianę, ale samą wiarę jasno wyrażają Ignacy, Justyn, Ireneusz, Cyryl, Ambroży i wielu innych w pierwszych wiekach.",
+"St. Ignatius of Antioch, c. 107, greets the church of Rome as the church \"which also presides in the place of the region of the Romans... and which presides over love.\" (Letter to the Romans, greeting)": "Św. Ignacy Antiocheński, ok. 107, pozdrawia Kościół w Rzymie jako Kościół, „który przewodniczy w krainie Rzymian... i przewodniczy w miłości”. (List do Rzymian, pozdrowienie)",
+"St. Irenaeus of Lyon, c. 180, on the church \"organized at Rome by the two most glorious apostles, Peter and Paul\": \"For it is a matter of necessity that every Church should agree with this Church, on account of its preeminent authority.\" (Against Heresies 3.3.2)": "Św. Ireneusz z Lyonu, ok. 180, o Kościele „założonym i zorganizowanym w Rzymie przez dwóch najchwalebniejszych apostołów, Piotra i Pawła”: „Z tym bowiem Kościołem, ze względu na jego szczególne pierwszeństwo, musi się zgadzać każdy Kościół”. (Przeciw herezjom 3,3,2)",
+"Irenaeus then lists the bishops of Rome from Linus, whom the apostles appointed, down to his own day.": "Ireneusz wymienia następnie biskupów Rzymu od Linusa, ustanowionego przez apostołów, aż do swoich czasów.",
+"St. Cyprian of Carthage, 251, quotes Christ's words to Peter, \"upon this rock I will build my Church,\" and teaches that the Lord founded the unity of the Church upon one man. (On the Unity of the Catholic Church 4)": "Św. Cyprian z Kartaginy, 251, przytacza słowa Chrystusa do Piotra: „na tej skale zbuduję mój Kościół”, i naucza, że Pan oparł jedność Kościoła na jednym człowieku. (O jedności Kościoła katolickiego 4)",
+"At the Council of Chalcedon in 451, when the letter of Pope Leo was read, the bishops are reported to have cried out, \"Peter has spoken through Leo!\"": "Na Soborze Chalcedońskim w 451 roku, gdy odczytano list papieża Leona, biskupi mieli zawołać: „Piotr przemówił przez Leona!”.",
+"Pope St. Clement I, c. 96: \"Our apostles also knew, through our Lord Jesus Christ, that there would be strife on account of the office of the episcopate. For this reason, therefore... they appointed those [ministers] already mentioned, and afterwards gave instructions, that when these should fall asleep, other approved men should succeed them in their ministry.\" (Letter to the Corinthians 44)": "Papież św. Klemens I, ok. 96: „Także nasi apostołowie wiedzieli przez naszego Pana Jezusa Chrystusa, że będą spory o godność biskupią. Z tego powodu... ustanowili wspomnianych wyżej [szafarzy], a potem dali polecenie, aby po ich śmierci inni wypróbowani mężowie przejmowali ich posługę”. (List do Koryntian 44)",
+"St. Ignatius of Antioch, c. 107: \"Wherever the bishop shall appear, there let the multitude [of the people] also be; even as, wherever Jesus Christ is, there is the Catholic Church.\" (Letter to the Smyrnaeans 8) This is the earliest surviving use of the phrase \"the Catholic Church.\"": "Św. Ignacy Antiocheński, ok. 107: „Gdzie się pojawi biskup, tam niech będzie i lud, tak jak gdzie jest Jezus Chrystus, tam jest Kościół katolicki”. (List do Smyrneńczyków 8) To najstarsze zachowane użycie wyrażenia „Kościół katolicki”.",
+"St. Irenaeus of Lyon, c. 180, says that anyone who wishes to see the truth can \"contemplate clearly the tradition of the apostles manifested throughout the whole world,\" and that \"we are in a position to reckon up those who were by the apostles instituted bishops in the Churches.\" (Against Heresies 3.3.1)": "Św. Ireneusz z Lyonu, ok. 180, mówi, że każdy, kto chce poznać prawdę, może „jasno oglądać tradycję apostołów, objawioną na całym świecie”, i że „możemy wyliczyć tych, których apostołowie ustanowili biskupami w Kościołach”. (Przeciw herezjom 3,3,1)",
+"The Didache, written around the end of the first century, gives the earliest instructions for Baptism \"in the name of the Father, and of the Son, and of the Holy Spirit,\" in running water if possible, or by pouring water three times on the head.": "Didache, spisana około końca I wieku, podaje najstarsze wskazania dotyczące chrztu „w imię Ojca i Syna, i Ducha Świętego”, w wodzie żywej, jeśli to możliwe, albo przez trzykrotne polanie głowy wodą.",
+"St. Justin Martyr, c. 155, describes how new believers \"are brought by us where there is water, and are regenerated in the same manner in which we were ourselves regenerated.\" (First Apology 61)": "Św. Justyn Męczennik, ok. 155, opisuje, jak nowi wierzący „są przez nas prowadzeni tam, gdzie jest woda, i odradzają się w ten sam sposób, w jaki my sami zostaliśmy odrodzeni”. (I Apologia 61)",
+"St. Irenaeus of Lyon, c. 180, says Christ came to save all \"who through Him are born again to God — infants, and children, and boys, and youths, and old men.\" (Against Heresies 2.22.4)": "Św. Ireneusz z Lyonu, ok. 180, mówi, że Chrystus przyszedł zbawić wszystkich, „którzy przez Niego odradzają się dla Boga: niemowlęta i dzieci, chłopców, młodzieńców i starców”. (Przeciw herezjom 2,22,4)",
+"Origen, St. Cyprian, and St. Augustine all treat infant Baptism as the ancient custom of the Church, received from the apostles.": "Orygenes, św. Cyprian i św. Augustyn traktują chrzest niemowląt jako dawny zwyczaj Kościoła, otrzymany od apostołów.",
+"St. Justin Martyr, c. 155, contrasts Eve, who conceived the word of the serpent and brought forth disobedience and death, with the Virgin Mary, who received the angel's message with faith and joy. (Dialogue with Trypho 100)": "Św. Justyn Męczennik, ok. 155, przeciwstawia Ewę, która poczęła słowo węża i zrodziła nieposłuszeństwo i śmierć, Maryi Dziewicy, która przyjęła orędzie anioła z wiarą i radością. (Dialog z Żydem Tryfonem 100)",
+"St. Irenaeus of Lyon, c. 180: \"And thus also it was that the knot of Eve's disobedience was loosed by the obedience of Mary. For what the virgin Eve had bound fast through unbelief, this did the virgin Mary set free through faith.\" (Against Heresies 3.22.4)": "Św. Ireneusz z Lyonu, ok. 180: „I tak węzeł nieposłuszeństwa Ewy został rozwiązany przez posłuszeństwo Maryi. Co bowiem dziewica Ewa związała przez niewiarę, to Dziewica Maryja rozwiązała przez wiarę”. (Przeciw herezjom 3,22,4)",
+"The Council of Ephesus, defending the unity of Christ against Nestorius, taught that Mary is truly the Mother of God, because the one she bore is God the Son made man.": "Sobór Efeski, broniąc jedności Chrystusa przeciw Nestoriuszowi, nauczał, że Maryja jest prawdziwie Matką Boga, ponieważ Ten, którego zrodziła, jest Bogiem Synem, który stał się człowiekiem.",
+"St. Athanasius, St. Jerome, St. Ambrose, and St. Augustine all defended Mary's perpetual virginity.": "Św. Atanazy, św. Hieronim, św. Ambroży i św. Augustyn bronili wieczystego dziewictwa Maryi.",
+"The Didache, c. 100: \"In the church you shall acknowledge your transgressions, and you shall not come near for your prayer with an evil conscience.\" (Didache 4)": "Didache, ok. 100: „W zgromadzeniu wyznawaj swoje przewinienia i nie przystępuj do modlitwy z nieczystym sumieniem”. (Didache 4)",
+"The Didache also tells Christians to gather every Lord's day to break bread \"after having confessed your transgressions, that your sacrifice may be pure.\" (Didache 14)": "Didache poleca też chrześcijanom zbierać się w każdy dzień Pański na łamanie chleba „po wyznaniu swoich przewinień, aby wasza ofiara była czysta”. (Didache 14)",
+"The Shepherd of Hermas, c. 140, teaches that there is a way of repentance for Christians who fall into serious sin after Baptism.": "Pasterz Hermasa, ok. 140, naucza, że istnieje droga pokuty dla chrześcijan, którzy po chrzcie popadli w ciężki grzech.",
+"In the third century, St. Cyprian of Carthage urged those who had denied the faith in persecution to confess, do penance, and be reconciled by the bishop and clergy before receiving Communion again.": "W III wieku św. Cyprian z Kartaginy wzywał tych, którzy zaparli się wiary w czasie prześladowań, by się wyspowiadali, odbyli pokutę i zostali pojednani przez biskupa i duchowieństwo, zanim znów przystąpią do Komunii.",
+"St. Cyril of Jerusalem, c. 350, describing the Eucharist: \"Then on behalf also of the Holy Fathers and Bishops who have fallen asleep before us, and in a word of all who in past years have fallen asleep among us, believing that it will be a very great benefit to the souls, for whom the supplication is put up, while that holy and most awful sacrifice is set forth.\" (Catechetical Lecture 23)": "Św. Cyryl Jerozolimski, ok. 350, opisując Eucharystię: „Następnie także za świętych Ojców i biskupów, którzy już zasnęli, i w ogóle za wszystkich spośród nas, którzy zmarli, wierząc, że będzie to największym pożytkiem dla dusz, za które zanosi się modlitwę, gdy leży przed nami ta święta i straszliwa ofiara”. (Katecheza 23)",
+"St. Monica, dying in Ostia, said to her sons: \"Lay this body anywhere, let not the care for it trouble you at all. This only I ask, that you will remember me at the Lord's altar, wherever you be.\" (St. Augustine, Confessions 9.11)": "Św. Monika, umierając w Ostii, powiedziała do synów: „Pochowajcie to ciało gdziekolwiek, niech troska o nie wcale was nie niepokoi. O to tylko proszę, abyście, gdziekolwiek będziecie, pamiętali o mnie przy ołtarzu Pańskim”. (Św. Augustyn, Wyznania 9,11)",
+"Early Christian tombs in the Roman catacombs carry inscriptions asking for prayers for the dead and asking the dead to pray for the living.": "Wczesnochrześcijańskie groby w rzymskich katakumbach noszą inskrypcje proszące o modlitwę za zmarłych i proszące zmarłych o modlitwę za żyjących.",
+"St. Irenaeus of Lyon, c. 180: \"Suppose there arise a dispute relative to some important question among us, should we not have recourse to the most ancient Churches with which the apostles held constant intercourse, and learn from them what is certain and clear in regard to the present question?\" (Against Heresies 3.4.1)": "Św. Ireneusz z Lyonu, ok. 180: „Gdyby powstał wśród nas spór o jakąś ważną kwestię, czyż nie powinniśmy zwrócić się do najstarszych Kościołów, z którymi apostołowie utrzymywali stałą łączność, i nauczyć się od nich, co w danej sprawie jest pewne i jasne?”. (Przeciw herezjom 3,4,1)",
+"St. Basil the Great, c. 375: \"Of the beliefs and practices whether generally accepted or publicly enjoined which are preserved in the Church some we possess derived from written teaching; others we have received delivered to us in a mystery by the tradition of the apostles; and both of these in relation to true religion have the same force.\" (On the Holy Spirit 27.66)": "Św. Bazyli Wielki, ok. 375: „Spośród zachowywanych w Kościele wierzeń i praktyk, czy to powszechnie przyjętych, czy publicznie nakazanych, jedne mamy z nauki spisanej, inne otrzymaliśmy przekazane nam w tajemnicy przez tradycję apostołów; a jedne i drugie mają tę samą moc dla prawdziwej pobożności”. (O Duchu Świętym 27,66)",
+"St. Vincent of Lérins, 434: \"In the Catholic Church itself, all possible care must be taken, that we hold that faith which has been believed everywhere, always, by all.\" (Commonitory 2.6)": "Św. Wincenty z Lerynu, 434: „W samym Kościele katolickim trzeba dołożyć wszelkich starań, abyśmy trzymali się tego, w co wierzono wszędzie, zawsze i przez wszystkich”. (Commonitorium 2,6)",
 "{*}; {*}": "{*}; {*}",
 "{*}: {*}": "{*}: {*}",
 "{*} · {*}": "{*} · {*}"
@@ -8446,6 +8691,213 @@ window.SANCTIFY_I18N = {
 },
 "s6": {
 "content": "Wiejska dziewczyna z Domrémy, Joanna wierzyła, że w widzeniach otrzymała polecenie, by wesprzeć Karola VII i poprowadzić wojska francuskie w czasie wojny stuletniej. W 1429 roku poprowadziła armię do…"
+},
+"t1": {
+"content": "Katolicy wierzą w jednego Boga, Stwórcę wszystkiego, który jest nieskończenie dobry, wszechwiedzący, wszechmogący i wieczny. Bóg nie jest jednym z bytów, lecz samym Bytem; objawił Mojżeszowi swoje imię: „Jestem, który jestem”.\n\nKościół naucza, że Boga można poznać z pewnością naturalnym światłem rozumu ludzkiego na podstawie stworzonego świata, jeszcze przed objawieniem. Objawienie ukazuje nam następnie, kim Bóg jest sam w sobie: Ojcem, który nas kocha i pragnie, abyśmy uczestniczyli w Jego życiu."
+},
+"t2": {
+"content": "Centralną tajemnicą wiary chrześcijańskiej jest to, że jeden Bóg istnieje w trzech Osobach Boskich: Ojcu, Synu i Duchu Świętym. Nie są to trzej bogowie ani trzy części Boga, ani trzy „maski” jednej Osoby. Każda Osoba jest w pełni Bogiem i ma tę samą jedną naturę Boską, a jednak każda rzeczywiście różni się od pozostałych przez wzajemne relacje.\n\nTrójcy nie dało się odkryć samym rozumem. Objawił ją Jezus, który mówi o Ojcu, nazywa siebie Synem i obiecuje zesłać Ducha. Kościół bronił tej prawdy na soborach w Nicei (325) i Konstantynopolu (381)."
+},
+"t3": {
+"content": "Bóg w sposób wolny stworzył świat z niczego, a wszystko, co uczynił, jest dobre. Ludzie zostali stworzeni na Jego obraz, z ciałem i duszą, jako mężczyzna i kobieta, i powołani do przyjaźni z Nim. Nasi pierwsi rodzice, kuszeni przez diabła, wybrali nieposłuszeństwo Bogu i utracili pierwotną świętość i sprawiedliwość, w których zostali stworzeni.\n\nTen „grzech pierworodny” przechodzi na całą ludzkość: nie jako osobista wina, lecz jako zraniona natura, pozbawiona pierwotnej świętości i skłonna do grzechu. Chrystus, nowy Adam, przyszedł przywrócić to, co zostało utracone, a chrzest gładzi grzech pierworodny."
+},
+"t4": {
+"content": "Odwieczny Syn Boży stał się człowiekiem w Jezusie z Nazaretu, poczętym z Ducha Świętego i narodzonym z Maryi Dziewicy. Jest jedną Osobą Boską w dwóch naturach, w pełni Boskiej i w pełni ludzkiej, „bez zmieszania, bez zmiany, bez podziału, bez rozdzielenia” (Sobór Chalcedoński, 451).\n\nStawszy się człowiekiem, nie przestał być Bogiem, a Jego człowieczeństwo nie było tylko pozorem. Miał prawdziwe ludzkie ciało i duszę, ludzki umysł i wolę i był podobny do nas we wszystkim oprócz grzechu."
+},
+"t5": {
+"content": "Jezus dobrowolnie ofiarował swoje życie na krzyżu jako ofiarę za grzechy całego świata, jednając ludzkość z Bogiem. Jego śmierć jest najwyższym aktem miłości i posłuszeństwa, który naprawia nieposłuszeństwo Adama. Trzeciego dnia zmartwychwstał w ciele, zwyciężając śmierć i otwierając drogę do życia wiecznego.\n\nZmartwychwstanie jest rzeczywistym wydarzeniem historycznym, poświadczonym przez wielu, a nie tylko duchową ideą. Potwierdza wszystko, czego nauczał Jezus, i jest fundamentem chrześcijańskiej nadziei: „Jeżeli Chrystus nie zmartwychwstał, daremna jest wasza wiara” (1 Kor 15,17)."
+},
+"t6": {
+"content": "Duch Święty jest trzecią Osobą Trójcy, „Panem i Ożywicielem”, który pochodzi od Ojca i Syna i z Nimi odbiera uwielbienie i chwałę. Mówił przez proroków, osłonił Maryję przy Wcieleniu i został wylany na Kościół w dniu Pięćdziesiątnicy.\n\nDuch mieszka w sercach ochrzczonych i czyni ich dziećmi Bożymi. Udziela darów, takich jak mądrość, rozum, rada, męstwo, umiejętność, pobożność i bojaźń Boża. Prowadzi Kościół do całej prawdy i rodzi owoce świętości, takie jak miłość, radość i pokój."
+},
+"t7": {
+"content": "Boże Objawienie, które osiągnęło pełnię w Jezusie Chrystusie, jest przekazywane na dwa sposoby wypływające z tego samego źródła: przez Pismo Święte, natchnione spisane Słowo Boże, i przez Świętą Tradycję, żywe przekazywanie nauki apostołów. Urząd nauczycielski Kościoła, Magisterium, nie stoi ponad Słowem Bożym, lecz mu służy, wiernie go strzegąc i wyjaśniając.\n\nPismo jest natchnione przez Ducha Świętego i naucza bez błędu prawdy, którą Bóg chciał zapisać dla naszego zbawienia. Należy je czytać w świetle całego Pisma, żywej Tradycji Kościoła i analogii wiary."
+},
+"t8": {
+"content": "Chrystus założył jeden Kościół, który jest zarazem widzialną społecznością i mistycznym Ciałem Chrystusa. W Credo katolicy wyznają, że ten Kościół jest jeden (zjednoczony w wierze, sakramentach i zarządzie), święty (uświęcony przez Chrystusa, choć jego członkowie są grzesznikami), powszechny (uniwersalny, posiadający pełnię środków zbawienia) i apostolski (zbudowany na apostołach i prowadzony przez ich następców).\n\nSobór Watykański II nauczał, że ten Kościół „trwa w” Kościele katolickim. Uznał też, że poza jego widzialnymi granicami istnieje wiele pierwiastków prawdy i świętości, a inni chrześcijanie są przez chrzest prawdziwie, choć niedoskonale, z nim złączeni."
+},
+"t9": {
+"content": "Chrystus wybrał Dwunastu i postawił na ich czele Piotra, dając mu klucze królestwa. Biskupi są następcami apostołów, a Biskup Rzymu, papież, jest następcą Piotra. On jest widzialnym źródłem jedności Kościoła.\n\nPapież i biskupi pozostający z nim w komunii stanowią władzę nauczycielską Kościoła. W ściśle określonych warunkach, gdy papież definiuje naukę wiary lub moralności dla całego Kościoła (ex cathedra) albo gdy biskupi nauczają jej razem z nim, Duch Święty chroni to nauczanie od błędu. Jest to charyzmat nieomylności."
+},
+"t10": {
+"content": "Sakramenty to widzialne znaki, ustanowione przez Chrystusa i powierzone Kościołowi, przez które udzielane jest nam życie Boże. Jest ich siedem: chrzest, bierzmowanie i Eucharystia (sakramenty wtajemniczenia); pokuta i namaszczenie chorych (sakramenty uzdrowienia); kapłaństwo i małżeństwo (sakramenty w służbie komunii).\n\nSakramenty działają mocą samego Chrystusa, a nie świętości szafarza („ex opere operato”). Ich owoc w każdym człowieku zależy też od jego otwartości i wiary."
+},
+"t11": {
+"content": "W Eucharystii chleb i wino prawdziwie stają się Ciałem i Krwią, duszą i Bóstwem Jezusa Chrystusa. Ich postacie pozostają, lecz zmienia się ich substancja, co Kościół nazywa przeistoczeniem. Chrystus jest obecny cały pod każdą z postaci.\n\nMsza Święta jest także ofiarą. Nie nową ofiarą, lecz jedyną ofiarą Kalwarii uobecnioną, abyśmy mogli składać ją razem z Chrystusem i przyjmować jej owoce. Katolicy są wezwani, by przyjmować Komunię w stanie łaski i adorować Chrystusa obecnego w tabernakulum."
+},
+"t12": {
+"content": "Chrystus dał apostołom władzę odpuszczania grzechów w Jego imię. W sakramencie pokuty człowiek, który zgrzeszył po chrzcie, wyznaje grzechy kapłanowi, okazuje żal, otrzymuje rozgrzeszenie i wypełnia pokutę. Grzechy śmiertelne muszą zostać wyznane. Usilnie zaleca się też spowiadanie z grzechów powszednich.\n\nKapłan działa w osobie Chrystusa i obowiązuje go bezwzględna tajemnica spowiedzi: nigdy, z żadnego powodu, nie może ujawnić tego, co usłyszał, nawet za cenę życia."
+},
+"t13": {
+"content": "Maryja jest prawdziwie Matką Bożą (Theotokos), ponieważ Dziecię, które poczęła, jest odwiecznym Synem Bożym. Kościół naucza czterech dogmatów maryjnych: Jej Boskiego macierzyństwa; Jej wieczystego dziewictwa; Jej Niepokalanego Poczęcia (zachowania od grzechu pierworodnego od pierwszej chwili istnienia mocą zasług Chrystusa); oraz Jej Wniebowzięcia z duszą i ciałem do chwały niebieskiej.\n\nMaryja jest pierwszą i najdoskonalszą uczennicą. Z krzyża Jezus dał Ją za matkę umiłowanemu uczniowi, a w ten sposób całemu Kościołowi. Katolicy czczą Ją ponad wszystkimi świętymi, ale zawsze jako stworzenie, które prowadzi nas do Syna."
+},
+"t14": {
+"content": "Kościół jest jedną rodziną w Chrystusie, obejmującą niebo, ziemię i czyściec: wiernych na ziemi, dusze, które się oczyszczają, i zbawionych w niebie. Śmierć nie zrywa naszej jedności w Chrystusie.\n\nDzięki tej komunii święci w niebie wstawiają się za nami, możemy modlić się za dusze w czyśćcu, a wszyscy członkowie dzielą się dobrami duchowymi. Czcząc świętych, oddajemy chwałę Bogu, którego łaska uczyniła ich świętymi."
+},
+"t15": {
+"content": "Zbawienie jest darmowym darem Bożej łaski. Nikt nie może zasłużyć na łaskę usprawiedliwienia (KKK 2010). Bóg usprawiedliwia nas przez wiarę i chrzest, nie tylko uznając nas za sprawiedliwych, lecz rzeczywiście czyniąc nas sprawiedliwymi, rozlewając w naszych sercach swoją miłość i czyniąc nas swoimi dziećmi.\n\nWiara, jeśli jest żywa, działa przez miłość. Dobre uczynki spełnione w łasce nie są naszymi samodzielnymi osiągnięciami. Są darami Boga działającego w nas, a On nagradza je jak Ojciec. Współpracujemy z łaską w sposób wolny; możemy ją utracić przez grzech śmiertelny i odzyskać przez nawrócenie."
+},
+"t16": {
+"content": "Bóg wypisał w ludzkim sercu prawo moralne, prawo naturalne, które rozum może poznać: czynić dobro i unikać zła, szanować życie, mówić prawdę, być wiernym. Dziesięć Przykazań wyraża to prawo, a Chrystus wypełnia je w przykazaniu miłości: kochać Boga całym sercem, a bliźniego jak siebie samego.\n\nSumienie to wewnętrzny osąd, który stosuje prawdę moralną do naszych wyborów. Zawsze musimy iść za pewnym sumieniem. Mamy też obowiązek dobrze je kształtować przez Pismo Święte, nauczanie Kościoła, modlitwę i cnoty."
+},
+"t17": {
+"content": "W chwili śmierci każdy człowiek staje przed sądem szczegółowym. Ci, którzy umierają w łasce Bożej i są całkowicie oczyszczeni, wchodzą do nieba: doskonałej, wiecznej komunii z Trójcą Świętą, Maryją Dziewicą, aniołami i świętymi. Ci, którzy umierają w łasce Bożej, lecz jeszcze nie w pełni oczyszczeni, przechodzą czyściec, ostateczne oczyszczenie przed wejściem do nieba.\n\nCi, którzy umierają w grzechu śmiertelnym bez skruchy, w sposób wolny odrzucając miłość Boga, wybierają wieczne oddzielenie od Niego, czyli piekło. Na końcu czasów Chrystus powróci w chwale, umarli zmartwychwstaną, a Sąd Ostateczny objawi pełną prawdę o każdym życiu. Bóg uczyni „nowe niebo i nową ziemię”."
+},
+"t18": {
+"content": "Tradycja katolicka utrzymuje, że istnienie Boga można poznać rozumem. Święty Tomasz z Akwinu przedstawił „pięć dróg”, a od tamtej pory rozwinięto wiele innych argumentów. Żaden z nich nie jest dowodem laboratoryjnym, ale razem pokazują, że wiara w Boga jest głęboko rozumna."
+},
+"t19": {
+"content": "Istnienie zła jest najpoważniejszym zarzutem wobec wiary. Kościół nie daje łatwej odpowiedzi. Mówi, że „tylko całość wiary chrześcijańskiej stanowi odpowiedź na to pytanie” (KKK 309). Kilka prawd rzuca jednak na nie prawdziwe światło."
+},
+"t20": {
+"content": "Katolicy wierzą, że Ewangelie są natchnione. Można jednak także wykazać, według zwykłych kryteriów historycznych, że są wiarygodnymi źródłami historycznymi, co ma znaczenie w rozmowie ze sceptykami."
+},
+"t21": {
+"content": "Zmartwychwstanie jest centralnym twierdzeniem chrześcijaństwa i jest twierdzeniem historycznym. Kilka faktów uznawanych przez większość historyków, wierzących i niewierzących, najlepiej wyjaśnia to, że Jezus naprawdę zmartwychwstał."
+},
+"t22": {
+"content": "Dlaczego wierzyć, że Kościół katolicki jest Kościołem założonym przez Chrystusa? Katolicy wskazują na świadectwo Pisma i najwcześniejszych pisarzy chrześcijańskich."
+},
+"t23": {
+"content": "Wielu chrześcijan protestanckich uważa, że jedynie Pismo jest jedyną nieomylną regułą wiary. Katolicy otaczają Pismo najwyższą czcią jako Słowo Boże, ale wierzą, że nigdy nie miało ono istnieć w oderwaniu od Kościoła i Tradycji, które je zrodziły i zachowały."
+},
+"t24": {
+"content": "Katolicy i protestanci zgadzają się tu bardziej, niż się często sądzi. Jedni i drudzy wierzą, że jesteśmy zbawieni łaską Boga przez Chrystusa, a nie własną zasługą. Spór dotyczy tego, czy usprawiedliwia sama wiara, czy wiara działająca przez miłość."
+},
+"t25": {
+"content": "Biblie katolickie zawierają siedem ksiąg Starego Testamentu, które większość Biblii protestanckich pomija: Tobiasza, Judyty, 1 i 2 Machabejską, Mądrości, Syracydesa i Barucha, a także części Estery i Daniela. Katolicy nazywają je „deuterokanonicznymi”; protestanci często nazywają je apokryfami."
+},
+"t26": {
+"content": "Katolicy wierzą, że Eucharystia prawdziwie jest Ciałem i Krwią Chrystusa, a nie jedynie symbolem. Dowody zaczynają się od słów samego Jezusa i trwają w jednomyślnym świadectwie pierwotnego Kościoła."
+},
+"t27": {
+"content": "Zarzuty wobec spowiedzi wypływają zwykle ze słusznej intuicji, że tylko Bóg może odpuszczać grzechy. Kościół katolicki się z tym zgadza. Pytanie brzmi, w jaki sposób Bóg zechciał udzielać tego przebaczenia."
+},
+"t28": {
+"content": "Katolicka pobożność maryjna bywa często błędnie rozumiana jako uwielbienie. Kościół naucza, że uwielbienie (latria) należy się jedynie Bogu. Maryja otrzymuje szczególną cześć (hiperdulia) jako Matka Pana, a wszystko, w co Kościół wierzy na Jej temat, wypływa z tego, w co wierzy o Chrystusie."
+},
+"t29": {
+"content": "Katolicy proszą świętych o modlitwę, tak jak chrześcijanie na ziemi proszą się nawzajem o modlitwę. Modlić się „do” świętego znaczy prosić o jego wstawiennictwo, a nie oddawać mu boską cześć."
+},
+"t30": {
+"content": "Przykazanie zakazujące „rzeźbionych obrazów” zabrania czynienia bożków, by oddawać im cześć, a nie wszelkiej sztuki religijnej. Sam Bóg nakazał używać wizerunków w kulcie, a Wcielenie uczyniło niewidzialnego Boga widzialnym."
+},
+"t31": {
+"content": "Czyściec nie jest drugą szansą ani miejscem kary z dala od Chrystusa. Jest ostatecznym oczyszczeniem tych, którzy umierają w przyjaźni z Bogiem, lecz wciąż noszą skutki grzechu, aby mogli wejść w doskonałą świętość nieba."
+},
+"t32": {
+"content": "Niektórzy chrześcijanie uważają, że chrzest powinien następować dopiero po osobistym wyznaniu wiary. Kościół katolicki, wraz z prawosławnymi i wieloma Kościołami protestanckimi, chrzci dzieci od najwcześniejszych wieków. Zbawienie jest darem łaski, a nie czymś, na co zasługujemy własną decyzją."
+},
+"t33": {
+"content": "Kościół naucza, że wiara i rozum nigdy nie mogą sobie naprawdę przeczyć, ponieważ ten sam Bóg, który objawia wiarę, stworzył świat badany przez naukę. „Metodyczne badania we wszystkich dziedzinach wiedzy... nigdy nie będą rzeczywiście przeciwne wierze” (KKK 159)."
+},
+"t34": {
+"content": "Niektórzy sprzeciwiają się nazywaniu kapłanów „ojcami”, przytaczając Mt 23,9: „Nikogo też na ziemi nie nazywajcie waszym ojcem; jeden bowiem jest Ojciec wasz, Ten w niebie”. Czytane w kontekście, słowa Jezusa nie zakazują pewnego słowa, lecz przestrzegają przed pychą religijnych tytułów."
+},
+"t35": {
+"content": "Chrzest jest pierwszym sakramentem i bramą do pozostałych. Przez wodę i słowa „Ja ciebie chrzczę w imię Ojca i Syna, i Ducha Świętego” człowiek zostaje uwolniony od grzechu pierworodnego i wszystkich grzechów osobistych, odradza się jako dziecko Boże, staje się członkiem Chrystusa i Jego Kościoła oraz otrzymuje udział w kapłaństwie Chrystusa.\n\nChrzest wyciska niezatarte duchowe znamię, dlatego nigdy się go nie powtarza. Zwykle chrztu udziela biskup, kapłan lub diakon. W nagłej potrzebie może ochrzcić każdy, nawet niechrześcijanin, jeśli ma intencję czynienia tego, co czyni Kościół, i używa formuły trynitarnej (KKK 1256)."
+},
+"t36": {
+"content": "Bierzmowanie dopełnia łaskę chrztu. Przez włożenie rąk i namaszczenie świętym krzyżmem, ze słowami „Przyjmij znamię daru Ducha Świętego”, bierzmowani otrzymują szczególną moc Ducha, by świadczyć o Chrystusie słowem i czynem.\n\nPodobnie jak chrzest wyciska niezatarte znamię i przyjmuje się je tylko raz. W Kościele łacińskim zwyczajnym szafarzem jest biskup. W Kościołach wschodnich kapłani bierzmują niemowlęta zaraz po chrzcie, razem z ich pierwszą Komunią."
+},
+"t37": {
+"content": "W tym sakramencie kapłan namaszcza poświęconym olejem osobę ciężko chorą lub w podeszłym wieku i modli się za nią, jak czynili apostołowie. Daje on siłę, pokój i odwagę, łączy cierpienie chorego z męką Chrystusa, odpuszcza grzechy, jeśli chory nie może się wyspowiadać, a czasem przywraca zdrowie ciała.\n\nNie jest tylko dla umierających. Można go przyjąć przed poważną operacją, w ciężkiej chorobie lub w słabości starości i można go powtarzać, gdy choroba się pogłębia albo pojawia się nowa."
+},
+"t38": {
+"content": "Kapłaństwo jest sakramentem, przez który misja powierzona przez Chrystusa apostołom trwa w Kościele. Ma trzy stopnie: biskupów, którzy jako następcy apostołów mają pełnię sakramentu; prezbiterów, ich współpracowników, którzy sprawują sakramenty i głoszą słowo; oraz diakonów, wyświęcanych do posługi słowa, liturgii i miłości.\n\nŚwięceń udziela biskup przez włożenie rąk i modlitwę konsekracyjną. Podobnie jak chrzest i bierzmowanie wyciskają one niezatarte znamię."
+},
+"t39": {
+"content": "Małżeństwo jest dozgonnym przymierzem mężczyzny i kobiety, ukierunkowanym na ich dobro oraz na zrodzenie i wychowanie dzieci. Między ochrzczonymi Chrystus podniósł je do godności sakramentu, żywego znaku Jego miłości do Kościoła.\n\nW Kościele łacińskim szafarzami sakramentu są sami małżonkowie, wyrażając zgodę wobec Kościoła (KKK 1623). Ważne i dopełnione małżeństwo sakramentalne jest nierozerwalne: „Co Bóg złączył, niech człowiek nie rozdziela”."
+},
+"t40": {
+"content": "Istnienie aniołów, czysto duchowych stworzeń obdarzonych rozumem i wolą, jest prawdą wiary. Oddają chwałę Bogu i służą Mu jako posłańcy, a każdy człowiek ma swojego anioła stróża. Pismo wymienia trzech z imienia: Michała, Gabriela i Rafała.\n\nSzatan i pozostałe demony zostały stworzone dobrymi, lecz w sposób wolny i nieodwołalny odrzuciły Boga. Kuszą ludzi, ale ich moc jest ograniczona: nie mogą przeszkodzić budowaniu królestwa Bożego, a Chrystus już ich zwyciężył."
+},
+"t41": {
+"content": "„Modlitwa jest wzniesieniem duszy do Boga” (św. Jan Damasceński, cytowany w KKK 2559). Jest żywą relacją z Ojcem, przez Syna, w Duchu Świętym. Chrystus nauczył nas modlić się i dał nam Ojcze nasz jako wzór wszelkiej modlitwy.\n\nKatechizm opisuje pięć form modlitwy: błogosławieństwo i uwielbienie, prośbę, wstawiennictwo, dziękczynienie i chwałę. Opisuje też trzy sposoby jej wyrażania: modlitwę ustną, rozmyślanie i modlitwę kontemplacyjną, która jest „spojrzeniem wiary utkwionym w Jezusa”."
+},
+"t42": {
+"content": "Cnota to stała i mocna skłonność do czynienia dobra. Cztery cnoty kardynalne to roztropność, sprawiedliwość, męstwo i umiarkowanie. Wszystkie inne cnoty moralne opierają się na nich jak na zawiasach (łac. cardo, zawias). Zdobywa się je przez wychowanie, świadome czyny i wytrwałość, a łaska je oczyszcza.\n\nTrzy cnoty teologalne, wiara, nadzieja i miłość, są darami wlanymi przez Boga, które odnoszą nas bezpośrednio do Niego. „Największa z nich jest miłość”, która ożywia wszystkie pozostałe."
+},
+"t43": {
+"content": "Grzech jest obrazą Boga i brakiem prawdziwej miłości do Boga i bliźniego. Kościół odróżnia grzech śmiertelny, który niszczy miłość w sercu i odwraca człowieka od Boga, od grzechu powszedniego, który rani miłość, ale jej nie niszczy.\n\nAby grzech był śmiertelny, muszą zachodzić jednocześnie trzy warunki: materia ciężka, pełna świadomość i dobrowolna zgoda (KKK 1857). Grzech śmiertelny zostaje zwykle odpuszczony w sakramencie pokuty. Grzechy powszednie są odpuszczane na wiele sposobów, między innymi przez modlitwę, uczynki miłości i Eucharystię."
+},
+"t44": {
+"content": "Nawet po odpuszczeniu grzechu pozostają jego skutki w postaci nieuporządkowanego przywiązania, które wymaga oczyszczenia, zwanego „karą doczesną”. Odpust to darowanie tej kary doczesnej za grzechy już odpuszczone, udzielane przez Kościół ze skarbca zasług Chrystusa i świętych (KKK 1471).\n\nOdpust zupełny wymaga wykonania przepisanego dzieła wraz ze spowiedzią sakramentalną, Komunią Świętą, modlitwą w intencjach papieża i wolnością od przywiązania do wszelkiego grzechu. Odpusty można uzyskać dla siebie albo dla dusz w czyśćcu."
+},
+"t45": {
+"content": "W ciągu roku Kościół celebruje całe misterium Chrystusa, od Wcielenia po Wniebowstąpienie, zesłanie Ducha i nadzieję Jego powrotu. Rok zaczyna się Adwentem i prowadzi przez Boże Narodzenie, okres zwykły, Wielki Post, Święte Triduum i okres wielkanocny.\n\nNiedziela, dzień Zmartwychwstania, jest fundamentem i rdzeniem roku liturgicznego. Wielkanoc jest „świętem świąt”. W ciągu roku Kościół czci też Maryję i świętych, w których życiu widać działanie misterium paschalnego."
+},
+"t46": {
+"content": "Sakramentalia to święte znaki ustanowione przez Kościół, które usposabiają nas do przyjęcia łaski i uświęcają różne chwile życia. Przykładami są błogosławieństwa, woda święcona, znak krzyża, różańce, medaliki, szkaplerze, poświęcone świece i popiół.\n\nW odróżnieniu od sakramentów nie udzielają one łaski same z siebie. Działają przez modlitwę Kościoła i wiarę tych, którzy z nich korzystają. Pobożność ludowa, jak droga krzyżowa i procesje, wyraża ten sam odruch wnoszenia wiary w codzienne życie."
+},
+"t47": {
+"content": "Chrystus przyjdzie powtórnie w chwale sądzić żywych i umarłych, a Jego królestwu nie będzie końca. Kościół nie zna dnia ani godziny, ale żyje w czujnej nadziei, modląc się: „Przyjdź, Panie Jezu!” (Ap 22,20).\n\nPrzed Jego powrotem Kościół przejdzie przez ostateczną próbę, która zachwieje wiarą wielu (KKK 675–677). Na Sądzie Ostatecznym zostanie odsłonięta prawda o relacji każdego człowieka z Bogiem, a Boża sprawiedliwość i miłosierdzie zatriumfują nad wszelkim złem."
+},
+"t48": {
+"content": "Każda osoba ludzka, stworzona na obraz Boga, ma nienaruszalną godność od poczęcia do naturalnej śmierci. Katolicka nauka społeczna stosuje Ewangelię do życia społecznego, zwłaszcza od encykliki Rerum Novarum papieża Leona XIII (1891).\n\nJej główne zasady to życie i godność osoby ludzkiej, dobro wspólne, solidarność, pomocniczość (decyzje podejmowane na możliwie najniższym szczeblu), godność pracy i prawa pracowników, troska o stworzenie oraz preferencyjna miłość do ubogich."
+},
+"t49": {
+"content": "Starożytna nauka „poza Kościołem nie ma zbawienia” oznacza, że wszelkie zbawienie pochodzi od Chrystusa przez Jego Kościół, który jest Jego Ciałem. Kościół naucza jednak także, że Bóg nie jest ograniczony widzialnymi granicami Kościoła."
+},
+"t50": {
+"content": "Niektórzy chrześcijanie wierzą, że raz zbawiony człowiek nigdy nie może utracić zbawienia. Kościół katolicki naucza, że zbawienie jest darmowym darem Boga i możemy z ufnością polegać na Jego wierności. Pozostajemy jednak wolni i możemy odrzucić ten dar przez grzech śmiertelny."
+},
+"t51": {
+"content": "Niektórzy twierdzą, że św. Piotr nigdy nie był w Rzymie, co podważałoby związek papiestwa z nim. Jednak historyczne świadectwa obecności i męczeństwa Piotra w Rzymie są wczesne i mocne, a dziś przyjmuje je większość badaczy, katolickich i protestanckich."
+},
+"t52": {
+"content": "W Kościele łacińskim kapłanów wybiera się zwykle spośród mężczyzn, którzy otrzymali dar celibatu. Jest to dyscyplina Kościoła, a nie niezmienna doktryna, i ma długą historię oraz głębokie racje duchowe."
+},
+"t53": {
+"content": "Kościół naucza, że nie ma władzy udzielania kobietom święceń kapłańskich. Nie jest to ocena równej godności kobiet, którą Kościół potwierdza, lecz sprawa wierności temu, co uczynił sam Chrystus."
+},
+"t54": {
+"content": "Krytycy często wskazują na wyprawy krzyżowe i inkwizycję jako dowód zepsucia Kościoła. Katolicy powinni uczciwie zmierzyć się z tą historią: członkowie Kościoła wyrządzili prawdziwe zło, a Kościół to uznał. Popularny obraz bywa jednak przesadzony lub zniekształcony."
+},
+"t55": {
+"content": "Często twierdzi się, że średniowieczny Kościół ukrywał Biblię przed zwykłymi ludźmi aż do reformacji. Rzeczywistość historyczna wygląda zupełnie inaczej."
+},
+"t56": {
+"content": "To powszechne twierdzenie nie wytrzymuje konfrontacji z historią, choć religia rzeczywiście bywała nadużywana do usprawiedliwiania przemocy."
+},
+"t57": {
+"content": "Katolicy często mówią o „ofiarowaniu” cierpienia. Nie jest to udawanie, że cierpienie samo w sobie jest dobre. Oznacza to łączenie naszego bólu z męką Chrystusa, aby nawet cierpienie mogło stać się aktem miłości o odkupieńczym sensie."
+},
+"t58": {
+"content": "Kościół katolicki jest komunią dwudziestu czterech Kościołów „własnego prawa” (sui iuris): Kościoła łacińskiego i dwudziestu trzech wschodnich Kościołów katolickich, z których każdy ma własną liturgię, teologię, duchowość i dyscyplinę, a wszystkie trwają w pełnej komunii z Biskupem Rzymu.\n\nNależą do pięciu wielkich tradycji: bizantyjskiej (czternaście Kościołów, w tym ukraiński, rusiński, melchicki i rumuński), aleksandryjskiej (koptyjski, etiopski, erytrejski), antiocheńskiej (maronicki, syryjski, syromalankarski), ormiańskiej oraz chaldejskiej, czyli wschodniosyryjskiej (chaldejski i syromalabarski). Sobór Watykański II nauczał, że ich tradycje są dziedzictwem całego Kościoła i należy je zachować i otaczać troską."
+},
+"t59": {
+"content": "Ojcowie Wschodu opisują zbawienie jako theosis, czyli przebóstwienie: z łaski Bóg czyni nas „uczestnikami Boskiej natury”. Święty Atanazy ujął to tak: Syn Boży stał się człowiekiem, abyśmy my stali się Bogiem.\n\nNie oznacza to, że przestajemy być stworzeniami ani że stajemy się Bogiem z natury. Oznacza, że przez chrzest, Święte Misteria, modlitwę i życie miłością Duch Święty coraz bardziej przemienia nas na podobieństwo Chrystusa, aż na zawsze będziemy uczestniczyć w samym życiu Boga."
+},
+"t60": {
+"content": "Ponieważ niewidzialny Bóg stał się widzialny w Jezusie Chrystusie, można Go przedstawiać. Sobór Nicejski II w 787 roku obronił kult świętych ikon przed ikonoklastami, którzy chcieli je zniszczyć.\n\nCześć oddawana ikonie przechodzi na tego, kogo ona przedstawia. Chrześcijanie nie czczą drewna i farby; czczą świętych i adorują Chrystusa przez te okna na niebo. W kościołach wschodnich przed ołtarzem stoi ikonostas, ściana ikon."
+},
+"t61": {
+"content": "Ojcowie Kościoła to święci nauczyciele pierwszych wieków, którzy przekazali i wyjaśnili wiarę apostołów: biskupi, kapłani, mnisi i świeccy, których pisma Kościół uznaje za wiernych świadków swojej Tradycji.\n\nEpokę Ojców liczy się zwykle od końca czasów apostolskich do św. Izydora z Sewilli (zm. 636) na Zachodzie i św. Jana Damasceńskiego (zm. 749) na Wschodzie. Ich pisma pokazują, w co wierzył pierwotny Kościół co do Chrystusa, sakramentów, Kościoła i Pisma, na długo przed podziałami późniejszych wieków."
+},
+"t62": {
+"content": "Od pierwszych pokoleń po apostołach chrześcijanie wierzyli, że Eucharystia prawdziwie jest Ciałem i Krwią Chrystusa. Ojcowie nie przedstawiają tego jako nowej idei, lecz jako wiarę, którą otrzymali."
+},
+"t63": {
+"content": "Pierwotny Kościół patrzył na Kościół w Rzymie, założony na przepowiadaniu i męczeństwie Piotra i Pawła, jako na probierz prawdziwej wiary, a w Piotrze widział znak i źródło jedności Kościoła."
+},
+"t64": {
+"content": "Apostołowie nie zostawili Kościoła bez pasterzy. Ustanawiali biskupów i postanowili, aby inni byli ich następcami, a pierwotny Kościół widział w tej nieprzerwanej sukcesji gwarancję wiary apostolskiej."
+},
+"t65": {
+"content": "Pierwotny Kościół rozumiał chrzest nie jako zwykły symbol, lecz jako nowe narodzenie, które obmywa z grzechu i czyni nas dziećmi Bożymi. Ojcowie świadczą też, że Kościół chrzcił całe domy, łącznie z niemowlętami."
+},
+"t66": {
+"content": "Od II wieku Ojcowie widzieli w Maryi Nową Ewę, której wiara i posłuszeństwo współdziałały w naszym zbawieniu, tak jak Chrystus jest Nowym Adamem. W 431 roku Sobór Efeski ogłosił Ją Theotokos, Bożą Rodzicielką."
+},
+"t67": {
+"content": "Pierwotny Kościół praktykował wyznawanie grzechów i pokutę publiczną, przez które grzesznicy, którzy upadli po chrzcie, byli jednani z Bogiem i Kościołem przez biskupa."
+},
+"t68": {
+"content": "Chrześcijanie modlą się za zmarłych od najdawniejszych czasów, podczas Eucharystii i przy grobach bliskich, wierząc, że modlitwy żyjących pomagają wiernym zmarłym."
+},
+"t69": {
+"content": "Ojcowie kochali Pismo i nieustannie je wyjaśniali, lecz nigdy nie czytali go w oderwaniu od żywej Tradycji Kościoła, który otrzymał je od apostołów."
 }
 },
 "texts": {
