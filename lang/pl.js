@@ -9017,6 +9017,156 @@ window.SANCTIFY_I18N = {
 "bib73": {
 "content": "Apokaliptyczne wizje kosmicznej walki i ostatecznego zwycięstwa Boga, dające nadzieję i wytrwałość prześladowanemu Kościołowi."
 },
+"h1": {
+"content": "Zwołany przez cesarza Konstantyna, Pierwszy Sobór Nicejski był pierwszym soborem powszechnym Kościoła. Zebrał się przede wszystkim z powodu sporu ariańskiego, który podważał Bóstwo Chrystusa, i…"
+},
+"h2": {
+"content": "Święty Benedykt z Nursji założył klasztor na Monte Cassino i napisał Regułę życia mniszego, równoważącą modlitwę, pracę fizyczną i życie wspólne pod hasłem ora et labora, „módl się i pracuj”. Jej…"
+},
+"h3": {
+"content": "Narastające od dawna napięcia między łacińskojęzycznym Kościołem skupionym wokół Rzymu a greckojęzycznym Kościołem skupionym wokół Konstantynopola doszły do szczytu w 1054 roku, gdy legat papieża…"
+},
+"h4": {
+"content": "Zwołany w odpowiedzi na reformację protestancką, Sobór Trydencki obradował z przerwami przez osiemnaście lat, by wyjaśnić naukę katolicką i zreformować dyscyplinę kościelną. Potwierdził siedem…"
+},
+"h5": {
+"content": "Zwołany przez papieża Jana XXIII i zakończony za Pawła VI, Sobór Watykański II miał odnowić relację Kościoła ze współczesnym światem. Wydał szesnaście dokumentów dotyczących liturgii, natury…"
+},
+"h6": {
+"content": "Pięćdziesiąt dni po Zmartwychwstaniu Duch Święty zstąpił na apostołów zgromadzonych z Maryją w Jerozolimie. Według Dziejów Apostolskich (rozdział 2) Piotr przemawiał do tłumów pielgrzymów z całego…"
+},
+"h7": {
+"content": "Gdy do Kościoła zaczęli wchodzić poganie, powstał spór, czy muszą przyjąć obrzezanie i zachowywać całe Prawo Mojżeszowe. Paweł i Barnaba udali się do Jerozolimy, gdzie apostołowie i starsi zebrali…"
+},
+"h8": {
+"content": "Przez mniej więcej dziesięć lat Paweł przemierzył tysiące kilometrów po Azji Mniejszej, Macedonii i Grecji, zakładając wspólnoty w takich miastach jak Filippi, Tesalonika, Korynt i Efez.\n\nJego listy…"
+},
+"h9": {
+"content": "Po wielkim pożarze, który w 64 roku spustoszył Rzym, cesarz Neron obwinił chrześcijan i rozpoczął pierwsze cesarskie prześladowanie. Historyk Tacyt opisuje chrześcijan rozszarpywanych przez psy…"
+},
+"h10": {
+"content": "Podczas powstania żydowskiego przeciw Rzymowi legiony Tytusa oblegały Jerozolimę i w 70 roku zburzyły Drugą Świątynię, wypełniając proroctwo Jezusa, że nie zostanie kamień na kamieniu.\n\nWydarzenie to…"
+},
+"h11": {
+"content": "Dwadzieścia siedem ksiąg Nowego Testamentu powstało mniej więcej między rokiem 50 a 100. Najpierw powstały listy Pawła, potem Ewangelie Marka, Mateusza i Łukasza, a na końcu Ewangelia Jana i…"
+},
+"h12": {
+"content": "Przez dwa i pół wieku chrześcijaństwo było w Cesarstwie Rzymskim religią zakazaną. Początkowo prześladowania były sporadyczne i lokalne, lecz za Decjusza (250) i Waleriana (257–258) objęły całe…"
+},
+"h13": {
+"content": "Około 270 roku św. Antoni z Egiptu rozdał swój majątek i odszedł na pustynię. Poszły za nim tysiące, żyjąc jako pustelnicy lub we wspólnotach zorganizowanych przez św. Pachomiusza.\n\nPowiedzenia tych…"
+},
+"h14": {
+"content": "Po zwycięstwie przy Moście Mulwijskim w 312 roku, które przypisał Bogu chrześcijan, cesarz Konstantyn uzgodnił z współcesarzem Licyniuszem przyznanie tolerancji religijnej w całym…"
+},
+"h15": {
+"content": "Drugi sobór powszechny, zwołany przez cesarza Teodozjusza I, potwierdził wiarę nicejską po dziesięcioleciach sporów ariańskich. Opierając się na teologii Ojców kapadockich, ogłosił pełne Bóstwo Ducha…"
+},
+"h16": {
+"content": "Na polecenie papieża Damazego I św. Hieronim zaczął w 382 roku poprawiać łacińskie Ewangelie, a następnie przez lata w Betlejem tłumaczył Stary Testament wprost z hebrajskiego.\n\nJego Wulgata była…"
+},
+"h17": {
+"content": "Sobór Efeski (431) odrzucił naukę Nestoriusza i potwierdził, że Maryja jest Theotokos, „Bogurodzicą”, ponieważ Dziecię, które zrodziła, jest prawdziwie Bogiem.\n\nSobór Chalcedoński (451), kierując się…"
+},
+"h18": {
+"content": "W V wieku ludy germańskie osiedliły się w całym Cesarstwie Zachodnim. Rzym został złupiony przez Wizygotów w 410 roku, co skłoniło Augustyna do napisania Państwa Bożego, a ponownie przez Wandalów w…"
+},
+"h19": {
+"content": "Chlodwig, król Franków, został ochrzczony przez św. Remigiusza w Reims, prawdopodobnie około 496 roku, za namową swej chrześcijańskiej żony, św. Klotyldy. W przeciwieństwie do większości władców…"
+},
+"h20": {
+"content": "Wybrany na papieża w 590 roku, w czasie zarazy i najazdów, Grzegorz zreorganizował dobroczynność i administrację Kościoła. W 597 roku wysłał św. Augustyna z Canterbury z grupą mnichów do…"
+},
+"h21": {
+"content": "W ciągu stulecia po śmierci Mahometa w 632 roku armie arabskie podbiły Ziemię Świętą, Syrię, Egipt, Afrykę Północną i większą część Hiszpanii, ziemie należące do najstarszych ośrodków…"
+},
+"h22": {
+"content": "W 726 roku cesarz bizantyjski Leon III rozpoczął kampanię przeciw obrazom religijnym, które niektórzy uważali za bałwochwalstwo. Niszczono ikony i prześladowano ich obrońców.\n\nSobór Nicejski II…"
+},
+"h23": {
+"content": "W dzień Bożego Narodzenia 800 roku papież Leon III koronował w Bazylice św. Piotra Karola Wielkiego, króla Franków, na cesarza. Powstało w ten sposób zachodnie cesarstwo sprzymierzone z…"
+},
+"h24": {
+"content": "Książę Wilhelm Akwitański założył w 910 roku benedyktyńskie opactwo Cluny w Burgundii, oddając je bezpośrednio pod opiekę papieża, poza władzą miejscowych panów i biskupów.\n\nCluny stało się ośrodkiem…"
+},
+"h25": {
+"content": "Książę kijowski Włodzimierz przyjął chrzest w 988 roku i nakazał masowy chrzest swego ludu w Dnieprze. Według kroniki jego posłowie do konstantynopolitańskiej Hagia Sophia opowiadali, że nie…"
+},
+"h26": {
+"content": "Papież Grzegorz VII dążył do uwolnienia Kościoła spod władzy świeckich, zwalczania kupczenia urzędami kościelnymi i egzekwowania celibatu duchownych. Jego stanowisko, że tylko Kościół może mianować…"
+},
+"h27": {
+"content": "W 1095 roku papież Urban II wezwał rycerzy Zachodu do pomocy Cesarstwu Bizantyjskiemu i do odzyskania Jerozolimy. Pierwsza wyprawa krzyżowa zdobyła miasto w 1099 roku, dokonując strasznych rzezi.…"
+},
+"h28": {
+"content": "Ze szkół katedralnych wyrosły pierwsze uniwersytety w Bolonii, Paryżu i Oksfordzie. Uczeni tacy jak Anzelm, Piotr Lombard, Albert Wielki, Tomasz z Akwinu i Bonawentura posługiwali się logiką i…"
+},
+"h29": {
+"content": "Wspólnota św. Franciszka z Asyżu została zatwierdzona w 1209 roku, a Zakon Kaznodziejski św. Dominika w 1216 roku. W przeciwieństwie do mnichów związanych z jednym klasztorem bracia ci żyli w…"
+},
+"h30": {
+"content": "Zwołany przez papieża Innocentego III, Sobór Laterański IV był największym soborem średniowiecza. Zdefiniował rzeczywistą obecność, posługując się słowem „przeistoczenie”…"
+},
+"h31": {
+"content": "Wśród przemocy we Włoszech i nacisków korony francuskiej papież Klemens V osiadł w 1309 roku w Awinionie. Siedmiu papieży, wszyscy Francuzi, rządziło stamtąd przez blisko siedemdziesiąt lat.\n\nKrytycy…"
+},
+"h32": {
+"content": "Po śmierci Grzegorza XI sporna elekcja wyłoniła dwóch rywalizujących papieży, jednego w Rzymie, drugiego w Awinionie. Próba rozwiązania kryzysu w Pizie w 1409 roku dała trzeciego pretendenta.\n\nSobór…"
+},
+"h33": {
+"content": "Gdy Cesarstwu Bizantyjskiemu zagrażali Turcy osmańscy, biskupi greccy i łacińscy spotkali się w Ferrarze i Florencji i w 1439 roku podpisali dekret o zjednoczeniu. Później zawarto porozumienia z…"
+},
+"h34": {
+"content": "Po wyprawie Kolumba w 1492 roku misjonarze hiszpańscy i portugalscy zanieśli wiarę do Ameryki. Zakonnicy tacy jak Bartolomé de las Casas piętnowali brutalne traktowanie ludów tubylczych, a w 1537…"
+},
+"h35": {
+"content": "31 października 1517 roku augustianin Marcin Luter ogłosił 95 tez krytykujących handel odpustami. Spór przerodził się w zerwanie z Rzymem w sprawach władzy, usprawiedliwienia i sakramentów.\n\nW ciągu…"
+},
+"h36": {
+"content": "Gdy papież Klemens VII odmówił unieważnienia małżeństwa Henryka VIII z Katarzyną Aragońską, parlament uchwalił w 1534 roku Akt supremacji, czyniący króla głową Kościoła w Anglii. Tomasz More i Jan…"
+},
+"h37": {
+"content": "Papież Paweł III zatwierdził w 1540 roku Towarzystwo Jezusowe św. Ignacego Loyoli. Jezuici zakładali szkoły i uniwersytety w całej Europie i wysyłali misjonarzy, jak św. Franciszek Ksawery do Indii i…"
+},
+"h38": {
+"content": "7 października 1571 roku flota Ligi Świętej, zorganizowanej przez papieża Piusa V, pokonała flotę osmańską u wybrzeży Grecji, powstrzymując osmańską ekspansję morską na Morzu Śródziemnym.\n\nPius V…"
+},
+"h39": {
+"content": "Rewolucja skonfiskowała majątek Kościoła, rozwiązała zakony i w 1790 roku zażądała od księży przysięgi na wierność państwu. Tysiące kapłanów, zakonników i świeckich, którzy odmówili, zostało…"
+},
+"h40": {
+"content": "8 grudnia 1854 roku papież Pius IX uroczyście ogłosił, że Maryja Dziewica została zachowana od grzechu pierworodnego od pierwszej chwili swego poczęcia.\n\nCztery lata później w Lourdes Maryja ukazała…"
+},
+"h41": {
+"content": "Papież Pius IX zwołał w 1869 roku dwudziesty sobór powszechny. Jego konstytucja Dei Filius nauczała o harmonii wiary i rozumu, a Pastor Aeternus zdefiniowała prymat papieża i jego nieomylność, gdy…"
+},
+"h42": {
+"content": "W odpowiedzi na nędzę rewolucji przemysłowej papież Leon XIII wydał encyklikę Rerum Novarum „o kwestii robotniczej”. Bronił własności prywatnej i odrzucał socjalizm, ale domagał się też sprawiedliwej…"
+},
+"h43": {
+"content": "Od maja do października 1917 roku Maryja Dziewica ukazała się sześć razy trojgu pastuszkom, Łucji dos Santos i jej kuzynom Franciszkowi i Hiacyncie Marto, w Fatimie w Portugalii. Prosiła o codzienne…"
+},
+"h44": {
+"content": "Od 1870 roku papieże uważali się za więźniów Watykanu. W 1929 roku Stolica Apostolska i Włochy podpisały traktaty laterańskie, uznające Państwo Watykańskie za niezależne, suwerenne państwo.\n\nTo…"
+},
+"h45": {
+"content": "Encyklika Piusa XI Mit brennender Sorge (1937), przemycona do Niemiec i odczytana z ambon, potępiła ideologię nazistowską. W czasie wojny Kościół ukrywał wielu Żydów w klasztorach i w samym…"
+},
+"h46": {
+"content": "1 listopada 1950 roku papież Pius XII uroczyście ogłosił, że Maryja Dziewica po zakończeniu ziemskiego życia została wzięta z duszą i ciałem do chwały niebieskiej.\n\nBył to ostatni dotąd akt…"
+},
+"h47": {
+"content": "Karol Wojtyła z Krakowa został wybrany w 1978 roku jako pierwszy od 455 lat papież spoza Włoch. Jego pierwsza wizyta w komunistycznej Polsce w 1979 roku natchnęła ruch Solidarności, który przyczynił…"
+},
+"h48": {
+"content": "O Katechizm poprosił Synod Biskupów w 1985 roku; przygotowany pod kierunkiem kardynała Josepha Ratzingera, został ogłoszony przez Jana Pawła II w 1992 roku, a jego ostateczne wydanie łacińskie…"
+},
+"h49": {
+"content": "Kardynał Joseph Ratzinger został wybrany na papieża jako Benedykt XVI w 2005 roku. W 2013 roku jako pierwszy papież od blisko 600 lat zrezygnował z urzędu. Jego następca, Jorge Mario Bergoglio z…"
+},
+"h50": {
+"content": "Według dawnej tradycji hiszpańskiej Maryja Dziewica ukazała się św. Jakubowi Większemu, gdy był zniechęcony powolnymi postępami swego przepowiadania w Hiszpanii. Miała stać na jaspisowej kolumnie nad…"
+},
 "s1": {
 "content": "Syn bogatego kupca sukienniczego z Asyżu, Franciszek po szeregu nawróceń porzucił wygodne życie, przyjął radykalne ubóstwo i założył zakon franciszkański. Głosił Ewangelię ubogim, odbudowywał…"
 },
@@ -9391,6 +9541,8 @@ window.SANCTIFY_I18N = {
 }
 },
 "texts": {
+"history-0": "history-0.32268a89",
+"history-1": "history-1.c6a27cc8",
 "saint-0": "saint-0.2d84f05b"
 }
 };

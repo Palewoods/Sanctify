@@ -9017,6 +9017,156 @@ window.SANCTIFY_I18N = {
 "bib73": {
 "content": "Des visions apocalyptiques d’un combat cosmique et de la victoire finale de Dieu, qui offrent espérance et persévérance à une Église persécutée."
 },
+"h1": {
+"content": "Convoqué par l’empereur Constantin, le premier concile de Nicée fut le premier concile œcuménique de l’Église. Il fut réuni surtout pour répondre à la controverse arienne, qui mettait en doute la…"
+},
+"h2": {
+"content": "Saint Benoît de Nursie fonda le monastère du Mont-Cassin et écrivit une Règle de vie monastique qui équilibre la prière, le travail manuel et la vie commune sous la devise ora et labora, « prie et…"
+},
+"h3": {
+"content": "Les tensions accumulées entre l’Église de langue latine, centrée sur Rome, et celle de langue grecque, centrée sur Constantinople, éclatèrent en 1054, lorsque le légat du pape Léon IX et le…"
+},
+"h4": {
+"content": "Convoqué en réponse à la Réforme protestante, le concile de Trente se réunit par intermittence pendant dix-huit ans pour préciser la doctrine catholique et réformer la discipline de l’Église. Il…"
+},
+"h5": {
+"content": "Convoqué par le pape Jean XXIII et clos sous Paul VI, le concile Vatican II fut réuni pour renouveler le rapport de l’Église au monde moderne. Il produisit seize documents sur la liturgie, la nature…"
+},
+"h6": {
+"content": "Cinquante jours après la Résurrection, l’Esprit Saint descendit sur les apôtres réunis avec Marie à Jérusalem. Selon le chapitre 2 des Actes, Pierre prêcha à des foules de pèlerins venus de tout le…"
+},
+"h7": {
+"content": "Quand des païens commencèrent à entrer dans l’Église, on se demanda s’ils devaient être circoncis et observer toute la Loi de Moïse. Paul et Barnabé montèrent à Jérusalem, où les apôtres et les…"
+},
+"h8": {
+"content": "Pendant une dizaine d’années, Paul parcourut des milliers de kilomètres à travers l’Asie Mineure, la Macédoine et la Grèce, fondant des communautés dans des villes comme Philippes, Thessalonique…"
+},
+"h9": {
+"content": "Après le grand incendie qui ravagea Rome en 64, l’empereur Néron accusa les chrétiens et déclencha la première persécution impériale. L’historien Tacite rapporte que des chrétiens furent déchirés par…"
+},
+"h10": {
+"content": "Pendant la révolte juive contre Rome, les légions de Titus assiégèrent Jérusalem et détruisirent le Second Temple en l’an 70, accomplissant la prophétie de Jésus selon laquelle il n’en resterait pas…"
+},
+"h11": {
+"content": "Les 27 livres du Nouveau Testament ont été écrits entre 50 et 100 environ. Les lettres de Paul vinrent d’abord, puis les Évangiles de Marc, Matthieu et Luc, et enfin l’Évangile de Jean et…"
+},
+"h12": {
+"content": "Pendant deux siècles et demi, le christianisme fut une religion illégale dans l’Empire romain. La persécution fut d’abord sporadique et locale, mais s’étendit à tout l’empire sous Dèce (250) et…"
+},
+"h13": {
+"content": "Vers 270, saint Antoine d’Égypte distribua ses biens et se retira au désert. Des milliers le suivirent, vivant en ermites ou dans des communautés organisées par saint Pacôme.\n\nLes paroles de ces…"
+},
+"h14": {
+"content": "Après sa victoire au pont Milvius en 312, qu’il attribua au Dieu des chrétiens, l’empereur Constantin convint avec son coempereur Licinius d’accorder la tolérance religieuse dans tout l’empire.\n\nLes…"
+},
+"h15": {
+"content": "Le deuxième concile œcuménique, convoqué par l’empereur Théodose Ier, réaffirma la foi de Nicée après des décennies de controverse arienne. S’appuyant sur la théologie des Pères cappadociens, il…"
+},
+"h16": {
+"content": "À la demande du pape Damase Ier, saint Jérôme commença en 382 à réviser les Évangiles latins, puis passa des années à Bethléem à traduire l’Ancien Testament directement de l’hébreu.\n\nSa Vulgate…"
+},
+"h17": {
+"content": "Le concile d’Éphèse (431) rejeta l’enseignement de Nestorius et affirma que Marie est Théotokos, « Mère de Dieu », car l’enfant qu’elle a mis au monde est vraiment Dieu.\n\nLe concile de Chalcédoine…"
+},
+"h18": {
+"content": "Au Ve siècle, des peuples germaniques s’installèrent dans tout l’Empire d’Occident. Rome fut mise à sac par les Wisigoths en 410, ce qui poussa Augustin à écrire La Cité de Dieu, puis par les…"
+},
+"h19": {
+"content": "Clovis, roi des Francs, fut baptisé par saint Remi à Reims, probablement vers 496, encouragé par son épouse chrétienne, sainte Clotilde. À la différence de la plupart des souverains germaniques…"
+},
+"h20": {
+"content": "Élu pape en 590, en pleine peste et en pleines invasions, Grégoire réorganisa la charité et l’administration de l’Église. En 597, il envoya saint Augustin de Cantorbéry et un groupe de moines chez…"
+},
+"h21": {
+"content": "Dans le siècle qui suivit la mort de Mahomet en 632, les armées arabes conquirent la Terre sainte, la Syrie, l’Égypte, l’Afrique du Nord et la plus grande partie de l’Espagne, terres qui comptaient…"
+},
+"h22": {
+"content": "En 726, l’empereur byzantin Léon III lança une campagne contre les images religieuses, que certains tenaient pour de l’idolâtrie. Des icônes furent détruites et leurs défenseurs persécutés.\n\nLe IIe…"
+},
+"h23": {
+"content": "Le jour de Noël 800, le pape Léon III couronna empereur Charlemagne, roi des Francs, dans la basilique Saint-Pierre. Cet acte fit naître un empire d’Occident allié à la papauté.\n\nCharlemagne favorisa…"
+},
+"h24": {
+"content": "Le duc Guillaume d’Aquitaine fonda l’abbaye bénédictine de Cluny, en Bourgogne, en 910, et la plaça directement sous la protection du pape, hors du contrôle des seigneurs et évêques locaux.\n\nCluny…"
+},
+"h25": {
+"content": "Le prince Vladimir de Kiev fut baptisé en 988 et fit baptiser son peuple en masse dans le Dniepr. Selon la chronique, ses envoyés à Sainte-Sophie de Constantinople racontèrent qu’ils ne savaient plus…"
+},
+"h26": {
+"content": "Le pape Grégoire VII s’efforça de libérer l’Église de l’emprise des laïcs, de combattre le trafic des charges ecclésiastiques et d’imposer le célibat du clergé. Son affirmation que seule l’Église…"
+},
+"h27": {
+"content": "En 1095, le pape Urbain II appela les chevaliers d’Occident à secourir l’Empire byzantin et à reprendre Jérusalem. La première croisade prit la ville en 1099, au prix de terribles massacres. Les…"
+},
+"h28": {
+"content": "Les écoles cathédrales donnèrent naissance aux premières universités, à Bologne, Paris et Oxford. Des maîtres comme Anselme, Pierre Lombard, Albert le Grand, Thomas d’Aquin et Bonaventure se…"
+},
+"h29": {
+"content": "La fraternité de saint François d’Assise fut approuvée en 1209, et l’Ordre des Prêcheurs de saint Dominique en 1216. À la différence des moines attachés à un monastère, ces frères vivaient dans la…"
+},
+"h30": {
+"content": "Convoqué par le pape Innocent III, le IVe concile du Latran fut le plus grand concile du Moyen Âge. Il définit la présence réelle en employant le mot « transsubstantiation ».\n\nIl obligea aussi les…"
+},
+"h31": {
+"content": "Au milieu des violences en Italie et sous la pression de la couronne de France, le pape Clément V s’installa à Avignon en 1309. Sept papes, tous français, y régnèrent pendant près de soixante-dix…"
+},
+"h32": {
+"content": "Après la mort de Grégoire XI, une élection contestée produisit deux papes rivaux, l’un à Rome, l’autre à Avignon. Une tentative de résoudre la crise à Pise en 1409 aboutit à un troisième…"
+},
+"h33": {
+"content": "Alors que l’Empire byzantin était menacé par les Turcs ottomans, des évêques grecs et latins se réunirent à Ferrare et à Florence et signèrent en 1439 un décret d’union. Des accords avec les…"
+},
+"h34": {
+"content": "Après le voyage de Colomb en 1492, des missionnaires espagnols et portugais apportèrent la foi aux Amériques. Des religieux comme Bartolomé de las Casas dénoncèrent le traitement brutal des peuples…"
+},
+"h35": {
+"content": "Le 31 octobre 1517, Martin Luther, moine augustin, diffusa ses 95 thèses critiquant la vente des indulgences. Le différend devint une rupture avec Rome sur l’autorité, la justification et les…"
+},
+"h36": {
+"content": "Lorsque le pape Clément VII refusa d’annuler le mariage d’Henri VIII avec Catherine d’Aragon, le Parlement vota en 1534 l’Acte de suprématie, qui faisait du roi le chef de l’Église en Angleterre.…"
+},
+"h37": {
+"content": "Le pape Paul III approuva en 1540 la Compagnie de Jésus de saint Ignace de Loyola. Les jésuites fondèrent des écoles et des universités dans toute l’Europe et envoyèrent des missionnaires comme saint…"
+},
+"h38": {
+"content": "Le 7 octobre 1571, la flotte de la Sainte Ligue, organisée par le pape Pie V, vainquit la marine ottomane au large de la Grèce, arrêtant l’expansion navale ottomane en Méditerranée.\n\nPie V avait…"
+},
+"h39": {
+"content": "La Révolution confisqua les biens de l’Église, supprima les ordres religieux et exigea en 1790 des prêtres un serment à l’État. Des milliers de prêtres, de religieux et de laïcs qui refusèrent furent…"
+},
+"h40": {
+"content": "Le 8 décembre 1854, le pape Pie IX définit solennellement que la Vierge Marie a été préservée du péché originel dès le premier instant de sa conception.\n\nQuatre ans plus tard, à Lourdes, Marie…"
+},
+"h41": {
+"content": "Le pape Pie IX convoqua en 1869 le vingtième concile œcuménique. Sa constitution Dei Filius enseigna l’harmonie de la foi et de la raison, et Pastor Aeternus définit la primauté du pape et son…"
+},
+"h42": {
+"content": "Face aux misères de la révolution industrielle, le pape Léon XIII publia Rerum Novarum, « sur la condition des ouvriers ». Il défendit la propriété privée et rejeta le socialisme, mais insista aussi…"
+},
+"h43": {
+"content": "De mai à octobre 1917, la Vierge Marie apparut six fois à trois petits bergers, Lucie dos Santos et ses cousins François et Jacinthe Marto, à Fatima, au Portugal. Elle demanda la récitation…"
+},
+"h44": {
+"content": "Depuis 1870, les papes se considéraient comme prisonniers au Vatican. En 1929, le Saint-Siège et l’Italie signèrent les accords du Latran, qui reconnaissaient la Cité du Vatican comme un État…"
+},
+"h45": {
+"content": "L’encyclique de Pie XI Mit brennender Sorge (1937), introduite clandestinement en Allemagne et lue en chaire, condamna l’idéologie nazie. Pendant la guerre, l’Église cacha de nombreux Juifs dans des…"
+},
+"h46": {
+"content": "Le 1er novembre 1950, le pape Pie XII définit solennellement que la Vierge Marie, au terme de sa vie terrestre, fut élevée en corps et en âme à la gloire céleste.\n\nCe fut l’usage le plus récent de…"
+},
+"h47": {
+"content": "Karol Wojtyła, de Cracovie, fut élu en 1978, premier pape non italien depuis 455 ans. Sa première visite dans la Pologne communiste, en 1979, inspira le mouvement Solidarność, qui contribua à la…"
+},
+"h48": {
+"content": "Demandé par le Synode des évêques de 1985 et préparé sous la direction du cardinal Joseph Ratzinger, le Catéchisme fut promulgué par Jean-Paul II en 1992, et son édition latine définitive parut en…"
+},
+"h49": {
+"content": "Le cardinal Joseph Ratzinger fut élu sous le nom de Benoît XVI en 2005. En 2013, il fut le premier pape depuis près de 600 ans à renoncer. Son successeur, Jorge Mario Bergoglio, de Buenos Aires, prit…"
+},
+"h50": {
+"content": "Selon une ancienne tradition espagnole, la Vierge Marie apparut à saint Jacques le Majeur alors qu’il était découragé par les maigres fruits de sa prédication en Espagne. Elle se serait tenue debout…"
+},
 "s1": {
 "content": "Fils d’un riche marchand de drap d’Assise, François abandonna une vie confortable après une série de conversions, embrassa la pauvreté radicale et fonda l’ordre franciscain. Il prêcha aux pauvres…"
 },
@@ -9391,6 +9541,8 @@ window.SANCTIFY_I18N = {
 }
 },
 "texts": {
+"history-0": "history-0.f8eada5b",
+"history-1": "history-1.080fd66a",
 "saint-0": "saint-0.51403587"
 }
 };

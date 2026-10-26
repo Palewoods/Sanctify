@@ -9017,6 +9017,156 @@ window.SANCTIFY_I18N = {
 "bib73": {
 "content": "Visioni apocalittiche di una lotta cosmica e della vittoria finale di Dio, che offrono speranza e perseveranza a una Chiesa perseguitata."
 },
+"h1": {
+"content": "Convocato dall’imperatore Costantino, il Primo Concilio di Nicea fu il primo concilio ecumenico della Chiesa. Fu riunito soprattutto per affrontare la controversia ariana, che metteva in dubbio la…"
+},
+"h2": {
+"content": "San Benedetto da Norcia fondò il monastero di Montecassino e scrisse una Regola di vita monastica che equilibra preghiera, lavoro manuale e vita comunitaria sotto il motto ora et labora, «prega e…"
+},
+"h3": {
+"content": "Le tensioni accumulate tra la Chiesa di lingua latina, centrata su Roma, e quella di lingua greca, centrata su Costantinopoli, esplosero nel 1054, quando il legato di papa Leone IX e il patriarca…"
+},
+"h4": {
+"content": "Convocato in risposta alla Riforma protestante, il Concilio di Trento si riunì a più riprese nell’arco di diciotto anni per chiarire la dottrina cattolica e riformare la disciplina della Chiesa.…"
+},
+"h5": {
+"content": "Convocato da papa Giovanni XXIII e concluso sotto Paolo VI, il Concilio Vaticano II fu indetto per rinnovare il rapporto della Chiesa con il mondo moderno. Produsse sedici documenti sulla liturgia…"
+},
+"h6": {
+"content": "Cinquanta giorni dopo la Risurrezione, lo Spirito Santo discese sugli apostoli riuniti con Maria a Gerusalemme. Secondo il capitolo 2 degli Atti, Pietro predicò a folle di pellegrini venuti da tutto…"
+},
+"h7": {
+"content": "Quando i pagani cominciarono a entrare nella Chiesa, sorse la questione se dovessero essere circoncisi e osservare tutta la Legge di Mosè. Paolo e Barnaba salirono a Gerusalemme, dove gli apostoli e…"
+},
+"h8": {
+"content": "Per circa un decennio Paolo percorse migliaia di chilometri attraverso l’Asia Minore, la Macedonia e la Grecia, fondando comunità in città come Filippi, Tessalonica, Corinto ed Efeso.\n\nLe sue lettere…"
+},
+"h9": {
+"content": "Dopo che un grande incendio ebbe devastato Roma nel 64, l’imperatore Nerone diede la colpa ai cristiani e scatenò la prima persecuzione imperiale. Lo storico Tacito racconta di cristiani sbranati dai…"
+},
+"h10": {
+"content": "Durante la rivolta ebraica contro Roma, le legioni di Tito assediarono Gerusalemme e distrussero il Secondo Tempio nell’anno 70, compiendo la profezia di Gesù che non sarebbe rimasta pietra su…"
+},
+"h11": {
+"content": "I 27 libri del Nuovo Testamento furono scritti tra il 50 e il 100 circa. Vennero prima le lettere di Paolo, poi i Vangeli di Marco, Matteo e Luca, e infine il Vangelo di Giovanni e l’Apocalisse.\n\nLa…"
+},
+"h12": {
+"content": "Per due secoli e mezzo il cristianesimo fu una religione illegale nell’Impero romano. La persecuzione fu dapprima sporadica e locale, ma divenne generale sotto Decio (250) e Valeriano (257-258), e…"
+},
+"h13": {
+"content": "Verso il 270 sant’Antonio d’Egitto donò i suoi beni e si ritirò nel deserto. Migliaia lo seguirono, vivendo come eremiti o in comunità organizzate da san Pacomio.\n\nI detti di questi Padri e Madri del…"
+},
+"h14": {
+"content": "Dopo la vittoria a ponte Milvio nel 312, che attribuì al Dio dei cristiani, l’imperatore Costantino si accordò con il coimperatore Licinio per concedere la tolleranza religiosa in tutto l’impero.\n\nI…"
+},
+"h15": {
+"content": "Il secondo concilio ecumenico, convocato dall’imperatore Teodosio I, riaffermò la fede di Nicea dopo decenni di controversia ariana. Rifacendosi alla teologia dei Padri cappadoci, proclamò la piena…"
+},
+"h16": {
+"content": "Su incarico di papa Damaso I, san Girolamo cominciò nel 382 a rivedere i Vangeli latini, poi trascorse anni a Betlemme traducendo l’Antico Testamento direttamente dall’ebraico.\n\nLa sua Vulgata fu la…"
+},
+"h17": {
+"content": "Il Concilio di Efeso (431) respinse l’insegnamento di Nestorio e affermò che Maria è Theotokos, «Madre di Dio», perché il bambino che ha partorito è veramente Dio.\n\nIl Concilio di Calcedonia (451)…"
+},
+"h18": {
+"content": "Nel V secolo popoli germanici si stabilirono in tutto l’Impero d’Occidente. Roma fu saccheggiata dai Visigoti nel 410, il che spinse Agostino a scrivere La città di Dio, e di nuovo dai Vandali nel…"
+},
+"h19": {
+"content": "Clodoveo, re dei Franchi, fu battezzato da san Remigio a Reims, probabilmente verso il 496, incoraggiato dalla moglie cristiana, santa Clotilde. A differenza della maggior parte dei sovrani…"
+},
+"h20": {
+"content": "Eletto papa nel 590, in tempo di peste e di invasioni, Gregorio riorganizzò la carità e l’amministrazione della Chiesa. Nel 597 inviò sant’Agostino di Canterbury con un gruppo di monaci presso gli…"
+},
+"h21": {
+"content": "Nel secolo successivo alla morte di Maometto nel 632, gli eserciti arabi conquistarono la Terra Santa, la Siria, l’Egitto, il Nordafrica e gran parte della Spagna, terre che erano tra i più antichi…"
+},
+"h22": {
+"content": "Nel 726 l’imperatore bizantino Leone III avviò una campagna contro le immagini religiose, che alcuni consideravano idolatria. Furono distrutte icone e perseguitati i loro difensori.\n\nIl II Concilio…"
+},
+"h23": {
+"content": "Il giorno di Natale dell’800 papa Leone III incoronò imperatore Carlo Magno, re dei Franchi, nella basilica di San Pietro. L’atto diede vita a un impero d’Occidente alleato del papato.\n\nCarlo Magno…"
+},
+"h24": {
+"content": "Il duca Guglielmo d’Aquitania fondò l’abbazia benedettina di Cluny, in Borgogna, nel 910, ponendola direttamente sotto la protezione del papa, fuori dal controllo dei signori e dei vescovi…"
+},
+"h25": {
+"content": "Il principe Vladimir di Kiev fu battezzato nel 988 e ordinò il battesimo in massa del suo popolo nel fiume Dnepr. Secondo la cronaca, i suoi inviati a Santa Sofia di Costantinopoli riferirono di non…"
+},
+"h26": {
+"content": "Papa Gregorio VII lavorò per liberare la Chiesa dal controllo dei laici, combattere la compravendita delle cariche ecclesiastiche e imporre il celibato del clero. La sua affermazione che solo la…"
+},
+"h27": {
+"content": "Nel 1095 papa Urbano II chiamò i cavalieri d’Occidente ad aiutare l’Impero bizantino e a riconquistare Gerusalemme. La prima crociata prese la città nel 1099, con terribili massacri. Le crociate…"
+},
+"h28": {
+"content": "Dalle scuole cattedrali nacquero le prime università, a Bologna, Parigi e Oxford. Studiosi come Anselmo, Pietro Lombardo, Alberto Magno, Tommaso d’Aquino e Bonaventura usarono la logica e le opere…"
+},
+"h29": {
+"content": "La fraternità di san Francesco d’Assisi fu approvata nel 1209, e l’Ordine dei Predicatori di san Domenico nel 1216. A differenza dei monaci legati a un monastero, questi frati vivevano in povertà…"
+},
+"h30": {
+"content": "Convocato da papa Innocenzo III, il IV Concilio Lateranense fu il più grande concilio del Medioevo. Definì la Presenza reale usando la parola «transustanziazione».\n\nObbligò inoltre i cattolici a…"
+},
+"h31": {
+"content": "Tra le violenze in Italia e le pressioni della corona francese, papa Clemente V si stabilì ad Avignone nel 1309. Sette papi, tutti francesi, regnarono da lì per quasi settant’anni.\n\nI critici lo…"
+},
+"h32": {
+"content": "Dopo la morte di Gregorio XI, un’elezione contestata produsse due papi rivali, uno a Roma e uno ad Avignone. Un tentativo di risolvere la crisi a Pisa nel 1409 diede origine a un terzo…"
+},
+"h33": {
+"content": "Con l’Impero bizantino minacciato dai turchi ottomani, vescovi greci e latini si riunirono a Ferrara e Firenze e nel 1439 firmarono un decreto di riunione. Seguirono accordi con gli armeni, i copti e…"
+},
+"h34": {
+"content": "Dopo il viaggio di Colombo nel 1492, missionari spagnoli e portoghesi portarono la fede nelle Americhe. Frati come Bartolomé de las Casas denunciarono il trattamento brutale dei popoli indigeni, e…"
+},
+"h35": {
+"content": "Il 31 ottobre 1517 Martin Lutero, frate agostiniano, diffuse le sue 95 tesi che criticavano la vendita delle indulgenze. La disputa sfociò in una rottura con Roma sull’autorità, sulla giustificazione…"
+},
+"h36": {
+"content": "Quando papa Clemente VII rifiutò di annullare il matrimonio di Enrico VIII con Caterina d’Aragona, il Parlamento approvò nel 1534 l’Atto di supremazia, che faceva del re il capo della Chiesa in…"
+},
+"h37": {
+"content": "Papa Paolo III approvò nel 1540 la Compagnia di Gesù di sant’Ignazio di Loyola. I gesuiti fondarono scuole e università in tutta Europa e inviarono missionari come san Francesco Saverio in India e…"
+},
+"h38": {
+"content": "Il 7 ottobre 1571 la flotta della Lega Santa, organizzata da papa Pio V, sconfisse la marina ottomana al largo della Grecia, fermando l’espansione navale ottomana nel Mediterraneo.\n\nPio V aveva…"
+},
+"h39": {
+"content": "La Rivoluzione confiscò i beni della Chiesa, sciolse gli ordini religiosi e nel 1790 impose ai sacerdoti un giuramento allo Stato. Migliaia di sacerdoti, religiosi e laici che si rifiutarono furono…"
+},
+"h40": {
+"content": "L’8 dicembre 1854 papa Pio IX definì solennemente che la Vergine Maria fu preservata immune dal peccato originale fin dal primo istante del suo concepimento.\n\nQuattro anni dopo, a Lourdes, Maria…"
+},
+"h41": {
+"content": "Papa Pio IX convocò nel 1869 il ventesimo concilio ecumenico. La sua costituzione Dei Filius insegnò l’armonia tra fede e ragione, e la Pastor Aeternus definì il primato del papa e la sua…"
+},
+"h42": {
+"content": "Di fronte ai disagi della rivoluzione industriale, papa Leone XIII pubblicò la Rerum Novarum, «sulla condizione degli operai». Difese la proprietà privata e respinse il socialismo, ma insistette…"
+},
+"h43": {
+"content": "Da maggio a ottobre 1917 la Vergine Maria apparve sei volte a tre pastorelli, Lúcia dos Santos e i cugini Francesco e Giacinta Marto, a Fatima, in Portogallo. Chiese la recita quotidiana del Rosario…"
+},
+"h44": {
+"content": "Dal 1870 i papi si consideravano prigionieri in Vaticano. Nel 1929 la Santa Sede e l’Italia firmarono i Patti Lateranensi, che riconoscevano la Città del Vaticano come Stato sovrano e…"
+},
+"h45": {
+"content": "L’enciclica di Pio XI Mit brennender Sorge (1937), introdotta clandestinamente in Germania e letta dai pulpiti, condannò l’ideologia nazista. Durante la guerra la Chiesa nascose molti ebrei in…"
+},
+"h46": {
+"content": "Il 1° novembre 1950 papa Pio XII definì solennemente che la Vergine Maria, terminato il corso della vita terrena, fu assunta in anima e corpo alla gloria celeste.\n\nFu l’esercizio più recente…"
+},
+"h47": {
+"content": "Karol Wojtyła, di Cracovia, fu eletto nel 1978 come primo papa non italiano dopo 455 anni. La sua prima visita nella Polonia comunista nel 1979 ispirò il movimento di Solidarność, che contribuì alla…"
+},
+"h48": {
+"content": "Chiesto dal Sinodo dei vescovi del 1985 e preparato sotto la direzione del cardinale Joseph Ratzinger, il Catechismo fu promulgato da Giovanni Paolo II nel 1992, e l’edizione tipica latina uscì nel…"
+},
+"h49": {
+"content": "Il cardinale Joseph Ratzinger fu eletto come Benedetto XVI nel 2005. Nel 2013 divenne il primo papa in quasi 600 anni a rinunciare. Il suo successore, Jorge Mario Bergoglio di Buenos Aires, prese il…"
+},
+"h50": {
+"content": "Secondo un’antica tradizione spagnola, la Vergine Maria apparve a san Giacomo il Maggiore mentre era scoraggiato per i lenti progressi della sua predicazione in Spagna. Si dice che stesse in piedi su…"
+},
 "s1": {
 "content": "Figlio di un ricco mercante di stoffe di Assisi, Francesco abbandonò una vita agiata dopo una serie di conversioni, abbracciò la povertà radicale e fondò l’ordine francescano. Predicò ai poveri…"
 },
@@ -9391,6 +9541,8 @@ window.SANCTIFY_I18N = {
 }
 },
 "texts": {
+"history-0": "history-0.976a7cc7",
+"history-1": "history-1.507d834a",
 "saint-0": "saint-0.4938b231"
 }
 };

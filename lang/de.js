@@ -9017,6 +9017,156 @@ window.SANCTIFY_I18N = {
 "bib73": {
 "content": "Apokalyptische Visionen eines kosmischen Kampfes und des endgültigen Sieges Gottes, die einer verfolgten Kirche Hoffnung und Ausdauer schenken."
 },
+"h1": {
+"content": "Das von Kaiser Konstantin einberufene Erste Konzil von Nizäa war das erste ökumenische Konzil der Kirche. Es trat vor allem wegen des arianischen Streits zusammen, der die Gottheit Christi in Frage…"
+},
+"h2": {
+"content": "Der hl. Benedikt von Nursia gründete das Kloster Montecassino und schrieb eine Regel für das klösterliche Leben, die Gebet, Handarbeit und Gemeinschaftsleben unter dem Leitwort ora et labora, „bete…"
+},
+"h3": {
+"content": "Lange angestaute Spannungen zwischen der lateinischsprachigen Kirche mit Zentrum Rom und der griechischsprachigen Kirche mit Zentrum Konstantinopel entluden sich 1054, als der Legat Papst Leos IX.…"
+},
+"h4": {
+"content": "Als Antwort auf die protestantische Reformation einberufen, tagte das Konzil von Trient mit Unterbrechungen achtzehn Jahre lang, um die katholische Lehre zu klären und die kirchliche Disziplin zu…"
+},
+"h5": {
+"content": "Von Papst Johannes XXIII. einberufen und unter Paul VI. abgeschlossen, sollte das Zweite Vatikanische Konzil das Verhältnis der Kirche zur modernen Welt erneuern. Es verabschiedete sechzehn Dokumente…"
+},
+"h6": {
+"content": "Fünfzig Tage nach der Auferstehung kam der Heilige Geist auf die Apostel herab, die mit Maria in Jerusalem versammelt waren. Nach Apostelgeschichte 2 predigte Petrus vor Scharen von Pilgern aus der…"
+},
+"h7": {
+"content": "Als Heiden in die Kirche aufgenommen wurden, entstand der Streit, ob sie sich beschneiden lassen und das ganze mosaische Gesetz halten müssten. Paulus und Barnabas zogen nach Jerusalem, wo die…"
+},
+"h8": {
+"content": "Etwa ein Jahrzehnt lang reiste Paulus Tausende Kilometer durch Kleinasien, Makedonien und Griechenland und gründete Gemeinden in Städten wie Philippi, Thessalonich, Korinth und Ephesus.\n\nSeine Briefe…"
+},
+"h9": {
+"content": "Nachdem 64 ein großer Brand Rom verwüstet hatte, gab Kaiser Nero den Christen die Schuld und löste die erste kaiserliche Verfolgung aus. Der Historiker Tacitus berichtet von Christen, die von Hunden…"
+},
+"h10": {
+"content": "Während des jüdischen Aufstands gegen Rom belagerten die Legionen des Titus Jerusalem und zerstörten im Jahr 70 den Zweiten Tempel; so erfüllte sich Jesu Wort, dass kein Stein auf dem anderen bleiben…"
+},
+"h11": {
+"content": "Die 27 Bücher des Neuen Testaments entstanden etwa zwischen 50 und 100. Zuerst kamen die Paulusbriefe, dann die Evangelien nach Markus, Matthäus und Lukas und zuletzt das Johannesevangelium und die…"
+},
+"h12": {
+"content": "Zweieinhalb Jahrhunderte lang war das Christentum im Römischen Reich eine verbotene Religion. Die Verfolgung war zunächst vereinzelt und örtlich, wurde aber unter Decius (250) und Valerian (257–258)…"
+},
+"h13": {
+"content": "Um 270 verschenkte der hl. Antonius von Ägypten seinen Besitz und zog sich in die Wüste zurück. Tausende folgten ihm und lebten als Einsiedler oder in Gemeinschaften, die der hl. Pachomius…"
+},
+"h14": {
+"content": "Nach seinem Sieg an der Milvischen Brücke 312, den er dem Gott der Christen zuschrieb, vereinbarte Kaiser Konstantin mit seinem Mitkaiser Licinius religiöse Duldung im ganzen Reich.\n\nChristen durften…"
+},
+"h15": {
+"content": "Das zweite ökumenische Konzil, von Kaiser Theodosius I. einberufen, bekräftigte nach Jahrzehnten des arianischen Streits den Glauben von Nizäa. Auf die Theologie der kappadokischen Väter gestützt…"
+},
+"h16": {
+"content": "Im Auftrag von Papst Damasus I. begann der hl. Hieronymus 382, die lateinischen Evangelien zu überarbeiten, und übersetzte dann jahrelang in Betlehem das Alte Testament unmittelbar aus dem…"
+},
+"h17": {
+"content": "Das Konzil von Ephesus (431) verwarf die Lehre des Nestorius und bekräftigte, dass Maria Theotokos ist, „Gottesgebärerin“, weil das Kind, das sie gebar, wahrhaft Gott ist.\n\nDas Konzil von Chalkedon…"
+},
+"h18": {
+"content": "Im 5. Jahrhundert ließen sich germanische Völker im ganzen Westreich nieder. Rom wurde 410 von den Westgoten geplündert, was Augustinus veranlasste, Der Gottesstaat zu schreiben, und 455 erneut von…"
+},
+"h19": {
+"content": "Chlodwig, König der Franken, wurde vom hl. Remigius in Reims getauft, wahrscheinlich um 496, ermutigt von seiner christlichen Frau, der hl. Chlothilde. Anders als die meisten germanischen Herrscher…"
+},
+"h20": {
+"content": "590 inmitten von Pest und Invasionen zum Papst gewählt, ordnete Gregor die Armenfürsorge und Verwaltung der Kirche neu. 597 sandte er den hl. Augustinus von Canterbury mit einer Schar Mönche zu den…"
+},
+"h21": {
+"content": "Innerhalb eines Jahrhunderts nach Mohammeds Tod 632 eroberten arabische Heere das Heilige Land, Syrien, Ägypten, Nordafrika und den größten Teil Spaniens, Länder, die zu den ältesten Zentren des…"
+},
+"h22": {
+"content": "726 begann der byzantinische Kaiser Leo III. einen Feldzug gegen religiöse Bilder, die manche für Götzendienst hielten. Ikonen wurden zerstört und ihre Verteidiger verfolgt.\n\nDas Zweite Konzil von…"
+},
+"h23": {
+"content": "Am Weihnachtstag 800 krönte Papst Leo III. Karl den Großen, den König der Franken, im Petersdom zum Kaiser. Damit entstand ein westliches Kaiserreich im Bund mit dem Papsttum.\n\nKarl förderte die…"
+},
+"h24": {
+"content": "Herzog Wilhelm von Aquitanien gründete 910 die Benediktinerabtei Cluny in Burgund und stellte sie unmittelbar unter den Schutz des Papstes, außerhalb der Gewalt örtlicher Herren und Bischöfe.\n\nCluny…"
+},
+"h25": {
+"content": "Fürst Wladimir von Kiew ließ sich 988 taufen und ordnete die Massentaufe seines Volkes im Dnjepr an. Laut der Chronik berichteten seine Gesandten nach dem Besuch der Hagia Sophia in Konstantinopel…"
+},
+"h26": {
+"content": "Papst Gregor VII. bemühte sich, die Kirche von der Herrschaft der Laien zu befreien, den Kauf und Verkauf kirchlicher Ämter zu bekämpfen und den Zölibat der Geistlichen durchzusetzen. Sein Anspruch…"
+},
+"h27": {
+"content": "1095 rief Papst Urban II. die Ritter des Westens auf, dem Byzantinischen Reich zu helfen und Jerusalem zurückzugewinnen. Der Erste Kreuzzug nahm die Stadt 1099 unter schrecklichen Massakern ein.…"
+},
+"h28": {
+"content": "Aus den Domschulen entstanden die ersten Universitäten in Bologna, Paris und Oxford. Gelehrte wie Anselm, Petrus Lombardus, Albertus Magnus, Thomas von Aquin und Bonaventura nutzten die Logik und die…"
+},
+"h29": {
+"content": "Die Bruderschaft des hl. Franz von Assisi wurde 1209 bestätigt, der Predigerorden des hl. Dominikus 1216. Anders als Mönche, die an ein Kloster gebunden sind, lebten diese Brüder in Armut…"
+},
+"h30": {
+"content": "Das von Papst Innozenz III. einberufene Vierte Laterankonzil war das größte Konzil des Mittelalters. Es definierte die Realpräsenz mit dem Wort „Transsubstantiation“.\n\nEs verpflichtete die Katholiken…"
+},
+"h31": {
+"content": "Inmitten der Gewalt in Italien und unter dem Druck der französischen Krone ließ sich Papst Clemens V. 1309 in Avignon nieder. Sieben Päpste, alle Franzosen, regierten von dort fast siebzig Jahre…"
+},
+"h32": {
+"content": "Nach dem Tod Gregors XI. führte eine umstrittene Wahl zu zwei rivalisierenden Päpsten, einem in Rom und einem in Avignon. Ein Versuch, die Krise 1409 in Pisa zu lösen, brachte einen dritten Anwärter…"
+},
+"h33": {
+"content": "Als das Byzantinische Reich von den osmanischen Türken bedroht war, trafen sich griechische und lateinische Bischöfe in Ferrara und Florenz und unterzeichneten 1439 ein Unionsdekret. Es folgten…"
+},
+"h34": {
+"content": "Nach der Fahrt des Kolumbus 1492 brachten spanische und portugiesische Missionare den Glauben nach Amerika. Ordensleute wie Bartolomé de las Casas prangerten die brutale Behandlung der indigenen…"
+},
+"h35": {
+"content": "Am 31. Oktober 1517 verbreitete der Augustinermönch Martin Luther seine 95 Thesen gegen den Ablasshandel. Der Streit wuchs zum Bruch mit Rom über Autorität, Rechtfertigung und Sakramente.\n\nInnerhalb…"
+},
+"h36": {
+"content": "Als Papst Clemens VII. sich weigerte, die Ehe Heinrichs VIII. mit Katharina von Aragón zu annullieren, verabschiedete das Parlament 1534 die Suprematsakte, die den König zum Oberhaupt der Kirche in…"
+},
+"h37": {
+"content": "Papst Paul III. bestätigte 1540 die Gesellschaft Jesu des hl. Ignatius von Loyola. Die Jesuiten gründeten Schulen und Universitäten in ganz Europa und sandten Missionare wie den hl. Franz Xaver nach…"
+},
+"h38": {
+"content": "Am 7. Oktober 1571 besiegte die Flotte der von Papst Pius V. gebildeten Heiligen Liga die osmanische Flotte vor der Küste Griechenlands und hielt die osmanische Ausbreitung zur See im Mittelmeer…"
+},
+"h39": {
+"content": "Die Revolution beschlagnahmte das Kirchengut, löste die Orden auf und verlangte 1790 von den Priestern einen Eid auf den Staat. Tausende Priester, Ordensleute und Laien, die sich weigerten, wurden…"
+},
+"h40": {
+"content": "Am 8. Dezember 1854 definierte Papst Pius IX. feierlich, dass die Jungfrau Maria vom ersten Augenblick ihrer Empfängnis an von der Erbsünde bewahrt blieb.\n\nVier Jahre später erschien Maria in Lourdes…"
+},
+"h41": {
+"content": "Papst Pius IX. berief 1869 das zwanzigste ökumenische Konzil ein. Seine Konstitution Dei Filius lehrte die Harmonie von Glaube und Vernunft, und Pastor Aeternus definierte den päpstlichen Primat und…"
+},
+"h42": {
+"content": "Angesichts der Not der Industriellen Revolution veröffentlichte Papst Leo XIII. Rerum Novarum „über die Arbeiterfrage“. Er verteidigte das Privateigentum und lehnte den Sozialismus ab, bestand aber…"
+},
+"h43": {
+"content": "Von Mai bis Oktober 1917 erschien die Jungfrau Maria in Fatima in Portugal sechsmal drei Hirtenkindern, Lúcia dos Santos und ihren Vettern Francisco und Jacinta Marto. Sie bat um das tägliche…"
+},
+"h44": {
+"content": "Seit 1870 betrachteten sich die Päpste als Gefangene im Vatikan. 1929 unterzeichneten der Heilige Stuhl und Italien die Lateranverträge, die die Vatikanstadt als unabhängigen souveränen Staat…"
+},
+"h45": {
+"content": "Die Enzyklika Pius’ XI. Mit brennender Sorge (1937), nach Deutschland geschmuggelt und von den Kanzeln verlesen, verurteilte die NS-Ideologie. Während des Krieges versteckte die Kirche viele Juden in…"
+},
+"h46": {
+"content": "Am 1. November 1950 definierte Papst Pius XII. feierlich, dass die Jungfrau Maria nach Vollendung ihres irdischen Lebens mit Leib und Seele in die himmlische Herrlichkeit aufgenommen wurde.\n\nEs war…"
+},
+"h47": {
+"content": "Karol Wojtyła aus Krakau wurde 1978 als erster nichtitalienischer Papst seit 455 Jahren gewählt. Sein erster Besuch im kommunistischen Polen 1979 beflügelte die Solidarność-Bewegung, die 1989 zum…"
+},
+"h48": {
+"content": "Von der Bischofssynode 1985 erbeten und unter der Leitung von Kardinal Joseph Ratzinger erarbeitet, wurde der Katechismus 1992 von Johannes Paul II. veröffentlicht; die maßgebliche lateinische…"
+},
+"h49": {
+"content": "Kardinal Joseph Ratzinger wurde 2005 als Benedikt XVI. gewählt. 2013 trat er als erster Papst seit fast 600 Jahren zurück. Sein Nachfolger, Jorge Mario Bergoglio aus Buenos Aires, nahm den Namen…"
+},
+"h50": {
+"content": "Nach alter spanischer Überlieferung erschien die Jungfrau Maria dem hl. Jakobus dem Älteren, als er über die geringen Erfolge seiner Predigt in Spanien entmutigt war. Sie soll auf einer Jaspissäule…"
+},
 "s1": {
 "content": "Als Sohn eines reichen Tuchhändlers in Assisi geboren, gab Franziskus nach einer Reihe von Bekehrungen ein bequemes Leben auf, wählte die radikale Armut und gründete den Franziskanerorden. Er…"
 },
@@ -9391,6 +9541,8 @@ window.SANCTIFY_I18N = {
 }
 },
 "texts": {
+"history-0": "history-0.3bd506b7",
+"history-1": "history-1.a36535db",
 "saint-0": "saint-0.31a5ad0a"
 }
 };
