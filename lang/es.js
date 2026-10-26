@@ -9068,6 +9068,108 @@ window.SANCTIFY_I18N = {
 "The End of the Modern World": "El ocaso de la Edad Moderna",
 "The Way of Divine Love": "Un llamamiento al amor",
 "The Letters of St. Thérèse of Lisieux": "Cartas de santa Teresa de Lisieux",
+"The Shepherd of Hermas": "El Pastor de Hermas",
+"The Letter to Diognetus": "Carta a Diogneto",
+"The Martyrdom of Polycarp": "El martirio de Policarpo",
+"Letter to the Philippians": "Carta a los Filipenses",
+"Dialogue with Trypho": "Diálogo con Trifón",
+"To Autolycus": "A Autólico",
+"The Passion of Perpetua and Felicity": "La pasión de Perpetua y Felicidad",
+"The Instructor (Paedagogus)": "El Pedagogo",
+"Who Is the Rich Man That Shall Be Saved?": "¿Quién es el rico que se salva?",
+"On First Principles": "Sobre los principios",
+"Against Celsus": "Contra Celso",
+"On the Unity of the Catholic Church": "Sobre la unidad de la Iglesia católica",
+"On the Lord’s Prayer": "Sobre el Padrenuestro",
+"The Prescription Against Heretics": "Prescripción contra los herejes",
+"On Baptism": "Sobre el bautismo",
+"Octavius": "Octavio",
+"The Divine Institutes": "Instituciones divinas",
+"Four Discourses Against the Arians": "Cuatro discursos contra los arrianos",
+"Catechetical Lectures": "Catequesis",
+"The Theological Orations": "Discursos teológicos",
+"Hexaemeron": "Hexamerón",
+"The Great Catechism": "La gran catequesis",
+"On the Making of Man": "Sobre la creación del hombre",
+"On the Soul and the Resurrection": "Sobre el alma y la resurrección",
+"The Life of Moses": "Vida de Moisés",
+"On the Mysteries": "Sobre los misterios",
+"On the Duties of the Clergy": "Sobre los deberes de los ministros",
+"Concerning Virgins": "Sobre las vírgenes",
+"On the Trinity (Hilary)": "Sobre la Trinidad (Hilario)",
+"Hymns on the Nativity": "Himnos sobre la Natividad",
+"Demonstrations": "Demostraciones",
+"Homilies on the Gospel of Matthew": "Homilías sobre el Evangelio de Mateo",
+"Homilies on the Statues": "Homilías sobre las estatuas",
+"The Perpetual Virginity of Blessed Mary": "La virginidad perpetua de María",
+"The Life of Paul the First Hermit": "Vida de Pablo, el primer ermitaño",
+"The Letters of St. Jerome": "Cartas de san Jerónimo",
+"On the Trinity (Augustine)": "Sobre la Trinidad (Agustín)",
+"The Enchiridion": "Enquiridion",
+"Tractates on the Gospel of John": "Tratados sobre el Evangelio de Juan",
+"Homilies on the First Epistle of John": "Homilías sobre la Primera Carta de Juan",
+"Expositions on the Psalms": "Comentarios a los Salmos",
+"Our Lord’s Sermon on the Mount": "El sermón de la montaña",
+"Soliloquies": "Soliloquios",
+"On Care to Be Had for the Dead": "El cuidado de los difuntos",
+"The Conferences": "Colaciones",
+"The Institutes": "Instituciones cenobíticas",
+"The Commonitory": "Conmonitorio",
+"Sermons of Leo the Great": "Sermones de León Magno",
+"The Tome of Leo": "El Tomo de León",
+"The Life of St. Martin": "Vida de san Martín",
+"Moralia on Job": "Moralia sobre Job",
+"Etymologies": "Etimologías",
+"The Ladder of Divine Ascent": "La escala espiritual",
+"Four Hundred Chapters on Love": "Cuatrocientos capítulos sobre la caridad",
+"An Exact Exposition of the Orthodox Faith": "Exposición exacta de la fe ortodoxa",
+"On the Divine Images": "Sobre las imágenes divinas",
+"The Lausiac History": "Historia lausíaca",
+"The Spiritual Meadow": "El prado espiritual",
+"The Book of Lamentations": "Libro de las lamentaciones",
+"The Philokalia": "La Filocalia",
+"The Way of a Pilgrim": "El peregrino ruso",
+"The Epistle of Barnabas": "Carta de Bernabé",
+"The Liturgy of St. James": "La liturgia de Santiago",
+"The Divine Liturgy of St. John Chrysostom": "La Divina Liturgia de san Juan Crisóstomo",
+"Barlaam and Ioasaph": "Barlaam y Josafat",
+"On Holy Images": "Sobre las imágenes sagradas",
+"The Life of St. Columba": "Vida de san Columba",
+"The Letters of St. Ambrose": "Cartas de san Ambrosio",
+"Leaves from St. John Chrysostom": "Páginas de san Juan Crisóstomo",
+"The Writings of Clement of Alexandria": "Escritos de Clemente de Alejandría",
+"The Life of St. Malachy": "Vida de san Malaquías",
+"On Union with God": "Sobre la unión con Dios",
+"On Prayer and the Contemplative Life": "Sobre la oración y la vida contemplativa",
+"Letters of St. Catherine of Siena": "Cartas de santa Catalina de Siena",
+"Ten Reasons": "Diez razones",
+"The Faith of Our Fathers": "La fe de nuestros padres",
+"Paradoxes of Catholicism": "Paradojas del catolicismo",
+"Come Rack! Come Rope!": "¡Venga el potro! ¡Venga la soga!",
+"The King’s Achievement": "La obra del rey",
+"The Dawn of All": "El amanecer de todo",
+"Loss and Gain": "Pérdida y ganancia",
+"Trees and Other Poems": "Árboles y otros poemas",
+"Poems of Alice Meynell": "Poemas de Alice Meynell",
+"The Fourteen Holy Helpers": "Los catorce santos auxiliadores",
+"Thoughts and Counsels of the Saints": "Pensamientos y consejos de los santos",
+"General Catholic Devotions": "Devociones católicas",
+"Maxims and Counsels of St. Francis de Sales": "Máximas y consejos de san Francisco de Sales",
+"The Spirit of St. Francis de Sales": "El espíritu de san Francisco de Sales",
+"The Dolorous Passion of Our Lord Jesus Christ": "La dolorosa pasión de Nuestro Señor Jesucristo",
+"Life of St. Vincent de Paul": "Vida de san Vicente de Paúl",
+"Life of St. Rita of Cascia": "Vida de santa Rita de Casia",
+"The Catholic Church and History": "La Iglesia católica y la historia",
+"The Path to Rome": "El camino de Roma",
+"Protestantism and Catholicity Compared": "El protestantismo comparado con el catolicismo",
+"English Monastic Life": "La vida monástica en Inglaterra",
+"The Complete Manual of Catholic Piety": "Manual completo de piedad católica",
+"The Cell of Self-Knowledge": "La celda del conocimiento de sí",
+"The Wisdom of Father Brown": "La sabiduría del padre Brown",
+"A Complete Catechism of the Catholic Religion": "Catecismo completo de la religión católica",
+"The Baltimore Catechism No. 1": "Catecismo de Baltimore n.º 1",
+"The Baltimore Catechism No. 3": "Catecismo de Baltimore n.º 3",
+"An Explanation of the Baltimore Catechism": "Explicación del Catecismo de Baltimore",
 "{*}; {*}": "{*}; {*}",
 "{*}: {*}": "{*}: {*}",
 "{*} · {*}": "{*} · {*}",
@@ -9665,6 +9767,327 @@ window.SANCTIFY_I18N = {
 },
 "b166": {
 "content": "Las cartas de Teresa a sus hermanas, a sus primas y a dos sacerdotes misioneros a los que adoptó como hermanos espirituales muestran el caminito en acción, con sus propias palabras y sin los retoques…"
+},
+"b167": {
+"content": "Uno de los libros más leídos de la Iglesia primitiva, el Pastor recoge las visiones que recibió Hermas, un antiguo esclavo de Roma, de una mujer que representa a la Iglesia y de un ángel con figura…"
+},
+"b168": {
+"content": "Una carta breve y elegante de un cristiano desconocido a un pagano interesado llamado Diogneto, que explica por qué los cristianos rechazan los ídolos y los sacrificios judíos y por qué se aman unos…"
+},
+"b169": {
+"content": "Una carta de la iglesia de Esmirna que describe la detención y la muerte de su anciano obispo, san Policarpo, discípulo del apóstol Juan. Instado a maldecir a Cristo, respondió que le había servido…"
+},
+"b170": {
+"content": "Policarpo escribió a la iglesia de Filipos, que le había pedido las cartas de san Ignacio de Antioquía. Los anima a la fe, la justicia y la paciencia, y les advierte contra la codicia y la falsa…"
+},
+"b171": {
+"content": "Justino relata su conversión de la filosofía a Cristo y un largo debate con un maestro judío llamado Trifón en Éfeso.\n\nArgumenta a partir del Antiguo Testamento que Jesús es el Mesías anunciado por…"
+},
+"b172": {
+"content": "Tres libros dirigidos por el obispo de Antioquía a un amigo pagano, que explican la fe cristiana en un único Creador y defienden las Escrituras frente a los mitos paganos.\n\nTeófilo es el primer autor…"
+},
+"b173": {
+"content": "Gran parte de este relato la escribió la propia Perpetua, una joven noble y madre lactante de Cartago, en la cárcel, mientras esperaba el martirio con su esclava Felicidad y otros…"
+},
+"b174": {
+"content": "Clemente, director de la escuela catequética de Alejandría, presenta a Cristo como el divino Maestro que educa a sus hijos en una vida virtuosa.\n\nLa obra da consejos detallados y a menudo…"
+},
+"b175": {
+"content": "Un sermón sobre el joven rico de Marcos 10. Clemente sostiene que la riqueza en sí no está condenada; lo que importa es el desprendimiento del corazón y el uso generoso de los bienes en favor de los…"
+},
+"b176": {
+"content": "El primer intento de una teología cristiana sistemática, que abarca a Dios, la Trinidad, la creación, los seres racionales, el libre albedrío y la interpretación de la Escritura.\n\nOrígenes fue un…"
+},
+"b177": {
+"content": "Una respuesta punto por punto a El discurso verdadero, un ataque al cristianismo del filósofo pagano Celso.\n\nOrígenes responde a las acusaciones de que los cristianos eran ignorantes y crédulos…"
+},
+"b178": {
+"content": "Escrito durante un cisma en Roma y Cartago tras la persecución de Decio, este tratado insiste en que hay una sola Iglesia, fundada sobre Pedro, y en que nadie puede separarse de ella sin dejar a…"
+},
+"b179": {
+"content": "Un hermoso comentario al Padrenuestro, frase por frase, escrito para los cristianos de Cartago.\n\nCipriano explica que oramos en plural porque somos un solo pueblo, y que el «pan de cada día» se…"
+},
+"b180": {
+"content": "El escritor africano Tertuliano sostiene que los herejes ni siquiera tienen derecho a usar las Escrituras, porque las Escrituras pertenecen a la Iglesia, que las recibió de los apóstoles.\n\nLa…"
+},
+"b181": {
+"content": "El tratado más antiguo que se conserva sobre cualquiera de los sacramentos. Tertuliano explica por qué se eligió el agua para el bautismo, describe el rito con su unción e imposición de manos y…"
+},
+"b182": {
+"content": "Un elegante diálogo latino ambientado en la playa de Ostia, en el que el cristiano Octavio responde a su amigo pagano Cecilio, que ha lanzado un beso a una estatua de Serapis.\n\nOctavio refuta las…"
+},
+"b183": {
+"content": "Lactancio, célebre maestro de retórica, escribió este primer resumen latino de la fe cristiana durante la Gran Persecución, para mostrar a los paganos cultos que el cristianismo es la verdadera…"
+},
+"b184": {
+"content": "La primera historia de la Iglesia, desde los apóstoles hasta la victoria de Constantino. Eusebio enumera a los obispos de las grandes iglesias, describe a los mártires y cita muchos escritos antiguos…"
+},
+"b185": {
+"content": "La gran defensa de Atanasio de la enseñanza del Concilio de Nicea según la cual el Hijo es «consustancial» al Padre.\n\nResponde uno a uno a los textos favoritos de los arrianos y muestra que, si el…"
+},
+"b186": {
+"content": "Un prólogo y veintitrés catequesis pronunciadas en la iglesia del Santo Sepulcro para quienes se preparaban al bautismo en Pascua y para los recién bautizados.\n\nLas dieciocho primeras explican el…"
+},
+"b187": {
+"content": "Cinco sermones predicados en Constantinopla que valieron a Gregorio el título de «el Teólogo». Defiende la divinidad del Hijo y del Espíritu Santo y explica cómo Dios puede ser uno y trino.\n\nFueron…"
+},
+"b188": {
+"content": "Nueve homilías cuaresmales sobre los seis días de la creación del Génesis, predicadas por Basilio a la gente trabajadora de Cesarea.\n\nBasilio se deleita en la belleza y el orden de la naturaleza…"
+},
+"b189": {
+"content": "Un manual para quienes enseñan la fe, que explica la Trinidad, la Encarnación, el bautismo y la Eucaristía y responde a las objeciones de paganos y judíos.\n\nGregorio explica por qué Dios se hizo…"
+},
+"b190": {
+"content": "Escrito para completar el Hexamerón de su hermano Basilio, este tratado reflexiona sobre la creación del ser humano a imagen de Dios.\n\nGregorio explora la dignidad de la persona humana como criatura…"
+},
+"b191": {
+"content": "Gregorio relata una conversación con su hermana moribunda, santa Macrina, a la que llama «la Maestra». Afligido por la muerte de su hermano Basilio, le pregunta por la muerte, el alma y la…"
+},
+"b192": {
+"content": "Gregorio primero vuelve a contar la historia de Moisés y luego la lee como alegoría del viaje del alma hacia Dios: de la luz de la zarza ardiente, a través de la nube, hasta la oscuridad del monte…"
+},
+"b193": {
+"content": "Ambrosio explica a los recién bautizados el sentido de los ritos que acaban de recibir en la Vigilia pascual: la apertura de los oídos, el bautismo, la unción y la Eucaristía.\n\nEnseña con claridad…"
+},
+"b194": {
+"content": "Inspirada en Sobre los deberes de Cicerón, esta obra se escribió para los sacerdotes de Milán, pero se convirtió en el primer manual cristiano de ética.\n\nAmbrosio trata de la prudencia, la justicia…"
+},
+"b195": {
+"content": "Ambrosio escribió esta obra para su hermana Marcelina, que había recibido el velo de virgen consagrada de manos del papa Liberio.\n\nAlaba la virginidad consagrada y propone como modelo a la Virgen…"
+},
+"b196": {
+"content": "Escrita mientras Hilario estaba desterrado en Asia Menor por oponerse al arrianismo, fue la primera gran obra latina sobre la Trinidad.\n\nHilario defiende la verdadera divinidad del Hijo y termina con…"
+},
+"b197": {
+"content": "Efrén, el «Arpa del Espíritu», escribió estos himnos siríacos para la fiesta del nacimiento de Cristo. Se maravillan ante la paradoja de la Encarnación: el Creador mamando del pecho de su madre, el…"
+},
+"b198": {
+"content": "Veintitrés breves tratados escritos en siríaco por un monje-obispo del Imperio persa, fuera del mundo romano.\n\nAfraates escribe sobre la fe, el amor, el ayuno, la oración, la humildad y los «hijos de…"
+},
+"b199": {
+"content": "Noventa sermones predicados en Antioquía, entre los mayores comentarios a Mateo de la Iglesia primitiva.\n\nCrisóstomo, «boca de oro», pasa con soltura de explicar el texto a interpelar a su comunidad…"
+},
+"b200": {
+"content": "Cuando estallaron disturbios en Antioquía y el pueblo derribó las estatuas del emperador y de su familia, toda la ciudad temió un castigo terrible.\n\nDurante las angustiosas semanas de Cuaresma que…"
+},
+"b201": {
+"content": "La respuesta de Jerónimo a Helvidio, que afirmaba que María tuvo otros hijos después de Jesús.\n\nJerónimo muestra con la Escritura que «primogénito» no implica hijos posteriores y que los «hermanos…"
+},
+"b202": {
+"content": "El breve y encantador relato de Jerónimo sobre san Pablo de Tebas, que huyó de la persecución de Decio y vivió solo en el desierto de Egipto unos noventa años.\n\nNarra la visita que le hizo san…"
+},
+"b203": {
+"content": "Más de cien cartas del gran traductor de la Biblia, escritas a amigos, papas, monjes y nobles damas romanas a las que guió en el estudio de la Escritura.\n\nVan de la dirección espiritual y los…"
+},
+"b204": {
+"content": "Quince libros en los que Agustín expone primero, a partir de la Escritura, la fe de la Iglesia en la Trinidad y busca después alguna comprensión de ella.\n\nEncuentra imágenes de la Trinidad en el alma…"
+},
+"b205": {
+"content": "Un «manual» sobre la fe, la esperanza y la caridad, escrito a petición de un laico llamado Lorenzo.\n\nSiguiendo el Credo para la fe y el Padrenuestro para la esperanza, Agustín ofrece un resumen…"
+},
+"b206": {
+"content": "Ciento veinticuatro sermones sobre el Evangelio de Juan, predicados a la gente sencilla de Hipona.\n\nAgustín reflexiona sobre Cristo, el Verbo hecho carne, los sacramentos que brotan de su costado y…"
+},
+"b207": {
+"content": "Diez sermones de la semana de Pascua sobre la Primera Carta de Juan, la carta del amor.\n\nAgustín enseña que el amor es la señal del verdadero cristiano y de la Iglesia, y que el amor a Dios y al…"
+},
+"b208": {
+"content": "El comentario de Agustín a los ciento cincuenta salmos, muchos de ellos sermones predicados a su pueblo.\n\nEscucha en los salmos la voz del «Cristo total», cabeza y cuerpo: unas veces ora el mismo…"
+},
+"b209": {
+"content": "Escrito poco después de que Agustín fuera ordenado sacerdote, este comentario presenta el Sermón de la Montaña como el modelo perfecto de la vida cristiana.\n\nRelaciona las Bienaventuranzas con los…"
+},
+"b210": {
+"content": "Escritos en Casiciaco poco antes de su bautismo, los Soliloquios son un diálogo entre Agustín y su propia Razón sobre cómo conocer a Dios y el alma.\n\nComienzan con una larga y conmovedora oración y…"
+},
+"b211": {
+"content": "San Paulino de Nola preguntó a Agustín si ayudaba a los difuntos ser enterrados cerca de la tumba de un mártir.\n\nAgustín responde que el lugar de la sepultura importa menos que las oraciones, las…"
+},
+"b212": {
+"content": "Casiano recorrió de joven monje los desiertos de Egipto y más tarde puso por escrito veinticuatro conversaciones con los grandes abades que allí conoció, sobre la oración, el discernimiento, la…"
+},
+"b213": {
+"content": "Escritas para los monjes de la Galia, las Instituciones describen el hábito, la oración y la vida diaria de los monjes egipcios.\n\nLa segunda mitad trata de los ocho vicios principales, de la gula a…"
+},
+"b214": {
+"content": "Una breve guía para distinguir la verdadera doctrina católica de la herejía. Vicente enseña que debemos sostener lo que se ha creído en todas partes, siempre y por todos.\n\nExplica también que la…"
+},
+"b215": {
+"content": "Noventa y seis sermones predicados por el papa León en Roma en las fiestas y tiempos del año litúrgico: Navidad, Epifanía, Cuaresma, la Pasión, Pascua, Pentecostés y la fiesta de san Pedro y san…"
+},
+"b216": {
+"content": "Una carta del papa León a Flaviano, patriarca de Constantinopla, que explica que Cristo es una sola persona en dos naturalezas, divina y humana, cada una de las cuales obra en comunión con la…"
+},
+"b217": {
+"content": "Una biografía de san Martín de Tours escrita por un amigo que lo conoció personalmente, mientras Martín aún vivía.\n\nCuenta cómo el soldado Martín compartió su capa con un mendigo, se hizo monje y…"
+},
+"b218": {
+"content": "Un vasto comentario al libro de Job, iniciado como pláticas a monjes en Constantinopla cuando Gregorio era allí embajador papal.\n\nGregorio lee a Job en sentido histórico, alegórico y moral, y lo…"
+},
+"b219": {
+"content": "Isidoro reunió el saber del mundo antiguo en veinte libros que explican el origen de las palabras y de las cosas: gramática, medicina, derecho, teología, animales, piedras, ciudades, barcos y mucho…"
+},
+"b220": {
+"content": "Escrita por el abad del monte Sinaí, la Escala describe la vida espiritual en treinta peldaños, desde la renuncia al mundo, pasando por la obediencia, el arrepentimiento, el recuerdo de la muerte y…"
+},
+"b221": {
+"content": "Cuatro grupos de cien breves sentencias sobre el amor a Dios y al prójimo, escritas para un monje llamado Elpidio.\n\nMáximo enseña que el amor nace del desprendimiento y que quien ama a Dios no puede…"
+},
+"b222": {
+"content": "Tercera parte de la Fuente del conocimiento de Juan Damasceno, es un resumen de la enseñanza de los Padres griegos sobre Dios, la creación, Cristo, los sacramentos, María, los santos y los…"
+},
+"b223": {
+"content": "Tres tratados escritos en defensa de los santos iconos cuando el emperador bizantino comenzó a destruirlos.\n\nJuan sostiene que al Dios invisible no se le puede representar, pero que, como Dios se…"
+},
+"b224": {
+"content": "Paladio pasó años entre los monjes de Egipto y Palestina y escribió después estos retratos de los hombres y mujeres que conoció allí, dedicados a Lauso, funcionario de la corte imperial.\n\nIncluye a…"
+},
+"b225": {
+"content": "Una colección de cientos de breves historias y dichos reunidos por el monje Juan Mosco en sus viajes por los monasterios de Palestina, Egipto, Siria y el Sinaí.\n\nOfrece una imagen viva de la vida…"
+},
+"b226": {
+"content": "Noventa y cinco oraciones, cada una titulada «Hablando con Dios desde lo profundo del corazón», escritas por el monje armenio Gregorio de Narek hacia el final de su vida.\n\nEn ellas el poeta confiesa…"
+},
+"b227": {
+"content": "Filocalia significa «amor de lo bello». Esta antología reúne escritos de maestros espirituales orientales de los siglos IV al XV sobre la vigilancia, la pureza de corazón y la oración del…"
+},
+"b228": {
+"content": "Un peregrino ruso errante oye en la iglesia el mandato de san Pablo de «orar sin cesar» y se pone en camino para aprender cómo. Un padre espiritual le enseña la oración de Jesús y le da la…"
+},
+"b229": {
+"content": "Una carta cristiana antigua, atribuida tradicionalmente, aunque sin certeza, a san Bernabé, que lee el Antiguo Testamento como anuncio de Cristo.\n\nTermina con los «dos caminos», el de la luz y el de…"
+},
+"b230": {
+"content": "La antigua liturgia eucarística de la Iglesia de Jerusalén, atribuida tradicionalmente a Santiago, primer obispo de la ciudad.\n\nTodavía se celebra en ciertos días en algunas Iglesias orientales, y su…"
+},
+"b231": {
+"content": "La liturgia eucarística que se celebra la mayoría de los días del año en las Iglesias bizantinas, católicas y ortodoxas, llamada así por el gran arzobispo de Constantinopla.\n\nSus oraciones, letanías…"
+},
+"b232": {
+"content": "Un querido relato cristiano en el que el príncipe indio Josafat, a quien su padre mantiene alejado de todo conocimiento del sufrimiento, es convertido por el ermitaño Barlaam mediante una serie de…"
+},
+"b233": {
+"content": "Tres tratados escritos contra los iconoclastas, que destruían los iconos en el Imperio bizantino. San Juan explica por qué los cristianos pueden venerar las imágenes: porque el Dios invisible se hizo…"
+},
+"b234": {
+"content": "Una breve vida devocional de san Columba (Colmcille), el abad irlandés que fundó el monasterio de Iona y llevó el Evangelio a los pictos de Escocia, basada en los antiguos relatos de sus profecías, milagros y visiones."
+},
+"b235": {
+"content": "Las cartas del gran obispo de Milán, escritas a emperadores, obispos y amigos. Incluyen su firme postura ante el emperador Teodosio tras la matanza de Tesalónica, su defensa de las basílicas de la…"
+},
+"b236": {
+"content": "Una selección de los sermones y cartas del arzobispo «boca de oro» de Constantinopla, precedida de un esbozo de su vida y su destierro. Traducción inglesa de Mary H. Allies (1889)."
+},
+"b237": {
+"content": "Las obras del gran maestro de la escuela catequética de Alejandría: el Protréptico, que invita a los paganos a Cristo, el verdadero Verbo; el Pedagogo, una guía de conducta cristiana; y los Stromata…"
+},
+"b238": {
+"content": "La vida que san Bernardo escribió de su amigo san Malaquías, arzobispo de Armagh, que reformó la Iglesia en Irlanda y murió en brazos de Bernardo en Claraval en 1148. Traducción inglesa con notas de H. J. Lawlor (1920)."
+},
+"b239": {
+"content": "Un breve tratado sobre el desprendimiento, el recogimiento y el descanso de la mente solo en Dios. Durante mucho tiempo se imprimió con el nombre de san Alberto Magno, aunque los estudiosos creen hoy…"
+},
+"b240": {
+"content": "Las cuestiones de la Suma teológica sobre la religión, la devoción, la oración y las vidas activa y contemplativa, reunidas en un solo libro. Santo Tomás explica qué es la oración, por qué oramos si…"
+},
+"b241": {
+"content": "Cartas dictadas por santa Catalina a papas, gobernantes, soldados, presos y a su familia espiritual, ardientes de amor a Cristo y a la Iglesia, en las que urge al papa Gregorio XI a volver de Aviñón…"
+},
+"b242": {
+"content": "El desafío del mártir jesuita a los eruditos protestantes de Inglaterra, impreso en una imprenta clandestina y dejado en los bancos de la iglesia universitaria de Oxford el día de la graduación de…"
+},
+"b243": {
+"content": "Una explicación sencilla y amable de la fe católica escrita para los protestantes estadounidenses por el arzobispo de Baltimore. Trata de la Iglesia, el papado, los santos, los sacramentos y el…"
+},
+"b244": {
+"content": "Breves meditaciones sobre las aparentes contradicciones de la Iglesia, que es a la vez humana y divina, rica y pobre, en paz y en guerra, y muestran cómo las paradojas del mismo Cristo se viven en su Cuerpo."
+},
+"b245": {
+"content": "Una novela histórica de la persecución isabelina en Derbyshire, donde los jóvenes Robin Audrey y Marjorie Manners renuncian a sus esperanzas de casarse para que Robin pueda hacerse sacerdote en una…"
+},
+"b246": {
+"content": "Una novela sobre la disolución de los monasterios bajo Enrique VIII que sigue a dos hermanos, uno al servicio de Thomas Cromwell y otro monje de Lewes, con santo Tomás Moro entre sus personajes."
+},
+"b247": {
+"content": "Compañera de Señor del mundo. Si aquella novela imaginaba un mundo que se apartaba de Cristo, esta imagina un futuro en el que la Iglesia ha recuperado la adhesión de las naciones, y se pregunta qué…"
+},
+"b248": {
+"content": "La novela de Newman sobre Charles Reding, un estudiante de Oxford que, en medio de los debates del Movimiento de Oxford, encuentra poco a poco su camino hacia la Iglesia católica a un alto precio personal. Escrita poco después de la propia conversión de Newman."
+},
+"b249": {
+"content": "La colección que contiene el célebre poema «Trees» de Kilmer, junto con poemas sobre la fe, la familia y la vida urbana del poeta católico estadounidense que murió en la Primera Guerra Mundial en 1918."
+},
+"b250": {
+"content": "La antología de poesía católica en inglés de Joyce Kilmer, de Francis Thompson, Alice Meynell, Gerard Manley Hopkins e Hilaire Belloc a los poetas irlandeses y estadounidenses de su tiempo."
+},
+"b251": {
+"content": "Poemas de la poeta y ensayista católica inglesa Alice Meynell, entre ellos su célebre soneto «Renouncement», marcados por la contención, la ternura y la fe."
+},
+"b252": {
+"content": "Instrucciones, novenas y oraciones en honor de María Auxiliadora y de los catorce santos auxiliadores, con la vida de cada uno de estos santos, a los que en la Alemania medieval se invocaba juntos para pedir ayuda en necesidades concretas."
+},
+"b253": {
+"content": "Una breve sentencia de un santo para cada día del año, tomada de los Padres, los Doctores y los grandes autores espirituales."
+},
+"b254": {
+"content": "Un devocionario con oraciones de la mañana y de la noche, oraciones para la misa, la confesión y la comunión, y devociones a lo largo del año."
+},
+"b255": {
+"content": "Breves sentencias tomadas de los escritos de san Francisco de Sales, una para cada día, llenas de su mansedumbre y buen sentido. Traducción inglesa de Ella McMahon."
+},
+"b256": {
+"content": "El obispo de Belley, íntimo amigo de san Francisco de Sales, recoge sus conversaciones, dichos y ejemplo sobre la oración, la paciencia, la humildad, la caridad y el cuidado de las almas."
+},
+"b257": {
+"content": "Meditaciones sobre la vida y los misterios de la Virgen María, desde la Inmaculada Concepción hasta la Asunción, para orar a lo largo del año."
+},
+"b258": {
+"content": "Un vívido relato de la Pasión de Cristo tomado de las visiones de la beata Ana Catalina Emmerick, tal como las puso por escrito el poeta Clemens Brentano. Ha alimentado la devoción de muchos…"
+},
+"b259": {
+"content": "La historia de las apariciones de la Virgen a santa Catalina Labouré en París en 1830 y de la difusión de la Medalla Milagrosa, escrita por el sacerdote vicenciano que fue su confesor."
+},
+"b260": {
+"content": "Una vida breve y animada de san Vicente de Paúl, desde su captura por piratas y su esclavitud en Túnez hasta la fundación de la Congregación de la Misión y de las Hijas de la Caridad."
+},
+"b261": {
+"content": "Una breve vida del obispo de Alejandría que defendió la divinidad de Cristo frente a Arrio en Nicea y a lo largo de cinco destierros."
+},
+"b262": {
+"content": "La vida de santa Rita, esposa, madre, viuda y monja agustina, con las tradiciones de las abejas de su infancia, su difícil matrimonio, la herida de la espina en su frente y las rosas de Casia. Traducida del italiano."
+},
+"b263": {
+"content": "Un breve libro sobre cómo debe entender un historiador a la Iglesia: no como una institución entre muchas, sino como la vida continua de una única sociedad a lo largo de los siglos."
+},
+"b264": {
+"content": "El célebre relato de Belloc de su peregrinación a pie desde Toul, en Francia, a través de los Alpes hasta Roma, lleno de humor, digresiones, dibujos y reflexiones sobre la fe y Europa."
+},
+"b265": {
+"content": "La respuesta del sacerdote y filósofo español a la tesis de que la Reforma fue el origen de la civilización europea, que examina lo que la Iglesia hizo por la libertad, la familia, los pobres y el saber."
+},
+"b266": {
+"content": "Un retrato de la vida cotidiana en los monasterios ingleses antes de su disolución: los edificios, los cargos, las horas de oración y el trabajo de monjes y monjas."
+},
+"b267": {
+"content": "Un devocionario católico clásico de finales del siglo XVIII y del XIX, con oraciones diarias, devociones para la misa y los sacramentos, letanías y oraciones para las fiestas del año."
+},
+"b268": {
+"content": "Siete breves tratados devocionales impresos por primera vez por Henry Pepwell en 1521, con pasajes de santa Catalina de Siena, Walter Hilton, el autor de La nube del no saber y Margery Kempe. Edición…"
+},
+"b269": {
+"content": "La segunda colección de relatos sobre el sacerdote detective de Chesterton, que resuelve crímenes gracias a su conocimiento de la naturaleza humana y del pecado, adquirido en años de confesonario."
+},
+"b270": {
+"content": "El jesuita alemán Joseph Deharbe escribió uno de los catecismos más usados del siglo XIX, enseñado durante generaciones en Alemania y entre los católicos de habla alemana en América.\n\nEsta edición…"
+},
+"b271": {
+"content": "El más breve de los catecismos de Baltimore, preparado para los niños que se disponen a su primera comunión. En 33 breves lecciones de preguntas y respuestas trata de Dios y la creación, el pecado y…"
+},
+"b272": {
+"content": "El catecismo de Baltimore avanzado, escrito como curso de dos años para alumnos después de la confirmación. Incluye las preguntas del n.º 2 y añade muchas más que las explican, definiendo términos y…"
+},
+"b273": {
+"content": "Escrita para catequistas y alumnos mayores, y llamada a menudo Catecismo de Baltimore n.º 4. Recorre el catecismo pregunta por pregunta, explicando cada respuesta con palabras sencillas y ejemplos de…"
 },
 "bib1": {
 "content": "Narra los orígenes del mundo, la caída de la humanidad y la alianza de Dios con los patriarcas Abrahán, Isaac y Jacob, y termina con la familia de José establecida en Egipto."
@@ -10641,7 +11064,9 @@ window.SANCTIFY_I18N = {
 "book-1": "book-1.679896f9",
 "book-2": "book-2.e931662c",
 "book-3": "book-3.3760875f",
-"book-4": "book-4.4c4b4de9",
+"book-4": "book-4.905b09ea",
+"book-5": "book-5.8dc939f3",
+"book-6": "book-6.7aa66028",
 "history-0": "history-0.96e2da7a",
 "history-1": "history-1.0b7bb4b8",
 "history-2": "history-2.ed66ccbf",

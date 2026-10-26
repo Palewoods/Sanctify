@@ -9068,6 +9068,108 @@ window.SANCTIFY_I18N = {
 "The End of the Modern World": "Koniec czasów nowożytnych",
 "The Way of Divine Love": "Droga Bożej miłości",
 "The Letters of St. Thérèse of Lisieux": "Listy św. Teresy z Lisieux",
+"The Shepherd of Hermas": "Pasterz Hermasa",
+"The Letter to Diognetus": "List do Diogneta",
+"The Martyrdom of Polycarp": "Męczeństwo Polikarpa",
+"Letter to the Philippians": "List do Filipian",
+"Dialogue with Trypho": "Dialog z Żydem Tryfonem",
+"To Autolycus": "Do Autolika",
+"The Passion of Perpetua and Felicity": "Męczeństwo Perpetui i Felicyty",
+"The Instructor (Paedagogus)": "Wychowawca (Paedagogus)",
+"Who Is the Rich Man That Shall Be Saved?": "Który bogacz może być zbawiony?",
+"On First Principles": "O zasadach",
+"Against Celsus": "Przeciw Celsusowi",
+"On the Unity of the Catholic Church": "O jedności Kościoła katolickiego",
+"On the Lord’s Prayer": "O modlitwie Pańskiej",
+"The Prescription Against Heretics": "O preskrypcji przeciw heretykom",
+"On Baptism": "O chrzcie",
+"Octavius": "Oktawiusz",
+"The Divine Institutes": "Boskie nauki",
+"Four Discourses Against the Arians": "Cztery mowy przeciw arianom",
+"Catechetical Lectures": "Katechezy",
+"The Theological Orations": "Mowy teologiczne",
+"Hexaemeron": "Heksaemeron",
+"The Great Catechism": "Wielka katecheza",
+"On the Making of Man": "O stworzeniu człowieka",
+"On the Soul and the Resurrection": "O duszy i zmartwychwstaniu",
+"The Life of Moses": "Życie Mojżesza",
+"On the Mysteries": "O misteriach",
+"On the Duties of the Clergy": "O obowiązkach duchownych",
+"Concerning Virgins": "O dziewicach",
+"On the Trinity (Hilary)": "O Trójcy Świętej (Hilary)",
+"Hymns on the Nativity": "Hymny o Narodzeniu",
+"Demonstrations": "Wykazy",
+"Homilies on the Gospel of Matthew": "Homilie na Ewangelię św. Mateusza",
+"Homilies on the Statues": "Homilie o posągach",
+"The Perpetual Virginity of Blessed Mary": "O wieczystym dziewictwie Maryi",
+"The Life of Paul the First Hermit": "Żywot Pawła, pierwszego pustelnika",
+"The Letters of St. Jerome": "Listy św. Hieronima",
+"On the Trinity (Augustine)": "O Trójcy Świętej (Augustyn)",
+"The Enchiridion": "Enchiridion",
+"Tractates on the Gospel of John": "Homilie na Ewangelię św. Jana",
+"Homilies on the First Epistle of John": "Homilie na Pierwszy List św. Jana",
+"Expositions on the Psalms": "Objaśnienia Psalmów",
+"Our Lord’s Sermon on the Mount": "O kazaniu Pana na górze",
+"Soliloquies": "Solilokwia",
+"On Care to Be Had for the Dead": "O trosce o zmarłych",
+"The Conferences": "Rozmowy z Ojcami",
+"The Institutes": "O instytucjach klasztornych",
+"The Commonitory": "Commonitorium",
+"Sermons of Leo the Great": "Kazania Leona Wielkiego",
+"The Tome of Leo": "Tomus Leona",
+"The Life of St. Martin": "Żywot św. Marcina",
+"Moralia on Job": "Moralia. Komentarz do Księgi Hioba",
+"Etymologies": "Etymologie",
+"The Ladder of Divine Ascent": "Drabina raju",
+"Four Hundred Chapters on Love": "Czterysta rozdziałów o miłości",
+"An Exact Exposition of the Orthodox Faith": "Wykład wiary prawdziwej",
+"On the Divine Images": "O świętych obrazach",
+"The Lausiac History": "Historia Lauzjacka",
+"The Spiritual Meadow": "Łąka duchowa",
+"The Book of Lamentations": "Księga lamentacji",
+"The Philokalia": "Filokalia",
+"The Way of a Pilgrim": "Opowieści pielgrzyma",
+"The Epistle of Barnabas": "List Barnaby",
+"The Liturgy of St. James": "Liturgia św. Jakuba",
+"The Divine Liturgy of St. John Chrysostom": "Boska Liturgia św. Jana Chryzostoma",
+"Barlaam and Ioasaph": "Barlaam i Jozafat",
+"On Holy Images": "O świętych obrazach",
+"The Life of St. Columba": "Żywot św. Kolumby",
+"The Letters of St. Ambrose": "Listy św. Ambrożego",
+"Leaves from St. John Chrysostom": "Karty ze św. Jana Chryzostoma",
+"The Writings of Clement of Alexandria": "Pisma Klemensa Aleksandryjskiego",
+"The Life of St. Malachy": "Żywot św. Malachiasza",
+"On Union with God": "O zjednoczeniu z Bogiem",
+"On Prayer and the Contemplative Life": "O modlitwie i życiu kontemplacyjnym",
+"Letters of St. Catherine of Siena": "Listy św. Katarzyny ze Sieny",
+"Ten Reasons": "Dziesięć racji",
+"The Faith of Our Fathers": "Wiara naszych ojców",
+"Paradoxes of Catholicism": "Paradoksy katolicyzmu",
+"Come Rack! Come Rope!": "Niech przyjdą tortury, niech przyjdzie stryczek!",
+"The King’s Achievement": "Dzieło króla",
+"The Dawn of All": "Świt wszystkiego",
+"Loss and Gain": "Strata i zysk",
+"Trees and Other Poems": "Drzewa i inne wiersze",
+"Poems of Alice Meynell": "Wiersze Alice Meynell",
+"The Fourteen Holy Helpers": "Czternastu Świętych Wspomożycieli",
+"Thoughts and Counsels of the Saints": "Myśli i rady świętych",
+"General Catholic Devotions": "Nabożeństwa katolickie",
+"Maxims and Counsels of St. Francis de Sales": "Maksymy i rady św. Franciszka Salezego",
+"The Spirit of St. Francis de Sales": "Duch św. Franciszka Salezego",
+"The Dolorous Passion of Our Lord Jesus Christ": "Bolesna Męka Pana naszego Jezusa Chrystusa",
+"Life of St. Vincent de Paul": "Żywot św. Wincentego a Paulo",
+"Life of St. Rita of Cascia": "Żywot św. Rity z Cascii",
+"The Catholic Church and History": "Kościół katolicki a historia",
+"The Path to Rome": "Droga do Rzymu",
+"Protestantism and Catholicity Compared": "Protestantyzm porównany z katolicyzmem",
+"English Monastic Life": "Życie monastyczne w Anglii",
+"The Complete Manual of Catholic Piety": "Pełny podręcznik pobożności katolickiej",
+"The Cell of Self-Knowledge": "Cela poznania siebie",
+"The Wisdom of Father Brown": "Mądrość księdza Browna",
+"A Complete Catechism of the Catholic Religion": "Pełny katechizm religii katolickiej",
+"The Baltimore Catechism No. 1": "Katechizm baltimorski nr 1",
+"The Baltimore Catechism No. 3": "Katechizm baltimorski nr 3",
+"An Explanation of the Baltimore Catechism": "Objaśnienie Katechizmu baltimorskiego",
 "{*}; {*}": "{*}; {*}",
 "{*}: {*}": "{*}: {*}",
 "{*} · {*}": "{*} · {*}",
@@ -9715,6 +9817,327 @@ window.SANCTIFY_I18N = {
 },
 "b166": {
 "content": "Listy Teresy do sióstr, kuzynek i dwóch kapłanów misjonarzy, których przyjęła za duchowych braci, ukazują małą drogę w działaniu, jej własnymi słowami i bez redakcji, jakiej poddano…"
+},
+"b167": {
+"content": "Jedna z najczęściej czytanych ksiąg pierwotnego Kościoła, Pasterz, zawiera widzenia, które Hermas, były niewolnik w Rzymie, otrzymał od niewiasty uosabiającej Kościół i od anioła w postaci…"
+},
+"b168": {
+"content": "Krótki, elegancki list nieznanego chrześcijanina do dociekliwego poganina imieniem Diognet, wyjaśniający, dlaczego chrześcijanie odrzucają bożki i ofiary żydowskie i dlaczego się wzajemnie…"
+},
+"b169": {
+"content": "List Kościoła w Smyrnie opisujący pojmanie i śmierć jego sędziwego biskupa, św. Polikarpa, ucznia apostoła Jana. Nakłaniany, by złorzeczył Chrystusowi, odpowiedział, że służy Mu od osiemdziesięciu…"
+},
+"b170": {
+"content": "Polikarp napisał do Kościoła w Filippi, który prosił go o listy św. Ignacego Antiocheńskiego. Zachęca adresatów do wiary, sprawiedliwości i cierpliwości oraz przestrzega przed chciwością i fałszywą…"
+},
+"b171": {
+"content": "Justyn opowiada o swoim nawróceniu od filozofii do Chrystusa i o długiej dyspucie z żydowskim nauczycielem imieniem Tryfon w Efezie.\n\nNa podstawie Starego Testamentu dowodzi, że Jezus jest Mesjaszem…"
+},
+"b172": {
+"content": "Trzy księgi skierowane przez biskupa Antiochii do przyjaciela poganina, wyjaśniające wiarę chrześcijańską w jednego Stwórcę i broniące Pisma Świętego przed pogańskimi mitami.\n\nTeofil jest pierwszym…"
+},
+"b173": {
+"content": "Znaczną część tej relacji napisała sama Perpetua, młoda szlachcianka i karmiąca matka z Kartaginy, w więzieniu, oczekując na męczeństwo wraz ze swoją niewolnicą Felicytą i innymi…"
+},
+"b174": {
+"content": "Klemens, kierownik szkoły katechetycznej w Aleksandrii, przedstawia Chrystusa jako Boskiego Nauczyciela, który wychowuje swoje dzieci do życia w cnocie.\n\nDzieło daje szczegółowe i często zaskakujące…"
+},
+"b175": {
+"content": "Kazanie o bogatym młodzieńcu z 10. rozdziału Ewangelii Marka. Klemens dowodzi, że bogactwo samo w sobie nie jest potępione; liczy się oderwanie serca i hojne używanie bogactw dla innych.\n\nKończy się…"
+},
+"b176": {
+"content": "Pierwsza próba systematycznej teologii chrześcijańskiej, obejmująca Boga, Trójcę, stworzenie, istoty rozumne, wolną wolę i interpretację Pisma Świętego.\n\nOrygenes był genialnym i pobożnym…"
+},
+"b177": {
+"content": "Odpowiedź punkt po punkcie na Prawdziwe słowo, atak na chrześcijaństwo pogańskiego filozofa Celsusa.\n\nOrygenes odpowiada na zarzuty, że chrześcijanie są ciemni i łatwowierni, broni cudów i…"
+},
+"b178": {
+"content": "Napisany w czasie schizmy w Rzymie i Kartaginie po prześladowaniu Decjusza, traktat ten podkreśla, że jest jeden Kościół, zbudowany na Piotrze, i że nikt nie może się od niego odłączyć, nie…"
+},
+"b179": {
+"content": "Piękny komentarz do Ojcze nasz, zdanie po zdaniu, napisany dla chrześcijan Kartaginy.\n\nCyprian wyjaśnia, że modlimy się w liczbie mnogiej, bo jesteśmy jednym ludem, a „chleb powszedni” oznacza…"
+},
+"b180": {
+"content": "Afrykański pisarz Tertulian dowodzi, że heretycy nie mają nawet prawa korzystać z Pisma Świętego, bo należy ono do Kościoła, który otrzymał je od apostołów.\n\nPrawdziwą wiarę można znaleźć w…"
+},
+"b181": {
+"content": "Najstarszy zachowany traktat o którymkolwiek z sakramentów. Tertulian wyjaśnia, dlaczego do chrztu wybrano wodę, opisuje obrzęd z namaszczeniem i nałożeniem rąk oraz odpowiada tym, którzy twierdzili…"
+},
+"b182": {
+"content": "Wdzięczny łaciński dialog osadzony na plaży w Ostii, w którym chrześcijanin Oktawiusz odpowiada swemu przyjacielowi poganinowi Cecyliuszowi, który przesłał pocałunek posągowi Serapisa.\n\nOktawiusz…"
+},
+"b183": {
+"content": "Laktancjusz, słynny nauczyciel retoryki, napisał to pierwsze łacińskie streszczenie wiary chrześcijańskiej w czasie Wielkiego Prześladowania, by pokazać wykształconym poganom, że chrześcijaństwo jest…"
+},
+"b184": {
+"content": "Pierwsza historia Kościoła, od apostołów do zwycięstwa Konstantyna. Euzebiusz wylicza biskupów wielkich Kościołów, opisuje męczenników i cytuje wiele dawnych pism, które inaczej by zaginęły.\n\nNiemal…"
+},
+"b185": {
+"content": "Wielka obrona przez Atanazego nauki Soboru Nicejskiego, że Syn jest „współistotny” Ojcu.\n\nOdpowiada kolejno na ulubione teksty dowodowe arian i pokazuje, że gdyby Syn był stworzeniem, nie mógłby…"
+},
+"b186": {
+"content": "Prolog i dwadzieścia trzy katechezy wygłoszone w kościele Grobu Świętego dla przygotowujących się do chrztu w Wielkanoc i dla nowo ochrzczonych.\n\nPierwsze osiemnaście objaśnia jerozolimskie Credo.…"
+},
+"b187": {
+"content": "Pięć kazań wygłoszonych w Konstantynopolu, które przyniosły Grzegorzowi tytuł „Teologa”. Broni bóstwa Syna i Ducha Świętego i wyjaśnia, jak Bóg może być jeden i w trzech Osobach.\n\nMiały…"
+},
+"b188": {
+"content": "Dziewięć wielkopostnych homilii o sześciu dniach stworzenia z Księgi Rodzaju, wygłoszonych przez Bazylego do ludu pracującego Cezarei.\n\nBazyli zachwyca się pięknem i ładem przyrody, od ryb i ptaków…"
+},
+"b189": {
+"content": "Podręcznik dla nauczycieli wiary, wyjaśniający Trójcę, Wcielenie, chrzest i Eucharystię oraz odpowiadający na zarzuty pogan i Żydów.\n\nGrzegorz wyjaśnia, dlaczego Bóg stał się człowiekiem i jak Ciało…"
+},
+"b190": {
+"content": "Napisany jako uzupełnienie Heksaemeronu jego brata Bazylego, traktat ten rozważa stworzenie człowieka na obraz Boży.\n\nGrzegorz zgłębia godność osoby ludzkiej jako „królewskiego” stworzenia…"
+},
+"b191": {
+"content": "Grzegorz opowiada o rozmowie ze swoją umierającą siostrą, św. Makryną, którą nazywa „Nauczycielką”. Opłakując brata Bazylego, pyta ją o śmierć, duszę i zmartwychwstanie ciała.\n\nTo chrześcijańska…"
+},
+"b192": {
+"content": "Grzegorz najpierw opowiada na nowo historię Mojżesza, a następnie odczytuje ją jako alegorię drogi duszy do Boga: od światła płonącego krzewu przez obłok aż do ciemności góry Synaj, gdzie Boga…"
+},
+"b193": {
+"content": "Ambroży wyjaśnia nowo ochrzczonym sens obrzędów, które właśnie przyjęli w Wigilię Paschalną: otwarcia uszu, chrztu, namaszczenia i Eucharystii.\n\nJasno naucza, że słowa Chrystusa przemieniają chleb i…"
+},
+"b194": {
+"content": "Wzorowane na traktacie Cycerona O powinnościach, dzieło to napisano dla kapłanów Mediolanu, lecz stało się pierwszym chrześcijańskim podręcznikiem etyki.\n\nAmbroży omawia roztropność, sprawiedliwość…"
+},
+"b195": {
+"content": "Ambroży napisał to dzieło dla swojej siostry Marceliny, która otrzymała welon dziewicy konsekrowanej z rąk papieża Liberiusza.\n\nWychwala dziewictwo konsekrowane i stawia jako jego wzór Maryję Pannę…"
+},
+"b196": {
+"content": "Napisane, gdy Hilary przebywał na wygnaniu w Azji Mniejszej za sprzeciw wobec arianizmu, było pierwszym wielkim łacińskim dziełem o Trójcy Świętej.\n\nHilary broni prawdziwego bóstwa Syna i kończy…"
+},
+"b197": {
+"content": "Efrem, „Harfa Ducha”, napisał te syryjskie hymny na święto Narodzenia Chrystusa. Zachwycają się paradoksem Wcielenia: Stwórca karmiony piersią matki, Przedwieczny jako małe dziecko.\n\nW hymnach często…"
+},
+"b198": {
+"content": "Dwadzieścia trzy krótkie traktaty napisane po syryjsku przez mnicha-biskupa z Imperium Perskiego, spoza świata rzymskiego.\n\nAfrahat pisze o wierze, miłości, poście, modlitwie, pokorze i „synach…"
+},
+"b199": {
+"content": "Dziewięćdziesiąt kazań wygłoszonych w Antiochii, należących do największych komentarzy do Ewangelii Mateusza z czasów pierwotnego Kościoła.\n\nChryzostom, „złotousty”, swobodnie przechodzi od…"
+},
+"b200": {
+"content": "Gdy w Antiochii wybuchły zamieszki i lud obalił posągi cesarza i jego rodziny, całe miasto obawiało się strasznej kary.\n\nW niespokojnych tygodniach Wielkiego Postu, które nastąpiły, młody kapłan Jan…"
+},
+"b201": {
+"content": "Odpowiedź Hieronima Helwidiuszowi, który twierdził, że Maryja miała po Jezusie inne dzieci.\n\nHieronim wykazuje z Pisma Świętego, że „pierworodny” nie oznacza późniejszych dzieci, a „bracia Pańscy”…"
+},
+"b202": {
+"content": "Krótka i urocza opowieść Hieronima o św. Pawle z Teb, który uciekł przed prześladowaniem Decjusza i żył samotnie na egipskiej pustyni przez około dziewięćdziesiąt lat.\n\nOpowiada o odwiedzinach św.…"
+},
+"b203": {
+"content": "Ponad sto listów wielkiego tłumacza Biblii, pisanych do przyjaciół, papieży, mnichów i szlachetnych Rzymianek, które prowadził w studiowaniu Pisma Świętego.\n\nObejmują zarówno kierownictwo duchowe i…"
+},
+"b204": {
+"content": "Piętnaście ksiąg, w których Augustyn najpierw przedstawia na podstawie Pisma wiarę Kościoła w Trójcę, a potem szuka jej zrozumienia.\n\nZnajduje obrazy Trójcy w duszy ludzkiej — w pamięci, rozumie i…"
+},
+"b205": {
+"content": "„Podręcznik” o wierze, nadziei i miłości, napisany na prośbę świeckiego imieniem Wawrzyniec.\n\nIdąc za Credo w sprawie wiary i za Ojcze nasz w sprawie nadziei, Augustyn daje zwięzłe streszczenie…"
+},
+"b206": {
+"content": "Sto dwadzieścia cztery kazania o Ewangelii Jana, wygłoszone do prostego ludu Hippony.\n\nAugustyn rozważa Chrystusa, Słowo, które stało się ciałem, sakramenty wypływające z Jego boku i miłość, która…"
+},
+"b207": {
+"content": "Dziesięć kazań z tygodnia wielkanocnego o Pierwszym Liście Jana, liście miłości.\n\nAugustyn naucza, że miłość jest znakiem prawdziwego chrześcijanina i Kościoła oraz że miłość Boga i bliźniego jest…"
+},
+"b208": {
+"content": "Komentarz Augustyna do wszystkich stu pięćdziesięciu psalmów, w dużej części kazania wygłoszone do jego ludu.\n\nSłyszy w psalmach głos „całego Chrystusa”, głowy i ciała: czasem modli się sam Chrystus…"
+},
+"b209": {
+"content": "Napisany wkrótce po tym, jak Augustyn został kapłanem, komentarz ten przedstawia Kazanie na Górze jako doskonały wzór życia chrześcijańskiego.\n\nŁączy Błogosławieństwa z siedmioma darami Ducha…"
+},
+"b210": {
+"content": "Napisane w Cassiciacum na krótko przed chrztem, Solilokwia są dialogiem Augustyna z jego własnym Rozumem o tym, jak poznać Boga i duszę.\n\nZaczynają się długą i poruszającą modlitwą i ukazują…"
+},
+"b211": {
+"content": "Św. Paulin z Noli zapytał Augustyna, czy zmarłym pomaga pochówek w pobliżu grobu męczennika.\n\nAugustyn odpowiada, że miejsce pochówku ma mniejsze znaczenie niż modlitwy, Msze i jałmużny ofiarowane za…"
+},
+"b212": {
+"content": "Kasjan jako młody mnich przemierzył pustynie Egiptu, a później spisał dwadzieścia cztery rozmowy z wielkimi opatami, których tam spotkał, o modlitwie, rozeznaniu, czystości, przyjaźni i…"
+},
+"b213": {
+"content": "Napisane dla mnichów w Galii, Instytucje opisują strój, modlitwę i codzienne życie mnichów egipskich.\n\nDruga połowa omawia osiem głównych wad, od obżarstwa po pychę, i środki zaradcze. Lista ta stała…"
+},
+"b214": {
+"content": "Krótki przewodnik, jak odróżnić prawdziwą naukę katolicką od herezji. Wincenty uczy, że trzeba trzymać się tego, w co wierzono wszędzie, zawsze i przez wszystkich.\n\nWyjaśnia też, że doktryna…"
+},
+"b215": {
+"content": "Dziewięćdziesiąt sześć kazań wygłoszonych przez papieża Leona w Rzymie na święta i okresy roku liturgicznego: Boże Narodzenie, Objawienie Pańskie, Wielki Post, Mękę, Wielkanoc, Zesłanie Ducha…"
+},
+"b216": {
+"content": "List papieża Leona do Flawiana, patriarchy Konstantynopola, wyjaśniający, że Chrystus jest jedną osobą w dwóch naturach, Boskiej i ludzkiej, z których każda działa we wspólnocie z drugą.\n\nGdy…"
+},
+"b217": {
+"content": "Biografia św. Marcina z Tours napisana przez przyjaciela, który znał go osobiście, jeszcze za życia Marcina.\n\nOpowiada, jak żołnierz Marcin podzielił się płaszczem z żebrakiem, został mnichem i…"
+},
+"b218": {
+"content": "Ogromny komentarz do Księgi Hioba, rozpoczęty jako konferencje dla mnichów w Konstantynopolu, gdy Grzegorz był tam papieskim legatem.\n\nGrzegorz czyta Hioba w sensie historycznym, alegorycznym i…"
+},
+"b219": {
+"content": "Izydor zebrał wiedzę świata starożytnego w dwudziestu księgach, objaśniając pochodzenie słów i rzeczy: gramatykę, medycynę, prawo, teologię, zwierzęta, kamienie, miasta, okręty i wiele…"
+},
+"b220": {
+"content": "Napisana przez opata góry Synaj, Drabina opisuje życie duchowe w trzydziestu stopniach, od wyrzeczenia się świata przez posłuszeństwo, pokutę, pamięć o śmierci i pokorę aż po cnoty wiary, nadziei i…"
+},
+"b221": {
+"content": "Cztery grupy po sto krótkich sentencji o miłości Boga i bliźniego, napisane dla mnicha imieniem Elpidiusz.\n\nMaksym uczy, że miłość rodzi się z oderwania i że kto kocha Boga, nie może nie kochać…"
+},
+"b222": {
+"content": "Trzecia część Źródła poznania Jana Damasceńskiego, jest streszczeniem nauki Ojców greckich o Bogu, stworzeniu, Chrystusie, sakramentach, Maryi, świętych i ikonach.\n\nByła standardowym podręcznikiem…"
+},
+"b223": {
+"content": "Trzy traktaty napisane w obronie świętych ikon, gdy cesarz bizantyjski zaczął je niszczyć.\n\nJan dowodzi, że niewidzialnego Boga nie można przedstawić, lecz skoro Bóg stał się widzialny w ciele…"
+},
+"b224": {
+"content": "Palladiusz spędził lata wśród mnichów Egiptu i Palestyny, a później napisał te portrety mężczyzn i kobiet, których tam poznał, dedykując je Lausosowi, urzędnikowi dworu cesarskiego.\n\nObejmuje wiele…"
+},
+"b225": {
+"content": "Zbiór setek krótkich opowieści i powiedzeń zebranych przez mnicha Jana Moschosa podczas podróży po klasztorach Palestyny, Egiptu, Syrii i Synaju.\n\nDaje żywy obraz życia monastycznego w przededniu…"
+},
+"b226": {
+"content": "Dziewięćdziesiąt pięć modlitw, każda zatytułowana „Rozmowa z Bogiem z głębi serca”, napisanych przez ormiańskiego mnicha Grzegorza z Nareku pod koniec życia.\n\nPoeta wyznaje w nich swój grzech i błaga…"
+},
+"b227": {
+"content": "Filokalia znaczy „umiłowanie piękna”. Ta antologia gromadzi pisma wschodnich mistrzów duchowych od IV do XV wieku o czujności, czystości serca i modlitwie serca.\n\nJest wielkim podręcznikiem modlitwy…"
+},
+"b228": {
+"content": "Wędrowny rosyjski pielgrzym słyszy w cerkwi polecenie św. Pawła, by „nieustannie się modlić”, i wyrusza, by się tego nauczyć. Ojciec duchowny uczy go modlitwy Jezusowej i daje mu Filokalię.\n\nJego…"
+},
+"b229": {
+"content": "Wczesnochrześcijański list, tradycyjnie, choć niepewnie, przypisywany św. Barnabie, który odczytuje Stary Testament jako zapowiedź Chrystusa.\n\nKończy się nauką o „dwóch drogach”, drodze światła i…"
+},
+"b230": {
+"content": "Starożytna liturgia eucharystyczna Kościoła jerozolimskiego, tradycyjnie przypisywana św. Jakubowi, pierwszemu biskupowi miasta.\n\nW niektórych Kościołach wschodnich sprawuje się ją jeszcze w…"
+},
+"b231": {
+"content": "Liturgia eucharystyczna sprawowana przez większość dni w roku w Kościołach bizantyjskich, katolickich i prawosławnych, nazwana od imienia wielkiego arcybiskupa Konstantynopola.\n\nJej modlitwy, ektenie…"
+},
+"b232": {
+"content": "Ukochana opowieść chrześcijańska, w której indyjski królewicz Jozafat, trzymany przez ojca z dala od wszelkiej wiedzy o cierpieniu, zostaje nawrócony przez pustelnika Barlaama za pomocą serii…"
+},
+"b233": {
+"content": "Trzy traktaty napisane przeciw ikonoklastom, którzy niszczyli ikony w Cesarstwie Bizantyjskim. Św. Jan wyjaśnia, dlaczego chrześcijanie mogą czcić obrazy: ponieważ niewidzialny Bóg stał się widzialny…"
+},
+"b234": {
+"content": "Krótki pobożny żywot św. Kolumby (Colmcille), irlandzkiego opata, który założył klasztor na Ionie i zaniósł Ewangelię Piktom w Szkocji, oparty na dawnych relacjach o jego proroctwach, cudach i widzeniach."
+},
+"b235": {
+"content": "Listy wielkiego biskupa Mediolanu, pisane do cesarzy, biskupów i przyjaciół. Obejmują jego stanowczą postawę wobec cesarza Teodozjusza po masakrze w Tesalonice, obronę bazylik Kościoła przed ariańską…"
+},
+"b236": {
+"content": "Wybór kazań i listów „złotoustego” arcybiskupa Konstantynopola, poprzedzony szkicem jego życia i wygnania. Przekład angielski: Mary H. Allies (1889)."
+},
+"b237": {
+"content": "Dzieła wielkiego nauczyciela szkoły katechetycznej w Aleksandrii: Zachęta do Greków, wzywająca pogan do Chrystusa, prawdziwego Słowa; Wychowawca, przewodnik po chrześcijańskim postępowaniu; oraz…"
+},
+"b238": {
+"content": "Żywot napisany przez św. Bernarda o jego przyjacielu, św. Malachiaszu, arcybiskupie Armagh, który zreformował Kościół w Irlandii i zmarł w ramionach Bernarda w Clairvaux w 1148 roku. Przekład angielski z przypisami: H. J. Lawlor (1920)."
+},
+"b239": {
+"content": "Krótki traktat o oderwaniu, skupieniu i spoczynku umysłu w samym Bogu. Długo drukowano go pod imieniem św. Alberta Wielkiego, choć badacze sądzą dziś, że powstał później, prawdopodobnie spod pióra…"
+},
+"b240": {
+"content": "Kwestie Sumy teologicznej o religii, pobożności, modlitwie oraz życiu czynnym i kontemplacyjnym, zebrane w jednej księdze. Św. Tomasz wyjaśnia, czym jest modlitwa, dlaczego się modlimy, skoro Bóg zna…"
+},
+"b241": {
+"content": "Listy dyktowane przez św. Katarzynę do papieży, władców, żołnierzy, więźniów i jej duchowej rodziny, płonące miłością do Chrystusa i Kościoła, w których nakłania papieża Grzegorza XI do powrotu z…"
+},
+"b242": {
+"content": "Wyzwanie jezuity męczennika rzucone protestanckim uczonym Anglii, wydrukowane w tajnej drukarni i pozostawione na ławkach kościoła uniwersyteckiego w Oksfordzie w dniu uroczystości akademickiej w…"
+},
+"b243": {
+"content": "Prosty i życzliwy wykład wiary katolickiej, napisany dla amerykańskich protestantów przez arcybiskupa Baltimore. Omawia Kościół, papiestwo, świętych, sakramenty i czyściec, i stał się jedną z…"
+},
+"b244": {
+"content": "Krótkie rozważania o pozornych sprzecznościach Kościoła, który jest zarazem ludzki i Boski, bogaty i ubogi, w pokoju i na wojnie, ukazujące, jak paradoksy samego Chrystusa przeżywane są w Jego Ciele."
+},
+"b245": {
+"content": "Powieść historyczna o prześladowaniach elżbietańskich w Derbyshire, gdzie młodzi Robin Audrey i Marjorie Manners rezygnują z nadziei na małżeństwo, aby Robin mógł zostać kapłanem w kraju, w którym za…"
+},
+"b246": {
+"content": "Powieść o kasacie klasztorów za Henryka VIII, śledząca losy dwóch braci, jednego w służbie Thomasa Cromwella, drugiego mnicha z Lewes, ze św. Tomaszem More’em wśród postaci."
+},
+"b247": {
+"content": "Towarzyszka Władcy świata. Tamta powieść wyobrażała świat odwracający się od Chrystusa; ta wyobraża przyszłość, w której Kościół odzyskał posłuch narodów, i pyta, czego taki świat wymagałby od swoich mieszkańców."
+},
+"b248": {
+"content": "Powieść Newmana o Charlesie Redingu, oksfordzkim studencie, który pośród sporów ruchu oksfordzkiego powoli odnajduje drogę do Kościoła katolickiego za wielką cenę osobistą. Napisana wkrótce po nawróceniu samego Newmana."
+},
+"b249": {
+"content": "Zbiór zawierający słynny wiersz Kilmera „Trees”, obok wierszy o wierze, rodzinie i życiu miejskim amerykańskiego poety katolickiego, który zginął w I wojnie światowej w 1918 roku."
+},
+"b250": {
+"content": "Antologia katolickiej poezji angielskojęzycznej Joyce’a Kilmera, od Francisa Thompsona, Alice Meynell, Gerarda Manleya Hopkinsa i Hilaire’a Belloca po poetów irlandzkich i amerykańskich jego czasów."
+},
+"b251": {
+"content": "Wiersze angielskiej poetki i eseistki katolickiej Alice Meynell, w tym jej słynny sonet „Renouncement”, naznaczone powściągliwością, czułością i wiarą."
+},
+"b252": {
+"content": "Pouczenia, nowenny i modlitwy ku czci Maryi Wspomożycielki Wiernych i Czternastu Świętych Wspomożycieli, z żywotem każdego z tych świętych, których w średniowiecznych Niemczech wzywano razem w szczególnych potrzebach."
+},
+"b253": {
+"content": "Krótka myśl świętego na każdy dzień roku, zaczerpnięta z Ojców, Doktorów i wielkich pisarzy duchowych."
+},
+"b254": {
+"content": "Modlitewnik z modlitwami porannymi i wieczornymi, modlitwami na Mszę, do spowiedzi i Komunii oraz nabożeństwami na cały rok."
+},
+"b255": {
+"content": "Krótkie myśli z pism św. Franciszka Salezego, po jednej na każdy dzień, pełne jego łagodności i zdrowego rozsądku. Przekład angielski: Ella McMahon."
+},
+"b256": {
+"content": "Biskup Belley, bliski przyjaciel św. Franciszka Salezego, spisuje jego rozmowy, powiedzenia i przykład w sprawach modlitwy, cierpliwości, pokory, miłości i troski o dusze."
+},
+"b257": {
+"content": "Rozważania o życiu i tajemnicach Najświętszej Maryi Panny, od Niepokalanego Poczęcia po Wniebowzięcie, do modlitwy przez cały rok."
+},
+"b258": {
+"content": "Żywa opowieść o Męce Chrystusa, oparta na widzeniach bł. Anny Katarzyny Emmerich, spisanych przez poetę Clemensa Brentana. Karmiła pobożność wielu czytelników, choć badacze zauważają, że Brentano…"
+},
+"b259": {
+"content": "Historia objawień Matki Bożej św. Katarzynie Labouré w Paryżu w 1830 roku i rozpowszechnienia Cudownego Medalika, spisana przez kapłana wincentyna, który był jej spowiednikiem."
+},
+"b260": {
+"content": "Krótki, żywy żywot św. Wincentego a Paulo, od pojmania przez piratów i niewoli w Tunisie po założenie Zgromadzenia Misji i Szarytek."
+},
+"b261": {
+"content": "Krótki żywot biskupa Aleksandrii, który bronił bóstwa Chrystusa przeciw Ariuszowi w Nicei i przez pięć wygnań."
+},
+"b262": {
+"content": "Żywot św. Rity, żony, matki, wdowy i augustianki, z tradycjami o pszczołach z jej dzieciństwa, trudnym małżeństwie, ranie od ciernia na czole i różach z Cascii. Przekład z włoskiego."
+},
+"b263": {
+"content": "Krótka książka o tym, jak historyk powinien rozumieć Kościół: nie jako jedną instytucję spośród wielu, lecz jako ciągłe życie jednej społeczności przez stulecia."
+},
+"b264": {
+"content": "Słynna relacja Belloca z pieszej pielgrzymki z Toul we Francji przez Alpy do Rzymu, pełna humoru, dygresji, szkiców i rozważań o wierze i Europie."
+},
+"b265": {
+"content": "Odpowiedź hiszpańskiego kapłana i filozofa na tezę, że reformacja była źródłem cywilizacji europejskiej, badająca, co Kościół uczynił dla wolności, rodziny, ubogich i nauki."
+},
+"b266": {
+"content": "Obraz codziennego życia w angielskich klasztorach przed ich kasatą: budynki, urzędy, godziny modlitwy i praca mnichów i mniszek."
+},
+"b267": {
+"content": "Klasyczny katolicki modlitewnik z końca XVIII i XIX wieku, z codziennymi modlitwami, nabożeństwami na Mszę i do sakramentów, litaniami i modlitwami na święta roku."
+},
+"b268": {
+"content": "Siedem krótkich traktatów pobożnych wydrukowanych po raz pierwszy przez Henry’ego Pepwella w 1521 roku, zawierających fragmenty św. Katarzyny ze Sieny, Waltera Hiltona, autora Obłoku niewiedzy i…"
+},
+"b269": {
+"content": "Drugi zbiór opowiadań o Chestertonowskim księdzu-detektywie, który rozwiązuje zagadki zbrodni dzięki znajomości ludzkiej natury i grzechu, nabytej przez lata w konfesjonale."
+},
+"b270": {
+"content": "Niemiecki jezuita Joseph Deharbe napisał jeden z najpowszechniej używanych katechizmów XIX wieku, nauczany przez pokolenia w Niemczech i wśród niemieckojęzycznych katolików w Ameryce.\n\nTo pełniejsze…"
+},
+"b271": {
+"content": "Najkrótszy z katechizmów baltimorskich, przygotowany dla dzieci przystępujących do Pierwszej Komunii. W 33 krótkich lekcjach z pytaniami i odpowiedziami omawia Boga i stworzenie, grzech i odkupienie…"
+},
+"b272": {
+"content": "Zaawansowany katechizm baltimorski, napisany jako dwuletni kurs dla uczniów po bierzmowaniu. Zawiera pytania z nr 2 i dodaje wiele innych, które je objaśniają, definiując pojęcia i podając…"
+},
+"b273": {
+"content": "Napisane dla katechetów i starszych uczniów, często nazywane Katechizmem baltimorskim nr 4. Przechodzi przez katechizm pytanie po pytaniu, objaśniając każdą odpowiedź prostymi słowami i przykładami z…"
 },
 "bib1": {
 "content": "Opowiada o początkach świata, upadku ludzkości i przymierzu Boga z patriarchami Abrahamem, Izaakiem i Jakubem, a kończy się osiedleniem rodziny Józefa w Egipcie."
@@ -10691,7 +11114,9 @@ window.SANCTIFY_I18N = {
 "book-1": "book-1.0aaad4f0",
 "book-2": "book-2.012742f8",
 "book-3": "book-3.ee2f7580",
-"book-4": "book-4.f509af3f",
+"book-4": "book-4.d1710e8c",
+"book-5": "book-5.76256b9e",
+"book-6": "book-6.d0c5b463",
 "history-0": "history-0.32268a89",
 "history-1": "history-1.ea31604b",
 "history-2": "history-2.887f8368",

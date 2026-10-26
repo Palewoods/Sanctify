@@ -9068,6 +9068,108 @@ window.SANCTIFY_I18N = {
 "The End of the Modern World": "Das Ende der Neuzeit",
 "The Way of Divine Love": "Der Weg der göttlichen Liebe",
 "The Letters of St. Thérèse of Lisieux": "Briefe der hl. Thérèse von Lisieux",
+"The Shepherd of Hermas": "Der Hirt des Hermas",
+"The Letter to Diognetus": "Der Brief an Diognet",
+"The Martyrdom of Polycarp": "Das Martyrium des Polykarp",
+"Letter to the Philippians": "Brief an die Philipper",
+"Dialogue with Trypho": "Dialog mit dem Juden Tryphon",
+"To Autolycus": "An Autolykus",
+"The Passion of Perpetua and Felicity": "Die Passion der Perpetua und Felicitas",
+"The Instructor (Paedagogus)": "Der Erzieher (Paidagogos)",
+"Who Is the Rich Man That Shall Be Saved?": "Welcher Reiche wird gerettet?",
+"On First Principles": "Von den Prinzipien",
+"Against Celsus": "Gegen Kelsos",
+"On the Unity of the Catholic Church": "Über die Einheit der katholischen Kirche",
+"On the Lord’s Prayer": "Über das Gebet des Herrn",
+"The Prescription Against Heretics": "Die Prozesseinrede gegen die Häretiker",
+"On Baptism": "Über die Taufe",
+"Octavius": "Octavius",
+"The Divine Institutes": "Göttliche Unterweisungen",
+"Four Discourses Against the Arians": "Vier Reden gegen die Arianer",
+"Catechetical Lectures": "Katechesen",
+"The Theological Orations": "Theologische Reden",
+"Hexaemeron": "Hexaemeron",
+"The Great Catechism": "Die große Katechese",
+"On the Making of Man": "Über die Erschaffung des Menschen",
+"On the Soul and the Resurrection": "Über die Seele und die Auferstehung",
+"The Life of Moses": "Das Leben des Mose",
+"On the Mysteries": "Über die Mysterien",
+"On the Duties of the Clergy": "Über die Pflichten der Kleriker",
+"Concerning Virgins": "Über die Jungfrauen",
+"On the Trinity (Hilary)": "Über die Dreieinigkeit (Hilarius)",
+"Hymns on the Nativity": "Hymnen auf die Geburt Christi",
+"Demonstrations": "Unterweisungen",
+"Homilies on the Gospel of Matthew": "Homilien zum Matthäusevangelium",
+"Homilies on the Statues": "Säulenhomilien",
+"The Perpetual Virginity of Blessed Mary": "Die immerwährende Jungfräulichkeit Marias",
+"The Life of Paul the First Hermit": "Das Leben des Paulus, des ersten Einsiedlers",
+"The Letters of St. Jerome": "Briefe des hl. Hieronymus",
+"On the Trinity (Augustine)": "Über die Dreieinigkeit (Augustinus)",
+"The Enchiridion": "Enchiridion",
+"Tractates on the Gospel of John": "Vorträge über das Johannesevangelium",
+"Homilies on the First Epistle of John": "Predigten über den ersten Johannesbrief",
+"Expositions on the Psalms": "Auslegungen der Psalmen",
+"Our Lord’s Sermon on the Mount": "Die Bergpredigt des Herrn",
+"Soliloquies": "Selbstgespräche",
+"On Care to Be Had for the Dead": "Von der Sorge für die Toten",
+"The Conferences": "Unterredungen mit den Vätern",
+"The Institutes": "Von den Einrichtungen der Klöster",
+"The Commonitory": "Commonitorium",
+"Sermons of Leo the Great": "Predigten Leos des Großen",
+"The Tome of Leo": "Der Tomus Leonis",
+"The Life of St. Martin": "Das Leben des hl. Martin",
+"Moralia on Job": "Moralia in Iob",
+"Etymologies": "Etymologien",
+"The Ladder of Divine Ascent": "Die Himmelsleiter",
+"Four Hundred Chapters on Love": "Vierhundert Kapitel über die Liebe",
+"An Exact Exposition of the Orthodox Faith": "Genaue Darlegung des orthodoxen Glaubens",
+"On the Divine Images": "Über die göttlichen Bilder",
+"The Lausiac History": "Historia Lausiaca",
+"The Spiritual Meadow": "Die geistliche Wiese",
+"The Book of Lamentations": "Buch der Klagelieder",
+"The Philokalia": "Die Philokalie",
+"The Way of a Pilgrim": "Aufrichtige Erzählungen eines russischen Pilgers",
+"The Epistle of Barnabas": "Der Barnabasbrief",
+"The Liturgy of St. James": "Die Jakobusliturgie",
+"The Divine Liturgy of St. John Chrysostom": "Die Göttliche Liturgie des hl. Johannes Chrysostomus",
+"Barlaam and Ioasaph": "Barlaam und Josaphat",
+"On Holy Images": "Über die heiligen Bilder",
+"The Life of St. Columba": "Das Leben des hl. Columban von Iona",
+"The Letters of St. Ambrose": "Briefe des hl. Ambrosius",
+"Leaves from St. John Chrysostom": "Blätter aus Johannes Chrysostomus",
+"The Writings of Clement of Alexandria": "Schriften des Clemens von Alexandria",
+"The Life of St. Malachy": "Das Leben des hl. Malachias",
+"On Union with God": "Über die Vereinigung mit Gott",
+"On Prayer and the Contemplative Life": "Über das Gebet und das beschauliche Leben",
+"Letters of St. Catherine of Siena": "Briefe der hl. Katharina von Siena",
+"Ten Reasons": "Zehn Gründe",
+"The Faith of Our Fathers": "Der Glaube unserer Väter",
+"Paradoxes of Catholicism": "Paradoxien des Katholizismus",
+"Come Rack! Come Rope!": "Komme Folter, komme Strick!",
+"The King’s Achievement": "Das Werk des Königs",
+"The Dawn of All": "Die Morgenröte aller Dinge",
+"Loss and Gain": "Verlust und Gewinn",
+"Trees and Other Poems": "Bäume und andere Gedichte",
+"Poems of Alice Meynell": "Gedichte von Alice Meynell",
+"The Fourteen Holy Helpers": "Die Vierzehn Nothelfer",
+"Thoughts and Counsels of the Saints": "Gedanken und Ratschläge der Heiligen",
+"General Catholic Devotions": "Katholische Andachten",
+"Maxims and Counsels of St. Francis de Sales": "Sprüche und Ratschläge des hl. Franz von Sales",
+"The Spirit of St. Francis de Sales": "Der Geist des hl. Franz von Sales",
+"The Dolorous Passion of Our Lord Jesus Christ": "Das bittere Leiden unseres Herrn Jesus Christus",
+"Life of St. Vincent de Paul": "Das Leben des hl. Vinzenz von Paul",
+"Life of St. Rita of Cascia": "Das Leben der hl. Rita von Cascia",
+"The Catholic Church and History": "Die katholische Kirche und die Geschichte",
+"The Path to Rome": "Der Weg nach Rom",
+"Protestantism and Catholicity Compared": "Der Protestantismus verglichen mit dem Katholizismus",
+"English Monastic Life": "Englisches Klosterleben",
+"The Complete Manual of Catholic Piety": "Vollständiges Handbuch katholischer Frömmigkeit",
+"The Cell of Self-Knowledge": "Die Zelle der Selbsterkenntnis",
+"The Wisdom of Father Brown": "Die Weisheit des Pater Brown",
+"A Complete Catechism of the Catholic Religion": "Vollständiger Katechismus der katholischen Religion",
+"The Baltimore Catechism No. 1": "Baltimore-Katechismus Nr. 1",
+"The Baltimore Catechism No. 3": "Baltimore-Katechismus Nr. 3",
+"An Explanation of the Baltimore Catechism": "Erklärung des Baltimore-Katechismus",
 "{*}; {*}": "{*}; {*}",
 "{*}: {*}": "{*}: {*}",
 "{*} · {*}": "{*} · {*}",
@@ -9715,6 +9817,327 @@ window.SANCTIFY_I18N = {
 },
 "b166": {
 "content": "Thérèses Briefe an ihre Schwestern, ihre Cousinen und zwei Missionspriester, die sie als geistliche Brüder annahm, zeigen den kleinen Weg in der Praxis, in ihren eigenen Worten und ohne die…"
+},
+"b167": {
+"content": "Eines der meistgelesenen Bücher der frühen Kirche, hält der Hirt die Visionen fest, die Hermas, ein ehemaliger Sklave in Rom, von einer Frau, die die Kirche darstellt, und von einem Engel in Gestalt…"
+},
+"b168": {
+"content": "Ein kurzer, eleganter Brief eines unbekannten Christen an einen fragenden Heiden namens Diognet, der erklärt, warum Christen Götzen und jüdische Opfer ablehnen und warum sie einander lieben.\n\nSeine…"
+},
+"b169": {
+"content": "Ein Brief der Gemeinde von Smyrna, der Verhaftung und Tod ihres betagten Bischofs, des hl. Polykarp, eines Schülers des Apostels Johannes, beschreibt. Aufgefordert, Christus zu lästern, antwortete…"
+},
+"b170": {
+"content": "Polykarp schrieb an die Gemeinde von Philippi, die ihn um die Briefe des hl. Ignatius von Antiochien gebeten hatte. Er ermutigt sie zu Glauben, Gerechtigkeit und Geduld und warnt vor Habgier und…"
+},
+"b171": {
+"content": "Justin erzählt von seiner Bekehrung von der Philosophie zu Christus und von einem langen Streitgespräch mit einem jüdischen Lehrer namens Tryphon in Ephesus.\n\nEr zeigt aus dem Alten Testament, dass…"
+},
+"b172": {
+"content": "Drei Bücher des Bischofs von Antiochien an einen heidnischen Freund, die den christlichen Glauben an den einen Schöpfer erklären und die Schrift gegen heidnische Mythen verteidigen.\n\nTheophilus ist…"
+},
+"b173": {
+"content": "Ein großer Teil dieses Berichts wurde von Perpetua selbst geschrieben, einer jungen Adligen und stillenden Mutter aus Karthago, im Gefängnis, während sie mit ihrer Sklavin Felicitas und anderen…"
+},
+"b174": {
+"content": "Clemens, Leiter der Katechetenschule von Alexandria, stellt Christus als den göttlichen Lehrer dar, der seine Kinder zu einem tugendhaften Leben erzieht.\n\nDas Werk gibt ausführliche und oft…"
+},
+"b175": {
+"content": "Eine Predigt über den reichen Jüngling aus Markus 10. Clemens legt dar, dass Reichtum an sich nicht verurteilt ist; entscheidend sind die innere Freiheit des Herzens und der großzügige Gebrauch des…"
+},
+"b176": {
+"content": "Der erste Versuch einer systematischen christlichen Theologie, über Gott, die Dreifaltigkeit, die Schöpfung, die Vernunftwesen, den freien Willen und die Auslegung der Schrift.\n\nOrigenes war ein…"
+},
+"b177": {
+"content": "Eine Punkt-für-Punkt-Erwiderung auf Die wahre Lehre, einen Angriff des heidnischen Philosophen Kelsos auf das Christentum.\n\nOrigenes antwortet auf den Vorwurf, Christen seien unwissend und…"
+},
+"b178": {
+"content": "Während einer Spaltung in Rom und Karthago nach der Verfolgung des Decius geschrieben, betont dieser Traktat, dass es nur eine Kirche gibt, auf Petrus gegründet, und dass niemand sich von ihr trennen…"
+},
+"b179": {
+"content": "Ein schöner Kommentar zum Vaterunser, Bitte für Bitte, für die Christen von Karthago geschrieben.\n\nCyprian erklärt, dass wir in der Mehrzahl beten, weil wir ein Volk sind, und dass das „tägliche…"
+},
+"b180": {
+"content": "Der afrikanische Schriftsteller Tertullian legt dar, dass Häretiker nicht einmal das Recht haben, die Schrift zu gebrauchen, denn sie gehört der Kirche, die sie von den Aposteln empfangen hat.\n\nDer…"
+},
+"b181": {
+"content": "Die älteste erhaltene Abhandlung über eines der Sakramente. Tertullian erklärt, warum für die Taufe das Wasser gewählt wurde, beschreibt den Ritus mit Salbung und Handauflegung und antwortet denen…"
+},
+"b182": {
+"content": "Ein anmutiger lateinischer Dialog am Strand von Ostia, in dem der Christ Octavius seinem heidnischen Freund Caecilius antwortet, der einer Serapis-Statue eine Kusshand zugeworfen hat.\n\nOctavius…"
+},
+"b183": {
+"content": "Laktanz, ein berühmter Rhetoriklehrer, schrieb diese erste lateinische Darstellung des christlichen Glaubens während der Großen Verfolgung, um gebildeten Heiden zu zeigen, dass das Christentum wahre…"
+},
+"b184": {
+"content": "Die erste Kirchengeschichte, von den Aposteln bis zum Sieg Konstantins. Eusebius zählt die Bischöfe der großen Kirchen auf, beschreibt die Märtyrer und zitiert viele frühe Schriften, die sonst…"
+},
+"b185": {
+"content": "Athanasius’ große Verteidigung der Lehre des Konzils von Nizäa, dass der Sohn „wesensgleich“ mit dem Vater ist.\n\nEr beantwortet die Lieblingsbelegstellen der Arianer eine nach der anderen und zeigt…"
+},
+"b186": {
+"content": "Ein Prolog und dreiundzwanzig Katechesen, gehalten in der Grabeskirche für die Taufbewerber vor Ostern und für die Neugetauften.\n\nDie ersten achtzehn erklären das Glaubensbekenntnis von Jerusalem.…"
+},
+"b187": {
+"content": "Fünf in Konstantinopel gehaltene Predigten, die Gregor den Titel „der Theologe“ eintrugen. Er verteidigt die Gottheit des Sohnes und des Heiligen Geistes und erklärt, wie Gott einer und dreifaltig…"
+},
+"b188": {
+"content": "Neun Fastenhomilien über die sechs Schöpfungstage der Genesis, von Basilius vor dem arbeitenden Volk von Caesarea gehalten.\n\nBasilius freut sich an der Schönheit und Ordnung der Natur, von Fischen…"
+},
+"b189": {
+"content": "Ein Handbuch für Glaubenslehrer, das Dreifaltigkeit, Menschwerdung, Taufe und Eucharistie erklärt und die Einwände von Heiden und Juden beantwortet.\n\nGregor erklärt, warum Gott Mensch wurde und wie…"
+},
+"b190": {
+"content": "Als Ergänzung zum Hexaemeron seines Bruders Basilius geschrieben, bedenkt diese Abhandlung die Erschaffung des Menschen nach dem Bild Gottes.\n\nGregor erkundet die Würde des Menschen als „königliches“…"
+},
+"b191": {
+"content": "Gregor erzählt von einem Gespräch mit seiner sterbenden Schwester, der hl. Makrina, die er „die Lehrerin“ nennt. In Trauer um ihren Bruder Basilius befragt er sie über den Tod, die Seele und die…"
+},
+"b192": {
+"content": "Gregor erzählt zuerst die Geschichte des Mose nach und liest sie dann als Allegorie des Weges der Seele zu Gott: vom Licht des brennenden Dornbuschs durch die Wolke bis in das Dunkel des Sinai, wo…"
+},
+"b193": {
+"content": "Ambrosius erklärt den Neugetauften die Bedeutung der Riten, die sie gerade in der Osternacht empfangen haben: die Öffnung der Ohren, die Taufe, die Salbung und die Eucharistie.\n\nEr lehrt klar, dass…"
+},
+"b194": {
+"content": "Nach Ciceros Schrift Über die Pflichten gestaltet, wurde dieses Werk für die Priester Mailands geschrieben, wurde aber zum ersten christlichen Ethikhandbuch.\n\nAmbrosius behandelt Klugheit…"
+},
+"b195": {
+"content": "Ambrosius schrieb dieses Werk für seine Schwester Marcellina, die von Papst Liberius den Schleier der gottgeweihten Jungfrau empfangen hatte.\n\nEr preist die gottgeweihte Jungfräulichkeit und stellt…"
+},
+"b196": {
+"content": "Während Hilarius’ Verbannung nach Kleinasien wegen seines Widerstands gegen den Arianismus geschrieben, war es das erste große lateinische Werk über die Dreifaltigkeit.\n\nHilarius verteidigt die wahre…"
+},
+"b197": {
+"content": "Ephräm, die „Harfe des Geistes“, schrieb diese syrischen Hymnen zum Fest der Geburt Christi. Sie staunen über das Paradox der Menschwerdung: der Schöpfer an der Brust seiner Mutter, der Hochbetagte…"
+},
+"b198": {
+"content": "Dreiundzwanzig kurze Abhandlungen, auf Syrisch geschrieben von einem Mönchsbischof im Perserreich, außerhalb der römischen Welt.\n\nAphrahat schreibt über Glauben, Liebe, Fasten, Gebet, Demut und die…"
+},
+"b199": {
+"content": "Neunzig in Antiochien gehaltene Predigten, die zu den größten Matthäuskommentaren der frühen Kirche gehören.\n\nChrysostomus, der „Goldmund“, geht mühelos von der Erklärung des Textes dazu über, seine…"
+},
+"b200": {
+"content": "Als in Antiochien Unruhen ausbrachen und das Volk die Statuen des Kaisers und seiner Familie stürzte, fürchtete die ganze Stadt eine furchtbare Strafe.\n\nIn den bangen Fastenwochen danach hielt der…"
+},
+"b201": {
+"content": "Hieronymus’ Antwort an Helvidius, der behauptete, Maria habe nach Jesus weitere Kinder gehabt.\n\nHieronymus zeigt aus der Schrift, dass „Erstgeborener“ keine späteren Kinder voraussetzt und die…"
+},
+"b202": {
+"content": "Hieronymus’ kurzer, reizender Bericht über den hl. Paulus von Theben, der vor der Verfolgung des Decius floh und rund neunzig Jahre allein in der ägyptischen Wüste lebte.\n\nEr erzählt vom Besuch des…"
+},
+"b203": {
+"content": "Mehr als hundert Briefe des großen Bibelübersetzers an Freunde, Päpste, Mönche und vornehme Römerinnen, die er im Studium der Schrift anleitete.\n\nSie reichen von geistlicher Begleitung und…"
+},
+"b204": {
+"content": "Fünfzehn Bücher, in denen Augustinus zuerst den Glauben der Kirche an die Dreifaltigkeit aus der Schrift darlegt und dann ein gewisses Verständnis davon sucht.\n\nEr findet Bilder der Dreifaltigkeit in…"
+},
+"b205": {
+"content": "Ein „Handbüchlein“ über Glaube, Hoffnung und Liebe, auf Bitten eines Laien namens Laurentius geschrieben.\n\nDem Glaubensbekenntnis für den Glauben und dem Vaterunser für die Hoffnung folgend, gibt…"
+},
+"b206": {
+"content": "Hundertvierundzwanzig Predigten über das Johannesevangelium, vor dem einfachen Volk von Hippo gehalten.\n\nAugustinus bedenkt Christus, das fleischgewordene Wort, die Sakramente, die aus seiner Seite…"
+},
+"b207": {
+"content": "Zehn Predigten aus der Osterwoche über den ersten Johannesbrief, den Brief der Liebe.\n\nAugustinus lehrt, dass die Liebe das Kennzeichen des wahren Christen und der Kirche ist und dass die Liebe zu…"
+},
+"b208": {
+"content": "Augustinus’ Kommentar zu allen hundertfünfzig Psalmen, zu einem großen Teil Predigten vor seinem Volk.\n\nEr hört in den Psalmen die Stimme des „ganzen Christus“, Haupt und Leib: bald betet Christus…"
+},
+"b209": {
+"content": "Kurz nach Augustinus’ Priesterweihe geschrieben, stellt dieser Kommentar die Bergpredigt als vollkommenes Vorbild christlichen Lebens dar.\n\nEr verbindet die Seligpreisungen mit den sieben Gaben des…"
+},
+"b210": {
+"content": "Kurz vor seiner Taufe in Cassiciacum geschrieben, sind die Selbstgespräche ein Dialog zwischen Augustinus und seiner eigenen Vernunft darüber, wie man Gott und die Seele erkennt.\n\nSie beginnen mit…"
+},
+"b211": {
+"content": "Der hl. Paulinus von Nola fragte Augustinus, ob es den Toten nütze, in der Nähe eines Märtyrergrabes bestattet zu werden.\n\nAugustinus antwortet, dass der Ort des Begräbnisses weniger zählt als die…"
+},
+"b212": {
+"content": "Cassian durchwanderte als junger Mönch die Wüsten Ägyptens und schrieb später vierundzwanzig Gespräche mit den großen Äbten auf, die er dort traf, über Gebet, Unterscheidung, Keuschheit, Freundschaft…"
+},
+"b213": {
+"content": "Für Mönche in Gallien geschrieben, beschreiben die Einrichtungen Kleidung, Gebet und Alltag der ägyptischen Mönche.\n\nDie zweite Hälfte behandelt die acht Hauptlaster, von der Völlerei bis zum Stolz…"
+},
+"b214": {
+"content": "Eine kurze Anleitung, wahre katholische Lehre von Häresie zu unterscheiden. Vinzenz lehrt, wir müssten festhalten, was überall, immer und von allen geglaubt worden ist.\n\nEr erklärt auch, dass die…"
+},
+"b215": {
+"content": "Sechsundneunzig Predigten, die Papst Leo in Rom zu den Festen und Zeiten des Kirchenjahres hielt: Weihnachten, Epiphanie, Fastenzeit, Passion, Ostern, Pfingsten und das Fest der Heiligen Petrus und…"
+},
+"b216": {
+"content": "Ein Brief Papst Leos an Flavian, Patriarch von Konstantinopel, der erklärt, dass Christus eine Person in zwei Naturen ist, der göttlichen und der menschlichen, deren jede in Gemeinschaft mit der…"
+},
+"b217": {
+"content": "Eine Biographie des hl. Martin von Tours von einem Freund, der ihn persönlich kannte, noch zu Martins Lebzeiten geschrieben.\n\nSie erzählt, wie der Soldat Martin seinen Mantel mit einem Bettler…"
+},
+"b218": {
+"content": "Ein gewaltiger Kommentar zum Buch Ijob, begonnen als Vorträge für Mönche in Konstantinopel, als Gregor dort päpstlicher Gesandter war.\n\nGregor liest Ijob im historischen, allegorischen und…"
+},
+"b219": {
+"content": "Isidor sammelte das Wissen der antiken Welt in zwanzig Büchern, die den Ursprung von Wörtern und Dingen erklären: Grammatik, Medizin, Recht, Theologie, Tiere, Steine, Städte, Schiffe und vieles…"
+},
+"b220": {
+"content": "Vom Abt des Sinai verfasst, beschreibt die Leiter das geistliche Leben in dreißig Stufen, von der Absage an die Welt über Gehorsam, Buße, Gedenken an den Tod und Demut bis zu den Tugenden des…"
+},
+"b221": {
+"content": "Vier Gruppen von je hundert kurzen Sprüchen über die Liebe zu Gott und zum Nächsten, für einen Mönch namens Elpidius geschrieben.\n\nMaximus lehrt, dass die Liebe aus der Loslösung erwächst und wer…"
+},
+"b222": {
+"content": "Als dritter Teil der Quelle der Erkenntnis des Johannes von Damaskus fasst es die Lehre der griechischen Väter über Gott, Schöpfung, Christus, Sakramente, Maria, die Heiligen und die Ikonen…"
+},
+"b223": {
+"content": "Drei Abhandlungen zur Verteidigung der heiligen Ikonen, als der byzantinische Kaiser begann, sie zu zerstören.\n\nJohannes legt dar, dass der unsichtbare Gott nicht abgebildet werden kann, dass wir…"
+},
+"b224": {
+"content": "Palladius lebte jahrelang unter den Mönchen Ägyptens und Palästinas und schrieb später diese Porträts der Männer und Frauen, die er dort kannte, gewidmet Lausus, einem Beamten am Kaiserhof.\n\nEs…"
+},
+"b225": {
+"content": "Eine Sammlung von Hunderten kurzer Geschichten und Sprüche, die der Mönch Johannes Moschos auf seinen Reisen durch die Klöster Palästinas, Ägyptens, Syriens und des Sinai zusammentrug.\n\nSie zeichnet…"
+},
+"b226": {
+"content": "Fünfundneunzig Gebete, jedes überschrieben mit „Gespräch mit Gott aus der Tiefe des Herzens“, verfasst vom armenischen Mönch Gregor von Narek gegen Ende seines Lebens.\n\nDarin bekennt der Dichter…"
+},
+"b227": {
+"content": "Philokalie bedeutet „Liebe zum Schönen“. Diese Anthologie sammelt Schriften östlicher geistlicher Meister vom 4. bis zum 15. Jahrhundert über Wachsamkeit, Reinheit des Herzens und das…"
+},
+"b228": {
+"content": "Ein wandernder russischer Pilger hört in der Kirche das Wort des hl. Paulus, „ohne Unterlass zu beten“, und macht sich auf, um zu lernen, wie das geht. Ein geistlicher Vater lehrt ihn das Jesusgebet…"
+},
+"b229": {
+"content": "Ein frühchristlicher Brief, der Überlieferung nach, aber nicht sicher, dem hl. Barnabas zugeschrieben, der das Alte Testament als Hinweis auf Christus liest.\n\nEr endet mit den „zwei Wegen“, dem Weg…"
+},
+"b230": {
+"content": "Die alte eucharistische Liturgie der Kirche von Jerusalem, der Überlieferung nach dem hl. Jakobus, dem ersten Bischof der Stadt, zugeschrieben.\n\nSie wird in einigen Ostkirchen an bestimmten Tagen…"
+},
+"b231": {
+"content": "Die eucharistische Liturgie, die an den meisten Tagen des Jahres in den byzantinischen Kirchen, katholischen wie orthodoxen, gefeiert wird und nach dem großen Erzbischof von Konstantinopel benannt…"
+},
+"b232": {
+"content": "Eine beliebte christliche Erzählung, in der der indische Prinz Josaphat, den sein Vater von jeder Kenntnis des Leidens fernhält, durch den Einsiedler Barlaam mit einer Reihe von Gleichnissen bekehrt…"
+},
+"b233": {
+"content": "Drei Abhandlungen gegen die Ikonoklasten, die im Byzantinischen Reich die Ikonen zerstörten. Der hl. Johannes erklärt, warum Christen Bilder verehren dürfen: Weil der unsichtbare Gott in Christus…"
+},
+"b234": {
+"content": "Eine kurze erbauliche Lebensbeschreibung des hl. Columba (Colmcille), des irischen Abtes, der das Kloster Iona gründete und den Pikten Schottlands das Evangelium brachte, gestützt auf die alten…"
+},
+"b235": {
+"content": "Die Briefe des großen Bischofs von Mailand an Kaiser, Bischöfe und Freunde. Darunter sind seine feste Haltung gegenüber Kaiser Theodosius nach dem Massaker von Thessalonich, seine Verteidigung der…"
+},
+"b236": {
+"content": "Eine Auswahl aus den Predigten und Briefen des „goldmündigen“ Erzbischofs von Konstantinopel, eingeleitet durch eine Skizze seines Lebens und seiner Verbannung. Englische Übersetzung von Mary H. Allies (1889)."
+},
+"b237": {
+"content": "Die Werke des großen Lehrers der Katechetenschule von Alexandria: die Mahnrede an die Heiden, die zu Christus, dem wahren Wort, einlädt; der Erzieher, eine Anleitung zu christlichem Verhalten; und…"
+},
+"b238": {
+"content": "Bernhards Lebensbeschreibung seines Freundes, des hl. Malachias, Erzbischof von Armagh, der die Kirche in Irland reformierte und 1148 in Clairvaux in Bernhards Armen starb. Englische Übersetzung mit Anmerkungen von H. J. Lawlor (1920)."
+},
+"b239": {
+"content": "Eine kurze Abhandlung über Loslösung, Sammlung und das Ruhen des Geistes in Gott allein. Lange wurde sie unter dem Namen des hl. Albertus Magnus gedruckt, doch heute nimmt man an, dass sie später…"
+},
+"b240": {
+"content": "Die Fragen der Summa theologiae über Religion, Andacht, Gebet sowie tätiges und beschauliches Leben, in einem Buch zusammengefasst. Thomas erklärt, was Gebet ist, warum wir beten, obwohl Gott unsere…"
+},
+"b241": {
+"content": "Briefe, die die hl. Katharina Päpsten, Herrschern, Soldaten, Gefangenen und ihrer geistlichen Familie diktierte, glühend vor Liebe zu Christus und der Kirche, in denen sie Papst Gregor XI. drängt…"
+},
+"b242": {
+"content": "Die Herausforderung des Jesuitenmärtyrers an die protestantischen Gelehrten Englands, auf einer geheimen Presse gedruckt und am Tag der Abschlussfeier 1581 auf den Bänken der Universitätskirche von…"
+},
+"b243": {
+"content": "Eine schlichte, freundliche Erklärung des katholischen Glaubens, vom Erzbischof von Baltimore für amerikanische Protestanten geschrieben. Sie behandelt Kirche, Papsttum, Heilige, Sakramente und…"
+},
+"b244": {
+"content": "Kurze Betrachtungen über die scheinbaren Widersprüche der Kirche, die zugleich menschlich und göttlich, reich und arm, im Frieden und im Krieg ist, und wie die Paradoxe Christi selbst in seinem Leib gelebt werden."
+},
+"b245": {
+"content": "Ein historischer Roman über die elisabethanische Verfolgung in Derbyshire, wo der junge Robin Audrey und Marjorie Manners ihre Heiratshoffnungen aufgeben, damit Robin Priester werden kann in einem…"
+},
+"b246": {
+"content": "Ein Roman über die Auflösung der Klöster unter Heinrich VIII., der zwei Brüdern folgt, einer im Dienst Thomas Cromwells, der andere Mönch in Lewes, mit dem hl. Thomas More unter den Figuren."
+},
+"b247": {
+"content": "Ein Gegenstück zu Der Herr der Welt. Stellte jener Roman sich eine Welt vor, die sich von Christus abwendet, so entwirft dieser eine Zukunft, in der die Kirche die Gefolgschaft der Völker…"
+},
+"b248": {
+"content": "Newmans Roman über Charles Reding, einen Oxforder Studenten, der inmitten der Debatten der Oxford-Bewegung langsam und unter großen persönlichen Opfern seinen Weg in die katholische Kirche findet. Kurz nach Newmans eigener Konversion geschrieben."
+},
+"b249": {
+"content": "Die Sammlung mit Kilmers berühmtem Gedicht „Trees“ sowie Gedichten über Glauben, Familie und Stadtleben des amerikanischen katholischen Dichters, der 1918 im Ersten Weltkrieg fiel."
+},
+"b250": {
+"content": "Joyce Kilmers Anthologie katholischer Dichtung in englischer Sprache, von Francis Thompson, Alice Meynell, Gerard Manley Hopkins und Hilaire Belloc bis zu irischen und amerikanischen Dichtern seiner Zeit."
+},
+"b251": {
+"content": "Gedichte der englischen katholischen Dichterin und Essayistin Alice Meynell, darunter ihr berühmtes Sonett „Renouncement“, geprägt von Zurückhaltung, Zärtlichkeit und Glauben."
+},
+"b252": {
+"content": "Belehrungen, Novenen und Gebete zu Ehren Marias, der Helferin der Christen, und der Vierzehn Nothelfer, mit dem Leben jedes dieser Heiligen, die im mittelalterlichen Deutschland gemeinsam in bestimmten Nöten angerufen wurden."
+},
+"b253": {
+"content": "Ein kurzes Wort eines Heiligen für jeden Tag des Jahres, gesammelt aus den Vätern, den Kirchenlehrern und den großen geistlichen Schriftstellern."
+},
+"b254": {
+"content": "Ein Gebetbuch mit Morgen- und Abendgebeten, Gebeten zur Messe, zur Beichte und Kommunion sowie Andachten durch das Jahr."
+},
+"b255": {
+"content": "Kurze Sprüche aus den Schriften des hl. Franz von Sales, einer für jeden Tag, voller Sanftmut und gesunden Menschenverstands. Englische Übersetzung von Ella McMahon."
+},
+"b256": {
+"content": "Der Bischof von Belley, ein enger Freund des hl. Franz von Sales, hält dessen Gespräche, Aussprüche und Beispiel über Gebet, Geduld, Demut, Liebe und Seelsorge fest."
+},
+"b257": {
+"content": "Betrachtungen über das Leben und die Geheimnisse der Jungfrau Maria, von der Unbefleckten Empfängnis bis zur Aufnahme in den Himmel, zum Gebet durch das Jahr."
+},
+"b258": {
+"content": "Eine anschauliche Schilderung des Leidens Christi nach den Visionen der sel. Anna Katharina Emmerick, wie sie der Dichter Clemens Brentano aufschrieb. Sie hat die Frömmigkeit vieler Leser genährt…"
+},
+"b259": {
+"content": "Die Geschichte der Erscheinungen der Gottesmutter vor der hl. Katharina Labouré in Paris 1830 und der Verbreitung der Wundertätigen Medaille, geschrieben von dem Lazaristenpriester, der ihr Beichtvater war."
+},
+"b260": {
+"content": "Ein kurzes, lebendiges Leben des hl. Vinzenz von Paul, von seiner Gefangennahme durch Piraten und der Sklaverei in Tunis bis zur Gründung der Kongregation der Mission und der Töchter der christlichen Liebe."
+},
+"b261": {
+"content": "Ein kurzes Leben des Bischofs von Alexandria, der die Gottheit Christi gegen Arius in Nizäa und durch fünf Verbannungen hindurch verteidigte."
+},
+"b262": {
+"content": "Das Leben der hl. Rita, Ehefrau, Mutter, Witwe und Augustinernonne, mit den Überlieferungen von den Bienen ihrer Kindheit, ihrer schwierigen Ehe, der Dornenwunde auf ihrer Stirn und den Rosen von Cascia. Aus dem Italienischen."
+},
+"b263": {
+"content": "Ein kurzes Buch darüber, wie ein Historiker die Kirche verstehen sollte: nicht als eine Institution unter vielen, sondern als das fortdauernde Leben einer einzigen Gemeinschaft durch die Jahrhunderte."
+},
+"b264": {
+"content": "Bellocs berühmter Bericht über seine Fußwallfahrt von Toul in Frankreich über die Alpen nach Rom, voller Humor, Abschweifungen, Skizzen und Betrachtungen über Glauben und Europa."
+},
+"b265": {
+"content": "Die Antwort des spanischen Priesters und Philosophen auf die Behauptung, die Reformation sei die Quelle der europäischen Zivilisation, mit einer Prüfung dessen, was die Kirche für Freiheit, Familie, Arme und Bildung geleistet hat."
+},
+"b266": {
+"content": "Ein Bild des Alltags in den englischen Klöstern vor ihrer Auflösung: die Gebäude, die Ämter, die Gebetszeiten und die Arbeit der Mönche und Nonnen."
+},
+"b267": {
+"content": "Ein klassisches katholisches Gebetbuch des späten 18. und des 19. Jahrhunderts mit täglichen Gebeten, Andachten zur Messe und zu den Sakramenten, Litaneien und Gebeten für die Feste des Jahres."
+},
+"b268": {
+"content": "Sieben kurze Andachtstraktate, erstmals 1521 von Henry Pepwell gedruckt, mit Abschnitten von Katharina von Siena, Walter Hilton, dem Verfasser der Wolke des Nichtwissens und Margery Kempe.…"
+},
+"b269": {
+"content": "Die zweite Sammlung von Geschichten über Chestertons Priesterdetektiv, der Verbrechen dank seiner in Jahren im Beichtstuhl gewonnenen Kenntnis der menschlichen Natur und der Sünde aufklärt."
+},
+"b270": {
+"content": "Der deutsche Jesuit Joseph Deharbe schrieb einen der meistverwendeten Katechismen des 19. Jahrhunderts, über Generationen in Deutschland und unter deutschsprachigen Katholiken in Amerika…"
+},
+"b271": {
+"content": "Der kürzeste der Baltimore-Katechismen, für Kinder zur Vorbereitung auf die Erstkommunion verfasst. In 33 kurzen Lektionen mit Fragen und Antworten behandelt er Gott und Schöpfung, Sünde und…"
+},
+"b272": {
+"content": "Der fortgeschrittene Baltimore-Katechismus, als zweijähriger Kurs für Schüler nach der Firmung verfasst. Er enthält die Fragen von Nr. 2 und fügt viele weitere hinzu, die sie erklären, Begriffe…"
+},
+"b273": {
+"content": "Für Katecheten und ältere Schüler geschrieben und oft Baltimore-Katechismus Nr. 4 genannt. Sie geht den Katechismus Frage für Frage durch und erklärt jede Antwort in einfachen Worten mit Beispielen…"
 },
 "bib1": {
 "content": "Erzählt vom Ursprung der Welt, vom Fall des Menschen und vom Bund Gottes mit den Erzvätern Abraham, Isaak und Jakob und endet mit der Familie Josefs, die sich in Ägypten niedergelassen hat."
@@ -10691,7 +11114,9 @@ window.SANCTIFY_I18N = {
 "book-1": "book-1.7413fa83",
 "book-2": "book-2.3b5e5905",
 "book-3": "book-3.e0437485",
-"book-4": "book-4.598f2d8d",
+"book-4": "book-4.1beeb9c1",
+"book-5": "book-5.b377b24e",
+"book-6": "book-6.7e146e35",
 "history-0": "history-0.3bd506b7",
 "history-1": "history-1.ce2d2070",
 "history-2": "history-2.984b5d00",
