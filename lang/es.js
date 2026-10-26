@@ -10848,6 +10848,150 @@ window.SANCTIFY_I18N = {
 "s54": {
 "content": "Sacerdote italiano que creció en la pobreza, Juan Bosco dedicó su vida al cuidado y la educación de muchachos pobres y en riesgo en la Turín industrial, desarrollando un «sistema preventivo» de…"
 },
+"s55": {
+"content": "Noble sueca, esposa y madre de ocho hijos, Brígida tuvo visiones de la Pasión de Cristo tras la muerte de su marido y fundó después la orden de las brigidinas, de monjas y monjes. Pasó gran parte de…"
+},
+"s56": {
+"content": "Abadesa benedictina alemana, Hildegarda fue además teóloga, compositora, naturalista y corresponsal de papas y emperadores, un saber extraordinariamente amplio para una mujer medieval que se formó en…"
+},
+"s57": {
+"content": "Conocido como el «apóstol de Roma» y célebre por su humor y su calidez, Felipe Neri pasó décadas devolviendo a la fe a jóvenes romanos extraviados mediante la amistad, reuniones sencillas de oración…"
+},
+"s58": {
+"content": "Sobrino del papa Pío IV, nombrado cardenal y arzobispo de Milán cuando aún tenía poco más de veinte años, Carlos Borromeo se convirtió en uno de los aplicadores más eficaces de las reformas del…"
+},
+"s59": {
+"content": "Jesuita español que ejerció su ministerio durante cuatro décadas en la ciudad portuaria de Cartagena, en la actual Colombia, Pedro Claver salía al encuentro de los africanos esclavizados que llegaban…"
+},
+"s60": {
+"content": "Abogado italiano que abandonó una brillante carrera jurídica por el sacerdocio, Alfonso fundó la congregación de los redentoristas para predicar misiones a los pobres del campo y escribió…"
+},
+"s61": {
+"content": "Labrador español que trabajó toda su vida los campos cercanos a Madrid, Isidro era conocido por madrugar para oír misa antes del trabajo y por su generosidad con los pobres, incluso compartiendo las…"
+},
+"s62": {
+"content": "Laica italiana que trabajó como sirvienta en la misma casa de Lucca durante casi cincuenta años, Zita era conocida por su humildad, por su generosidad con los pobres de su escaso salario y por su…"
+},
+"s63": {
+"content": "Hijo de Zacarías e Isabel y pariente de Jesús, Juan predicó la conversión en el desierto de Judea y bautizó a multitudes en el río Jordán. Señaló a Jesús como el Cordero de Dios que quita el pecado…"
+},
+"s64": {
+"content": "Según una antigua tradición conservada en el Protoevangelio de Santiago, del siglo II, Joaquín fue el esposo de santa Ana y el padre de la Virgen María. Se dice que el matrimonio no tuvo hijos…"
+},
+"s65": {
+"content": "Uno de los siete diáconos elegidos por los apóstoles para servir a la comunidad de Jerusalén, Esteban estaba lleno de gracia y de poder y predicaba con audacia. Acusado de blasfemia ante el Sanedrín…"
+},
+"s66": {
+"content": "Pescador de Betsaida y hermano de Simón Pedro, Andrés fue primero discípulo de Juan el Bautista. Estuvo entre los primeros llamados por Jesús y llevó a su hermano a conocer al Señor. Los cristianos…"
+},
+"s67": {
+"content": "Hijo de Zebedeo y hermano del apóstol Juan, Santiago fue uno de los tres discípulos más cercanos a Jesús, presente en la Transfiguración y en el huerto de Getsemaní. Jesús llamó a los dos hermanos…"
+},
+"s68": {
+"content": "Recordado como «Tomás el incrédulo» por negarse a creer en la Resurrección hasta poder tocar las llagas de Cristo, Tomás hizo también una de las confesiones de fe más claras de los Evangelios al ver…"
+},
+"s69": {
+"content": "A Bartolomé se le identifica habitualmente con Natanael, a quien Jesús elogió como un israelita sin engaño cuando Felipe lo llevó ante el Señor. Poco más recoge de él la Escritura.\n\nLa tradición dice…"
+},
+"s70": {
+"content": "Recaudador de impuestos en Cafarnaúm, oficio despreciado por sus compatriotas, Mateo dejó al instante su mesa de cobro cuando Jesús le dijo «Sígueme», y después ofreció un banquete a Jesús con otros…"
+},
+"s71": {
+"content": "Marcos, llamado también Juan Marcos, acompañó a Pablo y Bernabé en su primer viaje misionero y fue después un compañero cercano de Pedro en Roma. Una antigua tradición sostiene que su Evangelio, el…"
+},
+"s72": {
+"content": "Médico gentil y compañero de san Pablo, Lucas escribió el Evangelio que lleva su nombre y los Hechos de los Apóstoles. Su Evangelio conserva muchos pasajes queridos que no aparecen en ningún otro…"
+},
+"s73": {
+"content": "Levita de Chipre, Bernabé vendió un campo y entregó el dinero a los apóstoles, que le dieron el nombre de Bernabé, «hijo de la consolación». Salió fiador del recién convertido Saulo cuando los…"
+},
+"s74": {
+"content": "Tercer obispo de Antioquía, Ignacio fue arrestado y llevado a Roma para ser arrojado a las fieras en el Coliseo. Durante el viaje escribió siete cartas a comunidades cristianas que se cuentan entre…"
+},
+"s75": {
+"content": "Obispo de Esmirna y discípulo de san Juan apóstol, Policarpo fue un vínculo vivo entre los apóstoles y las generaciones siguientes. San Ireneo recordaba haberle oído contar sus conversaciones con…"
+},
+"s76": {
+"content": "Filósofo de Samaria que buscó en el estoicismo, en Aristóteles y en Platón antes de encontrar en el cristianismo lo que llamó «la única filosofía segura y provechosa». Abrió una escuela en Roma y…"
+},
+"s77": {
+"content": "Nacido en Asia Menor, Ireneo escuchó de joven la predicación de san Policarpo y llegó a ser después obispo de Lyon, en la Galia. Su gran obra Contra las herejías refutó a las sectas gnósticas…"
+},
+"s78": {
+"content": "Perpetua, una joven noble que amamantaba a su hijo pequeño, y Felicidad, una esclava que dio a luz en la cárcel pocos días antes de morir, eran catecúmenas detenidas en Cartago bajo el emperador…"
+},
+"s79": {
+"content": "Joven siciliana de noble cuna consagrada a Dios, Águeda rechazó los avances de un funcionario romano durante la persecución de Decio. Fue torturada, incluso con la amputación de sus pechos, y murió…"
+},
+"s80": {
+"content": "Uno de los siete diáconos de Roma, Lorenzo era responsable del tesoro de la Iglesia y de su atención a los pobres. Cuando el prefecto exigió las riquezas de la Iglesia, Lorenzo reunió a los pobres, a…"
+},
+"s81": {
+"content": "Rico abogado y maestro de retórica convertido en la madurez, Cipriano llegó poco después a ser obispo de Cartago. Guio a su Iglesia en la persecución de Decio y en una peste devastadora, y escribió…"
+},
+"s82": {
+"content": "Madre del emperador Constantino, Elena se hizo cristiana ya mayor. Pasados los setenta años peregrinó a Tierra Santa, donde fundó iglesias en Belén y en el monte de los Olivos.\n\nLa tradición le…"
+},
+"s83": {
+"content": "Siendo joven diácono, Atanasio asistió al Concilio de Nicea, y como obispo de Alejandría pasó el resto de su vida defendiendo su enseñanza de que Cristo es verdaderamente Dios. Fue desterrado cinco…"
+},
+"s84": {
+"content": "Diácono de Nísibis, en Mesopotamia, Efrén escribió cientos de himnos y poemas para enseñar la fe, lo que le valió el título de «Arpa del Espíritu Santo». Se sirvió de coros de mujeres para cantar sus…"
+},
+"s85": {
+"content": "Soldado romano de Panonia, Martín encontró a un mendigo helado a las puertas de Amiens, cortó su capa militar en dos con la espada y le dio la mitad. Esa noche soñó con Cristo vestido con la media…"
+},
+"s86": {
+"content": "Uno de los tres Padres capadocios, Basilio fue obispo de Cesarea y gran defensor de la fe de Nicea, sobre todo de la divinidad del Espíritu Santo. Su Regla configuró el monacato oriental, y fundó un…"
+},
+"s87": {
+"content": "Llamado en Oriente «el Teólogo», Gregorio fue un poeta y predicador que amaba la soledad pero se vio una y otra vez arrastrado al gobierno de la Iglesia. Como obispo de Constantinopla predicó cinco…"
+},
+"s88": {
+"content": "Predicador tan dotado que más tarde se le llamó Crisóstomo, «boca de oro», Juan fue sacerdote de Antioquía antes de ser arzobispo de Constantinopla. Sus homilías sobre la Escritura siguen siendo…"
+},
+"s89": {
+"content": "Patriarca de Alejandría, Cirilo encabezó la defensa de la unidad de la persona de Cristo frente a Nestorio, que negaba que a María pudiera llamársele con razón Theotokos, «Madre de Dios». Presidió el…"
+},
+"s90": {
+"content": "Papa entre los años 440 y 461, León fue uno de los papas más importantes de la Antigüedad. Su Tomo, una carta que exponía la doctrina de las dos naturalezas de Cristo en una sola persona, fue…"
+},
+"s91": {
+"content": "Consagrada a Dios desde niña, Genoveva llevó en París una vida de oración y ayuno. Cuando el ejército de Atila se acercaba en el año 451, animó al pueblo a rezar en lugar de huir, y la ciudad se…"
+},
+"s92": {
+"content": "Una de las tres patronas de Irlanda junto con Patricio y Columba, Brígida fundó en Kildare un monasterio doble que se convirtió en un gran centro de saber y de arte. Innumerables relatos celebran su…"
+},
+"s93": {
+"content": "Hermana gemela de san Benito, Escolástica dirigía una comunidad de mujeres consagradas cerca de Montecassino. San Gregorio Magno cuenta que, en su último encuentro, ella pidió a Benito que se quedara…"
+},
+"s94": {
+"content": "Monje irlandés de linaje real, Columba (Colmcille) fundó monasterios por toda Irlanda antes de partir hacia Escocia hacia el año 563, quizá como penitencia por una disputa que terminó en batalla.…"
+},
+"s95": {
+"content": "Prefecto romano que se hizo monje, Gregorio fue elegido papa en el año 590 en medio de la peste y la guerra. Organizó la ayuda contra el hambre, negoció con los lombardos y en 597 envió a san Agustín…"
+},
+"s96": {
+"content": "Arzobispo de Sevilla durante más de treinta años, Isidoro trabajó por convertir a los visigodos del arrianismo y por fortalecer la Iglesia en Hispania. Sus Etimologías, una enciclopedia del saber de…"
+},
+"s97": {
+"content": "Según la tradición, Dimpna era hija de un rey irlandés pagano y de una madre cristiana. Tras la muerte de su madre, su padre, enloquecido por el dolor, quiso casarse con ella, y ella huyó a Geel, en…"
+},
+"s98": {
+"content": "Entregado al monasterio de Wearmouth-Jarrow a los siete años, Beda pasó allí toda su vida estudiando, enseñando y escribiendo. Su Historia eclesiástica del pueblo inglés le valió el título de «padre…"
+},
+"s99": {
+"content": "Monje benedictino inglés llamado Winfrido, Bonifacio fue enviado por el papa a evangelizar a los pueblos germánicos. Según una célebre historia, derribó el roble sagrado de Thor en Geismar, y como no…"
+},
+"s100": {
+"content": "Hermanos de Tesalónica, Cirilo y Metodio fueron enviados en el año 863 a evangelizar a los pueblos eslavos de Moravia. Crearon un alfabeto para la lengua eslava, tradujeron la Escritura y la liturgia…"
+},
+"s101": {
+"content": "Duque de Bohemia, Wenceslao fue educado en la fe cristiana por su abuela santa Ludmila. Gobernó con justicia y fue conocido por su caridad con los pobres, las viudas y los presos.\n\nFue asesinado por…"
+},
+"s102": {
+"content": "Célebre maestro de la escuela catedralicia de Reims, Bruno abandonó su carrera y en 1084, con seis compañeros, se retiró a las montañas cercanas a Grenoble. Allí fundó la Gran Cartuja y la orden de…"
+},
 "t1": {
 "content": "Los católicos creen en un solo Dios, Creador de todas las cosas, infinitamente bueno, omnisciente, omnipotente y eterno. Dios no es un ser entre otros, sino el Ser mismo; reveló su nombre a Moisés como «Yo soy el que soy».\n\nLa Iglesia enseña que Dios puede ser conocido con certeza por la luz natural de la razón humana a partir del mundo creado, incluso antes de la revelación. La revelación nos muestra después quién es Dios en sí mismo: un Padre que nos ama y quiere que compartamos su vida."
 },
@@ -11216,6 +11360,7 @@ window.SANCTIFY_I18N = {
 "history-2": "history-2.ed66ccbf",
 "history-3": "history-3.cd19c146",
 "saint-0": "saint-0.25fdc9eb",
-"saint-1": "saint-1.8ee14473"
+"saint-1": "saint-1.0dd11486",
+"saint-2": "saint-2.653d031e"
 }
 };

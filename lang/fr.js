@@ -10898,6 +10898,150 @@ window.SANCTIFY_I18N = {
 "s54": {
 "content": "Prêtre italien qui grandit dans la pauvreté, Jean Bosco consacra sa vie à l’accueil et à l’éducation des garçons pauvres et en danger dans le Turin industriel, élaborant un « système préventif »…"
 },
+"s55": {
+"content": "Noble suédoise, épouse et mère de huit enfants, Brigitte eut des visions de la Passion du Christ après la mort de son mari, puis fonda l’ordre des brigittines, moniales et moines. Elle passa une…"
+},
+"s56": {
+"content": "Abbesse bénédictine allemande, Hildegarde fut aussi théologienne, compositrice, naturaliste et correspondante de papes et d’empereurs, étendue de savoir extraordinaire pour une femme du Moyen Âge…"
+},
+"s57": {
+"content": "Surnommé « l’apôtre de Rome » et célèbre pour son humour et sa chaleur, Philippe Néri passa des décennies à ramener à la foi de jeunes Romains égarés par l’amitié, des réunions de prière informelles…"
+},
+"s58": {
+"content": "Neveu du pape Pie IV, fait cardinal et archevêque de Milan alors qu’il n’avait pas trente ans, Charles Borromée devint l’un des artisans les plus efficaces des réformes du concile de Trente, fondant…"
+},
+"s59": {
+"content": "Jésuite espagnol qui exerça son ministère pendant quarante ans dans le port de Carthagène, dans l’actuelle Colombie, Pierre Claver accueillait les Africains réduits en esclavage qui arrivaient par…"
+},
+"s60": {
+"content": "Avocat italien qui abandonna une brillante carrière juridique pour le sacerdoce, Alphonse fonda la congrégation des rédemptoristes pour prêcher des missions aux pauvres des campagnes et écrivit…"
+},
+"s61": {
+"content": "Ouvrier agricole espagnol qui travailla toute sa vie les champs près de Madrid, Isidore était connu pour se lever tôt afin d’assister à la messe avant le travail et pour sa générosité envers les…"
+},
+"s62": {
+"content": "Laïque italienne qui fut servante dans la même maison de Lucques pendant près de cinquante ans, Zita était connue pour son humilité, sa générosité envers les pauvres sur ses maigres gages et sa…"
+},
+"s63": {
+"content": "Fils de Zacharie et d’Élisabeth et parent de Jésus, Jean prêcha la conversion au désert de Judée et baptisa des foules dans le Jourdain. Il désigna Jésus comme l’Agneau de Dieu qui enlève le péché du…"
+},
+"s64": {
+"content": "Selon une tradition ancienne conservée dans le Protévangile de Jacques, du IIe siècle, Joachim était l’époux de sainte Anne et le père de la Vierge Marie. Le couple, dit-on, resta longtemps sans…"
+},
+"s65": {
+"content": "L’un des sept diacres choisis par les apôtres pour servir la communauté de Jérusalem, Étienne était rempli de grâce et de puissance et prêchait avec hardiesse. Accusé de blasphème devant le…"
+},
+"s66": {
+"content": "Pêcheur de Bethsaïde et frère de Simon-Pierre, André fut d’abord disciple de Jean-Baptiste. Il fut parmi les premiers appelés par Jésus et conduisit son frère au Seigneur. Les chrétiens d’Orient…"
+},
+"s67": {
+"content": "Fils de Zébédée et frère de l’apôtre Jean, Jacques fut l’un des trois disciples les plus proches de Jésus, présent à la Transfiguration et au jardin de Gethsémani. Jésus surnomma les deux frères «…"
+},
+"s68": {
+"content": "Resté dans les mémoires comme « Thomas l’incrédule » pour avoir refusé de croire à la Résurrection avant de toucher les plaies du Christ, Thomas fit aussi l’une des plus claires professions de foi…"
+},
+"s69": {
+"content": "Barthélemy est généralement identifié à Nathanaël, que Jésus loua comme un vrai Israélite sans artifice lorsque Philippe l’amena au Seigneur. L’Écriture ne dit guère plus de lui.\n\nLa tradition…"
+},
+"s70": {
+"content": "Collecteur d’impôts à Capharnaüm, métier méprisé de ses compatriotes, Matthieu quitta aussitôt son bureau de taxes quand Jésus lui dit « Suis-moi », puis offrit un repas à Jésus avec d’autres…"
+},
+"s71": {
+"content": "Marc, appelé aussi Jean-Marc, accompagna Paul et Barnabé lors de leur premier voyage missionnaire, puis fut un proche compagnon de Pierre à Rome. Une tradition ancienne affirme que son Évangile, le…"
+},
+"s72": {
+"content": "Médecin d’origine païenne et compagnon de saint Paul, Luc écrivit l’Évangile qui porte son nom et les Actes des Apôtres. Son Évangile conserve de nombreux passages très aimés qu’on ne trouve nulle…"
+},
+"s73": {
+"content": "Lévite de Chypre, Barnabé vendit un champ et en remit le prix aux apôtres, qui l’appelèrent Barnabé, « fils de l’encouragement ». Il se porta garant du nouveau converti Saul lorsque les chrétiens de…"
+},
+"s74": {
+"content": "Troisième évêque d’Antioche, Ignace fut arrêté et conduit à Rome pour être livré aux bêtes au Colisée. Pendant le voyage, il écrivit sept lettres à des communautés chrétiennes, qui comptent parmi les…"
+},
+"s75": {
+"content": "Évêque de Smyrne et disciple de saint Jean l’apôtre, Polycarpe fut un lien vivant entre les apôtres et les générations suivantes. Saint Irénée se souvenait de l’avoir entendu raconter ses…"
+},
+"s76": {
+"content": "Philosophe de Samarie qui chercha dans le stoïcisme, chez Aristote et chez Platon avant de trouver dans le christianisme ce qu’il appela « la seule philosophie sûre et utile ». Il ouvrit une école à…"
+},
+"s77": {
+"content": "Né en Asie Mineure, Irénée entendit dans sa jeunesse prêcher saint Polycarpe, puis devint évêque de Lyon, en Gaule. Sa grande œuvre, Contre les hérésies, réfuta les sectes gnostiques en s’appuyant…"
+},
+"s78": {
+"content": "Perpétue, jeune noble qui allaitait son petit garçon, et Félicité, esclave qui accoucha en prison quelques jours avant sa mort, étaient des catéchumènes arrêtées à Carthage sous l’empereur Septime…"
+},
+"s79": {
+"content": "Jeune Sicilienne de noble naissance consacrée à Dieu, Agathe repoussa les avances d’un magistrat romain pendant la persécution de Dèce. Elle fut torturée, jusqu’à l’ablation des seins, et mourut en…"
+},
+"s80": {
+"content": "L’un des sept diacres de Rome, Laurent avait la charge du trésor de l’Église et du soin des pauvres. Quand le préfet exigea les richesses de l’Église, Laurent rassembla les pauvres, les malades et…"
+},
+"s81": {
+"content": "Riche avocat et maître de rhétorique converti à l’âge mûr, Cyprien devint peu après évêque de Carthage. Il guida son Église à travers la persécution de Dèce et une peste dévastatrice, et écrivit des…"
+},
+"s82": {
+"content": "Mère de l’empereur Constantin, Hélène devint chrétienne tardivement. Vers la fin de sa septième décennie, elle fit un pèlerinage en Terre sainte, où elle fonda des églises à Bethléem et sur le mont…"
+},
+"s83": {
+"content": "Jeune diacre, Athanase assista au concile de Nicée, et, comme évêque d’Alexandrie, passa le reste de sa vie à défendre son enseignement selon lequel le Christ est vraiment Dieu. Exilé cinq fois par…"
+},
+"s84": {
+"content": "Diacre de Nisibe, en Mésopotamie, Éphrem écrivit des centaines d’hymnes et de poèmes pour enseigner la foi, ce qui lui valut le titre de « Harpe du Saint-Esprit ». Il fit chanter ses hymnes par des…"
+},
+"s85": {
+"content": "Soldat romain originaire de Pannonie, Martin rencontra aux portes d’Amiens un mendiant transi, coupa en deux son manteau militaire avec son épée et lui en donna la moitié. Cette nuit-là, il vit en…"
+},
+"s86": {
+"content": "L’un des trois Pères cappadociens, Basile fut évêque de Césarée et un défenseur majeur de la foi de Nicée, surtout de la divinité du Saint-Esprit. Sa Règle façonna le monachisme oriental, et il fonda…"
+},
+"s87": {
+"content": "Appelé en Orient « le Théologien », Grégoire fut un poète et un prédicateur qui aimait la solitude mais fut à maintes reprises entraîné dans le gouvernement de l’Église. Évêque de Constantinople, il…"
+},
+"s88": {
+"content": "Prédicateur si doué qu’on l’appela plus tard Chrysostome, « bouche d’or », Jean fut prêtre à Antioche avant de devenir archevêque de Constantinople. Ses homélies sur l’Écriture restent des…"
+},
+"s89": {
+"content": "Patriarche d’Alexandrie, Cyrille conduisit la défense de l’unité de la personne du Christ contre Nestorius, qui niait qu’on puisse à bon droit appeler Marie Theotokos, « Mère de Dieu ». Il présida le…"
+},
+"s90": {
+"content": "Pape de 440 à 461, Léon fut l’un des papes les plus importants de l’Antiquité. Son Tome, lettre exposant la doctrine des deux natures du Christ en une seule personne, fut acclamé au concile de…"
+},
+"s91": {
+"content": "Consacrée à Dieu dès l’enfance, Geneviève mena à Paris une vie de prière et de jeûne. Quand l’armée d’Attila approcha en 451, elle exhorta le peuple à prier plutôt qu’à fuir, et la ville fut…"
+},
+"s92": {
+"content": "L’une des trois patrons de l’Irlande avec Patrick et Columba, Brigitte fonda à Kildare un monastère double qui devint un grand centre de savoir et d’art. D’innombrables récits célèbrent sa générosité…"
+},
+"s93": {
+"content": "Sœur jumelle de saint Benoît, Scholastique dirigeait une communauté de femmes consacrées près du Mont-Cassin. Saint Grégoire le Grand raconte que, lors de leur dernière rencontre, elle pria Benoît de…"
+},
+"s94": {
+"content": "Moine irlandais de lignée royale, Columba (Colmcille) fonda des monastères dans toute l’Irlande avant de partir pour l’Écosse vers 563, peut-être en pénitence pour une querelle qui avait tourné à la…"
+},
+"s95": {
+"content": "Préfet de Rome devenu moine, Grégoire fut élu pape en 590 au milieu de la peste et de la guerre. Il organisa le secours contre la famine, négocia avec les Lombards et, en 597, envoya saint Augustin…"
+},
+"s96": {
+"content": "Archevêque de Séville pendant plus de trente ans, Isidore œuvra à convertir les Wisigoths de l’arianisme et à affermir l’Église en Espagne. Ses Étymologies, encyclopédie du savoir de son temps…"
+},
+"s97": {
+"content": "Selon la tradition, Dymphne était la fille d’un roi irlandais païen et d’une mère chrétienne. Après la mort de sa mère, son père, égaré par le chagrin, voulut l’épouser ; elle s’enfuit à Geel, dans…"
+},
+"s98": {
+"content": "Confié au monastère de Wearmouth-Jarrow à l’âge de sept ans, Bède y passa toute sa vie à étudier, enseigner et écrire. Son Histoire ecclésiastique du peuple anglais lui valut le titre de « père de…"
+},
+"s99": {
+"content": "Moine bénédictin anglais nommé Winfrid, Boniface fut envoyé par le pape évangéliser les peuples germaniques. Selon un récit célèbre, il abattit le chêne sacré de Thor à Geismar, et comme il ne lui…"
+},
+"s100": {
+"content": "Frères originaires de Thessalonique, Cyrille et Méthode furent envoyés en 863 évangéliser les peuples slaves de Moravie. Ils créèrent un alphabet pour la langue slave, traduisirent l’Écriture et la…"
+},
+"s101": {
+"content": "Duc de Bohême, Venceslas fut élevé dans la foi chrétienne par sa grand-mère sainte Ludmila. Il gouverna avec justice et fut connu pour sa charité envers les pauvres, les veuves et les…"
+},
+"s102": {
+"content": "Maître réputé de l’école cathédrale de Reims, Bruno quitta sa carrière et, avec six compagnons, se retira en 1084 dans les montagnes près de Grenoble. Il y fonda la Grande Chartreuse et l’ordre des…"
+},
 "t1": {
 "content": "Les catholiques croient en un seul Dieu, Créateur de toutes choses, infiniment bon, omniscient, tout-puissant et éternel. Dieu n’est pas un être parmi d’autres, mais l’Être même ; il a révélé son nom à Moïse : « Je suis celui qui suis ».\n\nL’Église enseigne que Dieu peut être connu avec certitude par la lumière naturelle de la raison humaine à partir du monde créé, avant même la révélation. La révélation nous montre ensuite qui est Dieu en lui-même : un Père qui nous aime et veut nous faire partager sa vie."
 },
@@ -11266,6 +11410,7 @@ window.SANCTIFY_I18N = {
 "history-2": "history-2.1582041c",
 "history-3": "history-3.9f679a88",
 "saint-0": "saint-0.9dfb93f1",
-"saint-1": "saint-1.ac0de6f6"
+"saint-1": "saint-1.616dd505",
+"saint-2": "saint-2.a9adf1d0"
 }
 };

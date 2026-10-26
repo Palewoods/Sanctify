@@ -34,7 +34,7 @@
     var ui = JSON.parse(localStorage.getItem('sanctify.lang') || '"en"');
     if(/^(es|pl|fr|pt|it|de|ru|uk)$/.test(ui) && !/\.translate\.goog$/.test(location.hostname)){
       document.documentElement.lang = ui;
-      document.write('<script src="lang/' + ui + '.js?v=930df00a"><\/script>');
+      document.write('<script src="lang/' + ui + '.js?v=2b28a32d"><\/script>');
     }
     if(JSON.parse(localStorage.getItem('sanctify.motion') || '""') === 'reduced') document.documentElement.setAttribute('data-motion', 'reduced');
     var t = localStorage.getItem('sanctify.theme');

@@ -10898,6 +10898,150 @@ window.SANCTIFY_I18N = {
 "s54": {
 "content": "Włoski kapłan, który wyrósł w biedzie, Jan Bosko poświęcił życie opiece i wychowaniu ubogich i zagrożonych chłopców w uprzemysłowionym Turynie, tworząc „system prewencyjny” wychowania oparty na…"
 },
+"s55": {
+"content": "Szwedzka szlachcianka, żona i matka ośmiorga dzieci, Brygida po śmierci męża doznawała widzeń Męki Chrystusa i założyła zakon brygidek, mniszek i mnichów. Znaczną część późniejszego życia spędziła w…"
+},
+"s56": {
+"content": "Niemiecka ksieni benedyktyńska, Hildegarda była także teolożką, kompozytorką, przyrodniczką i korespondentką papieży i cesarzy — niezwykle szeroka wiedza jak na średniowieczną kobietę, w dużej mierze…"
+},
+"s57": {
+"content": "Nazywany „apostołem Rzymu” i słynący z humoru i serdeczności, Filip Neri przez dziesięciolecia przyprowadzał zagubionych młodych Rzymian z powrotem do wiary przez przyjaźń, nieformalne spotkania…"
+},
+"s58": {
+"content": "Bratanek papieża Piusa IV, mianowany kardynałem i arcybiskupem Mediolanu jeszcze przed trzydziestką, Karol Boromeusz stał się jednym z najskuteczniejszych realizatorów reform Soboru Trydenckiego…"
+},
+"s59": {
+"content": "Hiszpański jezuita, który przez cztery dekady posługiwał w portowym mieście Kartagena w dzisiejszej Kolumbii, Piotr Klawer wychodził na spotkanie zniewolonych Afrykanów przybywających tysiącami po…"
+},
+"s60": {
+"content": "Włoski adwokat, który porzucił świetną karierę prawniczą dla kapłaństwa, Alfons założył zgromadzenie redemptorystów, by głosić misje wśród wiejskiej biedoty, i pisał obszernie o teologii moralnej…"
+},
+"s61": {
+"content": "Hiszpański rolnik, który całe życie uprawiał pola pod Madrytem, Izydor słynął z tego, że wstawał wcześnie, by przed pracą być na Mszy, oraz z hojności wobec ubogich, nawet kosztem skromnych zapasów…"
+},
+"s62": {
+"content": "Włoska świecka, która przez prawie pięćdziesiąt lat pracowała jako służąca w tym samym domu w Lukce, Zyta słynęła z pokory, hojności wobec ubogich ze swoich skromnych zarobków i cichej, nieustannej…"
+},
+"s63": {
+"content": "Syn Zachariasza i Elżbiety, krewny Jezusa, Jan głosił nawrócenie na Pustyni Judzkiej i chrzcił tłumy w Jordanie. Wskazał na Jezusa jako Baranka Bożego, który gładzi grzech świata, i ochrzcił Go na…"
+},
+"s64": {
+"content": "Według starożytnej tradycji zachowanej w Protoewangelii Jakuba z II wieku, Joachim był mężem św. Anny i ojcem Najświętszej Maryi Panny. Małżonkowie mieli długo pozostawać bezdzietni, aż narodziny…"
+},
+"s65": {
+"content": "Jeden z siedmiu diakonów wybranych przez apostołów do posługi wspólnocie jerozolimskiej, Szczepan był pełen łaski i mocy i odważnie głosił Ewangelię. Oskarżony o bluźnierstwo przed Sanhedrynem…"
+},
+"s66": {
+"content": "Rybak z Betsaidy i brat Szymona Piotra, Andrzej był najpierw uczniem Jana Chrzciciela. Należał do pierwszych powołanych przez Jezusa i przyprowadził do Pana swojego brata. Chrześcijanie wschodni…"
+},
+"s67": {
+"content": "Syn Zebedeusza i brat apostoła Jana, Jakub był jednym z trzech uczniów najbliższych Jezusowi, obecnym przy Przemienieniu i w Ogrodzie Oliwnym. Jezus nazwał obu braci „synami gromu”.\n\nZostał ścięty…"
+},
+"s68": {
+"content": "Pamiętany jako „niewierny Tomasz”, bo nie chciał uwierzyć w Zmartwychwstanie, dopóki nie dotknie ran Chrystusa, Tomasz złożył zarazem jedno z najjaśniejszych wyznań wiary w Ewangeliach, gdy ujrzał…"
+},
+"s69": {
+"content": "Bartłomieja zwykle utożsamia się z Natanaelem, którego Jezus pochwalił jako prawdziwego Izraelitę bez podstępu, gdy Filip przyprowadził go do Pana. Niewiele więcej Pismo o nim mówi.\n\nTradycja głosi…"
+},
+"s70": {
+"content": "Celnik w Kafarnaum, zawód pogardzany przez rodaków, Mateusz natychmiast porzucił komorę celną, gdy Jezus powiedział „Pójdź za Mną”, a potem wydał ucztę dla Jezusa z innymi celnikami i…"
+},
+"s71": {
+"content": "Marek, zwany też Janem Markiem, towarzyszył Pawłowi i Barnabie w pierwszej podróży misyjnej, a później był bliskim towarzyszem Piotra w Rzymie. Dawna tradycja głosi, że jego Ewangelia, najkrótsza i…"
+},
+"s72": {
+"content": "Lekarz poganin i towarzysz św. Pawła, Łukasz napisał zarówno Ewangelię noszącą jego imię, jak i Dzieje Apostolskie. Jego Ewangelia zachowuje wiele ukochanych fragmentów nieobecnych gdzie indziej, w…"
+},
+"s73": {
+"content": "Lewita z Cypru, Barnaba sprzedał pole i oddał pieniądze apostołom, którzy nazwali go Barnabą, „synem pocieszenia”. Poręczył za nawróconego Szawła, gdy chrześcijanie w Jerozolimie się go…"
+},
+"s74": {
+"content": "Trzeci biskup Antiochii, Ignacy, został aresztowany i zawieziony do Rzymu, by rzucić go dzikim zwierzętom w Koloseum. W drodze napisał siedem listów do wspólnot chrześcijańskich, należących do…"
+},
+"s75": {
+"content": "Biskup Smyrny i uczeń św. Jana Apostoła, Polikarp był żywym ogniwem między apostołami a późniejszymi pokoleniami. Św. Ireneusz wspominał, jak słyszał go opowiadającego o rozmowach z Janem.\n\nMając…"
+},
+"s76": {
+"content": "Filozof z Samarii, który szukał w stoicyzmie, u Arystotelesa i Platona, zanim znalazł w chrześcijaństwie to, co nazwał „jedyną pewną i pożyteczną filozofią”. Otworzył szkołę w Rzymie i pisał apologie…"
+},
+"s77": {
+"content": "Urodzony w Azji Mniejszej, Ireneusz jako młody człowiek słuchał kazań św. Polikarpa, a później został biskupem Lyonu w Galii. Jego wielkie dzieło Przeciw herezjom odpierało sekty gnostyckie…"
+},
+"s78": {
+"content": "Perpetua, młoda szlachcianka karmiąca synka, i Felicyta, niewolnica, która urodziła dziecko w więzieniu na kilka dni przed śmiercią, były katechumenkami aresztowanymi w Kartaginie za cesarza…"
+},
+"s79": {
+"content": "Młoda Sycylijka szlachetnego rodu, poświęcona Bogu, Agata odrzuciła zaloty rzymskiego urzędnika w czasie prześladowania Decjusza. Była torturowana, między innymi przez obcięcie piersi, i zmarła w…"
+},
+"s80": {
+"content": "Jeden z siedmiu diakonów Rzymu, Wawrzyniec odpowiadał za skarbiec Kościoła i jego troskę o ubogich. Gdy prefekt zażądał bogactw Kościoła, Wawrzyniec zgromadził ubogich, chorych i wdowy i przedstawił…"
+},
+"s81": {
+"content": "Zamożny prawnik i nauczyciel retoryki, który nawrócił się w wieku dojrzałym, Cyprian wkrótce potem został biskupem Kartaginy. Prowadził swój Kościół przez prześladowanie Decjusza i niszczycielską…"
+},
+"s82": {
+"content": "Matka cesarza Konstantyna, Helena została chrześcijanką w późniejszym wieku. Mając blisko osiemdziesiąt lat, odbyła pielgrzymkę do Ziemi Świętej, gdzie założyła kościoły w Betlejem i na Górze…"
+},
+"s83": {
+"content": "Jako młody diakon Atanazy uczestniczył w Soborze Nicejskim, a jako biskup Aleksandrii przez resztę życia bronił jego nauki, że Chrystus jest prawdziwym Bogiem. Pięciokrotnie skazywany na wygnanie…"
+},
+"s84": {
+"content": "Diakon z Nisibis w Mezopotamii, Efrem napisał setki hymnów i poematów uczących wiary, co przyniosło mu tytuł „Harfy Ducha Świętego”. Do śpiewania swoich hymnów używał chórów kobiecych, które…"
+},
+"s85": {
+"content": "Rzymski żołnierz z Panonii, Marcin spotkał u bram Amiens zamarzającego żebraka, przeciął mieczem swój wojskowy płaszcz na pół i oddał mu połowę. Tej nocy we śnie ujrzał Chrystusa okrytego połową…"
+},
+"s86": {
+"content": "Jeden z trzech Ojców Kapadockich, Bazyli był biskupem Cezarei i głównym obrońcą wiary nicejskiej, zwłaszcza bóstwa Ducha Świętego. Jego Reguła ukształtowała monastycyzm wschodni, a on sam założył…"
+},
+"s87": {
+"content": "Nazywany na Wschodzie „Teologiem”, Grzegorz był poetą i kaznodzieją, który kochał samotność, lecz raz po raz był wciągany w kierowanie Kościołem. Jako biskup Konstantynopola wygłosił pięć Mów…"
+},
+"s88": {
+"content": "Kaznodzieja tak utalentowany, że później nazwano go Chryzostomem, „złotoustym”, Jan był kapłanem w Antiochii, zanim został arcybiskupem Konstantynopola. Jego homilie o Piśmie Świętym pozostają…"
+},
+"s89": {
+"content": "Patriarcha Aleksandrii, Cyryl przewodził obronie jedności osoby Chrystusa przeciw Nestoriuszowi, który przeczył, że Maryję można słusznie nazywać Theotokos, „Bożą Rodzicielką”. Przewodniczył Soborowi…"
+},
+"s90": {
+"content": "Papież w latach 440–461, Leon był jednym z najważniejszych papieży starożytności. Jego Tomus, list wykładający naukę o dwóch naturach Chrystusa w jednej osobie, przyjęto na Soborze Chalcedońskim…"
+},
+"s91": {
+"content": "Poświęcona Bogu już jako dziewczynka, Genowefa wiodła w Paryżu życie modlitwy i postu. Gdy w 451 roku zbliżało się wojsko Attyli, wezwała lud, by się modlił zamiast uciekać, i miasto zostało…"
+},
+"s92": {
+"content": "Jedna z trojga patronów Irlandii obok Patryka i Kolumby, Brygida założyła w Kildare klasztor podwójny, który stał się wielkim ośrodkiem nauki i sztuki. Niezliczone opowieści sławią jej bezgraniczną…"
+},
+"s93": {
+"content": "Siostra bliźniaczka św. Benedykta, Scholastyka prowadziła wspólnotę kobiet konsekrowanych w pobliżu Monte Cassino. Św. Grzegorz Wielki opowiada, że podczas ich ostatniego spotkania poprosiła…"
+},
+"s94": {
+"content": "Irlandzki mnich z królewskiego rodu, Kolumba (Colmcille) zakładał klasztory w całej Irlandii, zanim około 563 roku wyruszył do Szkocji, być może w ramach pokuty za spór, który zakończył się bitwą.…"
+},
+"s95": {
+"content": "Rzymski prefekt, który został mnichem, Grzegorz został wybrany papieżem w 590 roku wśród zarazy i wojny. Organizował pomoc dla głodujących, negocjował z Longobardami, a w 597 roku wysłał św.…"
+},
+"s96": {
+"content": "Arcybiskup Sewilli przez ponad trzydzieści lat, Izydor zabiegał o nawrócenie Wizygotów z arianizmu i o umocnienie Kościoła w Hiszpanii. Jego Etymologie, encyklopedia wiedzy jego czasów, należały do…"
+},
+"s97": {
+"content": "Według tradycji Dymfna była córką pogańskiego króla Irlandii i matki chrześcijanki. Po śmierci matki jej ojciec, oszalały z żalu, chciał ją poślubić, a ona uciekła do Geel w dzisiejszej Belgii, gdzie…"
+},
+"s98": {
+"content": "Oddany do klasztoru Wearmouth-Jarrow w wieku siedmiu lat, Beda spędził tam całe życie na nauce, nauczaniu i pisaniu. Jego Historia kościelna narodu angielskiego przyniosła mu tytuł „ojca historii…"
+},
+"s99": {
+"content": "Angielski mnich benedyktyn imieniem Wynfryd, Bonifacy został wysłany przez papieża do ewangelizacji ludów germańskich. Według słynnej opowieści ściął święty dąb Thora w Geismarze, a gdy nic złego mu…"
+},
+"s100": {
+"content": "Bracia z Tesaloniki, Cyryl i Metody zostali wysłani w 863 roku do ewangelizacji ludów słowiańskich Moraw. Stworzyli alfabet dla języka słowiańskiego, przełożyli Pismo Święte i liturgię i odprawiali…"
+},
+"s101": {
+"content": "Książę Czech, Wacław był wychowany w wierze chrześcijańskiej przez swoją babkę, św. Ludmiłę. Rządził sprawiedliwie i słynął z miłosierdzia wobec ubogich, wdów i więźniów.\n\nZostał zamordowany przez…"
+},
+"s102": {
+"content": "Słynny nauczyciel szkoły katedralnej w Reims, Brunon porzucił karierę i w 1084 roku z sześcioma towarzyszami wycofał się w góry w pobliżu Grenoble. Tam założył Wielką Kartuzję i zakon kartuzów, który…"
+},
 "t1": {
 "content": "Katolicy wierzą w jednego Boga, Stwórcę wszystkiego, który jest nieskończenie dobry, wszechwiedzący, wszechmogący i wieczny. Bóg nie jest jednym z bytów, lecz samym Bytem; objawił Mojżeszowi swoje imię: „Jestem, który jestem”.\n\nKościół naucza, że Boga można poznać z pewnością naturalnym światłem rozumu ludzkiego na podstawie stworzonego świata, jeszcze przed objawieniem. Objawienie ukazuje nam następnie, kim Bóg jest sam w sobie: Ojcem, który nas kocha i pragnie, abyśmy uczestniczyli w Jego życiu."
 },
@@ -11266,6 +11410,7 @@ window.SANCTIFY_I18N = {
 "history-2": "history-2.887f8368",
 "history-3": "history-3.17bd3417",
 "saint-0": "saint-0.20ebd35b",
-"saint-1": "saint-1.18eae9f1"
+"saint-1": "saint-1.09160f1a",
+"saint-2": "saint-2.46af557b"
 }
 };

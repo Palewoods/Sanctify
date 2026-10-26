@@ -10898,6 +10898,150 @@ window.SANCTIFY_I18N = {
 "s54": {
 "content": "Ein in Armut aufgewachsener italienischer Priester: Johannes Bosco widmete sein Leben der Sorge um arme und gefährdete Jungen im industrialisierten Turin und entwickelte ein „Präventivsystem“ der…"
 },
+"s55": {
+"content": "Birgitta, eine schwedische Adlige, Ehefrau und Mutter von acht Kindern, hatte nach dem Tod ihres Mannes Visionen vom Leiden Christi und gründete den Birgittenorden für Nonnen und Mönche. Einen…"
+},
+"s56": {
+"content": "Die deutsche Benediktineräbtissin Hildegard war zugleich Theologin, Komponistin, Naturkundige und Briefpartnerin von Päpsten und Kaisern – eine für eine mittelalterliche Frau außergewöhnliche…"
+},
+"s57": {
+"content": "Als „Apostel Roms“ bekannt und berühmt für seinen Humor und seine Herzlichkeit, führte Philipp Neri jahrzehntelang verirrte junge Römer durch Freundschaft, zwanglose Gebetstreffen und Werke der…"
+},
+"s58": {
+"content": "Ein Neffe Papst Pius’ IV., der schon mit Mitte zwanzig Kardinal und Erzbischof von Mailand wurde: Karl Borromäus wurde einer der wirksamsten Umsetzer der Reformen des Konzils von Trient, gründete…"
+},
+"s59": {
+"content": "Petrus Claver, ein spanischer Jesuit, wirkte vier Jahrzehnte in der Hafenstadt Cartagena im heutigen Kolumbien und empfing die versklavten Afrikaner, die zu Tausenden aus den furchtbaren…"
+},
+"s60": {
+"content": "Ein italienischer Anwalt, der eine glänzende juristische Laufbahn für das Priestertum aufgab: Alfons gründete die Kongregation der Redemptoristen, um der armen Landbevölkerung Volksmissionen zu…"
+},
+"s61": {
+"content": "Ein spanischer Landarbeiter, der sein Leben lang die Felder bei Madrid bestellte: Isidor war dafür bekannt, früh aufzustehen, um vor der Arbeit die Messe zu besuchen, und für seine Großzügigkeit…"
+},
+"s62": {
+"content": "Zita, eine italienische Laiin, diente fast fünfzig Jahre lang als Magd im selben Haus in Lucca und war bekannt für ihre Demut, ihre Großzügigkeit gegenüber den Armen aus ihrem geringen Lohn und ihr…"
+},
+"s63": {
+"content": "Der Sohn des Zacharias und der Elisabet und ein Verwandter Jesu: Johannes predigte in der Wüste Judäas die Umkehr und taufte große Menschenmengen im Jordan. Er wies auf Jesus als das Lamm Gottes hin…"
+},
+"s64": {
+"content": "Nach alter Überlieferung, die im Protevangelium des Jakobus aus dem 2. Jahrhundert bewahrt ist, war Joachim der Mann der hl. Anna und der Vater der Jungfrau Maria. Das Paar soll lange kinderlos…"
+},
+"s65": {
+"content": "Einer der sieben Diakone, die die Apostel für den Dienst an der Jerusalemer Gemeinde wählten: Stephanus war voll Gnade und Kraft und predigte mutig. Vor dem Hohen Rat der Gotteslästerung angeklagt…"
+},
+"s66": {
+"content": "Andreas, ein Fischer aus Betsaida und Bruder des Simon Petrus, war zuerst ein Jünger Johannes’ des Täufers. Er gehörte zu den ersten, die Jesus berief, und führte seinen Bruder zum Herrn. Die…"
+},
+"s67": {
+"content": "Der Sohn des Zebedäus und Bruder des Apostels Johannes: Jakobus war einer der drei Jünger, die Jesus am nächsten standen, und war bei der Verklärung und im Garten Getsemani zugegen. Jesus nannte die…"
+},
+"s68": {
+"content": "Als „ungläubiger Thomas“ erinnert, weil er nicht an die Auferstehung glauben wollte, bevor er die Wunden Christi berühren konnte, sprach Thomas zugleich eines der klarsten Glaubensbekenntnisse der…"
+},
+"s69": {
+"content": "Bartholomäus wird meist mit Natanaël gleichgesetzt, den Jesus als echten Israeliten ohne Falschheit lobte, als Philippus ihn zum Herrn brachte. Viel mehr berichtet die Schrift nicht von ihm.\n\nDie…"
+},
+"s70": {
+"content": "Matthäus, ein Zöllner in Kafarnaum – ein Beruf, den seine Landsleute verachteten –, verließ sofort seine Zollstelle, als Jesus sagte: „Folge mir nach“, und gab dann für Jesus ein Mahl mit anderen…"
+},
+"s71": {
+"content": "Markus, auch Johannes Markus genannt, begleitete Paulus und Barnabas auf ihrer ersten Missionsreise und war später ein enger Gefährte des Petrus in Rom. Nach alter Überlieferung bewahrt sein…"
+},
+"s72": {
+"content": "Lukas, ein heidenchristlicher Arzt und Gefährte des hl. Paulus, schrieb das nach ihm benannte Evangelium und die Apostelgeschichte. Sein Evangelium bewahrt viele beliebte Stellen, die sich sonst…"
+},
+"s73": {
+"content": "Barnabas, ein Levit aus Zypern, verkaufte einen Acker und gab den Erlös den Aposteln, die ihn Barnabas, „Sohn des Trostes“, nannten. Er bürgte für den neubekehrten Saulus, als die Christen in…"
+},
+"s74": {
+"content": "Ignatius, der dritte Bischof von Antiochien, wurde verhaftet und nach Rom gebracht, um im Kolosseum den wilden Tieren vorgeworfen zu werden. Auf der Reise schrieb er sieben Briefe an christliche…"
+},
+"s75": {
+"content": "Polykarp, Bischof von Smyrna und Schüler des Apostels Johannes, war ein lebendiges Bindeglied zwischen den Aposteln und den späteren Generationen. Der hl. Irenäus erinnerte sich, ihn von seinen…"
+},
+"s76": {
+"content": "Ein Philosoph aus Samarien, der bei den Stoikern, bei Aristoteles und Platon suchte, bevor er im Christentum fand, was er „die einzig sichere und nützliche Philosophie“ nannte. Er eröffnete eine…"
+},
+"s77": {
+"content": "In Kleinasien geboren, hörte Irenäus als junger Mann die Predigt des hl. Polykarp und wurde später Bischof von Lyon in Gallien. Sein großes Werk Gegen die Häresien widerlegte die gnostischen Gruppen…"
+},
+"s78": {
+"content": "Perpetua, eine junge Adlige, die ihren kleinen Sohn stillte, und Felicitas, eine Sklavin, die wenige Tage vor ihrem Tod im Gefängnis ein Kind gebar, waren Katechumenen, die unter Kaiser Septimius…"
+},
+"s79": {
+"content": "Agatha, eine junge Sizilianerin aus edlem Haus, die sich Gott geweiht hatte, wies während der Verfolgung unter Decius die Annäherungen eines römischen Beamten zurück. Sie wurde gefoltert, bis hin zum…"
+},
+"s80": {
+"content": "Laurentius, einer der sieben Diakone Roms, war für die Kasse der Kirche und ihre Armenfürsorge verantwortlich. Als der Präfekt die Reichtümer der Kirche verlangte, versammelte Laurentius die Armen…"
+},
+"s81": {
+"content": "Cyprian, ein wohlhabender Anwalt und Rhetoriklehrer, der in reifem Alter Christ wurde, wurde bald darauf Bischof von Karthago. Er führte seine Kirche durch die Verfolgung unter Decius und eine…"
+},
+"s82": {
+"content": "Helena, die Mutter Kaiser Konstantins, wurde erst spät im Leben Christin. Mit fast achtzig Jahren pilgerte sie ins Heilige Land, wo sie Kirchen in Betlehem und auf dem Ölberg gründete.\n\nDie…"
+},
+"s83": {
+"content": "Als junger Diakon nahm Athanasius am Konzil von Nizäa teil und verbrachte als Bischof von Alexandria den Rest seines Lebens damit, dessen Lehre zu verteidigen, dass Christus wahrhaft Gott ist.…"
+},
+"s84": {
+"content": "Ephräm, ein Diakon aus Nisibis in Mesopotamien, schrieb Hunderte Hymnen und Gedichte, die den Glauben lehrten, und erhielt dafür den Titel „Harfe des Heiligen Geistes“. Er ließ seine Hymnen von…"
+},
+"s85": {
+"content": "Martin, ein römischer Soldat aus Pannonien, traf an den Toren von Amiens einen frierenden Bettler, teilte mit dem Schwert seinen Soldatenmantel und gab ihm die Hälfte. In der Nacht sah er im Traum…"
+},
+"s86": {
+"content": "Basilius, einer der drei kappadokischen Väter, war Bischof von Caesarea und ein führender Verteidiger des nizänischen Glaubens, besonders der Gottheit des Heiligen Geistes. Seine Regel prägte das…"
+},
+"s87": {
+"content": "Im Osten „der Theologe“ genannt, war Gregor ein Dichter und Prediger, der die Einsamkeit liebte, aber immer wieder in die Leitung der Kirche gezogen wurde. Als Bischof von Konstantinopel hielt er…"
+},
+"s88": {
+"content": "Ein so begabter Prediger, dass man ihn später Chrysostomus, „Goldmund“, nannte: Johannes war Priester in Antiochien, bevor er Erzbischof von Konstantinopel wurde. Seine Homilien über die Schrift sind…"
+},
+"s89": {
+"content": "Kyrill, Patriarch von Alexandria, führte die Verteidigung der Einheit der Person Christi gegen Nestorius, der bestritt, dass Maria zu Recht Theotokos, „Gottesgebärerin“, genannt werden könne. Er…"
+},
+"s90": {
+"content": "Papst von 440 bis 461, war Leo einer der bedeutendsten Päpste der Frühzeit. Sein Tomus, ein Brief, der die Lehre von den zwei Naturen Christi in einer Person darlegte, wurde auf dem Konzil von…"
+},
+"s91": {
+"content": "Schon als Mädchen Gott geweiht, führte Genoveva in Paris ein Leben des Gebets und Fastens. Als 451 das Heer Attilas heranzog, ermahnte sie das Volk zu beten, statt zu fliehen, und die Stadt blieb…"
+},
+"s92": {
+"content": "Brigida, eine der drei Schutzheiligen Irlands neben Patrick und Columba, gründete in Kildare ein Doppelkloster, das zu einem großen Zentrum der Bildung und Kunst wurde. Unzählige Geschichten rühmen…"
+},
+"s93": {
+"content": "Scholastika, die Zwillingsschwester des hl. Benedikt, leitete eine Gemeinschaft gottgeweihter Frauen bei Montecassino. Der hl. Gregor der Große erzählt, sie habe Benedikt bei ihrem letzten Treffen…"
+},
+"s94": {
+"content": "Columba (Colmcille), ein irischer Mönch königlicher Abstammung, gründete Klöster in ganz Irland, bevor er um 563 nach Schottland aufbrach, vielleicht als Buße für einen Streit, der in einer Schlacht…"
+},
+"s95": {
+"content": "Gregor, ein römischer Stadtpräfekt, der Mönch wurde, wurde 590 inmitten von Pest und Krieg zum Papst gewählt. Er organisierte Hilfe gegen den Hunger, verhandelte mit den Langobarden und sandte 597…"
+},
+"s96": {
+"content": "Isidor, über dreißig Jahre Erzbischof von Sevilla, bemühte sich, die Westgoten vom Arianismus zu bekehren und die Kirche in Spanien zu stärken. Seine Etymologien, eine Enzyklopädie des Wissens seiner…"
+},
+"s97": {
+"content": "Der Überlieferung nach war Dymphna die Tochter eines heidnischen irischen Königs und einer christlichen Mutter. Nach dem Tod der Mutter wollte der von Trauer verwirrte Vater sie heiraten; sie floh…"
+},
+"s98": {
+"content": "Mit sieben Jahren dem Kloster Wearmouth-Jarrow übergeben, verbrachte Beda dort sein ganzes Leben mit Studieren, Lehren und Schreiben. Seine Kirchengeschichte des englischen Volkes trug ihm den Titel…"
+},
+"s99": {
+"content": "Bonifatius, ein englischer Benediktinermönch namens Winfrid, wurde vom Papst zu den germanischen Völkern gesandt. Einer berühmten Erzählung nach fällte er bei Geismar die heilige Donareiche, und als…"
+},
+"s100": {
+"content": "Die Brüder Kyrill und Method aus Thessalonich wurden 863 zu den slawischen Völkern Mährens gesandt. Sie schufen eine Schrift für die slawische Sprache, übersetzten die Bibel und die Liturgie und…"
+},
+"s101": {
+"content": "Wenzel, Herzog von Böhmen, wurde von seiner Großmutter, der hl. Ludmila, im christlichen Glauben erzogen. Er regierte gerecht und war für seine Nächstenliebe gegenüber Armen, Witwen und Gefangenen…"
+},
+"s102": {
+"content": "Bruno, ein angesehener Lehrer an der Domschule von Reims, gab seine Laufbahn auf und zog sich 1084 mit sechs Gefährten in die Berge bei Grenoble zurück. Dort gründete er die Grande Chartreuse und den…"
+},
 "t1": {
 "content": "Katholiken glauben an einen einzigen Gott, den Schöpfer aller Dinge, der unendlich gut, allwissend, allmächtig und ewig ist. Gott ist nicht ein Seiendes unter anderen, sondern das Sein selbst; Mose offenbarte er seinen Namen: „Ich bin, der ich bin.“\n\nDie Kirche lehrt, dass Gott mit dem natürlichen Licht der menschlichen Vernunft aus der geschaffenen Welt mit Gewissheit erkannt werden kann, schon vor der Offenbarung. Die Offenbarung zeigt uns dann, wer Gott in sich selbst ist: ein Vater, der uns liebt und will, dass wir an seinem Leben teilhaben."
 },
@@ -11266,6 +11410,7 @@ window.SANCTIFY_I18N = {
 "history-2": "history-2.984b5d00",
 "history-3": "history-3.71ccc06f",
 "saint-0": "saint-0.f976712f",
-"saint-1": "saint-1.6d1d6b49"
+"saint-1": "saint-1.cdc76594",
+"saint-2": "saint-2.db6dec60"
 }
 };
