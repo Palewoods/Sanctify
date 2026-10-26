@@ -11042,6 +11042,150 @@ window.SANCTIFY_I18N = {
 "s102": {
 "content": "Bruno, ein angesehener Lehrer an der Domschule von Reims, gab seine Laufbahn auf und zog sich 1084 mit sechs Gefährten in die Berge bei Grenoble zurück. Dort gründete er die Grande Chartreuse und den…"
 },
+"s103": {
+"content": "Margareta, eine englische Prinzessin, die im ungarischen Exil aufwuchs, heiratete König Malcolm III. von Schottland. Sie zog acht Kinder groß, reformierte das kirchliche Leben in Schottland, gründete…"
+},
+"s104": {
+"content": "Anselm, ein Italiener, der Abt von Bec in der Normandie und später Erzbischof von Canterbury wurde, gilt als „Vater der Scholastik“. Er beschrieb die Theologie als „Glauben, der Einsicht…"
+},
+"s105": {
+"content": "Norbert, ein weltlich gesinnter Kleriker am Kaiserhof, bekehrte sich, nachdem er bei einem Gewitter vom Pferd geworfen worden war. Er wurde Wanderprediger und gründete 1120 die Regularkanoniker von…"
+},
+"s106": {
+"content": "Bernhard trat mit etwa dreißig Verwandten und Freunden in das neue Kloster Cîteaux ein und wurde mit 25 Jahren ausgesandt, Clairvaux zu gründen. Er wurde der einflussreichste Kirchenmann seiner Zeit…"
+},
+"s107": {
+"content": "Thomas, Kanzler Englands und enger Freund König Heinrichs II., wurde 1162 Erzbischof von Canterbury. Zum Verdruss des Königs wurde er ein entschiedener Verteidiger der Rechte der Kirche und lebte…"
+},
+"s108": {
+"content": "Angeregt durch die Predigt des hl. Franziskus verließ Klara mit achtzehn Jahren ihre adlige Familie, um die Armut zu wählen. Sie gründete in San Damiano den Orden der Armen Frauen, heute die…"
+},
+"s109": {
+"content": "Elisabeth, eine ungarische Prinzessin und Gemahlin Ludwigs von Thüringen, nutzte ihre Stellung, um den Armen zu dienen, verteilte Brot und baute ein Spital. Eine berühmte Legende erzählt, das Brot…"
+},
+"s110": {
+"content": "Ludwig, ab 1226 König von Frankreich, war bekannt für seine Gerechtigkeit, seine persönliche Frömmigkeit und seine Sorge um die Armen; oft speiste er Bettler an seinem eigenen Tisch. Er ließ in Paris…"
+},
+"s111": {
+"content": "Bonaventura, Theologe an der Universität Paris neben seinem Freund Thomas von Aquin, wurde 1257 zum Generalminister der Franziskaner gewählt und führte den Orden durch eine schwierige Zeit. Sein…"
+},
+"s112": {
+"content": "Albert, ein deutscher Dominikaner, schrieb über fast jedes Wissensgebiet: Theologie, Philosophie, Botanik, Zoologie, Astronomie und Chemie. Er gehörte zu den ersten mittelalterlichen Gelehrten, die…"
+},
+"s113": {
+"content": "Als junger Mann in Forlì schlug Peregrin bei einem politischen Tumult den hl. Philippus Benitius, bereute dann und trat in den Servitenorden ein. Er war dafür bekannt, aus Buße zu stehen, wann immer…"
+},
+"s114": {
+"content": "Franziska, eine römische Adlige, die Nonne werden wollte, aber mit dreizehn Jahren verheiratet wurde, diente Gott vierzig Jahre lang als Ehefrau und Mutter. Sie pflegte Kranke in Pest und Hungersnot…"
+},
+"s115": {
+"content": "Juan Diego Cuauhtlatoatzin, ein bekehrter indigener Mexikaner, sah im Dezember 1531 auf dem Hügel Tepeyac die Jungfrau Maria. Sie bat ihn, dort eine Kirche bauen zu lassen, und als der Bischof ein…"
+},
+"s116": {
+"content": "Thomas More, Jurist, Gelehrter und Verfasser der Utopia, wurde Lordkanzler von England. Er war zugleich ein liebevoller Ehemann und Vater, der seinen Töchtern eine Bildung gab, die der jedes Mannes…"
+},
+"s117": {
+"content": "John Fisher, Bischof von Rochester und Kanzler der Universität Cambridge, war ein angesehener Gelehrter und Prediger. Er widersetzte sich Heinrichs VIII. Versuch, seine Ehe mit Katharina von Aragón…"
+},
+"s118": {
+"content": "Johannes, ein spanischer Karmelit, schloss sich der hl. Teresa von Ávila bei der Reform des Karmelordens an. Gegner der Reform hielten ihn neun Monate in einer winzigen Zelle in Toledo gefangen, wo…"
+},
+"s119": {
+"content": "Robert Bellarmin, italienischer Jesuit und Kardinal, war der führende katholische Theologe der Gegenreformation, bekannt für klare und liebevolle Auseinandersetzung. Er schrieb Katechismen, die…"
+},
+"s120": {
+"content": "Kamillus, ein Söldner und zwanghafter Spieler, bekehrte sich mit 25 Jahren und begann, an einer unheilbaren Beinwunde leidend, Kranke in einem römischen Spital zu pflegen. Empört über die…"
+},
+"s121": {
+"content": "Aloisius, der älteste Sohn eines italienischen Markgrafen, verzichtete auf sein Erbe, um gegen den heftigen Widerstand seines Vaters Jesuit zu werden. Er war für seine Reinheit und sein inniges Gebet…"
+},
+"s122": {
+"content": "Franz von Sales, ein Jurist, der Priester wurde, gewann im calvinistischen Chablais Tausende für den katholischen Glauben zurück, unter anderem, indem er Flugblätter unter Türen schob. Als Bischof…"
+},
+"s123": {
+"content": "Johanna, eine französische Baronin, die mit 28 Jahren und vier Kindern Witwe wurde, stellte sich unter die geistliche Führung des hl. Franz von Sales. Gemeinsam gründeten sie 1610 den Orden von der…"
+},
+"s124": {
+"content": "Paul Miki, ein japanischer Jesuit und begabter Prediger, war einer der 26 Katholiken, die 1597 auf Befehl des Herrschers Toyotomi Hideyoshi auf einem Hügel bei Nagasaki gekreuzigt wurden. Zur Gruppe…"
+},
+"s125": {
+"content": "Lorenzo, ein philippinischer Ehemann und Vater chinesischer Herkunft, arbeitete in Manila als Kalligraf. Fälschlich eines Verbrechens beschuldigt, floh er auf einem Schiff, das Dominikanermissionare…"
+},
+"s126": {
+"content": "Als Jugendlicher für schwer von Begriff und ungeschickt gehalten, wurde Josef von mehreren Orden abgewiesen, bevor die Franziskaner ihn aufnahmen. Seine Prüfungen zur Weihe bestand er nur knapp, weil…"
+},
+"s127": {
+"content": "Die nordamerikanischen Märtyrer waren sechs französische Jesuiten und zwei Laienhelfer, die bei ihrer Arbeit unter den Huronen und Irokesen im heutigen Kanada und New York getötet wurden. Isaak…"
+},
+"s128": {
+"content": "Margareta Maria, eine Salesianerin in Paray-le-Monial in Frankreich, empfing zwischen 1673 und 1675 eine Reihe von Christusvisionen. Er zeigte ihr sein Herz, brennend vor Liebe zu den Menschen, und…"
+},
+"s129": {
+"content": "Ludwig Maria Grignion von Montfort, ein französischer Priester, der in ganz Westfrankreich Volksmissionen predigte, war für seine Armut, seine feurige Predigt und seine Liebe zum Rosenkranz bekannt.…"
+},
+"s130": {
+"content": "Gerhard, Sohn eines armen Schneiders aus Süditalien, wurde wegen schwacher Gesundheit von den Kapuzinern abgewiesen, bevor er Laienbruder bei den Redemptoristen wurde. Er arbeitete als Schneider…"
+},
+"s131": {
+"content": "Junípero Serra, ein Franziskanerprofessor aus Mallorca, gab eine akademische Laufbahn auf, um in den Missionen Neuspaniens zu dienen. Trotz eines chronisch verletzten Beins legte er Tausende…"
+},
+"s132": {
+"content": "Von mehreren Klöstern abgewiesen, fühlte sich Benedikt Joseph Labre zu einem Leben als Pilger berufen. Jahrelang wanderte er zu Heiligtümern in ganz Europa, lebte als Bettler und teilte oft die…"
+},
+"s133": {
+"content": "Johann Nepomuk Neumann, in Böhmen geboren, kam 1836 nach New York und wurde dort geweiht. Er trat den Redemptoristen bei und betreute deutsche Einwanderer, bevor er 1852 Bischof von Philadelphia…"
+},
+"s134": {
+"content": "Katharina, eine Bauerntochter, die bei den Vinzentinerinnen eintrat, hatte 1830 in deren Kapelle in der Rue du Bac in Paris Visionen der Jungfrau Maria. Maria bat sie, eine Medaille prägen zu lassen…"
+},
+"s135": {
+"content": "Der koreanische Katholizismus entstand in den 1780er-Jahren unter Laiengelehrten, die christliche Bücher lasen, ohne Missionare. Andreas Kim Taegon, Sohn von Konvertiten, studierte in Macau und wurde…"
+},
+"s136": {
+"content": "Karl Lwanga war Vorsteher der königlichen Pagen am Hof von König Mwanga II. von Buganda (im heutigen Uganda). Als der König sich gegen die Christen wandte, taufte Karl heimlich mehrere der jungen…"
+},
+"s137": {
+"content": "Newman, anglikanischer Geistlicher und Oxforder Gelehrter, war einer der Führer der Oxford-Bewegung, bevor ihn sein Studium der frühen Kirche 1845 zur katholischen Kirche führte. Er gründete das…"
+},
+"s138": {
+"content": "Louis, ein Uhrmacher, und Zélie, eine Spitzenklöpplerin, heirateten 1858 in Alençon. Sie bekamen neun Kinder, von denen vier jung starben. Alle fünf überlebenden Töchter wurden Ordensfrauen, darunter…"
+},
+"s139": {
+"content": "Scharbel, ein maronitischer Mönch aus dem Libanon, lebte die letzten 23 Jahre seines Lebens als Einsiedler, hingegeben an Gebet, Fasten und die Feier der Göttlichen Liturgie.\n\nNach seinem Tod wurde…"
+},
+"s140": {
+"content": "Marianne Cope, eine in Deutschland geborene Franziskanerin aus Syracuse im Staat New York, half bei der Gründung zweier Krankenhäuser, bevor sie 1883 dem Ruf folgte, Leprakranken auf Hawaii zu…"
+},
+"s141": {
+"content": "Giuseppe Sarto, Sohn eines armen Briefträgers, war Pfarrer, Bischof von Mantua und Patriarch von Venedig, bevor er 1903 zum Papst gewählt wurde. Sein Wahlspruch lautete: „Alles in Christus…"
+},
+"s142": {
+"content": "Katharine Drexel, Erbin eines Bankvermögens aus Philadelphia, bat Papst Leo XIII., Missionare zu den amerikanischen Ureinwohnern zu senden. Er schlug ihr vor, selbst Missionarin zu werden.\n\n1891…"
+},
+"s143": {
+"content": "Maria Goretti, Tochter armer Landarbeiter bei Rom, war elf Jahre alt, als ein Nachbar, Alessandro Serenelli, versuchte, sie zu vergewaltigen. Sie wehrte sich, und er stach vierzehnmal auf sie ein.…"
+},
+"s144": {
+"content": "Gemma, eine kränkliche italienische Waise, der der Eintritt in einen Orden verwehrt blieb, führte in Lucca ein verborgenes Leben des Gebets. Sie soll die Wundmale empfangen und häufig Ekstasen erlebt…"
+},
+"s145": {
+"content": "Mary MacKillop gründete 1866 mit anderen die Schwestern vom hl. Josef vom Heiligsten Herzen, um arme Kinder im australischen Hinterland zu unterrichten. Ihre Schwestern gingen überallhin, wo Familien…"
+},
+"s146": {
+"content": "Giuseppe Moscati, Arzt, Forscher und Professor in Neapel, behandelte Arme unentgeltlich und steckte oft Geld in die Rezepte derer, die sich Medikamente nicht leisten konnten. Er besuchte täglich die…"
+},
+"s147": {
+"content": "Die Geschwister Francisco und Jacinta aus Aljustrel in Portugal sahen mit ihrer Cousine Lúcia 1917 in Fatima sechsmal die Jungfrau Maria. Sie bat sie, den Rosenkranz zu beten und für die Sünder Buße…"
+},
+"s148": {
+"content": "In einer jüdischen Familie in Breslau geboren, wurde Edith Stein Philosophin und Schülerin Edmund Husserls. Nachdem sie in einer Nacht die Autobiographie der hl. Teresa von Ávila gelesen hatte, wurde…"
+},
+"s149": {
+"content": "Pier Giorgio, Sohn eines reichen Turiner Zeitungsbesitzers, liebte das Bergsteigen, Späße und Freunde und gab sein Taschengeld still für die Armen aus. Er engagierte sich in der Katholischen Aktion…"
+},
+"s150": {
+"content": "Angelo Roncalli war eines von dreizehn Kindern einer Bauernfamilie bei Bergamo. Als päpstlicher Diplomat in Bulgarien, der Türkei und Frankreich half er Juden, dem Holocaust zu entkommen.\n\n1958 mit…"
+},
 "t1": {
 "content": "Katholiken glauben an einen einzigen Gott, den Schöpfer aller Dinge, der unendlich gut, allwissend, allmächtig und ewig ist. Gott ist nicht ein Seiendes unter anderen, sondern das Sein selbst; Mose offenbarte er seinen Namen: „Ich bin, der ich bin.“\n\nDie Kirche lehrt, dass Gott mit dem natürlichen Licht der menschlichen Vernunft aus der geschaffenen Welt mit Gewissheit erkannt werden kann, schon vor der Offenbarung. Die Offenbarung zeigt uns dann, wer Gott in sich selbst ist: ein Vater, der uns liebt und will, dass wir an seinem Leben teilhaben."
 },
@@ -11411,6 +11555,7 @@ window.SANCTIFY_I18N = {
 "history-3": "history-3.71ccc06f",
 "saint-0": "saint-0.f976712f",
 "saint-1": "saint-1.cdc76594",
-"saint-2": "saint-2.db6dec60"
+"saint-2": "saint-2.aa4ec24d",
+"saint-3": "saint-3.21add206"
 }
 };

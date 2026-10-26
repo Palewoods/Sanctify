@@ -11042,6 +11042,150 @@ window.SANCTIFY_I18N = {
 "s102": {
 "content": "Rinomato maestro della scuola cattedrale di Reims, Bruno lasciò la carriera e nel 1084, con sei compagni, si ritirò sulle montagne vicino a Grenoble. Lì fondò la Grande Certosa e l’ordine dei…"
 },
+"s103": {
+"content": "Principessa inglese cresciuta in esilio in Ungheria, Margherita sposò il re Malcolm III di Scozia. Allevò otto figli, riformò le pratiche della Chiesa in Scozia, fondò chiese e restaurò il monastero…"
+},
+"s104": {
+"content": "Italiano divenuto abate del Bec, in Normandia, e poi arcivescovo di Canterbury, Anselmo è chiamato «padre della scolastica». Descriveva la teologia come «la fede che cerca di comprendere».\n\nIl suo…"
+},
+"s105": {
+"content": "Chierico mondano della corte imperiale, Norberto si convertì dopo essere stato disarcionato durante un temporale. Divenne predicatore itinerante e nel 1120 fondò i Canonici regolari di Prémontré (i…"
+},
+"s106": {
+"content": "Bernardo entrò nel nuovo monastero di Cîteaux con una trentina di parenti e amici, e a 25 anni fu mandato a fondare Chiaravalle. Divenne l’uomo di Chiesa più influente del suo tempo, consigliere di…"
+},
+"s107": {
+"content": "Cancelliere d’Inghilterra e amico intimo del re Enrico II, Tommaso fu nominato arcivescovo di Canterbury nel 1162. Con grande disappunto del re, divenne un fermo difensore dei diritti della Chiesa e…"
+},
+"s108": {
+"content": "Ispirata dalla predicazione di san Francesco, Chiara lasciò a diciotto anni la sua nobile famiglia per abbracciare la povertà. Fondò l’Ordine delle Povere Dame, oggi le clarisse, a San Damiano, e lo…"
+},
+"s109": {
+"content": "Principessa ungherese sposata a Ludovico di Turingia, Elisabetta usò la sua posizione per servire i poveri, distribuendo pane e costruendo un ospedale. Una celebre leggenda narra che il pane che…"
+},
+"s110": {
+"content": "Re di Francia dal 1226, Luigi fu noto per la sua giustizia, la sua pietà personale e la cura dei poveri, spesso sfamando mendicanti alla propria tavola. Fece costruire la Sainte-Chapelle a Parigi per…"
+},
+"s111": {
+"content": "Teologo dell’Università di Parigi accanto all’amico Tommaso d’Aquino, Bonaventura fu eletto ministro generale dei francescani nel 1257 e guidò l’ordine in un periodo difficile. Il suo Itinerario…"
+},
+"s112": {
+"content": "Domenicano tedesco, Alberto scrisse su quasi ogni campo del sapere: teologia, filosofia, botanica, zoologia, astronomia e chimica. Fu tra i primi studiosi medievali a padroneggiare Aristotele e fu…"
+},
+"s113": {
+"content": "Da giovane, a Forlì, Pellegrino colpì san Filippo Benizi durante un tumulto politico; poi si pentì ed entrò nell’ordine dei Servi di Maria. Era noto per restare in piedi il più possibile come…"
+},
+"s114": {
+"content": "Nobile romana che desiderava farsi monaca ma fu sposata a tredici anni, Francesca servì Dio come moglie e madre per quarant’anni. Curò i malati durante la peste e la carestia, e si diceva che fosse…"
+},
+"s115": {
+"content": "Indigeno messicano convertito, Juan Diego Cuauhtlatoatzin vide la Vergine Maria sulla collina del Tepeyac nel dicembre 1531. Ella gli chiese di farvi costruire una chiesa, e quando il vescovo chiese…"
+},
+"s116": {
+"content": "Giurista, umanista e autore di Utopia, Tommaso Moro divenne lord cancelliere d’Inghilterra. Fu anche un marito e padre devoto che diede alle figlie un’istruzione pari a quella di qualsiasi…"
+},
+"s117": {
+"content": "Vescovo di Rochester e cancelliere dell’Università di Cambridge, Giovanni Fisher fu uno studioso e predicatore di grande fama. Si oppose al tentativo di Enrico VIII di annullare il matrimonio con…"
+},
+"s118": {
+"content": "Frate carmelitano spagnolo, Giovanni si unì a santa Teresa d’Avila nella riforma dell’ordine carmelitano. Gli oppositori della riforma lo imprigionarono per nove mesi in una minuscola cella a Toledo…"
+},
+"s119": {
+"content": "Gesuita e cardinale italiano, Roberto Bellarmino fu il principale teologo cattolico della Controriforma, noto per un dibattito chiaro e caritatevole. Scrisse catechismi usati per secoli.\n\nViveva…"
+},
+"s120": {
+"content": "Soldato mercenario e giocatore incallito, Camillo si convertì a 25 anni e, affetto da una piaga incurabile alla gamba, cominciò a curare i malati in un ospedale di Roma. Indignato per l’abbandono dei…"
+},
+"s121": {
+"content": "Figlio primogenito di un marchese italiano, Luigi rinunciò all’eredità per entrare nei gesuiti, vincendo la forte opposizione del padre. Era noto per la sua purezza e per la sua intensa…"
+},
+"s122": {
+"content": "Avvocato divenuto sacerdote, Francesco di Sales riportò migliaia di persone alla fede cattolica nel Chiablese calvinista, anche infilando opuscoli sotto le porte. Come vescovo di Ginevra era noto per…"
+},
+"s123": {
+"content": "Baronessa francese rimasta vedova a 28 anni con quattro figli, Giovanna si pose sotto la direzione spirituale di san Francesco di Sales. Insieme fondarono nel 1610 l’Ordine della Visitazione di Santa…"
+},
+"s124": {
+"content": "Paolo Miki, gesuita giapponese e predicatore dotato, fu uno dei 26 cattolici crocifissi su una collina di Nagasaki nel 1597 per ordine del sovrano Toyotomi Hideyoshi. Il gruppo comprendeva sacerdoti…"
+},
+"s125": {
+"content": "Marito e padre filippino di origine cinese, Lorenzo lavorava come calligrafo a Manila. Accusato ingiustamente di un delitto, fuggì a bordo di una nave che portava missionari domenicani in Giappone…"
+},
+"s126": {
+"content": "Ritenuto da giovane tardo e goffo, Giuseppe fu respinto da diversi ordini religiosi prima che i francescani lo accettassero. Superò a stento gli esami per l’ordinazione, interrogato proprio sulle…"
+},
+"s127": {
+"content": "I martiri del Nord America furono sei gesuiti francesi e due collaboratori laici uccisi mentre lavoravano tra gli Uroni e gli Irochesi in quello che oggi è il Canada e lo Stato di New York. Isaac…"
+},
+"s128": {
+"content": "Monaca visitandina a Paray-le-Monial, in Francia, Margherita Maria ricevette tra il 1673 e il 1675 una serie di visioni di Cristo. Egli le mostrò il suo Cuore, ardente d’amore per l’umanità, e chiese…"
+},
+"s129": {
+"content": "Sacerdote francese che predicò missioni in tutta la Francia occidentale, Luigi Maria Grignion de Montfort era noto per la sua povertà, la sua predicazione infuocata e il suo amore per il Rosario.…"
+},
+"s130": {
+"content": "Figlio di un povero sarto dell’Italia meridionale, Gerardo fu respinto dai cappuccini per la salute cagionevole prima di diventare fratello laico redentorista. Lavorò come sarto, sacrestano e…"
+},
+"s131": {
+"content": "Professore francescano di Maiorca, Junípero Serra lasciò la carriera accademica per servire nelle missioni della Nuova Spagna. Nonostante una gamba ferita in modo cronico, percorse a piedi migliaia…"
+},
+"s132": {
+"content": "Respinto da diversi monasteri, Benedetto Giuseppe Labre si sentì chiamato a una vita di pellegrinaggio. Per anni camminò verso santuari in tutta Europa vivendo da mendicante e spesso condividendo le…"
+},
+"s133": {
+"content": "Nato in Boemia, Giovanni Neumann arrivò a New York nel 1836 e vi fu ordinato. Entrò nei redentoristi e servì gli immigrati tedeschi prima di diventare vescovo di Filadelfia nel 1852.\n\nCostruì decine…"
+},
+"s134": {
+"content": "Figlia di contadini entrata nelle Figlie della Carità, Caterina ricevette nel 1830 visioni della Vergine Maria nella loro cappella di rue du Bac, a Parigi. Maria le chiese di far coniare una medaglia…"
+},
+"s135": {
+"content": "Il cattolicesimo coreano nacque negli anni Ottanta del Settecento tra studiosi laici che leggevano libri cristiani, senza missionari. Andrea Kim Taegon, figlio di convertiti, studiò a Macao e nel…"
+},
+"s136": {
+"content": "Carlo Lwanga era il capo dei paggi reali alla corte del re Mwanga II del Buganda (nell’attuale Uganda). Quando il re si rivoltò contro i cristiani, Carlo battezzò in segreto diversi giovani paggi a…"
+},
+"s137": {
+"content": "Sacerdote anglicano e studioso di Oxford, Newman fu uno dei capi del Movimento di Oxford prima che lo studio della Chiesa antica lo conducesse al cattolicesimo nel 1845. Fondò l’Oratorio in…"
+},
+"s138": {
+"content": "Luigi, orologiaio, e Zelia, merlettaia, si sposarono ad Alençon nel 1858. Ebbero nove figli, quattro dei quali morirono piccoli. Tutte e cinque le figlie sopravvissute divennero suore, tra cui santa…"
+},
+"s139": {
+"content": "Monaco maronita del Libano, Charbel visse gli ultimi 23 anni della sua vita da eremita, dedito alla preghiera, al digiuno e alla celebrazione della Divina Liturgia.\n\nDopo la sua morte si parlò di una…"
+},
+"s140": {
+"content": "Suora francescana nata in Germania e proveniente da Syracuse, New York, Marianne Cope contribuì a fondare due ospedali prima di rispondere nel 1883 alla chiamata a servire i lebbrosi delle…"
+},
+"s141": {
+"content": "Figlio di un povero postino, Giuseppe Sarto fu parroco, vescovo di Mantova e patriarca di Venezia prima di essere eletto papa nel 1903. Il suo motto era «instaurare ogni cosa in Cristo».\n\nIncoraggiò…"
+},
+"s142": {
+"content": "Erede di una fortuna bancaria di Filadelfia, Katharine Drexel chiese a papa Leone XIII di inviare missionari tra i nativi americani. Egli le suggerì di diventare missionaria lei stessa.\n\nNel 1891…"
+},
+"s143": {
+"content": "Figlia di poveri braccianti vicino a Roma, Maria Goretti aveva undici anni quando un vicino, Alessandro Serenelli, tentò di violentarla. Ella resistette ed egli la colpì quattordici volte con un…"
+},
+"s144": {
+"content": "Orfana italiana di salute cagionevole a cui fu impedito di entrare nella vita religiosa, Gemma visse a Lucca una vita nascosta di preghiera. Si dice che abbia ricevuto le stimmate e avuto frequenti…"
+},
+"s145": {
+"content": "Mary MacKillop cofondò nel 1866 le Suore di San Giuseppe del Sacro Cuore per educare i bambini poveri delle campagne australiane. Le sue suore andavano ovunque vivessero famiglie, anche nelle zone…"
+},
+"s146": {
+"content": "Medico, ricercatore e professore a Napoli, Giuseppe Moscati curava gratis i poveri e spesso infilava denaro nelle ricette di chi non poteva permettersi le medicine. Andava a Messa ogni giorno e…"
+},
+"s147": {
+"content": "Fratelli di Aljustrel, in Portogallo, Francesco e Giacinta con la cugina Lucia videro la Vergine Maria sei volte a Fatima nel 1917. Ella chiese loro di pregare il Rosario e di fare penitenza per i…"
+},
+"s148": {
+"content": "Nata in una famiglia ebrea di Breslavia, Edith Stein divenne filosofa e allieva di Edmund Husserl. Dopo aver letto in una sola notte l’autobiografia di santa Teresa d’Avila, si fece cattolica nel…"
+},
+"s149": {
+"content": "Figlio del ricco proprietario di un giornale torinese, Pier Giorgio amava l’alpinismo, gli scherzi e gli amici, e spendeva in silenzio la sua paghetta per i poveri. Era attivo nell’Azione Cattolica e…"
+},
+"s150": {
+"content": "Angelo Roncalli era uno dei tredici figli di una famiglia contadina vicino a Bergamo. Come diplomatico pontificio in Bulgaria, Turchia e Francia aiutò degli ebrei a sfuggire alla Shoah.\n\nEletto papa…"
+},
 "t1": {
 "content": "I cattolici credono in un solo Dio, Creatore di tutte le cose, infinitamente buono, onnisciente, onnipotente ed eterno. Dio non è un essere tra gli altri, ma l’Essere stesso; rivelò a Mosè il suo nome: «Io sono colui che sono».\n\nLa Chiesa insegna che Dio può essere conosciuto con certezza dalla luce naturale della ragione umana a partire dal mondo creato, anche prima della rivelazione. La rivelazione ci mostra poi chi è Dio in se stesso: un Padre che ci ama e vuole che partecipiamo alla sua vita."
 },
@@ -11411,6 +11555,7 @@ window.SANCTIFY_I18N = {
 "history-3": "history-3.911e1873",
 "saint-0": "saint-0.dd855867",
 "saint-1": "saint-1.345841be",
-"saint-2": "saint-2.70cff726"
+"saint-2": "saint-2.679f0c23",
+"saint-3": "saint-3.3076c792"
 }
 };

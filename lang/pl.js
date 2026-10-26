@@ -11042,6 +11042,150 @@ window.SANCTIFY_I18N = {
 "s102": {
 "content": "Słynny nauczyciel szkoły katedralnej w Reims, Brunon porzucił karierę i w 1084 roku z sześcioma towarzyszami wycofał się w góry w pobliżu Grenoble. Tam założył Wielką Kartuzję i zakon kartuzów, który…"
 },
+"s103": {
+"content": "Angielska księżniczka wychowana na wygnaniu na Węgrzech, Małgorzata poślubiła króla Szkocji Malcolma III. Wychowała ośmioro dzieci, zreformowała praktykę Kościoła w Szkocji, zakładała kościoły i…"
+},
+"s104": {
+"content": "Włoch, który został opatem Bec w Normandii, a następnie arcybiskupem Canterbury, Anzelm nazywany jest „ojcem scholastyki”. Opisywał teologię jako „wiarę szukającą zrozumienia”.\n\nJego Proslogion…"
+},
+"s105": {
+"content": "Światowy duchowny na dworze cesarskim, Norbert nawrócił się, gdy podczas burzy zrzucił go koń. Został wędrownym kaznodzieją i w 1120 roku założył Kanoników Regularnych z Prémontré (norbertanów)…"
+},
+"s106": {
+"content": "Bernard wstąpił do nowego klasztoru w Cîteaux z około trzydziestoma krewnymi i przyjaciółmi, a w wieku 25 lat został wysłany, by założyć Clairvaux. Stał się najbardziej wpływowym duchownym swojej…"
+},
+"s107": {
+"content": "Kanclerz Anglii i bliski przyjaciel króla Henryka II, Tomasz został w 1162 roku arcybiskupem Canterbury. Ku niezadowoleniu króla stał się nieugiętym obrońcą praw Kościoła i żył surowo.\n\nPo latach…"
+},
+"s108": {
+"content": "Zainspirowana kazaniami św. Franciszka, Klara w wieku osiemnastu lat opuściła swoją szlachecką rodzinę, by przyjąć ubóstwo. Założyła Zakon Ubogich Pań, dziś klarysek, przy San Damiano i kierowała nim…"
+},
+"s109": {
+"content": "Węgierska księżniczka, żona Ludwika Turyńskiego, Elżbieta wykorzystywała swoją pozycję, by służyć ubogim, rozdając chleb i budując szpital. Słynna legenda mówi, że chleb, który potajemnie niosła…"
+},
+"s110": {
+"content": "Król Francji od 1226 roku, Ludwik słynął ze sprawiedliwości, osobistej pobożności i troski o ubogich, często karmiąc żebraków przy własnym stole. Zbudował Sainte-Chapelle w Paryżu, by przechowywać w…"
+},
+"s111": {
+"content": "Teolog Uniwersytetu Paryskiego obok swego przyjaciela Tomasza z Akwinu, Bonawentura został w 1257 roku wybrany ministrem generalnym franciszkanów i prowadził zakon przez trudny okres. Jego Droga…"
+},
+"s112": {
+"content": "Niemiecki dominikanin, Albert pisał niemal o każdej dziedzinie wiedzy: teologii, filozofii, botanice, zoologii, astronomii i chemii. Należał do pierwszych średniowiecznych uczonych, którzy opanowali…"
+},
+"s113": {
+"content": "Jako młody człowiek w Forlì Peregryn uderzył św. Filipa Benizi podczas politycznych zamieszek, a potem żałował i wstąpił do zakonu serwitów. Słynął z tego, że w ramach pokuty stał, kiedy tylko…"
+},
+"s114": {
+"content": "Rzymska szlachcianka, która pragnęła zostać zakonnicą, lecz wyszła za mąż w wieku trzynastu lat, Franciszka przez czterdzieści lat służyła Bogu jako żona i matka. Pielęgnowała chorych w czasie zarazy…"
+},
+"s115": {
+"content": "Nawrócony rdzenny Meksykanin, Juan Diego Cuauhtlatoatzin ujrzał Maryję Pannę na wzgórzu Tepeyac w grudniu 1531 roku. Poprosiła go, by zbudowano tam kościół, a gdy biskup zażądał znaku, w środku zimy…"
+},
+"s116": {
+"content": "Prawnik, humanista i autor Utopii, Tomasz More doszedł do godności lorda kanclerza Anglii. Był też oddanym mężem i ojcem, który dał córkom wykształcenie równe męskiemu.\n\nGdy odmówił złożenia…"
+},
+"s117": {
+"content": "Biskup Rochester i kanclerz Uniwersytetu Cambridge, Jan Fisher był wybitnym uczonym i kaznodzieją. Sprzeciwił się próbie unieważnienia przez Henryka VIII małżeństwa z Katarzyną Aragońską i odmówił…"
+},
+"s118": {
+"content": "Hiszpański karmelita, Jan przyłączył się do św. Teresy z Ávili w reformie zakonu karmelitańskiego. Przeciwnicy reformy uwięzili go na dziewięć miesięcy w maleńkiej celi w Toledo, gdzie stworzył jedne…"
+},
+"s119": {
+"content": "Włoski jezuita i kardynał, Robert Bellarmin był czołowym teologiem katolickim kontrreformacji, znanym z jasnej i życzliwej polemiki. Pisał katechizmy używane przez stulecia.\n\nŻył skromnie, oddawał…"
+},
+"s120": {
+"content": "Najemny żołnierz i nałogowy hazardzista, Kamil nawrócił się w wieku 25 lat i, cierpiąc na nieuleczalną ranę nogi, zaczął opiekować się chorymi w rzymskim szpitalu. Wstrząśnięty zaniedbaniem chorych…"
+},
+"s121": {
+"content": "Najstarszy syn włoskiego markiza, Alojzy zrzekł się dziedzictwa, by wstąpić do jezuitów, przezwyciężając gwałtowny sprzeciw ojca. Słynął z czystości i żarliwej modlitwy.\n\nGdy w 1591 roku w Rzymie…"
+},
+"s122": {
+"content": "Prawnik, który został kapłanem, Franciszek Salezy przywrócił wierze katolickiej tysiące ludzi w kalwińskim regionie Chablais, między innymi wsuwając ulotki pod drzwi. Jako biskup Genewy słynął z…"
+},
+"s123": {
+"content": "Francuska baronowa, owdowiała w wieku 28 lat z czworgiem dzieci, Joanna oddała się pod kierownictwo duchowe św. Franciszka Salezego. Razem założyli w 1610 roku Zakon Nawiedzenia Najświętszej Maryi…"
+},
+"s124": {
+"content": "Paweł Miki, japoński jezuita i utalentowany kaznodzieja, był jednym z 26 katolików ukrzyżowanych na wzgórzu w Nagasaki w 1597 roku na rozkaz władcy Toyotomiego Hideyoshiego. W grupie byli kapłani…"
+},
+"s125": {
+"content": "Filipiński mąż i ojciec chińskiego pochodzenia, Lorenzo pracował jako kaligraf w Manili. Fałszywie oskarżony o przestępstwo, uciekł na statku wiozącym misjonarzy dominikanów do Japonii, gdzie…"
+},
+"s126": {
+"content": "Uważany w młodości za nierozgarniętego i niezdarnego, Józef był odprawiany przez kilka zakonów, zanim przyjęli go franciszkanie. Z trudem zdał egzaminy przed święceniami, odpowiadając akurat na…"
+},
+"s127": {
+"content": "Męczennicy Ameryki Północnej to sześciu francuskich jezuitów i dwóch świeckich pomocników zabitych podczas pracy wśród Huronów i Irokezów na terenach dzisiejszej Kanady i stanu Nowy Jork. Izaak…"
+},
+"s128": {
+"content": "Wizytka z Paray-le-Monial we Francji, Małgorzata Maria w latach 1673–1675 doznała szeregu widzeń Chrystusa. Ukazał jej swoje Serce, płonące miłością do ludzi, i prosił o święto Najświętszego Serca…"
+},
+"s129": {
+"content": "Francuski kapłan, który głosił misje w całej zachodniej Francji, Ludwik Maria Grignion de Montfort słynął z ubóstwa, płomiennego kaznodziejstwa i miłości do różańca. Założył Towarzystwo Maryi i Córki…"
+},
+"s130": {
+"content": "Syn ubogiego krawca z południowych Włoch, Gerard został odrzucony przez kapucynów z powodu słabego zdrowia, zanim został bratem zakonnym u redemptorystów. Pracował jako krawiec, zakrystian i furtian…"
+},
+"s131": {
+"content": "Franciszkański profesor z Majorki, Junípero Serra porzucił karierę akademicką, by służyć na misjach w Nowej Hiszpanii. Mimo przewlekle chorej nogi przeszedł pieszo tysiące kilometrów i założył…"
+},
+"s132": {
+"content": "Odrzucony przez kilka klasztorów, Benedykt Józef Labre poczuł powołanie do życia pielgrzyma. Przez lata wędrował do sanktuariów w całej Europie, żyjąc jak żebrak i często dzieląc się otrzymaną…"
+},
+"s133": {
+"content": "Urodzony w Czechach, Jan Neumann przybył do Nowego Jorku w 1836 roku i tam przyjął święcenia. Wstąpił do redemptorystów i posługiwał niemieckim emigrantom, zanim w 1852 roku został biskupem…"
+},
+"s134": {
+"content": "Córka rolnika, która wstąpiła do szarytek, Katarzyna w 1830 roku doznała widzeń Maryi Panny w ich kaplicy przy Rue du Bac w Paryżu. Maryja poprosiła ją o wybicie medalika ze słowami: „O Maryjo bez…"
+},
+"s135": {
+"content": "Katolicyzm koreański narodził się w latach 80. XVIII wieku wśród świeckich uczonych czytających książki chrześcijańskie, bez misjonarzy. Andrzej Kim Taegon, syn nawróconych, studiował w Makau i w…"
+},
+"s136": {
+"content": "Karol Lwanga był przełożonym królewskich paziów na dworze króla Mwangi II w Bugandzie (w dzisiejszej Ugandzie). Gdy król zwrócił się przeciw chrześcijanom, Karol potajemnie ochrzcił kilku młodych…"
+},
+"s137": {
+"content": "Anglikański duchowny i uczony z Oksfordu, Newman był jednym z przywódców ruchu oksfordzkiego, zanim studium pierwotnego Kościoła doprowadziło go w 1845 roku do katolicyzmu. Założył Oratorium w Anglii…"
+},
+"s138": {
+"content": "Ludwik, zegarmistrz, i Zelia, koronczarka, pobrali się w Alençon w 1858 roku. Mieli dziewięcioro dzieci, z których czworo zmarło w dzieciństwie. Wszystkie pięć córek, które przeżyły, zostało…"
+},
+"s139": {
+"content": "Maronicki mnich z Libanu, Szarbel przeżył ostatnie 23 lata jako pustelnik, oddany modlitwie, postowi i sprawowaniu Boskiej Liturgii.\n\nPo jego śmierci mówiono o świetle wokół jego grobu, a ciało…"
+},
+"s140": {
+"content": "Urodzona w Niemczech franciszkanka z Syracuse w stanie Nowy Jork, Marianne Cope pomogła założyć dwa szpitale, zanim w 1883 roku odpowiedziała na wezwanie do posługi trędowatym na…"
+},
+"s141": {
+"content": "Syn ubogiego listonosza, Giuseppe Sarto był proboszczem, biskupem Mantui i patriarchą Wenecji, zanim w 1903 roku został wybrany papieżem. Jego zawołaniem było „odnowić wszystko w…"
+},
+"s142": {
+"content": "Dziedziczka bankowej fortuny z Filadelfii, Katharine Drexel poprosiła papieża Leona XIII o wysłanie misjonarzy do rdzennych Amerykanów. Papież zasugerował, by sama została misjonarką.\n\nW 1891 roku…"
+},
+"s143": {
+"content": "Córka ubogich robotników rolnych spod Rzymu, Maria Goretti miała jedenaście lat, gdy sąsiad, Alessandro Serenelli, próbował ją zgwałcić. Broniła się, a on zadał jej czternaście ciosów nożem. Zanim…"
+},
+"s144": {
+"content": "Włoska sierota o słabym zdrowiu, której nie pozwolono wstąpić do zakonu, Gemma prowadziła w Lukce ukryte życie modlitwy. Mówi się, że otrzymała stygmaty i często doznawała ekstaz.\n\nOfiarowywała swoje…"
+},
+"s145": {
+"content": "Mary MacKillop współzałożyła w 1866 roku Siostry Świętego Józefa od Najświętszego Serca, by kształcić ubogie dzieci na australijskiej prowincji. Jej siostry docierały wszędzie, gdzie mieszkały…"
+},
+"s146": {
+"content": "Lekarz, badacz i profesor w Neapolu, Giuseppe Moscati leczył ubogich za darmo i często wkładał pieniądze do recept tych, których nie było stać na leki. Codziennie uczestniczył we Mszy i traktował…"
+},
+"s147": {
+"content": "Rodzeństwo z Aljustrel w Portugalii, Franciszek i Hiacynta wraz z kuzynką Łucją sześć razy widzieli Maryję Pannę w Fatimie w 1917 roku. Prosiła ich o odmawianie różańca i pokutę za…"
+},
+"s148": {
+"content": "Urodzona w żydowskiej rodzinie we Wrocławiu, Edyta Stein była filozofką i uczennicą Edmunda Husserla. Po przeczytaniu w jedną noc autobiografii św. Teresy z Ávili przeszła na katolicyzm w 1922 roku…"
+},
+"s149": {
+"content": "Syn zamożnego właściciela turyńskiej gazety, Pier Giorgio kochał wspinaczkę górską, żarty i przyjaciół, a swoje kieszonkowe po cichu wydawał na ubogich. Działał w Akcji Katolickiej i Stowarzyszeniu…"
+},
+"s150": {
+"content": "Angelo Roncalli był jednym z trzynaściorga dzieci chłopskiej rodziny spod Bergamo. Jako papieski dyplomata w Bułgarii, Turcji i Francji pomagał Żydom ratować się przed Zagładą.\n\nWybrany na papieża w…"
+},
 "t1": {
 "content": "Katolicy wierzą w jednego Boga, Stwórcę wszystkiego, który jest nieskończenie dobry, wszechwiedzący, wszechmogący i wieczny. Bóg nie jest jednym z bytów, lecz samym Bytem; objawił Mojżeszowi swoje imię: „Jestem, który jestem”.\n\nKościół naucza, że Boga można poznać z pewnością naturalnym światłem rozumu ludzkiego na podstawie stworzonego świata, jeszcze przed objawieniem. Objawienie ukazuje nam następnie, kim Bóg jest sam w sobie: Ojcem, który nas kocha i pragnie, abyśmy uczestniczyli w Jego życiu."
 },
@@ -11411,6 +11555,7 @@ window.SANCTIFY_I18N = {
 "history-3": "history-3.17bd3417",
 "saint-0": "saint-0.20ebd35b",
 "saint-1": "saint-1.09160f1a",
-"saint-2": "saint-2.46af557b"
+"saint-2": "saint-2.6c567743",
+"saint-3": "saint-3.183de220"
 }
 };
