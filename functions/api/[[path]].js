@@ -256,7 +256,15 @@ const SCHEMA = [
   `CREATE TABLE IF NOT EXISTS limits (
      key TEXT PRIMARY KEY,
      count INTEGER NOT NULL,
-     reset_at INTEGER NOT NULL)`
+     reset_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS name_changes (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     user_id INTEGER NOT NULL,
+     old_name TEXT NOT NULL COLLATE NOCASE,
+     new_name TEXT NOT NULL,
+     created_at INTEGER NOT NULL)`,
+  `CREATE INDEX IF NOT EXISTS name_changes_by_old ON name_changes (old_name, created_at DESC)`,
+  `CREATE INDEX IF NOT EXISTS name_changes_by_user ON name_changes (user_id, created_at DESC)`
 ];
 
 class HttpError extends Error {
@@ -324,6 +332,8 @@ export async function onRequest({ request, env }){
     if(path === 'logout' && method === 'POST') return await logout(ctx);
     if(path === 'account' && method === 'DELETE') return await deleteAccount(ctx);
     if(path === 'account/password' && method === 'PUT') return await changePassword(ctx);
+    if(path === 'account/username' && method === 'GET') return await usernameStatus(ctx);
+    if(path === 'account/username' && method === 'PUT') return await changeUsername(ctx);
     if(path === 'account/export' && method === 'GET') return await exportAccount(ctx);
     if(path === 'reset' && method === 'POST') return await resetPassword(ctx);
     if(path === 'feedback' && method === 'POST') return await sendFeedback(ctx);
@@ -378,13 +388,10 @@ export async function onRequest({ request, env }){
 async function signup(ctx){
   const { username, password } = await readBody(ctx);
   const name = String(username || '').trim();
-  if(!/^[A-Za-z0-9_]{3,20}$/.test(name)) throw new HttpError(400, 'Usernames are 3 to 20 letters, numbers, or underscores.');
-  if(RESERVED_NAMES.has(name.toLowerCase())) throw new HttpError(400, 'That username is reserved. Please choose another.');
+  checkUsername(name);
   checkPassword(password);
   await limit(ctx, 'signup:' + await ipKey(ctx), 5, 60 * 60 * 1000, 'Too many new accounts from this network. Please try again later.');
-
-  const taken = await ctx.db.prepare('SELECT 1 FROM users WHERE username = ?').bind(name).first();
-  if(taken) throw new HttpError(409, 'That username is taken. Please choose another.');
+  if(await nameTaken(ctx, name, 0)) throw new HttpError(409, 'That username is taken. Please choose another.');
 
   const salt = toHex(crypto.getRandomValues(new Uint8Array(16)));
   const hash = await hashPassword(password, salt);
@@ -446,6 +453,7 @@ async function deleteAccount(ctx){
     ctx.db.prepare('UPDATE feedback SET user_id = NULL WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM roles WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM favorites WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('DELETE FROM name_changes WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM avatars WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM profiles WHERE user_id = ?').bind(user.id),
@@ -470,6 +478,78 @@ async function changePassword(ctx){
     ctx.db.prepare('DELETE FROM reset_codes WHERE user_id = ?').bind(user.id)
   ]);
   return json({ ok:true });
+}
+
+/* ---------- Changing your username ----------
+   Posts, replies, wiki edits, and badges belong to the account, not the name, so they all follow it.
+   A member can change it once a week, and a name they leave is held for them for 30 days, so nobody
+   else can take it up and pass themselves off as them. */
+const RENAME_DAYS = 7;
+const NAME_HOLD_DAYS = 30;
+function checkUsername(name){
+  if(!/^[A-Za-z0-9_]{3,20}$/.test(name)) throw new HttpError(400, 'Usernames are 3 to 20 letters, numbers, or underscores.');
+  if(RESERVED_NAMES.has(name.toLowerCase())) throw new HttpError(400, 'That username is reserved. Please choose another.');
+}
+// In use by another account, or left by another member in the last 30 days
+async function nameTaken(ctx, name, selfId){
+  if(await ctx.db.prepare('SELECT 1 FROM users WHERE username = ? AND id != ?').bind(name, selfId).first()) return true;
+  // A name an administrator has left stays held for as long as it's still listed in ADMINS
+  const since = siteAdmin(ctx, name) ? 0 : ctx.now - NAME_HOLD_DAYS * 86400000;
+  return !!await ctx.db.prepare('SELECT 1 FROM name_changes WHERE old_name = ? AND created_at > ? AND user_id != ?')
+    .bind(name, since, selfId).first();
+}
+async function renameAfter(ctx, userId){
+  const last = await ctx.db.prepare('SELECT MAX(created_at) AS t FROM name_changes WHERE user_id = ?').bind(userId).first();
+  const next = last && last.t ? last.t + RENAME_DAYS * 86400000 : 0;
+  return next > ctx.now ? next : null;
+}
+
+async function usernameStatus(ctx){
+  const user = requireUser(ctx);
+  const past = (await ctx.db.prepare('SELECT old_name, created_at FROM name_changes WHERE user_id = ? ORDER BY created_at DESC LIMIT 10').bind(user.id).all()).results;
+  return json({ canChangeAt:await renameAfter(ctx, user.id), siteAdmin:!!user.site, previous:past.map(p => ({ name:p.old_name, until:p.created_at })) });
+}
+
+async function changeUsername(ctx){
+  const user = requireUser(ctx);
+  const { username, password } = await readBody(ctx);
+  const name = String(username || '').trim();
+  await limit(ctx, 'rename:' + user.id, 10, 15 * 60 * 1000, 'Too many tries. Please wait a few minutes and try again.');
+  const row = await ctx.db.prepare('SELECT pass_hash, salt FROM users WHERE id = ?').bind(user.id).first();
+  if(!row || !sameHash(await hashPassword(String(password || ''), row.salt), row.pass_hash)) throw new HttpError(401, 'That password isn’t right.');
+  checkUsername(name);
+  if(name === user.username) throw new HttpError(400, 'That’s already your username.');
+  const onlyCase = name.toLowerCase() === user.username.toLowerCase();
+  // Site administrators are named in the site's settings (ADMINS). One can move only to a name listed there
+  // too, so the role isn't lost, and nobody else can take a name that's listed there.
+  if(!onlyCase && user.site && !siteAdmin(ctx, name)) throw new HttpError(403, 'Your administrator role comes from your username in the site’s settings. Add the new name to ADMINS in Cloudflare (next to your current one), then change it here, and then take the old one out.');
+  if(!onlyCase && !user.site && siteAdmin(ctx, name)) throw new HttpError(409, 'That username is taken. Please choose another.');
+  if(!user.admin){
+    if(await setting(ctx, 'readonly') === '1') throw new HttpError(403, 'The Community is read-only for a little while. Please check back soon.');
+    const mute = await activeMute(ctx, user.id);
+    if(mute) throw new HttpError(403, 'You can change your username once your mute ends.');
+    const { results } = await ctx.db.prepare('SELECT word FROM blocked_words').all();
+    const parts = [name.toLowerCase(), ...name.toLowerCase().split(/[_0-9]+/)];
+    if(results.some(({ word }) => parts.includes(String(word).toLowerCase()))) throw new HttpError(400, 'That username uses a word that isn’t allowed in the Community. Please choose another.');
+  }
+  if(!onlyCase){
+    const next = await renameAfter(ctx, user.id);
+    if(next) throw new HttpError(429, `You can change your username once a week. You can change it again on ${new Date(next).toISOString().slice(0, 10)}.`);
+    if(await nameTaken(ctx, name, user.id)) throw new HttpError(409, 'That username is taken. Please choose another.');
+  }
+  try{
+    // Only a real change is kept and logged; new capital letters are the same name
+    await ctx.db.batch([
+      ctx.db.prepare('UPDATE users SET username = ? WHERE id = ?').bind(name, user.id),
+      ...(onlyCase ? [] : [ctx.db.prepare('INSERT INTO name_changes (user_id, old_name, new_name, created_at) VALUES (?, ?, ?, ?)').bind(user.id, user.username, name, ctx.now)])
+    ]);
+  }catch(err){
+    if(/UNIQUE/i.test(String(err && err.message))) throw new HttpError(409, 'That username is taken. Please choose another.');
+    throw err;
+  }
+  if(!onlyCase) await logMod(ctx, 'rename', user.username, '');
+  const fresh = withRole(ctx, { ...user, username:name });
+  return json({ user:publicUser(fresh), canChangeAt:await renameAfter(ctx, user.id) });
 }
 
 /* ---------- Reset codes ----------
@@ -530,7 +610,8 @@ async function exportAccount(ctx){
   const data = {
     exported: when(ctx.now),
     site: 'Sanctify Community',
-    account: { username:account.username, joined:when(account.created_at), moderator:user.role === 'moderator', siteAdministrator:!!user.site },
+    account: { username:account.username, joined:when(account.created_at), moderator:user.role === 'moderator', siteAdministrator:!!user.site,
+      previousUsernames:(await all('SELECT old_name, created_at FROM name_changes WHERE user_id = ? ORDER BY id')).map(n => ({ username:n.old_name, changed:when(n.created_at) })) },
     profile: {
       description: profile ? profile.bio : '',
       picture: avatar ? `data:${avatar.mime};base64,${avatar.data}` : null,
@@ -1481,8 +1562,10 @@ async function modUser(ctx, id){
   const notes = (await ctx.db.prepare('SELECT n.id, n.note, n.created_at, u.username FROM mod_notes n LEFT JOIN users u ON u.id = n.by_user WHERE n.user_id = ? ORDER BY n.created_at DESC LIMIT 50').bind(id).all()).results;
   const profile = await ctx.db.prepare('SELECT bio FROM profiles WHERE user_id = ?').bind(id).first();
   const banner = await ctx.db.prepare('SELECT preset AS banner_preset, updated_at AS banner_v FROM banners WHERE user_id = ?').bind(id).first();
+  const names = (await ctx.db.prepare('SELECT old_name, created_at FROM name_changes WHERE user_id = ? ORDER BY created_at DESC LIMIT 20').bind(id).all()).results;
   return json({
     user:modUserJson(ctx, row),
+    previousNames:names.map(n => ({ name:n.old_name, until:n.created_at })),
     bio:profile ? profile.bio : '',
     banner:bannerJson(banner),
     badges:await badgesFor(ctx, id),

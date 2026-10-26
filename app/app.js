@@ -820,7 +820,7 @@ function render(){
   const head = document.getElementById('mainHead');
 
   const isHub = activeCategory.startsWith('hub-');
-  head.hidden = (activeCategory === 'home' || isHub) && !searching;
+  head.hidden = (activeCategory === 'home' || isHub || activeCategory === 'profile') && !searching;
   const crumbs = document.getElementById('sectionEyebrow');
   if(searching){
     const scope = LIBRARY_CATS.has(activeCategory) && activeCategory !== 'all' ? ' in ' + sec.name : '';
@@ -3629,11 +3629,11 @@ function applyPrayerLang(e){
    no account details are kept in this browser's storage.
    ========================================================= */
 const FORUM_CATS = {
-  general:{ name:'General', color:'var(--teal)' },
-  prayer:{ name:'Prayer Requests', color:'var(--wine)' },
-  faith:{ name:'Questions on the Faith', color:'var(--purple)' },
-  saints:{ name:'Saints & Devotions', color:'var(--gold)' },
-  study:{ name:'Books & Study', color:'var(--indigo)' }
+  general:{ name:'General', color:'var(--teal)', desc:'Anything about the faith and the life of a Christian.' },
+  prayer:{ name:'Prayer Requests', color:'var(--wine)', desc:'Ask for prayers, and pray for one another.' },
+  faith:{ name:'Questions on the Faith', color:'var(--purple)', desc:'Ask what the Church teaches, and why.' },
+  saints:{ name:'Saints & Devotions', color:'var(--gold)', desc:'The saints, and the prayers and devotions you love.' },
+  study:{ name:'Books & Study', color:'var(--indigo)', desc:'Scripture, good books, and reading together.' }
 };
 const FORUM_GUIDELINES = [
   'Be charitable. Disagree with ideas, never attack people.',
@@ -3707,11 +3707,14 @@ function stillShowing(seq, cat){ return seq === viewSeq && activeCategory === ca
 function avatarImg(name, v){
   return v ? `<img class="av-img" src="/api/avatar/${encodeURIComponent(name)}?v=${Number(v)}" alt="" loading="lazy" decoding="async">` : '';
 }
+function avatarColor(name){
+  let h = 0;
+  for(const ch of String(name).toLowerCase()) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return AVATAR_COLORS[h % AVATAR_COLORS.length];
+}
 function avatarFor(name, v, cls = ''){
   if(!name) return `<span class="forum-avatar former ${cls}" aria-hidden="true">?</span>`;
-  let h = 0;
-  for(const ch of name.toLowerCase()) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
-  return `<span class="forum-avatar notranslate ${cls}" translate="no" style="--av:${AVATAR_COLORS[h % AVATAR_COLORS.length]}" aria-hidden="true">${escapeHtml(name[0].toUpperCase())}${avatarImg(name, v)}</span>`;
+  return `<span class="forum-avatar notranslate ${cls}" translate="no" style="--av:${avatarColor(name)}" aria-hidden="true">${escapeHtml(name[0].toUpperCase())}${avatarImg(name, v)}</span>`;
 }
 document.addEventListener('error', ev => { if(ev.target.classList && ev.target.classList.contains('av-img')) ev.target.remove(); }, true);
 
@@ -4099,14 +4102,18 @@ function forumPostCard(p){
   el.className = 'forum-post' + (p.pinned ? ' pinned' : '');
   el.tabIndex = 0;
   el.dataset.route = 'community/post/' + p.id;
+  el.style.setProperty('--cat', (FORUM_CATS[p.category] || FORUM_CATS.general).color);
   el.innerHTML = `
-    <div class="forum-post-top">${avatarFor(p.author, p.authorAvatar, 'avatar-small')}<span class="forum-meta">${authorHtml(p.author)} · ${timeAgo(p.createdAt)}</span>${p.pinned ? '<span class="forum-tag forum-pin" style="--tag-color:var(--gold)">Pinned</span>' : ''}${forumTag(p.category)}${p.locked ? '<span class="forum-tag" style="--tag-color:var(--ink-soft)">Locked</span>' : ''}</div>
-    <h3>${escapeHtml(p.title)}</h3>
-    <p>${escapeHtml(p.excerpt)}</p>
-    <div class="forum-stats">
-      ${p.category === 'prayer' ? prayButtonHtml(p) : ''}
-      <span>${navIcon('reply')}${plural(p.replies, 'reply', 'replies')}</span>
-      ${p.replies ? `<span>Last reply ${timeAgo(p.lastActivity)}</span>` : ''}
+    ${avatarFor(p.author, p.authorAvatar, 'fp-avatar')}
+    <div class="fp-main">
+      <div class="forum-post-top"><span class="forum-meta"><strong>${authorHtml(p.author)}</strong> · ${timeAgo(p.createdAt)}</span><span class="fp-tags">${p.pinned ? '<span class="forum-tag forum-pin" style="--tag-color:var(--gold)">Pinned</span>' : ''}${p.locked ? '<span class="forum-tag" style="--tag-color:var(--ink-soft)">Locked</span>' : ''}${forumTag(p.category)}</span></div>
+      <h3>${escapeHtml(p.title)}</h3>
+      <p>${escapeHtml(p.excerpt)}</p>
+      <div class="forum-stats">
+        ${p.category === 'prayer' ? prayButtonHtml(p) : ''}
+        <span>${navIcon('reply')}${plural(p.replies, 'reply', 'replies')}</span>
+        ${p.replies ? `<span>Last reply ${timeAgo(p.lastActivity)}</span>` : ''}
+      </div>
     </div>`;
   el.addEventListener('keydown', ev => { if(ev.target === el && (ev.key === 'Enter' || ev.key === ' ')){ ev.preventDefault(); navigate(el.dataset.route); } });
   bindPrayButtons(el);
@@ -4137,8 +4144,9 @@ function bindPrayButtons(root){
 }
 
 // "Share with the Community": a post written right where you are, without leaving the page
-function composerHtml(){
+function composerHtml(cat = 'general'){
   const u = Community.user;
+  if(!FORUM_CATS[cat]) cat = 'general';
   if(!u) return `<div class="composer composer-guest">
       <span class="forum-avatar former avatar-small" aria-hidden="true">?</span>
       <p><button class="text-link" data-auth="signin">Sign in</button> or <button class="text-link" data-auth="signup">create a free account</button> to post, reply, and pray for others.</p>
@@ -4148,10 +4156,10 @@ function composerHtml(){
   return `<form class="composer" id="composer" novalidate>
       ${avatarFor(u.username, u.avatar, 'avatar-small')}
       <div class="composer-main">
-        <button type="button" class="composer-prompt" data-composer-open>Share a prayer request, a question, or something good…</button>
+        <button type="button" class="composer-prompt" data-composer-open>${cat === 'prayer' ? 'Ask for prayers, or share an intention…' : 'Share a prayer request, a question, or something good…'}</button>
         <div class="composer-full" hidden>
-          <div class="composer-cats" role="radiogroup" aria-label="Category">${Object.entries(FORUM_CATS).map(([k, c], i) =>
-            `<button type="button" role="radio" class="patron-chip${i ? '' : ' active'}" data-ccat="${k}" aria-checked="${!i}" style="--tag-color:${c.color}">${escapeHtml(c.name)}</button>`).join('')}</div>
+          <div class="composer-cats" role="radiogroup" aria-label="Category">${Object.entries(FORUM_CATS).map(([k, c]) =>
+            `<button type="button" role="radio" class="patron-chip${k === cat ? ' active' : ''}" data-ccat="${k}" aria-checked="${k === cat}" style="--tag-color:${c.color}">${escapeHtml(c.name)}</button>`).join('')}</div>
           <input id="composerTitle" maxlength="120" autocomplete="off" placeholder="Title" aria-label="Title">
           <textarea id="composerBody" maxlength="5000" rows="4" placeholder="Write your post…" aria-label="Your post"></textarea>
           <p class="forum-error" id="composerError" hidden></p>
@@ -4170,7 +4178,7 @@ function bindComposer(root){
   if(!form) return;
   const full = form.querySelector('.composer-full'), prompt = form.querySelector('[data-composer-open]');
   const title = form.querySelector('#composerTitle'), body = form.querySelector('#composerBody'), error = form.querySelector('#composerError');
-  let category = 'general';
+  let category = form.querySelector('[data-ccat].active').dataset.ccat;
   const open = () => { prompt.hidden = true; full.hidden = false; form.classList.add('open'); title.focus(); };
   const close = () => { full.hidden = true; prompt.hidden = false; form.classList.remove('open'); showFormError(error, ''); };
   prompt.addEventListener('click', open);
@@ -4204,86 +4212,111 @@ async function renderCommunityHome(){
   entryListEl.innerHTML = '<div class="forum-loading">Loading the Community…</div>';
   await ensureAccount();
   if(!stillShowing(seq, 'hub-community')) return;
-  let posts = null, prayers = null, changes = null, news = null;
+  let posts = null, prayers = null, changes = null, news = null, mine = null;
   if(Community.available){
-    [posts, prayers, changes, news] = await Promise.all([
+    const u = Community.user;
+    [posts, prayers, changes, news, mine] = await Promise.all([
       api('posts?page=0').catch(() => null),
       api('posts?page=0&category=prayer').catch(() => null),
       api('wiki/changes').catch(() => null),
-      api('news').catch(() => null)
+      api('news').catch(() => null),
+      u ? api('users/' + encodeURIComponent(u.username)).catch(() => null) : null
     ]);
     if(!stillShowing(seq, 'hub-community')) return;
   }
   const u = Community.user;
-  const latest = posts ? posts.posts.slice(0, 4) : [];
+  const latest = posts ? posts.posts.slice(0, 5) : [];
   const requests = prayers ? prayers.posts.slice(0, 4) : [];
   const edits = changes ? changes.changes.filter((c, i, all) => all.findIndex(x => x.slug === c.slug) === i).slice(0, 4) : [];
   const headlines = news ? news.news.slice(0, 3) : [];
   const verse = dailyPick(DAILY_VERSES, 47, startOfToday());
-  const miniPost = p => `<button class="hub-mini" data-route="community/post/${p.id}">${avatarFor(p.author, p.authorAvatar, 'avatar-small')}
-      <span><strong>${escapeHtml(p.title)}</strong><span class="forum-meta">${escapeHtml(p.author || 'Former member')} · ${escapeHtml(timeAgo(p.lastActivity || p.createdAt))} · ${plural(p.replies, 'reply', 'replies')}</span></span></button>`;
   const wrap = document.createElement('div');
-  wrap.className = 'hub community-home';
+  wrap.className = 'hub community-home cx';
   wrap.style.setProperty('--hub-color', 'var(--indigo)');
   wrap.innerHTML = `
-    <section class="hub-head">
-      <div class="hub-eyebrow">One body in Christ</div>
-      <h1 class="hub-title">Community<span>.</span></h1>
-      <p class="hub-intro">Pray for one another, ask questions about the faith, and share what you love with other Sanctify members: in the forum, in the wiki you write together, and on Discord.</p>
+    <section class="cx-hero">
+      <div class="cx-hero-text">
+        <div class="hub-eyebrow">One body in Christ</div>
+        <h1 class="hub-title">Community<span>.</span></h1>
+        <p class="hub-intro">Pray for one another, ask questions about the faith, and share what you love with other Sanctify members: in the forum, in the wiki you write together, and on Discord.</p>
+      </div>
+      ${Community.available ? meCardHtml(u, mine && mine.profile) : ''}
     </section>
     ${Community.available ? composerHtml() : forumProblemHtml(Community.problem)}
     ${u && u.unread ? `<button class="forum-notify" data-route="account">You have ${plural(u.unread, 'new notification', 'new notifications')} →</button>` : ''}
-    <div class="hub-label">Where to begin</div>
-    <div class="bento community-bento">
-      <article class="bento-card big" data-route="community/forum" tabindex="0" style="--tile-color:var(--indigo)">
-        <div class="bento-top"><span class="tile-icon">${navIcon('community')}</span><span class="daily-kicker">Latest conversations</span></div>
-        <h3>Forum</h3>
-        <p>Prayer requests, questions on the faith, the saints and devotions, and good books, with people who love them too.</p>
-        ${latest.length ? `<div class="hub-minis">${latest.map(miniPost).join('')}</div>` : ''}
-        <div class="bento-links">${Object.entries(FORUM_CATS).map(([k, c]) => `<button class="patron-chip" data-forum-cat="${k}">${escapeHtml(c.name)}</button>`).join('')}</div>
-        <div class="bento-foot"><span class="bento-meta">${posts ? (latest.length ? 'Join the conversation' : 'Be the first to post') : ''}</span><span class="bento-cta">Open the forum →</span></div>
-      </article>
-      <article class="bento-card" data-route="wiki" tabindex="0" style="--tile-color:var(--teal)">
-        <div class="bento-top"><span class="tile-icon">${navIcon('wiki')}</span><span class="daily-kicker">Written together</span></div>
-        <h3>Community Wiki</h3>
-        <p>Pages any member can start and improve: parishes and shrines, devotions, customs, and how-tos.</p>
-        ${edits.length ? `<ul class="hub-list">${edits.map(c => `<li><button class="text-link" data-route="wiki/page/${c.slug}">${escapeHtml(c.title)}</button> <span class="forum-meta">${escapeHtml(timeAgo(c.createdAt))}</span></li>`).join('')}</ul>` : ''}
-        <div class="bento-foot"><span class="bento-meta">Every edit is kept</span><span class="bento-cta">Open the wiki →</span></div>
-      </article>
-      <article class="bento-card" data-route="news" tabindex="0" style="--tile-color:var(--amber)">
-        <div class="bento-top"><span class="tile-icon">${navIcon('news')}</span><span class="daily-kicker">From the team</span></div>
-        <h3>News</h3>
-        ${headlines.length ? `<ul class="hub-list">${headlines.map(n => `<li><strong>${escapeHtml(n.title)}</strong> <span class="forum-meta">${escapeHtml(timeAgo(n.createdAt))}</span></li>`).join('')}</ul>` : '<p>Announcements and updates from the Sanctify team.</p>'}
-        <div class="bento-foot"><span class="bento-meta"></span><span class="bento-cta">Read the news →</span></div>
-      </article>
-      <a class="bento-card hub-discord" href="${DISCORD_URL}" target="_blank" rel="noopener" style="--tile-color:#5865f2">
-        <div class="bento-top"><span class="tile-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#discordGlyph"/></svg></span><span class="daily-kicker">Chat live</span></div>
-        <h3>Discord</h3>
-        <p>Chat, pray, and talk about the faith with others who use Sanctify.</p>
-        <div class="bento-foot"><span class="bento-meta"></span><span class="bento-cta">Join ↗</span></div>
-      </a>
+    <div class="cx-grid">
+      <section class="cx-main" aria-labelledby="cxLatestHead">
+        <div class="cx-section-head"><h2 id="cxLatestHead">Latest conversations</h2><button class="text-link" data-route="community/forum">The whole forum →</button></div>
+        <div class="cx-channels" role="group" aria-label="Forum categories">${Object.entries(FORUM_CATS).map(([k, c]) =>
+          `<button class="cx-channel" data-forum-cat="${k}" style="--cat:${c.color}"><span class="cx-hash" aria-hidden="true">#</span>${escapeHtml(c.name)}</button>`).join('')}</div>
+        <div class="forum-list" id="cxLatest">${posts && !latest.length ? `<div class="forum-empty"><p>No posts yet. Be the first to start a conversation!</p></div>` : ''}</div>
+        ${latest.length ? '<button class="btn quiet cx-more" data-route="community/forum">Open the forum</button>' : ''}
+      </section>
+      <aside class="cx-side">
+        ${requests.length ? `
+        <section class="cx-card cx-pray" style="--tile-color:var(--wine)">
+          <h3>${navIcon('prayer')}Pray for one another</h3>
+          <ul class="cx-pray-list">${requests.map(p => `<li>
+            <button class="cx-pray-title" data-route="community/post/${p.id}">${escapeHtml(p.title)}</button>
+            <span class="forum-meta">${escapeHtml(p.author || 'Former member')} · ${escapeHtml(timeAgo(p.createdAt))}</span>
+            ${prayButtonHtml(p)}</li>`).join('')}</ul>
+          <button class="text-link" data-forum-cat="prayer">All prayer requests →</button>
+        </section>` : ''}
+        <section class="cx-card" style="--tile-color:var(--teal)">
+          <h3>${navIcon('wiki')}Community Wiki</h3>
+          ${edits.length ? `<ul class="hub-list">${edits.map(c => `<li><button class="text-link" data-route="wiki/page/${c.slug}">${escapeHtml(c.title)}</button> <span class="forum-meta">${escapeHtml(timeAgo(c.createdAt))}</span></li>`).join('')}</ul>` : '<p>Pages any member can start and improve: parishes and shrines, devotions, customs, and how-tos.</p>'}
+          <button class="text-link" data-route="wiki">Open the wiki →</button>
+        </section>
+        <section class="cx-card" style="--tile-color:var(--amber)">
+          <h3>${navIcon('news')}News</h3>
+          ${headlines.length ? `<ul class="hub-list">${headlines.map(n => `<li><strong>${escapeHtml(n.title)}</strong> <span class="forum-meta">${escapeHtml(timeAgo(n.createdAt))}</span></li>`).join('')}</ul>` : '<p>Announcements and updates from the Sanctify team.</p>'}
+          <button class="text-link" data-route="news">Read the news →</button>
+        </section>
+        <a class="cx-card cx-discord" href="${DISCORD_URL}" target="_blank" rel="noopener">
+          <h3><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#discordGlyph"/></svg>Discord</h3>
+          <p>Chat, pray, and talk about the faith with others who use Sanctify.</p>
+          <span class="cx-discord-cta">Join the server ↗</span>
+        </a>
+      </aside>
     </div>
-    ${requests.length ? `
-    <section class="prayer-wall">
-      <div class="hub-label">Pray for one another</div>
-      <div class="forum-list" id="prayerWall"></div>
-      <button class="btn quiet" data-forum-cat="prayer">All prayer requests</button>
-    </section>` : ''}
     <section class="hub-verse">
       <blockquote>“${escapeHtml(verse.text)}”</blockquote>
       <cite>${escapeHtml(verse.ref)}</cite>
     </section>`;
   entryListEl.innerHTML = '';
   entryListEl.appendChild(wrap);
-  const wall = wrap.querySelector('#prayerWall');
-  if(wall) requests.forEach(p => wall.appendChild(forumPostCard(p)));
+  const list = wrap.querySelector('#cxLatest');
+  latest.forEach(p => list.appendChild(forumPostCard(p)));
   bindAuthButtons(wrap, 'community');
   bindComposer(wrap);
+  bindPrayButtons(wrap.querySelector('.cx-pray') || document.createElement('div'));
   wrap.querySelectorAll('[data-forum-cat]').forEach(b => b.addEventListener('click', ev => { ev.stopPropagation(); forumCat = b.dataset.forumCat; forumSearch = ''; navigate('community/forum'); }));
-  wrap.querySelectorAll('.hub-mini, .hub-list [data-route]').forEach(b => b.addEventListener('click', ev => { ev.stopPropagation(); navigate(b.dataset.route); }));
-  wrap.querySelectorAll('.bento-card[data-route]').forEach(card => card.addEventListener('keydown', e => {
-    if(e.target === card && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); navigate(card.dataset.route); }
-  }));
+}
+
+// The signed-in member's own card on the Community home, a small version of their profile
+function meCardHtml(u, prof){
+  if(!u) return `<div class="cx-me cx-me-guest">
+      <div class="cx-me-banner"></div>
+      <div class="cx-me-body">
+        <h3>Join the Community</h3>
+        <p>A free account lets you post, reply, and pray for others. No email address is needed.</p>
+        <div class="cx-me-actions"><button class="btn primary pill" data-auth="signup">Create an account</button><button class="btn quiet" data-auth="signin">Sign in</button></div>
+      </div>
+    </div>`;
+  const banner = prof ? bannerHtml(u.username, prof.banner, ' cx-me-banner') : '';
+  const earned = prof ? prof.badges.earned.length + communityBadgeKeys(prof).length + prof.badges.appointed.length : 0;
+  return `<div class="cx-me" style="--av:${avatarColor(u.username)}">
+      ${banner || '<div class="cx-me-banner"></div>'}
+      <div class="cx-me-body">
+        <div class="cx-me-avatar">${avatarFor(u.username, u.avatar, 'avatar-big')}</div>
+        <h3 class="notranslate" translate="no">${escapeHtml(u.username)}</h3>
+        ${prof ? `<p class="cx-me-stats"><span><strong>${prof.posts}</strong> ${prof.posts === 1 ? 'post' : 'posts'}</span><span><strong>${prof.replies}</strong> ${prof.replies === 1 ? 'reply' : 'replies'}</span><span><strong>${earned}</strong> ${earned === 1 ? 'badge' : 'badges'}</span></p>` : ''}
+        <div class="cx-me-actions">
+          <button class="btn primary pill" data-route="community/user/${encodeURIComponent(u.username)}">View profile</button>
+          <button class="btn quiet" data-route="account">Edit</button>
+        </div>
+      </div>
+    </div>`;
 }
 
 async function loadForumPosts(list, query, emptyHtml){
@@ -4327,7 +4360,8 @@ function renderPrivacy(){
       <p>You can download a backup of them, or erase them, in Settings.</p>
       <div class="forum-form-actions"><button class="btn quiet" data-route="settings">Open Settings</button></div>`],
     ['account', 'var(--rose)', 'If you make a Community account', `<p>Sanctify keeps your username, the date you joined, and your password in a securely scrambled (hashed) form that can’t be turned back into the password. It also keeps what you choose to add: your posts and replies, the posts you pray for, your wiki edits, your profile picture, banner, and description, your badges, the saved pages you show on your profile, and any reports you make.</p>
-      <p>Moderators can see the list of accounts, reports, and the warnings and private notes they write about an account, so they can keep the Community safe.</p>
+      <p>If you change your username, your earlier usernames are kept with your account, so the moderators can tell who is who. An old name is held for you for 30 days, so nobody else can take it.</p>
+      <p>Moderators can see the list of accounts, reports, your earlier usernames, and the warnings and private notes they write about an account, so they can keep the Community safe.</p>
       <p>If you send a note with Report a problem, the moderators see your note, the page you were on if you include it, how to reach you if you say, and your username if you’re signed in.</p>`],
     ['shield', 'var(--teal)', 'One cookie, for signing in', `<p>When you sign in, Sanctify sets a single cookie that keeps you signed in for up to 30 days. There are no advertising or tracking cookies.</p>`],
     ['globe', 'var(--indigo)', 'Your network address', `<p>To stop spam and guessing at passwords, Sanctify counts sign-ups, sign-ins, and a few other actions from each network for a short time. It stores a scrambled form of the network address, not the address itself, and the counts are cleared when they expire.</p>
@@ -4403,17 +4437,31 @@ async function renderCommunity(){
   if(!Community.available){ showProblem(entryListEl, Community.problem); entryListEl.insertAdjacentHTML('afterbegin', discordCardHtml()); return; }
   const u = Community.user;
   const wrap = document.createElement('div');
-  wrap.className = 'forum';
-  const chips = [['all', 'All posts'], ...Object.entries(FORUM_CATS).map(([k, c]) => [k, c.name])];
-  wrap.innerHTML = `${composerHtml()}
-    ${u && u.unread ? `<button class="forum-notify" data-route="account">You have ${plural(u.unread, 'new notification', 'new notifications')} →</button>` : ''}
-    <div class="searchbar forum-search" role="search"><svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-      <input type="search" id="forumSearch" placeholder="Search the Community…" value="${escapeHtml(forumSearch)}" aria-label="Search the Community"></div>
-    <div class="patron-filters-row forum-chips" role="group" aria-label="Categories">
-      ${chips.map(([k, name]) => `<button class="patron-chip${forumCat === k ? ' active' : ''}" data-fcat="${k}" aria-pressed="${forumCat === k}">${escapeHtml(name)}</button>`).join('')}
-    </div>
-    <div class="forum-list" id="forumList"><div class="forum-loading">Loading posts…</div></div>
-    ${guidelinesHtml()}`;
+  wrap.className = 'forum cx-forum';
+  // The categories down the side like a server's channels (a row of chips on a phone)
+  const chips = [['all', 'All posts', 'var(--ink-soft)'], ...Object.entries(FORUM_CATS).map(([k, c]) => [k, c.name, c.color])];
+  const cat = FORUM_CATS[forumCat];
+  wrap.innerHTML = `
+    <nav class="cx-rail" aria-label="Forum categories">
+      <div class="cx-rail-label">Forum</div>
+      ${chips.map(([k, name, color]) => `<button class="cx-rail-item${forumCat === k ? ' active' : ''}" data-fcat="${k}" aria-pressed="${forumCat === k}" style="--cat:${color}"><span class="cx-hash" aria-hidden="true">#</span><span>${escapeHtml(name)}</span></button>`).join('')}
+      <div class="cx-rail-label cx-rail-more">More</div>
+      <button class="cx-rail-item cx-rail-link" data-route="wiki"><span class="cx-rail-ic" aria-hidden="true">${navIcon('wiki')}</span><span>Community Wiki</span></button>
+      <button class="cx-rail-item cx-rail-link" data-route="news"><span class="cx-rail-ic" aria-hidden="true">${navIcon('news')}</span><span>News</span></button>
+      <a class="cx-rail-item cx-rail-link" href="${DISCORD_URL}" target="_blank" rel="noopener"><span class="cx-rail-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#discordGlyph"/></svg></span><span>Discord ↗</span></a>
+    </nav>
+    <div class="cx-feed">
+      <header class="cx-channel-head" style="--cat:${cat ? cat.color : 'var(--indigo)'}">
+        <span class="cx-hash big" aria-hidden="true">#</span>
+        <div><h2>${escapeHtml(cat ? cat.name : 'All posts')}</h2><p>${escapeHtml(cat ? cat.desc : 'Every conversation in the Sanctify forum, the most active first.')}</p></div>
+      </header>
+      ${composerHtml(forumCat)}
+      ${u && u.unread ? `<button class="forum-notify" data-route="account">You have ${plural(u.unread, 'new notification', 'new notifications')} →</button>` : ''}
+      <div class="searchbar forum-search" role="search"><svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input type="search" id="forumSearch" placeholder="${cat ? `Search ${escapeHtml(cat.name)}…` : 'Search the Community…'}" value="${escapeHtml(forumSearch)}" aria-label="Search the Community"></div>
+      <div class="forum-list" id="forumList"><div class="forum-loading">Loading posts…</div></div>
+      ${guidelinesHtml()}
+    </div>`;
   entryListEl.innerHTML = '';
   entryListEl.appendChild(wrap);
   bindAuthButtons(wrap, 'community/forum');
@@ -4447,7 +4495,7 @@ const MOD_ACTIONS = {
   'remove-post':'removed', 'remove-reply':'removed', pin:'pinned', unpin:'unpinned', lock:'locked', unlock:'unlocked',
   'dismiss-report':'dismissed reports on', mute:'muted', unmute:'unmuted', warn:'warned', 'add-note':'added a note on',
   move:'moved', settings:'changed the settings', 'give-badge':'gave a badge to', 'take-badge':'removed a badge from', 'clear-bio':'cleared the description of', 'clear-avatar':'removed the picture of', 'clear-banner':'removed the banner of', 'publish-news':'published', 'edit-news':'edited', 'delete-news':'deleted',
-  'automod-block':'turned back a post by', 'automod-hide':'hid', restore:'restored', 'wiki-lock':'locked the wiki page', 'wiki-unlock':'unlocked the wiki page', 'wiki-delete':'removed the wiki page', 'reset-code':'made a password reset code for', 'close-feedback':'marked as handled'
+  'automod-block':'turned back a post by', 'automod-hide':'hid', restore:'restored', 'wiki-lock':'locked the wiki page', 'wiki-unlock':'unlocked the wiki page', 'wiki-delete':'removed the wiki page', 'reset-code':'made a password reset code for', 'close-feedback':'marked as handled', rename:'changed their username from'
 };
 function modDate(ms){ return new Date(ms).toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' }); }
 function banLabel(ban){ return ban ? (ban.until ? 'Banned until ' + modDate(ban.until) : 'Banned permanently') : ''; }
@@ -4767,6 +4815,7 @@ async function modUserView(body, still){
       </div>`}
     <h3 class="forum-replies-head">Profile</h3>
     ${data.bio ? `<p class="mod-excerpt member-bio">${escapeHtml(data.bio)}</p>` : '<p class="forum-meta">No description.</p>'}
+    ${(data.previousNames || []).length ? `<p class="forum-meta">Earlier usernames: ${data.previousNames.map(n => `<strong>${escapeHtml(n.name)}</strong> (until ${escapeHtml(modDate(n.until))})`).join(', ')}</p>` : ''}
     <div class="forum-form-actions mod-actions">
       ${data.bio ? '<button class="btn quiet" data-clear-bio>Clear the description</button>' : ''}
       ${x.avatar ? '<button class="btn quiet" data-clear-avatar>Remove the picture</button>' : ''}
@@ -4965,9 +5014,11 @@ async function modLogView(body, still){
 }
 
 /* ---------- Member profiles (#/community/user/NAME) ---------- */
+let profileTab = 'about', profileTabFor = '';
 async function renderMemberProfile(){
   const seq = ++viewSeq;
   const name = profileName;
+  if(profileTabFor !== name.toLowerCase()){ profileTab = 'about'; profileTabFor = name.toLowerCase(); }
   entryListEl.innerHTML = '<div class="forum-loading">Loading…</div>';
   await ensureAccount();
   let data = null, problem = null;
@@ -4980,51 +5031,96 @@ async function renderMemberProfile(){
     return;
   }
   const p = data.profile, me = Community.user;
+  const self = !!me && me.username.toLowerCase() === p.username.toLowerCase();
   const saved = (p.favorites || []).map(id => library.find(e => e.id === id)).filter(Boolean);
+  const earned = BADGES.filter(b => [...p.badges.earned, ...communityBadgeKeys(p)].includes(b.key));
+  const badgeCount = earned.length + p.badges.appointed.length;
+  const joined = new Date(p.createdAt).toLocaleDateString(undefined, { month:'long', day:'numeric', year:'numeric' });
+  const roles = [p.administrator && ['Site administrator', 'teal'], p.moderator && !p.administrator && ['Moderator', 'indigo']].filter(Boolean);
   sectionTitleEl.textContent = p.username;
   sectionDescEl.textContent = 'Member since ' + new Date(p.createdAt).toLocaleDateString(undefined, { month:'long', year:'numeric' });
   document.title = p.username + ' — Sanctify';
+  // Laid out like a Discord profile: a banner, the picture over its edge, the badges beside it,
+  // and the description and badges on their own tabs
+  const tabs = [['about', 'About', ''], ['badges', 'Badges', badgeCount], ['posts', 'Posts', p.posts], ['replies', 'Replies', p.replies],
+    ['wiki', 'Wiki', data.wiki ? data.wiki.edits : 0], ...(saved.length ? [['saved', 'Saved', saved.length]] : [])];
+  if(!tabs.some(t => t[0] === profileTab)) profileTab = 'about';
   entryListEl.innerHTML = `
-    <div class="member-page">
-      ${bannerHtml(p.username, p.banner)}
-      <section class="avatar-panel member-panel">
-        ${avatarFor(p.username, p.avatar, 'avatar-big')}
-        <div>
-          <h3>${escapeHtml(p.username)}${p.administrator ? adminIcon() : ''}${badgePills(p.badges.appointed)}</h3>
-          ${p.bio ? `<p class="member-bio">${inlineHtml(p.bio)}</p>` : ''}
-          ${badgeRow([...p.badges.earned, ...communityBadgeKeys(p)])}
-          <div class="member-stats"><span><strong>${p.posts}</strong> ${p.posts === 1 ? 'post' : 'posts'}</span><span><strong>${p.replies}</strong> ${p.replies === 1 ? 'reply' : 'replies'}</span><span><strong>${p.prayers}</strong> ${p.prayers === 1 ? 'prayer offered' : 'prayers offered'}</span>${data.wiki ? `<span><strong>${data.wiki.edits}</strong> wiki ${data.wiki.edits === 1 ? 'edit' : 'edits'}</span>` : ''}</div>
-          <div class="forum-form-actions">
-            ${me && me.username.toLowerCase() === p.username.toLowerCase() ? '<button class="btn quiet" data-route="account">Edit your account</button>' : ''}
-            ${me && me.admin ? `<button class="btn quiet" data-mod-open="${p.id}">Open in moderation</button>` : ''}
-          </div>
+    <div class="dprof" style="--av:${avatarColor(p.username)}">
+      <button class="dprof-back" data-route="community">← Community</button>
+      <article class="dprof-card">
+        ${bannerHtml(p.username, p.banner, ' dprof-banner') || '<div class="profile-banner dprof-banner plain"></div>'}
+        <div class="dprof-top">
+          <div class="dprof-avatar">${avatarFor(p.username, p.avatar, 'avatar-xl')}</div>
+          ${badgeCount || p.administrator ? `<button class="dprof-badges" data-ptab-go="badges" aria-label="See ${escapeHtml(p.username)}’s badges">
+            ${p.administrator ? adminIcon() : ''}${badgePills(p.badges.appointed)}${earned.slice(0, 8).map(b => `<span class="badge-ic" style="--b:var(--${b.color})" title="${escapeHtml(badgeName(b))}">${navIcon(badgeIcon(b))}</span>`).join('')}${earned.length > 8 ? `<span class="dprof-more">+${earned.length - 8}</span>` : ''}
+          </button>` : ''}
         </div>
-      </section>
-      <div class="profile-tabs" role="tablist" aria-label="${escapeHtml(p.username)}’s activity">
-        <button role="tab" aria-selected="true" data-ptab="posts">Posts <span class="view-count">${p.posts}</span></button>
-        <button role="tab" aria-selected="false" data-ptab="replies">Replies <span class="view-count">${p.replies}</span></button>
-        <button role="tab" aria-selected="false" data-ptab="wiki">Wiki contributions <span class="view-count">${data.wiki ? data.wiki.edits : 0}</span></button>
-        ${saved.length ? `<button role="tab" aria-selected="false" data-ptab="saved">Saved <span class="view-count">${saved.length}</span></button>` : ''}
-      </div>
-      <div class="forum-list" data-ppanel="posts" id="memberPosts"></div>
-      <div class="forum-list" data-ppanel="replies" hidden>${(data.replies || []).length ? data.replies.map(r => `
+        <div class="dprof-body">
+          <header class="dprof-names">
+            <h2 class="dprof-name notranslate" translate="no">${escapeHtml(p.username)}</h2>
+            <p class="dprof-sub">${roles.map(([r, c]) => `<span class="dprof-role" style="--b:var(--${c})">${escapeHtml(r)}</span>`).join('')}<span>Member since ${escapeHtml(new Date(p.createdAt).toLocaleDateString(undefined, { month:'short', year:'numeric' }))}</span></p>
+          </header>
+          ${self || (me && me.admin) ? `<div class="dprof-actions">
+            ${self ? `<button class="btn primary pill" data-route="account">${navIcon('pen')}Edit profile</button>` : ''}
+            ${me && me.admin ? `<button class="btn quiet" data-mod-open="${p.id}">Open in moderation</button>` : ''}
+          </div>` : ''}
+          <dl class="dprof-stats">
+            <div><dt>Posts</dt><dd>${p.posts.toLocaleString()}</dd></div>
+            <div><dt>Replies</dt><dd>${p.replies.toLocaleString()}</dd></div>
+            <div><dt>Prayers offered</dt><dd>${p.prayers.toLocaleString()}</dd></div>
+            <div><dt>Wiki edits</dt><dd>${(data.wiki ? data.wiki.edits : 0).toLocaleString()}</dd></div>
+          </dl>
+          <div class="dprof-tabs" role="tablist" aria-label="${escapeHtml(p.username)}’s profile">${tabs.map(([k, label, n]) =>
+            `<button role="tab" id="ptab-${k}" aria-controls="ppanel-${k}" aria-selected="${k === profileTab}" tabindex="${k === profileTab ? 0 : -1}" data-ptab="${k}">${label}${n !== '' ? ` <span class="view-count">${n}</span>` : ''}</button>`).join('')}</div>
+          <section class="dprof-panel" role="tabpanel" id="ppanel-about" aria-labelledby="ptab-about" data-ppanel="about">
+            <div class="dprof-box"><h4>About me</h4>
+              ${p.bio ? `<p class="member-bio">${inlineHtml(p.bio)}</p>` : `<p class="forum-meta">${self ? 'You haven’t written a description yet. <button class="text-link" data-route="account">Add one</button>' : `${escapeHtml(p.username)} hasn’t written a description yet.`}</p>`}</div>
+            <div class="dprof-box"><h4>Member since</h4><p class="dprof-since">${navIcon('calendar')}${escapeHtml(joined)}</p></div>
+            ${roles.length ? `<div class="dprof-box"><h4>${roles.length === 1 ? 'Role' : 'Roles'}</h4><div class="dprof-roles">${roles.map(([r, c]) => `<span class="dprof-role-pill" style="--b:var(--${c})">${escapeHtml(r)}</span>`).join('')}</div></div>` : ''}
+          </section>
+          <section class="dprof-panel" role="tabpanel" id="ppanel-badges" aria-labelledby="ptab-badges" data-ppanel="badges">
+            ${p.badges.appointed.length ? `<div class="dprof-box"><h4>Given by the moderators</h4><div class="badge-pills-big">${badgePills(p.badges.appointed, true)}</div></div>` : ''}
+            ${earned.length ? `<div class="dprof-box"><h4>Earned <span class="view-count">${earned.length} of ${BADGES.length}</span></h4><div class="badge-grid dprof-badge-grid">${earned.map(b => badgeMedal(b, true, null)).join('')}</div></div>` : ''}
+            ${badgeCount ? '' : `<div class="forum-empty">${self ? 'No badges yet. Pray, read, and take part in the Community to earn them.' : `${escapeHtml(p.username)} hasn’t earned any badges yet.`}</div>`}
+            ${self ? '<p class="dprof-note"><button class="text-link" data-route="account/badges">See every badge and how to earn it →</button></p>' : ''}
+          </section>
+          <section class="dprof-panel forum-list" role="tabpanel" id="ppanel-posts" aria-labelledby="ptab-posts" data-ppanel="posts"></section>
+          <section class="dprof-panel forum-list" role="tabpanel" id="ppanel-replies" aria-labelledby="ptab-replies" data-ppanel="replies">${(data.replies || []).length ? data.replies.map(r => `
         <button class="notify-item" data-route="community/post/${r.postId}"><span><span class="forum-meta">Replied to <strong>“${escapeHtml(r.postTitle)}”</strong> · ${escapeHtml(timeAgo(r.createdAt))}</span><span class="notify-excerpt">${escapeHtml(r.excerpt)}</span></span></button>`).join('')
-        : '<div class="forum-empty">No replies yet.</div>'}</div>
-      <div data-ppanel="wiki" hidden>${data.wiki && data.wiki.edits ? `
-        <p class="wiki-contrib-sum"><span>${escapeHtml(`${p.username} started ${plural(data.wiki.pages, 'page', 'pages')} and made ${plural(data.wiki.edits, 'edit', 'edits')} to ${plural(data.wiki.touched, 'page', 'pages')} of the wiki.`)}</span> <button class="text-link" data-route="wiki">Visit the Community Wiki</button></p>
-        <ol class="wiki-changes">${data.wiki.recent.map(c => wikiChangeHtml({ ...c, user:null })).join('')}</ol>`
-        : `<div class="forum-empty">No wiki edits yet.${me && me.username.toLowerCase() === p.username.toLowerCase() ? ' <button class="text-link" data-route="wiki">Visit the Community Wiki</button>' : ''}</div>`}</div>
-      ${saved.length ? `<div class="profile-saved" data-ppanel="saved" hidden>${saved.map(e => `
-        <button class="profile-saved-item" data-open="${e.id}"><span class="cat-badge">${escapeHtml(CAT_LABEL[e.category] || e.category)}</span><strong>${escapeHtml(e.title)}</strong></button>`).join('')}</div>` : ''}
+        : '<div class="forum-empty">No replies yet.</div>'}</section>
+          <section class="dprof-panel" role="tabpanel" id="ppanel-wiki" aria-labelledby="ptab-wiki" data-ppanel="wiki">${data.wiki && data.wiki.edits ? `
+            <p class="wiki-contrib-sum"><span>${escapeHtml(`${p.username} started ${plural(data.wiki.pages, 'page', 'pages')} and made ${plural(data.wiki.edits, 'edit', 'edits')} to ${plural(data.wiki.touched, 'page', 'pages')} of the wiki.`)}</span> <button class="text-link" data-route="wiki">Visit the Community Wiki</button></p>
+            <ol class="wiki-changes">${data.wiki.recent.map(c => wikiChangeHtml({ ...c, user:null })).join('')}</ol>`
+            : `<div class="forum-empty">No wiki edits yet.${self ? ' <button class="text-link" data-route="wiki">Visit the Community Wiki</button>' : ''}</div>`}</section>
+          ${saved.length ? `<section class="dprof-panel profile-saved" role="tabpanel" id="ppanel-saved" aria-labelledby="ptab-saved" data-ppanel="saved">${saved.map(e => `
+            <button class="profile-saved-item" data-open="${e.id}"><span class="cat-badge">${escapeHtml(CAT_LABEL[e.category] || e.category)}</span><strong>${escapeHtml(e.title)}</strong></button>`).join('')}</section>` : ''}
+        </div>
+      </article>
     </div>`;
   entryListEl.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openReadModal(b.dataset.open)));
-  const list = entryListEl.querySelector('#memberPosts');
+  const list = entryListEl.querySelector('#ppanel-posts');
   if(data.posts.length) data.posts.forEach(x => list.appendChild(forumPostCard(x)));
   else list.innerHTML = '<div class="forum-empty">No posts yet.</div>';
-  entryListEl.querySelectorAll('[data-ptab]').forEach(b => b.addEventListener('click', () => {
-    entryListEl.querySelectorAll('[data-ptab]').forEach(x => x.setAttribute('aria-selected', String(x === b)));
-    entryListEl.querySelectorAll('[data-ppanel]').forEach(x => { x.hidden = x.dataset.ppanel !== b.dataset.ptab; });
-  }));
+  const tabBtns = [...entryListEl.querySelectorAll('[data-ptab]')];
+  const showTab = (key, focus) => {
+    profileTab = key;
+    tabBtns.forEach(x => { const on = x.dataset.ptab === key; x.setAttribute('aria-selected', String(on)); x.tabIndex = on ? 0 : -1; if(on && focus) x.focus(); });
+    entryListEl.querySelectorAll('[data-ppanel]').forEach(x => { x.hidden = x.dataset.ppanel !== key; });
+  };
+  showTab(profileTab);
+  tabBtns.forEach((b, i) => {
+    b.addEventListener('click', () => showTab(b.dataset.ptab));
+    // Arrow keys move between the tabs
+    b.addEventListener('keydown', ev => {
+      const step = ev.key === 'ArrowRight' ? 1 : ev.key === 'ArrowLeft' ? -1 : 0;
+      if(!step) return;
+      ev.preventDefault();
+      showTab(tabBtns[(i + step + tabBtns.length) % tabBtns.length].dataset.ptab, true);
+    });
+  });
+  const strip = entryListEl.querySelector('[data-ptab-go]');
+  if(strip) strip.addEventListener('click', () => { showTab('badges', true); entryListEl.querySelector('.dprof-tabs').scrollIntoView({ behavior:'smooth', block:'nearest' }); });
   const open = entryListEl.querySelector('[data-mod-open]');
   if(open) open.addEventListener('click', () => { modTab = 'accounts'; modUserId = Number(open.dataset.modOpen); navigate('moderate'); });
 }
@@ -6022,6 +6118,24 @@ function renderProfile(){
           : 'You can remove any post or reply, pin and lock threads, review reports, see every account, and mute, warn, or ban members.'}</p>
         <div class="forum-form-actions"><button class="btn primary pill" data-route="moderate" type="button">Open moderation tools</button></div>
       </section>` : ''}
+      <section class="bio-panel account-username">
+        <h3>Username</h3>
+        <p class="forum-meta">You’re <strong>${escapeHtml(u.username)}</strong>. Your posts, replies, wiki edits, and badges all move with you to a new name, and links to your old profile stop working.</p>
+        <details class="account-pass" id="nameBox">
+          <summary>Change my username</summary>
+          <form id="nameForm" novalidate>
+            <p class="forum-meta" id="nameStatus">You can change it once a week. Your old name is held for you for 30 days, so nobody else can take it.</p>
+            <div class="field"><label for="nameNew">New username</label>
+              <input id="nameNew" maxlength="20" autocomplete="username" autocapitalize="off" spellcheck="false" aria-describedby="nameCheck" value="${escapeHtml(u.username)}">
+              <div class="hint auth-check" id="nameCheck" aria-live="polite">3 to 20 letters, numbers, or underscores.</div></div>
+            <div class="field"><label for="namePass">Your password</label>
+              <div class="pass-wrap"><input id="namePass" type="password" autocomplete="current-password" maxlength="128">
+                <button class="pass-show" type="button" aria-pressed="false" aria-controls="namePass">Show</button></div></div>
+            <p class="forum-error" id="nameError" hidden></p>
+            <button class="btn primary pill" type="submit">Change username</button>
+          </form>
+        </details>
+      </section>
       <section class="bio-panel account-security">
         <h3>Password and your data</h3>
         <details class="account-pass">
@@ -6208,6 +6322,54 @@ function renderProfile(){
       toast('Your password has been changed');
     }catch(err){ showFormError(error, err.message); }
     btn.disabled = false;
+  });
+  // A new username: say right away whether it's free, and when the weekly change comes round again
+  const nameForm = entryListEl.querySelector('#nameForm');
+  bindPassShow(nameForm);
+  const nameNew = nameForm.querySelector('#nameNew'), nameCheck = nameForm.querySelector('#nameCheck'), nameError = nameForm.querySelector('#nameError');
+  const nameHint = '3 to 20 letters, numbers, or underscores.';
+  const setNameCheck = (state, text) => { nameCheck.textContent = text; nameCheck.dataset.state = state; };
+  let nameTimer = 0;
+  api('account/username').then(res => {
+    if(!nameForm.isConnected) return;
+    const status = nameForm.querySelector('#nameStatus');
+    if(res.canChangeAt) status.textContent = `You changed your username recently, so you can change it again on ${new Date(res.canChangeAt).toLocaleDateString(undefined, { month:'long', day:'numeric' })}. You can still change its capital letters now.`;
+    if(res.siteAdmin) status.textContent += ' As a site administrator, add the new name to ADMINS in Cloudflare first.';
+  }).catch(() => {});
+  nameNew.addEventListener('input', () => {
+    clearTimeout(nameTimer);
+    const name = nameNew.value.trim();
+    if(!name || name === u.username){ setNameCheck('', nameHint); return; }
+    if(/[^A-Za-z0-9_]/.test(name)){ setNameCheck('bad', 'Use only letters, numbers, and underscores (no spaces).'); return; }
+    if(name.length < 3){ setNameCheck('', 'At least 3 characters.'); return; }
+    if(name.toLowerCase() === u.username.toLowerCase()){ setNameCheck('good', 'Only the capital letters change.'); return; }
+    setNameCheck('', 'Checking…');
+    nameTimer = setTimeout(async () => {
+      let taken;
+      try{ await api('users/' + encodeURIComponent(name)); taken = true; }
+      catch(err){ taken = err.status === 404 ? false : null; }
+      if(name !== nameNew.value.trim()) return;
+      if(taken === null) setNameCheck('', nameHint);
+      else setNameCheck(taken ? 'bad' : 'good', taken ? `${name} is taken. Try another, or add a number.` : `${name} is available.`);
+    }, 350);
+  });
+  nameForm.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const name = nameNew.value.trim(), password = nameForm.querySelector('#namePass').value;
+    if(!/^[A-Za-z0-9_]{3,20}$/.test(name)){ showFormError(nameError, 'Usernames are 3 to 20 letters, numbers, or underscores.'); nameNew.focus(); return; }
+    if(name === u.username){ showFormError(nameError, 'That’s already your username.'); nameNew.focus(); return; }
+    if(!password){ showFormError(nameError, 'Please enter your password.'); return; }
+    const btn = nameForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    showFormError(nameError, '');
+    try{
+      const res = await api('account/username', { method:'PUT', body:{ username:name, password } });
+      Community.user = { ...Community.user, ...res.user };
+      updateAccountButton();
+      syncBadges();
+      toast(`You’re now ${res.user.username}`);
+      renderProfile();
+    }catch(err){ showFormError(nameError, err.message); btn.disabled = false; }
   });
   entryListEl.querySelector('#exportBtn').addEventListener('click', ev => downloadMyData(ev.currentTarget));
   const del = entryListEl.querySelector('#deleteForm');
