@@ -8649,6 +8649,138 @@ window.SANCTIFY_I18N = {
 "Is Mary Only the Mother of Christ? (Nestorianism)": "Ist Maria nur die Mutter Christi? (Nestorianismus)",
 "Is God’s Mercy Only for a Few? (Jansenism)": "Ist Gottes Barmherzigkeit nur für wenige? (Jansenismus)",
 "The Filioque: East and West": "Das Filioque: Ost und West",
+"c. {n}–{n}": "um {n}–{n}",
+"The Council of Nicaea (325)": "Das Konzil von Nizäa (325)",
+"The Rule of St. Benedict and Western Monasticism": "Die Regel des hl. Benedikt und das abendländische Mönchtum",
+"The Great Schism of 1054": "Das Große Schisma von 1054",
+"The Council of Trent (1545–1563)": "Das Konzil von Trient (1545–1563)",
+"The Second Vatican Council (1962–1965)": "Das Zweite Vatikanische Konzil (1962–1965)",
+"Pentecost and the Birth of the Church": "Pfingsten und die Geburt der Kirche",
+"The Council of Jerusalem": "Das Apostelkonzil in Jerusalem",
+"The Missionary Journeys of St. Paul": "Die Missionsreisen des hl. Paulus",
+"The Martyrdom of Peter and Paul in Rome": "Das Martyrium von Petrus und Paulus in Rom",
+"The Destruction of the Temple": "Die Zerstörung des Tempels",
+"The Writing of the New Testament": "Die Entstehung des Neuen Testaments",
+"The Age of the Martyrs": "Das Zeitalter der Märtyrer",
+"The Desert Fathers and the Birth of Monasticism": "Die Wüstenväter und die Entstehung des Mönchtums",
+"The Edict of Milan": "Das Mailänder Edikt",
+"The First Council of Constantinople": "Das Erste Konzil von Konstantinopel",
+"St. Jerome and the Latin Vulgate": "Der hl. Hieronymus und die lateinische Vulgata",
+"The Councils of Ephesus and Chalcedon": "Die Konzilien von Ephesus und Chalkedon",
+"The Fall of the Western Roman Empire": "Der Untergang des Weströmischen Reiches",
+"The Conversion of Clovis and the Franks": "Die Bekehrung Chlodwigs und der Franken",
+"Gregory the Great and the Mission to England": "Gregor der Große und die Mission in England",
+"The Rise of Islam": "Der Aufstieg des Islam",
+"Iconoclasm and the Second Council of Nicaea": "Der Bilderstreit und das Zweite Konzil von Nizäa",
+"The Coronation of Charlemagne": "Die Kaiserkrönung Karls des Großen",
+"The Founding of Cluny": "Die Gründung von Cluny",
+"The Baptism of Rus’": "Die Taufe der Rus",
+"The Gregorian Reform and the Investiture Controversy": "Die gregorianische Reform und der Investiturstreit",
+"The Rise of the Universities and Scholasticism": "Die Entstehung der Universitäten und die Scholastik",
+"The Mendicant Orders": "Die Bettelorden",
+"The Fourth Lateran Council": "Das Vierte Laterankonzil",
+"The Avignon Papacy": "Das Papsttum in Avignon",
+"The Western Schism": "Das Abendländische Schisma",
+"The Council of Florence": "Das Konzil von Florenz",
+"The Evangelization of the Americas": "Die Evangelisierung Amerikas",
+"The Protestant Reformation": "Die Reformation",
+"The English Reformation": "Die englische Reformation",
+"The Founding of the Jesuits and the Catholic Reformation": "Die Gründung der Jesuiten und die katholische Reform",
+"The Battle of Lepanto": "Die Seeschlacht von Lepanto",
+"The French Revolution and the Church": "Die Französische Revolution und die Kirche",
+"The Definition of the Immaculate Conception": "Die Definition der Unbefleckten Empfängnis",
+"The First Vatican Council": "Das Erste Vatikanische Konzil",
+"Rerum Novarum and Catholic Social Teaching": "Rerum Novarum und die katholische Soziallehre",
+"The Apparitions at Fatima": "Die Erscheinungen von Fatima",
+"The Lateran Treaty": "Die Lateranverträge",
+"The Church and the Second World War": "Die Kirche und der Zweite Weltkrieg",
+"The Definition of the Assumption": "Die Definition der Aufnahme Marias in den Himmel",
+"The Pontificate of St. John Paul II": "Das Pontifikat Johannes Pauls II.",
+"The Catechism of the Catholic Church": "Der Katechismus der Katholischen Kirche",
+"Benedict XVI, Francis, and Leo XIV": "Benedikt XVI., Franziskus und Leo XIV.",
+"Our Lady of the Pillar": "Unsere Liebe Frau vom Pilar",
+"Our Lady of Walsingham": "Unsere Liebe Frau von Walsingham",
+"Our Lady of Mount Carmel and the Brown Scapular": "Unsere Liebe Frau vom Berge Karmel und das Braune Skapulier",
+"Our Lady of Laus": "Unsere Liebe Frau von Laus",
+"The Miraculous Medal (Rue du Bac)": "Die Wundertätige Medaille (Rue du Bac)",
+"Our Lady of La Salette": "Unsere Liebe Frau von La Salette",
+"Our Lady of Good Help (Champion, Wisconsin)": "Unsere Liebe Frau von der Guten Hilfe (Champion, Wisconsin)",
+"Our Lady of Hope (Pontmain)": "Unsere Liebe Frau der Hoffnung (Pontmain)",
+"Our Lady of Knock": "Unsere Liebe Frau von Knock",
+"Our Lady of Beauraing": "Unsere Liebe Frau von Beauraing",
+"Our Lady of Banneux": "Unsere Liebe Frau von Banneux",
+"Our Lady of Akita": "Unsere Liebe Frau von Akita",
+"Our Lady of Kibeho": "Unsere Liebe Frau von Kibeho",
+"Medjugorje": "Medjugorje",
+"How the Church Discerns Apparitions": "Wie die Kirche Erscheinungen prüft",
+"St. Patrick and the Conversion of Ireland": "Der hl. Patrick und die Bekehrung Irlands",
+"The Galileo Affair": "Der Fall Galilei",
+"The Suppression of the Jesuits": "Die Aufhebung des Jesuitenordens",
+"The Oxford Movement": "Die Oxford-Bewegung",
+"The Hidden Christians of Japan": "Die verborgenen Christen Japans",
+"The Cristero War": "Der Cristero-Krieg",
+"The Conversion of St. Augustine": "Die Bekehrung des hl. Augustinus",
+"The Councils of Carthage and the Canon of Scripture": "Die Synoden von Karthago und der Kanon der Schrift",
+"The Council of Orange": "Die Synode von Orange",
+"The Donation of Pepin and the Papal States": "Die Pippinische Schenkung und der Kirchenstaat",
+"The Founding of the Cistercians": "Die Gründung der Zisterzienser",
+"The Martyrdom of St. Thomas Becket": "Das Martyrium des hl. Thomas Becket",
+"The First Nativity Scene at Greccio": "Die erste Krippe in Greccio",
+"The Feast of Corpus Christi": "Das Fronleichnamsfest",
+"The First Holy Year": "Das erste Heilige Jahr",
+"The Black Death": "Der Schwarze Tod",
+"Joan of Arc and the Siege of Orléans": "Johanna von Orléans und die Belagerung von Orléans",
+"The Fall of Constantinople": "Der Fall Konstantinopels",
+"The Gutenberg Bible": "Die Gutenberg-Bibel",
+"St. Francis Xavier in Asia": "Der hl. Franz Xaver in Asien",
+"The Roman Missal of 1570": "Das Römische Messbuch von 1570",
+"The Gregorian Calendar": "Der gregorianische Kalender",
+"Matteo Ricci in China": "Matteo Ricci in China",
+"The Jesuit Reductions of Paraguay": "Die Jesuitenreduktionen in Paraguay",
+"The Founding of Propaganda Fide": "Die Gründung der Propaganda Fide",
+"The Kulturkampf": "Der Kulturkampf",
+"Martyrs of the Spanish Civil War": "Märtyrer des Spanischen Bürgerkriegs",
+"Lifting the Excommunications of 1054": "Die Aufhebung der Exkommunikationen von 1054",
+"World Youth Day Begins": "Die Anfänge des Weltjugendtags",
+"The Great Jubilee of 2000": "Das Große Jubiläum 2000",
+"Two Popes Canonized": "Zwei Päpste heiliggesprochen",
+"The Notre-Dame Fire and Reopening": "Der Brand und die Wiedereröffnung von Notre-Dame",
+"The Synod on Synodality": "Die Synode über Synodalität",
+"The Jubilee Year of Hope": "Das Heilige Jahr der Hoffnung",
+"The Council of Clermont and the First Crusade": "Die Synode von Clermont und der Erste Kreuzzug",
+"The Rise of the Military Orders": "Die Entstehung der Ritterorden",
+"The Second Crusade": "Der Zweite Kreuzzug",
+"Saladin and the Third Crusade": "Saladin und der Dritte Kreuzzug",
+"The Fourth Crusade and the Sack of Constantinople": "Der Vierte Kreuzzug und die Plünderung Konstantinopels",
+"The Albigensian Crusade": "Der Albigenserkreuzzug",
+"St. Francis and the Sultan": "Der hl. Franziskus und der Sultan",
+"Frederick II and the Treaty of Jaffa": "Friedrich II. und der Vertrag von Jaffa",
+"St. Louis IX and the Last Crusades": "Der hl. Ludwig IX. und die letzten Kreuzzüge",
+"The Fall of Acre": "Der Fall von Akkon",
+"The Reconquista and Las Navas de Tolosa": "Die Reconquista und Las Navas de Tolosa",
+"The Suppression of the Templars": "Die Aufhebung des Templerordens",
+"The Teutonic Knights and the Baltic Crusades": "Der Deutsche Orden und die baltischen Kreuzzüge",
+"The Great Siege of Malta": "Die Große Belagerung von Malta",
+"The Battle of Vienna": "Die Schlacht am Kahlenberg",
+"The Day of Pardon": "Der Tag der Vergebung",
+"The Synod of Whitby": "Die Synode von Whitby",
+"The Battle of Tours": "Die Schlacht von Tours und Poitiers",
+"The Baptism of Poland": "Die Taufe Polens",
+"The Union of Brest": "Die Union von Brest",
+"The Union of Uzhhorod": "Die Union von Uschhorod",
+"The Sistine Chapel Ceiling": "Die Decke der Sixtinischen Kapelle",
+"The Martyrs of Compiègne": "Die Märtyrinnen von Compiègne",
+"Napoleon and Pius VII": "Napoleon und Pius VII.",
+"The End of the Papal States": "Das Ende des Kirchenstaats",
+"The Code of Canon Law": "Der Codex des kanonischen Rechts",
+"1251 (tradition)": "1251 (Überlieferung)",
+"c. 40 (tradition)": "um 40 (Überlieferung)",
+"12th–13th centuries": "12.–13. Jahrhundert",
+"1492 onward": "ab 1492",
+"1917 and 1983": "1917 und 1983",
+"1978 and 2024": "1978 und 2024",
+"431 and 451": "431 und 451",
+"March 12, 2000": "12. März 2000",
 "{*}; {*}": "{*}; {*}",
 "{*}: {*}": "{*}: {*}",
 "{*} · {*}": "{*} · {*}"
@@ -9167,6 +9299,234 @@ window.SANCTIFY_I18N = {
 "h50": {
 "content": "Nach alter spanischer Überlieferung erschien die Jungfrau Maria dem hl. Jakobus dem Älteren, als er über die geringen Erfolge seiner Predigt in Spanien entmutigt war. Sie soll auf einer Jaspissäule…"
 },
+"h51": {
+"content": "Der Überlieferung nach hatte die sächsische Adlige Richeldis de Faverches 1061 in Walsingham in Norfolk eine Vision der Jungfrau Maria. Ihr wurde das Haus in Nazaret gezeigt, in dem die Verkündigung…"
+},
+"h52": {
+"content": "Nach karmelitischer Überlieferung erschien die Jungfrau Maria 1251 dem hl. Simon Stock, dem Generalprior der Karmeliten, in Cambridge in England. Sie soll ihm das braune Skapulier als Zeichen ihres…"
+},
+"h53": {
+"content": "Im Dezember 1531 erschien die Jungfrau Maria viermal dem hl. Juan Diego, einem bekehrten Indigenen, auf dem Hügel Tepeyac vor Mexiko-Stadt. Sie sprach zu ihm in seiner Muttersprache Nahuatl und bat…"
+},
+"h54": {
+"content": "In den französischen Alpen erschien die Jungfrau Maria ab 1664 der armen, ungebildeten Hirtin Benoîte Rencurel, nach ihrem Bericht über mehr als fünfzig Jahre hinweg. Maria bat sie, eine Kirche und…"
+},
+"h55": {
+"content": "1830 sah die hl. Katharina Labouré, eine Novizin der Barmherzigen Schwestern, mehrmals die Jungfrau Maria in der Kapelle ihres Klosters in der Rue du Bac in Paris. Maria zeigte ihr den Entwurf einer…"
+},
+"h56": {
+"content": "Am 19. September 1846 sahen zwei junge Hirten, Maximin Giraud und Mélanie Calvat, hoch in den französischen Alpen eine weinende Frau, die auf einem Stein saß. Sie sprach von ihrem Schmerz über die…"
+},
+"h57": {
+"content": "Zwischen dem 11. Februar und dem 16. Juli 1858 sah die vierzehnjährige hl. Bernadette Soubirous achtzehnmal eine junge Dame in der Grotte von Massabielle bei Lourdes. Die Dame bat um Gebet und Buße…"
+},
+"h58": {
+"content": "Im Oktober 1859 sah die junge belgische Einwanderin Adele Brise bei Green Bay in Wisconsin eine weiß gekleidete Frau. Die Frau bat sie, für die Sünder zu beten und die Kinder in diesem wilden Land zu…"
+},
+"h59": {
+"content": "Am Abend des 17. Januar 1871, während des Deutsch-Französischen Krieges, als preußische Truppen sich dem Dorf Pontmain näherten, sahen mehrere Kinder die Jungfrau Maria am Nachthimmel. Sie trug ein…"
+},
+"h60": {
+"content": "Am regnerischen Abend des 21. August 1879 sahen fünfzehn Dorfbewohner von Knock im County Mayo an der Giebelwand ihrer Pfarrkirche eine stille Erscheinung. Sie zeigte die Jungfrau Maria, den hl.…"
+},
+"h61": {
+"content": "Zwischen November 1932 und Januar 1933 berichteten fünf Kinder in Beauraing in Belgien von 33 Erscheinungen der Jungfrau Maria nahe dem Garten einer Klosterschule. Sie zeigte ihnen ein goldenes Herz…"
+},
+"h62": {
+"content": "Wenige Wochen nach Beauraing sah die elfjährige Mariette Beco achtmal eine Frau in Weiß nahe dem Elternhaus in Banneux in Belgien. Die Frau nannte sich die „Jungfrau der Armen“, führte Mariette zu…"
+},
+"h63": {
+"content": "1973 berichtete Schwester Agnes Katsuko Sasagawa, eine gehörlose Ordensfrau in Akita in Japan, von Botschaften der Jungfrau Maria, die zu Gebet, Buße und Sühne mit dem Rosenkranz aufriefen. Eine…"
+},
+"h64": {
+"content": "Ab November 1981 berichteten mehrere Schülerinnen einer Mädchenschule in Kibeho in Ruanda von Erscheinungen der Jungfrau Maria, die sich „Mutter des Wortes“ nannte. Sie rief zu Umkehr, Gebet und zum…"
+},
+"h65": {
+"content": "Seit Juni 1981 berichten mehrere Seher im Dorf Medjugorje in Bosnien und Herzegowina von fortwährenden Botschaften der Jungfrau Maria unter dem Titel „Königin des Friedens“. Millionen Pilger kamen…"
+},
+"h66": {
+"content": "Berichte über Erscheinungen werden zuerst vom Ortsbischof untersucht. Geprüft werden die Übereinstimmung mit der Lehre, der Charakter der Seher, bleibende geistliche Früchte und etwaige Heilungen.…"
+},
+"h67": {
+"content": "Als Junge von Plünderern verschleppt und in Irland versklavt, floh Patrick nach Britannien und kehrte später als Bischof zurück, der Überlieferung nach 432. Er predigte auf der ganzen Insel und…"
+},
+"h68": {
+"content": "Galileo Galileis Entdeckungen mit dem Fernrohr stützten die Sicht des Kopernikus, dass die Erde um die Sonne kreist. Nach Jahren des Streits verurteilte ihn die römische Inquisition 1633, weil er den…"
+},
+"h69": {
+"content": "Unter dem Druck der katholischen Monarchien Portugal, Frankreich und Spanien, die die Jesuiten bereits aus ihren Gebieten vertrieben hatten, hob Papst Clemens XIV. 1773 die Gesellschaft Jesu auf.…"
+},
+"h70": {
+"content": "Eine Gruppe anglikanischer Geistlicher in Oxford, darunter John Henry Newman, John Keble und Edward Pusey, wollte das katholische Erbe der Kirche von England wiedergewinnen: die apostolische…"
+},
+"h71": {
+"content": "Nachdem das Christentum in Japan Anfang des 17. Jahrhunderts verboten worden war, bewahrten Tausende Gläubige ihren Glauben über zwei Jahrhunderte lang im Verborgenen, ohne Priester. Sie tauften ihre…"
+},
+"h72": {
+"content": "Als die mexikanische Regierung die antiklerikalen Gesetze streng durchsetzte, wies sie ausländische Priester aus, schloss Kirchen und verbot den öffentlichen Gottesdienst. Daraufhin erhoben sich…"
+},
+"h73": {
+"content": "Nach Jahren der Suche in der Philosophie und in der Sekte der Manichäer saß der glänzende Lehrer Augustinus weinend in einem Garten in Mailand, als er eine Kinderstimme singen hörte: „Nimm und lies.“…"
+},
+"h74": {
+"content": "Regionalsynoden in Nordafrika, in Hippo 393 und in Karthago 397, stellten eine Liste der biblischen Bücher auf, die der heutigen katholischen Bibel entspricht, einschließlich der deuterokanonischen…"
+},
+"h75": {
+"content": "Die Zweite Synode von Orange in Südgallien beendete einen langen Streit über den „Semipelagianismus“, die Vorstellung, der erste Schritt zu Gott komme allein aus menschlicher Anstrengung. Gestützt…"
+},
+"h76": {
+"content": "Von den Langobarden bedroht, überquerte Papst Stephan II. die Alpen, um Pippin den Jüngeren, den König der Franken, um Hilfe zu bitten. Pippin besiegte die Langobarden und übertrug dem Papst die…"
+},
+"h77": {
+"content": "Auf der Suche nach strengerer Befolgung der Regel des hl. Benedikt gründeten der hl. Robert von Molesme, der hl. Alberich und der hl. Stephan Harding ein neues Kloster in Cîteaux in Burgund. Die…"
+},
+"h78": {
+"content": "Am 29. Dezember 1170 ermordeten vier Ritter König Heinrichs II. Erzbischof Thomas Becket in der Kathedrale von Canterbury nach einem langen Streit um die Freiheit der Kirche von königlicher…"
+},
+"h79": {
+"content": "An Weihnachten 1223 wollte der hl. Franz von Assisi mit eigenen Augen die Armut sehen, in der Christus geboren wurde. In einer Höhle in Greccio richtete er eine Krippe mit Heu, Ochs und Esel her, und…"
+},
+"h80": {
+"content": "Angeregt durch die Visionen der hl. Juliana von Lüttich, die sich ein Fest zu Ehren der Eucharistie wünschte, führte Papst Urban IV. 1264 für die ganze Kirche das Hochfest des Leibes und Blutes…"
+},
+"h81": {
+"content": "Papst Bonifatius VIII. verkündete im Jahr 1300 das erste Jubeljahr, das Heilige Jahr, und gewährte Pilgern, die die Basiliken St. Peter und St. Paul in Rom besuchten, einen besonderen Ablass. Riesige…"
+},
+"h82": {
+"content": "Die Beulenpest raffte in wenigen Jahren vielleicht ein Drittel bis die Hälfte der Bevölkerung Europas dahin. Viele Priester, Ordensmänner und Ordensfrauen starben bei der Pflege der Kranken und der…"
+},
+"h83": {
+"content": "Das junge Bauernmädchen, das sich von den Stimmen der Heiligen Michael, Katharina und Margareta geführt wusste, führte 1429 die französischen Truppen zur Befreiung des belagerten Orléans und erlebte…"
+},
+"h84": {
+"content": "Am 29. Mai 1453 eroberte der osmanische Sultan Mehmed II. nach langer Belagerung Konstantinopel und beendete nach über tausend Jahren das Byzantinische Reich. Die große Kirche Hagia Sophia wurde in…"
+},
+"h85": {
+"content": "Johannes Gutenbergs Druckerei in Mainz stellte das erste große mit beweglichen Lettern gedruckte Buch Europas her: eine zweibändige lateinische Vulgata-Bibel. Etwa 180 Exemplare entstanden, von denen…"
+},
+"h86": {
+"content": "Einer der ersten Jesuiten, der hl. Franz Xaver, traf 1542 in Goa in Indien ein. Im folgenden Jahrzehnt predigte er in Indien, auf der Malaiischen Halbinsel und auf den Molukken, und 1549 erreichte er…"
+},
+"h87": {
+"content": "In Ausführung eines Beschlusses des Konzils von Trient veröffentlichte Papst Pius V. 1570 mit der Bulle Quo Primum ein überarbeitetes Römisches Messbuch. Es vereinheitlichte die Feier der Messe im…"
+},
+"h88": {
+"content": "Der julianische Kalender war gegenüber den Jahreszeiten um zehn Tage verschoben, was den Ostertermin beeinträchtigte. Papst Gregor XIII. reformierte 1582 gestützt auf die Arbeit von Aloysius Lilius…"
+},
+"h89": {
+"content": "Der italienische Jesuit Matteo Ricci kam 1582 nach Macau und verbrachte fast drei Jahrzehnte in China. Er beherrschte das Chinesische, kleidete sich wie ein Gelehrter, teilte europäische Mathematik…"
+},
+"h90": {
+"content": "Ab 1609 organisierten jesuitische Missionare das Volk der Guaraní in sich selbst verwaltenden Missionsdörfern, den „Reduktionen“, im heutigen Paraguay, Argentinien und Brasilien. Die Dörfer schützten…"
+},
+"h91": {
+"content": "Papst Gregor XV. gründete die Heilige Kongregation für die Glaubensverbreitung (Propaganda Fide), um die weltweiten Missionen der Kirche zu koordinieren. Sie bildete einheimische Geistliche aus…"
+},
+"h92": {
+"content": "Nach der deutschen Reichsgründung begann Reichskanzler Otto von Bismarck einen „Kulturkampf“ gegen die katholische Kirche. Gesetze vertrieben die Jesuiten, stellten Priesterseminare und Klerus unter…"
+},
+"h93": {
+"content": "Im Spanischen Bürgerkrieg wurden Tausende Katholiken aus Hass auf den Glauben getötet, darunter 13 Bischöfe, mehr als 4000 Diözesanpriester, über 2000 Ordensmänner und fast 300 Ordensfrauen sowie…"
+},
+"h94": {
+"content": "Im Januar 1964 trafen sich Papst Paul VI. und der Ökumenische Patriarch Athenagoras in Jerusalem, die erste Begegnung eines Papstes mit einem Patriarchen von Konstantinopel seit über fünf…"
+},
+"h95": {
+"content": "Papst Johannes Paul II. lud junge Menschen zum Palmsonntag im Heiligen Jahr 1984 und im Internationalen Jahr der Jugend 1985 nach Rom ein. Der erste Weltjugendtag wurde 1986 in den Diözesen gefeiert…"
+},
+"h96": {
+"content": "Papst Johannes Paul II. öffnete an Heiligabend 1999 die Heilige Pforte von St. Peter und eröffnete das Große Jubiläum zum zweitausendsten Jahrestag der Geburt Christi. Millionen Pilger kamen nach…"
+},
+"h97": {
+"content": "Am Sonntag der Barmherzigkeit, dem 27. April 2014, sprach Papst Franziskus auf dem Petersplatz zwei seiner Vorgänger heilig, Papst Johannes XXIII. und Papst Johannes Paul II. Der emeritierte Papst…"
+},
+"h98": {
+"content": "Am 15. April 2019, dem Montag der Karwoche, brach im Dach von Notre-Dame de Paris ein Feuer aus. Der Vierungsturm stürzte ein, während Menschenmengen zusahen und beteten, doch die Feuerwehr rettete…"
+},
+"h99": {
+"content": "Papst Franziskus eröffnete im Oktober 2021 eine weltweite Bischofssynode unter dem Thema „Für eine synodale Kirche: Gemeinschaft, Teilhabe und Sendung“. Sie begann mit Beratungen in Pfarreien und…"
+},
+"h100": {
+"content": "Papst Franziskus öffnete an Heiligabend 2024 die Heilige Pforte von St. Peter und begann ein Heiliges Jahr unter dem Leitwort „Pilger der Hoffnung“. Millionen Pilger reisten nach Rom.\n\nPapst…"
+},
+"h101": {
+"content": "Nach der byzantinischen Niederlage bei Manzikert 1071 überrannten die Seldschuken den größten Teil Kleinasiens, und Kaiser Alexios I. Komnenos bat den Westen um Hilfe. Im November 1095 rief Papst…"
+},
+"h102": {
+"content": "Die Kreuzzüge brachten eine neue Form des Ordenslebens hervor: Ritter, die Gelübde der Armut, Keuschheit und des Gehorsams ablegten. Die Johanniter gingen aus einem Pilgerhospital in Jerusalem hervor…"
+},
+"h103": {
+"content": "Als 1144 die Kreuzfahrergrafschaft Edessa fiel, rief Papst Eugen III. zu einem neuen Kreuzzug auf, und der hl. Bernhard von Clairvaux predigte ihn mit außerordentlicher Kraft in Frankreich und…"
+},
+"h104": {
+"content": "1187 vernichtete der muslimische Sultan Saladin das Heer des Königreichs Jerusalem an den Hörnern von Hattin und eroberte im Oktober die Heilige Stadt. Der Westen antwortete mit dem Dritten Kreuzzug…"
+},
+"h105": {
+"content": "Der Vierte Kreuzzug erreichte das Heilige Land nie. Tief bei Venedig verschuldet, griffen die Kreuzfahrer zuerst die katholische Stadt Zara an und wurden von Papst Innozenz III. exkommuniziert. Dann…"
+},
+"h106": {
+"content": "In Südfrankreich lehrten die Katharer, die materielle Welt sei böse, und lehnten die Sakramente und die Kirche ab. Der hl. Dominikus predigte unter ihnen in Armut, doch nach der Ermordung eines…"
+},
+"h107": {
+"content": "Während des Fünften Kreuzzugs, als das Kreuzfahrerheer Damiette in Ägypten belagerte, überschritt der hl. Franz von Assisi mit Bruder Illuminatus die Frontlinien, um Sultan al-Kamil das Evangelium zu…"
+},
+"h108": {
+"content": "Kaiser Friedrich II. hatte gelobt, auf Kreuzzug zu gehen, zögerte aber so lange, dass Papst Gregor IX. ihn exkommunizierte. Er zog trotzdem, noch immer gebannt, und verhandelte, statt zu kämpfen, mit…"
+},
+"h109": {
+"content": "König Ludwig IX. von Frankreich, ein Mann tiefer persönlicher Heiligkeit, führte 1248 den Sechsten Kreuzzug nach Ägypten. Nach einem ersten Erfolg bei Damiette wurde sein Heer bei Mansura geschlagen…"
+},
+"h110": {
+"content": "Nach fast zwei Jahrhunderten fiel im Mai 1291 nach sechswöchiger Belagerung die letzte große Kreuzfahrerfestung Akkon an den Mamlukensultan al-Aschraf Chalil. Templer und Johanniter kämpften bis…"
+},
+"h111": {
+"content": "Fast acht Jahrhunderte lang nach der muslimischen Eroberung von 711 drangen die christlichen Königreiche Nordspaniens langsam nach Süden vor. Die Päpste verliehen diesem Kampf den Rang eines…"
+},
+"h112": {
+"content": "Am Freitag, dem 13. Oktober 1307, ließ König Philipp IV. von Frankreich, der den Templern große Summen schuldete, alle Templer in Frankreich unter dem Vorwurf der Ketzerei und Gotteslästerung…"
+},
+"h113": {
+"content": "Im 13. Jahrhundert genehmigten die Päpste Kreuzzüge gegen die heidnischen Völker des Baltikums. Der Deutsche Orden eroberte Preußen und mit dem Livländischen Orden einen großen Teil des heutigen…"
+},
+"h114": {
+"content": "1565 sandte der osmanische Sultan Süleyman der Prächtige eine große Flotte und ein Heer gegen Malta, das die Johanniter unter Großmeister Jean de la Valette hielten. Fast vier Monate lang…"
+},
+"h115": {
+"content": "1683 belagerte ein riesiges osmanisches Heer Wien, die Hauptstadt des Heiligen Römischen Reiches. Papst sel. Innozenz XI. bemühte sich unermüdlich, die christlichen Fürsten zu einen, und König Jan…"
+},
+"h116": {
+"content": "Am ersten Fastensonntag des Großen Jubiläums 2000 leitete Papst Johannes Paul II. im Petersdom eine feierliche Liturgie, in der er Gott um Vergebung für die Sünden bat, die Glieder der Kirche im Lauf…"
+},
+"h117": {
+"content": "Im Northumbrien des 7. Jahrhunderts feierten die von irischen Mönchen geprägten Christen und die in römischer Tradition geformten Ostern an verschiedenen Tagen, sodass König und Königin es manchmal…"
+},
+"h118": {
+"content": "Ein Jahrhundert nach Mohammeds Tod hatten die Heere der Umayyaden Nordafrika und Spanien erobert und die Pyrenäen nach Gallien überschritten. Im Oktober 732 besiegte der fränkische Hausmeier Karl…"
+},
+"h119": {
+"content": "966 ließ sich Herzog Mieszko I., Herrscher der Polanen, taufen und führte sein Volk in den christlichen Westen. Seine Ehe mit der christlichen Prinzessin Dobrawa von Böhmen hatte den Weg…"
+},
+"h120": {
+"content": "1595 schickte die Mehrheit der orthodoxen Bischöfe der Kiewer Metropolie in Polen-Litauen Vertreter nach Rom und trat in volle Gemeinschaft mit dem Papst, unter Beibehaltung ihrer byzantinischen…"
+},
+"h121": {
+"content": "Am 24. April 1646 versammelten sich dreiundsechzig orthodoxe Priester der Karpatenregion in der Burgkapelle von Uschhorod und bekannten ihren Glauben in Gemeinschaft mit dem Papst in Rom, unter…"
+},
+"h122": {
+"content": "Papst Julius II. beauftragte Michelangelo, der sich als Bildhauer verstand, die Decke der Sixtinischen Kapelle auszumalen. Vier Jahre lang arbeitete er auf Gerüsten und malte mehr als dreihundert…"
+},
+"h123": {
+"content": "Während der Schreckensherrschaft der Französischen Revolution weigerten sich die sechzehn Unbeschuhten Karmelitinnen von Compiègne, ihr Ordensleben aufzugeben. Sie wurden als „Fanatikerinnen“…"
+},
+"h124": {
+"content": "Papst Pius VII. hatte 1801 ein Konkordat mit Napoleon geschlossen und 1804 sogar an seiner Krönung teilgenommen. Als der Papst sich aber weigerte, sich Napoleons Blockade gegen Großbritannien…"
+},
+"h125": {
+"content": "Am 20. September 1870 durchbrachen italienische Truppen an der Porta Pia die Mauern Roms, und der Kirchenstaat, der über tausend Jahre bestanden hatte, ging zu Ende. Papst sel. Pius IX. weigerte…"
+},
+"h126": {
+"content": "Jahrhundertelang waren die Gesetze der Kirche auf viele Sammlungen verstreut. Papst Pius X. begann, sie in einem einzigen Gesetzbuch zusammenzufassen, und Papst Benedikt XV. promulgierte 1917 den…"
+},
 "s1": {
 "content": "Als Sohn eines reichen Tuchhändlers in Assisi geboren, gab Franziskus nach einer Reihe von Bekehrungen ein bequemes Leben auf, wählte die radikale Armut und gründete den Franziskanerorden. Er…"
 },
@@ -9542,7 +9902,9 @@ window.SANCTIFY_I18N = {
 },
 "texts": {
 "history-0": "history-0.3bd506b7",
-"history-1": "history-1.a36535db",
+"history-1": "history-1.ce2d2070",
+"history-2": "history-2.984b5d00",
+"history-3": "history-3.71ccc06f",
 "saint-0": "saint-0.31a5ad0a"
 }
 };
