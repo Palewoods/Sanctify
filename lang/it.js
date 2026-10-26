@@ -10754,6 +10754,150 @@ window.SANCTIFY_I18N = {
 "s6": {
 "content": "Giovane contadina di Domrémy, Giovanna credette di ricevere visioni che le chiedevano di sostenere Carlo VII e di guidare le truppe francesi durante la guerra dei Cent’anni. Condusse l’esercito a una…"
 },
+"s7": {
+"content": "Pescatore di Galilea chiamato da Cristo a essere la «roccia» su cui sarebbe stata edificata la Chiesa, Pietro fu il capo dei dodici apostoli e, secondo la tradizione, il primo vescovo di Roma. Pur…"
+},
+"s8": {
+"content": "Un tempo zelante persecutore dei cristiani, noto come Saulo, Paolo fu trasformato dall’incontro con Cristo risorto sulla via di Damasco. Divenne il più grande missionario della Chiesa, fondò comunità…"
+},
+"s9": {
+"content": "Indicato nel suo Vangelo come «il discepolo che Gesù amava», Giovanni fu tra i primi apostoli chiamati e fu presente alla Trasfigurazione e alla Crocifissione, dove Cristo gli affidò sua madre…"
+},
+"s10": {
+"content": "Liberata da Cristo da una grave afflizione, Maria Maddalena divenne una delle sue seguaci più devote e fu presente alla crocifissione quando molti altri erano fuggiti. Fu la prima testimone della…"
+},
+"s11": {
+"content": "Sposo di Maria e padre putativo di Gesù, Giuseppe compare nella Scrittura solo attraverso le sue azioni: obbedisce ai messaggi dell’angelo in sogno, protegge la Santa Famiglia nella fuga in Egitto e…"
+},
+"s12": {
+"content": "Pur non essendo nominata nella Scrittura, sant’Anna è onorata fin dalla Chiesa antica, secondo la tradizione, come madre della Vergine Maria e nonna di Gesù. La sua devozione si diffuse ampiamente…"
+},
+"s13": {
+"content": "Nato a Norcia, in Italia, Benedetto si ritirò dal mondo da giovane per vivere da eremita prima di fondare il monastero di Montecassino e scrivere la sua celebre Regola, che equilibrava preghiera…"
+},
+"s14": {
+"content": "Catturato adolescente nella Britannia romana e ridotto in schiavitù in Irlanda, Patrizio fuggì dopo sei anni, ma tornò in seguito come vescovo missionario, sentendosi chiamato in una visione. Gli si…"
+},
+"s15": {
+"content": "Frate francescano nato in Portogallo, celebre per la sua predicazione e la profonda conoscenza della Scrittura, Antonio fu proclamato Dottore della Chiesa per la chiarezza e la forza delle sue…"
+},
+"s16": {
+"content": "Uno dei dodici apostoli, Giuda Taddeo è tradizionalmente identificato come autore della lettera del Nuovo Testamento che porta il suo nome, e si dice che abbia predicato il Vangelo in Mesopotamia e…"
+},
+"s17": {
+"content": "Vescovo in Asia Minore all’inizio del IV secolo, Nicola divenne famoso per la sua generosità segreta, soprattutto per aver procurato la dote a tre sorelle povere gettando oro dalla loro finestra col…"
+},
+"s18": {
+"content": "Soldato dell’esercito romano, Giorgio fu martirizzato sotto l’imperatore Diocleziano per essersi rifiutato di rinnegare la fede cristiana; si racconta che sopportò lunghe torture con fermo coraggio…"
+},
+"s19": {
+"content": "Capitano della guardia imperiale romana, Sebastiano fu scoperto cristiano in segreto e, secondo la tradizione, condannato a essere trafitto dalle frecce e lasciato per morto. Sopravvisse, fu curato…"
+},
+"s20": {
+"content": "Madre di sant’Agostino, Monica trascorse decenni a pregare per la conversione del figlio negli anni in cui egli si smarrì nell’ambizione mondana e in credenze eterodosse. La sua pazienza e le sue…"
+},
+"s21": {
+"content": "Studioso brillante e notoriamente irascibile, Girolamo dedicò gran parte della vita a tradurre la Bibbia dall’ebraico e dal greco in latino, producendo la Vulgata, che rimase il testo biblico di…"
+},
+"s22": {
+"content": "Governatore romano acclamato inaspettatamente vescovo di Milano dal popolo quando era ancora un catecumeno non battezzato, Ambrogio divenne uno degli uomini di Chiesa più influenti del suo tempo…"
+},
+"s23": {
+"content": "Soldato spagnolo ferito in battaglia, Ignazio visse una profonda conversione durante una lunga convalescenza e fondò poi la Compagnia di Gesù (i gesuiti) per servire la Chiesa con l’educazione, le…"
+},
+"s24": {
+"content": "Compagno vicino a sant’Ignazio di Loyola e uno dei primi gesuiti, Francesco Saverio divenne uno dei missionari cristiani più instancabili della storia, percorrendo l’India, il Sud-Est asiatico e il…"
+},
+"s25": {
+"content": "Noto come il Curato d’Ars, dalla piccola parrocchia francese che servì per oltre quarant’anni, Giovanni Maria Vianney ebbe grandi difficoltà negli studi in seminario, eppure divenne uno dei…"
+},
+"s26": {
+"content": "Frate cappuccino italiano che portò le piaghe visibili delle stimmate di Cristo per circa cinquant’anni, Padre Pio divenne una delle figure spirituali più ricercate del Novecento, attirando folle…"
+},
+"s27": {
+"content": "Frate francescano polacco prigioniero ad Auschwitz, Kolbe si offrì di morire al posto di un compagno di prigionia, marito e padre, scelto per morire di fame come punizione per la fuga di un altro…"
+},
+"s28": {
+"content": "Religiosa polacca di umili origini e scarsa istruzione, Faustina riferì visioni di Gesù che le chiedeva di diffondere la devozione alla sua Divina Misericordia. Il suo diario spirituale, scritto per…"
+},
+"s29": {
+"content": "Nato Karol Wojtyła in Polonia, sopravvisse all’occupazione nazista e al regime comunista prima di essere eletto papa nel 1978, il primo papa non italiano da oltre quattro secoli. Il suo pontificato…"
+},
+"s30": {
+"content": "Nata Anjezë Gonxhe Bojaxhiu nell’attuale Macedonia del Nord, Madre Teresa insegnò per quasi vent’anni prima di sentirsi chiamata a servire «i più poveri tra i poveri» per le strade di Calcutta. Fondò…"
+},
+"s31": {
+"content": "Sposata giovane a un marito violento e infedele, Rita sopportò diciotto anni di matrimonio fino alla morte di lui, e in seguito perse anche entrambi i figli. Entrò allora in un monastero agostiniano…"
+},
+"s32": {
+"content": "Bernadette, una ragazza povera e malaticcia di quattordici anni di Lourdes, in Francia, riferì diciotto apparizioni di una «bella signora» che si presentò come l’Immacolata Concezione e le indicò una…"
+},
+"s33": {
+"content": "Laica italiana e terziaria domenicana, Caterina visse fin da giovane una profonda unione mistica con Cristo e divenne una voce influente negli affari della Chiesa, celebre soprattutto per aver…"
+},
+"s34": {
+"content": "Ricca vedova episcopaliana con cinque figli, Elizabeth Ann Seton si convertì al cattolicesimo dopo aver conosciuto la fede in Italia, scelta che le costò gran parte della sua posizione sociale e del…"
+},
+"s35": {
+"content": "Sacerdote spagnolo preoccupato per la diffusione dell’eresia nel sud della Francia, Domenico fondò l’Ordine dei Predicatori, i domenicani, dedito allo studio rigoroso e alla predicazione pubblica in…"
+},
+"s36": {
+"content": "Sacerdote francese che aveva conosciuto egli stesso la schiavitù prima dell’ordinazione, Vincenzo de’ Paoli dedicò la vita a organizzare un’assistenza sistematica ai poveri, ai malati e ai bambini…"
+},
+"s37": {
+"content": "Nata Isabel Flores de Oliva a Lima, in Perù, Rosa visse una vita di intensa penitenza e preghiera mantenendo la famiglia con il ricamo e il giardinaggio, resistendo alle pressioni per sposarsi per…"
+},
+"s38": {
+"content": "Nato a Lima da un nobile spagnolo e da una donna nera liberata, Martino subì discriminazioni per le sue origini miste, ma fu ammesso nell’ordine domenicano, dove servì come fratello laico curando i…"
+},
+"s39": {
+"content": "Nata da padre mohawk e madre algonchina cristiana in quello che oggi è lo Stato di New York, Kateri sopravvisse da bambina al vaiolo, che la lasciò parzialmente cieca e segnata da cicatrici. Si…"
+},
+"s40": {
+"content": "Chiamato nella Scrittura «uno dei primi principi» e grande protettore che combatte le forze del male, Michele compare nel libro di Daniele, nella lettera di Giuda e nell’Apocalisse, dove guida le…"
+},
+"s41": {
+"content": "Giovane cristiana di Siracusa, in Sicilia, Lucia aveva consacrato la sua verginità a Dio e usò la dote per aiutare i poveri, rifiutando un matrimonio combinato. Denunciata come cristiana durante la…"
+},
+"s42": {
+"content": "Ragazza di dodici o tredici anni di una famiglia nobile romana, Agnese fu martirizzata durante la persecuzione di Diocleziano per aver rifiutato il matrimonio e restare consacrata a Cristo. I…"
+},
+"s43": {
+"content": "Giovane nobile romana, Cecilia è onorata dalla tradizione come vergine martire che convertì al cristianesimo il marito e il cognato prima che tutti e tre fossero messi a morte per la fede. Una…"
+},
+"s44": {
+"content": "Poco si sa con certezza della vita di Cristoforo oltre a un’antica tradizione sul suo martirio, ma un’amata leggenda medievale parla di un gigante che portava i viaggiatori attraverso un fiume…"
+},
+"s45": {
+"content": "Sacerdote romano (o forse vescovo) martirizzato sotto l’imperatore Claudio II, di Valentino si sa con certezza poco oltre la sua morte per la fede. Una leggenda medievale successiva lo associò alla…"
+},
+"s46": {
+"content": "Medico divenuto vescovo di Sebaste, in Armenia, Biagio fu martirizzato sotto l’imperatore Licinio dopo essere stato scoperto nascosto in una grotta durante una persecuzione. La tradizione narra che…"
+},
+"s47": {
+"content": "Secondo la tradizione, Barbara era una giovane rinchiusa dal padre pagano in una torre per tenerla lontana dai pretendenti e dal mondo, ma si convertì segretamente al cristianesimo e fece aprire…"
+},
+"s48": {
+"content": "Spesso chiamato padre del monachesimo, Antonio vendette i suoi beni da giovane in Egitto e si ritirò nel deserto per vivere di preghiera solitaria e disciplina ascetica, affrontando, secondo la…"
+},
+"s49": {
+"content": "Pediatra, moglie e madre italiana, Gianna scoprì un tumore all’utero durante la quarta gravidanza e rifiutò le cure che avrebbero posto fine alla vita del figlio non ancora nato, scegliendo invece un…"
+},
+"s50": {
+"content": "Fratello laico gracile e poco istruito della Congregazione di Santa Croce a Montréal, fratel André servì per decenni come portinaio, indirizzando sempre i malati e gli afflitti alla preghiera a san…"
+},
+"s51": {
+"content": "Sacerdote belga della congregazione dei Sacri Cuori, Damiano si offrì per servire una colonia di lebbrosi esiliati sull’isola di Molokai, nelle Hawaii, dove i malati erano lasciati quasi senza cure…"
+},
+"s52": {
+"content": "Nata in Sudan, Bakhita fu rapita da bambina e venduta come schiava, subendo anni di trattamenti brutali finché una famiglia italiana la portò in Europa, dove conobbe la fede cattolica e, infine, la…"
+},
+"s53": {
+"content": "Religiosa italiana fondatrice delle Missionarie del Sacro Cuore, la Cabrini fu inviata da papa Leone XIII a servire gli emigrati italiani negli Stati Uniti invece di realizzare il suo desiderio…"
+},
+"s54": {
+"content": "Sacerdote italiano cresciuto nella povertà, Giovanni Bosco dedicò la vita alla cura e all’educazione dei ragazzi poveri e a rischio nella Torino industriale, sviluppando un «sistema preventivo» di…"
+},
 "t1": {
 "content": "I cattolici credono in un solo Dio, Creatore di tutte le cose, infinitamente buono, onnisciente, onnipotente ed eterno. Dio non è un essere tra gli altri, ma l’Essere stesso; rivelò a Mosè il suo nome: «Io sono colui che sono».\n\nLa Chiesa insegna che Dio può essere conosciuto con certezza dalla luce naturale della ragione umana a partire dal mondo creato, anche prima della rivelazione. La rivelazione ci mostra poi chi è Dio in se stesso: un Padre che ci ama e vuole che partecipiamo alla sua vita."
 },
@@ -11121,6 +11265,7 @@ window.SANCTIFY_I18N = {
 "history-1": "history-1.bb9d281c",
 "history-2": "history-2.d996a927",
 "history-3": "history-3.911e1873",
-"saint-0": "saint-0.4938b231"
+"saint-0": "saint-0.dd855867",
+"saint-1": "saint-1.f9660371"
 }
 };

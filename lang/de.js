@@ -10754,6 +10754,150 @@ window.SANCTIFY_I18N = {
 "s6": {
 "content": "Das Bauernmädchen aus Domrémy glaubte, Visionen zu empfangen, die ihr auftrugen, Karl VII. zu unterstützen und die französischen Truppen im Hundertjährigen Krieg zu führen. 1429 führte sie das Heer…"
 },
+"s7": {
+"content": "Ein Fischer aus Galiläa, von Christus berufen, der „Fels“ zu sein, auf den die Kirche gebaut werden sollte: Petrus war der Anführer der Zwölf und nach der Überlieferung der erste Bischof von Rom.…"
+},
+"s8": {
+"content": "Einst als Saulus ein eifriger Verfolger der Christen, wurde Paulus durch die Begegnung mit dem auferstandenen Christus auf dem Weg nach Damaskus verwandelt. Er wurde zum größten Missionar der Kirche…"
+},
+"s9": {
+"content": "In seinem eigenen Evangelium „der Jünger, den Jesus liebte“ genannt, gehörte Johannes zu den ersten berufenen Aposteln und war bei der Verklärung und der Kreuzigung zugegen, wo Christus ihm seine…"
+},
+"s10": {
+"content": "Von Christus aus schwerer Bedrängnis befreit, wurde Maria Magdalena eine seiner treuesten Jüngerinnen und war bei der Kreuzigung zugegen, als viele andere geflohen waren. Sie war die erste Zeugin der…"
+},
+"s11": {
+"content": "Als Bräutigam Marias und Ziehvater Jesu erscheint Josef in der Schrift nur durch sein Handeln: Er folgt den Botschaften des Engels im Traum, beschützt die Heilige Familie auf der Flucht nach Ägypten…"
+},
+"s12": {
+"content": "Obwohl die Schrift sie nicht nennt, wird die hl. Anna seit der frühen Kirche der Überlieferung nach als Mutter der Jungfrau Maria und Großmutter Jesu verehrt. Ihre Verehrung verbreitete sich im…"
+},
+"s13": {
+"content": "In Nursia in Italien geboren, zog sich Benedikt als junger Mann aus der Gesellschaft zurück, um als Einsiedler zu leben, bevor er das Kloster Montecassino gründete und seine berühmte Regel schrieb…"
+},
+"s14": {
+"content": "Als Jugendlicher im römischen Britannien gefangen genommen und in Irland versklavt, entkam Patrick nach sechs Jahren, kehrte aber später als Missionsbischof zurück, nachdem er sich in einer Vision…"
+},
+"s15": {
+"content": "Ein in Portugal geborener Franziskanerbruder, berühmt für seine Predigten und seine tiefe Schriftkenntnis: Antonius wurde wegen der Klarheit und Kraft seiner Predigten zum Kirchenlehrer erhoben.…"
+},
+"s16": {
+"content": "Judas Thaddäus, einer der zwölf Apostel, gilt traditionell als Verfasser des neutestamentlichen Briefes, der seinen Namen trägt, und soll in Mesopotamien und Persien das Evangelium verkündet haben…"
+},
+"s17": {
+"content": "Als Bischof in Kleinasien zu Beginn des 4. Jahrhunderts wurde Nikolaus berühmt für seine verborgene Großzügigkeit, vor allem dafür, dass er drei armen Schwestern die Mitgift verschaffte, indem er im…"
+},
+"s18": {
+"content": "Ein Soldat des römischen Heeres: Georg erlitt unter Kaiser Diokletian das Martyrium, weil er sich weigerte, seinem christlichen Glauben abzuschwören; er soll lange Folter mit standhaftem Mut ertragen…"
+},
+"s19": {
+"content": "Sebastian, ein Hauptmann der kaiserlichen Garde in Rom, wurde als heimlicher Christ entdeckt und der Überlieferung nach zum Tod durch Pfeile verurteilt und für tot liegen gelassen. Er überlebte…"
+},
+"s20": {
+"content": "Monika, die Mutter des hl. Augustinus, betete jahrzehntelang um die Bekehrung ihres Sohnes, während er sich in weltlichem Ehrgeiz und irrigen Lehren verlor. Ihre Geduld und ihre Tränen waren, wie…"
+},
+"s21": {
+"content": "Als glänzender und bekanntermaßen reizbarer Gelehrter widmete Hieronymus einen Großteil seines Lebens der Übersetzung der Bibel aus dem Hebräischen und Griechischen ins Lateinische; so entstand die…"
+},
+"s22": {
+"content": "Ein römischer Statthalter, der unerwartet vom Volk zum Bischof von Mailand ausgerufen wurde, als er noch ungetaufter Katechumene war: Ambrosius wurde einer der einflussreichsten Kirchenmänner seiner…"
+},
+"s23": {
+"content": "Ein in der Schlacht verwundeter spanischer Soldat: Ignatius erlebte während einer langen Genesung eine tiefe Bekehrung und gründete später die Gesellschaft Jesu (die Jesuiten), um der Kirche durch…"
+},
+"s24": {
+"content": "Ein enger Gefährte des hl. Ignatius von Loyola und einer der ersten Jesuiten: Franz Xaver wurde einer der weitestgereisten christlichen Missionare der Geschichte, zog durch Indien, Südostasien und…"
+},
+"s25": {
+"content": "Bekannt als der Pfarrer von Ars, nach der kleinen französischen Pfarrei, der er über vierzig Jahre diente, hatte Johannes Maria Vianney im Seminar große Mühe mit dem Studium und wurde doch einer der…"
+},
+"s26": {
+"content": "Ein italienischer Kapuziner, der rund fünfzig Jahre lang die sichtbaren Wundmale Christi trug: Pater Pio wurde zu einer der gesuchtesten geistlichen Gestalten des 20. Jahrhunderts und zog gewaltige…"
+},
+"s27": {
+"content": "Ein polnischer Franziskanerpater, in Auschwitz inhaftiert: Kolbe bot an, an Stelle eines Mitgefangenen zu sterben, eines Ehemanns und Vaters, der als Strafe für die Flucht eines anderen Häftlings zum…"
+},
+"s28": {
+"content": "Eine polnische Ordensfrau aus einfachen Verhältnissen und mit wenig Schulbildung: Faustyna berichtete von Visionen Jesu, der sie bat, die Verehrung seiner Göttlichen Barmherzigkeit zu verbreiten. Ihr…"
+},
+"s29": {
+"content": "Als Karol Wojtyła in Polen geboren, überlebte er die deutsche Besatzung und die kommunistische Herrschaft, bevor er 1978 zum Papst gewählt wurde, dem ersten Nichtitaliener seit über vier…"
+},
+"s30": {
+"content": "Als Anjezë Gonxhe Bojaxhiu im heutigen Nordmazedonien geboren, unterrichtete Mutter Teresa fast zwanzig Jahre lang, bevor sie sich berufen fühlte, den „Ärmsten der Armen“ auf den Straßen Kalkuttas zu…"
+},
+"s31": {
+"content": "Jung mit einem gewalttätigen und untreuen Mann verheiratet, ertrug Rita achtzehn Jahre Ehe bis zu seinem Tod und verlor später auch ihre beiden Söhne. Dann trat sie in ein Augustinerinnenkloster ein…"
+},
+"s32": {
+"content": "Bernadette, ein armes, kränkliches vierzehnjähriges Mädchen aus Lourdes in Frankreich, berichtete von achtzehn Erscheinungen einer „schönen Dame“, die sich als die Unbefleckte Empfängnis zu erkennen…"
+},
+"s33": {
+"content": "Als italienische Laiin und Dominikanerterziarin erlebte Katharina schon in jungen Jahren eine tiefe mystische Einheit mit Christus und wurde zu einer einflussreichen Stimme in kirchlichen…"
+},
+"s34": {
+"content": "Als wohlhabende episkopalische Witwe mit fünf Kindern wurde Elizabeth Ann Seton katholisch, nachdem sie in Italien dem Glauben begegnet war – eine Entscheidung, die sie einen Großteil ihres…"
+},
+"s35": {
+"content": "Ein spanischer Priester, beunruhigt über die Ausbreitung der Häresie in Südfrankreich: Dominikus gründete den Predigerorden, die Dominikaner, der sich gründlichem Studium und öffentlicher Predigt zur…"
+},
+"s36": {
+"content": "Ein französischer Priester, der vor seiner Weihe selbst Sklaverei erlebt hatte: Vinzenz von Paul widmete sein Leben der planmäßigen Sorge für Arme, Kranke und verlassene Kinder, gründete die…"
+},
+"s37": {
+"content": "Als Isabel Flores de Oliva in Lima, Peru, geboren, führte Rosa ein Leben intensiver Buße und des Gebets, während sie ihre Familie mit Stickerei und Gartenarbeit unterhielt; sie widerstand dem Druck…"
+},
+"s38": {
+"content": "In Lima als Sohn eines spanischen Edelmanns und einer freigelassenen schwarzen Frau geboren, erfuhr Martin wegen seiner gemischten Herkunft Ausgrenzung, wurde aber in den Dominikanerorden…"
+},
+"s39": {
+"content": "Als Tochter eines Mohawk-Vaters und einer christlichen Algonkin-Mutter im heutigen Bundesstaat New York geboren, überlebte Kateri als Kind die Pocken, die sie teilweise erblindet und vernarbt…"
+},
+"s40": {
+"content": "In der Schrift „einer der ersten Fürsten“ und großer Beschützer genannt, der gegen die Mächte des Bösen kämpft, erscheint Michael im Buch Daniel, im Judasbrief und in der Offenbarung, wo er die…"
+},
+"s41": {
+"content": "Lucia, eine junge Christin aus Syrakus auf Sizilien, hatte ihre Jungfräulichkeit Gott geweiht und ihre Mitgift für die Armen verwendet; eine arrangierte Ehe lehnte sie ab. In der Verfolgung unter…"
+},
+"s42": {
+"content": "Ein zwölf- oder dreizehnjähriges Mädchen aus einer vornehmen römischen Familie: Agnes erlitt in der Verfolgung unter Diokletian das Martyrium, weil sie die Ehe ablehnte, um Christus geweiht zu…"
+},
+"s43": {
+"content": "Cäcilia, eine junge römische Adlige, wird von der Überlieferung als jungfräuliche Märtyrin verehrt, die ihren Mann und ihren Schwager zum Christentum bekehrte, bevor alle drei um ihres Glaubens…"
+},
+"s44": {
+"content": "Über das Leben des Christophorus ist außer einer alten Überlieferung von seinem Martyrium wenig Sicheres bekannt, doch eine beliebte mittelalterliche Legende erzählt von einem Riesen, der Reisende…"
+},
+"s45": {
+"content": "Ein römischer Priester (vielleicht auch Bischof), unter Kaiser Claudius II. gemartert: Über das Leben Valentins ist kaum mehr gesichert als sein Tod für den Glauben. Eine spätere mittelalterliche…"
+},
+"s46": {
+"content": "Ein Arzt, der Bischof von Sebaste in Armenien wurde: Blasius erlitt unter Kaiser Licinius das Martyrium, nachdem man ihn während einer Verfolgung in einer Höhle versteckt gefunden hatte. Der…"
+},
+"s47": {
+"content": "Der Überlieferung nach war Barbara eine junge Frau, die ihr heidnischer Vater in einen Turm sperrte, um sie von Freiern und der Welt fernzuhalten; doch sie wurde heimlich Christin und ließ zu Ehren…"
+},
+"s48": {
+"content": "Oft Vater des Mönchtums genannt, verkaufte Antonius als junger Mann in Ägypten seinen Besitz und zog sich in die Wüste zurück, um in einsamem Gebet und asketischer Zucht zu leben, wobei er der…"
+},
+"s49": {
+"content": "Gianna, eine italienische Kinderärztin, Ehefrau und Mutter, entdeckte während ihrer vierten Schwangerschaft einen Tumor an der Gebärmutter und lehnte Behandlungen ab, die das Leben ihres ungeborenen…"
+},
+"s50": {
+"content": "Bruder André, ein schwächlicher, kaum gebildeter Laienbruder der Kongregation vom Heiligen Kreuz in Montreal, diente jahrzehntelang als Pförtner und wies Kranke und Bedrängte stets auf das Gebet zum…"
+},
+"s51": {
+"content": "Damian, ein belgischer Priester der Kongregation von den Heiligsten Herzen, meldete sich freiwillig für den Dienst in einer Kolonie von Leprakranken, die auf die Insel Molokai auf Hawaii verbannt…"
+},
+"s52": {
+"content": "Im Sudan geboren, wurde Bakhita als Kind entführt und in die Sklaverei verkauft; sie ertrug jahrelang brutale Behandlung, bis eine italienische Familie sie nach Europa brachte, wo sie den…"
+},
+"s53": {
+"content": "Die italienische Ordensfrau Cabrini, Gründerin der Missionsschwestern vom Heiligsten Herzen, wurde von Papst Leo XIII. zu den italienischen Einwanderern in die Vereinigten Staaten gesandt, statt…"
+},
+"s54": {
+"content": "Ein in Armut aufgewachsener italienischer Priester: Johannes Bosco widmete sein Leben der Sorge um arme und gefährdete Jungen im industrialisierten Turin und entwickelte ein „Präventivsystem“ der…"
+},
 "t1": {
 "content": "Katholiken glauben an einen einzigen Gott, den Schöpfer aller Dinge, der unendlich gut, allwissend, allmächtig und ewig ist. Gott ist nicht ein Seiendes unter anderen, sondern das Sein selbst; Mose offenbarte er seinen Namen: „Ich bin, der ich bin.“\n\nDie Kirche lehrt, dass Gott mit dem natürlichen Licht der menschlichen Vernunft aus der geschaffenen Welt mit Gewissheit erkannt werden kann, schon vor der Offenbarung. Die Offenbarung zeigt uns dann, wer Gott in sich selbst ist: ein Vater, der uns liebt und will, dass wir an seinem Leben teilhaben."
 },
@@ -11121,6 +11265,7 @@ window.SANCTIFY_I18N = {
 "history-1": "history-1.ce2d2070",
 "history-2": "history-2.984b5d00",
 "history-3": "history-3.71ccc06f",
-"saint-0": "saint-0.31a5ad0a"
+"saint-0": "saint-0.f976712f",
+"saint-1": "saint-1.6d1d6b49"
 }
 };

@@ -10754,6 +10754,150 @@ window.SANCTIFY_I18N = {
 "s6": {
 "content": "Wiejska dziewczyna z Domrémy, Joanna wierzyła, że w widzeniach otrzymała polecenie, by wesprzeć Karola VII i poprowadzić wojska francuskie w czasie wojny stuletniej. W 1429 roku poprowadziła armię do…"
 },
+"s7": {
+"content": "Rybak z Galilei, powołany przez Chrystusa, by być „skałą”, na której zostanie zbudowany Kościół, Piotr był przywódcą dwunastu apostołów i według tradycji pierwszym biskupem Rzymu. Choć trzykrotnie…"
+},
+"s8": {
+"content": "Niegdyś gorliwy prześladowca chrześcijan, znany jako Szaweł, Paweł został przemieniony przez spotkanie ze zmartwychwstałym Chrystusem w drodze do Damaszku. Stał się największym misjonarzem Kościoła…"
+},
+"s9": {
+"content": "Nazywany we własnej Ewangelii „uczniem, którego Jezus miłował”, Jan był jednym z pierwszych powołanych apostołów i był obecny przy Przemienieniu i Ukrzyżowaniu, gdzie Chrystus powierzył mu swoją…"
+},
+"s10": {
+"content": "Uwolniona przez Chrystusa od ciężkiego utrapienia, Maria Magdalena stała się jedną z Jego najwierniejszych uczennic i była obecna przy ukrzyżowaniu, gdy wielu innych uciekło. Była pierwszym świadkiem…"
+},
+"s11": {
+"content": "Mąż Maryi i przybrany ojciec Jezusa, Józef pojawia się w Piśmie Świętym tylko poprzez swoje czyny: słucha poleceń anioła we śnie, chroni Świętą Rodzinę w ucieczce do Egiptu i uczy Jezusa…"
+},
+"s12": {
+"content": "Choć Pismo Święte jej nie wymienia, św. Anna od czasów pierwotnego Kościoła jest czczona, zgodnie z tradycją, jako matka Najświętszej Maryi Panny i babka Jezusa. Kult jej rozpowszechnił się szeroko w…"
+},
+"s13": {
+"content": "Urodzony w Nursji w Italii, Benedykt jako młody człowiek wycofał się ze społeczeństwa, by żyć jako pustelnik, zanim założył klasztor na Monte Cassino i napisał słynną Regułę, która równoważyła…"
+},
+"s14": {
+"content": "Pojmany jako nastolatek w rzymskiej Brytanii i zniewolony w Irlandii, Patryk uciekł po sześciu latach, lecz później powrócił jako biskup misjonarz, poczuwszy powołanie w widzeniu. Przypisuje mu się…"
+},
+"s15": {
+"content": "Urodzony w Portugalii brat franciszkanin, słynący z kaznodziejstwa i głębokiej znajomości Pisma Świętego, Antoni został ogłoszony Doktorem Kościoła ze względu na jasność i moc swoich kazań. Większość…"
+},
+"s16": {
+"content": "Jeden z dwunastu apostołów, Juda Tadeusz jest tradycyjnie uważany za autora listu w Nowym Testamencie noszącego jego imię; mówi się, że głosił Ewangelię w Mezopotamii i Persji, zanim poniósł tam…"
+},
+"s17": {
+"content": "Biskup w Azji Mniejszej na początku IV wieku, Mikołaj zasłynął z sekretnej hojności, zwłaszcza z tego, że zapewnił posag trzem ubogim siostrom, wrzucając nocą złoto przez ich okno, by nie popadły w…"
+},
+"s18": {
+"content": "Żołnierz armii rzymskiej, Jerzy poniósł męczeństwo za cesarza Dioklecjana, ponieważ odmówił wyrzeczenia się wiary chrześcijańskiej; według przekazów długo znosił tortury z niezłomną odwagą, zanim…"
+},
+"s19": {
+"content": "Kapitan rzymskiej gwardii cesarskiej, Sebastian, okazał się potajemnym chrześcijaninem i według tradycji skazano go na rozstrzelanie z łuków i zostawiono, sądząc, że nie żyje. Przeżył, wrócił do…"
+},
+"s20": {
+"content": "Matka św. Augustyna, Monika, przez dziesięciolecia modliła się o nawrócenie syna w latach, gdy błądził w światowych ambicjach i nieprawowiernych przekonaniach. Jej cierpliwość i łzy, jak zapisał sam…"
+},
+"s21": {
+"content": "Wybitny i słynnie porywczy uczony, Hieronim poświęcił znaczną część życia przekładowi Biblii z hebrajskiego i greckiego na łacinę, tworząc Wulgatę, która przez ponad tysiąc lat pozostawała…"
+},
+"s22": {
+"content": "Rzymski namiestnik, nieoczekiwanie obwołany przez lud biskupem Mediolanu, gdy był jeszcze nieochrzczonym katechumenem, Ambroży stał się jednym z najbardziej wpływowych duchownych swojej epoki…"
+},
+"s23": {
+"content": "Hiszpański żołnierz ranny w bitwie, Ignacy przeżył głębokie nawrócenie podczas długiej rekonwalescencji, a później założył Towarzystwo Jezusowe (jezuitów), by służyć Kościołowi przez edukację, misje…"
+},
+"s24": {
+"content": "Bliski towarzysz św. Ignacego Loyoli i jeden z pierwszych jezuitów, Franciszek Ksawery stał się jednym z najdalej docierających misjonarzy chrześcijańskich w dziejach: przemierzył Indie, Azję…"
+},
+"s25": {
+"content": "Znany jako Proboszcz z Ars od małej francuskiej parafii, w której posługiwał ponad czterdzieści lat, Jan Vianney miał duże trudności z nauką w seminarium, a jednak stał się jednym z najbardziej…"
+},
+"s26": {
+"content": "Włoski kapucyn, który przez około pięćdziesiąt lat nosił widoczne rany stygmatów Chrystusa, Ojciec Pio stał się jedną z najbardziej poszukiwanych postaci duchowych XX wieku, przyciągając ogromne…"
+},
+"s27": {
+"content": "Polski franciszkanin więziony w Auschwitz, Kolbe zgłosił się, by umrzeć w miejsce współwięźnia, męża i ojca, wyznaczonego na śmierć głodową za ucieczkę innego więźnia. W ostatnich dniach prowadził…"
+},
+"s28": {
+"content": "Polska zakonnica skromnego pochodzenia i niewielkiego wykształcenia, Faustyna opisywała widzenia Jezusa, który prosił ją o szerzenie kultu Jego Miłosierdzia. Jej Dzienniczek, spisywany na polecenie…"
+},
+"s29": {
+"content": "Urodzony w Polsce jako Karol Wojtyła, przetrwał okupację niemiecką i rządy komunistów, zanim w 1978 roku został wybrany papieżem, pierwszym niebędącym Włochem od ponad czterech stuleci. Jego niemal…"
+},
+"s30": {
+"content": "Urodzona jako Anjezë Gonxhe Bojaxhiu na terenie dzisiejszej Macedonii Północnej, Matka Teresa przez prawie dwadzieścia lat uczyła, zanim poczuła powołanie, by służyć „najuboższym z ubogich” na…"
+},
+"s31": {
+"content": "Wydana młodo za mąż za brutalnego i niewiernego męża, Rita znosiła osiemnaście lat małżeństwa aż do jego śmierci, a potem straciła także obu synów. Wstąpiła wówczas do klasztoru augustianek, gdzie…"
+},
+"s32": {
+"content": "Bernadetta, uboga i chorowita czternastolatka z Lourdes we Francji, opowiadała o osiemnastu objawieniach „pięknej Pani”, która nazwała siebie Niepokalanym Poczęciem i wskazała źródło, które zasłynęło…"
+},
+"s33": {
+"content": "Włoska świecka i tercjarka dominikańska, Katarzyna od młodości przeżywała głębokie mistyczne zjednoczenie z Chrystusem i stała się wpływowym głosem w sprawach Kościoła; najbardziej znana jest z…"
+},
+"s34": {
+"content": "Zamożna wdowa z Kościoła episkopalnego, matka pięciorga dzieci, Elizabeth Ann Seton przeszła na katolicyzm po zetknięciu się z wiarą we Włoszech, co kosztowało ją utratę dużej części pozycji…"
+},
+"s35": {
+"content": "Hiszpański kapłan zaniepokojony szerzeniem się herezji w południowej Francji, Dominik założył Zakon Kaznodziejski, dominikanów, oddany rzetelnym studiom i publicznemu głoszeniu w obronie nauki…"
+},
+"s36": {
+"content": "Francuski kapłan, który przed święceniami sam doświadczył niewoli, Wincenty a Paulo poświęcił życie organizowaniu systematycznej opieki nad ubogimi, chorymi i porzuconymi dziećmi, zakładając…"
+},
+"s37": {
+"content": "Urodzona w Limie w Peru jako Isabel Flores de Oliva, Róża wiodła życie intensywnej pokuty i modlitwy, utrzymując rodzinę z haftu i ogrodnictwa, i opierała się naciskom, by wyszła za mąż, pragnąc…"
+},
+"s38": {
+"content": "Urodzony w Limie jako syn hiszpańskiego szlachcica i wyzwolonej czarnej kobiety, Marcin doświadczał dyskryminacji z powodu mieszanego pochodzenia, a jednak został przyjęty do zakonu dominikanów…"
+},
+"s39": {
+"content": "Urodzona z ojca Mohawka i matki chrześcijanki z plemienia Algonkinów na terenie dzisiejszego stanu Nowy Jork, Kateri jako dziecko przeżyła ospę, która zostawiła ją częściowo niewidomą i z bliznami.…"
+},
+"s40": {
+"content": "Nazwany w Piśmie Świętym „jednym z pierwszych książąt” i wielkim obrońcą, który walczy z siłami zła, Michał pojawia się w Księdze Daniela, w Liście Judy i w Apokalipsie, gdzie prowadzi zastępy…"
+},
+"s41": {
+"content": "Młoda chrześcijanka z Syrakuz na Sycylii, Łucja poświęciła swoje dziewictwo Bogu i przeznaczyła posag na pomoc ubogim, odrzucając zaaranżowane małżeństwo. Wydana jako chrześcijanka w czasie…"
+},
+"s42": {
+"content": "Dwunasto- lub trzynastoletnia dziewczyna ze szlacheckiej rodziny rzymskiej, Agnieszka poniosła męczeństwo w czasie prześladowania Dioklecjana, odmówiwszy małżeństwa, by pozostać poświęconą…"
+},
+"s43": {
+"content": "Młoda rzymska szlachcianka, Cecylia jest czczona przez tradycję jako dziewica męczennica, która nawróciła na chrześcijaństwo męża i szwagra, zanim wszyscy troje zostali straceni za wiarę. Późniejsza…"
+},
+"s44": {
+"content": "Niewiele wiadomo pewnie o życiu Krzysztofa poza dawną tradycją o jego męczeństwie, lecz ukochana średniowieczna legenda opowiada o olbrzymie, który przenosił podróżnych przez niebezpieczną rzekę i…"
+},
+"s45": {
+"content": "Rzymski kapłan (a być może biskup) umęczony za cesarza Klaudiusza II, Walenty — o jego życiu niewiele wiadomo pewnie poza śmiercią za wiarę. Późniejsza średniowieczna legenda wiązała go z potajemnym…"
+},
+"s46": {
+"content": "Lekarz, który został biskupem Sebasty w Armenii, Błażej poniósł męczeństwo za cesarza Licyniusza, gdy odkryto go ukrywającego się w jaskini podczas prześladowania. Tradycja mówi, że będąc w niewoli…"
+},
+"s47": {
+"content": "Według tradycji Barbara była młodą kobietą zamkniętą przez ojca poganina w wieży, by odciąć ją od zalotników i świata, lecz potajemnie przyjęła chrześcijaństwo i kazała dodać w wieży trzecie okno na…"
+},
+"s48": {
+"content": "Często nazywany ojcem monastycyzmu, Antoni jako młody człowiek w Egipcie sprzedał swój majątek i odszedł na pustynię, by żyć w samotnej modlitwie i ascezie, znosząc według tradycji gwałtowne pokusy…"
+},
+"s49": {
+"content": "Włoska pediatra, żona i matka, Joanna w czwartej ciąży dowiedziała się o guzie macicy i odmówiła leczenia, które zakończyłoby życie jej nienarodzonego dziecka, wybierając zamiast tego operację…"
+},
+"s50": {
+"content": "Wątły i słabo wykształcony brat zakonny ze Zgromadzenia Świętego Krzyża w Montrealu, brat André przez dziesięciolecia pełnił funkcję furtiana, kierując chorych i strapionych do modlitwy do św.…"
+},
+"s51": {
+"content": "Belgijski kapłan ze Zgromadzenia Najświętszych Serc, Damian zgłosił się do posługi w kolonii trędowatych zesłanych na wyspę Molokai na Hawajach, gdzie chorzy pozostawali prawie bez opieki medycznej i…"
+},
+"s52": {
+"content": "Urodzona w Sudanie, Bakhita została jako dziecko porwana i sprzedana w niewolę; przez lata znosiła okrutne traktowanie, zanim pewna włoska rodzina przywiozła ją do Europy, gdzie poznała wiarę…"
+},
+"s53": {
+"content": "Włoska zakonnica, założycielka Misjonarek Najświętszego Serca, Cabrini została wysłana przez papieża Leona XIII do posługi wśród włoskich emigrantów w Stanach Zjednoczonych, zamiast spełnić swoje…"
+},
+"s54": {
+"content": "Włoski kapłan, który wyrósł w biedzie, Jan Bosko poświęcił życie opiece i wychowaniu ubogich i zagrożonych chłopców w uprzemysłowionym Turynie, tworząc „system prewencyjny” wychowania oparty na…"
+},
 "t1": {
 "content": "Katolicy wierzą w jednego Boga, Stwórcę wszystkiego, który jest nieskończenie dobry, wszechwiedzący, wszechmogący i wieczny. Bóg nie jest jednym z bytów, lecz samym Bytem; objawił Mojżeszowi swoje imię: „Jestem, który jestem”.\n\nKościół naucza, że Boga można poznać z pewnością naturalnym światłem rozumu ludzkiego na podstawie stworzonego świata, jeszcze przed objawieniem. Objawienie ukazuje nam następnie, kim Bóg jest sam w sobie: Ojcem, który nas kocha i pragnie, abyśmy uczestniczyli w Jego życiu."
 },
@@ -11121,6 +11265,7 @@ window.SANCTIFY_I18N = {
 "history-1": "history-1.ea31604b",
 "history-2": "history-2.887f8368",
 "history-3": "history-3.17bd3417",
-"saint-0": "saint-0.2d84f05b"
+"saint-0": "saint-0.20ebd35b",
+"saint-1": "saint-1.18eae9f1"
 }
 };

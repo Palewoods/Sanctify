@@ -10754,6 +10754,150 @@ window.SANCTIFY_I18N = {
 "s6": {
 "content": "Jovem camponesa de Domrémy, Joana acreditou receber visões que lhe pediam que apoiasse Carlos VII e conduzisse as tropas francesas durante a Guerra dos Cem Anos. Levou o exército a uma vitória…"
 },
+"s7": {
+"content": "Pescador da Galileia chamado por Cristo a ser a «rocha» sobre a qual a Igreja seria edificada, Pedro foi o chefe dos doze apóstolos e, segundo a tradição, o primeiro bispo de Roma. Embora tenha…"
+},
+"s8": {
+"content": "Outrora zeloso perseguidor dos cristãos, conhecido como Saulo, Paulo foi transformado por um encontro com Cristo ressuscitado no caminho de Damasco. Tornou-se o maior missionário da Igreja, fundando…"
+},
+"s9": {
+"content": "Conhecido no seu próprio Evangelho como «o discípulo que Jesus amava», João foi um dos primeiros apóstolos chamados e esteve presente na Transfiguração e na Crucifixão, onde Cristo lhe confiou a sua…"
+},
+"s10": {
+"content": "Libertada por Cristo de uma grave aflição, Maria Madalena tornou-se uma das suas seguidoras mais dedicadas e esteve presente na crucifixão quando muitos outros tinham fugido. Foi a primeira…"
+},
+"s11": {
+"content": "Esposo de Maria e pai adotivo de Jesus, José aparece na Escritura apenas através das suas ações: obedece às mensagens do anjo em sonhos, protege a Sagrada Família na fuga para o Egito e ensina a…"
+},
+"s12": {
+"content": "Embora a Escritura não a nomeie, Santa Ana é honrada desde a Igreja primitiva, segundo a tradição, como mãe da Virgem Maria e avó de Jesus. A sua devoção difundiu-se amplamente na Idade Média, e é…"
+},
+"s13": {
+"content": "Nascido em Núrsia, Itália, Bento retirou-se da sociedade ainda jovem para viver como eremita, antes de fundar o mosteiro de Montecassino e escrever a sua célebre Regra, que equilibrava a oração, o…"
+},
+"s14": {
+"content": "Capturado adolescente na Britânia romana e escravizado na Irlanda, Patrício fugiu ao fim de seis anos, mas voltou mais tarde como bispo missionário, depois de se sentir chamado numa visão.…"
+},
+"s15": {
+"content": "Frade franciscano nascido em Portugal, famoso pela sua pregação e pelo profundo conhecimento da Escritura, António foi declarado Doutor da Igreja pela clareza e força dos seus sermões. Passou grande…"
+},
+"s16": {
+"content": "Um dos doze apóstolos, Judas Tadeu é tradicionalmente identificado como o autor da carta do Novo Testamento que tem o seu nome, e diz-se que pregou o Evangelho na Mesopotâmia e na Pérsia antes de ali…"
+},
+"s17": {
+"content": "Bispo na Ásia Menor no início do século IV, Nicolau tornou-se famoso pela sua generosidade secreta, sobretudo por dar o dote a três irmãs pobres, atirando ouro pela janela a coberto da noite para que…"
+},
+"s18": {
+"content": "Soldado do exército romano, Jorge foi martirizado sob o imperador Diocleciano por se recusar a renunciar à fé cristã, suportando, segundo se conta, longas torturas com firme coragem antes de ser…"
+},
+"s19": {
+"content": "Capitão da guarda imperial romana, Sebastião foi descoberto como cristão em segredo e, segundo a tradição, condenado a ser crivado de flechas e deixado como morto. Sobreviveu, foi tratado até…"
+},
+"s20": {
+"content": "Mãe de Santo Agostinho, Mónica passou décadas a rezar pela conversão do filho durante os anos em que ele se perdeu na ambição mundana e em crenças heterodoxas. A sua paciência e as suas lágrimas…"
+},
+"s21": {
+"content": "Erudito brilhante e famosamente irascível, Jerónimo dedicou grande parte da vida a traduzir a Bíblia do hebraico e do grego para o latim, produzindo a Vulgata, que se manteve como texto bíblico de…"
+},
+"s22": {
+"content": "Governador romano inesperadamente aclamado bispo de Milão pelo povo quando ainda era um catecúmeno por batizar, Ambrósio tornou-se um dos eclesiásticos mais influentes do seu tempo, instruindo…"
+},
+"s23": {
+"content": "Soldado espanhol ferido em batalha, Inácio viveu uma profunda conversão durante uma longa convalescença e fundou depois a Companhia de Jesus (os jesuítas) para servir a Igreja através da educação…"
+},
+"s24": {
+"content": "Companheiro próximo de Santo Inácio de Loyola e um dos primeiros jesuítas, Francisco Xavier tornou-se um dos missionários cristãos que mais longe chegaram na história, percorrendo a Índia, o Sudeste…"
+},
+"s25": {
+"content": "Conhecido como o Cura d’Ars pela pequena paróquia francesa que serviu durante mais de quarenta anos, João Maria Vianney teve grandes dificuldades nos estudos do seminário e, no entanto, tornou-se um…"
+},
+"s26": {
+"content": "Frade capuchinho italiano que trouxe as chagas visíveis dos estigmas de Cristo durante cerca de cinquenta anos, o Padre Pio tornou-se uma das figuras espirituais mais procuradas do século XX…"
+},
+"s27": {
+"content": "Frade franciscano polaco preso em Auschwitz, Kolbe ofereceu-se para morrer no lugar de um companheiro de prisão, marido e pai, escolhido para morrer de fome como castigo pela fuga de outro recluso.…"
+},
+"s28": {
+"content": "Religiosa polaca de origem humilde e pouca instrução, Faustina relatou visões de Jesus que lhe pedia para difundir a devoção à sua Divina Misericórdia. O seu diário espiritual, escrito por indicação…"
+},
+"s29": {
+"content": "Nascido Karol Wojtyła na Polónia, sobreviveu à ocupação nazi e ao regime comunista antes de ser eleito papa em 1978, o primeiro papa não italiano em mais de quatro séculos. O seu pontificado de quase…"
+},
+"s30": {
+"content": "Nascida Anjezë Gonxhe Bojaxhiu na atual Macedónia do Norte, Madre Teresa passou quase duas décadas a ensinar antes de se sentir chamada a servir «os mais pobres dos pobres» nas ruas de Calcutá.…"
+},
+"s31": {
+"content": "Casada jovem com um marido violento e infiel, Rita suportou dezoito anos de casamento até à morte dele, e perdeu depois também os dois filhos. Entrou então num convento agostiniano, onde viveu uma…"
+},
+"s32": {
+"content": "Bernadette, uma rapariga pobre e doente de catorze anos de Lourdes, em França, relatou dezoito aparições de uma «bela senhora» que se identificou como a Imaculada Conceição e lhe revelou uma nascente…"
+},
+"s33": {
+"content": "Leiga italiana e terciária dominicana, Catarina viveu desde jovem uma profunda união mística com Cristo e tornou-se uma voz influente nos assuntos da Igreja, sendo célebre por ter convencido o papa…"
+},
+"s34": {
+"content": "Viúva episcopaliana abastada com cinco filhos, Elizabeth Ann Seton converteu-se ao catolicismo depois de conhecer a fé em Itália, decisão que lhe custou grande parte da posição social e do apoio da…"
+},
+"s35": {
+"content": "Sacerdote espanhol preocupado com a expansão da heresia no sul de França, Domingos fundou a Ordem dos Pregadores, os dominicanos, dedicada ao estudo rigoroso e à pregação pública em defesa da…"
+},
+"s36": {
+"content": "Sacerdote francês que conheceu ele próprio a escravidão antes da ordenação, Vicente de Paulo dedicou a vida a organizar um cuidado sistemático dos pobres, dos doentes e das crianças abandonadas…"
+},
+"s37": {
+"content": "Nascida Isabel Flores de Oliva em Lima, no Peru, Rosa viveu uma vida de intensa penitência e oração enquanto sustentava a família com bordados e jardinagem, resistindo às pressões para casar a fim de…"
+},
+"s38": {
+"content": "Nascido em Lima, filho de um nobre espanhol e de uma mulher negra liberta, Martinho sofreu discriminação pela sua origem mestiça, mas foi admitido na ordem dominicana, onde serviu como irmão leigo…"
+},
+"s39": {
+"content": "Nascida de pai mohawk e mãe algonquina cristã no que é hoje o estado de Nova Iorque, Kateri sobreviveu em criança à varíola, que a deixou parcialmente cega e com cicatrizes. Converteu-se ao…"
+},
+"s40": {
+"content": "Chamado na Escritura «um dos primeiros príncipes» e grande protetor que combate as forças do mal, Miguel aparece no livro de Daniel, na carta de Judas e no Apocalipse, onde conduz os exércitos…"
+},
+"s41": {
+"content": "Jovem cristã de Siracusa, na Sicília, Luzia consagrara a sua virgindade a Deus e usou o dote para ajudar os pobres, recusando um casamento combinado. Denunciada como cristã durante a perseguição de…"
+},
+"s42": {
+"content": "Rapariga de doze ou treze anos de uma família nobre romana, Inês foi martirizada durante a perseguição de Diocleciano por recusar o casamento a fim de permanecer consagrada a Cristo. Os relatos…"
+},
+"s43": {
+"content": "Jovem nobre romana, Cecília é honrada pela tradição como virgem mártir que converteu ao cristianismo o marido e o cunhado antes de os três serem mortos pela fé. Uma lenda posterior conta que no dia…"
+},
+"s44": {
+"content": "Pouco se sabe com segurança sobre a vida de Cristóvão além de uma antiga tradição do seu martírio, mas uma querida lenda medieval fala de um gigante que transportava os viajantes através de um rio…"
+},
+"s45": {
+"content": "Sacerdote romano (ou talvez bispo) martirizado sob o imperador Cláudio II, pouco se sabe com certeza da vida de Valentim além da sua morte pela fé. Uma lenda medieval posterior associou-o à…"
+},
+"s46": {
+"content": "Médico que se tornou bispo de Sebaste, na Arménia, Brás foi martirizado sob o imperador Licínio depois de ser descoberto escondido numa gruta durante uma perseguição. A tradição conta que, estando…"
+},
+"s47": {
+"content": "Segundo a tradição, Bárbara era uma jovem fechada numa torre pelo pai pagão para a afastar dos pretendentes e do mundo, mas converteu-se secretamente ao cristianismo e mandou abrir uma terceira…"
+},
+"s48": {
+"content": "Muitas vezes chamado pai do monaquismo, Antão vendeu os seus bens ainda jovem no Egito e retirou-se para o deserto para viver em oração solitária e disciplina ascética, enfrentando, segundo a…"
+},
+"s49": {
+"content": "Pediatra, esposa e mãe italiana, Gianna descobriu um tumor no útero durante a quarta gravidez e recusou os tratamentos que teriam posto fim à vida do filho por nascer, escolhendo em vez disso uma…"
+},
+"s50": {
+"content": "Irmão leigo frágil e de pouca instrução da Congregação de Santa Cruz em Montreal, o irmão André serviu durante décadas como porteiro, encaminhando sempre os doentes e aflitos para a oração a São…"
+},
+"s51": {
+"content": "Sacerdote belga da congregação dos Sagrados Corações, Damião ofereceu-se para servir uma colónia de leprosos exilados na ilha de Molokai, no Havai, onde os doentes eram deixados quase sem cuidados…"
+},
+"s52": {
+"content": "Nascida no Sudão, Bakhita foi raptada em criança e vendida como escrava, suportando anos de tratamento brutal até que uma família italiana a levou para a Europa, onde conheceu a fé católica e, por…"
+},
+"s53": {
+"content": "Religiosa italiana fundadora das Missionárias do Sagrado Coração, Cabrini foi enviada pelo Papa Leão XIII a servir os imigrantes italianos nos Estados Unidos, em vez de realizar o seu desejo original…"
+},
+"s54": {
+"content": "Sacerdote italiano que cresceu na pobreza, João Bosco dedicou a vida ao cuidado e à educação de rapazes pobres e em risco na Turim industrial, desenvolvendo um «sistema preventivo» de educação…"
+},
 "t1": {
 "content": "Os católicos creem num só Deus, Criador de todas as coisas, infinitamente bom, omnisciente, omnipotente e eterno. Deus não é um ser entre outros, mas o próprio Ser; revelou o seu nome a Moisés como “Eu sou aquele que sou”.\n\nA Igreja ensina que Deus pode ser conhecido com certeza pela luz natural da razão humana a partir do mundo criado, mesmo antes da revelação. A revelação mostra-nos depois quem Deus é em si mesmo: um Pai que nos ama e quer que partilhemos a sua vida."
 },
@@ -11121,6 +11265,7 @@ window.SANCTIFY_I18N = {
 "history-1": "history-1.9a1b4348",
 "history-2": "history-2.7518f5c0",
 "history-3": "history-3.7b2b0b41",
-"saint-0": "saint-0.775074fd"
+"saint-0": "saint-0.0318da30",
+"saint-1": "saint-1.ed694dad"
 }
 };
