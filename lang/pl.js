@@ -11186,6 +11186,114 @@ window.SANCTIFY_I18N = {
 "s150": {
 "content": "Angelo Roncalli był jednym z trzynaściorga dzieci chłopskiej rodziny spod Bergamo. Jako papieski dyplomata w Bułgarii, Turcji i Francji pomagał Żydom ratować się przed Zagładą.\n\nWybrany na papieża w…"
 },
+"s151": {
+"content": "Hiszpański kapłan, Josemaría Escrivá założył w 1928 roku Opus Dei, by szerzyć przesłanie, że zwykła praca i codzienne życie mogą być drogą do świętości.\n\nW czasie hiszpańskiej wojny domowej ukrywał…"
+},
+"s152": {
+"content": "Giovanni Battista Montini pracował w watykańskim Sekretariacie Stanu i był arcybiskupem Mediolanu, zanim w 1963 roku został wybrany papieżem. Doprowadził Sobór Watykański II do końca i wprowadzał…"
+},
+"s153": {
+"content": "Początkowo postrzegany jako ostrożny konserwatysta, Óscar Romero został w 1977 roku arcybiskupem San Salvador. Zabójstwo jego przyjaciela, jezuity Rutilia Grandego, przemieniło go i zaczął publicznie…"
+},
+"s154": {
+"content": "Urodzony w Londynie włoski nastolatek, Carlo Acutis kochał gry wideo, piłkę nożną i komputery i sam nauczył się programować. Codziennie uczestniczył we Mszy, a Eucharystię nazywał „moją autostradą do…"
+},
+"s155": {
+"content": "Gabriel, którego imię znaczy „moc Boża”, występuje w Piśmie Świętym jako posłaniec Boga. Wyjaśniał widzenia prorokowi Danielowi, zwiastował Zachariaszowi narodziny Jana Chrzciciela i oznajmił Maryi…"
+},
+"s156": {
+"content": "Rafał, którego imię znaczy „Bóg uzdrawia”, występuje w Księdze Tobiasza, gdzie prowadzi młodego Tobiasza w podróży, pomaga mu znaleźć żonę i uzdrawia ślepotę jego ojca. Dopiero na końcu wyjawia, że…"
+},
+"s157": {
+"content": "Po śmierci Judasza jedenastu apostołów modliło się i rzucało losy, by wybrać następcę spośród tych, którzy towarzyszyli Jezusowi od chrztu aż do Wniebowstąpienia. Los padł na Macieja, którego…"
+},
+"s158": {
+"content": "Filip z Betsaidy był wśród pierwszych powołanych przez Jezusa i od razu przyprowadził do Niego swego przyjaciela Natanaela, mówiąc: „Chodź i zobacz”. Przy rozmnożeniu chleba i podczas Ostatniej…"
+},
+"s159": {
+"content": "Jakub, syn Alfeusza, był jednym z Dwunastu. Tradycja długo utożsamiała go z „Jakubem, bratem Pańskim”, który przewodził Kościołowi w Jerozolimie, przemawiał na Soborze Jerozolimskim i jest czczony…"
+},
+"s160": {
+"content": "Szymon jest wymieniany na każdej liście Dwunastu, nazywany „Gorliwym” być może z powodu gorliwości o Prawo albo dawnych związków z ruchem opierającym się rzymskiemu panowaniu. Ewangelie nie podają o…"
+},
+"s161": {
+"content": "Tymoteusz, syn ojca Greka i matki Żydówki, poznał wiarę od matki Eunike i babki Lois. Stał się najbliższym towarzyszem św. Pawła, podróżował z nim na misje i powierzano mu trudne zadania w Koryncie i…"
+},
+"s162": {
+"content": "Marta z Betanii, siostra Marii i Łazarza, przyjmowała Jezusa w swoim domu jako drogiego przyjaciela. Gdy skarżyła się, że siostra zostawiła ją samą przy usługiwaniu, Jezus łagodnie przypomniał jej o…"
+},
+"s163": {
+"content": "Klemens był jednym z pierwszych biskupów Rzymu, którego św. Ireneusz uważał za trzeciego następcę św. Piotra. Około roku 96 napisał list do Kościoła w Koryncie, wzywając do zakończenia buntu przeciw…"
+},
+"s164": {
+"content": "Według tradycji Kosma i Damian byli braćmi bliźniakami z Arabii, którzy leczyli w Syrii, nigdy nie pobierając opłat od chorych, i swoją hojnością pozyskali wielu dla Chrystusa. Na Wschodzie nazywano…"
+},
+"s165": {
+"content": "Według tradycji Katarzyna była błyskotliwą młodą szlachcianką z Aleksandrii, która zganiła cesarza za prześladowanie chrześcijan. Wezwał on pięćdziesięciu filozofów, by z nią dyskutowali, a ona…"
+},
+"s166": {
+"content": "Pankracy był sierotą z Frygii, który przybył do Rzymu z wujem i tam przyjął chrzest. Gdy zaczęło się prześladowanie Dioklecjana, odmówił złożenia ofiary bogom i został ścięty w wieku około czternastu…"
+},
+"s167": {
+"content": "Florian był oficerem armii rzymskiej w prowincji Noricum, na terenie dzisiejszej Austrii. Gdy w czasie prześladowania Dioklecjana kazano mu wyłapywać chrześcijan, wyznał zamiast tego własną…"
+},
+"s168": {
+"content": "Według tradycji Maurycy był egipskim chrześcijaninem dowodzącym Legionem Tebańskim, oddziałem rzymskim zwerbowanym w Górnym Egipcie. Stacjonujący w Alpach legion odmówił zabijania niewinnych…"
+},
+"s169": {
+"content": "Januariusz (San Gennaro) był biskupem Benewentu w południowych Włoszech. W czasie prześladowania Dioklecjana odwiedzał uwięzionych chrześcijan, sam został aresztowany i ścięty w pobliżu…"
+},
+"s170": {
+"content": "Apolonia była sędziwą dziewicą konsekrowaną z Aleksandrii, zabitą podczas rozruchów przeciw chrześcijanom w 249 roku. Jej historię opowiada w liście miejscowy biskup, św. Dionizy, cytowany przez…"
+},
+"s171": {
+"content": "Dionizy został wysłany z Rzymu, by ewangelizować Galię, i został pierwszym biskupem Paryża. Jego kazania pozyskały tylu nawróconych, że aresztowano go wraz z dwoma towarzyszami, Rustykiem i…"
+},
+"s172": {
+"content": "Hilary był żonatym pogańskim uczonym, który doszedł do chrześcijaństwa przez lekturę Pisma Świętego, a później został wybrany biskupem Poitiers w Galii. Stał się czołowym zachodnim obrońcą bóstwa…"
+},
+"s173": {
+"content": "Cyryl był biskupem Jerozolimy w czasie zaciekłych sporów ariańskich i trzykrotnie skazywano go na wygnanie. Najbardziej znany jest z Katechez, wygłaszanych do przygotowujących się do chrztu w…"
+},
+"s174": {
+"content": "Młodszy brat św. Bazylego Wielkiego i św. Makryny, Grzegorz był żonatym nauczycielem retoryki, zanim został biskupem Nyssy. Był jednym z trzech „Ojców Kapadockich”, którzy ukształtowali język…"
+},
+"s175": {
+"content": "Makryna była najstarszym z dziesięciorga dzieci niezwykłej rodziny świętych, do której należeli św. Bazyli Wielki i św. Grzegorz z Nyssy. Po śmierci narzeczonego przemieniła rodzinny majątek we…"
+},
+"s176": {
+"content": "Mojżesz był etiopskim niewolnikiem w Egipcie, który został brutalnym przywódcą bandy rozbójników. Ukrywając się przed prawem wśród mnichów na pustyni Sketis, został poruszony ich pokojem i pokorą i…"
+},
+"s177": {
+"content": "Paula była zamożną rzymską szlachcianką i matką pięciorga dzieci. Po śmierci męża poświęciła się modlitwie i studiowaniu Pisma pod kierunkiem św. Hieronima, ucząc się hebrajskiego tak dobrze, że…"
+},
+"s178": {
+"content": "Piotr był arcybiskupem Rawenny, wówczas stolicy Cesarstwa Zachodniorzymskiego. Jego kazania, krótkie, serdeczne i pełne obrazów, przyniosły mu przydomek „Chryzolog”, czyli „złote słowo”.\n\nZachowało…"
+},
+"s179": {
+"content": "Dewi Sant, patron Walii, założył klasztor w Mynyw (dziś St Davids), gdzie jego mnisi wiedli surowe życie pracy fizycznej, pijąc tylko wodę i spędzając długie godziny na modlitwie.\n\nWiele podróżował…"
+},
+"s180": {
+"content": "Augustyn był przeorem klasztoru w Rzymie, gdy papież św. Grzegorz Wielki posłał go z około czterdziestoma mnichami, by zanieśli Ewangelię Anglosasom. Wylądowali w Kencie w 597 roku, gdzie królowa…"
+},
+"s181": {
+"content": "Kolumban był irlandzkim mnichem, który w wieku około czterdziestu pięciu lat opuścił ojczyznę, by zostać „pielgrzymem dla Chrystusa” na kontynencie. Założył klasztory w Annegray, Luxeuil i Bobbio…"
+},
+"s182": {
+"content": "Hilda była księżniczką z Northumbrii ochrzczoną w wieku trzynastu lat. Później została ksienią podwójnego klasztoru w Whitby, gdzie mnisi i mniszki żyli obok siebie i gdzie wykształciło się pięciu…"
+},
+"s183": {
+"content": "Kutbert był pasterzem, który ujrzał widzenie aniołów i wstąpił do klasztoru w Melrose. Stał się niestrudzonym misjonarzem odległych wiosek Northumbrii, a potem przeorem Lindisfarne.\n\nTęsknił za…"
+},
+"s184": {
+"content": "Jan urodził się w Damaszku pod panowaniem muzułmańskim i był wysokim urzędnikiem na dworze kalifa, zanim został mnichem w klasztorze Mar Saba pod Jerozolimą.\n\nGdy cesarz bizantyjski nakazał…"
+},
+"s185": {
+"content": "Stefan był pierwszym królem Węgier, koronowanym w roku 1000 koroną przysłaną przez papieża. Pracował nad nawróceniem swojego ludu, zakładał diecezje i klasztory i z narodu koczowniczych plemion…"
+},
+"s186": {
+"content": "Edward był ostatnim królem z dynastii Wessex. Po latach wygnania w Normandii rządził Anglią przez dwadzieścia cztery lata, w czasie których utrzymywał królestwo w znacznej mierze w pokoju i słynął z…"
+},
 "t1": {
 "content": "Katolicy wierzą w jednego Boga, Stwórcę wszystkiego, który jest nieskończenie dobry, wszechwiedzący, wszechmogący i wieczny. Bóg nie jest jednym z bytów, lecz samym Bytem; objawił Mojżeszowi swoje imię: „Jestem, który jestem”.\n\nKościół naucza, że Boga można poznać z pewnością naturalnym światłem rozumu ludzkiego na podstawie stworzonego świata, jeszcze przed objawieniem. Objawienie ukazuje nam następnie, kim Bóg jest sam w sobie: Ojcem, który nas kocha i pragnie, abyśmy uczestniczyli w Jego życiu."
 },
@@ -11556,6 +11664,7 @@ window.SANCTIFY_I18N = {
 "saint-0": "saint-0.20ebd35b",
 "saint-1": "saint-1.09160f1a",
 "saint-2": "saint-2.6c567743",
-"saint-3": "saint-3.183de220"
+"saint-3": "saint-3.4eb87456",
+"saint-4": "saint-4.9ba83f93"
 }
 };

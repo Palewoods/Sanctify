@@ -11186,6 +11186,114 @@ window.SANCTIFY_I18N = {
 "s150": {
 "content": "Angelo Roncalli era uno dei tredici figli di una famiglia contadina vicino a Bergamo. Come diplomatico pontificio in Bulgaria, Turchia e Francia aiutò degli ebrei a sfuggire alla Shoah.\n\nEletto papa…"
 },
+"s151": {
+"content": "Sacerdote spagnolo, Josemaría Escrivá fondò l’Opus Dei nel 1928 per diffondere il messaggio che il lavoro ordinario e la vita quotidiana possono essere via di santità.\n\nDurante la guerra civile…"
+},
+"s152": {
+"content": "Giovanni Battista Montini lavorò nella Segreteria di Stato vaticana e fu arcivescovo di Milano prima dell’elezione nel 1963. Portò a conclusione il Concilio Vaticano II e ne attuò le riforme.\n\nFu il…"
+},
+"s153": {
+"content": "Inizialmente visto come un conservatore prudente, Óscar Romero divenne arcivescovo di San Salvador nel 1977. L’assassinio dell’amico, il gesuita Rutilio Grande, lo trasformò, e cominciò a denunciare…"
+},
+"s154": {
+"content": "Adolescente italiano nato a Londra, Carlo Acutis amava i videogiochi, il calcio e i computer, e imparò da solo a programmare. Andava a Messa ogni giorno e chiamava l’Eucaristia «la mia autostrada per…"
+},
+"s155": {
+"content": "Gabriele, il cui nome significa «forza di Dio», compare nella Scrittura come messaggero di Dio. Spiegò visioni al profeta Daniele, annunciò a Zaccaria la nascita di Giovanni Battista e annunciò a…"
+},
+"s156": {
+"content": "Raffaele, il cui nome significa «Dio guarisce», compare nel libro di Tobia, dove guida il giovane Tobia in viaggio, lo aiuta a trovare moglie e guarisce la cecità del padre. Solo alla fine si rivela…"
+},
+"s157": {
+"content": "Dopo la morte di Giuda, gli undici apostoli pregarono e tirarono a sorte per scegliere un sostituto tra coloro che avevano seguito Gesù dal battesimo all’Ascensione. La sorte cadde su Mattia, che fu…"
+},
+"s158": {
+"content": "Filippo di Betsaida fu tra i primi chiamati da Gesù e subito condusse da lui l’amico Natanaele con le parole «Vieni e vedi». Alla moltiplicazione dei pani e nell’Ultima Cena, le sue domande sincere…"
+},
+"s159": {
+"content": "Giacomo, figlio di Alfeo, fu uno dei Dodici. La tradizione lo identificò a lungo con «Giacomo, il fratello del Signore», che guidò la Chiesa di Gerusalemme, parlò al Concilio di Gerusalemme ed è…"
+},
+"s160": {
+"content": "Simone compare in tutti gli elenchi dei Dodici, chiamato «lo Zelota», forse per il suo zelo per la Legge o per i suoi legami passati con un movimento che resisteva al dominio romano. I Vangeli non…"
+},
+"s161": {
+"content": "Timoteo, figlio di padre greco e madre ebrea, imparò la fede dalla madre Eunice e dalla nonna Loide. Divenne il compagno più vicino di san Paolo, viaggiò con lui nelle missioni e ricevette incarichi…"
+},
+"s162": {
+"content": "Marta di Betania, sorella di Maria e di Lazzaro, accolse Gesù nella sua casa come un amico caro. Quando si lamentò che la sorella la lasciava a servire da sola, Gesù le ricordò con dolcezza l’«unica…"
+},
+"s163": {
+"content": "Clemente fu uno dei primi vescovi di Roma, contato da sant’Ireneo come il terzo successore di san Pietro. Verso l’anno 96 scrisse una lettera alla Chiesa di Corinto, esortandola a porre fine a una…"
+},
+"s164": {
+"content": "Secondo la tradizione, Cosma e Damiano erano fratelli gemelli d’Arabia che esercitavano la medicina in Siria senza mai farsi pagare dai pazienti, e con la loro generosità guadagnarono molti a Cristo.…"
+},
+"s165": {
+"content": "Secondo la tradizione, Caterina era una giovane nobile e brillante di Alessandria che rimproverò l’imperatore per la persecuzione dei cristiani. Egli convocò cinquanta filosofi per disputare con lei…"
+},
+"s166": {
+"content": "Pancrazio era un orfano della Frigia giunto a Roma con lo zio e lì battezzato. Quando iniziò la persecuzione di Diocleziano, rifiutò di sacrificare agli dèi e fu decapitato a circa quattordici…"
+},
+"s167": {
+"content": "Floriano era un ufficiale dell’esercito romano nella provincia del Norico, nell’attuale Austria. Quando gli fu ordinato di arrestare i cristiani durante la persecuzione di Diocleziano, dichiarò…"
+},
+"s168": {
+"content": "Secondo la tradizione, Maurizio era un cristiano egiziano che comandava la Legione Tebea, un’unità romana reclutata nell’Alto Egitto. Di stanza nelle Alpi, la legione si rifiutò di uccidere cristiani…"
+},
+"s169": {
+"content": "Gennaro fu vescovo di Benevento, nell’Italia meridionale. Durante la persecuzione di Diocleziano visitò i cristiani imprigionati, fu arrestato egli stesso e decapitato presso Pozzuoli.\n\nÈ il patrono…"
+},
+"s170": {
+"content": "Apollonia era un’anziana vergine consacrata di Alessandria, uccisa durante una sommossa contro i cristiani nel 249. La sua storia è narrata in una lettera del vescovo del luogo, san Dionigi, citata…"
+},
+"s171": {
+"content": "Dionigi fu inviato da Roma a evangelizzare la Gallia e divenne il primo vescovo di Parigi. La sua predicazione conquistò tanti convertiti che fu arrestato con due compagni, Rustico ed Eleuterio, e…"
+},
+"s172": {
+"content": "Ilario era un erudito pagano sposato che giunse al cristianesimo leggendo la Scrittura e fu poi scelto come vescovo di Poitiers, in Gallia. Divenne il principale difensore occidentale della divinità…"
+},
+"s173": {
+"content": "Cirillo fu vescovo di Gerusalemme durante le feroci controversie ariane e fu esiliato tre volte. È ricordato soprattutto per le sue Catechesi, tenute a chi si preparava al battesimo a Pasqua.\n\nLe…"
+},
+"s174": {
+"content": "Fratello minore di san Basilio Magno e di santa Macrina, Gregorio fu un insegnante di retorica sposato prima di diventare vescovo di Nissa. Fu uno dei tre «Padri cappadoci» che plasmarono il…"
+},
+"s175": {
+"content": "Macrina era la maggiore di dieci figli di una straordinaria famiglia di santi che comprendeva san Basilio Magno e san Gregorio di Nissa. Dopo la morte del fidanzato, trasformò la tenuta di famiglia…"
+},
+"s176": {
+"content": "Mosè era uno schiavo etiope in Egitto divenuto capo violento di una banda di briganti. Mentre si nascondeva dalla giustizia tra i monaci del deserto di Scete, fu toccato dalla loro pace e umiltà e…"
+},
+"s177": {
+"content": "Paola era una ricca nobildonna romana e madre di cinque figli. Dopo la morte del marito si dedicò alla preghiera e allo studio della Scrittura sotto la guida di san Girolamo, imparando l’ebraico così…"
+},
+"s178": {
+"content": "Pietro fu arcivescovo di Ravenna, allora capitale dell’Impero romano d’Occidente. I suoi sermoni, brevi, caldi e pieni di immagini, gli valsero il nome di «Crisologo», cioè «parola d’oro».\n\nNe…"
+},
+"s179": {
+"content": "Dewi Sant, patrono del Galles, fondò un monastero a Mynyw (oggi St Davids) dove i suoi monaci conducevano una vita austera di lavoro manuale, bevendo solo acqua e dedicando lunghe ore alla…"
+},
+"s180": {
+"content": "Agostino era priore di un monastero a Roma quando papa san Gregorio Magno lo inviò con una quarantina di monaci a portare il Vangelo agli anglosassoni. Sbarcarono nel Kent nel 597, dove la regina…"
+},
+"s181": {
+"content": "Colombano fu un monaco irlandese che lasciò la patria verso i quarantacinque anni per diventare «pellegrino per Cristo» sul continente. Fondò i monasteri di Annegray, Luxeuil e Bobbio, che per secoli…"
+},
+"s182": {
+"content": "Hilda era una principessa della Northumbria battezzata a tredici anni. Divenne poi badessa del monastero doppio di Whitby, dove monaci e monache vivevano fianco a fianco e dove si formarono cinque…"
+},
+"s183": {
+"content": "Cutberto era un giovane pastore che ebbe una visione di angeli ed entrò nel monastero di Melrose. Divenne un instancabile missionario dei villaggi remoti della Northumbria, poi priore di…"
+},
+"s184": {
+"content": "Giovanni nacque a Damasco sotto il dominio musulmano e fu alto funzionario alla corte del califfo prima di farsi monaco nel monastero di Mar Saba, vicino a Gerusalemme.\n\nQuando l’imperatore bizantino…"
+},
+"s185": {
+"content": "Stefano fu il primo re d’Ungheria, incoronato nell’anno 1000 con una corona inviata dal papa. Si adoperò per convertire il suo popolo, fondò diocesi e monasteri e costruì un regno cristiano da una…"
+},
+"s186": {
+"content": "Edoardo fu l’ultimo re della casa di Wessex. Dopo anni di esilio in Normandia, regnò sull’Inghilterra per ventiquattro anni, durante i quali mantenne il regno in gran parte in pace e divenne noto per…"
+},
 "t1": {
 "content": "I cattolici credono in un solo Dio, Creatore di tutte le cose, infinitamente buono, onnisciente, onnipotente ed eterno. Dio non è un essere tra gli altri, ma l’Essere stesso; rivelò a Mosè il suo nome: «Io sono colui che sono».\n\nLa Chiesa insegna che Dio può essere conosciuto con certezza dalla luce naturale della ragione umana a partire dal mondo creato, anche prima della rivelazione. La rivelazione ci mostra poi chi è Dio in se stesso: un Padre che ci ama e vuole che partecipiamo alla sua vita."
 },
@@ -11556,6 +11664,7 @@ window.SANCTIFY_I18N = {
 "saint-0": "saint-0.dd855867",
 "saint-1": "saint-1.345841be",
 "saint-2": "saint-2.679f0c23",
-"saint-3": "saint-3.3076c792"
+"saint-3": "saint-3.56ead8b6",
+"saint-4": "saint-4.5c01e5fb"
 }
 };

@@ -11186,6 +11186,114 @@ window.SANCTIFY_I18N = {
 "s150": {
 "content": "Angelo Roncalli était l’un des treize enfants d’une famille paysanne près de Bergame. Diplomate du Saint-Siège en Bulgarie, en Turquie et en France, il aida des Juifs à échapper à la Shoah.\n\nÉlu pape…"
 },
+"s151": {
+"content": "Prêtre espagnol, Josemaría Escrivá fonda l’Opus Dei en 1928 pour répandre le message selon lequel le travail ordinaire et la vie quotidienne peuvent être un chemin de sainteté.\n\nPendant la guerre…"
+},
+"s152": {
+"content": "Giovanni Battista Montini servit à la Secrétairerie d’État du Vatican et fut archevêque de Milan avant son élection en 1963. Il mena le concile Vatican II à son terme et en mit en œuvre les…"
+},
+"s153": {
+"content": "D’abord vu comme un conservateur prudent, Óscar Romero devint archevêque de San Salvador en 1977. L’assassinat de son ami, le jésuite Rutilio Grande, le transforma, et il se mit à dénoncer la…"
+},
+"s154": {
+"content": "Adolescent italien né à Londres, Carlo Acutis aimait les jeux vidéo, le football et les ordinateurs, et il apprit seul à programmer. Il allait chaque jour à la messe et appelait l’Eucharistie « mon…"
+},
+"s155": {
+"content": "Gabriel, dont le nom signifie « force de Dieu », apparaît dans l’Écriture comme messager de Dieu. Il expliqua des visions au prophète Daniel, annonça à Zacharie la naissance de Jean-Baptiste et…"
+},
+"s156": {
+"content": "Raphaël, dont le nom signifie « Dieu guérit », apparaît dans le livre de Tobie, où il guide le jeune Tobie en voyage, l’aide à trouver une épouse et guérit la cécité de son père. Ce n’est qu’à la fin…"
+},
+"s157": {
+"content": "Après la mort de Judas, les onze apôtres prièrent et tirèrent au sort pour choisir un remplaçant parmi ceux qui avaient suivi Jésus depuis son baptême jusqu’à son Ascension. Le sort tomba sur…"
+},
+"s158": {
+"content": "Philippe de Bethsaïde fut parmi les premiers appelés par Jésus, et il amena aussitôt son ami Nathanaël en lui disant : « Viens et vois. » Lors de la multiplication des pains et à la dernière Cène…"
+},
+"s159": {
+"content": "Jacques, fils d’Alphée, était l’un des Douze. La tradition l’a longtemps identifié à « Jacques, le frère du Seigneur », qui dirigea l’Église de Jérusalem, prit la parole au concile de Jérusalem et…"
+},
+"s160": {
+"content": "Simon figure dans toutes les listes des Douze, appelé « le Zélote », peut-être pour son zèle pour la Loi ou pour ses anciens liens avec un mouvement qui résistait à la domination romaine. Les…"
+},
+"s161": {
+"content": "Fils d’un père grec et d’une mère juive, Timothée apprit la foi de sa mère Eunice et de sa grand-mère Loïs. Il devint le plus proche compagnon de saint Paul, voyagea avec lui dans ses missions et…"
+},
+"s162": {
+"content": "Marthe de Béthanie, sœur de Marie et de Lazare, accueillit Jésus chez elle comme un ami cher. Quand elle se plaignit que sa sœur la laissait servir seule, Jésus lui rappela doucement la « seule chose…"
+},
+"s163": {
+"content": "Clément fut l’un des premiers évêques de Rome, compté par saint Irénée comme le troisième successeur de saint Pierre. Vers l’an 96, il écrivit une lettre à l’Église de Corinthe pour mettre fin à une…"
+},
+"s164": {
+"content": "Selon la tradition, Côme et Damien étaient des frères jumeaux d’Arabie qui exerçaient la médecine en Syrie sans jamais faire payer leurs patients, et gagnèrent beaucoup de gens au Christ par leur…"
+},
+"s165": {
+"content": "Selon la tradition, Catherine était une jeune noble brillante d’Alexandrie qui reprocha à l’empereur de persécuter les chrétiens. Il convoqua cinquante philosophes pour débattre avec elle, et elle…"
+},
+"s166": {
+"content": "Pancrace était un orphelin de Phrygie venu à Rome avec son oncle, où il fut baptisé. Quand commença la persécution de Dioclétien, il refusa de sacrifier aux dieux et fut décapité vers l’âge de…"
+},
+"s167": {
+"content": "Florian était officier de l’armée romaine dans la province du Norique, dans l’actuelle Autriche. Sommé d’arrêter les chrétiens pendant la persécution de Dioclétien, il déclara au contraire sa propre…"
+},
+"s168": {
+"content": "Selon la tradition, Maurice était un chrétien égyptien qui commandait la légion thébaine, une unité romaine levée en Haute-Égypte. Stationnée dans les Alpes, la légion refusa de tuer des chrétiens…"
+},
+"s169": {
+"content": "Janvier (San Gennaro) était évêque de Bénévent, dans le sud de l’Italie. Pendant la persécution de Dioclétien, il visita des chrétiens emprisonnés, fut arrêté à son tour et décapité près de…"
+},
+"s170": {
+"content": "Apolline était une vierge consacrée âgée d’Alexandrie, tuée lors d’une émeute contre les chrétiens en 249. Son histoire est racontée dans une lettre de l’évêque du lieu, saint Denys, citée par…"
+},
+"s171": {
+"content": "Envoyé de Rome pour évangéliser la Gaule, Denis devint le premier évêque de Paris. Sa prédication gagna tant de convertis qu’il fut arrêté avec deux compagnons, Rustique et Éleuthère, et décapité sur…"
+},
+"s172": {
+"content": "Hilaire était un érudit païen marié qui vint au christianisme par la lecture de l’Écriture, puis fut choisi comme évêque de Poitiers, en Gaule. Il devint le principal défenseur occidental de la…"
+},
+"s173": {
+"content": "Cyrille fut évêque de Jérusalem pendant les violentes controverses ariennes et fut exilé trois fois. On se souvient surtout de ses Catéchèses, données à ceux qui se préparaient au baptême de…"
+},
+"s174": {
+"content": "Frère cadet de saint Basile le Grand et de sainte Macrine, Grégoire était un professeur de rhétorique marié avant de devenir évêque de Nysse. Il fut l’un des trois « Pères cappadociens » qui…"
+},
+"s175": {
+"content": "Macrine était l’aînée des dix enfants d’une remarquable famille de saints qui comptait saint Basile le Grand et saint Grégoire de Nysse. Après la mort de son fiancé, elle fit du domaine familial une…"
+},
+"s176": {
+"content": "Moïse était un esclave éthiopien en Égypte devenu le chef violent d’une bande de brigands. Caché de la justice parmi les moines du désert de Scété, il fut touché par leur paix et leur humilité, et…"
+},
+"s177": {
+"content": "Paule était une riche noble romaine et mère de cinq enfants. Après la mort de son mari, elle se consacra à la prière et à l’étude de l’Écriture sous la conduite de saint Jérôme, apprenant si bien…"
+},
+"s178": {
+"content": "Pierre était archevêque de Ravenne, alors capitale de l’Empire romain d’Occident. Ses sermons, courts, chaleureux et pleins d’images, lui valurent le surnom de « Chrysologue », c’est-à-dire « parole…"
+},
+"s179": {
+"content": "Dewi Sant, saint patron du pays de Galles, fonda à Mynyw (aujourd’hui St Davids) un monastère où ses moines menaient une vie austère de travail manuel, ne buvant que de l’eau et consacrant de longues…"
+},
+"s180": {
+"content": "Augustin était prieur d’un monastère à Rome quand le pape saint Grégoire le Grand l’envoya avec une quarantaine de moines porter l’Évangile aux Anglo-Saxons. Ils débarquèrent dans le Kent en 597, où…"
+},
+"s181": {
+"content": "Colomban était un moine irlandais qui quitta sa patrie vers quarante-cinq ans pour devenir « pèlerin pour le Christ » sur le continent. Il fonda les monastères d’Annegray, de Luxeuil et de Bobbio…"
+},
+"s182": {
+"content": "Hilda était une princesse de Northumbrie baptisée à treize ans. Elle devint plus tard abbesse du monastère double de Whitby, où moines et moniales vivaient côte à côte et où furent formés cinq futurs…"
+},
+"s183": {
+"content": "Cuthbert était un jeune berger qui eut une vision d’anges et entra au monastère de Melrose. Il devint un missionnaire infatigable des villages isolés de Northumbrie, puis prieur de…"
+},
+"s184": {
+"content": "Jean naquit à Damas sous la domination musulmane et fut haut fonctionnaire à la cour du calife avant de devenir moine au monastère de Mar Saba, près de Jérusalem.\n\nQuand l’empereur byzantin ordonna…"
+},
+"s185": {
+"content": "Étienne fut le premier roi de Hongrie, couronné en l’an 1000 avec une couronne envoyée par le pape. Il œuvra à la conversion de son peuple, fonda des diocèses et des monastères et bâtit un royaume…"
+},
+"s186": {
+"content": "Édouard fut le dernier roi de la maison de Wessex. Après des années d’exil en Normandie, il régna sur l’Angleterre pendant vingt-quatre ans, au cours desquels il maintint le royaume largement en paix…"
+},
 "t1": {
 "content": "Les catholiques croient en un seul Dieu, Créateur de toutes choses, infiniment bon, omniscient, tout-puissant et éternel. Dieu n’est pas un être parmi d’autres, mais l’Être même ; il a révélé son nom à Moïse : « Je suis celui qui suis ».\n\nL’Église enseigne que Dieu peut être connu avec certitude par la lumière naturelle de la raison humaine à partir du monde créé, avant même la révélation. La révélation nous montre ensuite qui est Dieu en lui-même : un Père qui nous aime et veut nous faire partager sa vie."
 },
@@ -11556,6 +11664,7 @@ window.SANCTIFY_I18N = {
 "saint-0": "saint-0.9dfb93f1",
 "saint-1": "saint-1.616dd505",
 "saint-2": "saint-2.348b2064",
-"saint-3": "saint-3.28028dba"
+"saint-3": "saint-3.5784cb2f",
+"saint-4": "saint-4.4e385e21"
 }
 };

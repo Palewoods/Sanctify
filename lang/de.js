@@ -11186,6 +11186,114 @@ window.SANCTIFY_I18N = {
 "s150": {
 "content": "Angelo Roncalli war eines von dreizehn Kindern einer Bauernfamilie bei Bergamo. Als päpstlicher Diplomat in Bulgarien, der Türkei und Frankreich half er Juden, dem Holocaust zu entkommen.\n\n1958 mit…"
 },
+"s151": {
+"content": "Der spanische Priester Josemaría Escrivá gründete 1928 das Opus Dei, um die Botschaft zu verbreiten, dass gewöhnliche Arbeit und Alltag ein Weg zur Heiligkeit sein können.\n\nIm Spanischen Bürgerkrieg…"
+},
+"s152": {
+"content": "Giovanni Battista Montini diente im vatikanischen Staatssekretariat und war Erzbischof von Mailand, bevor er 1963 gewählt wurde. Er führte das Zweite Vatikanische Konzil zu Ende und setzte seine…"
+},
+"s153": {
+"content": "Óscar Romero, anfangs als vorsichtiger Konservativer angesehen, wurde 1977 Erzbischof von San Salvador. Die Ermordung seines Freundes, des Jesuiten Rutilio Grande, veränderte ihn, und er begann, die…"
+},
+"s154": {
+"content": "Carlo Acutis, ein in London geborener italienischer Jugendlicher, liebte Videospiele, Fußball und Computer und brachte sich selbst das Programmieren bei. Er besuchte täglich die Messe und nannte die…"
+},
+"s155": {
+"content": "Gabriel, dessen Name „Kraft Gottes“ bedeutet, erscheint in der Schrift als Bote Gottes. Er deutete dem Propheten Daniel Visionen, kündigte Zacharias die Geburt Johannes’ des Täufers an und verkündete…"
+},
+"s156": {
+"content": "Rafael, dessen Name „Gott heilt“ bedeutet, erscheint im Buch Tobit, wo er den jungen Tobias auf einer Reise führt, ihm hilft, eine Frau zu finden, und die Blindheit seines Vaters heilt. Erst am Ende…"
+},
+"s157": {
+"content": "Nach dem Tod des Judas beteten die elf Apostel und warfen das Los, um einen Nachfolger unter denen zu wählen, die Jesus von seiner Taufe bis zur Himmelfahrt gefolgt waren. Das Los fiel auf Matthias…"
+},
+"s158": {
+"content": "Philippus aus Betsaida gehörte zu den ersten, die Jesus berief, und brachte sofort seinen Freund Natanaël mit den Worten „Komm und sieh!“. Bei der Brotvermehrung und beim Letzten Abendmahl lösten…"
+},
+"s159": {
+"content": "Jakobus, Sohn des Alphäus, war einer der Zwölf. Die Überlieferung setzte ihn lange mit „Jakobus, dem Bruder des Herrn“ gleich, der die Kirche von Jerusalem leitete, auf dem Apostelkonzil sprach und…"
+},
+"s160": {
+"content": "Simon wird in jeder Liste der Zwölf genannt und heißt „der Zelot“, vielleicht wegen seines Eifers für das Gesetz oder wegen früherer Verbindungen zu einer Bewegung, die sich der römischen Herrschaft…"
+},
+"s161": {
+"content": "Timotheus, Sohn eines griechischen Vaters und einer jüdischen Mutter, lernte den Glauben von seiner Mutter Eunike und seiner Großmutter Loïs. Er wurde der engste Gefährte des hl. Paulus, reiste mit…"
+},
+"s162": {
+"content": "Marta von Betanien, die Schwester Marias und des Lazarus, nahm Jesus als lieben Freund in ihr Haus auf. Als sie klagte, ihre Schwester lasse sie allein dienen, erinnerte Jesus sie sanft an das „eine…"
+},
+"s163": {
+"content": "Clemens war einer der ersten Bischöfe Roms, den der hl. Irenäus als dritten Nachfolger des hl. Petrus zählt. Um das Jahr 96 schrieb er einen Brief an die Gemeinde in Korinth und mahnte, einen…"
+},
+"s164": {
+"content": "Der Überlieferung nach waren Kosmas und Damian Zwillingsbrüder aus Arabien, die in Syrien als Ärzte wirkten, ohne je Geld von ihren Patienten zu nehmen, und viele durch ihre Freigebigkeit für…"
+},
+"s165": {
+"content": "Der Überlieferung nach war Katharina eine kluge junge Adlige aus Alexandria, die den Kaiser wegen der Christenverfolgung tadelte. Er ließ fünfzig Philosophen gegen sie disputieren, und sie gewann sie…"
+},
+"s166": {
+"content": "Pankratius war ein Waisenkind aus Phrygien, das mit seinem Onkel nach Rom kam und dort getauft wurde. Als die Verfolgung unter Diokletian begann, weigerte er sich, den Göttern zu opfern, und wurde…"
+},
+"s167": {
+"content": "Florian war Offizier des römischen Heeres in der Provinz Noricum im heutigen Österreich. Als er in der Verfolgung unter Diokletian Christen festnehmen sollte, bekannte er stattdessen seinen eigenen…"
+},
+"s168": {
+"content": "Der Überlieferung nach war Mauritius ein ägyptischer Christ und Befehlshaber der Thebäischen Legion, einer in Oberägypten ausgehobenen römischen Einheit. In den Alpen stationiert, weigerte sich die…"
+},
+"s169": {
+"content": "Januarius (San Gennaro) war Bischof von Benevent in Süditalien. In der Verfolgung unter Diokletian besuchte er gefangene Christen, wurde selbst verhaftet und bei Pozzuoli enthauptet.\n\nEr ist der…"
+},
+"s170": {
+"content": "Apollonia, eine betagte gottgeweihte Jungfrau aus Alexandria, wurde 249 bei einem Aufruhr gegen die Christen getötet. Ihre Geschichte erzählt der Ortsbischof, der hl. Dionysius, in einem Brief, den…"
+},
+"s171": {
+"content": "Dionysius wurde von Rom nach Gallien gesandt und wurde der erste Bischof von Paris. Seine Predigt gewann so viele Bekehrte, dass er mit zwei Gefährten, Rusticus und Eleutherius, verhaftet und auf dem…"
+},
+"s172": {
+"content": "Hilarius, ein verheirateter heidnischer Gelehrter, fand durch das Lesen der Schrift zum Christentum und wurde später zum Bischof von Poitiers in Gallien gewählt. Er wurde der führende westliche…"
+},
+"s173": {
+"content": "Kyrill war Bischof von Jerusalem in der Zeit heftiger Auseinandersetzungen um den Arianismus und wurde dreimal verbannt. Bekannt ist er vor allem durch seine Katechesen für die Taufbewerber vor…"
+},
+"s174": {
+"content": "Gregor, jüngerer Bruder des hl. Basilius des Großen und der hl. Makrina, war ein verheirateter Rhetoriklehrer, bevor er Bischof von Nyssa wurde. Er gehörte zu den drei „kappadokischen Vätern“, die…"
+},
+"s175": {
+"content": "Makrina war das älteste von zehn Kindern einer bemerkenswerten Heiligenfamilie, zu der der hl. Basilius der Große und der hl. Gregor von Nyssa gehörten. Nach dem Tod ihres Verlobten machte sie das…"
+},
+"s176": {
+"content": "Mose, ein äthiopischer Sklave in Ägypten, wurde zum gewalttätigen Anführer einer Räuberbande. Als er sich vor der Justiz unter den Mönchen der Sketischen Wüste versteckte, berührten ihn ihr Friede…"
+},
+"s177": {
+"content": "Paula, eine reiche römische Adlige und Mutter von fünf Kindern, widmete sich nach dem Tod ihres Mannes unter der Anleitung des hl. Hieronymus dem Gebet und dem Studium der Schrift; sie lernte so gut…"
+},
+"s178": {
+"content": "Petrus war Erzbischof von Ravenna, damals Hauptstadt des Weströmischen Reiches. Seine kurzen, warmherzigen und bilderreichen Predigten trugen ihm den Namen „Chrysologus“, „Goldwort“, ein.\n\nEtwa 180…"
+},
+"s179": {
+"content": "Dewi Sant, der Schutzpatron von Wales, gründete in Mynyw (heute St Davids) ein Kloster, dessen Mönche ein strenges Leben der Handarbeit führten, nur Wasser tranken und lange Stunden im Gebet…"
+},
+"s180": {
+"content": "Augustinus war Prior eines Klosters in Rom, als Papst Gregor der Große ihn mit etwa vierzig Mönchen aussandte, den Angelsachsen das Evangelium zu bringen. Sie landeten 597 in Kent, wo Königin Bertha…"
+},
+"s181": {
+"content": "Kolumban, ein irischer Mönch, verließ mit etwa fünfundvierzig Jahren seine Heimat, um auf dem Festland ein „Pilger für Christus“ zu werden. Er gründete die Klöster Annegray, Luxeuil und Bobbio, die…"
+},
+"s182": {
+"content": "Hilda, eine northumbrische Prinzessin, wurde mit dreizehn Jahren getauft. Später wurde sie Äbtissin des Doppelklosters Whitby, in dem Mönche und Nonnen nebeneinander lebten und fünf spätere Bischöfe…"
+},
+"s183": {
+"content": "Cuthbert, ein Hirtenjunge, sah eine Engelsvision und trat in das Kloster Melrose ein. Er wurde ein unermüdlicher Missionar der abgelegenen Dörfer Northumbriens und dann Prior von Lindisfarne.\n\nEr…"
+},
+"s184": {
+"content": "Johannes wurde in Damaskus unter muslimischer Herrschaft geboren und war hoher Beamter am Hof des Kalifen, bevor er Mönch im Kloster Mar Saba bei Jerusalem wurde.\n\nAls der byzantinische Kaiser die…"
+},
+"s185": {
+"content": "Stephan war der erste König Ungarns, im Jahr 1000 mit einer vom Papst gesandten Krone gekrönt. Er arbeitete an der Bekehrung seines Volkes, gründete Bistümer und Klöster und formte aus einem Volk…"
+},
+"s186": {
+"content": "Eduard war der letzte König aus dem Haus Wessex. Nach Jahren des Exils in der Normandie regierte er vierundzwanzig Jahre lang England, hielt das Reich weitgehend in Frieden und wurde für seine…"
+},
 "t1": {
 "content": "Katholiken glauben an einen einzigen Gott, den Schöpfer aller Dinge, der unendlich gut, allwissend, allmächtig und ewig ist. Gott ist nicht ein Seiendes unter anderen, sondern das Sein selbst; Mose offenbarte er seinen Namen: „Ich bin, der ich bin.“\n\nDie Kirche lehrt, dass Gott mit dem natürlichen Licht der menschlichen Vernunft aus der geschaffenen Welt mit Gewissheit erkannt werden kann, schon vor der Offenbarung. Die Offenbarung zeigt uns dann, wer Gott in sich selbst ist: ein Vater, der uns liebt und will, dass wir an seinem Leben teilhaben."
 },
@@ -11556,6 +11664,7 @@ window.SANCTIFY_I18N = {
 "saint-0": "saint-0.f976712f",
 "saint-1": "saint-1.cdc76594",
 "saint-2": "saint-2.aa4ec24d",
-"saint-3": "saint-3.21add206"
+"saint-3": "saint-3.6af16666",
+"saint-4": "saint-4.b56943e5"
 }
 };
