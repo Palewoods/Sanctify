@@ -8781,9 +8781,228 @@ window.SANCTIFY_I18N = {
 "1978 and 2024": "1978 i 2024",
 "431 and 451": "431 i 451",
 "March 12, 2000": "12 marca 2000",
+"written {*}": "napisane {*}",
+"published {n}": "wydane w {n}",
+"printed {n}": "wydrukowane w {n}",
+"compiled {*}": "zebrane {*}",
+"compiled {n}": "zebrane w {n}",
+"dictated {*}": "podyktowane {*}",
+"{n} (posthumous)": "{n} (pośmiertnie)",
+"{n} (revised {n})": "{n} (poprawione w {n})",
+"attributed to {*}": "przypisywane: {*}",
+"edited by {*}": "pod redakcją: {*}",
+"ed. {*}": "red. {*}",
+"compiled by {*}": "zebrał: {*}",
+"promulgated by {*}": "ogłoszony przez: {*}",
+"edited under {*}": "pod kierunkiem: {*}",
+"supplemented by {*}": "uzupełnił: {*}",
+"from the meditations of {*}": "z rozważań: {*}",
+"late {n}th century": "koniec {n}. wieku",
+"early {n}th century": "początek {n}. wieku",
+"{n}th century": "{n}. wiek",
+"Greek version c. {n}th century": "wersja grecka ok. {n}. wieku",
+"anonymous": "anonim",
+"anonymous English mystic": "anonimowy angielski mistyk",
+"traditional": "tradycyjne",
+"Byzantine tradition": "tradycja bizantyjska",
+"with an editor": "z redaktorem",
+"arranged for every day of the year": "na każdy dzień roku",
+"seven early English mystical treatises": "siedem dawnych angielskich traktatów mistycznych",
+"Jerusalem": "Jerozolima",
+"Second Vatican Council": "Sobór Watykański II",
+"Council of Trent": "Sobór Trydencki",
+"Third Plenary Council of Baltimore": "III Synod Plenarny w Baltimore",
+"the Church of Smyrna": "Kościół w Smyrnie",
+"Pope St. John Paul II": "papież św. Jan Paweł II",
+"Pope Francis": "papież Franciszek",
+"Pope Benedict XVI": "papież Benedykt XVI",
+"Pope Leo XIII": "papież Leon XIII",
+"Pope Pius XI": "papież Pius XI",
+"Pope Pius XII": "papież Pius XII",
+"Joseph Ratzinger (Pope Benedict XVI)": "Joseph Ratzinger (papież Benedykt XVI)",
+"Karol Wojtyła (Pope St. John Paul II)": "Karol Wojtyła (papież św. Jan Paweł II)",
+"Archbishop Fulton J. Sheen": "arcybiskup Fulton J. Sheen",
+"Cardinal Nicholas Wiseman": "kardynał Nicholas Wiseman",
+"Cardinal Christoph Schönborn": "kardynał Christoph Schönborn",
+"Cardinal Robert Sarah": "kardynał Robert Sarah",
+"Cardinal James Gibbons": "kardynał James Gibbons",
+"Cardinal Francis Aidan Gasquet": "kardynał Francis Aidan Gasquet",
+"Fr. Bonaventure Hammer": "o. Bonaventure Hammer",
+"Fr. Jacques Philippe": "o. Jacques Philippe",
+"Fr. Michael E. Gaitley": "o. Michael E. Gaitley",
+"Fr. Jean-Marie Aladel": "o. Jean-Marie Aladel",
+"Fr. Richard Connolly": "o. Richard Connolly",
+"Fr. William Gahan": "o. William Gahan",
+"Fr. Joseph Deharbe": "o. Joseph Deharbe",
+"Fr. Thomas L. Kinkead": "o. Thomas L. Kinkead",
+"Dom Jean-Baptiste Chautard": "Dom Jean-Baptiste Chautard",
+"Sr. Josefa Menéndez": "s. Józefa Menéndez",
+"Mother St. Paul": "Matka św. Paweł",
+"Ven. Louis of Granada": "czcigodny Ludwik z Granady",
+"Bl. Jacobus de Voragine": "bł. Jakub de Voragine",
+"St. Ambrose of Milan": "św. Ambroży z Mediolanu",
+"St. Athanasius of Alexandria": "św. Atanazy Aleksandryjski",
+"St. Polycarp of Smyrna": "św. Polikarp ze Smyrny",
+"Sts. Perpetua and Saturus": "św. Perpetua i św. Saturus",
+"Jean-Pierre de Caussade": "Jean-Pierre de Caussade",
+"Nikodemos of the Holy Mountain and Makarios of Corinth": "Nikodem Hagioryta i Makary z Koryntu",
+"Clement of Alexandria": "Klemens Aleksandryjski",
+"Origen": "Orygenes",
+"Tertullian": "Tertulian",
+"Hermas": "Hermas",
+"Minucius Felix": "Minucjusz Feliks",
+"Lactantius": "Laktancjusz",
+"Eusebius of Caesarea": "Euzebiusz z Cezarei",
+"Aphrahat the Persian Sage": "Afrahat, mędrzec perski",
+"Sulpicius Severus": "Sulpicjusz Sewer",
+"Palladius of Galatia": "Palladiusz z Galacji",
+"John Moschus": "Jan Moschos",
+"Boethius": "Boecjusz",
+"Dante Alighieri": "Dante Alighieri",
+"Julian of Norwich": "Julianna z Norwich",
+"Walter Hilton": "Walter Hilton",
+"Thomas à Kempis": "Tomasz à Kempis",
+"Brother Lawrence": "brat Wawrzyniec",
+"Blaise Pascal": "Blaise Pascal",
+"Lorenzo Scupoli": "Lorenzo Scupoli",
+"Alban Butler": "Alban Butler",
+"Alessandro Manzoni": "Alessandro Manzoni",
+"Georges Bernanos": "Georges Bernanos",
+"Josef Pieper": "Josef Pieper",
+"Dorothy Day": "Dorothy Day",
+"Francis Thompson": "Francis Thompson",
+"Henryk Sienkiewicz": "Henryk Sienkiewicz",
+"Gerard Manley Hopkins": "Gerard Manley Hopkins",
+"Sigrid Undset": "Sigrid Undset",
+"Frank Sheed": "Frank Sheed",
+"J.R.R. Tolkien": "J.R.R. Tolkien",
+"Shūsaku Endō": "Shūsaku Endō",
+"Brian Kolodiejchuk": "Brian Kolodiejchuk",
+"A.-D. Sertillanges": "A.-D. Sertillanges",
+"Karl Adam": "Karl Adam",
+"Réginald Garrigou-Lagrange": "Réginald Garrigou-Lagrange",
+"Henri de Lubac": "Henri de Lubac",
+"Dietrich von Hildebrand": "Dietrich von Hildebrand",
+"Caryll Houselander": "Caryll Houselander",
+"Hans Urs von Balthasar": "Hans Urs von Balthasar",
+"Willa Cather": "Willa Cather",
+"Walker Percy": "Walker Percy",
+"Michael D. O’Brien": "Michael D. O’Brien",
+"Peter Kreeft and Ronald K. Tacelli": "Peter Kreeft i Ronald K. Tacelli",
+"Scott Hahn": "Scott Hahn",
+"Scott and Kimberly Hahn": "Scott i Kimberly Hahn",
+"Brant Pitre": "Brant Pitre",
+"Ronald Knox": "Ronald Knox",
+"Joyce Kilmer": "Joyce Kilmer",
+"Alice Meynell": "Alice Meynell",
+"Jean-Pierre Camus": "Jean-Pierre Camus",
+"Jaime Balmes": "Jaime Balmes",
+"G.K. Chesterton": "G.K. Chesterton",
+"Robert Hugh Benson": "Robert Hugh Benson",
+"Hilaire Belloc": "Hilaire Belloc",
+"Romano Guardini": "Romano Guardini",
+"Thomas Merton": "Thomas Merton",
+"Graham Greene": "Graham Greene",
+"Evelyn Waugh": "Evelyn Waugh",
+"Flannery O’Connor": "Flannery O’Connor",
+"Walter J. Ciszek": "Walter J. Ciszek",
+"F. A. Forbes": "F. A. Forbes",
+"1370s": "lata 1370.",
+"Confessions": "Wyznania",
+"The Imitation of Christ": "O naśladowaniu Chrystusa",
+"Introduction to the Devout Life": "Filotea, czyli droga do życia pobożnego",
+"Story of a Soul": "Dzieje duszy",
+"Summa Theologica": "Suma teologiczna",
+"The Rule of St. Benedict": "Reguła św. Benedykta",
+"The Interior Castle": "Twierdza wewnętrzna",
+"Dark Night of the Soul": "Noc ciemna",
+"The City of God": "Państwo Boże",
+"True Devotion to Mary": "Traktat o prawdziwym nabożeństwie do Najświętszej Maryi Panny",
+"The Practice of the Presence of God": "Praktyka obecności Boga",
+"Pensées": "Myśli",
+"Diary of Saint Maria Faustina Kowalska": "Dzienniczek św. Siostry Faustyny Kowalskiej",
+"Orthodoxy": "Ortodoksja",
+"The Seven Storey Mountain": "Siedmiopiętrowa góra",
+"The Didache": "Didache",
+"The Letters of St. Ignatius of Antioch": "Listy św. Ignacego Antiocheńskiego",
+"On the Incarnation": "O wcieleniu Słowa",
+"The Life of Antony": "Żywot św. Antoniego",
+"The Sayings of the Desert Fathers": "Apoftegmaty Ojców Pustyni",
+"The Consolation of Philosophy": "O pocieszeniu, jakie daje filozofia",
+"The Ecclesiastical History of the English People": "Historia kościelna narodu angielskiego",
+"The Golden Legend": "Złota legenda",
+"The Little Flowers of St. Francis": "Kwiatki św. Franciszka",
+"The Divine Comedy": "Boska komedia",
+"The Cloud of Unknowing": "Obłok niewiedzy",
+"The Dialogue": "Dialog",
+"Revelations of Divine Love": "Objawienia Bożej miłości",
+"The Spiritual Exercises": "Ćwiczenia duchowe",
+"The Way of Perfection": "Droga doskonałości",
+"The Spiritual Combat": "Walka duchowa",
+"Treatise on the Love of God": "Traktat o miłości Bożej",
+"Lives of the Saints": "Żywoty świętych",
+"The Glories of Mary": "Uwielbienia Maryi",
+"Abandonment to Divine Providence": "Oddanie się Opatrzności Bożej",
+"The Betrothed (I Promessi Sposi)": "Narzeczeni (I promessi sposi)",
+"Apologia Pro Vita Sua": "Apologia pro vita sua",
+"Rerum Novarum": "Rerum Novarum",
+"Heretics": "Heretycy",
+"Lord of the World": "Władca świata",
+"The Soul of the Apostolate": "Dusza wszelkiego apostolstwa",
+"The Everlasting Man": "Wiekuisty człowiek",
+"The Diary of a Country Priest": "Pamiętnik wiejskiego proboszcza",
+"The Power and the Glory": "Moc i chwała",
+"Brideshead Revisited": "Powrót do Brideshead",
+"The Long Loneliness": "Długa samotność",
+"Life of Christ": "Życie Chrystusa",
+"A Good Man Is Hard to Find": "Trudno o dobrego człowieka",
+"Documents of the Second Vatican Council": "Dokumenty Soboru Watykańskiego II",
+"Introduction to Christianity": "Wprowadzenie w chrześcijaństwo",
+"He Leadeth Me": "On mnie prowadzi",
+"Theology of the Body": "Teologia ciała",
+"Catechism of the Catholic Church": "Katechizm Kościoła Katolickiego",
+"Fides et Ratio": "Fides et Ratio",
+"Interior Freedom": "Wolność wewnętrzna",
+"Jesus of Nazareth": "Jezus z Nazaretu",
+"Evangelii Gaudium": "Evangelii Gaudium",
+"Laudato Si’": "Laudato si’",
+"Proslogion": "Proslogion",
+"On Loving God": "O miłowaniu Boga",
+"The Journey of the Mind into God": "Droga duszy do Boga",
+"The Scale of Perfection": "Drabina doskonałości",
+"Utopia": "Utopia",
+"A Dialogue of Comfort against Tribulation": "Dialog o pociesze w utrapieniu",
+"The Book of Her Life": "Księga życia",
+"The Ascent of Mount Carmel": "Droga na Górę Karmel",
+"The Autobiography of St. Ignatius": "Autobiografia św. Ignacego",
+"The Roman Catechism": "Katechizm Rzymski",
+"The Secret of the Rosary": "Przedziwny sekret różańca",
+"Preparation for Death": "Przygotowanie do śmierci",
+"An Essay on the Development of Christian Doctrine": "Przyczynek do rozwoju doktryny chrześcijańskiej",
+"The Idea of a University": "Idea uniwersytetu",
+"The Dream of Gerontius": "Sen Geroncjusza",
+"The Hound of Heaven": "Ogar niebios",
+"Quo Vadis": "Quo vadis",
+"The Innocence of Father Brown": "Przygody księdza Browna",
+"The Spirit of the Liturgy": "O duchu liturgii",
+"Poems of Gerard Manley Hopkins": "Wiersze Gerarda Manleya Hopkinsa",
+"Kristin Lavransdatter": "Krystyna, córka Lawransa",
+"St. Francis of Assisi (Chesterton)": "Święty Franciszek z Asyżu (Chesterton)",
+"The Lord": "Pan",
+"Theology and Sanity": "Teologia i zdrowy rozsądek",
+"The Lord of the Rings": "Władca Pierścieni",
+"Silence": "Milczenie",
+"Humanae Vitae": "Humanae vitae",
+"Crossing the Threshold of Hope": "Przekroczyć próg nadziei",
+"Deus Caritas Est": "Deus caritas est",
+"Spe Salvi": "Spe salvi",
+"Come Be My Light": "Pójdź, bądź moim światłem",
+"Dilexit Nos": "Dilexit nos",
+"Against Heresies": "Przeciw herezjom",
 "{*}; {*}": "{*}; {*}",
 "{*}: {*}": "{*}: {*}",
-"{*} · {*}": "{*} · {*}"
+"{*} · {*}": "{*} · {*}",
+"{*}, {*}": "{*}, {*}"
 },
 "rosary": {
 "cross": "W imię Ojca i Syna, i Ducha Świętego. Amen.",
@@ -8930,6 +9149,288 @@ window.SANCTIFY_I18N = {
 }
 },
 "entries": {
+"b1": {
+"content": "Kamień milowy literatury zachodniej, Wyznania to autobiograficzna opowieść Augustyna o niespokojnej młodości, latach wśród manichejczyków i nawróceniu na chrześcijaństwo, ujęta od początku do końca…"
+},
+"b2": {
+"content": "Podręcznik pobożności podkreślający pokorę, oderwanie od spraw światowych i wewnętrzne zjednoczenie z Chrystusem. Złożony z czterech ksiąg krótkich rozdziałów do rozważania, jest po Biblii jednym z…"
+},
+"b3": {
+"content": "Napisane dla świeckich, a nie dla duchownych czy zakonników, dzieło to dowodzi, że pobożne życie jest możliwe w zwyczajnych świeckich okolicznościach: w małżeństwie, pracy i codzienności. Jego…"
+},
+"b4": {
+"content": "Duchowa autobiografia św. Teresy z Lisieux, zestawiona z rękopisów pisanych na prośbę jej przełożonych karmelitańskich i wydana po jej śmierci. Przedstawia jej „małą drogę” duchowego dziecięctwa i…"
+},
+"b5": {
+"content": "Niedokończona, lecz monumentalna synteza teologii katolickiej, zbudowana z serii kwestii i artykułów o Bogu, stworzeniu, moralności, Chrystusie i sakramentach, w których rozważa się zarzuty wobec…"
+},
+"b6": {
+"content": "Krótki, praktyczny przewodnik po wspólnotowym życiu mniszym, równoważący wspólną modlitwę, pracę fizyczną i milczenie pod hasłem ora et labora, „módl się i pracuj”. Jej umiar i realizm wobec ludzkiej…"
+},
+"b7": {
+"content": "Dojrzałe arcydzieło Teresy o życiu modlitwy, przedstawiające duszę jako kryształową twierdzę o siedmiu „mieszkaniach”, przez które człowiek wędruje ku zjednoczeniu z Bogiem. Napisane dla współsióstr…"
+},
+"b8": {
+"content": "Komentarz do własnego poematu mistycznego Jana, opisujący bolesne, lecz oczyszczające przejście przez duchową oschłość i ciemność w drodze do głębszego zjednoczenia z Bogiem. Wyrażenie „ciemna noc…"
+},
+"b9": {
+"content": "Napisane po złupieniu Rzymu w 410 roku obszerne dzieło Augustyna odpowiada pogańskim krytykom, którzy obwiniali o katastrofę chrześcijaństwo, a zarazem rozwija wizję dziejów jako rozgrywania się…"
+},
+"b10": {
+"content": "Traktat zalecający całkowite oddanie się Jezusowi przez Maryję jako pewną i skuteczną drogę do świętości. Zaginiony przez ponad sto lat po śmierci autora, zanim go odnaleziono i wydano, odtąd…"
+},
+"b11": {
+"content": "Krótki zbiór listów i rozmów brata zakonnego karmelity, który pracował w klasztornej kuchni, opisujący, jak zachowywał nieustanną świadomość obecności Boga pośród najzwyklejszych obowiązków. Jego…"
+},
+"b12": {
+"content": "Niedokończony zbiór notatek do zamierzonej obrony wiary chrześcijańskiej, wydany po śmierci Pascala. Jego fragmenty dotyczą rozumu, wątpliwości i kondycji ludzkiej, w tym słynnego zakładu o wiarę w…"
+},
+"b13": {
+"content": "Duchowy dziennik, który Faustyna prowadziła z polecenia spowiednika, zapisując w nim swoje widzenia Jezusa i Jego orędzie o Bożym Miłosierdziu. Stał się fundamentem ogólnoświatowego kultu Bożego…"
+},
+"b14": {
+"content": "Dowcipna, pełna paradoksów obrona wiary chrześcijańskiej, opisująca intelektualną drogę Chestertona ku ortodoksyjnemu chrześcijaństwu jako przygodę, a nie odwrót. Jej obrazowy styl sprawił, że należy…"
+},
+"b15": {
+"content": "Autobiografia niespokojnego młodego intelektualisty, który nawrócił się na katolicyzm i wstąpił do surowego klasztoru trapistów, stając się jednym z najbardziej wpływowych pisarzy duchowych XX wieku.…"
+},
+"b16": {
+"content": "Zwana też Nauką Dwunastu Apostołów, Didache to krótki podręcznik życia chrześcijańskiego z I lub początku II wieku, odnaleziony w 1873 roku. Opisuje „dwie drogi”, życia i śmierci, i podaje wskazania…"
+},
+"b17": {
+"content": "Siedem listów napisanych przez biskupa Antiochii, gdy prowadzono go do Rzymu na męczeństwo. Wzywa Kościoły do trwania w jedności wokół biskupów, ostrzega przed tymi, którzy przeczą, że Chrystus miał…"
+},
+"b18": {
+"content": "Napisany, gdy Atanazy był jeszcze młodym człowiekiem, traktat ten wyjaśnia, dlaczego Słowo Boże stało się człowiekiem: aby odnowić obraz Boga w ludzkości i pokonać śmierć od wewnątrz, umierając i…"
+},
+"b19": {
+"content": "Napisany przez Atanazego żywot św. Antoniego z Egiptu, pustelnika, który odszedł na pustynię i walczył z pokusami modlitwą i postem. Stał się jedną z najpoczytniejszych książek starożytnego…"
+},
+"b20": {
+"content": "Znany też jako Apophthegmata Patrum, zbiór ten gromadzi krótkie powiedzenia i opowieści pustelników i mnichów pustyni egipskiej, wśród nich abby Antoniego, abby Mojżesza i ammy Synkletyki.\n\nIch…"
+},
+"b21": {
+"content": "Napisany w więzieniu, gdy Boecjusz czekał na egzekucję, ten dialog autora z Panią Filozofią stawia pytanie, jak dobry Bóg może dopuszczać cierpienie dobrych i powodzenie złych. Przeplata prozę z…"
+},
+"b22": {
+"content": "Historia Bedy śledzi chrześcijaństwo w Brytanii od czasów rzymskich, przez misję św. Augustyna z Canterbury i mnichów irlandzkich, aż po jego własne czasy. Starannie cytował źródła i datował…"
+},
+"b23": {
+"content": "Zbiór żywotów świętych uporządkowany według świąt roku liturgicznego, zestawiony przez dominikańskiego arcybiskupa Genui. Po Biblii była to najczęściej przepisywana książka późnego…"
+},
+"b24": {
+"content": "Ukochany zbiór opowieści o św. Franciszku z Asyżu i jego pierwszych towarzyszach, w tym o kazaniu do ptaków i oswojeniu wilka z Gubbio. Pochodzi ze stulecia po śmierci Franciszka.\n\nJego prostota i…"
+},
+"b25": {
+"content": "Epicki poemat Dantego opowiada o wędrówce poety przez Piekło, Czyściec i Raj, najpierw pod przewodnictwem rzymskiego poety Wergiliusza, a potem Beatrycze. Po drodze spotyka świętych, grzeszników…"
+},
+"b26": {
+"content": "Praktyczny przewodnik po modlitwie kontemplacyjnej napisany przez nieznanego angielskiego kapłana. Uczy, że Boga nie można ogarnąć myślą, ale można Go dosięgnąć miłością, kładąc wszystkie rzeczy…"
+},
+"b27": {
+"content": "Podyktowany przez Katarzynę w ekstazie Dialog jest rozmową duszy z Bogiem Ojcem. Rozwija obraz Chrystusa jako mostu między niebem a ziemią i porusza kwestie rozeznania, modlitwy, posłuszeństwa i…"
+},
+"b28": {
+"content": "Julianna, rekluza mieszkająca w celi przy kościele w Norwich, otrzymała w 1373 roku podczas ciężkiej choroby szesnaście widzeń. Przez dziesięciolecia je rozważała, pisząc krótką i długą wersję tej…"
+},
+"b29": {
+"content": "To nie książka do czytania od deski do deski, lecz podręcznik do prowadzenia rekolekcji trwających około czterech tygodni: Ćwiczenia duchowe prowadzą rekolektanta przez rozważania o grzechu, życiu…"
+},
+"b30": {
+"content": "Napisana dla mniszek jej pierwszego zreformowanego klasztoru, książka ta uczy podstaw modlitwy: wzajemnej miłości, oderwania i pokory. Druga połowa to obszerny komentarz do Ojcze nasz jako szkoły…"
+},
+"b31": {
+"content": "Zwięzły podręcznik włoskiego kapłana teatyna o walce z pokusami i wzrastaniu w cnocie. Uczy nieufności wobec siebie, ufności w Bogu, właściwego używania władz duszy i wytrwałości w modlitwie.\n\nŚw.…"
+},
+"b32": {
+"content": "Najobszerniejsze dzieło Franciszka Salezego śledzi narodziny, wzrost i doskonałość Bożej miłości w duszy. Gdy Filotea jest praktyczna i krótka, Traktat jest głęboką refleksją teologiczną nad tym, jak…"
+},
+"b33": {
+"content": "Angielski kapłan Alban Butler poświęcił około trzydziestu lat na zebranie tego ogromnego zbioru żywotów świętych, uporządkowanego dzień po dniu przez cały rok i opartego na starannych…"
+},
+"b34": {
+"content": "Komentarz do Salve Regina, po którym następują rozważania o świętach, boleściach i cnotach Maryi wraz z opowieściami o Jej wstawiennictwie. Alfons napisał go dla zwykłych wiernych.\n\nWznawiano go…"
+},
+"b35": {
+"content": "Zestawiona z listów i notatek XVIII-wiecznego francuskiego jezuity, kierownika duchowego, książka ta uczy, że wola Boża dosięga nas w każdej chwili i okoliczności zwyczajnego życia.\n\nJej główna myśl…"
+},
+"b36": {
+"content": "Osadzona w Lombardii lat 20. XVII wieku, powieść Manzoniego opowiada o dwojgu młodych wieśniaków, Renzu i Łucji, których małżeństwu przeszkadza miejscowy tyran. Ich historia toczy się wśród głodu…"
+},
+"b37": {
+"content": "Powieść historyczna pierwszego arcybiskupa Westminsteru, osadzona w Rzymie w czasie prześladowania Dioklecjana. Pogańska arystokratka Fabiola spotyka wiarę chrześcijan, wśród nich św. Agnieszki…"
+},
+"b38": {
+"content": "Napisana w odpowiedzi na atak powieściopisarza Charlesa Kingsleya, Newmanowska „obrona własnego życia” śledzi rozwój jego poglądów religijnych od ewangelikalnej młodości przez ruch oksfordzki aż po…"
+},
+"b39": {
+"content": "Encyklika Leona XIII o kapitale i pracy, napisana w odpowiedzi na rewolucję przemysłową. Broni własności prywatnej i odrzuca socjalizm, domagając się zarazem sprawiedliwej płacy, prawa robotników do…"
+},
+"b40": {
+"content": "Zbiór esejów, w których Chesterton mierzy się z czołowymi myślicielami swoich czasów, w tym George’em Bernardem Shaw, H. G. Wellsem i Rudyardem Kiplingiem, dowodząc, że ich światopoglądy są…"
+},
+"b41": {
+"content": "Napisana przez syna anglikańskiego duchownego, który został kapłanem katolickim, ta wczesna powieść dystopijna przedstawia świecki rząd światowy i charyzmatycznego przywódcę, który zdobywa posłuch…"
+},
+"b42": {
+"content": "Przestroga francuskiego opata trapistów: czynna posługa bez wewnętrznego życia modlitwy staje się pusta. Dowodzi on, że wszelka owocna praca apostolska musi wypływać ze zjednoczenia z…"
+},
+"b43": {
+"content": "Rozległa opowieść Chestertona o dziejach ludzkości, napisana częściowo w odpowiedzi na H. G. Wellsa, dowodzi, że człowiek jest wyjątkowy wśród stworzeń, a Chrystus wyjątkowy wśród postaci…"
+},
+"b44": {
+"content": "Opowiedziana poprzez dziennik młodego, chorowitego księdza w wiejskiej parafii francuskiej, powieść ukazuje jego zmagania z wrogimi i obojętnymi parafianami oraz z własnym poczuciem porażki.\n\nKończy…"
+},
+"b45": {
+"content": "Osadzona w czasach antykatolickich prześladowań w Meksyku lat 30., powieść Greene’a śledzi bezimiennego „księdza-pijaka”, głęboko ułomnego, który nadal udziela sakramentów, uciekając przed…"
+},
+"b46": {
+"content": "Charles Ryder wspomina swoje uwikłanie w losy arystokratycznej katolickiej rodziny Flyte’ów, od oksfordzkiej przyjaźni z Sebastianem Flyte’em po upadek ich wielkiej rezydencji. Waugh opisał jej temat…"
+},
+"b47": {
+"content": "Niemiecki filozof tomista dowodzi, że prawdziwy czas wolny to nie bezczynność, lecz otwarta, kontemplacyjna postawa wobec rzeczywistości, zakorzeniona w kulcie.\n\nBez sprawowania kultu Bożego…"
+},
+"b48": {
+"content": "Autobiografia dziennikarki i działaczki, która wraz z Peterem Maurinem założyła ruch Catholic Worker. Day opowiada o swojej radykalnej młodości, narodzinach córki, nawróceniu i życiu w dobrowolnym…"
+},
+"b49": {
+"content": "Obszerna medytacja Sheena nad życiem Jezusa podkreśla, że Chrystus, w odróżnieniu od każdego innego człowieka, przyszedł na świat po to, by umrzeć. Rozważa wydarzenia ewangeliczne z teologiczną…"
+},
+"b50": {
+"content": "Pierwszy zbiór opowiadań O’Connor, osadzony na amerykańskim Południu, słynie z czarnego humoru i nagłej przemocy. Jej bohaterowie często spotykają łaskę w szokujących i niechcianych…"
+},
+"b51": {
+"content": "Szesnaście dokumentów Vaticanum II obejmuje cztery konstytucje: o liturgii (Sacrosanctum Concilium), o Kościele (Lumen Gentium), o Bożym objawieniu (Dei Verbum) i o Kościele w świecie współczesnym…"
+},
+"b52": {
+"content": "Oparta na wykładach, które młody teolog wygłosił w Tybindze, książka ta omawia Skład Apostolski, by wyjaśnić, co znaczy wierzyć w sceptycznej epoce nowożytnej.\n\nPozostaje jednym z najczęściej…"
+},
+"b53": {
+"content": "Amerykański jezuita, który potajemnie przedostał się do Związku Radzieckiego, Ciszek spędził dwadzieścia trzy lata w sowieckich więzieniach i syberyjskich łagrach. Książka ta rozważa duchowe lekcje…"
+},
+"b54": {
+"content": "Cykl 129 katechez wygłoszonych podczas cotygodniowych audiencji generalnych. Jan Paweł II rozważa sens ludzkiego ciała, płciowości i małżeństwa w świetle stworzenia, upadku i odkupienia.\n\nWywarł…"
+},
+"b55": {
+"content": "Oficjalne streszczenie wiary i praktyki katolickiej, podzielone na cztery części: wyznanie wiary, celebrację misterium chrześcijańskiego (sakramenty), życie w Chrystusie (moralność) i modlitwę…"
+},
+"b56": {
+"content": "Encyklika o relacji między wiarą a rozumem, która na początku porównuje je do dwóch skrzydeł, na których duch ludzki wznosi się ku kontemplacji prawdy.\n\nWzywa filozofów, by odzyskali zaufanie do…"
+},
+"b57": {
+"content": "Współczesny francuski kapłan wyjaśnia, że prawdziwa wolność nie polega na panowaniu nad okolicznościami, lecz na wierze, nadziei i miłości, które pozwalają przyjąć to, czego nie możemy zmienić, i w…"
+},
+"b58": {
+"content": "Trzytomowe studium życia Jezusa, od opowieści o dzieciństwie przez chrzest i działalność publiczną aż po mękę i zmartwychwstanie. Benedykt napisał je jako dzieło osobiste, czerpiąc zarówno z badań…"
+},
+"b59": {
+"content": "Pierwsza adhortacja apostolska papieża Franciszka wzywa do Kościoła misyjnego, wychodzącego na peryferie i naznaczonego radością Ewangelii. Porusza kwestie przepowiadania, ubogich oraz…"
+},
+"b60": {
+"content": "Encyklika „w trosce o wspólny dom”, której nazwa pochodzi z refrenu Pieśni słonecznej św. Franciszka. Łączy troskę o środowisko z troską o ubogich i krytykuje konsumpcjonizm oraz „kulturę…"
+},
+"b61": {
+"content": "Napisany jako modlitewna medytacja Proslogion szuka jednego argumentu, który wykazałby, że Bóg istnieje. Anzelm znajduje go w pojęciu Boga jako tego, ponad co nic większego nie można pomyśleć — w…"
+},
+"b62": {
+"content": "Krótki traktat odpowiadający na dwa pytania: dlaczego należy kochać Boga i jak bardzo. Bernard opisuje cztery stopnie miłości, od miłowania siebie dla siebie samego do miłowania siebie wyłącznie ze…"
+},
+"b63": {
+"content": "Napisane na górze La Verna, gdzie św. Franciszek otrzymał stygmaty, to krótkie dzieło opisuje sześć etapów, którymi dusza wznosi się do Boga: przez świat stworzony, przez własne władze i wreszcie…"
+},
+"b64": {
+"content": "Przewodnik po życiu kontemplacyjnym autorstwa angielskiego kanonika augustiańskiego, napisany dla rekluzy. Hilton opisuje odnowę duszy od grzechu do przywróconego obrazu Bożego i przestrzega przed…"
+},
+"b65": {
+"content": "Błyskotliwy dialog More’a przytacza relację podróżnika o wyspiarskiej wspólnocie bez własności prywatnej, z tolerancją religijną i życiem wspólnotowym. Dał językowi angielskiemu słowo „utopia”…"
+},
+"b66": {
+"content": "Napisany w Tower of London, gdy More oczekiwał egzekucji, ten dialog starego Węgra z bratankiem w obliczu najazdu tureckiego rozważa, jak chrześcijanin powinien stawić czoło prześladowaniu i…"
+},
+"b67": {
+"content": "Autobiografia Teresy, napisana na polecenie spowiedników, opowiada o jej letnich pierwszych latach w klasztorze, nawróceniu i łaskach mistycznych, które potem nastąpiły. W jej środku znajduje się…"
+},
+"b68": {
+"content": "Towarzyszka Nocy ciemnej, Droga na Górę Karmel jest wymagającym przewodnikiem po „czynnym” oczyszczeniu zmysłów i ducha przez oderwanie od wszystkiego, co nie jest Bogiem.\n\nJej szkic góry, ze słowem…"
+},
+"b69": {
+"content": "Pod koniec życia Ignacy podyktował współbratu jezuicie tę relację o swoim nawróceniu. Obejmuje ona jego zranienie pod Pampeluną, nawrócenie podczas rekonwalescencji, pobyt w Manresie i pielgrzymkę do…"
+},
+"b70": {
+"content": "Zlecony przez Sobór Trydencki i wydany za pontyfikatu św. Piusa V, katechizm ten napisano dla proboszczów, by korzystali z niego w nauczaniu. Omawia Credo, sakramenty, Dziesięć Przykazań i Modlitwę…"
+},
+"b71": {
+"content": "Zbiór pięćdziesięciu dwóch krótkich rozdziałów, czyli „róż”, objaśniających historię, moc i sposób odmawiania różańca, wraz z opowieściami o jego owocach i praktycznymi radami, jak dobrze go…"
+},
+"b72": {
+"content": "Księga rozważań o śmierci, sądzie i wieczności. Alfons napisał ją, by poruszyć grzeszników do nawrócenia i pomóc wiernym przeżywać każdy dzień w świetle wieczności.\n\nJej prosty, naglący styl uczynił…"
+},
+"b73": {
+"content": "Napisany w czasie, gdy Newman rozstrzygał, czy zostać katolikiem, esej ten dowodzi, że doktryna chrześcijańska rozwija się w czasie jak żywa idea, rozwijając swoje konsekwencje bez zmiany istoty.…"
+},
+"b74": {
+"content": "Wykłady, które Newman wygłosił jako pierwszy rektor Katolickiego Uniwersytetu Irlandii. Dowodzi, że uniwersytet powinien kształcić cały umysł w duchu „wykształcenia wyzwolonego”, z teologią wśród…"
+},
+"b75": {
+"content": "Długi poemat dramatyczny śledzący duszę umierającego starca, Geroncjusza, od łoża śmierci przez sąd aż do czyśćca, w towarzystwie jego anioła stróża. Zawiera hymn „Praise to the Holiest in the…"
+},
+"b76": {
+"content": "Napisana przez poetę, który żył w nędzy i uzależnieniu od opium na ulicach Londynu, ta oda opisuje duszę uciekającą przed Bogiem, który ściga ją niestrudzenie jak ogar.\n\nTo jeden z najsłynniejszych…"
+},
+"b77": {
+"content": "Osadzona w Rzymie Nerona, ta powieść historyczna opowiada o miłości rzymskiego oficera, Marka Winicjusza, do młodej chrześcijanki Ligii, wśród wielkiego pożaru i prześladowania, które po nim…"
+},
+"b78": {
+"content": "Pierwszy zbiór opowiadań detektywistycznych o księdzu Brownie, niepozornym, skromnym katolickim kapłanie, który rozwiązuje zagadki zbrodni dzięki głębokiemu zrozumieniu ludzkiej natury i grzechu…"
+},
+"b79": {
+"content": "Krótka, wpływowa książka włosko-niemieckiego kapłana Romana Guardiniego o naturze kultu katolickiego. Guardini opisuje liturgię jako „zabawę” przed Bogiem: czynioną nie dla jakiegoś celu, lecz dla…"
+},
+"b80": {
+"content": "Hopkins, angielski jezuita, pisał zdumiewająco oryginalne wiersze o chwale Boga w przyrodzie, takie jak „God’s Grandeur”, „Pied Beauty” i „The Windhover”. Wydał je jego przyjaciel Robert Bridges…"
+},
+"b81": {
+"content": "Trylogia śledząca życie upartej kobiety w katolickiej Norwegii XIV wieku, od dzieciństwa przez namiętne i trudne małżeństwo aż po starość i ostateczne oddanie się Bogu.\n\nUndset przeszła na katolicyzm…"
+},
+"b82": {
+"content": "Żywa biografia Chestertona przedstawia Franciszka jako zakochanego i „trubadura” Boga i próbuje wytłumaczyć współczesnym czytelnikom świętego, który wydaje się zarazem uroczy i zdumiewający.\n\nJest…"
+},
+"b83": {
+"content": "Cykl rozważań o osobie i życiu Jezusa Chrystusa, zaczerpniętych z kazań, które Guardini głosił przez kilka lat. Przechodzi przez Ewangelie z teologiczną głębią i czcią.\n\nStała się jedną z najbardziej…"
+},
+"b84": {
+"content": "Portret św. Tomasza z Akwinu pióra Chestertona: rosłego, cichego zakonnika, którego koledzy przezywali „niemym wołem”. Przybliża życie Tomasza i jego filozofię zdrowego rozsądku i dobroci bytu…"
+},
+"b85": {
+"content": "Urodzony w Australii świecki apologeta i wydawca wyjaśnia główne prawdy wiary, od Trójcy Świętej po Kościół, dowodząc, że aby widzieć rzeczywistość taką, jaka jest, trzeba widzieć ją w świetle…"
+},
+"b86": {
+"content": "Epopeja Tolkiena opowiada o hobbicie Frodo Bagginsie, który wyrusza, by zniszczyć Jedyny Pierścień. Tolkien, pobożny katolik, w jednym z listów nazwał ją dziełem w gruncie rzeczy religijnym i…"
+},
+"b87": {
+"content": "Japoński pisarz katolicki opowiada historię XVII-wiecznego portugalskiego jezuity, który przybywa do Japonii w czasie prześladowania chrześcijan. Zmaga się on z pozornym milczeniem Boga wobec…"
+},
+"b88": {
+"content": "Encyklika Pawła VI o życiu ludzkim potwierdza nauczanie Kościoła o małżeństwie i przekazywaniu życia, w tym sprzeciw wobec sztucznej antykoncepcji. Ostrzega przed skutkami oddzielenia płciowości od…"
+},
+"b89": {
+"content": "Napisana jako odpowiedzi na pytania włoskiego dziennikarza Vittoria Messoriego, książka ta porusza tematy od istnienia Boga i problemu zła po inne religie i sens zbawienia.\n\nStała się międzynarodowym…"
+},
+"b90": {
+"content": "Pierwsza encyklika Benedykta XVI, „Bóg jest miłością”, rozważa relację między erosem a agape, miłością ludzką i Bożą, oraz dzieła miłosierdzia Kościoła jako istotny wyraz jego natury.\n\nSłynie z ciepła i jasności."
+},
+"b91": {
+"content": "Encyklika o nadziei chrześcijańskiej, której tytuł pochodzi z Listu do Rzymian 8,24: w nadziei zostaliśmy zbawieni. Benedykt rozważa różnicę między nadzieją płynącą z wiary a nowożytną wiarą w…"
+},
+"b92": {
+"content": "Zbiór prywatnych listów Matki Teresy, wydany po jej śmierci. Ujawnił, że przez prawie pięćdziesiąt lat doświadczała ona bolesnego poczucia nieobecności Boga, nawet gdy z radością służyła najuboższym…"
+},
+"b93": {
+"content": "Czwarta i ostatnia encyklika papieża Franciszka, o ludzkiej i Bożej miłości Serca Jezusa Chrystusa. Została opublikowana w 350. rocznicę objawień Najświętszego Serca św. Małgorzacie Marii…"
+},
+"b94": {
+"content": "Ireneusz, który jako chłopiec słuchał św. Polikarpa, ucznia św. Jana, napisał to dzieło w pięciu księgach, by odeprzeć sekty gnostyckie, które rościły sobie prawo do tajemnej wiedzy ukrytej przed…"
+},
 "bib1": {
 "content": "Opowiada o początkach świata, upadku ludzkości i przymierzu Boga z patriarchami Abrahamem, Izaakiem i Jakubem, a kończy się osiedleniem rodziny Józefa w Egipcie."
 },
@@ -9901,6 +10402,9 @@ window.SANCTIFY_I18N = {
 }
 },
 "texts": {
+"book-0": "book-0.6a716686",
+"book-1": "book-1.0aaad4f0",
+"book-2": "book-2.3f4c42e6",
 "history-0": "history-0.32268a89",
 "history-1": "history-1.ea31604b",
 "history-2": "history-2.887f8368",
