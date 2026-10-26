@@ -11294,6 +11294,42 @@ window.SANCTIFY_I18N = {
 "s186": {
 "content": "Édouard fut le dernier roi de la maison de Wessex. Après des années d’exil en Normandie, il régna sur l’Angleterre pendant vingt-quatre ans, au cours desquels il maintint le royaume largement en paix…"
 },
+"s187": {
+"content": "Orphelin et maltraité dans son enfance, Pierre fut recueilli par un frère aîné qui veilla à son instruction. Il devint un maître célèbre, puis quitta tout pour se faire moine ermite à Fonte…"
+},
+"s188": {
+"content": "Hedwige était une noble bavaroise mariée à douze ans au duc Henri de Silésie, dont elle eut sept enfants. Ensemble, ils fondèrent des hôpitaux et des monastères, dont un couvent cistercien à…"
+},
+"s189": {
+"content": "Ferdinand unit les royaumes de Castille et de León et fut connu comme un souverain juste, soucieux de son peuple et peu enclin à l’accabler d’impôts. Époux dévoué et père de treize enfants, il était…"
+},
+"s190": {
+"content": "Raymond était un prêtre catalan et un brillant juriste qui entra chez les dominicains à l’âge mûr. À la demande du pape, il compila les Décrétales, recueil officiel du droit de l’Église utilisé…"
+},
+"s191": {
+"content": "Gertrude fut confiée au monastère de Helfta, en Saxe, à cinq ans et devint une érudite douée. À vingt-cinq ans, elle vécut une profonde conversion, passant du savoir profane à l’Écriture et à l’amour…"
+},
+"s192": {
+"content": "Vincent était un dominicain espagnol et l’un des prédicateurs les plus célèbres du Moyen Âge. Pendant vingt ans, il parcourut l’Espagne, la France, la Suisse et l’Italie, prêchant souvent en plein…"
+},
+"s193": {
+"content": "Jeune homme, Bernardin soigna des victimes de la peste à Sienne. Devenu frère franciscain, il fut le plus grand prédicateur de l’Italie du XVe siècle, attirant d’immenses foules qui remplissaient les…"
+},
+"s194": {
+"content": "Juriste et gouverneur de Pérouse, Jean, après avoir été emprisonné pendant une guerre, se convertit et entra chez les franciscains sous saint Bernardin de Sienne. Il devint un prédicateur renommé et…"
+},
+"s195": {
+"content": "Casimir était prince de Pologne et de Lituanie, fils du roi Casimir IV. À treize ans, on l’envoya revendiquer le trône de Hongrie, mais il se retira bientôt, refusant de mener une guerre qu’il…"
+},
+"s196": {
+"content": "Nicolas était un paysan, soldat, juge et père de dix enfants suisse. À cinquante ans, avec le consentement de son épouse Dorothée, il quitta sa maison pour vivre en ermite dans un ravin voisin, où il…"
+},
+"s197": {
+"content": "Orpheline très jeune dans le nord de l’Italie, Angèle devint tertiaire franciscaine. Voyant combien de filles grandissaient sans aucune instruction dans la foi, elle rassembla des femmes pour les…"
+},
+"s198": {
+"content": "Jean était un berger, soldat et libraire portugais qui vécut une conversion spectaculaire après avoir entendu prêcher saint Jean d’Avila à Grenade. Sa pénitence publique fut si extrême qu’on…"
+},
 "t1": {
 "content": "Les catholiques croient en un seul Dieu, Créateur de toutes choses, infiniment bon, omniscient, tout-puissant et éternel. Dieu n’est pas un être parmi d’autres, mais l’Être même ; il a révélé son nom à Moïse : « Je suis celui qui suis ».\n\nL’Église enseigne que Dieu peut être connu avec certitude par la lumière naturelle de la raison humaine à partir du monde créé, avant même la révélation. La révélation nous montre ensuite qui est Dieu en lui-même : un Père qui nous aime et veut nous faire partager sa vie."
 },
@@ -11665,6 +11701,6 @@ window.SANCTIFY_I18N = {
 "saint-1": "saint-1.616dd505",
 "saint-2": "saint-2.348b2064",
 "saint-3": "saint-3.5784cb2f",
-"saint-4": "saint-4.4e385e21"
+"saint-4": "saint-4.fb18aab5"
 }
 };

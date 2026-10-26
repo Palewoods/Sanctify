@@ -11294,6 +11294,42 @@ window.SANCTIFY_I18N = {
 "s186": {
 "content": "Eduardo foi o último rei da casa de Wessex. Depois de anos de exílio na Normandia, reinou em Inglaterra vinte e quatro anos, durante os quais manteve o reino em grande parte em paz e ficou conhecido…"
 },
+"s187": {
+"content": "Órfão e maltratado em criança, Pedro foi salvo por um irmão mais velho que cuidou da sua educação. Tornou-se um mestre famoso e depois deixou tudo para se fazer monge eremita em Fonte Avellana.\n\nOs…"
+},
+"s188": {
+"content": "Edviges era uma nobre bávara casada aos doze anos com o duque Henrique da Silésia, de quem teve sete filhos. Juntos fundaram hospitais e mosteiros, entre eles um convento cisterciense em…"
+},
+"s189": {
+"content": "Fernando uniu os reinos de Castela e Leão e foi conhecido como um governante justo que cuidava do seu povo e relutava em sobrecarregá-lo com impostos. Marido dedicado e pai de treze filhos, foi…"
+},
+"s190": {
+"content": "Raimundo foi um sacerdote catalão e brilhante jurista que entrou nos dominicanos já na idade madura. A pedido do papa compilou as Decretais, a coleção oficial do direito da Igreja usada durante quase…"
+},
+"s191": {
+"content": "Gertrudes foi confiada ao mosteiro de Helfta, na Saxónia, aos cinco anos e tornou-se uma erudita talentosa. Aos vinte e cinco anos viveu uma profunda conversão, passando do saber profano para a…"
+},
+"s192": {
+"content": "Vicente foi um dominicano espanhol e um dos pregadores mais famosos da Idade Média. Durante vinte anos percorreu Espanha, França, Suíça e Itália, pregando muitas vezes ao ar livre a milhares de…"
+},
+"s193": {
+"content": "Jovem ainda, Bernardino cuidou de vítimas da peste em Siena. Tornou-se frade franciscano e o maior pregador da Itália do século XV, atraindo multidões enormes que enchiam as praças durante…"
+},
+"s194": {
+"content": "João era advogado e governador de Perúgia quando, depois de ser preso numa guerra, viveu uma conversão e entrou nos franciscanos sob São Bernardino de Siena. Tornou-se um pregador famoso e enviado…"
+},
+"s195": {
+"content": "Casimiro era príncipe da Polónia e da Lituânia, filho do rei Casimiro IV. Aos treze anos foi enviado a reclamar o trono da Hungria, mas depressa se retirou, recusando-se a travar uma guerra que…"
+},
+"s196": {
+"content": "Nicolau foi um camponês, soldado, juiz e pai de dez filhos suíço. Aos cinquenta anos, com o consentimento da esposa Doroteia, deixou a casa para viver como eremita numa ravina próxima, onde se diz…"
+},
+"s197": {
+"content": "Órfã desde cedo no norte de Itália, Ângela tornou-se terciária franciscana. Ao ver quantas raparigas cresciam sem qualquer instrução na fé, reuniu mulheres para as ensinar nas suas próprias…"
+},
+"s198": {
+"content": "João foi um pastor, soldado e livreiro português que viveu uma conversão dramática depois de ouvir pregar São João de Ávila em Granada. A sua penitência pública foi tão extrema que o fecharam num…"
+},
 "t1": {
 "content": "Os católicos creem num só Deus, Criador de todas as coisas, infinitamente bom, omnisciente, omnipotente e eterno. Deus não é um ser entre outros, mas o próprio Ser; revelou o seu nome a Moisés como “Eu sou aquele que sou”.\n\nA Igreja ensina que Deus pode ser conhecido com certeza pela luz natural da razão humana a partir do mundo criado, mesmo antes da revelação. A revelação mostra-nos depois quem Deus é em si mesmo: um Pai que nos ama e quer que partilhemos a sua vida."
 },
@@ -11665,6 +11701,6 @@ window.SANCTIFY_I18N = {
 "saint-1": "saint-1.754f76bc",
 "saint-2": "saint-2.380582ec",
 "saint-3": "saint-3.65a9ff94",
-"saint-4": "saint-4.8b26b1c7"
+"saint-4": "saint-4.556fe489"
 }
 };

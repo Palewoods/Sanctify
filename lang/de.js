@@ -11294,6 +11294,42 @@ window.SANCTIFY_I18N = {
 "s186": {
 "content": "Eduard war der letzte König aus dem Haus Wessex. Nach Jahren des Exils in der Normandie regierte er vierundzwanzig Jahre lang England, hielt das Reich weitgehend in Frieden und wurde für seine…"
 },
+"s187": {
+"content": "Als Kind verwaist und misshandelt, wurde Petrus von einem älteren Bruder gerettet, der für seine Bildung sorgte. Er wurde ein berühmter Lehrer und verließ dann alles, um Einsiedlermönch in Fonte…"
+},
+"s188": {
+"content": "Hedwig, eine bayerische Adlige, wurde mit zwölf Jahren mit Herzog Heinrich von Schlesien verheiratet und bekam mit ihm sieben Kinder. Gemeinsam gründeten sie Spitäler und Klöster, darunter ein…"
+},
+"s189": {
+"content": "Ferdinand vereinte die Königreiche Kastilien und León und galt als gerechter Herrscher, der für sein Volk sorgte und es ungern mit Steuern belastete. Als hingebungsvoller Ehemann und Vater von…"
+},
+"s190": {
+"content": "Raimund war ein katalanischer Priester und glänzender Rechtsgelehrter, der in reifem Alter Dominikaner wurde. Im Auftrag des Papstes stellte er die Dekretalen zusammen, die amtliche Sammlung des…"
+},
+"s191": {
+"content": "Gertrud kam mit fünf Jahren in das Kloster Helfta in Sachsen und wurde eine begabte Gelehrte. Mit fünfundzwanzig erlebte sie eine tiefe Bekehrung und wandte sich von weltlicher Gelehrsamkeit der…"
+},
+"s192": {
+"content": "Vinzenz, ein spanischer Dominikaner, war einer der berühmtesten Prediger des Mittelalters. Zwanzig Jahre lang zog er durch Spanien, Frankreich, die Schweiz und Italien und predigte oft unter freiem…"
+},
+"s193": {
+"content": "Als junger Mann pflegte Bernhardin in Siena Pestkranke. Er wurde Franziskaner und der größte Prediger Italiens im 15. Jahrhundert, der riesige Menschenmengen anzog, die stundenlang die Plätze…"
+},
+"s194": {
+"content": "Johannes, Jurist und Statthalter von Perugia, bekehrte sich nach einer Kriegsgefangenschaft und trat unter dem hl. Bernhardin von Siena den Franziskanern bei. Er wurde ein berühmter Prediger und…"
+},
+"s195": {
+"content": "Kasimir war ein Prinz von Polen und Litauen, Sohn König Kasimirs IV. Mit dreizehn wurde er ausgesandt, den ungarischen Thron zu beanspruchen, zog sich aber bald zurück, weil er einen Krieg, den er…"
+},
+"s196": {
+"content": "Nikolaus war ein Schweizer Bauer, Soldat, Richter und Vater von zehn Kindern. Mit fünfzig Jahren verließ er mit Zustimmung seiner Frau Dorothea sein Haus, um als Einsiedler in einer nahen Schlucht zu…"
+},
+"s197": {
+"content": "Angela, früh verwaist in Norditalien, wurde Franziskanerterziarin. Als sie sah, wie viele Mädchen ohne jede Unterweisung im Glauben aufwuchsen, sammelte sie Frauen, die sie in ihren eigenen Häusern…"
+},
+"s198": {
+"content": "Johannes, ein portugiesischer Hirte, Soldat und Buchhändler, erlebte eine dramatische Bekehrung, nachdem er in Granada den hl. Johannes von Ávila predigen gehört hatte. Seine öffentliche Buße war so…"
+},
 "t1": {
 "content": "Katholiken glauben an einen einzigen Gott, den Schöpfer aller Dinge, der unendlich gut, allwissend, allmächtig und ewig ist. Gott ist nicht ein Seiendes unter anderen, sondern das Sein selbst; Mose offenbarte er seinen Namen: „Ich bin, der ich bin.“\n\nDie Kirche lehrt, dass Gott mit dem natürlichen Licht der menschlichen Vernunft aus der geschaffenen Welt mit Gewissheit erkannt werden kann, schon vor der Offenbarung. Die Offenbarung zeigt uns dann, wer Gott in sich selbst ist: ein Vater, der uns liebt und will, dass wir an seinem Leben teilhaben."
 },
@@ -11665,6 +11701,6 @@ window.SANCTIFY_I18N = {
 "saint-1": "saint-1.cdc76594",
 "saint-2": "saint-2.aa4ec24d",
 "saint-3": "saint-3.6af16666",
-"saint-4": "saint-4.b56943e5"
+"saint-4": "saint-4.1182ec01"
 }
 };

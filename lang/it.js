@@ -11294,6 +11294,42 @@ window.SANCTIFY_I18N = {
 "s186": {
 "content": "Edoardo fu l’ultimo re della casa di Wessex. Dopo anni di esilio in Normandia, regnò sull’Inghilterra per ventiquattro anni, durante i quali mantenne il regno in gran parte in pace e divenne noto per…"
 },
+"s187": {
+"content": "Orfano e maltrattato da bambino, Pietro fu salvato da un fratello maggiore che si occupò della sua istruzione. Divenne un maestro famoso, poi lasciò tutto per farsi monaco eremita a Fonte…"
+},
+"s188": {
+"content": "Edvige era una nobile bavarese sposata a dodici anni al duca Enrico di Slesia, da cui ebbe sette figli. Insieme fondarono ospedali e monasteri, tra cui un convento cistercense a Trebnitz.\n\nViveva…"
+},
+"s189": {
+"content": "Ferdinando unì i regni di Castiglia e León e fu noto come un sovrano giusto che si prendeva cura del suo popolo ed era restio a gravarlo di tasse. Sposo devoto e padre di tredici figli, fu anche…"
+},
+"s190": {
+"content": "Raimondo fu un sacerdote catalano e brillante giurista che entrò nei domenicani in età matura. Su richiesta del papa compilò le Decretali, la raccolta ufficiale del diritto della Chiesa usata per…"
+},
+"s191": {
+"content": "Geltrude fu affidata al monastero di Helfta, in Sassonia, a cinque anni e divenne una studiosa di talento. A venticinque anni visse una profonda conversione, passando dal sapere profano alla…"
+},
+"s192": {
+"content": "Vincenzo fu un domenicano spagnolo e uno dei predicatori più famosi del Medioevo. Per vent’anni percorse Spagna, Francia, Svizzera e Italia, predicando spesso all’aperto a migliaia di persone sulla…"
+},
+"s193": {
+"content": "Da giovane Bernardino assistette le vittime della peste a Siena. Divenne frate francescano e il più grande predicatore dell’Italia del Quattrocento, attirando folle immense che riempivano le piazze…"
+},
+"s194": {
+"content": "Giovanni era avvocato e governatore di Perugia quando, dopo essere stato imprigionato in una guerra, si convertì ed entrò nei francescani sotto san Bernardino da Siena. Divenne un predicatore famoso…"
+},
+"s195": {
+"content": "Casimiro era principe di Polonia e Lituania, figlio del re Casimiro IV. A tredici anni fu inviato a reclamare il trono d’Ungheria, ma presto si ritirò, rifiutando di combattere una guerra che…"
+},
+"s196": {
+"content": "Nicola fu un contadino, soldato, giudice e padre di dieci figli svizzero. A cinquant’anni, con il consenso della moglie Dorotea, lasciò la casa per vivere da eremita in una gola vicina, dove si dice…"
+},
+"s197": {
+"content": "Rimasta orfana giovanissima nell’Italia settentrionale, Angela divenne terziaria francescana. Vedendo quante ragazze crescevano senza alcuna istruzione nella fede, radunò delle donne per insegnare…"
+},
+"s198": {
+"content": "Giovanni fu un pastore, soldato e libraio portoghese che visse una conversione drammatica dopo aver udito predicare san Giovanni d’Avila a Granada. La sua penitenza pubblica fu così estrema che fu…"
+},
 "t1": {
 "content": "I cattolici credono in un solo Dio, Creatore di tutte le cose, infinitamente buono, onnisciente, onnipotente ed eterno. Dio non è un essere tra gli altri, ma l’Essere stesso; rivelò a Mosè il suo nome: «Io sono colui che sono».\n\nLa Chiesa insegna che Dio può essere conosciuto con certezza dalla luce naturale della ragione umana a partire dal mondo creato, anche prima della rivelazione. La rivelazione ci mostra poi chi è Dio in se stesso: un Padre che ci ama e vuole che partecipiamo alla sua vita."
 },
@@ -11665,6 +11701,6 @@ window.SANCTIFY_I18N = {
 "saint-1": "saint-1.345841be",
 "saint-2": "saint-2.679f0c23",
 "saint-3": "saint-3.56ead8b6",
-"saint-4": "saint-4.5c01e5fb"
+"saint-4": "saint-4.cd72acfc"
 }
 };

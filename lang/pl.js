@@ -11294,6 +11294,42 @@ window.SANCTIFY_I18N = {
 "s186": {
 "content": "Edward był ostatnim królem z dynastii Wessex. Po latach wygnania w Normandii rządził Anglią przez dwadzieścia cztery lata, w czasie których utrzymywał królestwo w znacznej mierze w pokoju i słynął z…"
 },
+"s187": {
+"content": "Osierocony i źle traktowany w dzieciństwie, Piotr został uratowany przez starszego brata, który zadbał o jego wykształcenie. Został słynnym nauczycielem, a potem porzucił wszystko, by zostać mnichem…"
+},
+"s188": {
+"content": "Jadwiga była bawarską szlachcianką wydaną w wieku dwunastu lat za księcia śląskiego Henryka, z którym miała siedmioro dzieci. Razem zakładali szpitale i klasztory, w tym klasztor cysterek w…"
+},
+"s189": {
+"content": "Ferdynand zjednoczył królestwa Kastylii i Leónu i był znany jako sprawiedliwy władca, który troszczył się o lud i niechętnie obciążał go podatkami. Oddany mąż i ojciec trzynaściorga dzieci, był też…"
+},
+"s190": {
+"content": "Rajmund był katalońskim kapłanem i wybitnym znawcą prawa, który w wieku dojrzałym wstąpił do dominikanów. Na prośbę papieża zestawił Dekretały, oficjalny zbiór prawa kościelnego używany przez prawie…"
+},
+"s191": {
+"content": "Gertruda została oddana do klasztoru w Helfcie w Saksonii w wieku pięciu lat i wyrosła na utalentowaną uczoną. W wieku dwudziestu pięciu lat przeżyła głębokie nawrócenie, porzucając wiedzę świecką…"
+},
+"s192": {
+"content": "Wincenty był hiszpańskim dominikaninem i jednym z najsłynniejszych kaznodziejów średniowiecza. Przez dwadzieścia lat przemierzał Hiszpanię, Francję, Szwajcarię i Włochy, często głosząc pod gołym…"
+},
+"s193": {
+"content": "Jako młody człowiek Bernardyn opiekował się ofiarami zarazy w Sienie. Został franciszkaninem i największym kaznodzieją XV-wiecznych Włoch, przyciągając ogromne tłumy, które godzinami wypełniały…"
+},
+"s194": {
+"content": "Jan był prawnikiem i gubernatorem Perugii, który po uwięzieniu w czasie wojny nawrócił się i wstąpił do franciszkanów pod kierunkiem św. Bernardyna ze Sieny. Stał się słynnym kaznodzieją i papieskim…"
+},
+"s195": {
+"content": "Kazimierz był królewiczem polskim i litewskim, synem króla Kazimierza IV. W wieku trzynastu lat wysłano go, by objął tron Węgier, lecz wkrótce się wycofał, odmawiając prowadzenia wojny, którą uważał…"
+},
+"s196": {
+"content": "Mikołaj był szwajcarskim rolnikiem, żołnierzem, sędzią i ojcem dziesięciorga dzieci. W wieku pięćdziesięciu lat, za zgodą żony Doroty, opuścił dom, by żyć jako pustelnik w pobliskim wąwozie, gdzie…"
+},
+"s197": {
+"content": "Osierocona w dzieciństwie w północnych Włoszech, Aniela została tercjarką franciszkańską. Widząc, jak wiele dziewcząt dorasta bez żadnego pouczenia w wierze, zgromadziła kobiety, by uczyły je w ich…"
+},
+"s198": {
+"content": "Jan był portugalskim pasterzem, żołnierzem i księgarzem, który przeżył gwałtowne nawrócenie po wysłuchaniu kazania św. Jana z Ávili w Grenadzie. Jego publiczna pokuta była tak skrajna, że zamknięto…"
+},
 "t1": {
 "content": "Katolicy wierzą w jednego Boga, Stwórcę wszystkiego, który jest nieskończenie dobry, wszechwiedzący, wszechmogący i wieczny. Bóg nie jest jednym z bytów, lecz samym Bytem; objawił Mojżeszowi swoje imię: „Jestem, który jestem”.\n\nKościół naucza, że Boga można poznać z pewnością naturalnym światłem rozumu ludzkiego na podstawie stworzonego świata, jeszcze przed objawieniem. Objawienie ukazuje nam następnie, kim Bóg jest sam w sobie: Ojcem, który nas kocha i pragnie, abyśmy uczestniczyli w Jego życiu."
 },
@@ -11665,6 +11701,6 @@ window.SANCTIFY_I18N = {
 "saint-1": "saint-1.09160f1a",
 "saint-2": "saint-2.6c567743",
 "saint-3": "saint-3.4eb87456",
-"saint-4": "saint-4.9ba83f93"
+"saint-4": "saint-4.0298d565"
 }
 };
