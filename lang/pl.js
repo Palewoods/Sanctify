@@ -8306,6 +8306,349 @@ window.SANCTIFY_I18N = {
 "St. Irenaeus of Lyon, c. 180: \"Suppose there arise a dispute relative to some important question among us, should we not have recourse to the most ancient Churches with which the apostles held constant intercourse, and learn from them what is certain and clear in regard to the present question?\" (Against Heresies 3.4.1)": "Św. Ireneusz z Lyonu, ok. 180: „Gdyby powstał wśród nas spór o jakąś ważną kwestię, czyż nie powinniśmy zwrócić się do najstarszych Kościołów, z którymi apostołowie utrzymywali stałą łączność, i nauczyć się od nich, co w danej sprawie jest pewne i jasne?”. (Przeciw herezjom 3,4,1)",
 "St. Basil the Great, c. 375: \"Of the beliefs and practices whether generally accepted or publicly enjoined which are preserved in the Church some we possess derived from written teaching; others we have received delivered to us in a mystery by the tradition of the apostles; and both of these in relation to true religion have the same force.\" (On the Holy Spirit 27.66)": "Św. Bazyli Wielki, ok. 375: „Spośród zachowywanych w Kościele wierzeń i praktyk, czy to powszechnie przyjętych, czy publicznie nakazanych, jedne mamy z nauki spisanej, inne otrzymaliśmy przekazane nam w tajemnicy przez tradycję apostołów; a jedne i drugie mają tę samą moc dla prawdziwej pobożności”. (O Duchu Świętym 27,66)",
 "St. Vincent of Lérins, 434: \"In the Catholic Church itself, all possible care must be taken, that we hold that faith which has been believed everywhere, always, by all.\" (Commonitory 2.6)": "Św. Wincenty z Lerynu, 434: „W samym Kościele katolickim trzeba dołożyć wszelkich starań, abyśmy trzymali się tego, w co wierzono wszędzie, zawsze i przez wszystkich”. (Commonitorium 2,6)",
+"Nicaea I (325): the Son is \"consubstantial,\" one in being, with the Father, against Arius.": "Nicea I (325): Syn jest „współistotny” Ojcu, przeciw Ariuszowi.",
+"Constantinople I (381): the divinity of the Holy Spirit; the Nicene Creed is completed.": "Konstantynopol I (381): Bóstwo Ducha Świętego; Credo nicejskie zostaje uzupełnione.",
+"Ephesus (431): Christ is one person, and Mary is Theotokos, Mother of God.": "Efez (431): Chrystus jest jedną osobą, a Maryja jest Theotokos, Bożą Rodzicielką.",
+"Chalcedon (451): Christ is one person in two natures, truly God and truly man.": "Chalcedon (451): Chrystus jest jedną osobą w dwóch naturach, prawdziwym Bogiem i prawdziwym człowiekiem.",
+"Constantinople II (553) and III (680–681): Christ's unity, and his two wills, divine and human.": "Konstantynopol II (553) i III (680–681): jedność Chrystusa i Jego dwie wole, Boska i ludzka.",
+"Nicaea II (787): the veneration of holy icons.": "Nicea II (787): kult świętych ikon.",
+"Later councils include Lateran IV (1215), Trent (1545–1563), Vatican I (1869–1870), and Vatican II (1962–1965).": "Późniejsze sobory to m.in. Laterański IV (1215), Trydencki (1545–1563), Watykański I (1869–1870) i Watykański II (1962–1965).",
+"1. I am the Lord your God: you shall not have strange gods before me.": "1. Jam jest Pan, Bóg twój: nie będziesz miał bogów cudzych przede mną.",
+"2. You shall not take the name of the Lord your God in vain.": "2. Nie będziesz brał imienia Pana Boga twego nadaremno.",
+"3. Remember to keep holy the Lord's Day.": "3. Pamiętaj, abyś dzień święty święcił.",
+"4. Honor your father and your mother.": "4. Czcij ojca swego i matkę swoją.",
+"5. You shall not kill.": "5. Nie zabijaj.",
+"6. You shall not commit adultery.": "6. Nie cudzołóż.",
+"7. You shall not steal.": "7. Nie kradnij.",
+"8. You shall not bear false witness against your neighbor.": "8. Nie mów fałszywego świadectwa przeciw bliźniemu swemu.",
+"9. You shall not covet your neighbor's wife.": "9. Nie pożądaj żony bliźniego swego.",
+"10. You shall not covet your neighbor's goods.": "10. Ani żadnej rzeczy, która jego jest.",
+"This traditional catechetical numbering follows St. Augustine; Eastern Christians and most Protestants divide the same commandments differently.": "Ta tradycyjna numeracja katechetyczna idzie za św. Augustynem; chrześcijanie wschodni i większość protestantów dzielą te same przykazania inaczej.",
+"Blessed are the poor in spirit, the meek, those who mourn, those who hunger and thirst for righteousness, the merciful, the pure in heart, the peacemakers, and those persecuted for righteousness' sake (Matthew 5:3–10).": "Błogosławieni ubodzy w duchu, cisi, którzy się smucą, którzy łakną i pragną sprawiedliwości, miłosierni, czystego serca, którzy wprowadzają pokój, i cierpiący prześladowanie dla sprawiedliwości (Mt 5,3–10).",
+"They show that true happiness is found not in wealth, fame, or power, but in God alone (CCC 1723).": "Pokazują, że prawdziwego szczęścia nie znajduje się w bogactwie, sławie czy władzy, lecz w samym Bogu (KKK 1723).",
+"St. Augustine linked the Beatitudes to the seven gifts of the Holy Spirit and the seven petitions of the Our Father.": "Św. Augustyn łączył Błogosławieństwa z siedmioma darami Ducha Świętego i siedmioma prośbami Ojcze nasz.",
+"The Beatitudes are fulfilled perfectly in Christ and in the lives of the saints.": "Błogosławieństwa wypełniają się doskonale w Chrystusie i w życiu świętych.",
+"The Creed has three parts: God the Father and creation, God the Son and our redemption, and God the Holy Spirit and our sanctification (CCC 190).": "Credo ma trzy części: Bóg Ojciec i stworzenie, Bóg Syn i nasze odkupienie oraz Bóg Duch Święty i nasze uświęcenie (KKK 190).",
+"Its last articles, on the Church, the communion of saints, the forgiveness of sins, the resurrection, and eternal life, flow from faith in the Holy Spirit.": "Jego ostatnie artykuły, o Kościele, świętych obcowaniu, odpuszczeniu grzechów, zmartwychwstaniu i życiu wiecznym, wypływają z wiary w Ducha Świętego.",
+"The Western Church added \"and the Son\" (filioque) to the article on the Holy Spirit; Eastern Catholics profess the Creed without it, and the Church teaches that both traditions express the same faith.": "Kościół zachodni dodał „i Syna” (filioque) do artykułu o Duchu Świętym; katolicy wschodni wyznają Credo bez tego dodatku, a Kościół naucza, że obie tradycje wyrażają tę samą wiarę.",
+"The Catechism is organized around the Creed, the sacraments, the commandments, and the Our Father.": "Katechizm jest zbudowany wokół Credo, sakramentów, przykazań i Ojcze nasz.",
+"Pope Bl. Pius IX defined the Immaculate Conception in 1854; four years later, at Lourdes, Mary called herself \"the Immaculate Conception.\"": "Bł. papież Pius IX zdefiniował Niepokalane Poczęcie w 1854 roku; cztery lata później w Lourdes Maryja nazwała siebie „Niepokalanym Poczęciem”.",
+"Pope Pius XII defined the Assumption in 1950. He left open whether Mary died before being assumed; the East celebrates her Dormition, or \"falling asleep.\"": "Papież Pius XII zdefiniował Wniebowzięcie w 1950 roku. Pozostawił otwartą kwestię, czy Maryja umarła przed wzięciem do nieba; Wschód obchodzi Jej Zaśnięcie.",
+"Mary was redeemed by Christ, too, but in a more sublime way: preserved from sin rather than freed from it.": "Także Maryja została odkupiona przez Chrystusa, lecz w sposób bardziej wzniosły: zachowana od grzechu, a nie od niego uwolniona.",
+"The Assumption is a sign of hope for all the faithful: what God has done for Mary he promises to do for all who belong to Christ.": "Wniebowzięcie jest znakiem nadziei dla wszystkich wiernych: to, co Bóg uczynił dla Maryi, obiecuje uczynić dla wszystkich, którzy należą do Chrystusa.",
+"Jesus taught his disciples to trust the Father who feeds the birds and clothes the lilies of the field (Matthew 6:26–30).": "Jezus uczył uczniów ufać Ojcu, który żywi ptaki i przyodziewa lilie polne (Mt 6,26–30).",
+"Joseph told his brothers that what they meant for evil, God meant for good (Genesis 50:20).": "Józef powiedział braciom, że to, co oni zamierzyli na zło, Bóg obrócił w dobro (Rdz 50,20).",
+"God uses secondary causes: our work, our prayers, and even our sufferings become part of his plan (CCC 306–308).": "Bóg posługuje się przyczynami wtórnymi: nasza praca, modlitwy, a nawet cierpienia stają się częścią Jego planu (KKK 306–308).",
+"We will fully understand God's ways only when we see him face to face (CCC 314).": "W pełni zrozumiemy drogi Boże dopiero wtedy, gdy ujrzymy Go twarzą w twarz (KKK 314).",
+"The desert hermits of Egypt, such as St. Anthony the Great, and the communities of St. Pachomius began organized monastic life in the third and fourth centuries.": "Pustelnicy z pustyni egipskiej, jak św. Antoni Wielki, i wspólnoty św. Pachomiusza zapoczątkowały zorganizowane życie monastyczne w III i IV wieku.",
+"St. Basil the Great in the East and St. Benedict in the West wrote rules that still guide monks and nuns today.": "Św. Bazyli Wielki na Wschodzie i św. Benedykt na Zachodzie napisali reguły, które do dziś prowadzą mnichów i mniszki.",
+"Mendicant orders like the Franciscans and Dominicans, and later active congregations, brought consecrated life into the cities, schools, hospitals, and missions.": "Zakony żebracze, jak franciszkanie i dominikanie, a później zgromadzenia czynne, wniosły życie konsekrowane do miast, szkół, szpitali i misji.",
+"The consecrated life belongs to the life and holiness of the Church, and every Christian is called to the spirit of the counsels in his or her own state of life (CCC 914–915).": "Życie konsekrowane należy do życia i świętości Kościoła, a każdy chrześcijanin jest powołany do ducha rad ewangelicznych we własnym stanie życia (KKK 914–915).",
+"Against Arius, the Church taught that the Son is fully divine (Nicaea, 325).": "Przeciw Ariuszowi Kościół nauczał, że Syn jest w pełni Bogiem (Nicea, 325).",
+"Against Nestorius, the Church taught that Christ is one person, so Mary is the Mother of God (Ephesus, 431).": "Przeciw Nestoriuszowi Kościół nauczał, że Chrystus jest jedną osobą, a więc Maryja jest Matką Bożą (Efez, 431).",
+"Against Eutyches, the Church taught that Christ's human nature is not absorbed into his divinity (Chalcedon, 451).": "Przeciw Eutychesowi Kościół nauczał, że ludzka natura Chrystusa nie zostaje wchłonięta przez Jego Bóstwo (Chalcedon, 451).",
+"Christ has a human mind and a human will, perfectly obedient to the divine will (Constantinople III, 681).": "Chrystus ma ludzki umysł i ludzką wolę, doskonale posłuszną woli Boskiej (Konstantynopol III, 681).",
+"There is one God (Deuteronomy 6:4; 1 Corinthians 8:4).": "Jest jeden Bóg (Pwt 6,4; 1 Kor 8,4).",
+"The Son is God: the Word who was with God and was God (John 1:1), whom Thomas called \"My Lord and my God\" (John 20:28).": "Syn jest Bogiem: Słowem, które było u Boga i Bogiem było (J 1,1), którego Tomasz nazwał „Pan mój i Bóg mój” (J 20,28).",
+"The Holy Spirit is God: lying to the Holy Spirit is lying to God (Acts 5:3–4).": "Duch Święty jest Bogiem: okłamać Ducha Świętego to okłamać Boga (Dz 5,3–4).",
+"The three are distinct: at Jesus' baptism the Son is baptized, the Spirit descends, and the Father speaks (Matthew 3:16–17).": "Trzej są różni: przy chrzcie Jezusa Syn zostaje ochrzczony, Duch zstępuje, a Ojciec przemawia (Mt 3,16–17).",
+"Jesus commanded Baptism in the one \"name\" of the Father, the Son, and the Holy Spirit (Matthew 28:19).": "Jezus nakazał chrzcić w jedno „imię” Ojca i Syna, i Ducha Świętego (Mt 28,19).",
+"Isn't a word not found in the Bible a human invention?": "Czy słowo, którego nie ma w Biblii, nie jest ludzkim wymysłem?",
+"Words like \"Trinity\" and \"Incarnation\" are not new doctrines but names for what Scripture teaches. Even Christians who reject the authority of Tradition use such words, like \"Bible\" itself, which is not found in the Bible.": "Słowa takie jak „Trójca” czy „Wcielenie” nie są nowymi doktrynami, lecz nazwami tego, czego naucza Pismo. Nawet chrześcijanie odrzucający autorytet Tradycji używają takich słów, choćby samego słowa „Biblia”, którego w Biblii nie ma.",
+"St. Ignatius of Antioch spoke of \"the Catholic Church\" around 107, two centuries before Constantine.": "Św. Ignacy Antiocheński mówił o „Kościele katolickim” około 107 roku, dwa wieki przed Konstantynem.",
+"The Council of Nicaea (325) did not discuss the canon of Scripture. It condemned Arius, who denied that the Son is fully divine, and the bishops affirmed what the Church already believed.": "Sobór Nicejski (325) nie zajmował się kanonem Pisma. Potępił Ariusza, który przeczył pełnemu Bóstwu Syna, a biskupi potwierdzili to, w co Kościół już wierzył.",
+"The early Fathers, from Ignatius and Justin to Irenaeus and Tertullian, worshipped Jesus as God long before 325.": "Pierwsi Ojcowie, od Ignacego i Justyna po Ireneusza i Tertuliana, czcili Jezusa jako Boga długo przed 325 rokiem.",
+"Lists of the books of Scripture were set at regional councils such as Rome (382), Hippo (393), and Carthage (397), and the canon was formally defined at the Council of Trent.": "Spisy ksiąg Pisma ustalono na synodach regionalnych, takich jak w Rzymie (382), Hipponie (393) i Kartaginie (397), a kanon został formalnie zdefiniowany na Soborze Trydenckim.",
+"Didn't Constantine make Christianity the state religion?": "Czy Konstantyn nie uczynił chrześcijaństwa religią państwową?",
+"No. Constantine legalized Christianity in 313 with the Edict of Milan. It was the emperor Theodosius I who made it the official religion of the empire in 380.": "Nie. Konstantyn zalegalizował chrześcijaństwo w 313 roku edyktem mediolańskim. To cesarz Teodozjusz I uczynił je oficjalną religią cesarstwa w 380 roku.",
+"In Hebrew, Abraham's nephew Lot is called his \"brother\" (Genesis 14:14, translated \"kinsman\" in the RSV).": "Po hebrajsku bratanek Abrahama, Lot, jest nazwany jego „bratem” (Rdz 14,14, często tłumaczone jako „krewny”).",
+"James and Joses, named among the \"brothers of the Lord\" (Mark 6:3), are sons of another Mary, who stood near the Cross (Matthew 27:56).": "Jakub i Józef, wymienieni wśród „braci Pańskich” (Mk 6,3), są synami innej Marii, która stała przy krzyżu (Mt 27,56).",
+"The Gospels never call anyone else a son or daughter of Mary.": "Ewangelie nigdy nie nazywają nikogo innego synem ani córką Maryi.",
+"From the Cross, Jesus entrusted his mother to the apostle John, which would make little sense if she had other sons to care for her (John 19:26–27).": "Z krzyża Jezus powierzył swoją Matkę apostołowi Janowi, co nie miałoby sensu, gdyby miała innych synów, którzy by się Nią zajęli (J 19,26–27).",
+"Early Christians, from the Protoevangelium of James (c. 150) to Sts. Athanasius, Jerome, Ambrose, and Augustine, held that Mary was ever-virgin. So did Luther, Calvin, and Zwingli.": "Pierwsi chrześcijanie, od Protoewangelii Jakuba (ok. 150) po świętych Atanazego, Hieronima, Ambrożego i Augustyna, utrzymywali, że Maryja była zawsze dziewicą. Tak samo uważali Luter, Kalwin i Zwingli.",
+"Psalm 136 repeats the same refrain twenty-six times.": "Psalm 136 powtarza ten sam refren dwadzieścia sześć razy.",
+"In Gethsemane, Jesus prayed a third time, \"saying the same words\" (Matthew 26:44).": "W Getsemani Jezus modlił się po raz trzeci, „powtarzając te same słowa” (Mt 26,44).",
+"The angels before God's throne never cease to sing \"Holy, holy, holy\" (Revelation 4:8).": "Aniołowie przed tronem Boga nieustannie śpiewają „Święty, Święty, Święty” (Ap 4,8).",
+"Repeated prayer, like the Jesus Prayer or the Rosary, quiets the mind and helps the heart rest in God (CCC 2668).": "Powtarzana modlitwa, jak Modlitwa Jezusowa czy różaniec, wycisza umysł i pomaga sercu spocząć w Bogu (KKK 2668).",
+"What matters is not the number of words, but the love and attention with which they are prayed.": "Liczy się nie liczba słów, lecz miłość i uwaga, z jaką się je wypowiada.",
+"Jesus promised that the Spirit of truth would guide the apostles \"into all the truth\" (John 16:13).": "Jezus obiecał, że Duch Prawdy doprowadzi apostołów „do całej prawdy” (J 16,13).",
+"The Church's definitions, such as the Trinity at Nicaea or Mary as Mother of God at Ephesus, made explicit what was already believed.": "Definicje Kościoła, jak Trójca w Nicei czy Maryja Matka Boża w Efezie, wyraziły wprost to, w co już wierzono.",
+"Practices of discipline, such as fasting rules or the language of the Mass, can change; defined doctrines of faith and morals cannot.": "Praktyki dyscyplinarne, jak przepisy postne czy język Mszy, mogą się zmieniać; zdefiniowane nauki wiary i moralności nie.",
+"\"The deposit of faith\" (CCC 84) was entrusted by the apostles to the whole Church to be guarded, not altered.": "„Depozyt wiary” (KKK 84) został powierzony przez apostołów całemu Kościołowi, by go strzec, a nie zmieniać.",
+"It happens at the consecration, when the priest says the words of Jesus at the Last Supper over the bread and wine.": "Dokonuje się podczas konsekracji, gdy kapłan wypowiada nad chlebem i winem słowa Jezusa z Ostatniej Wieczerzy.",
+"The whole Christ is present, Body and Blood, soul and divinity, under each form, and in every part of it (CCC 1374, 1377).": "Cały Chrystus jest obecny, z Ciałem i Krwią, duszą i Bóstwem, pod każdą z postaci i w każdej jej cząstce (KKK 1374, 1377).",
+"The Council of Trent called transubstantiation the fitting and proper name for this change (CCC 1376).": "Sobór Trydencki nazwał przeistoczenie stosowną i właściwą nazwą tej przemiany (KKK 1376).",
+"Christ remains present as long as the appearances of bread and wine remain.": "Chrystus pozostaje obecny, dopóki trwają postacie chleba i wina.",
+"The Church celebrates the Incarnation at the Annunciation (March 25) and at Christmas.": "Kościół świętuje Wcielenie w uroczystość Zwiastowania (25 marca) i w Boże Narodzenie.",
+"In the Creed, all bow at the words about the Son becoming incarnate of the Virgin Mary.": "W Credo wszyscy pochylają się przy słowach o wcieleniu Syna z Maryi Dziewicy.",
+"Jesus has a real human body and a human soul, with a human mind and will.": "Jezus ma prawdziwe ludzkie ciało i ludzką duszę, z ludzkim umysłem i wolą.",
+"The Incarnation is forever: Jesus is still true God and true man in heaven.": "Wcielenie jest na zawsze: Jezus nadal jest w niebie prawdziwym Bogiem i prawdziwym człowiekiem.",
+"The Council of Chalcedon (451) taught that the two natures are united without confusion, change, division, or separation.": "Sobór Chalcedoński (451) nauczał, że dwie natury są zjednoczone bez zmieszania, zmiany, podziału i rozdzielenia.",
+"Because Jesus is one Person, what He does in His human nature is truly done by God: God was born, God suffered, God died on the cross.": "Ponieważ Jezus jest jedną Osobą, to, co czyni w swej ludzkiej naturze, prawdziwie czyni Bóg: Bóg się narodził, Bóg cierpiał, Bóg umarł na krzyżu.",
+"This is why Mary is rightly called the Mother of God.": "Dlatego Maryja jest słusznie nazywana Matką Bożą.",
+"See also: Jesus Christ: One Person, Two Natures.": "Zobacz też: Jezus Chrystus: jedna Osoba, dwie natury.",
+"Catholics say that the Son is “consubstantial with the Father” every Sunday in the Nicene Creed.": "Katolicy co niedzielę wyznają w Credo nicejskim, że Syn jest „współistotny Ojcu”.",
+"The word was chosen to rule out Arianism, which taught that the Son was created.": "Słowo to wybrano, aby wykluczyć arianizm, który głosił, że Syn został stworzony.",
+"The three Persons are distinct only by their relations: the Father begets, the Son is begotten, the Spirit proceeds (CCC 254–255).": "Trzy Osoby różnią się jedynie relacjami: Ojciec rodzi, Syn jest zrodzony, Duch pochodzi (KKK 254–255).",
+"One God means one will, one power, and one glory shared by the three Persons.": "Jeden Bóg oznacza jedną wolę, jedną moc i jedną chwałę wspólną trzem Osobom.",
+"The title protects the truth about Jesus as much as it honors Mary.": "Ten tytuł chroni prawdę o Jezusie w tym samym stopniu, w jakim czci Maryję.",
+"Elizabeth greeted Mary as the mother of her Lord (Luke 1:43).": "Elżbieta powitała Maryję jako Matkę swojego Pana (Łk 1,43).",
+"Eastern Christians use the word Theotokos constantly in their prayers.": "Chrześcijanie wschodni nieustannie używają słowa Theotokos w modlitwach.",
+"January 1 is the Solemnity of Mary, Mother of God.": "1 stycznia przypada uroczystość Świętej Bożej Rodzicielki Maryi.",
+"Sanctifying grace is a lasting gift that remains in the soul unless it is lost by mortal sin.": "Łaska uświęcająca jest trwałym darem, który pozostaje w duszy, chyba że zostanie utracony przez grzech śmiertelny.",
+"Actual graces are God’s help at the beginning of conversion and all along the way (CCC 2000).": "Łaski uczynkowe to Boża pomoc na początku nawrócenia i przez całą drogę (KKK 2000).",
+"The sacraments give grace; prayer opens us to receive it.": "Sakramenty udzielają łaski; modlitwa otwiera nas na jej przyjęcie.",
+"Even our first step toward God is already moved by His grace.": "Nawet nasz pierwszy krok ku Bogu jest już poruszony Jego łaską.",
+"There are seven sacraments: Baptism, Confirmation, the Eucharist, Penance, the Anointing of the Sick, Holy Orders, and Matrimony.": "Jest siedem sakramentów: chrzest, bierzmowanie, Eucharystia, pokuta, namaszczenie chorych, kapłaństwo i małżeństwo.",
+"Baptism, Confirmation, and Holy Orders mark the soul with a permanent “character” and are never repeated.": "Chrzest, bierzmowanie i kapłaństwo wyciskają na duszy trwałe „znamię” i nigdy nie są powtarzane.",
+"To bear fruit in a person’s life, a sacrament must be received with faith and an open heart.": "Aby sakrament przyniósł owoc w życiu człowieka, trzeba go przyjąć z wiarą i otwartym sercem.",
+"Sacramentals, such as holy water and blessings, are different: signs instituted by the Church that prepare us to receive grace.": "Sakramentalia, jak woda święcona i błogosławieństwa, są czymś innym: znakami ustanowionymi przez Kościół, które przygotowują nas do przyjęcia łaski.",
+"Original sin helps explain why doing good can feel so hard, and why the world is so marked by suffering.": "Grzech pierworodny pomaga wyjaśnić, dlaczego czynienie dobra bywa tak trudne i dlaczego świat jest tak naznaczony cierpieniem.",
+"Mary alone was preserved from original sin from the first moment of her life: the Immaculate Conception.": "Tylko Maryja została zachowana od grzechu pierworodnego od pierwszej chwili życia: to Niepokalane Poczęcie.",
+"Jesus, the new Adam, undoes what the first Adam did.": "Jezus, nowy Adam, naprawia to, co uczynił pierwszy Adam.",
+"Our struggle with temptation is not a sign that God has abandoned us; it is where we grow in virtue.": "Nasza walka z pokusą nie jest znakiem, że Bóg nas opuścił; to w niej wzrastamy w cnocie.",
+"Justification is given freely: no one can earn the first grace (CCC 2010).": "Usprawiedliwienie jest dane darmo: nikt nie może zasłużyć na pierwszą łaskę (KKK 2010).",
+"Faith is the beginning; faith working through love is how it lives (Galatians 5:6).": "Wiara jest początkiem; wiara działająca przez miłość jest jej życiem (Ga 5,6).",
+"Holiness is not a reward for the few but the calling of every Christian.": "Świętość nie jest nagrodą dla nielicznych, lecz powołaniem każdego chrześcijanina.",
+"In 1999 the Catholic Church and the Lutheran World Federation signed a Joint Declaration on the Doctrine of Justification, finding broad agreement on its basic truths.": "W 1999 roku Kościół katolicki i Światowa Federacja Luterańska podpisały Wspólną deklarację w sprawie nauki o usprawiedliwieniu, stwierdzając szeroką zgodność co do jej podstawowych prawd.",
+"The Catechism calls dogmas “lights along the path of faith” that make it secure (CCC 89).": "Katechizm nazywa dogmaty „światłami na drodze wiary”, które czynią ją bezpieczną (KKK 89).",
+"Example: priestly celibacy is a discipline in the Latin Church; the Real Presence is a dogma.": "Przykład: celibat kapłański jest dyscypliną w Kościele łacińskim; rzeczywista obecność jest dogmatem.",
+"Not every opinion of a priest or bishop is Church teaching.": "Nie każda opinia kapłana czy biskupa jest nauczaniem Kościoła.",
+"Knowing the difference guards against both rigidity and confusion.": "Znajomość tej różnicy chroni zarówno przed sztywnością, jak i przed zamętem.",
+"Scripture, Tradition, and the Magisterium are so joined that none stands without the others (CCC 95).": "Pismo, Tradycja i Magisterium są tak ze sobą złączone, że żadne nie istnieje bez pozostałych (KKK 95).",
+"The Magisterium exists so that the faith handed down by the apostles is not lost or distorted.": "Magisterium istnieje po to, by wiara przekazana przez apostołów nie została utracona ani zniekształcona.",
+"Theologians help the Church understand the faith, but they are not the Magisterium.": "Teologowie pomagają Kościołowi rozumieć wiarę, ale nie są Magisterium.",
+"Even the ordinary teaching of the pope and bishops deserves respect and assent.": "Nawet zwyczajne nauczanie papieża i biskupów zasługuje na szacunek i przyjęcie.",
+"Infallibility protects the truth of the Church’s teaching; it says nothing about a pope’s personal holiness or cleverness.": "Nieomylność chroni prawdę nauczania Kościoła; nie mówi nic o osobistej świętości ani mądrości papieża.",
+"The bishops together with the pope also teach infallibly, especially in an ecumenical council (CCC 891).": "Biskupi razem z papieżem również nauczają nieomylnie, zwłaszcza na soborze powszechnym (KKK 891).",
+"Infallibility is a safeguard: it keeps the Church from formally teaching error.": "Nieomylność jest zabezpieczeniem: chroni Kościół przed formalnym nauczaniem błędu.",
+"Jesus prayed for Peter that his faith would not fail, and told him to strengthen his brothers (Luke 22:32).": "Jezus modlił się za Piotra, aby nie ustała jego wiara, i polecił mu umacniać braci (Łk 22,32).",
+"St. Clement of Rome, writing around the year 96, already describes the apostles appointing bishops and providing for their successors.": "Św. Klemens Rzymski, piszący około 96 roku, już opisuje, jak apostołowie ustanawiali biskupów i troszczyli się o ich następców.",
+"The Eastern Orthodox Churches also have apostolic succession and true sacraments.": "Kościoły prawosławne także mają sukcesję apostolską i prawdziwe sakramenty.",
+"A new bishop is ordained by other bishops, normally at least three.": "Nowego biskupa wyświęcają inni biskupi, zwykle co najmniej trzech.",
+"See also: The Fathers on Bishops and Apostolic Succession.": "Zobacz też: Ojcowie o biskupach i sukcesji apostolskiej.",
+"Adoration (latria) belongs to God alone: Father, Son, and Holy Spirit, and Christ present in the Eucharist.": "Adoracja (latria) należy się tylko Bogu: Ojcu, Synowi i Duchowi Świętemu, oraz Chrystusowi obecnemu w Eucharystii.",
+"Veneration (dulia) is given to the saints and angels.": "Cześć (dulię) oddaje się świętym i aniołom.",
+"Hyperdulia is for Mary alone: more than for any other saint, yet infinitely less than worship.": "Hiperdulia należy się tylko Maryi: więcej niż jakiemukolwiek innemu świętemu, a jednak nieskończenie mniej niż uwielbienie.",
+"Mary herself foretold that all generations would call her blessed (Luke 1:48).": "Sama Maryja przepowiedziała, że wszystkie pokolenia będą Ją nazywać błogosławioną (Łk 1,48).",
+"Heaven is above all a communion of life and love with the Holy Trinity, with Mary, the angels, and all the saints (CCC 1024).": "Niebo jest przede wszystkim wspólnotą życia i miłości z Trójcą Świętą, z Maryją, aniołami i wszystkimi świętymi (KKK 1024).",
+"The saints in heaven still love us and pray for us.": "Święci w niebie nadal nas kochają i modlą się za nas.",
+"Every true joy on earth is a small foretaste of this one.": "Każda prawdziwa radość na ziemi jest małą zapowiedzią tej jednej.",
+"See also: Death, Judgment, Heaven, Hell, and Purgatory.": "Zobacz też: Śmierć, sąd, niebo, piekło i czyściec.",
+"Every Sunday is a “little Easter.”": "Każda niedziela jest „małą Wielkanocą”.",
+"In Baptism we are plunged into Christ’s death and rise with Him to new life (Romans 6:3–4).": "W chrzcie zostajemy zanurzeni w śmierć Chrystusa i powstajemy z Nim do nowego życia (Rz 6,3–4).",
+"The Easter Triduum, from Holy Thursday evening to Easter Sunday, is the high point of the Church’s year.": "Triduum Paschalne, od wieczoru Wielkiego Czwartku do Niedzieli Wielkanocnej, jest szczytem roku Kościoła.",
+"Our own sufferings and our death, joined to Christ, become part of His passing over to life.": "Nasze cierpienia i nasza śmierć, złączone z Chrystusem, stają się częścią Jego przejścia do życia.",
+"The saints are given to us as models and intercessors (CCC 828).": "Święci są nam dani jako wzory i orędownicy (KKK 828).",
+"Miracles studied in a cause are usually healings with no natural explanation, examined by doctors and theologians.": "Cuda badane w procesie to zwykle uzdrowienia bez naturalnego wyjaśnienia, analizowane przez lekarzy i teologów.",
+"Countless holy people in heaven are never canonized; the Church honors them all on All Saints’ Day.": "Niezliczeni święci w niebie nigdy nie zostają kanonizowani; Kościół czci ich wszystkich w uroczystość Wszystkich Świętych.",
+"Martyrs can be beatified without a miracle.": "Męczennicy mogą zostać beatyfikowani bez cudu.",
+"Excommunication is medicinal: its purpose is conversion.": "Ekskomunika jest karą leczniczą: jej celem jest nawrócenie.",
+"An excommunicated person remains baptized and is urged to keep praying and to return.": "Osoba ekskomunikowana pozostaje ochrzczona i jest zachęcana, by dalej się modliła i powróciła.",
+"In many places priests are given the faculty to lift certain excommunications in Confession.": "W wielu miejscach kapłani otrzymują władzę zdejmowania pewnych ekskomunik podczas spowiedzi.",
+"Fear of a penalty is never a reason to stay away: the Church wants every sinner home.": "Lęk przed karą nigdy nie jest powodem, by trzymać się z daleka: Kościół chce każdego grzesznika z powrotem w domu.",
+"The process is handled by the diocesan tribunal, and usually begins with a conversation with the parish priest.": "Proces prowadzi sąd diecezjalny, a zwykle zaczyna się on od rozmowy z proboszczem.",
+"In Church law, children of a marriage later declared null remain legitimate.": "W prawie kościelnym dzieci z małżeństwa później uznanego za nieważne pozostają dziećmi ślubnymi.",
+"Both spouses may take part and give testimony.": "Oboje małżonkowie mogą uczestniczyć i składać zeznania.",
+"After a declaration of nullity, a person is free to marry in the Church.": "Po stwierdzeniu nieważności osoba może zawrzeć małżeństwo w Kościele.",
+"Christians baptized in other communities are truly brothers and sisters in the Lord, though not in full communion (CCC 818).": "Chrześcijanie ochrzczeni w innych wspólnotach są prawdziwie braćmi i siostrami w Panu, choć nie w pełnej komunii (KKK 818).",
+"The Week of Prayer for Christian Unity is kept from January 18 to 25.": "Tydzień Modlitw o Jedność Chrześcijan obchodzi się od 18 do 25 stycznia.",
+"The Orthodox Churches are especially close: they have apostolic succession and true sacraments.": "Kościoły prawosławne są szczególnie bliskie: mają sukcesję apostolską i prawdziwe sakramenty.",
+"Ecumenism (unity among Christians) is different from interreligious dialogue (respectful conversation with other religions).": "Ekumenizm (jedność chrześcijan) różni się od dialogu międzyreligijnego (pełnej szacunku rozmowy z innymi religiami).",
+"A motu proprio (“on his own initiative”) is a document the pope issues personally, often to change Church law.": "Motu proprio („z własnej inicjatywy”) to dokument, który papież wydaje osobiście, często w celu zmiany prawa kościelnego.",
+"The Catechism of the Catholic Church (1992) is the reference summary of Catholic teaching (CCC 11).": "Katechizm Kościoła Katolickiego (1992) jest wzorcowym streszczeniem nauki katolickiej (KKK 11).",
+"Not every papal speech or interview is teaching of the Magisterium; formal documents carry more weight.": "Nie każde przemówienie czy wywiad papieża jest nauczaniem Magisterium; formalne dokumenty mają większą wagę.",
+"Most documents can be read freely on the Vatican’s website.": "Większość dokumentów można swobodnie czytać na stronie Watykanu.",
+"The Catholic Church has several liturgical traditions: the Latin, Byzantine, Alexandrian, Antiochene, Armenian, and Chaldean.": "Kościół katolicki ma kilka tradycji liturgicznych: łacińską, bizantyjską, aleksandryjską, antiocheńską, ormiańską i chaldejską.",
+"The Liturgy of the Hours makes the whole day holy with psalms and prayers.": "Liturgia Godzin uświęca cały dzień psalmami i modlitwami.",
+"All the baptized are called to full, conscious, and active participation in the liturgy (Sacrosanctum Concilium 14).": "Wszyscy ochrzczeni są powołani do pełnego, świadomego i czynnego uczestnictwa w liturgii (Sacrosanctum Concilium 14).",
+"Liturgical seasons, colors, and feasts help us live the life of Christ through the year.": "Okresy, kolory i święta liturgiczne pomagają nam przeżywać życie Chrystusa w ciągu roku.",
+"No one can merit the first grace of conversion: it is pure gift (CCC 2010).": "Nikt nie może zasłużyć na pierwszą łaskę nawrócenia: jest czystym darem (KKK 2010).",
+"Moved by the Holy Spirit, we can merit for ourselves and others the graces needed to grow in holiness (CCC 2010).": "Poruszeni przez Ducha Świętego możemy zasłużyć dla siebie i innych na łaski potrzebne do wzrostu w świętości (KKK 2010).",
+"Charity, the love of God and neighbor, is the main source of merit (CCC 2011).": "Miłość Boga i bliźniego jest głównym źródłem zasługi (KKK 2011).",
+"St. Thérèse of Lisieux hoped to stand before God “with empty hands,” trusting in His love rather than her merits.": "Św. Teresa z Lisieux pragnęła stanąć przed Bogiem „z pustymi rękami”, ufając Jego miłości, a nie swoim zasługom.",
+"Many ancient heresies return under new names; see the answers under Defending the Faith.": "Wiele dawnych herezji powraca pod nowymi nazwami; zobacz odpowiedzi w dziale „Obrona wiary”.",
+"Those born into separated Christian communities cannot be charged with the sin of separation (CCC 818).": "Tych, którzy rodzą się w odłączonych wspólnotach chrześcijańskich, nie można obarczać grzechem odłączenia (KKK 818).",
+"Doubts that a person struggles with in good faith are not the same as obstinate denial.": "Wątpliwości, z którymi ktoś zmaga się w dobrej wierze, to nie to samo co uporczywe zaprzeczanie.",
+"The remedy for error is patient teaching, prayer, and charity.": "Lekarstwem na błąd jest cierpliwe nauczanie, modlitwa i miłość.",
+"The First Vatican Council taught that Peter will have perpetual successors in the primacy over the whole Church (Pastor Aeternus, chapter 2).": "Sobór Watykański I nauczał, że Piotr będzie miał nieustannych następców w prymacie nad całym Kościołem (Pastor Aeternus, rozdział 2).",
+"The Church is visible and indefectible: it cannot lose its hierarchy or teach error definitively to the whole world.": "Kościół jest widzialny i niezniszczalny: nie może utracić swojej hierarchii ani ostatecznie nauczać błędu całego świata.",
+"“The First See is judged by no one” (Code of Canon Law 1404): no private group has authority to declare a pope deposed.": "„Pierwsza Stolica przez nikogo nie może być sądzona” (Kodeks Prawa Kanonicznego 1404): żadna prywatna grupa nie ma władzy, by uznać papieża za złożonego z urzędu.",
+"Theologians have long held that the peaceful acceptance of a pope by the whole Church is a sure sign that he is truly pope.": "Teologowie od dawna utrzymują, że spokojne przyjęcie papieża przez cały Kościół jest pewnym znakiem, że jest on prawdziwym papieżem.",
+"Sedevacantist groups have splintered again and again, some even electing their own “popes,” which shows the confusion that follows when communion with Peter is broken.": "Grupy sediwakantystyczne raz po raz się dzielą, a niektóre nawet wybierają własnych „papieży”, co pokazuje zamęt, jaki następuje po zerwaniu komunii z Piotrem.",
+"Vatican II taught heresy, so the popes who approved it lost their office.": "Sobór Watykański II nauczał herezji, więc papieże, którzy go zatwierdzili, utracili urząd.",
+"The Council’s teachings must be read in continuity with all earlier teaching, as the popes have insisted. Difficult or new wording is not heresy, and formal heresy requires obstinate denial of a defined dogma, which no pope has committed. Even if a pope made a mistake in a non-infallible statement, that would not end his office.": "Nauczanie Soboru należy czytać w ciągłości z całym wcześniejszym nauczaniem, jak podkreślali papieże. Trudne czy nowe sformułowania nie są herezją, a formalna herezja wymaga uporczywego zaprzeczenia zdefiniowanemu dogmatowi, czego żaden papież nie uczynił. Nawet gdyby papież pomylił się w wypowiedzi, która nie jest nieomylna, nie zakończyłoby to jego urzędu.",
+"A heretic cannot be the head of the Church, so the see is vacant.": "Heretyk nie może być głową Kościoła, więc stolica jest pusta.",
+"Whether a pope has lost office is not something an individual Catholic can decide for himself; the First See is judged by no one. Christ did not leave His Church to sort out its own head by private judgment.": "To, czy papież utracił urząd, nie jest czymś, o czym pojedynczy katolik może sam rozstrzygać; Pierwsza Stolica przez nikogo nie jest sądzona. Chrystus nie zostawił swojego Kościoła, by o swojej głowie decydował prywatnym osądem.",
+"We are only keeping the true faith that the Church once had.": "My tylko zachowujemy prawdziwą wiarę, którą Kościół kiedyś miał.",
+"The true faith includes believing in the Church that Christ founded, with Peter’s successor at its head. A “Church” with no pope, no diocesan bishops, and no way of ever having them again is not the Church Christ promised to be with until the end of the age (Matthew 28:20).": "Prawdziwa wiara obejmuje wiarę w Kościół, który założył Chrystus, z następcą Piotra na czele. „Kościół” bez papieża, bez biskupów diecezjalnych i bez żadnej możliwości ich ponownego posiadania nie jest Kościołem, z którym Chrystus obiecał być aż do skończenia świata (Mt 28,20).",
+"The essential words of consecration, “This is my Body” and the words over the chalice, are present in every approved Eucharistic Prayer.": "Istotne słowa konsekracji, „To jest Ciało moje” i słowa nad kielichem, są obecne w każdej zatwierdzonej Modlitwie eucharystycznej.",
+"Every pope since Paul VI has celebrated this Mass and taught that it is valid.": "Każdy papież od Pawła VI sprawował tę Mszę i nauczał, że jest ważna.",
+"The liturgy has changed many times in history while remaining the same Holy Sacrifice.": "Liturgia zmieniała się w historii wiele razy, pozostając tą samą Najświętszą Ofiarą.",
+"Questions of how the Mass is celebrated, and how reverently, are real and worth discussing; they do not touch its validity.": "Pytania o to, jak sprawowana jest Msza i z jaką czcią, są realne i warte dyskusji; nie dotyczą jednak jej ważności.",
+"The changes were made to please Protestants, so the Mass is Protestant.": "Zmiany wprowadzono, by przypodobać się protestantom, więc Msza jest protestancka.",
+"Whatever the intentions of individuals involved, the Mass approved by the Church contains everything that makes a Mass: a validly ordained priest, bread and wine, the words of consecration, and the intention to do what the Church does.": "Niezależnie od intencji poszczególnych osób Msza zatwierdzona przez Kościół zawiera wszystko, co stanowi Mszę: ważnie wyświęconego kapłana, chleb i wino, słowa konsekracji i intencję czynienia tego, co czyni Kościół.",
+"A sacrament is invalid if it is celebrated irreverently.": "Sakrament jest nieważny, jeśli sprawuje się go bez czci.",
+"Abuses are wrong and should be corrected, but a sacrament’s validity depends on Christ’s action, the proper matter and form, and the minister’s intention, not on the reverence of the music or the furnishings.": "Nadużycia są złem i należy je poprawiać, ale ważność sakramentu zależy od działania Chrystusa, właściwej materii i formy oraz intencji szafarza, a nie od godności muzyki czy wystroju.",
+"The Council of Trent itself spoke of justification coming through Baptism “or the desire for it.”": "Sam Sobór Trydencki mówił o usprawiedliwieniu przez chrzest „lub pragnienie go”.",
+"The Church has always honored catechumens who died before Baptism, and martyrs who died unbaptized (the “baptism of blood”).": "Kościół zawsze czcił katechumenów zmarłych przed chrztem i męczenników, którzy zginęli nieochrzczeni („chrzest krwi”).",
+"Those who, through no fault of their own, do not know Christ or His Church, but seek God sincerely and try to do His will, can be saved (CCC 847).": "Ci, którzy bez własnej winy nie znają Chrystusa ani Jego Kościoła, lecz szczerze szukają Boga i starają się pełnić Jego wolę, mogą być zbawieni (KKK 847).",
+"This is no reason for indifference: the Church has the urgent duty to proclaim the Gospel to all (CCC 848).": "Nie jest to powód do obojętności: Kościół ma pilny obowiązek głoszenia Ewangelii wszystkim (KKK 848).",
+"“Outside the Church no salvation” means exactly what it says.": "„Poza Kościołem nie ma zbawienia” znaczy dokładnie to, co mówi.",
+"It does mean what it says, as the Church explains it: whoever is saved is saved through Christ and His Church. What it does not mean is that God cannot unite to the Church those who desire it, as the Church herself has taught.": "Znaczy to, co mówi, tak jak wyjaśnia to Kościół: kto jest zbawiony, jest zbawiony przez Chrystusa i Jego Kościół. Nie znaczy natomiast, że Bóg nie może złączyć z Kościołem tych, którzy go pragną, jak nauczał sam Kościół.",
+"St. Vincent of Lérins taught that doctrine grows “in the same sense and the same meaning,” like a child growing into an adult.": "Św. Wincenty z Lerynu nauczał, że doktryna wzrasta „w tym samym sensie i tym samym znaczeniu”, jak dziecko stające się dorosłym.",
+"Pius X also issued the decree Lamentabili (1907) and, in 1910, an oath against Modernism for clergy.": "Pius X wydał też dekret Lamentabili (1907), a w 1910 roku przysięgę antymodernistyczną dla duchowieństwa.",
+"True development of doctrine draws out what was already believed; it never contradicts it (see Doesn’t the Church Change Its Doctrines?).": "Prawdziwy rozwój doktryny wydobywa to, w co już wierzono; nigdy temu nie przeczy (zob. „Czy Kościół nie zmienia swoich doktryn?”).",
+"Faith and reason are friends: the Church welcomes scholarship that serves the truth.": "Wiara i rozum są przyjaciółmi: Kościół przyjmuje badania naukowe, które służą prawdzie.",
+"Doctrines have to change to stay relevant.": "Doktryny muszą się zmieniać, by pozostać aktualne.",
+"Truth does not expire. The Church finds new ways to explain the faith to every age, but what God has revealed does not become false with time.": "Prawda się nie przeterminowuje. Kościół znajduje nowe sposoby wyjaśniania wiary każdej epoce, ale to, co Bóg objawił, nie staje się z czasem fałszywe.",
+"Religions make contradictory claims about God, Christ, and salvation; they cannot all be equally true.": "Religie głoszą sprzeczne twierdzenia o Bogu, Chrystusie i zbawieniu; nie mogą być wszystkie równie prawdziwe.",
+"Every person must be free from coercion in religious matters, and has the duty to seek the truth (Dignitatis Humanae 2).": "Każdy człowiek musi być wolny od przymusu w sprawach religijnych i ma obowiązek szukania prawdy (Dignitatis Humanae 2).",
+"Other religions can contain real goodness and truth, which the Church honors.": "Inne religie mogą zawierać prawdziwe dobro i prawdę, które Kościół szanuje.",
+"Because Christ is the Savior of all, Christians share Him with everyone, with respect and love.": "Ponieważ Chrystus jest Zbawicielem wszystkich, chrześcijanie dzielą się Nim z każdym, z szacunkiem i miłością.",
+"It is arrogant to say one religion is true.": "Mówienie, że jedna religia jest prawdziwa, to arogancja.",
+"If God has truly revealed Himself in Jesus Christ, saying so is not arrogance but faithfulness. Christians do not claim to be better than others; they claim that Christ is who He said He is.": "Jeśli Bóg prawdziwie objawił się w Jezusie Chrystusie, mówienie o tym nie jest arogancją, lecz wiernością. Chrześcijanie nie twierdzą, że są lepsi od innych; twierdzą, że Chrystus jest tym, za kogo się podawał.",
+"St. Athanasius spent his life defending the faith of Nicaea, often in exile.": "Św. Atanazy spędził życie, broniąc wiary nicejskiej, często na wygnaniu.",
+"If the Son were a creature, worshipping Him would be idolatry; yet the New Testament shows Him worshipped (Matthew 28:9; Hebrews 1:6).": "Gdyby Syn był stworzeniem, oddawanie Mu czci byłoby bałwochwalstwem; tymczasem Nowy Testament ukazuje, jak oddaje Mu się pokłon (Mt 28,9; Hbr 1,6).",
+"All things were made through the Son (John 1:3), so He cannot be one of the things that were made.": "Wszystko przez Syna się stało (J 1,3), więc On nie może być jedną z rzeczy stworzonych.",
+"Thomas called the risen Jesus “my Lord and my God” (John 20:28), and Jesus accepted it.": "Tomasz nazwał zmartwychwstałego Jezusa „Pan mój i Bóg mój” (J 20,28), a Jezus to przyjął.",
+"The Bible calls Jesus the “firstborn of all creation” (Colossians 1:15).": "Biblia nazywa Jezusa „pierworodnym wobec każdego stworzenia” (Kol 1,15).",
+"“Firstborn” here means first in rank and heir, as Israel and David are called God’s firstborn. The very next verse says that in Him all things were created, which places Him outside creation.": "„Pierworodny” znaczy tu pierwszy rangą i dziedzic, tak jak Izrael i Dawid są nazywani pierworodnymi Boga. Już następny werset mówi, że w Nim wszystko zostało stworzone, co stawia Go poza stworzeniem.",
+"Original sin is real: human nature is wounded, though not totally corrupted (CCC 405).": "Grzech pierworodny jest rzeczywisty: natura ludzka jest zraniona, choć nie całkowicie zepsuta (KKK 405).",
+"Grace is not a reward for our efforts but the source of them.": "Łaska nie jest nagrodą za nasze wysiłki, lecz ich źródłem.",
+"Without Christ we can do nothing (John 15:5); with Him we can do all things (Philippians 4:13).": "Bez Chrystusa nic nie możemy uczynić (J 15,5); z Nim wszystko możemy (Flp 4,13).",
+"Pelagianism today often looks like trusting in our own effort, rules, or self-improvement instead of in God.": "Pelagianizm często wygląda dziś jak zaufanie do własnego wysiłku, reguł czy samodoskonalenia zamiast do Boga.",
+"If grace does everything, why should I try?": "Jeśli łaska wszystko robi, po co mam się starać?",
+"Grace does not replace our freedom; it heals and frees it. God works in us both to will and to work (Philippians 2:13), and we respond with all our strength.": "Łaska nie zastępuje naszej wolności; leczy ją i wyzwala. Bóg sprawia w nas i chcenie, i działanie (Flp 2,13), a my odpowiadamy z całych sił.",
+"God created the world good (Genesis 1:31; CCC 299), and the Son truly took flesh.": "Bóg stworzył świat dobrym (Rdz 1,31; KKK 299), a Syn prawdziwie przyjął ciało.",
+"The Christian faith is public, not a secret for an elite: the apostles preached it openly to all.": "Wiara chrześcijańska jest publiczna, a nie tajemnicą dla elity: apostołowie głosili ją otwarcie wszystkim.",
+"The four Gospels were written in the first century and were received by the churches everywhere; the Gnostic texts were later and local.": "Cztery Ewangelie spisano w I wieku i przyjęły je Kościoły wszędzie; teksty gnostyckie są późniejsze i lokalne.",
+"Christianity honors the body, which will rise again, and the material signs of the sacraments.": "Chrześcijaństwo szanuje ciało, które zmartwychwstanie, i materialne znaki sakramentów.",
+"The Church suppressed other gospels that told the real story.": "Kościół ukrył inne ewangelie, które opowiadały prawdziwą historię.",
+"Irenaeus and others quoted and answered these writings openly. They were set aside because they contradicted the apostolic faith and appeared too late to come from the apostles, not because they were hidden.": "Ireneusz i inni otwarcie cytowali te pisma i na nie odpowiadali. Odrzucono je, bo przeczyły wierze apostolskiej i powstały zbyt późno, by pochodzić od apostołów, a nie dlatego, że je ukrywano.",
+"This truth protects the faithful: no one needs to worry whether their priest is holy enough for their Baptism or absolution to be real.": "Ta prawda chroni wiernych: nikt nie musi się martwić, czy jego kapłan jest dość święty, by chrzest czy rozgrzeszenie były prawdziwe.",
+"The scandal of a sinful priest is real and must be dealt with, but it does not empty the sacraments of Christ.": "Zgorszenie dawane przez grzesznego kapłana jest realne i trzeba się nim zająć, ale nie odbiera ono mocy sakramentom Chrystusa.",
+"The Church is holy because of Christ, while it embraces sinners in its bosom (CCC 827).": "Kościół jest święty dzięki Chrystusowi, choć obejmuje w swoim łonie grzeszników (KKK 827).",
+"Augustine wrote that whether Peter or Paul or Judas baptizes, it is Christ who baptizes.": "Augustyn pisał, że czy chrzci Piotr, czy Paweł, czy Judasz, to Chrystus chrzci.",
+"How can God work through a sinful man?": "Jak Bóg może działać przez grzesznego człowieka?",
+"God has always worked through imperfect people, from Moses and David to Peter, who denied Him. The power of the sacraments was never the minister’s to begin with.": "Bóg zawsze działał przez niedoskonałych ludzi, od Mojżesza i Dawida po Piotra, który się Go zaparł. Moc sakramentów nigdy nie należała do szafarza.",
+"A mother is the mother of a person, and the person born of Mary is the eternal Son of God.": "Matka jest matką osoby, a osobą narodzoną z Maryi jest odwieczny Syn Boży.",
+"Elizabeth, filled with the Holy Spirit, called Mary the mother of her Lord (Luke 1:41–43).": "Elżbieta, napełniona Duchem Świętym, nazwała Maryję Matką swojego Pana (Łk 1,41–43).",
+"The people of Ephesus celebrated the Council’s decision with a torchlight procession.": "Mieszkańcy Efezu uczcili decyzję Soboru procesją z pochodniami.",
+"See also: Theotokos, and The Hypostatic Union.": "Zobacz też: Theotokos oraz Unia hipostatyczna.",
+"God has no beginning, so He cannot have a mother.": "Bóg nie ma początku, więc nie może mieć matki.",
+"Mary is not the mother of the divine nature, which has no beginning; she is mother of the divine Person who took flesh from her. Because He is one Person, we rightly say that God was born of Mary.": "Maryja nie jest matką Boskiej natury, która nie ma początku; jest Matką Boskiej Osoby, która z Niej przyjęła ciało. Ponieważ jest On jedną Osobą, słusznie mówimy, że Bóg narodził się z Maryi.",
+"The Church teaches that there never has been, is not, and never will be anyone for whom Christ did not suffer (CCC 605).": "Kościół naucza, że nie było, nie ma i nie będzie żadnego człowieka, za którego Chrystus by nie cierpiał (KKK 605).",
+"Devotion to the Sacred Heart, revealed to St. Margaret Mary in the same era, was a remedy for Jansenist coldness.": "Nabożeństwo do Najświętszego Serca, objawione w tej samej epoce św. Małgorzacie Marii, było lekarstwem na jansenistyczny chłód.",
+"Reverence for the Eucharist is good; fear that keeps the faithful from it is not.": "Cześć dla Eucharystii jest dobra; lęk, który trzyma od niej wiernych z daleka, nie.",
+"Mortal sin must be confessed before Communion (CCC 1385), but Communion is medicine for sinners, not a prize for the perfect.": "Grzech śmiertelny trzeba wyznać przed Komunią (KKK 1385), ale Komunia jest lekarstwem dla grzeszników, a nie nagrodą dla doskonałych.",
+"Receiving Communion often makes it ordinary.": "Częste przyjmowanie Komunii czyni ją czymś zwyczajnym.",
+"Love grows by being nourished, not by being starved. The saints who received daily Communion grew more reverent, not less.": "Miłość rośnie, gdy jest karmiona, a nie głodzona. Święci, którzy codziennie przyjmowali Komunię, stawali się bardziej pełni czci, a nie mniej.",
+"The Council of Florence (1439) taught that “from the Son” and “through the Son” express the same faith.": "Sobór Florencki (1439) nauczał, że „od Syna” i „przez Syna” wyrażają tę samą wiarę.",
+"In 1995 the Pontifical Council for Promoting Christian Unity published a clarification on the Greek and Latin traditions about the procession of the Holy Spirit.": "W 1995 roku Papieska Rada ds. Popierania Jedności Chrześcijan opublikowała wyjaśnienie dotyczące tradycji greckiej i łacińskiej o pochodzeniu Ducha Świętego.",
+"The Spirit is called both the Spirit of the Father and the Spirit of the Son in the New Testament.": "W Nowym Testamencie Duch jest nazywany zarówno Duchem Ojca, jak i Duchem Syna.",
+"The question touches deep mysteries; it is best discussed with humility and charity on both sides.": "Kwestia ta dotyka głębokich tajemnic; najlepiej omawiać ją z pokorą i miłością po obu stronach.",
+"Adding the Filioque changed the faith of the Creed.": "Dodanie Filioque zmieniło wiarę Credo.",
+"The Catholic Church does not teach two sources of the Spirit; the Father remains the source. The words express the Son’s eternal role in the Spirit’s procession, which the Greek Fathers also spoke of when they said “through the Son.”": "Kościół katolicki nie naucza o dwóch źródłach Ducha; źródłem pozostaje Ojciec. Słowa te wyrażają odwieczną rolę Syna w pochodzeniu Ducha, o której mówili też Ojcowie greccy, mówiąc „przez Syna”.",
+"The Case": "Argumenty",
+"Common Objections": "Częste zarzuty",
+"Theosis: Sharing in the Divine Nature": "Theosis: uczestnictwo w Boskiej naturze",
+"Holy Icons": "Święte ikony",
+"God: One, Living, and Knowable": "Bóg: jeden, żywy i poznawalny",
+"The Holy Trinity": "Trójca Święta",
+"Creation and Original Sin": "Stworzenie i grzech pierworodny",
+"Jesus Christ: True God and True Man": "Jezus Chrystus: prawdziwy Bóg i prawdziwy człowiek",
+"Salvation: The Cross and the Resurrection": "Zbawienie: krzyż i zmartwychwstanie",
+"Scripture and Tradition": "Pismo i Tradycja",
+"The Church: One, Holy, Catholic, and Apostolic": "Kościół: jeden, święty, powszechny i apostolski",
+"The Pope and the Bishops": "Papież i biskupi",
+"The Eucharist and the Mass": "Eucharystia i Msza Święta",
+"Confession: The Sacrament of Reconciliation": "Spowiedź: sakrament pojednania",
+"Mary, Mother of God": "Maryja, Matka Boża",
+"The Communion of Saints": "Świętych obcowanie",
+"Grace, Faith, and Justification": "Łaska, wiara i usprawiedliwienie",
+"The Moral Life: Conscience and Natural Law": "Życie moralne: sumienie i prawo naturalne",
+"Death, Judgment, Heaven, Hell, and Purgatory": "Śmierć, sąd, niebo, piekło i czyściec",
+"Does God Exist? Classic Arguments": "Czy Bóg istnieje? Klasyczne argumenty",
+"Why Does God Allow Evil and Suffering?": "Dlaczego Bóg dopuszcza zło i cierpienie?",
+"Can We Trust the Gospels?": "Czy można ufać Ewangeliom?",
+"Did Jesus Really Rise from the Dead?": "Czy Jezus naprawdę zmartwychwstał?",
+"Why the Catholic Church? Authority and Succession": "Dlaczego Kościół katolicki? Autorytet i sukcesja",
+"The Bible Alone? (Sola Scriptura)": "Tylko Biblia? (Sola Scriptura)",
+"Faith Alone? (Sola Fide)": "Tylko wiara? (Sola Fide)",
+"Which Books Belong in the Bible?": "Które księgi należą do Biblii?",
+"The Real Presence in the Eucharist": "Rzeczywista obecność w Eucharystii",
+"Why Confess to a Priest?": "Dlaczego spowiadać się kapłanowi?",
+"Why Do Catholics Honor Mary?": "Dlaczego katolicy czczą Maryję?",
+"Praying to the Saints": "Modlitwa do świętych",
+"Statues, Icons, and Relics": "Figury, ikony i relikwie",
+"Purgatory in Scripture and Tradition": "Czyściec w Piśmie i Tradycji",
+"Why Baptize Infants?": "Dlaczego chrzcić niemowlęta?",
+"Faith and Science": "Wiara i nauka",
+"\"Call No Man Father\"?": "„Nikogo nie nazywajcie ojcem”?",
+"Angels and Demons": "Aniołowie i demony",
+"Sin: Mortal and Venial": "Grzech: śmiertelny i powszedni",
+"Indulgences": "Odpusty",
+"The Liturgical Year": "Rok liturgiczny",
+"Sacramentals and Blessings": "Sakramentalia i błogosławieństwa",
+"The Second Coming and the Last Judgment": "Powtórne przyjście i Sąd Ostateczny",
+"Human Dignity and Catholic Social Teaching": "Godność człowieka i katolicka nauka społeczna",
+"Can Non-Catholics Be Saved?": "Czy niekatolicy mogą być zbawieni?",
+"Once Saved, Always Saved?": "Raz zbawiony, zawsze zbawiony?",
+"Was Peter Ever in Rome?": "Czy Piotr był kiedykolwiek w Rzymie?",
+"Why Don’t Catholic Priests Marry?": "Dlaczego księża katoliccy się nie żenią?",
+"Why Does the Church Ordain Only Men?": "Dlaczego Kościół wyświęca tylko mężczyzn?",
+"What About the Crusades and the Inquisition?": "A co z wyprawami krzyżowymi i inkwizycją?",
+"Did the Church Keep the Bible from People?": "Czy Kościół ukrywał Biblię przed ludźmi?",
+"Isn’t Religion the Cause of Most Wars?": "Czy religia nie jest przyczyną większości wojen?",
+"Why \"Offer Up\" Suffering?": "Dlaczego „ofiarować” cierpienie?",
+"Who Are the Church Fathers?": "Kim są Ojcowie Kościoła?",
+"The Fathers on the Eucharist": "Ojcowie o Eucharystii",
+"The Fathers on Peter and the Church of Rome": "Ojcowie o Piotrze i Kościele rzymskim",
+"The Fathers on Bishops and Apostolic Succession": "Ojcowie o biskupach i sukcesji apostolskiej",
+"The Fathers on Baptism": "Ojcowie o chrzcie",
+"The Fathers on Mary": "Ojcowie o Maryi",
+"The Fathers on Confession and Penance": "Ojcowie o spowiedzi i pokucie",
+"The Fathers on Praying for the Dead": "Ojcowie o modlitwie za zmarłych",
+"The Fathers on Scripture and Tradition": "Ojcowie o Piśmie i Tradycji",
+"The Immaculate Conception and the Assumption": "Niepokalane Poczęcie i Wniebowzięcie",
+"Divine Providence": "Opatrzność Boża",
+"Consecrated Life": "Życie konsekrowane",
+"Jesus Christ: One Person, Two Natures": "Jezus Chrystus: jedna Osoba, dwie natury",
+"Is the Trinity in the Bible?": "Czy Trójca jest w Biblii?",
+"Did Constantine Invent the Church or the Bible?": "Czy Konstantyn wymyślił Kościół albo Biblię?",
+"Did Mary Have Other Children?": "Czy Maryja miała inne dzieci?",
+"Why Repeat the Same Prayers?": "Dlaczego powtarzać te same modlitwy?",
+"Doesn't the Church Change Its Doctrines?": "Czy Kościół nie zmienia swoich doktryn?",
+"The Incarnation": "Wcielenie",
+"The Hypostatic Union": "Unia hipostatyczna",
+"Consubstantial": "Współistotny",
+"Theotokos": "Theotokos",
+"Original Sin and Concupiscence": "Grzech pierworodny i pożądliwość",
+"Justification and Sanctification": "Usprawiedliwienie i uświęcenie",
+"Dogma, Doctrine, and Discipline": "Dogmat, doktryna i dyscyplina",
+"The Magisterium": "Magisterium",
+"Papal Infallibility and “Ex Cathedra”": "Nieomylność papieska i „ex cathedra”",
+"Worship and Veneration": "Uwielbienie i cześć",
+"The Beatific Vision": "Wizja uszczęśliwiająca",
+"The Paschal Mystery": "Misterium paschalne",
+"Canonization: Venerable, Blessed, Saint": "Kanonizacja: czcigodny, błogosławiony, święty",
+"Annulment (Declaration of Nullity)": "Unieważnienie (stwierdzenie nieważności)",
+"Encyclicals and Other Church Documents": "Encykliki i inne dokumenty Kościoła",
+"Merit": "Zasługa",
+"Heresy, Schism, and Apostasy": "Herezja, schizma i apostazja",
+"Is the Chair of Peter Empty? (Sedevacantism)": "Czy Stolica Piotrowa jest pusta? (Sediwakantyzm)",
+"Is the New Mass Valid?": "Czy nowa Msza jest ważna?",
+"No Salvation for Anyone Outside the Visible Church? (Feeneyism)": "Nikt nie jest zbawiony poza widzialnym Kościołem? (Feeneyizm)",
+"What Is Modernism?": "Czym jest modernizm?",
+"Aren’t All Religions the Same? (Indifferentism)": "Czy wszystkie religie nie są takie same? (Indyferentyzm)",
+"Is Jesus Only a Creature? (Arianism)": "Czy Jezus jest tylko stworzeniem? (Arianizm)",
+"Can We Save Ourselves? (Pelagianism)": "Czy możemy zbawić się sami? (Pelagianizm)",
+"Secret Knowledge and “Lost Gospels” (Gnosticism)": "Tajemna wiedza i „zaginione ewangelie” (Gnostycyzm)",
+"Can a Sinful Priest Give Real Sacraments? (Donatism)": "Czy grzeszny kapłan może udzielać prawdziwych sakramentów? (Donatyzm)",
+"Is Mary Only the Mother of Christ? (Nestorianism)": "Czy Maryja jest tylko Matką Chrystusa? (Nestorianizm)",
+"Is God’s Mercy Only for a Few? (Jansenism)": "Czy miłosierdzie Boże jest tylko dla nielicznych? (Jansenizm)",
+"The Filioque: East and West": "Filioque: Wschód i Zachód",
 "{*}; {*}": "{*}; {*}",
 "{*}: {*}": "{*}: {*}",
 "{*} · {*}": "{*} · {*}"
@@ -8898,6 +9241,153 @@ window.SANCTIFY_I18N = {
 },
 "t69": {
 "content": "Ojcowie kochali Pismo i nieustannie je wyjaśniali, lecz nigdy nie czytali go w oderwaniu od żywej Tradycji Kościoła, który otrzymał je od apostołów."
+},
+"t70": {
+"content": "Sobór powszechny to zgromadzenie biskupów całego świata w jedności z papieżem, które naucza z autorytetem całego Kościoła. Kościół katolicki liczy dwadzieścia jeden soborów powszechnych, od Nicei w 325 roku do Soboru Watykańskiego II (1962–1965).\n\nPierwsze siedem soborów, odbytych na Wschodzie i uznawanych zarówno przez katolików, jak i prawosławnych, zdefiniowało centralne prawdy o Trójcy i o Chrystusie."
+},
+"t71": {
+"content": "Bóg dał Mojżeszowi Dziesięć Przykazań na górze Synaj jako serce swojego przymierza z Izraelem. Jezus ich nie zniósł, lecz je wypełnił, streszczając je w dwóch największych przykazaniach: miłości Boga i miłości bliźniego.\n\nPierwsze trzy przykazania dotyczą naszej miłości do Boga, pozostałe siedem naszej miłości do bliźniego. Wyrażają one prawo naturalne wypisane w każdym ludzkim sercu."
+},
+"t72": {
+"content": "Błogosławieństwa są sercem nauczania Jezusa w Kazaniu na Górze. Opisują oblicze samego Chrystusa i postawy tych, którzy za Nim idą, oraz obiecują szczęście, które Bóg złożył w każdym ludzkim sercu.\n\nKatechizm naucza, że Błogosławieństwa odpowiadają na nasze naturalne pragnienie szczęścia, pragnienie, które Bóg w nas złożył, aby nas do siebie przyciągnąć."
+},
+"t73": {
+"content": "Credo to streszczenie wiary. Od początku przyjmujący chrzest wyznawali wiarę w Ojca, Syna i Ducha Świętego. Z tych wyznań chrzcielnych wyrosły Skład Apostolski, starożytne chrzcielne wyznanie wiary Kościoła rzymskiego, oraz Credo nicejskie, uzupełnione na Soborze Konstantynopolitańskim w 381 roku.\n\nCredo nicejskie wyznaje się na niedzielnej Mszy i w Boskiej Liturgii; wspólne jest katolikom, prawosławnym i wielu protestantom."
+},
+"t74": {
+"content": "Kościół uroczyście zdefiniował cztery dogmaty o Maryi: że jest Matką Bożą (431), że jest zawsze Dziewicą (649), że została poczęta bez grzechu pierworodnego (1854) i że została wzięta z duszą i ciałem do chwały niebieskiej (1950).\n\nNiepokalane Poczęcie oznacza, że od pierwszej chwili istnienia, dzięki wyjątkowej łasce i ze względu na zasługi Chrystusa, Maryja została zachowana od grzechu pierworodnego. Wniebowzięcie oznacza, że po zakończeniu ziemskiego życia została wzięta z duszą i ciałem do nieba, gdzie już uczestniczy w zmartwychwstaniu swego Syna."
+},
+"t75": {
+"content": "Bóg nie stworzył świata, by potem zostawić go samemu sobie. Prowadzi wszystkie rzeczy, wielkie i małe, ku ich ostatecznemu celowi z mądrością i miłością. Nazywa się to Bożą Opatrznością.\n\nBóg szanuje wolność swoich stworzeń, a nawet daje im godność współpracy ze swoim planem. Dopuszcza zło, lecz nigdy nie jest przyczyną zła moralnego, i potrafi wyprowadzić z niego dobro, tak jak z największego zła, śmierci swego Syna, wyprowadził największe dobro, nasze odkupienie."
+},
+"t76": {
+"content": "Niektórzy chrześcijanie są powołani, by naśladować Chrystusa z bliska, ślubując rady ewangeliczne ubóstwa, czystości i posłuszeństwa. To życie konsekrowane przybiera wiele form: pustelników, konsekrowanych dziewic i wdów, mnichów i mniszek, zakonów i zgromadzeń zakonnych, instytutów świeckich i stowarzyszeń życia apostolskiego.\n\nOsoby konsekrowane świadczą o królestwie niebieskim, gdzie nie będzie małżeństwa, i o prawdzie, że Bóg sam wystarczy."
+},
+"t77": {
+"content": "Jezus Chrystus jest jedną Osobą Boską, odwiecznym Synem Bożym, który przyjął od Maryi Dziewicy pełną naturę ludzką, ciało i duszę. Jest prawdziwym Bogiem i prawdziwym człowiekiem, nie w połowie jednym i drugim ani nie mieszaniną obu.\n\nSobór Chalcedoński w 451 roku nauczał, że Jego dwie natury są zjednoczone „bez zmieszania, bez zmiany, bez podziału, bez rozdzielenia”. Ponieważ jest jednym i drugim, to, co czyni jako człowiek, czyni Bóg: Bóg narodził się z Maryi, Bóg cierpiał i umarł na krzyżu."
+},
+"t78": {
+"content": "Słowo „Trójca” nie występuje w Biblii, ale rzeczywistość, którą nazywa, tak. Pismo naucza, że jest jeden Bóg, i zarazem ukazuje, że Ojciec jest Bogiem, Syn jest Bogiem i Duch Święty jest Bogiem oraz że są od siebie różni.\n\nKościół posłużył się słowem „Trójca”, które pojawia się po raz pierwszy u św. Teofila Antiocheńskiego około 180 roku, aby wiernie wyrazić to, co objawia Pismo."
+},
+"t79": {
+"content": "Popularne twierdzenie głosi, że cesarz Konstantyn stworzył Kościół katolicki, zdecydował, które księgi należą do Biblii, albo uczynił Jezusa Bogiem na Soborze Nicejskim. Świadectwa historyczne pokazują coś innego.\n\nKościół z biskupami, sakramentami i Pismem istniał już prawie trzysta lat przed Konstantynem i przetrwał straszne prześladowania bez żadnej pomocy państwa."
+},
+"t80": {
+"content": "Ewangelie wspominają o „braciach” Jezusa i niektórzy twierdzą, że Maryja miała inne dzieci. Kościół, idąc za jednomyślną wiarą pierwszych Ojców, naucza, że Maryja pozostała dziewicą przez całe życie.\n\nW hebrajskim i aramejskim nie było osobnego słowa na kuzyna, a słowa „brat” używano na określenie krewnych różnego rodzaju."
+},
+"t81": {
+"content": "Niektórzy zarzucają, że katolickie modlitwy, jak różaniec czy Modlitwa Jezusowa, są „gadulstwem”, przed którym przestrzegał Jezus. Ale Jezus krytykował puste wielosłowie, mające zrobić wrażenie na Bogu mnóstwem słów, a nie modlitwę, która z miłością wraca do tych samych słów.\n\nSamo Pismo pełne jest powtarzanej modlitwy, a Jezus dał nam stałą modlitwę: Ojcze nasz."
+},
+"t82": {
+"content": "Rozumienie wiary przez Kościół rośnie z czasem, ale sama wiara się nie zmienia. Św. Wincenty z Lerynu porównywał to do wzrastania dziecka w dorosłego: członki rosną, lecz osoba pozostaje ta sama.\n\nŚw. John Henry Newman badał ten rozwój doktryny i pokazał, że prawdziwy rozwój zachowuje pierwotną ideę, a zepsucie jej przeczy."
+},
+"t83": {
+"content": "Przeistoczenie (transsubstancjacja) to słowo, którym Kościół nazywa to, co dzieje się podczas Mszy, gdy kapłan wypowiada nad chlebem i winem słowa Chrystusa. Mówiąc prosto: chleb i wino przestają być chlebem i winem i stają się Ciałem i Krwią Jezusa Chrystusa, choć nadal wyglądają, smakują i są w dotyku dokładnie tak samo.\n\nSłowo pochodzi z łaciny: trans znaczy „przez” albo „zmiana”, a substancja to to, czym rzecz naprawdę jest pod swoimi przypadłościami. Substancja się zmienia; przypadłości (kolor, smak, wielkość itd.) pozostają. Dlatego katolicy klękają przed Eucharystią: to nie symbol Jezusa, ale sam Jezus."
+},
+"t84": {
+"content": "Wcielenie znaczy „stanie się ciałem” (od łac. caro, ciało). To nazwa tajemnicy, w której odwieczny Syn Boży stał się prawdziwym człowiekiem, Jezusem z Nazaretu, poczętym z Ducha Świętego w łonie Maryi Dziewicy.\n\nNie przestał być Bogiem; przyjął do siebie naturę ludzką. Katechizm podaje cztery powody: aby nas zbawić, jednając nas z Bogiem; abyśmy poznali miłość Boga; aby być wzorem świętości; i aby uczynić nas uczestnikami Boskiej natury (KKK 457–460)."
+},
+"t85": {
+"content": "„Unia hipostatyczna” to fachowa nazwa tego, jak Jezus jest zarazem Bogiem i człowiekiem. Hipostaza to greckie słowo oznaczające „osobę”. W Jezusie dwie natury, Boska i ludzka, są zjednoczone w jednej Osobie, Synu Bożym. Nie mieszają się w coś pół Boskiego i pół ludzkiego i nie są dwiema osobami dzielącymi jedno ciało.\n\nMożna to ująć prosto: „natura” odpowiada na pytanie „czym to jest?”, a „osoba” na pytanie „kim jest?”. Pytając „czym jest Jezus?”, odpowiadamy: „Bogiem i człowiekiem”. Pytając „kim jest Jezus?”, mamy tylko jedną odpowiedź: odwiecznym Synem Bożym."
+},
+"t86": {
+"content": "„Współistotny” znaczy „jednej i tej samej substancji”, czyli tego samego bytu. To przekład greckiego słowa homoousios, użytego przez Sobór Nicejski w 325 roku: Syn jest współistotny Ojcu. Mówiąc prosto, Syn nie jest pomniejszym bogiem ani największym stworzeniem Ojca; jest Bogiem dokładnie tak, jak Ojciec jest Bogiem.\n\nMówiąc o Trójcy, katolicy wyznają jedną Boską naturę czy substancję (czym jest Bóg) i trzy Osoby (kim jest Bóg): Ojca, Syna i Ducha Świętego. Nie są to trzej bogowie, lecz jeden Bóg w trzech Osobach, z których każda jest w pełni Bogiem (KKK 253)."
+},
+"t87": {
+"content": "Theotokos to greckie słowo oznaczające „Bożą Rodzicielkę”, tę, która zrodziła Boga. To najstarszy i najważniejszy tytuł Maryi, zwykle oddawany po polsku jako „Matka Boża”.\n\nNie oznacza, że Maryja istniała przed Bogiem ani że stworzyła Boga. Oznacza, że Dziecię, które nosiła i porodziła, Jezus, jest prawdziwym Bogiem. Matka jest matką osoby, a nie tylko ciała; skoro Jezus jest Osobą Boską, Maryja jest prawdziwie Matką Boga. Sobór Efeski potwierdził ten tytuł w 431 roku."
+},
+"t88": {
+"content": "Łaska jest darmowym darem Bożej pomocy i samego Bożego życia. Nie jest czymś, na co zasługujemy. Katechizm nazywa ją „życzliwością, darmową pomocą, której Bóg nam udziela”, abyśmy odpowiedzieli na Jego wezwanie (KKK 1996).\n\nKościół mówi o dwóch głównych rodzajach. Łaska uświęcająca to samo życie Boże zamieszkujące w duszy, dane najpierw na chrzcie; czyni nas świętymi i miłymi Bogu, a grzech śmiertelny ją usuwa. Łaski uczynkowe to pomoce, których Bóg udziela w konkretnych chwilach, by poznać dobro i je czynić: impuls, natchnienie, siła w pokusie (KKK 2000)."
+},
+"t89": {
+"content": "Katechizm określa sakramenty jako „skuteczne znaki łaski, ustanowione przez Chrystusa i powierzone Kościołowi, przez które jest nam udzielane życie Boże” (KKK 1131). Mówiąc prosto: sakrament to znak, który naprawdę sprawia to, co ukazuje. Woda chrztu ukazuje obmycie i naprawdę obmywa z grzechu.\n\nKażdy sakrament ma swój znak (wodę, olej, chleb i wino, włożenie rąk) i swoje słowa. Sakramenty działają mocą Chrystusa, a nie świętości szafarza; Kościół mówi, że działają ex opere operato, „mocą samego faktu spełnienia czynności” (KKK 1128)."
+},
+"t90": {
+"content": "Grzech pierworodny to grzech naszych pierwszych rodziców i zraniony stan natury ludzkiej, który każdy człowiek od nich dziedziczy. Nie jest to grzech popełniony przez nas osobiście: Katechizm mówi, że jest on „zaciągnięty”, a nie „popełniony” (KKK 404). Jest utratą pierwotnej świętości i sprawiedliwości, którymi Bóg obdarzył rodzaj ludzki.\n\nChrzest gładzi grzech pierworodny i daje duszy życie Boże. Pozostaje jednak pożądliwość: skłonność do grzechu, nieuporządkowane ciążenie naszych pragnień. Pożądliwość sama w sobie nie jest grzechem. Pozostaje, abyśmy z nią walczyli, i nie może zaszkodzić tym, którzy opierają się jej łaską Chrystusa (KKK 1264)."
+},
+"t91": {
+"content": "Usprawiedliwienie to Boży akt czynienia nas sprawiedliwymi: uwolnienia od grzechu i uczynienia nas Jego dziećmi. Jest to dzieło Boga, nie nasze, i zaczyna się na chrzcie (KKK 1987, 1992). Katolicy wierzą, że usprawiedliwienie nie tylko przykrywa grzech, lecz naprawdę przemienia nas od wewnątrz. Jak mówi Katechizm, cytując Sobór Trydencki, usprawiedliwienie jest „nie tylko odpuszczeniem grzechów, ale także uświęceniem i odnowieniem człowieka wewnętrznego” (KKK 1989).\n\nUświęcenie to trwający całe życie wzrost w świętości, który następuje, gdy współpracujemy z łaską. Ta sama łaska, która nam przebacza, także nas odnawia, abyśmy mogli kochać Boga i bliźniego i spełniać dobre uczynki miłe Bogu."
+},
+"t92": {
+"content": "Te trzy słowa bywają często mylone. Dogmat to prawda objawiona przez Boga, którą Kościół zdefiniował w sposób zobowiązujący każdego katolika do wiary, jak Trójca czy Niepokalane Poczęcie (KKK 88). Doktryna to szersze słowo na całe autorytatywne nauczanie Kościoła w sprawach wiary i moralności: każdy dogmat jest doktryną, ale nie każda doktryna została uroczyście zdefiniowana.\n\nDyscyplina to praktyczna zasada życia Kościoła, jak piątkowa pokuta, język liturgii czy celibat kapłanów Kościoła łacińskiego. Dyscypliny służą wierze i z ważnych powodów mogą się zmieniać. Dogmaty nie mogą się zmieniać, choć nasze ich rozumienie może się pogłębiać."
+},
+"t93": {
+"content": "Magisterium to urząd nauczycielski Kościoła: papież i biskupi w komunii z nim, którym powierzono interpretację Słowa Bożego, czy to spisanego w Piśmie, czy przekazanego w Tradycji (KKK 85). Słowo pochodzi od łacińskiego magister, „nauczyciel”.\n\nMagisterium nie stoi ponad Słowem Bożym, lecz mu służy, nauczając tylko tego, co zostało przekazane (KKK 86). W pewnych warunkach może nauczać nieomylnie, a naucza też w sposób zwyczajny, któremu katolicy okazują „religijne posłuszeństwo” rozumu i woli (KKK 892)."
+},
+"t94": {
+"content": "Nieomylność papieska oznacza, że dzięki szczególnemu darowi Ducha Świętego papież jest zachowany od błędu, gdy uroczyście definiuje naukę wiary lub moralności dla całego Kościoła. Taka definicja nazywa się ex cathedra, „z katedry” Piotra. Sobór Watykański I zdefiniował to w 1870 roku.\n\nNieomylność nie oznacza, że papież jest bez grzechu, że wszystko, co mówi, jest nieomylne, ani że może wymyślać nowe doktryny. Dotyczy jedynie sytuacji, gdy naucza jako pasterz wszystkich chrześcijan w sprawach wiary lub moralności i zamierza coś ostatecznie zdefiniować. Papieże korzystali z niej rzadko; Pius XII na przykład zdefiniował Wniebowzięcie Maryi w 1950 roku."
+},
+"t95": {
+"content": "Sukcesja apostolska oznacza, że biskupi Kościoła katolickiego są następcami apostołów, połączonymi z nimi nieprzerwaną linią przez włożenie rąk. Apostołowie ustanawiali ludzi, którzy kontynuowali ich dzieło, a ci z kolei ustanawiali innych, tak że nauczanie, kult i władza Kościoła są przekazywane od początku (KKK 77, 861).\n\nTo coś więcej niż historyczna lista imion. To gwarancja, że wiara głoszona dziś jest tą samą wiarą, której nauczali apostołowie, i że sakramenty są sprawowane z władzą samego Chrystusa."
+},
+"t96": {
+"content": "Katolicy oddają cześć uwielbienia, czyli adorację, jedynie Bogu; tradycyjnie nazywa się ją latrią. Cześć oddawana świętym to coś innego, zwane czcią lub dulią: szacunek i miłość do przyjaciół Boga z powodu tego, co Bóg w nich uczynił. Szczególna cześć oddawana Maryi, największej ze świętych, nazywa się hiperdulią, najwyższą czcią.\n\nCzczenie świętych przypomina chwalenie artysty przez podziwianie jego arcydzieła: chwała wraca do Boga. Kościół naucza, że cześć oddawana świętemu obrazowi przechodzi na tego, kogo przedstawia, i że nie jest to adoracja należna jedynie Bogu (KKK 2132)."
+},
+"t97": {
+"content": "Wizja uszczęśliwiająca to nazwa, jaką Kościół nadaje radości nieba: oglądaniu Boga twarzą w twarz (1 Kor 13,12). „Uszczęśliwiająca” znaczy „czyniąca błogosławionym” lub „czyniąca szczęśliwym”. W niebie święci widzą Boga takim, jakim jest, nie w wyobraźni ani przez wiarę, lecz bezpośrednio, i to oglądanie napełnia ich doskonałym szczęściem (KKK 1023, 1028).\n\nŻadne stworzenie nie może oglądać Boga w ten sposób własną mocą. Sam Bóg musi odsłonić nam swoją tajemnicę i dać nam zdolność oglądania Go; teologowie nazywają ten dar „światłem chwały”."
+},
+"t98": {
+"content": "Misterium paschalne to nazwa zbawczego dzieła Chrystusa w Jego męce, śmierci, zmartwychwstaniu i wniebowstąpieniu. „Paschalne” pochodzi od Paschy, przejścia: jak baranek paschalny ocalił Izraela w Egipcie, tak Jezus, Baranek Boży, przechodzi ze śmierci do życia i prowadzi nas ze sobą.\n\nCała liturgia Kościoła celebruje to misterium: przede wszystkim w Wielkanoc, ale też w każdą niedzielę i w każdej Mszy, w której uobecnia się jedyna ofiara Chrystusa (KKK 1067, 1085)."
+},
+"t99": {
+"content": "Kanonizacja to oficjalne ogłoszenie przez Kościół, że ktoś jest w niebie i może być czczony jako święty w całym Kościele. Nikogo nie czyni świętym; uznaje to, co Bóg już uczynił.\n\nProces ma etapy. „Sługa Boży” to ktoś, czyja sprawa została otwarta. „Czcigodny” oznacza, że Kościół stwierdził heroiczność cnót tej osoby. „Błogosławiony” (beatyfikacja) wymaga zwykle cudu za jej wstawiennictwem, z wyjątkiem męczenników, i pozwala na kult w określonym miejscu. „Święty” (kanonizacja) wymaga zwykle kolejnego cudu i pozwala na kult w całym Kościele."
+},
+"t100": {
+"content": "Ekskomunika jest najcięższą karą, jaką może nałożyć Kościół. Nie wyrzuca człowieka z Kościoła ani nie przesądza, że jest on zgubiony. Zabrania katolikowi przyjmowania sakramentów i pewnych działań kościelnych w nadziei, że zrozumie powagę tego, co uczynił, i powróci (KKK 1463).\n\nNiektóre ekskomuniki zaciąga się automatycznie przez sam czyn (latae sententiae) za pewne bardzo ciężkie przestępstwa, jak dokonanie aborcji czy znieważenie Najświętszej Eucharystii. Mają leczyć, a nie tylko karać, i mogą zostać zdjęte przez kompetentną władzę, często w sakramencie pokuty."
+},
+"t101": {
+"content": "Unieważnienie, właściwie stwierdzenie nieważności, nie jest katolickim rozwodem. To orzeczenie sądu kościelnego, że małżeństwo nigdy nie było ważne od początku, ponieważ w dniu ślubu zabrakło czegoś istotnego: na przykład jedna osoba nie była wolna do zawarcia małżeństwa, nie wyraziła wolnej zgody albo nie zamierzała zawrzeć wiernego, dozgonnego małżeństwa otwartego na dzieci (KKK 1629).\n\nWażne i dopełnione małżeństwo sakramentalne nie może zostać rozwiązane przez żadną ludzką władzę (KKK 1640), bo Jezus powiedział: „Co Bóg złączył, niech człowiek nie rozdziela” (Mk 10,9). Stwierdzenie nieważności nie mówi, że związek był nierzeczywisty, i nie czyni dzieci nieślubnymi."
+},
+"t102": {
+"content": "Ekumenizm to dążenie do jedności wszystkich chrześcijan. Jezus modlił się, aby wszyscy Jego uczniowie stanowili jedno (J 17,21), a podziały między chrześcijanami ranią tę jedność. Kościół katolicki wierzy, że jedyny Kościół Chrystusowy „trwa w” Kościele katolickim, a zarazem, że poza jego widzialną strukturą znajduje się wiele pierwiastków uświęcenia i prawdy (KKK 816, 819).\n\nEkumenizm nie oznacza udawania, że różnice nie mają znaczenia. Oznacza modlitwę, nawrócenie serca, uczciwy dialog o rzeczywistych różnicach i współpracę wszędzie, gdzie to możliwe (KKK 821)."
+},
+"t103": {
+"content": "Kościół naucza przez wiele rodzajów dokumentów. Encyklika to list papieża do całego Kościoła, a czasem do wszystkich ludzi dobrej woli, na ważny temat, jak Rerum Novarum (1891) o prawach robotników. Adhortacja apostolska zachęca wiernych w jakiejś sprawie, często po synodzie biskupów. Konstytucja apostolska to dokument uroczysty, używany na przykład do zdefiniowania Wniebowzięcia czy reorganizacji Kurii Rzymskiej.\n\nDokumenty wydają też sobory: Sobór Watykański II ogłosił cztery konstytucje, dziewięć dekretów i trzy deklaracje. Dokumenty Kościoła nazywa się zwykle od ich pierwszych słów po łacinie."
+},
+"t104": {
+"content": "Liturgia pierwotnie oznaczała „dzieło publiczne”, pracę wykonywaną dla dobra ludu. W Kościele oznacza jego oficjalny, publiczny kult: przede wszystkim Mszę, pozostałe sakramenty i Liturgię Godzin. W liturgii sam Chrystus działa jako Najwyższy Kapłan razem ze swoim Ciałem, Kościołem (KKK 1069–1070).\n\nDlatego liturgia ma ustalone formy i nie jest wymyślana przez każdego kapłana czy wspólnotę: należy do całego Kościoła. Prywatne modlitwy i nabożeństwa są dobre, ale liturgia jest szczytem, do którego zmierza cała działalność Kościoła, i źródłem, z którego wypływa cała jego moc (KKK 1074)."
+},
+"t105": {
+"content": "Zasługa oznacza nagrodę należną za dobry czyn. Ściśle biorąc, nikt nie może niczego uzyskać od Boga własną mocą: wszystko, co mamy, jest Jego darem. Ale Bóg w swojej hojności pozwala nam współpracować ze swoją łaską i nagradza dobro, które w tej łasce czynimy (KKK 2008).\n\nGdy więc katolicy mówią o zasłudze, nie chodzi im o kupowanie nieba. Jak Kościół modli się w prefacji o świętych, koronując ich zasługi, Bóg koronuje własne dary (KKK 2006)."
+},
+"t106": {
+"content": "To trzy sposoby zerwania z wiarą lub z Kościołem. Herezja to uporczywe zaprzeczanie lub uporczywe powątpiewanie, po przyjęciu chrztu, o prawdzie, w którą należy wierzyć wiarą Boską i katolicką. Apostazja to całkowite odrzucenie wiary chrześcijańskiej. Schizma to odmowa uznania zwierzchnictwa papieża lub wspólnoty z członkami Kościoła jemu podporządkowanymi (KKK 2089).\n\nKluczowe jest słowo „uporczywe”. Kto po prostu się myli lub został źle pouczony, nie jest formalnym heretykiem. Kościół odróżnia błąd, który trzeba nazwać, od osoby, którą trzeba kochać i pomóc jej wrócić do prawdy."
+},
+"t107": {
+"content": "Sediwakantyzm (z łac. sede vacante, „gdy stolica jest pusta”) to twierdzenie, że od dziesięcioleci nie ma prawdziwego papieża, zwykle od śmierci Piusa XII w 1958 roku. Sediwakantyści utrzymują, że Sobór Watykański II nauczał błędów, że papieże, którzy go zatwierdzili, byli więc heretykami i że heretyk nie może być papieżem.\n\nKościół to odrzuca. Chrystus zbudował swój Kościół na Piotrze i obiecał, że bramy piekielne go nie przemogą (Mt 16,18). Sobór Watykański I nauczał, że Piotr będzie miał nieustannych następców w prymacie nad całym Kościołem. Sediwakantyzm wymaga wiary, że cały widzialny Kościół, jego papież i wszyscy biskupi, zawiedli naraz, zostawiając wiernych bez pasterzy: dokładnie to, co Chrystus obiecał, że nigdy się nie stanie."
+},
+"t108": {
+"content": "Niektórzy twierdzą, że Msza ogłoszona przez papieża św. Pawła VI w 1969 roku, forma zwyczajna rytu rzymskiego sprawowana dziś w większości parafii, jest nieważna lub szkodliwa. Kościół naucza, że jest prawdziwą i ważną Mszą, w której uobecnia się ofiara Chrystusa i On sam jest prawdziwie obecny w Eucharystii.\n\nKościół ma władzę nad liturgią i nie może dać swoim dzieciom obrzędu złego lub nieważnego. Sobór Trydencki potępił twierdzenie, że obrzędy, których Kościół katolicki używa we Mszy, są zachętą do bezbożności. Katolicy mogą kochać starszą formę Mszy, która należy do dziedzictwa Kościoła, nie zaprzeczając, że Msza sprawowana dziś na całym świecie jest prawdziwie Najświętszą Ofiarą."
+},
+"t109": {
+"content": "Kościół naucza, że „poza Kościołem nie ma zbawienia”: wszelkie zbawienie pochodzi od Chrystusa przez Kościół, który jest Jego Ciałem (KKK 846). W latach 40. XX wieku ks. Leonard Feeney z Bostonu nauczał, że oznacza to, iż nikt nie może być zbawiony, jeśli nie jest formalnym, ochrzczonym członkiem Kościoła katolickiego, zaprzeczając, że pragnienie chrztu może zbawić.\n\nW 1949 roku Święte Oficjum napisało do arcybiskupa Bostonu, wyjaśniając, że ks. Feeney źle zrozumiał tę naukę: człowiek może być złączony z Kościołem przez pragnienie, nawet ukryte, połączone z wiarą nadprzyrodzoną i doskonałą miłością. Ks. Feeney został ekskomunikowany w 1953 roku za nieposłuszeństwo i pojednał się z Kościołem przed śmiercią w 1978 roku."
+},
+"t110": {
+"content": "Modernizm był ruchem przełomu XIX i XX wieku, który próbował pogodzić wiarę z filozofią nowożytną, traktując dogmaty jako zmienne wyrazy uczuć religijnych, a nie jako prawdy objawione. Papież św. Pius X potępił go w encyklice Pascendi (1907), nazywając go „syntezą wszystkich herezji”.\n\nWbrew niemu Kościół naucza, że Bóg prawdziwie się objawił, a dogmaty są prawdziwymi twierdzeniami o Nim, a nie symbolami ewoluującymi z czasem. Sobór Watykański I nauczał, że należy zawsze zachowywać sens świętych dogmatów raz ogłoszony przez Kościół. Rozumienie może się pogłębiać, ale sama wiara nie zmienia swojego sensu."
+},
+"t111": {
+"content": "Indyferentyzm religijny to przekonanie, że wszystkie religie są równie prawdziwe albo że nie ma znaczenia, którą się wyznaje. Kościół go odrzuca, odrzucając zarazem pogardę dla innych religii.\n\nSobór Watykański II nauczał, że Kościół nie odrzuca niczego, co w innych religiach jest prawdziwe i święte, a co często odzwierciedla promień tej Prawdy, która oświeca wszystkich ludzi (Nostra Aetate 2). Ale Jezus Chrystus jest jedynym Zbawicielem wszystkich, a pełnia prawdy znajduje się w Nim i w Jego Kościele. Szacunek dla innych i obowiązek dzielenia się Ewangelią idą w parze."
+},
+"t112": {
+"content": "Na początku IV wieku Ariusz, kapłan z Aleksandrii, nauczał, że Syn Boży jest pierwszym i największym ze stworzeń Bożych, lecz nie jest wieczny ani nie jest Bogiem tak jak Ojciec: „był czas, kiedy Go nie było”. Sobór Nicejski w 325 roku potępił to, wyznając, że Syn jest „współistotny Ojcu”, Bóg prawdziwy z Boga prawdziwego, zrodzony, a nie stworzony (KKK 242, 465).\n\nPodobne idee głosi się dziś, na przykład Świadkowie Jehowy, którzy uważają Jezusa za istotę stworzoną. Pismo i wiara całego Kościoła wyznają Go jako Boga."
+},
+"t113": {
+"content": "Pelagiusz, brytyjski mnich z początku V wieku, nauczał, że grzech pierworodny nie zranił natury ludzkiej i że ludzie mogą żyć bez grzechu i osiągnąć zbawienie własną siłą woli, a łaska jest tylko pomocnym dodatkiem. Sprzeciwił mu się św. Augustyn, a synod w Kartaginie w 418 roku potępił jego naukę. Później synod w Orange (529) odrzucił „semipelagianizm”, czyli pogląd, że pierwszy krok ku Bogu wychodzi od nas, a łaska tylko za nim idzie.\n\nKościół naucza, że wszelkie dobro, jakie czynimy na drodze do zbawienia, nawet sam początek wiary, jest poruszone Bożą łaską (KKK 2001). Prawdziwie współpracujemy, ale nigdy nie działamy sami. Papież Franciszek przestrzegał przed „nowym pelagianizmem” w adhortacji o świętości Gaudete et Exsultate (2018)."
+},
+"t114": {
+"content": "Gnostycyzm był rodziną ruchów II i III wieku, które głosiły, że zbawienie przychodzi przez tajemną wiedzę (gnozę), że świat materialny jest zły, a stwórca świata jest niższym, nieświadomym bogiem. Niektórzy gnostycy przeczyli, że Chrystus miał prawdziwe ciało (doketyzm). Św. Ireneusz odparł ich w swym wielkim dziele Przeciw herezjom (ok. 180), wskazując na publiczną wiarę przekazywaną przez biskupów w sukcesji od apostołów.\n\nTak zwane „zaginione ewangelie”, jak Ewangelia Tomasza czy Ewangelia Judasza, pochodzą w większości z tych kręgów i zostały spisane długo po czterech Ewangeliach. Kościół nigdy ich nie ukrywał; uznał, że nie przekazują one wiary apostolskiej."
+},
+"t115": {
+"content": "W IV-wiecznej Afryce Północnej donatyści nauczali, że sakramenty udzielane przez duchownych, którzy ciężko zgrzeszyli, zwłaszcza tych, którzy w czasie prześladowań wydali Pismo, są nieważne, a prawdziwy Kościół to tylko wspólnota czystych. Św. Augustyn ich odparł.\n\nKościół naucza, że sakramenty działają mocą Chrystusa, a nie świętości szafarza: to Chrystus chrzci, Chrystus przebacza, Chrystus składa ofiarę. Kapłan w grzechu ciężkim popełnia kolejny grzech, sprawując je niegodnie, ale sam sakrament jest ważny (KKK 1128, 1584)."
+},
+"t116": {
+"content": "Nestoriusz, arcybiskup Konstantynopola, sprzeciwiał się w V wieku nazywaniu Maryi Theotokos, „Bożą Rodzicielką”, woląc tytuł „Matka Chrystusa”. Za tym kryła się myśl, że w Chrystusie są dwie osoby, Boski Syn i ludzki Jezus, luźno ze sobą połączone. Sprzeciwił mu się św. Cyryl Aleksandryjski, a Sobór Efeski w 431 roku potwierdził, że Chrystus jest jedną Osobą Boską, a Maryja jest prawdziwie Matką Boga (KKK 466, 495).\n\nTen tytuł dotyczy przede wszystkim Jezusa: Dziecię narodzone z Maryi nie jest człowiekiem, w którym zamieszkał Bóg, lecz samym Bogiem, który stał się człowiekiem."
+},
+"t117": {
+"content": "Jansenizm, nazwany od biskupa Korneliusza Jansena (zm. 1638), rozpowszechnił się we Francji i Niderlandach w XVII i XVIII wieku. Głosił surowe ujęcie łaski: że Chrystus nie umarł za wszystkich, że łasce nie można się oprzeć i że niewielu jest godnych przyjmowania Komunii, która powinna być rzadka. Papież Innocenty X potępił w 1653 roku pięć twierdzeń z dzieła Jansena, a późniejsi papieże potępili kolejne błędy.\n\nKościół naucza, że Chrystus umarł za wszystkich bez wyjątku (KKK 605), że Bóg pragnie zbawienia wszystkich i że wierni powinni często przyjmować Komunię, gdy są należycie przygotowani. Papież św. Pius X zachęcał w 1905 roku do częstej, nawet codziennej Komunii."
+},
+"t118": {
+"content": "Filioque to łacińskie słowo oznaczające „i Syna”. W Kościele łacińskim Credo nicejskie mówi, że Duch Święty „od Ojca i Syna pochodzi”. Pierwotne Credo z 381 roku mówiło tylko „od Ojca”, a słowa te dodano później na Zachodzie. Stało się to jedną z kwestii dzielących katolików i prawosławnych.\n\nKościół katolicki naucza, że wschodni sposób mówienia, że Duch pochodzi od Ojca przez Syna, i sposób zachodni są komplementarne, a nie sprzeczne, o ile są właściwie rozumiane (KKK 248). Ojciec jest jedynym źródłem całej Trójcy. Katolicy wschodni odmawiają Credo bez Filioque, a papieże modlili się nim bez Filioque wspólnie z patriarchami prawosławnymi."
 }
 },
 "texts": {

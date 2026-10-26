@@ -8306,6 +8306,349 @@ window.SANCTIFY_I18N = {
 "St. Irenaeus of Lyon, c. 180: \"Suppose there arise a dispute relative to some important question among us, should we not have recourse to the most ancient Churches with which the apostles held constant intercourse, and learn from them what is certain and clear in regard to the present question?\" (Against Heresies 3.4.1)": "Святой Ириней Лионский, ок. 180: «Если бы возник между нами спор о каком-либо важном вопросе, не следовало ли бы обратиться к древнейшим Церквам, в которых жили апостолы, и от них узнать, что достоверно и ясно в этом вопросе?» (Против ересей 3.4.1)",
 "St. Basil the Great, c. 375: \"Of the beliefs and practices whether generally accepted or publicly enjoined which are preserved in the Church some we possess derived from written teaching; others we have received delivered to us in a mystery by the tradition of the apostles; and both of these in relation to true religion have the same force.\" (On the Holy Spirit 27.66)": "Святой Василий Великий, ок. 375: «Из сохраняемых в Церкви догматов и проповеданий, одни мы имеем от письменного наставления, а другие, дошедшие до нас от апостольского предания, приняли в тайне; и те и другие имеют одинаковую силу для благочестия». (О Святом Духе 27.66)",
 "St. Vincent of Lérins, 434: \"In the Catholic Church itself, all possible care must be taken, that we hold that faith which has been believed everywhere, always, by all.\" (Commonitory 2.6)": "Святой Викентий Леринский, 434: «В самой Кафолической Церкви надлежит всемерно заботиться о том, чтобы держаться того, во что верили повсюду, всегда и все». (Памятные записки 2.6)",
+"Nicaea I (325): the Son is \"consubstantial,\" one in being, with the Father, against Arius.": "Никейский I (325): Сын «единосущен» Отцу, против Ария.",
+"Constantinople I (381): the divinity of the Holy Spirit; the Nicene Creed is completed.": "Константинопольский I (381): Божество Святого Духа; Никейский Символ веры завершён.",
+"Ephesus (431): Christ is one person, and Mary is Theotokos, Mother of God.": "Эфесский (431): Христос — одно Лицо, а Мария — Богородица.",
+"Chalcedon (451): Christ is one person in two natures, truly God and truly man.": "Халкидонский (451): Христос — одно Лицо в двух природах, истинный Бог и истинный человек.",
+"Constantinople II (553) and III (680–681): Christ's unity, and his two wills, divine and human.": "Константинопольские II (553) и III (680–681): единство Христа и Его две воли, Божественная и человеческая.",
+"Nicaea II (787): the veneration of holy icons.": "Никейский II (787): почитание святых икон.",
+"Later councils include Lateran IV (1215), Trent (1545–1563), Vatican I (1869–1870), and Vatican II (1962–1965).": "Позднейшие соборы — Латеранский IV (1215), Тридентский (1545–1563), Первый Ватиканский (1869–1870) и Второй Ватиканский (1962–1965).",
+"1. I am the Lord your God: you shall not have strange gods before me.": "1. Я Господь Бог твой; да не будет у тебя других богов пред лицем Моим.",
+"2. You shall not take the name of the Lord your God in vain.": "2. Не произноси имени Господа Бога твоего напрасно.",
+"3. Remember to keep holy the Lord's Day.": "3. Помни день Господень, чтобы святить его.",
+"4. Honor your father and your mother.": "4. Почитай отца твоего и мать твою.",
+"5. You shall not kill.": "5. Не убий.",
+"6. You shall not commit adultery.": "6. Не прелюбодействуй.",
+"7. You shall not steal.": "7. Не кради.",
+"8. You shall not bear false witness against your neighbor.": "8. Не произноси ложного свидетельства на ближнего твоего.",
+"9. You shall not covet your neighbor's wife.": "9. Не желай жены ближнего твоего.",
+"10. You shall not covet your neighbor's goods.": "10. Не желай имущества ближнего твоего.",
+"This traditional catechetical numbering follows St. Augustine; Eastern Christians and most Protestants divide the same commandments differently.": "Эта традиционная катехизическая нумерация следует святому Августину; восточные христиане и большинство протестантов делят те же заповеди иначе.",
+"Blessed are the poor in spirit, the meek, those who mourn, those who hunger and thirst for righteousness, the merciful, the pure in heart, the peacemakers, and those persecuted for righteousness' sake (Matthew 5:3–10).": "Блаженны нищие духом, кроткие, плачущие, алчущие и жаждущие правды, милостивые, чистые сердцем, миротворцы и изгнанные за правду (Мф 5:3–10).",
+"They show that true happiness is found not in wealth, fame, or power, but in God alone (CCC 1723).": "Они показывают, что истинное счастье — не в богатстве, славе или власти, а в одном Боге (ККЦ 1723).",
+"St. Augustine linked the Beatitudes to the seven gifts of the Holy Spirit and the seven petitions of the Our Father.": "Святой Августин связывал заповеди блаженства с семью дарами Святого Духа и семью прошениями «Отче наш».",
+"The Beatitudes are fulfilled perfectly in Christ and in the lives of the saints.": "Заповеди блаженства совершенно исполняются во Христе и в жизни святых.",
+"The Creed has three parts: God the Father and creation, God the Son and our redemption, and God the Holy Spirit and our sanctification (CCC 190).": "Символ веры состоит из трёх частей: Бог Отец и творение, Бог Сын и наше искупление, Бог Святой Дух и наше освящение (ККЦ 190).",
+"Its last articles, on the Church, the communion of saints, the forgiveness of sins, the resurrection, and eternal life, flow from faith in the Holy Spirit.": "Последние его члены — о Церкви, общении святых, отпущении грехов, воскресении и вечной жизни — вытекают из веры в Святого Духа.",
+"The Western Church added \"and the Son\" (filioque) to the article on the Holy Spirit; Eastern Catholics profess the Creed without it, and the Church teaches that both traditions express the same faith.": "Западная Церковь добавила «и Сына» (филиокве) к члену о Святом Духе; восточные католики исповедуют Символ веры без этого добавления, и Церковь учит, что обе традиции выражают одну веру.",
+"The Catechism is organized around the Creed, the sacraments, the commandments, and the Our Father.": "Катехизис построен вокруг Символа веры, таинств, заповедей и «Отче наш».",
+"Pope Bl. Pius IX defined the Immaculate Conception in 1854; four years later, at Lourdes, Mary called herself \"the Immaculate Conception.\"": "Блаженный папа Пий IX определил догмат о Непорочном Зачатии в 1854 году; через четыре года в Лурде Мария назвала Себя «Непорочным Зачатием».",
+"Pope Pius XII defined the Assumption in 1950. He left open whether Mary died before being assumed; the East celebrates her Dormition, or \"falling asleep.\"": "Папа Пий XII определил догмат о Взятии в 1950 году. Он оставил открытым вопрос, умерла ли Мария прежде взятия; Восток празднует Её Успение.",
+"Mary was redeemed by Christ, too, but in a more sublime way: preserved from sin rather than freed from it.": "Мария тоже искуплена Христом, но более возвышенным образом: Она сохранена от греха, а не освобождена от него.",
+"The Assumption is a sign of hope for all the faithful: what God has done for Mary he promises to do for all who belong to Christ.": "Взятие — знак надежды для всех верных: что Бог совершил для Марии, Он обещает совершить для всех, кто принадлежит Христу.",
+"Jesus taught his disciples to trust the Father who feeds the birds and clothes the lilies of the field (Matthew 6:26–30).": "Иисус учил учеников доверять Отцу, Который питает птиц и одевает полевые лилии (Мф 6:26–30).",
+"Joseph told his brothers that what they meant for evil, God meant for good (Genesis 50:20).": "Иосиф сказал братьям, что они умышляли против него зло, но Бог обратил это в добро (Быт 50:20).",
+"God uses secondary causes: our work, our prayers, and even our sufferings become part of his plan (CCC 306–308).": "Бог использует вторичные причины: наш труд, наши молитвы и даже наши страдания становятся частью Его замысла (ККЦ 306–308).",
+"We will fully understand God's ways only when we see him face to face (CCC 314).": "Мы вполне поймём пути Божии, только когда увидим Его лицом к лицу (ККЦ 314).",
+"The desert hermits of Egypt, such as St. Anthony the Great, and the communities of St. Pachomius began organized monastic life in the third and fourth centuries.": "Пустынники Египта, такие как преподобный Антоний Великий, и общины преподобного Пахомия положили начало устроенной монашеской жизни в III и IV веках.",
+"St. Basil the Great in the East and St. Benedict in the West wrote rules that still guide monks and nuns today.": "Святой Василий Великий на Востоке и святой Бенедикт на Западе написали уставы, которыми монахи и монахини руководствуются и поныне.",
+"Mendicant orders like the Franciscans and Dominicans, and later active congregations, brought consecrated life into the cities, schools, hospitals, and missions.": "Нищенствующие ордены, такие как францисканцы и доминиканцы, а позднее деятельные конгрегации принесли богопосвящённую жизнь в города, школы, больницы и миссии.",
+"The consecrated life belongs to the life and holiness of the Church, and every Christian is called to the spirit of the counsels in his or her own state of life (CCC 914–915).": "Богопосвящённая жизнь принадлежит жизни и святости Церкви, и каждый христианин призван к духу советов в своём собственном состоянии (ККЦ 914–915).",
+"Against Arius, the Church taught that the Son is fully divine (Nicaea, 325).": "Против Ария Церковь учила, что Сын — всецело Бог (Никея, 325).",
+"Against Nestorius, the Church taught that Christ is one person, so Mary is the Mother of God (Ephesus, 431).": "Против Нестория Церковь учила, что Христос — одно Лицо, а значит, Мария — Богородица (Эфес, 431).",
+"Against Eutyches, the Church taught that Christ's human nature is not absorbed into his divinity (Chalcedon, 451).": "Против Евтихия Церковь учила, что человеческая природа Христа не поглощена Его Божеством (Халкидон, 451).",
+"Christ has a human mind and a human will, perfectly obedient to the divine will (Constantinople III, 681).": "У Христа есть человеческий ум и человеческая воля, совершенно послушная воле Божественной (Константинополь III, 681).",
+"There is one God (Deuteronomy 6:4; 1 Corinthians 8:4).": "Бог один (Втор 6:4; 1 Кор 8:4).",
+"The Son is God: the Word who was with God and was God (John 1:1), whom Thomas called \"My Lord and my God\" (John 20:28).": "Сын есть Бог: Слово, Которое было у Бога и было Бог (Ин 1:1), Которого Фома назвал «Господь мой и Бог мой» (Ин 20:28).",
+"The Holy Spirit is God: lying to the Holy Spirit is lying to God (Acts 5:3–4).": "Святой Дух есть Бог: солгать Святому Духу — значит солгать Богу (Деян 5:3–4).",
+"The three are distinct: at Jesus' baptism the Son is baptized, the Spirit descends, and the Father speaks (Matthew 3:16–17).": "Трое различны: при крещении Иисуса Сын крестится, Дух нисходит, а Отец говорит (Мф 3:16–17).",
+"Jesus commanded Baptism in the one \"name\" of the Father, the Son, and the Holy Spirit (Matthew 28:19).": "Иисус заповедал крестить во единое «имя» Отца и Сына и Святого Духа (Мф 28:19).",
+"Isn't a word not found in the Bible a human invention?": "Разве слово, которого нет в Библии, не человеческое изобретение?",
+"Words like \"Trinity\" and \"Incarnation\" are not new doctrines but names for what Scripture teaches. Even Christians who reject the authority of Tradition use such words, like \"Bible\" itself, which is not found in the Bible.": "Слова «Троица» и «Воплощение» — не новые учения, а названия того, чему учит Писание. Даже христиане, отвергающие авторитет Предания, пользуются такими словами, как и самим словом «Библия», которого нет в Библии.",
+"St. Ignatius of Antioch spoke of \"the Catholic Church\" around 107, two centuries before Constantine.": "Святой Игнатий Антиохийский говорил о «Кафолической Церкви» около 107 года, за два века до Константина.",
+"The Council of Nicaea (325) did not discuss the canon of Scripture. It condemned Arius, who denied that the Son is fully divine, and the bishops affirmed what the Church already believed.": "Никейский собор (325) не обсуждал канон Писания. Он осудил Ария, отрицавшего полное Божество Сына, а епископы подтвердили то, во что Церковь уже верила.",
+"The early Fathers, from Ignatius and Justin to Irenaeus and Tertullian, worshipped Jesus as God long before 325.": "Ранние отцы, от Игнатия и Иустина до Иринея и Тертуллиана, поклонялись Иисусу как Богу задолго до 325 года.",
+"Lists of the books of Scripture were set at regional councils such as Rome (382), Hippo (393), and Carthage (397), and the canon was formally defined at the Council of Trent.": "Списки книг Писания были утверждены на поместных соборах, таких как Римский (382), Гиппонский (393) и Карфагенский (397), а канон был официально определён на Тридентском соборе.",
+"Didn't Constantine make Christianity the state religion?": "Разве Константин не сделал христианство государственной религией?",
+"No. Constantine legalized Christianity in 313 with the Edict of Milan. It was the emperor Theodosius I who made it the official religion of the empire in 380.": "Нет. Константин легализовал христианство в 313 году Миланским эдиктом. Официальной религией империи его сделал император Феодосий I в 380 году.",
+"In Hebrew, Abraham's nephew Lot is called his \"brother\" (Genesis 14:14, translated \"kinsman\" in the RSV).": "По-еврейски племянник Авраама Лот назван его «братом» (Быт 14:14, в переводах часто «родственник»).",
+"James and Joses, named among the \"brothers of the Lord\" (Mark 6:3), are sons of another Mary, who stood near the Cross (Matthew 27:56).": "Иаков и Иосия, названные среди «братьев Господних» (Мк 6:3), — сыновья другой Марии, стоявшей у Креста (Мф 27:56).",
+"The Gospels never call anyone else a son or daughter of Mary.": "Евангелия никого больше не называют сыном или дочерью Марии.",
+"From the Cross, Jesus entrusted his mother to the apostle John, which would make little sense if she had other sons to care for her (John 19:26–27).": "С Креста Иисус поручил Свою Мать апостолу Иоанну, что было бы бессмысленно, если бы у Неё были другие сыновья, которые могли бы о Ней заботиться (Ин 19:26–27).",
+"Early Christians, from the Protoevangelium of James (c. 150) to Sts. Athanasius, Jerome, Ambrose, and Augustine, held that Mary was ever-virgin. So did Luther, Calvin, and Zwingli.": "Древние христиане, от Протоевангелия Иакова (ок. 150) до святых Афанасия, Иеронима, Амвросия и Августина, исповедовали приснодевство Марии. Так же считали Лютер, Кальвин и Цвингли.",
+"Psalm 136 repeats the same refrain twenty-six times.": "Псалом 135 (136) повторяет один и тот же припев двадцать шесть раз.",
+"In Gethsemane, Jesus prayed a third time, \"saying the same words\" (Matthew 26:44).": "В Гефсимании Иисус молился в третий раз, «сказав то же слово» (Мф 26:44).",
+"The angels before God's throne never cease to sing \"Holy, holy, holy\" (Revelation 4:8).": "Ангелы пред престолом Божиим непрестанно поют «Свят, свят, свят» (Откр 4:8).",
+"Repeated prayer, like the Jesus Prayer or the Rosary, quiets the mind and helps the heart rest in God (CCC 2668).": "Повторяющаяся молитва, как Иисусова молитва или Розарий, успокаивает ум и помогает сердцу обрести покой в Боге (ККЦ 2668).",
+"What matters is not the number of words, but the love and attention with which they are prayed.": "Важно не число слов, а любовь и внимание, с которыми их произносят.",
+"Jesus promised that the Spirit of truth would guide the apostles \"into all the truth\" (John 16:13).": "Иисус обещал, что Дух истины наставит апостолов «на всякую истину» (Ин 16:13).",
+"The Church's definitions, such as the Trinity at Nicaea or Mary as Mother of God at Ephesus, made explicit what was already believed.": "Определения Церкви, такие как учение о Троице в Никее или о Марии как Богородице в Эфесе, сделали явным то, во что уже верили.",
+"Practices of discipline, such as fasting rules or the language of the Mass, can change; defined doctrines of faith and morals cannot.": "Дисциплинарные установления, такие как правила поста или язык Мессы, могут меняться; определённые учения о вере и нравственности — нет.",
+"\"The deposit of faith\" (CCC 84) was entrusted by the apostles to the whole Church to be guarded, not altered.": "«Залог веры» (ККЦ 84) был вверен апостолами всей Церкви, чтобы его хранили, а не изменяли.",
+"It happens at the consecration, when the priest says the words of Jesus at the Last Supper over the bread and wine.": "Это совершается при освящении, когда священник произносит над хлебом и вином слова Иисуса на Тайной вечере.",
+"The whole Christ is present, Body and Blood, soul and divinity, under each form, and in every part of it (CCC 1374, 1377).": "Весь Христос присутствует — Тело и Кровь, душа и Божество — под каждым видом и в каждой его частице (ККЦ 1374, 1377).",
+"The Council of Trent called transubstantiation the fitting and proper name for this change (CCC 1376).": "Тридентский собор назвал пресуществление подходящим и точным названием этой перемены (ККЦ 1376).",
+"Christ remains present as long as the appearances of bread and wine remain.": "Христос остаётся присутствующим, пока сохраняются виды хлеба и вина.",
+"The Church celebrates the Incarnation at the Annunciation (March 25) and at Christmas.": "Церковь празднует Воплощение в Благовещение (25 марта) и в Рождество.",
+"In the Creed, all bow at the words about the Son becoming incarnate of the Virgin Mary.": "В Символе веры все склоняются при словах о воплощении Сына от Девы Марии.",
+"Jesus has a real human body and a human soul, with a human mind and will.": "У Иисуса подлинное человеческое тело и человеческая душа, с человеческим умом и волей.",
+"The Incarnation is forever: Jesus is still true God and true man in heaven.": "Воплощение — навсегда: Иисус и на небесах остаётся истинным Богом и истинным человеком.",
+"The Council of Chalcedon (451) taught that the two natures are united without confusion, change, division, or separation.": "Халкидонский собор (451) учил, что две природы соединены неслитно, неизменно, нераздельно и неразлучно.",
+"Because Jesus is one Person, what He does in His human nature is truly done by God: God was born, God suffered, God died on the cross.": "Поскольку Иисус — одно Лицо, то, что Он совершает в Своей человеческой природе, поистине совершает Бог: Бог родился, Бог страдал, Бог умер на кресте.",
+"This is why Mary is rightly called the Mother of God.": "Вот почему Марию справедливо называют Богородицей.",
+"See also: Jesus Christ: One Person, Two Natures.": "См. также: Иисус Христос: одно Лицо, две природы.",
+"Catholics say that the Son is “consubstantial with the Father” every Sunday in the Nicene Creed.": "Католики каждое воскресенье исповедуют в Никейском Символе веры, что Сын «единосущен Отцу».",
+"The word was chosen to rule out Arianism, which taught that the Son was created.": "Это слово было выбрано, чтобы исключить арианство, учившее, что Сын сотворён.",
+"The three Persons are distinct only by their relations: the Father begets, the Son is begotten, the Spirit proceeds (CCC 254–255).": "Три Лица различаются лишь отношениями: Отец рождает, Сын рождается, Дух исходит (ККЦ 254–255).",
+"One God means one will, one power, and one glory shared by the three Persons.": "Единый Бог означает одну волю, одну силу и одну славу, общие для трёх Лиц.",
+"The title protects the truth about Jesus as much as it honors Mary.": "Это именование охраняет истину об Иисусе так же, как чтит Марию.",
+"Elizabeth greeted Mary as the mother of her Lord (Luke 1:43).": "Елисавета приветствовала Марию как Матерь своего Господа (Лк 1:43).",
+"Eastern Christians use the word Theotokos constantly in their prayers.": "Восточные христиане постоянно произносят слово «Богородица» в своих молитвах.",
+"January 1 is the Solemnity of Mary, Mother of God.": "1 января — торжество Пресвятой Богородицы Марии.",
+"Sanctifying grace is a lasting gift that remains in the soul unless it is lost by mortal sin.": "Освящающая благодать — постоянный дар, остающийся в душе, если не утрачен через смертный грех.",
+"Actual graces are God’s help at the beginning of conversion and all along the way (CCC 2000).": "Действующие благодати — помощь Божия в начале обращения и на всём пути (ККЦ 2000).",
+"The sacraments give grace; prayer opens us to receive it.": "Таинства подают благодать; молитва открывает нас для её принятия.",
+"Even our first step toward God is already moved by His grace.": "Даже наш первый шаг к Богу уже движим Его благодатью.",
+"There are seven sacraments: Baptism, Confirmation, the Eucharist, Penance, the Anointing of the Sick, Holy Orders, and Matrimony.": "Таинств семь: Крещение, Конфирмация, Евхаристия, Покаяние, Елеопомазание больных, Священство и Брак.",
+"Baptism, Confirmation, and Holy Orders mark the soul with a permanent “character” and are never repeated.": "Крещение, Конфирмация и Священство налагают на душу неизгладимую «печать» и никогда не повторяются.",
+"To bear fruit in a person’s life, a sacrament must be received with faith and an open heart.": "Чтобы таинство принесло плод в жизни человека, его нужно принимать с верой и открытым сердцем.",
+"Sacramentals, such as holy water and blessings, are different: signs instituted by the Church that prepare us to receive grace.": "Сакраменталии, такие как святая вода и благословения, — иное: знаки, установленные Церковью, которые готовят нас к принятию благодати.",
+"Original sin helps explain why doing good can feel so hard, and why the world is so marked by suffering.": "Первородный грех помогает объяснить, почему творить добро бывает так трудно и почему мир так отмечен страданием.",
+"Mary alone was preserved from original sin from the first moment of her life: the Immaculate Conception.": "Лишь Мария была сохранена от первородного греха с первого мгновения жизни: это Непорочное Зачатие.",
+"Jesus, the new Adam, undoes what the first Adam did.": "Иисус, новый Адам, исправляет то, что сделал первый Адам.",
+"Our struggle with temptation is not a sign that God has abandoned us; it is where we grow in virtue.": "Наша борьба с искушением — не знак того, что Бог оставил нас; именно в ней мы возрастаем в добродетели.",
+"Justification is given freely: no one can earn the first grace (CCC 2010).": "Оправдание даруется даром: никто не может заслужить первую благодать (ККЦ 2010).",
+"Faith is the beginning; faith working through love is how it lives (Galatians 5:6).": "Вера — начало; вера, действующая любовью, — её жизнь (Гал 5:6).",
+"Holiness is not a reward for the few but the calling of every Christian.": "Святость — не награда для немногих, а призвание каждого христианина.",
+"In 1999 the Catholic Church and the Lutheran World Federation signed a Joint Declaration on the Doctrine of Justification, finding broad agreement on its basic truths.": "В 1999 году Католическая Церковь и Всемирная лютеранская федерация подписали Совместную декларацию об учении об оправдании, найдя широкое согласие в его основных истинах.",
+"The Catechism calls dogmas “lights along the path of faith” that make it secure (CCC 89).": "Катехизис называет догматы «светильниками на пути веры», которые делают его надёжным (ККЦ 89).",
+"Example: priestly celibacy is a discipline in the Latin Church; the Real Presence is a dogma.": "Пример: безбрачие священников — дисциплина в Латинской Церкви; реальное присутствие — догмат.",
+"Not every opinion of a priest or bishop is Church teaching.": "Не всякое мнение священника или епископа — учение Церкви.",
+"Knowing the difference guards against both rigidity and confusion.": "Знание этого различия оберегает и от косности, и от путаницы.",
+"Scripture, Tradition, and the Magisterium are so joined that none stands without the others (CCC 95).": "Писание, Предание и Магистериум так связаны, что ни одно не стоит без других (ККЦ 95).",
+"The Magisterium exists so that the faith handed down by the apostles is not lost or distorted.": "Магистериум существует для того, чтобы вера, переданная апостолами, не была утрачена или искажена.",
+"Theologians help the Church understand the faith, but they are not the Magisterium.": "Богословы помогают Церкви понимать веру, но они не Магистериум.",
+"Even the ordinary teaching of the pope and bishops deserves respect and assent.": "Даже обычное учение Папы и епископов заслуживает уважения и согласия.",
+"Infallibility protects the truth of the Church’s teaching; it says nothing about a pope’s personal holiness or cleverness.": "Непогрешимость охраняет истину учения Церкви; она ничего не говорит о личной святости или уме Папы.",
+"The bishops together with the pope also teach infallibly, especially in an ecumenical council (CCC 891).": "Епископы вместе с Папой также учат непогрешимо, особенно на Вселенском соборе (ККЦ 891).",
+"Infallibility is a safeguard: it keeps the Church from formally teaching error.": "Непогрешимость — это защита: она не даёт Церкви формально учить заблуждению.",
+"Jesus prayed for Peter that his faith would not fail, and told him to strengthen his brothers (Luke 22:32).": "Иисус молился о Петре, чтобы не оскудела вера его, и велел ему утверждать братьев (Лк 22:32).",
+"St. Clement of Rome, writing around the year 96, already describes the apostles appointing bishops and providing for their successors.": "Святой Климент Римский около 96 года уже описывает, как апостолы поставляли епископов и заботились о преемниках.",
+"The Eastern Orthodox Churches also have apostolic succession and true sacraments.": "Православные Церкви также имеют апостольское преемство и подлинные таинства.",
+"A new bishop is ordained by other bishops, normally at least three.": "Нового епископа рукополагают другие епископы, обычно не менее трёх.",
+"See also: The Fathers on Bishops and Apostolic Succession.": "См. также: Отцы о епископах и апостольском преемстве.",
+"Adoration (latria) belongs to God alone: Father, Son, and Holy Spirit, and Christ present in the Eucharist.": "Поклонение (латрия) подобает одному Богу: Отцу, Сыну и Святому Духу — и Христу, присутствующему в Евхаристии.",
+"Veneration (dulia) is given to the saints and angels.": "Почитание (дулия) воздаётся святым и ангелам.",
+"Hyperdulia is for Mary alone: more than for any other saint, yet infinitely less than worship.": "Гипердулия — только для Марии: больше, чем для любого другого святого, но бесконечно меньше поклонения.",
+"Mary herself foretold that all generations would call her blessed (Luke 1:48).": "Сама Мария предсказала, что будут ублажать Её все роды (Лк 1:48).",
+"Heaven is above all a communion of life and love with the Holy Trinity, with Mary, the angels, and all the saints (CCC 1024).": "Рай — прежде всего общение жизни и любви со Святой Троицей, с Марией, ангелами и всеми святыми (ККЦ 1024).",
+"The saints in heaven still love us and pray for us.": "Святые на небесах по-прежнему любят нас и молятся о нас.",
+"Every true joy on earth is a small foretaste of this one.": "Всякая истинная радость на земле — малое предвкушение этой.",
+"See also: Death, Judgment, Heaven, Hell, and Purgatory.": "См. также: Смерть, суд, рай, ад и чистилище.",
+"Every Sunday is a “little Easter.”": "Каждое воскресенье — «малая Пасха».",
+"In Baptism we are plunged into Christ’s death and rise with Him to new life (Romans 6:3–4).": "В Крещении мы погружаемся в смерть Христа и восстаём с Ним к новой жизни (Рим 6:3–4).",
+"The Easter Triduum, from Holy Thursday evening to Easter Sunday, is the high point of the Church’s year.": "Пасхальное Триденствие, от вечера Великого четверга до Пасхального воскресенья, — вершина церковного года.",
+"Our own sufferings and our death, joined to Christ, become part of His passing over to life.": "Наши страдания и наша смерть, соединённые со Христом, становятся частью Его перехода к жизни.",
+"The saints are given to us as models and intercessors (CCC 828).": "Святые даны нам как образцы и заступники (ККЦ 828).",
+"Miracles studied in a cause are usually healings with no natural explanation, examined by doctors and theologians.": "Чудеса, рассматриваемые в процессе, — обычно исцеления без естественного объяснения, изученные врачами и богословами.",
+"Countless holy people in heaven are never canonized; the Church honors them all on All Saints’ Day.": "Бесчисленные святые на небесах никогда не канонизированы; Церковь чтит их всех в праздник Всех святых.",
+"Martyrs can be beatified without a miracle.": "Мучеников можно беатифицировать без чуда.",
+"Excommunication is medicinal: its purpose is conversion.": "Отлучение — врачебная мера: его цель — обращение.",
+"An excommunicated person remains baptized and is urged to keep praying and to return.": "Отлучённый остаётся крещёным, и его призывают продолжать молиться и вернуться.",
+"In many places priests are given the faculty to lift certain excommunications in Confession.": "Во многих местах священникам дана власть снимать некоторые отлучения на исповеди.",
+"Fear of a penalty is never a reason to stay away: the Church wants every sinner home.": "Страх наказания никогда не повод держаться в стороне: Церковь хочет, чтобы каждый грешник вернулся домой.",
+"The process is handled by the diocesan tribunal, and usually begins with a conversation with the parish priest.": "Процесс ведёт епархиальный трибунал, а начинается он обычно с беседы с настоятелем прихода.",
+"In Church law, children of a marriage later declared null remain legitimate.": "По церковному праву дети от брака, впоследствии признанного недействительным, остаются законными.",
+"Both spouses may take part and give testimony.": "Оба супруга могут участвовать и давать показания.",
+"After a declaration of nullity, a person is free to marry in the Church.": "После признания брака недействительным человек свободен вступить в брак в Церкви.",
+"Christians baptized in other communities are truly brothers and sisters in the Lord, though not in full communion (CCC 818).": "Христиане, крещённые в других общинах, — подлинно братья и сёстры в Господе, хотя и не в полном общении (ККЦ 818).",
+"The Week of Prayer for Christian Unity is kept from January 18 to 25.": "Неделя молитв о единстве христиан проходит с 18 по 25 января.",
+"The Orthodox Churches are especially close: they have apostolic succession and true sacraments.": "Православные Церкви особенно близки: у них есть апостольское преемство и подлинные таинства.",
+"Ecumenism (unity among Christians) is different from interreligious dialogue (respectful conversation with other religions).": "Экуменизм (единство христиан) отличается от межрелигиозного диалога (уважительного разговора с другими религиями).",
+"A motu proprio (“on his own initiative”) is a document the pope issues personally, often to change Church law.": "Motu proprio («по собственной инициативе») — документ, который Папа издаёт лично, часто чтобы изменить церковное право.",
+"The Catechism of the Catholic Church (1992) is the reference summary of Catholic teaching (CCC 11).": "Катехизис Католической Церкви (1992) — эталонное изложение католического учения (ККЦ 11).",
+"Not every papal speech or interview is teaching of the Magisterium; formal documents carry more weight.": "Не всякая речь или интервью Папы — учение Магистериума; официальные документы имеют больший вес.",
+"Most documents can be read freely on the Vatican’s website.": "Большинство документов можно свободно прочитать на сайте Ватикана.",
+"The Catholic Church has several liturgical traditions: the Latin, Byzantine, Alexandrian, Antiochene, Armenian, and Chaldean.": "У Католической Церкви несколько литургических традиций: латинская, византийская, александрийская, антиохийская, армянская и халдейская.",
+"The Liturgy of the Hours makes the whole day holy with psalms and prayers.": "Литургия часов освящает весь день псалмами и молитвами.",
+"All the baptized are called to full, conscious, and active participation in the liturgy (Sacrosanctum Concilium 14).": "Все крещёные призваны к полному, сознательному и деятельному участию в литургии (Sacrosanctum Concilium 14).",
+"Liturgical seasons, colors, and feasts help us live the life of Christ through the year.": "Литургические периоды, цвета и праздники помогают нам проживать жизнь Христа в течение года.",
+"No one can merit the first grace of conversion: it is pure gift (CCC 2010).": "Никто не может заслужить первую благодать обращения: это чистый дар (ККЦ 2010).",
+"Moved by the Holy Spirit, we can merit for ourselves and others the graces needed to grow in holiness (CCC 2010).": "Движимые Святым Духом, мы можем заслужить для себя и других благодати, необходимые для возрастания в святости (ККЦ 2010).",
+"Charity, the love of God and neighbor, is the main source of merit (CCC 2011).": "Любовь к Богу и ближнему — главный источник заслуги (ККЦ 2011).",
+"St. Thérèse of Lisieux hoped to stand before God “with empty hands,” trusting in His love rather than her merits.": "Святая Тереза из Лизьё надеялась предстать пред Богом «с пустыми руками», уповая на Его любовь, а не на свои заслуги.",
+"Many ancient heresies return under new names; see the answers under Defending the Faith.": "Многие древние ереси возвращаются под новыми именами; см. ответы в разделе «Защита веры».",
+"Those born into separated Christian communities cannot be charged with the sin of separation (CCC 818).": "Тех, кто родился в отделённых христианских общинах, нельзя обвинять в грехе отделения (ККЦ 818).",
+"Doubts that a person struggles with in good faith are not the same as obstinate denial.": "Сомнения, с которыми человек борется по совести, — не то же самое, что упорное отрицание.",
+"The remedy for error is patient teaching, prayer, and charity.": "Лекарство от заблуждения — терпеливое научение, молитва и любовь.",
+"The First Vatican Council taught that Peter will have perpetual successors in the primacy over the whole Church (Pastor Aeternus, chapter 2).": "Первый Ватиканский собор учил, что у Петра будут вечные преемники в первенстве над всей Церковью (Pastor Aeternus, глава 2).",
+"The Church is visible and indefectible: it cannot lose its hierarchy or teach error definitively to the whole world.": "Церковь видима и неколебима: она не может утратить свою иерархию или окончательно учить заблуждению весь мир.",
+"“The First See is judged by no one” (Code of Canon Law 1404): no private group has authority to declare a pope deposed.": "«Первый престол никем не судим» (Кодекс канонического права 1404): ни одна частная группа не имеет власти объявить Папу низложенным.",
+"Theologians have long held that the peaceful acceptance of a pope by the whole Church is a sure sign that he is truly pope.": "Богословы давно утверждают, что мирное принятие Папы всей Церковью — верный знак того, что он подлинно Папа.",
+"Sedevacantist groups have splintered again and again, some even electing their own “popes,” which shows the confusion that follows when communion with Peter is broken.": "Седевакантистские группы раскалывались снова и снова, а некоторые даже избирали собственных «пап», что показывает смятение, которое наступает при разрыве общения с Петром.",
+"Vatican II taught heresy, so the popes who approved it lost their office.": "Второй Ватиканский собор учил ереси, значит, одобрившие его папы утратили свою должность.",
+"The Council’s teachings must be read in continuity with all earlier teaching, as the popes have insisted. Difficult or new wording is not heresy, and formal heresy requires obstinate denial of a defined dogma, which no pope has committed. Even if a pope made a mistake in a non-infallible statement, that would not end his office.": "Учение Собора следует читать в преемственности со всем прежним учением, как настаивали папы. Трудная или новая формулировка — не ересь, а формальная ересь требует упорного отрицания определённого догмата, чего ни один Папа не делал. Даже если бы Папа ошибся в высказывании, не являющемся непогрешимым, это не положило бы конец его служению.",
+"A heretic cannot be the head of the Church, so the see is vacant.": "Еретик не может быть главой Церкви, значит, престол вакантен.",
+"Whether a pope has lost office is not something an individual Catholic can decide for himself; the First See is judged by no one. Christ did not leave His Church to sort out its own head by private judgment.": "Утратил ли Папа должность — не то, что отдельный католик может решить сам; Первый престол никем не судим. Христос не оставил Свою Церковь определять своего главу частным суждением.",
+"We are only keeping the true faith that the Church once had.": "Мы лишь храним истинную веру, которую когда-то имела Церковь.",
+"The true faith includes believing in the Church that Christ founded, with Peter’s successor at its head. A “Church” with no pope, no diocesan bishops, and no way of ever having them again is not the Church Christ promised to be with until the end of the age (Matthew 28:20).": "Истинная вера включает веру в Церковь, основанную Христом, с преемником Петра во главе. «Церковь» без Папы, без епархиальных епископов и без всякой возможности когда-либо снова их иметь — не та Церковь, с которой Христос обещал пребывать до скончания века (Мф 28:20).",
+"The essential words of consecration, “This is my Body” and the words over the chalice, are present in every approved Eucharistic Prayer.": "Существенные слова освящения — «Сие есть Тело Моё» и слова над чашей — присутствуют в каждой одобренной евхаристической молитве.",
+"Every pope since Paul VI has celebrated this Mass and taught that it is valid.": "Все папы со времён Павла VI совершали эту Мессу и учили, что она действительна.",
+"The liturgy has changed many times in history while remaining the same Holy Sacrifice.": "Литургия много раз менялась в истории, оставаясь той же Святой Жертвой.",
+"Questions of how the Mass is celebrated, and how reverently, are real and worth discussing; they do not touch its validity.": "Вопросы о том, как совершается Месса и с каким благоговением, реальны и заслуживают обсуждения; её действительности они не касаются.",
+"The changes were made to please Protestants, so the Mass is Protestant.": "Изменения внесли, чтобы угодить протестантам, значит, Месса протестантская.",
+"Whatever the intentions of individuals involved, the Mass approved by the Church contains everything that makes a Mass: a validly ordained priest, bread and wine, the words of consecration, and the intention to do what the Church does.": "Каковы бы ни были намерения отдельных участников, одобренная Церковью Месса содержит всё, что делает Мессу Мессой: действительно рукоположенного священника, хлеб и вино, слова освящения и намерение делать то, что делает Церковь.",
+"A sacrament is invalid if it is celebrated irreverently.": "Таинство недействительно, если совершено без благоговения.",
+"Abuses are wrong and should be corrected, but a sacrament’s validity depends on Christ’s action, the proper matter and form, and the minister’s intention, not on the reverence of the music or the furnishings.": "Злоупотребления дурны и должны исправляться, но действительность таинства зависит от действия Христа, надлежащей материи и формы и намерения совершителя, а не от благоговейности музыки или убранства.",
+"The Council of Trent itself spoke of justification coming through Baptism “or the desire for it.”": "Сам Тридентский собор говорил об оправдании через Крещение «или желание его».",
+"The Church has always honored catechumens who died before Baptism, and martyrs who died unbaptized (the “baptism of blood”).": "Церковь всегда чтила оглашенных, умерших до Крещения, и мучеников, умерших некрещёными («крещение кровью»).",
+"Those who, through no fault of their own, do not know Christ or His Church, but seek God sincerely and try to do His will, can be saved (CCC 847).": "Те, кто не по своей вине не знает Христа и Его Церкви, но искренне ищет Бога и старается исполнять Его волю, могут спастись (ККЦ 847).",
+"This is no reason for indifference: the Church has the urgent duty to proclaim the Gospel to all (CCC 848).": "Это не повод для равнодушия: на Церкви лежит неотложный долг возвещать Евангелие всем (ККЦ 848).",
+"“Outside the Church no salvation” means exactly what it says.": "«Вне Церкви нет спасения» означает именно то, что сказано.",
+"It does mean what it says, as the Church explains it: whoever is saved is saved through Christ and His Church. What it does not mean is that God cannot unite to the Church those who desire it, as the Church herself has taught.": "Оно означает то, что сказано, как это объясняет Церковь: кто спасается, спасается через Христа и Его Церковь. Но оно не означает, что Бог не может соединить с Церковью тех, кто её желает, как учила сама Церковь.",
+"St. Vincent of Lérins taught that doctrine grows “in the same sense and the same meaning,” like a child growing into an adult.": "Святой Викентий Леринский учил, что учение растёт «в том же смысле и том же значении», как ребёнок становится взрослым.",
+"Pius X also issued the decree Lamentabili (1907) and, in 1910, an oath against Modernism for clergy.": "Пий X издал также декрет Lamentabili (1907), а в 1910 году ввёл для духовенства антимодернистскую присягу.",
+"True development of doctrine draws out what was already believed; it never contradicts it (see Doesn’t the Church Change Its Doctrines?).": "Подлинное развитие вероучения раскрывает то, во что уже верили, и никогда этому не противоречит (см. «Разве Церковь не меняет своё учение?»).",
+"Faith and reason are friends: the Church welcomes scholarship that serves the truth.": "Вера и разум — друзья: Церковь приветствует научные исследования, служащие истине.",
+"Doctrines have to change to stay relevant.": "Учение должно меняться, чтобы оставаться актуальным.",
+"Truth does not expire. The Church finds new ways to explain the faith to every age, but what God has revealed does not become false with time.": "Истина не устаревает. Церковь находит новые способы объяснять веру каждой эпохе, но то, что открыл Бог, со временем не становится ложным.",
+"Religions make contradictory claims about God, Christ, and salvation; they cannot all be equally true.": "Религии делают противоречащие друг другу утверждения о Боге, Христе и спасении; они не могут быть все одинаково истинны.",
+"Every person must be free from coercion in religious matters, and has the duty to seek the truth (Dignitatis Humanae 2).": "Каждый человек должен быть свободен от принуждения в религиозных делах и обязан искать истину (Dignitatis Humanae 2).",
+"Other religions can contain real goodness and truth, which the Church honors.": "Другие религии могут содержать подлинную благость и истину, которые Церковь чтит.",
+"Because Christ is the Savior of all, Christians share Him with everyone, with respect and love.": "Поскольку Христос — Спаситель всех, христиане делятся Им со всеми, с уважением и любовью.",
+"It is arrogant to say one religion is true.": "Говорить, что одна религия истинна, — высокомерие.",
+"If God has truly revealed Himself in Jesus Christ, saying so is not arrogance but faithfulness. Christians do not claim to be better than others; they claim that Christ is who He said He is.": "Если Бог действительно открыл Себя в Иисусе Христе, говорить об этом — не высокомерие, а верность. Христиане не утверждают, что лучше других; они утверждают, что Христос — Тот, Кем Он Себя назвал.",
+"St. Athanasius spent his life defending the faith of Nicaea, often in exile.": "Святой Афанасий всю жизнь защищал никейскую веру, часто в изгнании.",
+"If the Son were a creature, worshipping Him would be idolatry; yet the New Testament shows Him worshipped (Matthew 28:9; Hebrews 1:6).": "Если бы Сын был творением, поклонение Ему было бы идолопоклонством; однако Новый Завет показывает, как Ему поклоняются (Мф 28:9; Евр 1:6).",
+"All things were made through the Son (John 1:3), so He cannot be one of the things that were made.": "Всё через Сына начало быть (Ин 1:3), значит, Он не может быть одним из сотворённого.",
+"Thomas called the risen Jesus “my Lord and my God” (John 20:28), and Jesus accepted it.": "Фома назвал воскресшего Иисуса «Господь мой и Бог мой» (Ин 20:28), и Иисус принял это.",
+"The Bible calls Jesus the “firstborn of all creation” (Colossians 1:15).": "Библия называет Иисуса «рождённым прежде всякой твари» (Кол 1:15).",
+"“Firstborn” here means first in rank and heir, as Israel and David are called God’s firstborn. The very next verse says that in Him all things were created, which places Him outside creation.": "«Перворождённый» означает здесь первый по достоинству и наследник, как Израиль и Давид названы первенцами Бога. Уже следующий стих говорит, что Им создано всё, и это ставит Его вне творения.",
+"Original sin is real: human nature is wounded, though not totally corrupted (CCC 405).": "Первородный грех реален: человеческая природа повреждена, хотя и не совершенно испорчена (ККЦ 405).",
+"Grace is not a reward for our efforts but the source of them.": "Благодать — не награда за наши усилия, а их источник.",
+"Without Christ we can do nothing (John 15:5); with Him we can do all things (Philippians 4:13).": "Без Христа мы не можем делать ничего (Ин 15:5); с Ним мы можем всё (Флп 4:13).",
+"Pelagianism today often looks like trusting in our own effort, rules, or self-improvement instead of in God.": "Пелагианство сегодня часто проявляется как упование на собственные усилия, правила или самосовершенствование вместо Бога.",
+"If grace does everything, why should I try?": "Если благодать делает всё, зачем мне стараться?",
+"Grace does not replace our freedom; it heals and frees it. God works in us both to will and to work (Philippians 2:13), and we respond with all our strength.": "Благодать не заменяет нашей свободы, а исцеляет и освобождает её. Бог производит в нас и хотение, и действие (Флп 2:13), а мы отвечаем всеми силами.",
+"God created the world good (Genesis 1:31; CCC 299), and the Son truly took flesh.": "Бог сотворил мир добрым (Быт 1:31; ККЦ 299), и Сын подлинно воспринял плоть.",
+"The Christian faith is public, not a secret for an elite: the apostles preached it openly to all.": "Христианская вера публична, а не тайна для избранных: апостолы открыто проповедовали её всем.",
+"The four Gospels were written in the first century and were received by the churches everywhere; the Gnostic texts were later and local.": "Четыре Евангелия написаны в I веке и приняты Церквами повсюду; гностические тексты более поздние и местные.",
+"Christianity honors the body, which will rise again, and the material signs of the sacraments.": "Христианство чтит тело, которое воскреснет, и вещественные знаки таинств.",
+"The Church suppressed other gospels that told the real story.": "Церковь скрыла другие евангелия, рассказывавшие подлинную историю.",
+"Irenaeus and others quoted and answered these writings openly. They were set aside because they contradicted the apostolic faith and appeared too late to come from the apostles, not because they were hidden.": "Ириней и другие открыто цитировали эти писания и отвечали на них. Их отвергли потому, что они противоречили апостольской вере и появились слишком поздно, чтобы исходить от апостолов, а не потому, что их прятали.",
+"This truth protects the faithful: no one needs to worry whether their priest is holy enough for their Baptism or absolution to be real.": "Эта истина защищает верных: никому не нужно беспокоиться, достаточно ли свят его священник, чтобы его Крещение или отпущение грехов были действительны.",
+"The scandal of a sinful priest is real and must be dealt with, but it does not empty the sacraments of Christ.": "Соблазн от грешного священника реален, и с ним нужно разбираться, но он не лишает силы таинства Христовы.",
+"The Church is holy because of Christ, while it embraces sinners in its bosom (CCC 827).": "Церковь свята благодаря Христу, хотя и объемлет в своём лоне грешников (ККЦ 827).",
+"Augustine wrote that whether Peter or Paul or Judas baptizes, it is Christ who baptizes.": "Августин писал: крестит ли Пётр, Павел или Иуда — крестит Христос.",
+"How can God work through a sinful man?": "Как Бог может действовать через грешного человека?",
+"God has always worked through imperfect people, from Moses and David to Peter, who denied Him. The power of the sacraments was never the minister’s to begin with.": "Бог всегда действовал через несовершенных людей — от Моисея и Давида до Петра, отрёкшегося от Него. Сила таинств никогда не принадлежала совершителю.",
+"A mother is the mother of a person, and the person born of Mary is the eternal Son of God.": "Мать — мать личности, а Лицо, рождённое от Марии, — вечный Сын Божий.",
+"Elizabeth, filled with the Holy Spirit, called Mary the mother of her Lord (Luke 1:41–43).": "Елисавета, исполнившись Святого Духа, назвала Марию Матерью своего Господа (Лк 1:41–43).",
+"The people of Ephesus celebrated the Council’s decision with a torchlight procession.": "Жители Эфеса отметили решение собора шествием с факелами.",
+"See also: Theotokos, and The Hypostatic Union.": "См. также: Богородица и Ипостасное единство.",
+"God has no beginning, so He cannot have a mother.": "У Бога нет начала, значит, у Него не может быть матери.",
+"Mary is not the mother of the divine nature, which has no beginning; she is mother of the divine Person who took flesh from her. Because He is one Person, we rightly say that God was born of Mary.": "Мария — не мать Божественной природы, у которой нет начала; Она — Мать Божественного Лица, воспринявшего от Неё плоть. Поскольку Он — одно Лицо, мы справедливо говорим, что Бог родился от Марии.",
+"The Church teaches that there never has been, is not, and never will be anyone for whom Christ did not suffer (CCC 605).": "Церковь учит, что нет, не было и не будет человека, за которого Христос не пострадал бы (ККЦ 605).",
+"Devotion to the Sacred Heart, revealed to St. Margaret Mary in the same era, was a remedy for Jansenist coldness.": "Почитание Святейшего Сердца, открытое святой Маргарите Марии в ту же эпоху, стало лекарством от янсенистской холодности.",
+"Reverence for the Eucharist is good; fear that keeps the faithful from it is not.": "Благоговение перед Евхаристией — хорошо; страх, удерживающий от неё верных, — нет.",
+"Mortal sin must be confessed before Communion (CCC 1385), but Communion is medicine for sinners, not a prize for the perfect.": "Смертный грех нужно исповедать перед Причастием (ККЦ 1385), но Причастие — лекарство для грешников, а не награда для совершенных.",
+"Receiving Communion often makes it ordinary.": "Частое Причастие делает его обыденным.",
+"Love grows by being nourished, not by being starved. The saints who received daily Communion grew more reverent, not less.": "Любовь растёт, когда её питают, а не морят голодом. Святые, причащавшиеся ежедневно, становились благоговейнее, а не наоборот.",
+"The Council of Florence (1439) taught that “from the Son” and “through the Son” express the same faith.": "Флорентийский собор (1439) учил, что «и Сына» и «через Сына» выражают одну веру.",
+"In 1995 the Pontifical Council for Promoting Christian Unity published a clarification on the Greek and Latin traditions about the procession of the Holy Spirit.": "В 1995 году Папский совет по содействию христианскому единству опубликовал разъяснение о греческой и латинской традициях учения об исхождении Святого Духа.",
+"The Spirit is called both the Spirit of the Father and the Spirit of the Son in the New Testament.": "В Новом Завете Дух называется и Духом Отца, и Духом Сына.",
+"The question touches deep mysteries; it is best discussed with humility and charity on both sides.": "Этот вопрос касается глубоких тайн; лучше обсуждать его со смирением и любовью с обеих сторон.",
+"Adding the Filioque changed the faith of the Creed.": "Добавление филиокве изменило веру Символа.",
+"The Catholic Church does not teach two sources of the Spirit; the Father remains the source. The words express the Son’s eternal role in the Spirit’s procession, which the Greek Fathers also spoke of when they said “through the Son.”": "Католическая Церковь не учит о двух источниках Духа; источником остаётся Отец. Эти слова выражают вечную роль Сына в исхождении Духа, о которой говорили и греческие отцы, когда говорили «через Сына».",
+"The Case": "Доводы",
+"Common Objections": "Частые возражения",
+"Theosis: Sharing in the Divine Nature": "Обожение: причастность Божественной природе",
+"Holy Icons": "Святые иконы",
+"God: One, Living, and Knowable": "Бог: единый, живой и познаваемый",
+"The Holy Trinity": "Святая Троица",
+"Creation and Original Sin": "Творение и первородный грех",
+"Jesus Christ: True God and True Man": "Иисус Христос: истинный Бог и истинный человек",
+"Salvation: The Cross and the Resurrection": "Спасение: Крест и Воскресение",
+"Scripture and Tradition": "Писание и Предание",
+"The Church: One, Holy, Catholic, and Apostolic": "Церковь: единая, святая, кафолическая и апостольская",
+"The Pope and the Bishops": "Папа и епископы",
+"The Eucharist and the Mass": "Евхаристия и Месса",
+"Confession: The Sacrament of Reconciliation": "Исповедь: таинство Примирения",
+"Mary, Mother of God": "Мария, Матерь Божия",
+"The Communion of Saints": "Общение святых",
+"Grace, Faith, and Justification": "Благодать, вера и оправдание",
+"The Moral Life: Conscience and Natural Law": "Нравственная жизнь: совесть и естественный закон",
+"Death, Judgment, Heaven, Hell, and Purgatory": "Смерть, суд, рай, ад и чистилище",
+"Does God Exist? Classic Arguments": "Существует ли Бог? Классические доводы",
+"Why Does God Allow Evil and Suffering?": "Почему Бог допускает зло и страдание?",
+"Can We Trust the Gospels?": "Можно ли доверять Евангелиям?",
+"Did Jesus Really Rise from the Dead?": "Воскрес ли Иисус на самом деле?",
+"Why the Catholic Church? Authority and Succession": "Почему Католическая Церковь? Авторитет и преемство",
+"The Bible Alone? (Sola Scriptura)": "Только Библия? (Sola Scriptura)",
+"Faith Alone? (Sola Fide)": "Только вера? (Sola Fide)",
+"Which Books Belong in the Bible?": "Какие книги входят в Библию?",
+"The Real Presence in the Eucharist": "Реальное присутствие в Евхаристии",
+"Why Confess to a Priest?": "Зачем исповедоваться священнику?",
+"Why Do Catholics Honor Mary?": "Почему католики почитают Марию?",
+"Praying to the Saints": "Молитва к святым",
+"Statues, Icons, and Relics": "Статуи, иконы и мощи",
+"Purgatory in Scripture and Tradition": "Чистилище в Писании и Предании",
+"Why Baptize Infants?": "Зачем крестить младенцев?",
+"Faith and Science": "Вера и наука",
+"\"Call No Man Father\"?": "«Отцом не называйте никого»?",
+"Angels and Demons": "Ангелы и демоны",
+"Sin: Mortal and Venial": "Грех: смертный и простительный",
+"Indulgences": "Индульгенции",
+"The Liturgical Year": "Литургический год",
+"Sacramentals and Blessings": "Сакраменталии и благословения",
+"The Second Coming and the Last Judgment": "Второе пришествие и Страшный суд",
+"Human Dignity and Catholic Social Teaching": "Достоинство человека и социальное учение Церкви",
+"Can Non-Catholics Be Saved?": "Могут ли спастись некатолики?",
+"Once Saved, Always Saved?": "Однажды спасён — спасён навсегда?",
+"Was Peter Ever in Rome?": "Был ли Пётр в Риме?",
+"Why Don’t Catholic Priests Marry?": "Почему католические священники не женятся?",
+"Why Does the Church Ordain Only Men?": "Почему Церковь рукополагает только мужчин?",
+"What About the Crusades and the Inquisition?": "А как же Крестовые походы и инквизиция?",
+"Did the Church Keep the Bible from People?": "Скрывала ли Церковь Библию от людей?",
+"Isn’t Religion the Cause of Most Wars?": "Разве религия не причина большинства войн?",
+"Why \"Offer Up\" Suffering?": "Зачем «приносить» страдания?",
+"Who Are the Church Fathers?": "Кто такие Отцы Церкви?",
+"The Fathers on the Eucharist": "Отцы о Евхаристии",
+"The Fathers on Peter and the Church of Rome": "Отцы о Петре и Римской Церкви",
+"The Fathers on Bishops and Apostolic Succession": "Отцы о епископах и апостольском преемстве",
+"The Fathers on Baptism": "Отцы о Крещении",
+"The Fathers on Mary": "Отцы о Марии",
+"The Fathers on Confession and Penance": "Отцы об исповеди и покаянии",
+"The Fathers on Praying for the Dead": "Отцы о молитве за умерших",
+"The Fathers on Scripture and Tradition": "Отцы о Писании и Предании",
+"The Immaculate Conception and the Assumption": "Непорочное Зачатие и Взятие на небо",
+"Divine Providence": "Божественный Промысл",
+"Consecrated Life": "Богопосвящённая жизнь",
+"Jesus Christ: One Person, Two Natures": "Иисус Христос: одно Лицо, две природы",
+"Is the Trinity in the Bible?": "Есть ли Троица в Библии?",
+"Did Constantine Invent the Church or the Bible?": "Изобрёл ли Константин Церковь или Библию?",
+"Did Mary Have Other Children?": "Были ли у Марии другие дети?",
+"Why Repeat the Same Prayers?": "Зачем повторять одни и те же молитвы?",
+"Doesn't the Church Change Its Doctrines?": "Разве Церковь не меняет своё учение?",
+"The Incarnation": "Воплощение",
+"The Hypostatic Union": "Ипостасное единство",
+"Consubstantial": "Единосущный",
+"Theotokos": "Богородица (Теотокос)",
+"Original Sin and Concupiscence": "Первородный грех и вожделение",
+"Justification and Sanctification": "Оправдание и освящение",
+"Dogma, Doctrine, and Discipline": "Догмат, вероучение и дисциплина",
+"The Magisterium": "Магистериум",
+"Papal Infallibility and “Ex Cathedra”": "Папская непогрешимость и «ex cathedra»",
+"Worship and Veneration": "Поклонение и почитание",
+"The Beatific Vision": "Блаженное видение",
+"The Paschal Mystery": "Пасхальная тайна",
+"Canonization: Venerable, Blessed, Saint": "Канонизация: досточтимый, блаженный, святой",
+"Annulment (Declaration of Nullity)": "Аннулирование (признание брака недействительным)",
+"Encyclicals and Other Church Documents": "Энциклики и другие документы Церкви",
+"Merit": "Заслуга",
+"Heresy, Schism, and Apostasy": "Ересь, раскол и отступничество",
+"Is the Chair of Peter Empty? (Sedevacantism)": "Пуст ли престол Петра? (Седевакантизм)",
+"Is the New Mass Valid?": "Действительна ли новая Месса?",
+"No Salvation for Anyone Outside the Visible Church? (Feeneyism)": "Нет спасения вне видимой Церкви? (Финиизм)",
+"What Is Modernism?": "Что такое модернизм?",
+"Aren’t All Religions the Same? (Indifferentism)": "Разве не все религии одинаковы? (Индифферентизм)",
+"Is Jesus Only a Creature? (Arianism)": "Иисус лишь творение? (Арианство)",
+"Can We Save Ourselves? (Pelagianism)": "Можем ли мы спасти себя сами? (Пелагианство)",
+"Secret Knowledge and “Lost Gospels” (Gnosticism)": "Тайное знание и «утраченные евангелия» (Гностицизм)",
+"Can a Sinful Priest Give Real Sacraments? (Donatism)": "Может ли грешный священник совершать подлинные таинства? (Донатизм)",
+"Is Mary Only the Mother of Christ? (Nestorianism)": "Мария лишь Матерь Христа? (Несторианство)",
+"Is God’s Mercy Only for a Few? (Jansenism)": "Божие милосердие лишь для немногих? (Янсенизм)",
+"The Filioque: East and West": "Филиокве: Восток и Запад",
 "{*}; {*}": "{*}; {*}",
 "{*}: {*}": "{*}: {*}",
 "{*} · {*}": "{*} · {*}"
@@ -8898,6 +9241,153 @@ window.SANCTIFY_I18N = {
 },
 "t69": {
 "content": "Отцы любили Писание и постоянно толковали его, но никогда не читали его в отрыве от живого Предания Церкви, получившей его от апостолов."
+},
+"t70": {
+"content": "Вселенский собор — это собрание епископов всего мира в единстве с Папой, которое учит властью всей Церкви. Католическая Церковь насчитывает двадцать один Вселенский собор — от Никейского в 325 году до Второго Ватиканского (1962–1965).\n\nПервые семь соборов, проходившие на Востоке и признаваемые и католиками, и православными, определили главные истины о Троице и о Христе."
+},
+"t71": {
+"content": "Бог дал Моисею Десять заповедей на горе Синай как сердце Своего завета с Израилем. Иисус не отменил их, но исполнил, сведя их к двум великим заповедям: любви к Богу и любви к ближнему.\n\nПервые три заповеди касаются нашей любви к Богу, остальные семь — любви к ближнему. Они выражают естественный закон, написанный в каждом человеческом сердце."
+},
+"t72": {
+"content": "Заповеди блаженства — сердце проповеди Иисуса в Нагорной проповеди. Они описывают лик Самого Христа и расположение тех, кто следует за Ним, и обещают счастье, которое Бог вложил в каждое человеческое сердце.\n\nКатехизис учит, что заповеди блаженства отвечают нашему естественному стремлению к счастью — стремлению, которое Бог вложил в нас, чтобы привлечь нас к Себе."
+},
+"t73": {
+"content": "Символ веры — это краткое изложение веры. С самого начала крещаемые исповедовали веру в Отца, Сына и Святого Духа. Из этих крещальных исповеданий выросли Апостольский Символ веры, древний крещальный символ Римской Церкви, и Никейский Символ веры, завершённый на Константинопольском соборе в 381 году.\n\nНикейский Символ веры исповедуется на воскресной Мессе и в Божественной литургии; его разделяют католики, православные и многие протестанты."
+},
+"t74": {
+"content": "Церковь торжественно определила четыре догмата о Марии: что Она — Матерь Божия (431), Приснодева (649), зачата без первородного греха (1854) и взята с душой и телом в небесную славу (1950).\n\nНепорочное Зачатие означает, что с первого мгновения бытия, по особой благодати и ради заслуг Христа, Мария была сохранена от первородного греха. Взятие на небо означает, что по завершении земной жизни Она была взята с душой и телом на небо, где уже причастна Воскресению Своего Сына."
+},
+"t75": {
+"content": "Бог не сотворил мир, чтобы затем оставить его на произвол судьбы. Он ведёт всё, великое и малое, к его конечной цели с премудростью и любовью. Это называется Божественным Промыслом.\n\nБог уважает свободу Своих творений и даже даёт им достоинство содействовать Его замыслу. Он попускает зло, но никогда не бывает причиной нравственного зла и может извлечь из него благо, как из величайшего зла — смерти Своего Сына — извлёк величайшее благо, наше искупление."
+},
+"t76": {
+"content": "Некоторые христиане призваны следовать за Христом ближе, принимая евангельские советы бедности, целомудрия и послушания. Эта богопосвящённая жизнь имеет множество форм: отшельники, посвящённые девы и вдовы, монахи и монахини, ордены и конгрегации, светские институты и общества апостольской жизни.\n\nБогопосвящённые мужчины и женщины свидетельствуют о Царстве Небесном, где не женятся, и об истине, что одного Бога довольно."
+},
+"t77": {
+"content": "Иисус Христос — одно Божественное Лицо, вечный Сын Божий, Который воспринял от Девы Марии полную человеческую природу, тело и душу. Он — истинный Бог и истинный человек, не наполовину то и другое и не смешение их.\n\nХалкидонский собор в 451 году учил, что две Его природы соединены «неслитно, неизменно, нераздельно, неразлучно». Поскольку Он и то и другое, то, что Он совершает как человек, совершает Бог: Бог родился от Марии, Бог пострадал и умер на Кресте."
+},
+"t78": {
+"content": "Слово «Троица» не встречается в Библии, но реальность, которую оно называет, — встречается. Писание учит, что Бог один, и показывает также, что Отец есть Бог, Сын есть Бог и Святой Дух есть Бог и что Они отличны друг от друга.\n\nЦерковь употребила слово «Троица», впервые встречающееся у святого Феофила Антиохийского около 180 года, чтобы верно выразить то, что открывает Писание."
+},
+"t79": {
+"content": "Распространено утверждение, будто император Константин создал Католическую Церковь, решил, какие книги входят в Библию, или сделал Иисуса Богом на Никейском соборе. Исторические свидетельства показывают обратное.\n\nЦерковь с епископами, таинствами и Писанием существовала почти триста лет до Константина и пережила страшные гонения без всякой помощи государства."
+},
+"t80": {
+"content": "Евангелия упоминают «братьев» Иисуса, и некоторые утверждают, что у Марии были другие дети. Церковь, следуя единодушной вере древних отцов, учит, что Мария пребыла Девой всю жизнь.\n\nВ еврейском и арамейском языках не было отдельного слова для двоюродного брата, и словом «брат» называли родственников самого разного рода."
+},
+"t81": {
+"content": "Некоторые возражают, что католические молитвы, такие как Розарий или Иисусова молитва, — это «многословие», от которого предостерегал Иисус. Но Иисус осуждал пустое многоречие, стремящееся впечатлить Бога множеством слов, а не молитву, которая с любовью возвращается к одним и тем же словам.\n\nСамо Писание полно повторяющейся молитвы, и Иисус дал нам неизменную молитву: «Отче наш»."
+},
+"t82": {
+"content": "Понимание веры Церковью растёт со временем, но сама вера не меняется. Святой Викентий Леринский сравнивал это с ростом ребёнка во взрослого: члены тела становятся больше, но личность остаётся той же.\n\nСвятой Джон Генри Ньюмен исследовал это развитие вероучения и показал, что подлинное развитие сохраняет первоначальную идею, а искажение ей противоречит."
+},
+"t83": {
+"content": "Пресуществление — слово, которым Церковь называет то, что происходит на Мессе, когда священник произносит над хлебом и вином слова Христа. Проще говоря: хлеб и вино перестают быть хлебом и вином и становятся Телом и Кровью Иисуса Христа, хотя выглядят, имеют вкус и ощущаются точно так же.\n\nСлово происходит из латыни: trans означает «через» или «перемена», а субстанция — это то, что вещь есть на самом деле, под своими внешними проявлениями. Сущность меняется, а внешние виды (цвет, вкус, размер и т. д.) остаются. Поэтому католики преклоняют колени перед Евхаристией: это не символ Иисуса, а Сам Иисус."
+},
+"t84": {
+"content": "Воплощение означает «стать плотью» (от лат. caro — плоть). Так называется тайна, в которой вечный Сын Божий стал подлинным человеком, Иисусом из Назарета, зачатым от Святого Духа во чреве Девы Марии.\n\nОн не перестал быть Богом; Он воспринял человеческую природу. Катехизис называет четыре причины: чтобы спасти нас, примирив с Богом; чтобы мы познали любовь Божию; чтобы быть образцом святости; и чтобы сделать нас причастниками Божественной природы (ККЦ 457–460)."
+},
+"t85": {
+"content": "«Ипостасное единство» — богословский термин, обозначающий то, как Иисус одновременно Бог и человек. Ипостась — греческое слово, означающее «лицо». В Иисусе две природы, Божественная и человеческая, соединены в одном Лице — Сыне Божием. Они не смешаны в нечто полубожественное-получеловеческое и не являются двумя лицами, делящими одно тело.\n\nПросто говоря, «природа» отвечает на вопрос «что это?», а «лицо» — на вопрос «кто это?». На вопрос «что есть Иисус?» ответ: «Бог и человек». На вопрос «Кто есть Иисус?» ответ один: вечный Сын Божий."
+},
+"t86": {
+"content": "«Единосущный» означает «одной и той же сущности», то есть того же бытия. Это перевод греческого слова «омоусиос», употреблённого Никейским собором в 325 году: Сын единосущен Отцу. Проще говоря, Сын — не меньший бог и не величайшее творение Отца; Он есть Бог совершенно так же, как Отец есть Бог.\n\nГоворя о Троице, католики исповедуют одну Божественную природу, или сущность (что есть Бог), и три Лица (Кто есть Бог): Отца, Сына и Святого Духа. Это не три бога, а один Бог в трёх Лицах, каждое из которых всецело Бог (ККЦ 253)."
+},
+"t87": {
+"content": "Теотокос — греческое слово, означающее «Богородица», Та, Которая родила Бога. Это древнейшее и важнейшее именование Марии.\n\nОно не значит, что Мария существовала прежде Бога или создала Бога. Оно значит, что Младенец, Которого Она выносила и родила, Иисус, есть истинный Бог. Мать — мать личности, а не только тела; поскольку Иисус — Божественное Лицо, Мария — истинно Матерь Божия. Эфесский собор подтвердил это именование в 431 году."
+},
+"t88": {
+"content": "Благодать — даровой дар Божией помощи и Самой Божией жизни. Мы не заслуживаем её. Катехизис называет её «благоволением, даровой помощью, которую Бог нам оказывает», чтобы мы ответили на Его призыв (ККЦ 1996).\n\nЦерковь говорит о двух основных видах. Освящающая благодать — сама жизнь Божия, обитающая в душе, впервые дарованная в Крещении; она делает нас святыми и угодными Богу, а смертный грех изгоняет её. Действующие благодати — помощь, которую Бог подаёт в определённые моменты, чтобы познать добро и творить его: побуждение, вдохновение, сила в искушении (ККЦ 2000)."
+},
+"t89": {
+"content": "Катехизис определяет таинства как «действенные знаки благодати, установленные Христом и вверенные Церкви, через которые нам подаётся Божественная жизнь» (ККЦ 1131). Проще говоря, таинство — это знак, который действительно совершает то, что показывает. Вода Крещения показывает омовение — и действительно омывает грех.\n\nУ каждого таинства свой знак (вода, елей, хлеб и вино, возложение рук) и свои слова. Таинства действуют силой Христа, а не святостью совершителя; Церковь говорит, что они действуют ex opere operato, «в силу самого совершения действия» (ККЦ 1128)."
+},
+"t90": {
+"content": "Первородный грех — это грех наших прародителей и повреждённое состояние человеческой природы, которое каждый человек наследует от них. Это не грех, совершённый нами лично: Катехизис говорит, что он «унаследован», а не «совершён» (ККЦ 404). Это утрата изначальной святости и праведности, которые Бог даровал роду человеческому.\n\nКрещение изглаживает первородный грех и даёт душе жизнь Божию. Но остаётся вожделение: склонность ко греху, беспорядочное влечение наших желаний. Вожделение само по себе не грех. Оно остаётся, чтобы мы боролись с ним, и не может повредить тем, кто противостоит ему благодатью Христовой (ККЦ 1264)."
+},
+"t91": {
+"content": "Оправдание — это действие Бога, делающее нас праведными: Он освобождает нас от греха и делает Своими детьми. Это дело Бога, а не наше, и оно начинается в Крещении (ККЦ 1987, 1992). Католики верят, что оправдание не просто покрывает грех, но действительно изменяет нас изнутри. Как говорит Катехизис, цитируя Тридентский собор, оправдание — «не только отпущение грехов, но и освящение и обновление внутреннего человека» (ККЦ 1989).\n\nОсвящение — это рост в святости на протяжении всей жизни, который следует, когда мы содействуем благодати. Та же благодать, что прощает нас, и обновляет нас, чтобы мы могли любить Бога и ближнего и творить угодные Ему добрые дела."
+},
+"t92": {
+"content": "Эти три слова часто путают. Догмат — это истина, открытая Богом, которую Церковь определила так, что каждый католик обязан в неё верить, например Троица или Непорочное Зачатие (ККЦ 88). Вероучение — более широкое слово, охватывающее всё авторитетное учение Церкви о вере и нравственности: всякий догмат есть вероучение, но не всякое вероучение торжественно определено.\n\nДисциплина — практическое правило церковной жизни, например покаяние по пятницам, язык литургии или безбрачие священников Латинской Церкви. Дисциплины служат вере и по веским причинам могут меняться. Догматы не могут меняться, хотя наше понимание их может углубляться."
+},
+"t93": {
+"content": "Магистериум — это учительская власть Церкви: Папа и епископы в общении с ним, которым вверено толкование Слова Божия, записанного в Писании или переданного в Предании (ККЦ 85). Слово происходит от латинского magister — «учитель».\n\nМагистериум не стоит над Словом Божиим, но служит ему, уча лишь тому, что передано (ККЦ 86). При определённых условиях он может учить непогрешимо, а также учит обычным образом, и этому учению католики оказывают «религиозное согласие» ума и воли (ККЦ 892)."
+},
+"t94": {
+"content": "Папская непогрешимость означает, что по особому дару Святого Духа Папа сохраняется от заблуждения, когда торжественно определяет учение о вере или нравственности для всей Церкви. Такое определение называется ex cathedra, «с кафедры» Петра. Первый Ватиканский собор определил это в 1870 году.\n\nНепогрешимость не означает, что Папа безгрешен, что всё сказанное им непогрешимо или что он может изобретать новые учения. Она относится лишь к случаям, когда он учит как пастырь всех христиан, о вере или нравственности, с намерением дать окончательное определение. Папы прибегали к ней редко; Пий XII, например, определил догмат о Взятии Девы Марии в 1950 году."
+},
+"t95": {
+"content": "Апостольское преемство означает, что епископы Католической Церкви — преемники апостолов, связанные с ними непрерывной цепью возложения рук. Апостолы поставляли людей, продолжавших их дело, а те в свою очередь поставляли других, так что учение, богослужение и власть Церкви передаются с самого начала (ККЦ 77, 861).\n\nЭто больше, чем исторический список имён. Это залог того, что вера, которой учат сегодня, — та же вера, которой учили апостолы, и что таинства совершаются властью Самого Христа."
+},
+"t96": {
+"content": "Католики воздают поклонение, или служение, одному Богу; традиционное слово для этого — латрия. Честь, воздаваемая святым, — нечто иное, называемое почитанием, или дулией: уважение и любовь к друзьям Божиим ради того, что Бог совершил в них. Особое почитание Марии, величайшей из святых, называется гипердулией — высшим почитанием.\n\nПочитать святых — всё равно что хвалить художника, восхищаясь его шедевром: слава возвращается к Богу. Церковь учит, что честь, воздаваемая святому образу, восходит к первообразу и что это почитание — не поклонение, подобающее одному Богу (ККЦ 2132)."
+},
+"t97": {
+"content": "Блаженное видение — так Церковь называет радость рая: видеть Бога лицом к лицу (1 Кор 13:12). «Блаженное» значит «делающее блаженным», «дарующее счастье». На небесах святые видят Бога, как Он есть, не воображением и не верой, а непосредственно, и это видение наполняет их совершенным счастьем (ККЦ 1023, 1028).\n\nНи одно творение не может так видеть Бога собственными силами. Сам Бог должен открыть нам Свою тайну и дать нам способность видеть Его; богословы называют этот дар «светом славы»."
+},
+"t98": {
+"content": "Пасхальная тайна — так называется спасительное дело Христа в Его Страстях, смерти, Воскресении и Вознесении. «Пасха» означает «переход»: как пасхальный агнец спас Израиль в Египте, так Иисус, Агнец Божий, переходит от смерти к жизни и ведёт нас с Собой.\n\nВсё богослужение Церкви празднует эту тайну: прежде всего на Пасху, но и каждое воскресенье, и в каждой Мессе, где делается присутствующей единая жертва Христа (ККЦ 1067, 1085)."
+},
+"t99": {
+"content": "Канонизация — официальное провозглашение Церковью того, что человек пребывает на небесах и может почитаться как святой всей Церковью. Она никого не делает святым; она признаёт то, что Бог уже совершил.\n\nПроцесс имеет ступени. «Слуга Божий» — тот, чьё дело открыто. «Досточтимый» означает, что Церковь установила, что человек жил добродетелями в героической степени. «Блаженный» (беатификация) обычно требует чуда по его заступничеству, кроме мучеников, и допускает почитание в определённом месте. «Святой» (канонизация) обычно требует ещё одного чуда и допускает почитание во всей Церкви."
+},
+"t100": {
+"content": "Отлучение — самое тяжкое наказание, которое может наложить Церковь. Оно не изгоняет человека из Церкви и не решает, что он погиб. Оно запрещает католику принимать таинства и участвовать в некоторых делах Церкви в надежде, что он осознает тяжесть содеянного и вернётся (ККЦ 1463).\n\nНекоторые отлучения наступают автоматически самим деянием (latae sententiae) за определённые очень тяжкие преступления, такие как совершение аборта или осквернение Святой Евхаристии. Они призваны исцелять, а не только наказывать, и могут быть сняты компетентной властью, часто в таинстве Покаяния."
+},
+"t101": {
+"content": "Аннулирование, точнее признание брака недействительным, — не католический развод. Это вывод церковного суда о том, что брак никогда не был действительным с самого начала, потому что в день венчания отсутствовало нечто существенное: например, один из супругов не был свободен вступать в брак, не дал свободного согласия или не намеревался вступить в верный, пожизненный брак, открытый для детей (ККЦ 1629).\n\nДействительный и осуществлённый сакраментальный брак не может быть расторгнут никакой человеческой властью (ККЦ 1640), ибо Иисус сказал: «Что Бог сочетал, того человек да не разлучает» (Мк 10:9). Признание недействительности не означает, что отношения были нереальными, и не делает детей незаконнорождёнными."
+},
+"t102": {
+"content": "Экуменизм — это труд ради единства всех христиан. Иисус молился, чтобы все Его ученики были едино (Ин 17:21), а разделения между христианами ранят это единство. Католическая Церковь верит, что единая Церковь Христова «пребывает в» Католической Церкви, а также что вне её видимой структуры находится много элементов освящения и истины (ККЦ 816, 819).\n\nЭкуменизм не означает притворяться, будто различия не важны. Он означает молитву, обращение сердца, честный диалог о реальных различиях и совместную работу везде, где это возможно (ККЦ 821)."
+},
+"t103": {
+"content": "Церковь учит посредством документов многих видов. Энциклика — послание Папы ко всей Церкви, а иногда ко всем людям доброй воли, на важную тему, например Rerum Novarum (1891) о правах трудящихся. Апостольское обращение (увещание) ободряет верных в каком-либо вопросе, часто после Синода епископов. Апостольская конституция — торжественный документ, используемый, например, для определения догмата о Взятии или реорганизации Римской курии.\n\nДокументы издают и соборы: Второй Ватиканский собор принял четыре конституции, девять декретов и три декларации. Документы Церкви обычно называют по их первым латинским словам."
+},
+"t104": {
+"content": "Литургия первоначально означала «общественное дело», работу, совершаемую ради народа. В Церкви так называется её официальное общественное богослужение: прежде всего Месса, другие таинства и Литургия часов. В литургии Сам Христос действует как Первосвященник вместе со Своим Телом, Церковью (ККЦ 1069–1070).\n\nПоэтому у литургии есть установленные формы, и её не придумывает каждый священник или община: она принадлежит всей Церкви. Частные молитвы и благочестивые упражнения хороши, но литургия — вершина, к которой устремлена вся деятельность Церкви, и источник, из которого исходит вся её сила (ККЦ 1074)."
+},
+"t105": {
+"content": "Заслуга означает награду, причитающуюся за доброе дело. Строго говоря, никто не может ничего заслужить у Бога собственными силами: всё, что у нас есть, — Его дар. Но Бог по Своей щедрости даёт нам содействовать Его благодати и вознаграждает добро, которое мы творим в этой благодати (ККЦ 2008).\n\nПоэтому, когда католики говорят о заслугах, они не имеют в виду покупку рая. Как молится Церковь в префации о святых, увенчивая их заслуги, Бог увенчивает Свои собственные дары (ККЦ 2006)."
+},
+"t106": {
+"content": "Это три способа порвать с верой или с Церковью. Ересь — упорное отрицание или упорное сомнение после Крещения в истине, в которую следует верить божественной и кафолической верой. Отступничество (апостасия) — полный отказ от христианской веры. Раскол (схизма) — отказ подчиняться Папе или быть в общении с членами Церкви, ему подчинёнными (ККЦ 2089).\n\nКлючевое слово — «упорное». Кто просто ошибается или был плохо научен, не является формальным еретиком. Церковь отличает заблуждение, которое нужно назвать, от человека, которого нужно любить и которому нужно помочь вернуться к истине."
+},
+"t107": {
+"content": "Седевакантизм (от лат. sede vacante — «при вакантном престоле») — утверждение, что уже десятилетия нет истинного Папы, обычно со смерти Пия XII в 1958 году. Седевакантисты утверждают, что Второй Ватиканский собор учил заблуждениям, что одобрившие его папы, следовательно, были еретиками и что еретик не может быть Папой.\n\nЦерковь отвергает это. Христос создал Свою Церковь на Петре и обещал, что врата ада не одолеют её (Мф 16:18). Первый Ватиканский собор учил, что у Петра будут вечные преемники в первенстве над всей Церковью. Седевакантизм требует верить, что вся видимая Церковь, её Папа и все её епископы, разом пали, оставив верных без пастырей, — именно то, что, по обетованию Христа, никогда не случится."
+},
+"t108": {
+"content": "Некоторые утверждают, что Месса, обнародованная папой святым Павлом VI в 1969 году, — обычная форма римского обряда, совершаемая сегодня в большинстве приходов, — недействительна или вредна. Церковь учит, что это истинная и действительная Месса, в которой делается присутствующей жертва Христа и Он подлинно присутствует в Евхаристии.\n\nЦерковь имеет власть над литургией и не может дать своим детям дурной или недействительный обряд. Тридентский собор осудил утверждение, будто обряды, которыми Католическая Церковь пользуется на Мессе, побуждают к нечестию. Католики могут любить более древнюю форму Мессы, принадлежащую наследию Церкви, не отрицая того, что Месса, совершаемая сегодня во всём мире, есть подлинно Святая Жертва."
+},
+"t109": {
+"content": "Церковь учит, что «вне Церкви нет спасения»: всякое спасение исходит от Христа через Церковь, которая есть Его Тело (ККЦ 846). В 1940-х годах о. Леонард Фини из Бостона учил, что это означает, будто никто не может спастись, если не является формальным, крещёным членом Католической Церкви, отрицая, что желание Крещения может спасти.\n\nВ 1949 году Священная канцелярия написала архиепископу Бостона, разъясняя, что о. Фини неверно понял это учение: человек может быть соединён с Церковью желанием, даже неявным, соединённым со сверхъестественной верой и совершенной любовью. О. Фини был отлучён в 1953 году за непослушание и примирился с Церковью перед смертью в 1978 году."
+},
+"t110": {
+"content": "Модернизм — движение конца XIX — начала XX века, пытавшееся примирить веру с современной философией, считая догматы изменчивыми выражениями религиозного чувства, а не откровенными истинами. Папа святой Пий X осудил его в энциклике Pascendi (1907), назвав его «сводом всех ересей».\n\nВ противовес ему Церковь учит, что Бог действительно открыл Себя и что догматы — истинные утверждения о Нём, а не символы, меняющиеся со временем. Первый Ватиканский собор учил, что смысл священных догматов, однажды провозглашённый Церковью, должен всегда сохраняться. Понимание может углубляться, но сама вера не меняет своего смысла."
+},
+"t111": {
+"content": "Религиозный индифферентизм — убеждение, что все религии одинаково истинны или что неважно, какой из них следовать. Церковь отвергает его, отвергая также и презрение к другим религиям.\n\nВторой Ватиканский собор учил, что Церковь не отвергает ничего истинного и святого в других религиях, которые нередко отражают луч той Истины, что просвещает всех людей (Nostra Aetate 2). Но Иисус Христос — единственный Спаситель всех, и полнота истины находится в Нём и в Его Церкви. Уважение к другим и долг делиться Евангелием идут рука об руку."
+},
+"t112": {
+"content": "В начале IV века Арий, пресвитер из Александрии, учил, что Сын Божий — первое и величайшее из творений Божиих, но не вечен и не Бог в том же смысле, что Отец: «было время, когда Его не было». Никейский собор в 325 году осудил это, исповедав, что Сын «единосущен Отцу», Бог истинный от Бога истинного, рождённый, несотворённый (ККЦ 242, 465).\n\nПодобные идеи проповедуются и сегодня, например Свидетелями Иеговы, которые считают Иисуса сотворённым существом. Писание и вера всей Церкви исповедуют Его Богом."
+},
+"t113": {
+"content": "Пелагий, британский монах начала V века, учил, что первородный грех не повредил человеческую природу и что люди могут жить без греха и достичь спасения собственной силой воли, а благодать — лишь дополнительная помощь. Святой Августин выступил против него, и Карфагенский собор 418 года осудил его учение. Позднее Оранжский собор (529) отверг «полупелагианство» — мысль, что первый шаг к Богу исходит от нас, а благодать лишь следует за ним.\n\nЦерковь учит, что всякое добро, совершаемое нами на пути к спасению, даже само начало веры, движимо Божией благодатью (ККЦ 2001). Мы действительно содействуем, но никогда не действуем одни. Папа Франциск предостерегал от «нового пелагианства» в своём обращении о святости Gaudete et Exsultate (2018)."
+},
+"t114": {
+"content": "Гностицизм — семейство движений II и III веков, утверждавших, что спасение приходит через тайное знание (гнозис), что материальный мир — зло, а создатель мира — низший, невежественный бог. Некоторые гностики отрицали, что у Христа было подлинное тело (докетизм). Святой Ириней опроверг их в своём великом труде «Против ересей» (ок. 180), указывая на публичную веру, передаваемую епископами в преемстве от апостолов.\n\nТак называемые «утраченные евангелия», например Евангелие от Фомы или Евангелие от Иуды, происходят в основном из этих кругов и написаны значительно позже четырёх Евангелий. Церковь никогда их не скрывала; она рассудила, что они не передают апостольской веры."
+},
+"t115": {
+"content": "В Северной Африке IV века донатисты учили, что таинства, совершённые клириками, тяжко согрешившими, особенно выдавшими Писание во время гонений, недействительны и что истинная Церковь — лишь община чистых. Святой Августин опроверг их.\n\nЦерковь учит, что таинства действуют силой Христа, а не святостью совершителя: это Христос крестит, Христос прощает, Христос приносит жертву. Священник в тяжком грехе, совершая таинство недостойно, совершает ещё один грех, но само таинство действительно (ККЦ 1128, 1584)."
+},
+"t116": {
+"content": "Несторий, архиепископ Константинопольский, в V веке возражал против того, чтобы называть Марию Теотокос, «Богородицей», предпочитая «Христородица». За этим стояла мысль, что во Христе два лица — Божественный Сын и человек Иисус, слабо соединённые. Святой Кирилл Александрийский выступил против него, и Эфесский собор в 431 году подтвердил, что Христос — одно Божественное Лицо, а Мария — истинно Богородица (ККЦ 466, 495).\n\nЭто именование прежде всего говорит об Иисусе: рождённый от Марии Младенец — не человек, в котором обитал Бог, а Сам Бог, ставший человеком."
+},
+"t117": {
+"content": "Янсенизм, названный по имени епископа Корнелия Янсения (ум. 1638), распространился во Франции и Нидерландах в XVII и XVIII веках. Он учил суровому взгляду на благодать: что Христос умер не за всех, что благодати невозможно противиться и что лишь немногие достойны причащаться, а причастие должно быть редким. Папа Иннокентий X в 1653 году осудил пять положений из труда Янсения, а последующие папы осудили и другие заблуждения.\n\nЦерковь учит, что Христос умер за всех без исключения (ККЦ 605), что Бог хочет, чтобы все спаслись, и что верные должны часто причащаться при должном расположении. Папа святой Пий X в 1905 году призвал к частому, даже ежедневному Причастию."
+},
+"t118": {
+"content": "Филиокве — латинское слово, означающее «и Сына». В Латинской Церкви Никейский Символ веры говорит, что Святой Дух «исходит от Отца и Сына». Первоначальный Символ 381 года говорил лишь «от Отца», а эти слова позднее были добавлены на Западе. Это стало одним из вопросов, разделяющих католиков и православных.\n\nКатолическая Церковь учит, что восточный способ выражения — что Дух исходит от Отца через Сына — и западный дополняют, а не противоречат друг другу, если их правильно понимать (ККЦ 248). Отец — единый источник всей Троицы. Восточные католики читают Символ веры без филиокве, и папы молились им без филиокве вместе с православными патриархами."
 }
 },
 "texts": {
