@@ -8999,6 +8999,75 @@ window.SANCTIFY_I18N = {
 "Come Be My Light": "Sii la mia luce",
 "Dilexit Nos": "Dilexit nos",
 "Against Heresies": "Contro le eresie",
+"First Apology": "Prima apologia",
+"The Letter of Clement to the Corinthians": "Lettera di Clemente ai Corinzi",
+"On the Holy Spirit": "Lo Spirito Santo",
+"On the Priesthood": "Il sacerdozio",
+"On Christian Teaching": "La dottrina cristiana",
+"The Book of Pastoral Rule": "La regola pastorale",
+"Dialogues": "Dialoghi",
+"Why God Became Man (Cur Deus Homo)": "Perché Dio si è fatto uomo (Cur Deus homo)",
+"Scivias": "Scivias",
+"Summa contra Gentiles": "Somma contro i Gentili",
+"The Major Legend of St. Francis": "Leggenda maggiore di san Francesco",
+"Treatise on Purgatory": "Trattato del Purgatorio",
+"The Sinner’s Guide": "La guida dei peccatori",
+"The Spiritual Canticle": "Cantico spirituale",
+"The Living Flame of Love": "Fiamma viva d’amore",
+"The Mind’s Ascent to God by the Ladder of Created Things": "Ascensione della mente a Dio per la scala delle cose create",
+"The Catholic Controversy": "Le controversie",
+"Visits to the Most Blessed Sacrament": "Visite al Santissimo Sacramento",
+"The Practice of the Love of Jesus Christ": "Pratica di amar Gesù Cristo",
+"An Essay in Aid of a Grammar of Assent": "Grammatica dell’assenso",
+"The Baltimore Catechism No. 2": "Catechismo di Baltimora n. 2",
+"Aeterni Patris": "Aeterni Patris",
+"Quadragesimo Anno": "Quadragesimo anno",
+"Mystici Corporis Christi": "Mystici Corporis Christi",
+"Evangelii Nuntiandi": "Evangelii nuntiandi",
+"Redemptor Hominis": "Redemptor hominis",
+"Salvifici Doloris": "Salvifici doloris",
+"Veritatis Splendor": "Veritatis splendor",
+"Evangelium Vitae": "Evangelium vitae",
+"Caritas in Veritate": "Caritas in veritate",
+"Lumen Fidei": "Lumen fidei",
+"Gaudete et Exsultate": "Gaudete et exsultate",
+"Fratelli Tutti": "Fratelli tutti",
+"Compendium of the Catechism of the Catholic Church": "Compendio del Catechismo della Chiesa Cattolica",
+"YOUCAT": "YOUCAT",
+"The Intellectual Life": "La vita intellettuale",
+"The Spirit of Catholicism": "L’essenza del cattolicesimo",
+"Europe and the Faith": "L’Europa e la fede",
+"The Great Heresies": "Le grandi eresie",
+"The Three Ages of the Interior Life": "Le tre età della vita interiore",
+"Transformation in Christ": "La trasformazione in Cristo",
+"The Reed of God": "La canna di Dio",
+"Peace of Soul": "Pace dell’anima",
+"Three to Get Married": "Tre per sposarsi",
+"New Seeds of Contemplation": "Nuovi semi di contemplazione",
+"Love and Responsibility": "Amore e responsabilità",
+"Love Alone Is Credible": "Solo l’amore è credibile",
+"The Science of the Cross": "Scientia Crucis",
+"The Way": "Cammino",
+"Death Comes for the Archbishop": "La morte viene per l’arcivescovo",
+"Edmund Campion": "Edmund Campion",
+"The End of the Affair": "Fine di una storia",
+"The Moviegoer": "L’uomo che andava al cinema",
+"Wise Blood": "La saggezza nel sangue",
+"The Spirit of the Liturgy (Ratzinger)": "Introduzione allo spirito della liturgia (Ratzinger)",
+"Handbook of Christian Apologetics": "Manuale di apologetica cristiana",
+"The Lamb’s Supper": "La cena dell’Agnello",
+"Rome Sweet Home": "Roma, dolce casa",
+"Jesus and the Jewish Roots of the Eucharist": "Gesù e le radici ebraiche dell’Eucaristia",
+"Searching for and Maintaining Peace": "La pace interiore",
+"33 Days to Morning Glory": "33 giorni verso l’aurora",
+"The Power of Silence": "La forza del silenzio",
+"With God in Russia": "Con Dio in Russia",
+"The Ball and the Cross": "La sfera e la croce",
+"The Catholic Church and Conversion": "La Chiesa cattolica e la conversione",
+"The Belief of Catholics": "La fede dei cattolici",
+"The End of the Modern World": "La fine dell’epoca moderna",
+"The Way of Divine Love": "Colui che parla dal fuoco",
+"The Letters of St. Thérèse of Lisieux": "Lettere di santa Teresa di Lisieux",
 "{*}; {*}": "{*}; {*}",
 "{*}: {*}": "{*}: {*}",
 "{*} · {*}": "{*} · {*}",
@@ -9430,6 +9499,222 @@ window.SANCTIFY_I18N = {
 },
 "b94": {
 "content": "Ireneo, che da ragazzo aveva ascoltato san Policarpo, discepolo di san Giovanni, scrisse quest’opera in cinque libri per confutare le sette gnostiche che pretendevano di possedere una conoscenza…"
+},
+"b95": {
+"content": "Indirizzata all’imperatore Antonino Pio, l’Apologia di Giustino difende i cristiani dalle accuse di ateismo e immoralità e presenta la fede come compimento sia della filosofia sia dei profeti…"
+},
+"b96": {
+"content": "Quando la Chiesa di Corinto depose i suoi presbiteri, la Chiesa di Roma scrisse per ristabilire la pace. La tradizione attribuisce la lettera a Clemente, uno dei primi vescovi di Roma.\n\nEsorta…"
+},
+"b97": {
+"content": "Basilio scrisse questo trattato per difendere la piena divinità dello Spirito Santo contro quanti negavano che lo Spirito debba essere adorato con il Padre e il Figlio.\n\nArgomenta a partire dalla…"
+},
+"b98": {
+"content": "Scritto come dialogo tra Giovanni e l’amico Basilio, che egli aveva indotto con un espediente ad accettare l’ordinazione sottraendovisi lui stesso, questo trattato spiega perché Giovanni si sentisse…"
+},
+"b99": {
+"content": "Noto anche con il titolo latino De doctrina christiana, questo manuale insegna a comprendere e spiegare le Scritture. Agostino tratta dei segni e delle cose, della regola della carità come chiave…"
+},
+"b100": {
+"content": "Scritta poco dopo l’elezione di Gregorio a papa, questa guida per vescovi e pastori spiega chi debba assumere la cura delle anime, come debba vivere e come insegnare a diversi tipi di persone, dai…"
+},
+"b101": {
+"content": "Conversando con il suo diacono Pietro, Gregorio narra le storie dei santi uomini e donne d’Italia, i loro miracoli e la loro morte. Il secondo dei quattro libri è l’unica vita antica di san Benedetto…"
+},
+"b102": {
+"content": "In questo dialogo con il discepolo Bosone, Anselmo si chiede perché Dio dovesse farsi uomo per salvare il mondo. La sua risposta, che solo chi è insieme Dio e uomo poteva soddisfare per il peccato…"
+},
+"b103": {
+"content": "Scivias, abbreviazione di «Conosci le vie del Signore», raccoglie ventisei visioni ricevute da Ildegarda e le spiegazioni che le furono date, sulla creazione, la caduta, la redenzione, la Chiesa e la…"
+},
+"b104": {
+"content": "Tommaso scrisse quest’opera, secondo la tradizione su richiesta di san Raimondo di Peñafort, per presentare la fede cristiana a chi non accetta l’autorità della Scrittura, come i pensatori musulmani…"
+},
+"b105": {
+"content": "Commissionata dall’ordine francescano, la vita di san Francesco scritta da Bonaventura fu per secoli la biografia ufficiale. Ripercorre la conversione di Francesco, il suo amore per la povertà, la…"
+},
+"b106": {
+"content": "Caterina fu una laica sposata di Genova che lavorò per decenni nell’ospedale della città. Il suo breve trattato descrive il purgatorio dall’interno, come un fuoco dell’amore di Dio che purifica…"
+},
+"b107": {
+"content": "Luigi di Granata fu un domenicano spagnolo e uno dei grandi autori spirituali del Cinquecento. La guida dei peccatori espone le ragioni per cui dobbiamo amare e servire Dio e un cammino pratico per…"
+},
+"b108": {
+"content": "Giovanni iniziò questo poema mentre era rinchiuso in una minuscola cella a Toledo. Ispirato al Cantico dei Cantici, narra la sposa che cerca il suo Amato tra monti e prati finché non si unisce a…"
+},
+"b109": {
+"content": "In quattro brevi strofe e un commento, Giovanni descrive lo stato più alto di unione con Dio possibile in questa vita, in cui lo Spirito Santo arde nell’anima come una fiamma dolce e viva.\n\nScritta…"
+},
+"b110": {
+"content": "Scritto durante un ritiro negli ultimi anni di Bellarmino, questo libretto sale quindici «gradini» dal mondo visibile al suo Creatore, considerando la terra, le acque, i cieli, l’anima umana e gli…"
+},
+"b111": {
+"content": "Da giovane sacerdote nel Chiablese, in Savoia, divenuto calvinista, Francesco scriveva fogli che spiegavano la fede cattolica e li infilava sotto le porte quando la gente si rifiutava di ascoltare le…"
+},
+"b112": {
+"content": "Questo piccolo libro offre trentuno brevi meditazioni, una per ogni giorno del mese, per accompagnare una visita a Gesù nel Santissimo Sacramento, insieme a preghiere di comunione spirituale e visite…"
+},
+"b113": {
+"content": "Alfonso considerava quest’opera la sua più utile. Costruita attorno all’inno di san Paolo alla carità in 1 Corinzi 13, mostra come ogni qualità della carità, dalla pazienza e benevolenza all’umiltà e…"
+},
+"b114": {
+"content": "L’opera più filosofica di Newman si chiede come la gente comune possa essere legittimamente certa di cose che non può provare in senso stretto, comprese le verità della religione.\n\nDistingue…"
+},
+"b115": {
+"content": "Voluto dai vescovi degli Stati Uniti, il Catechismo di Baltimora insegnò la fede a generazioni di cattolici americani con brevi domande e risposte da imparare a memoria, come «Chi ci ha creati? Dio…"
+},
+"b116": {
+"content": "L’enciclica di Leone XIII sulla filosofia cristiana chiese di restaurare la filosofia di san Tommaso d’Aquino nelle scuole e nei seminari cattolici.\n\nSostiene che fede e ragione, rettamente intese…"
+},
+"b117": {
+"content": "Scritta quarant’anni dopo la Rerum Novarum, nel pieno della Grande Depressione, questa enciclica sulla ricostruzione dell’ordine sociale critica sia il capitalismo sfrenato sia il comunismo.\n\nÈ…"
+},
+"b118": {
+"content": "Pubblicata nel pieno della Seconda guerra mondiale, questa enciclica insegna che la Chiesa è il Corpo mistico di Cristo, con Cristo come Capo e lo Spirito Santo come anima.\n\nSpiega come i membri…"
+},
+"b119": {
+"content": "In questa esortazione apostolica sull’evangelizzazione nel mondo contemporaneo, Paolo VI dichiara che la Chiesa esiste per evangelizzare.\n\nSottolinea la testimonianza di vita, l’annuncio esplicito di…"
+},
+"b120": {
+"content": "La prima enciclica di Giovanni Paolo II, «Il Redentore dell’uomo», espone la visione di tutto il suo pontificato: Cristo rivela l’uomo a sé stesso e l’uomo è la via della Chiesa.\n\nDifende la dignità…"
+},
+"b121": {
+"content": "In questa lettera apostolica sul senso cristiano della sofferenza umana, Giovanni Paolo II si chiede perché soffriamo e trova la risposta nella Croce di Cristo, che dà alla sofferenza un valore…"
+},
+"b122": {
+"content": "«Lo splendore della verità» comincia con il giovane ricco che chiede a Gesù quale bene debba fare, e da lì espone i fondamenti dell’insegnamento morale cattolico.\n\nInsegna che la libertà si compie…"
+},
+"b123": {
+"content": "«Il Vangelo della vita» difende il valore e l’inviolabilità di ogni vita umana, dal concepimento alla morte naturale, contro l’aborto, l’eutanasia e una diffusa «cultura della morte».\n\nChiama a…"
+},
+"b124": {
+"content": "Pubblicata dopo la crisi finanziaria del 2008, «La carità nella verità» applica la dottrina sociale cattolica alla globalizzazione, all’economia, alla tecnologia e all’ambiente.\n\nBenedetto sostiene…"
+},
+"b125": {
+"content": "«La luce della fede» fu iniziata da papa Benedetto XVI e completata da papa Francesco, chiudendo una trilogia con le encicliche di Benedetto sull’amore e sulla speranza.\n\nPresenta la fede come una…"
+},
+"b126": {
+"content": "In questa esortazione apostolica sulla chiamata alla santità nel mondo contemporaneo, Francesco insiste che la santità è per tutti, non solo per il clero e i religiosi. Parla dei «santi della porta…"
+},
+"b127": {
+"content": "Con un titolo tratto da san Francesco d’Assisi, questa enciclica sulla fraternità e l’amicizia sociale fu pubblicata durante la pandemia di COVID-19.\n\nPartendo dalla parabola del buon samaritano…"
+},
+"b128": {
+"content": "Una sintesi concisa del Catechismo della Chiesa Cattolica in 598 domande e risposte, preparata sotto la guida del cardinale Ratzinger e pubblicata poco dopo che egli divenne papa Benedetto…"
+},
+"b129": {
+"content": "Il Catechismo dei giovani della Chiesa Cattolica fu scritto per i giovani e presentato alla Giornata Mondiale della Gioventù di Madrid nel 2011, con una prefazione di papa Benedetto XVI.\n\nIn 527…"
+},
+"b130": {
+"content": "Dom Columba Marmion fu un abate benedettino di origine irlandese a Maredsous, in Belgio. Le sue conferenze, raccolte in questo libro, presentano la vita cristiana come partecipazione alla vita di…"
+},
+"b131": {
+"content": "Antonin-Dalmace Sertillanges, domenicano francese, scrisse questa guida pratica per chiunque sia chiamato a una vita di studio. Ispirandosi a san Tommaso d’Aquino, tratta il lavoro intellettuale come…"
+},
+"b132": {
+"content": "Il teologo tedesco Karl Adam scrisse questo ritratto della Chiesa cattolica come Corpo vivo di Cristo, comunità di fede, culto e amore, più che semplice istituzione.\n\nFu molto letto nei decenni…"
+},
+"b133": {
+"content": "Lo scrittore anglo-francese Hilaire Belloc sostiene in questa storia provocatoria che la fede cattolica ha creato la civiltà europea e che l’Impero romano non fu distrutto, ma passò nella Chiesa.\n\nLa…"
+},
+"b134": {
+"content": "Belloc passa in rassegna cinque grandi sfide alla Chiesa: l’arianesimo, l’islam, gli albigesi, la Riforma e ciò che chiamò l’«attacco moderno», un materialismo che rifiuta ogni religione.\n\nScritto…"
+},
+"b135": {
+"content": "Questa vasta opera di un eminente teologo domenicano a Roma (che ebbe tra i suoi allievi il futuro papa Giovanni Paolo II) descrive la vita spirituale in tre tappe: la via purgativa dei principianti…"
+},
+"b136": {
+"content": "Il gesuita francese Henri de Lubac attinse ai Padri della Chiesa per mostrare che la fede cattolica è sociale per sua stessa natura: la salvezza non è solo individuale, ma è il radunarsi di tutta…"
+},
+"b137": {
+"content": "Il filosofo tedesco Dietrich von Hildebrand, aperto oppositore del nazismo fuggito dall’Europa negli Stati Uniti, descrive gli atteggiamenti interiori che permettono a una persona di essere…"
+},
+"b138": {
+"content": "Caryll Houselander, mistica laica e artista inglese, medita sulla Vergine Maria come una canna vuota attraverso cui risuona la musica di Dio.\n\nMostra come il vuoto, l’attesa e la vita nascosta di…"
+},
+"b139": {
+"content": "In uno dei suoi libri più venduti, Fulton Sheen affronta l’ansia e la frustrazione dell’uomo moderno, confrontando le intuizioni della psicologia con la comprensione cristiana del peccato, della…"
+},
+"b140": {
+"content": "Il classico di Sheen sul matrimonio sostiene che servono tre persone per un matrimonio duraturo: un marito, una moglie e Dio. Con il suo tipico spirito, esplora la differenza tra l’amore e la…"
+},
+"b141": {
+"content": "Il monaco trappista Thomas Merton offre brevi riflessioni sulla preghiera contemplativa, sul vero e sul falso io e sull’incontro con Dio nel silenzio.\n\nVersione rivista e ampliata dei suoi Semi di…"
+},
+"b142": {
+"content": "Scritto quando era un giovane vescovo a Cracovia e fondato su anni di conversazioni con giovani coppie, lo studio filosofico di Wojtyła sull’amore e la sessualità poggia sulla «norma personalistica»…"
+},
+"b143": {
+"content": "In questo libro breve ma impegnativo, il teologo svizzero Hans Urs von Balthasar sostiene che la fede cristiana è credibile non tanto per prove storiche o argomenti filosofici, quanto per la gloria…"
+},
+"b144": {
+"content": "Edith Stein stava scrivendo questo studio su san Giovanni della Croce per il quarto centenario della sua nascita quando fu arrestata dalla Gestapo nel 1942. Morì ad Auschwitz pochi giorni dopo e il…"
+},
+"b145": {
+"content": "Il fondatore dell’Opus Dei raccolse 999 brevi punti di meditazione, scritti per aiutare la gente comune a cercare la santità nel lavoro e nella vita quotidiana.\n\nLe sue massime brevi e dirette sulla…"
+},
+"b146": {
+"content": "Il romanzo di Willa Cather segue un vescovo missionario francese, Jean Marie Latour, e il suo amico padre Joseph Vaillant mentre edificano la Chiesa nel vasto territorio del Nuovo Messico…"
+},
+"b147": {
+"content": "Evelyn Waugh, convertito da poco, scrisse questa vivace biografia del martire gesuita elisabettiano sant’Edmondo Campion e ne donò i proventi a Campion Hall, a Oxford.\n\nCon mestiere di romanziere…"
+},
+"b148": {
+"content": "Ambientato a Londra durante e dopo il Blitz, il romanzo di Greene è narrato da uno scrittore la cui amante, Sarah, interrompe improvvisamente la loro relazione. Cercandone il motivo, scopre che lei…"
+},
+"b149": {
+"content": "Binx Bolling, un agente di borsa di New Orleans che si perde nei film, intraprende una «ricerca» di senso nella settimana che precede il Mardi Gras.\n\nWalker Percy, convertito e medico divenuto…"
+},
+"b150": {
+"content": "Il primo romanzo di Flannery O’Connor segue Hazel Motes, un giovane reduce che fonda la «Chiesa senza Cristo» per sfuggire al Gesù che lo ossessiona.\n\nComico in modo cupo e violento, mostra la grazia…"
+},
+"b151": {
+"content": "Padre Elia Schäfer, sopravvissuto alla Shoah e divenuto monaco carmelitano, viene inviato dal Papa in una missione segreta per affrontare un carismatico leader politico che potrebbe essere…"
+},
+"b152": {
+"content": "Scritto in omaggio al libro omonimo di Romano Guardini, lo studio del cardinale Ratzinger esplora il senso del culto cristiano: le sue radici nell’Antico Testamento, il suo orientamento verso Dio e…"
+},
+"b153": {
+"content": "Due filosofi del Boston College presentano argomenti chiari e concisi a favore dell’esistenza di Dio, della divinità di Cristo, della Risurrezione, della vita dopo la morte e dell’attendibilità della…"
+},
+"b154": {
+"content": "Scott Hahn, ex pastore presbiteriano divenuto cattolico, mostra come l’Apocalisse descriva la liturgia celeste che ogni Messa rende presente sulla terra.\n\nPercorrendo le parti della Messa, le collega…"
+},
+"b155": {
+"content": "Scott e Kimberly Hahn raccontano, in capitoli alternati, il loro cammino dal protestantesimo evangelicale alla Chiesa cattolica, compresa la tensione che le loro convinzioni causarono nel matrimonio…"
+},
+"b156": {
+"content": "Il biblista Brant Pitre esplora le speranze ebraiche di una nuova Pasqua, di una nuova manna e del pane della Presenza nel Tempio, e mostra come Gesù le abbia compiute nell’Ultima Cena.\n\nIl libro…"
+},
+"b157": {
+"content": "Questo piccolo e amato libro spiega perché la pace del cuore è essenziale per la vita spirituale e come la perdiamo a causa della paura, degli scrupoli e del desiderio di controllare tutto.\n\nPadre…"
+},
+"b158": {
+"content": "Questo ritiro personale prepara i lettori alla consacrazione mariana in trentatré giorni, attingendo all’insegnamento di quattro grandi santi mariani: san Luigi Maria Grignion de Montfort, san…"
+},
+"b159": {
+"content": "In questa lunga intervista, il cardinale guineano Robert Sarah riflette sulla necessità del silenzio in un mondo dipendente dal rumore. Sostiene che Dio parla nel silenzio e che possiamo udirlo solo…"
+},
+"b160": {
+"content": "Padre Walter Ciszek, gesuita americano, entrò clandestinamente nell’Unione Sovietica nel 1940 e trascorse ventitré anni in prigione, alla Lubjanka e nei campi di lavoro della Siberia prima di essere…"
+},
+"b161": {
+"content": "Un devoto cattolico delle Highlands e un focoso ateo decidono di battersi in duello sulla religione, ma la polizia, la stampa e tutto il mondo moderno continuano a interromperli.\n\nMentre fuggono…"
+},
+"b162": {
+"content": "Scritto pochi anni dopo il suo ingresso nella Chiesa nel 1922, il breve libro di Chesterton descrive le tappe che una persona attraversa avvicinandosi alla fede cattolica: prima la guarda con…"
+},
+"b163": {
+"content": "Ronald Knox, ecclesiastico anglicano divenuto sacerdote cattolico, spiega con chiarezza e arguzia perché crede ciò che insegna la Chiesa cattolica, dall’esistenza di Dio all’autorità della…"
+},
+"b164": {
+"content": "Il sacerdote italo-tedesco Romano Guardini analizza come l’epoca moderna, con la sua fiducia nella natura, nell’individuo autonomo e nella cultura, stia lasciando il posto a qualcosa di nuovo…"
+},
+"b165": {
+"content": "Josefa Menéndez fu una suora coadiutrice spagnola della Società del Sacro Cuore, morta a trentatré anni nel 1923. Le sue superiore annotarono i messaggi che diceva di ricevere da Cristo sul suo Sacro…"
+},
+"b166": {
+"content": "Le lettere di Teresa alle sorelle, alle cugine e a due sacerdoti missionari che adottò come fratelli spirituali mostrano la piccola via in atto, con le sue stesse parole e senza i ritocchi…"
 },
 "bib1": {
 "content": "Narra le origini del mondo, la caduta dell’umanità e l’alleanza di Dio con i patriarchi Abramo, Isacco e Giacobbe, e si chiude con la famiglia di Giuseppe stabilita in Egitto."
@@ -10404,7 +10689,9 @@ window.SANCTIFY_I18N = {
 "texts": {
 "book-0": "book-0.0068b09b",
 "book-1": "book-1.ba4c0812",
-"book-2": "book-2.be97e3d8",
+"book-2": "book-2.ef8c7af0",
+"book-3": "book-3.2218d086",
+"book-4": "book-4.61d44be0",
 "history-0": "history-0.976a7cc7",
 "history-1": "history-1.bb9d281c",
 "history-2": "history-2.d996a927",
