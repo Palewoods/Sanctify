@@ -4,7 +4,7 @@
 
 Visit it at **https://sanctify.pages.dev/**. It is free, has no ads, and works on phones. You can also install it like an app.
 
-The current version is **Sanctify 0.9**.
+The current version is **Sanctify 1.0**.
 
 ## What’s inside
 
@@ -23,7 +23,7 @@ The current version is **Sanctify 0.9**.
   - The Mass explained, Living the Faith, Catholic Lists, Inside a Church, a glossary, and a quiz.
 - **History:** a timeline of Church history, the popes, the ecumenical councils, famous icons, religious orders, and the Eastern Catholic Churches.
 - **Calendar:** every feast and season, in the calendar of each edition.
-- **Community:** a forum for prayer requests and questions, with accounts, profiles, badges, and moderation, and links to any page of the site inside posts.
+- **Community:** a forum for prayer requests and questions, with accounts, profiles (banners, rings, badges, and hover cards), and moderation, and links to any page of the site inside posts.
 - **Community Wiki** and **News**, each with its own page.
 - **Settings:** language, edition, theme, text size, and a backup of what you keep on your device.
 

@@ -3425,6 +3425,51 @@
   .dprof .forum-post{background:var(--parchment);}
   .dprof .profile-saved-item{background:var(--parchment);}
   .dprof-panel .notify-item{background:var(--parchment);}
+  /* Profile rings: drawn over a picture, reaching a little past its edge */
+  .ringed{position:relative; display:inline-flex; flex:0 0 auto; border-radius:50%; vertical-align:middle;}
+  .ring-svg{position:absolute; left:-14%; top:-14%; width:128%; height:128%; pointer-events:none; overflow:visible; z-index:2;}
+  .ring-owner::before{content:''; position:absolute; inset:-9%; border-radius:50%; z-index:1; pointer-events:none;
+    background:conic-gradient(from 0deg, #fff6d8, #e6c879, #a6b6ee, #fff6d8, #f0dca0, #c3acee, #fff6d8);
+    -webkit-mask:radial-gradient(farthest-side, transparent 84%, #000 86%); mask:radial-gradient(farthest-side, transparent 84%, #000 86%);
+    filter:drop-shadow(0 0 6px rgba(240,220,160,0.55)); animation:ringTurn 9s linear infinite;}
+  @keyframes ringTurn{to{transform:rotate(1turn);}}
+  @media (prefers-reduced-motion:reduce){ .ring-owner::before{animation:none;} }
+  :root[data-motion="reduced"] .ring-owner::before{animation:none;}
+  .forum-post > .av-hover, .forum-op-head > .av-hover, .forum-reply > .av-hover{display:inline-flex; align-self:start; flex:0 0 auto;}
+  .forum-reply > .av-hover .ringed, .forum-op-head > .av-hover .ringed{margin:4px;}
+  .profile-banner.video-banner video{display:block; width:100%; height:100%; object-fit:cover;}
+
+  .ring-picker{display:grid; grid-template-columns:repeat(auto-fill, minmax(96px, 1fr)); gap:8px; margin-top:12px;}
+  .ring-picker.busy{opacity:.6; pointer-events:none;}
+  .ring-choice{display:flex; flex-direction:column; align-items:center; gap:10px; padding:16px 6px 10px; border:1px solid var(--line); border-radius:12px; background:var(--parchment); color:var(--ink); font:inherit; font-size:0.78rem; line-height:1.25; text-align:center; cursor:pointer;}
+  .ring-choice:hover{border-color:color-mix(in srgb, var(--gold) 50%, var(--line));}
+  .ring-choice[aria-checked="true"]{border-color:var(--gold); background:color-mix(in srgb, var(--gold) 10%, var(--parchment));}
+  .forum-avatar.avatar-ring{width:52px; height:52px; flex:0 0 52px; font-size:1.3rem;}
+  .ring-preview{display:inline-flex; padding:6px;}
+
+  /* The hover card: a small profile beside a name */
+  .hover-card{position:fixed; z-index:400; width:300px; max-width:calc(100vw - 16px); border:1px solid var(--line); border-radius:16px; background:var(--parchment-light); color:var(--ink);
+    overflow:hidden; box-shadow:0 14px 40px rgba(0,0,0,0.28) !important; opacity:0; transform:translateY(4px); transition:opacity .15s ease, transform .15s ease;}
+  .hover-card.open{opacity:1; transform:none;}
+  .hover-card[hidden]{display:none;}
+  .hover-card .hc-banner.profile-banner{height:96px; border:none; border-radius:0;}
+  .hover-card .hc-banner.plain{background:var(--av);}
+  .hc-top{display:flex; align-items:flex-start; justify-content:space-between; gap:8px; padding:0 14px; min-height:40px;}
+  .hc-avatar{margin-top:-44px;}
+  .hover-card .forum-avatar.avatar-big{width:84px; height:84px; flex-basis:84px; font-size:2.1rem; box-shadow:0 0 0 5px var(--parchment-light);}
+  .hc-badges{display:flex; flex-wrap:wrap; justify-content:flex-end; gap:3px; max-width:62%; margin-top:8px; padding:4px 6px; border:1px solid var(--line); border-radius:9px; background:var(--parchment);}
+  .hc-badges .badge-ic{margin:0; width:20px; height:20px; padding:3px;}
+  .hc-body{padding:12px 14px 14px;}
+  .hc-name{display:block; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.5rem; line-height:1.15; overflow-wrap:anywhere;}
+  .hc-roles{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .hc-bio{margin:10px 0 0; padding:10px 12px; border-radius:10px; background:var(--parchment); font-size:0.88rem; white-space:pre-line;
+    display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;}
+  .hc-facts{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:6px; margin:10px 0 12px;}
+  .hc-facts div{padding:6px 8px; border-radius:8px; background:var(--parchment);}
+  .hc-facts dt{font-size:0.62rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft);}
+  .hc-facts dd{margin:1px 0 0; font-size:0.9rem; font-weight:700;}
+  .hc-open{width:100%; justify-content:center;}
+
   /* =========================================================
      THE COMMUNITY: post cards with the category down their edge, the home with your own card,
      and the forum with its categories down the side like a server's channels

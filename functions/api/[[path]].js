@@ -38,6 +38,11 @@ const PAGE_SIZE = 20;
 const AVATAR_MAX_BYTES = 120 * 1024;
 const BIO_MAX = 300;
 const BANNER_MAX_BYTES = 300 * 1024;
+// A video banner is a short silent loop made in the browser; D1 keeps a value of up to 2 MB, and base64 adds a third
+const VIDEO_MAX_BYTES = 1300 * 1000;
+// The rings members can wear around their picture (the browser keeps the same list). "owner" is only for the
+// site's owner, the first name in ADMINS, who wears it unless they choose another; "none" takes a ring off.
+const RINGS = ['halo', 'rosary', 'prayer-rope', 'stars', 'roses', 'stained-glass', 'laurel', 'flame', 'pearls'];
 // The preset banner designs (kept in step with BANNER_PRESETS in index.html)
 const BANNER_PRESETS = ['stained-glass', 'starry-mantle', 'gold-leaf', 'easter-dawn', 'roses', 'cloister', 'advent', 'stella-maris', 'byzantine', 'ordinary-time', 'pentecost', 'lily'];
 const AVATAR_TYPES = { 'image/jpeg':[0xFF, 0xD8, 0xFF], 'image/png':[0x89, 0x50, 0x4E, 0x47], 'image/webp':[0x52, 0x49, 0x46, 0x46] };
@@ -264,7 +269,11 @@ const SCHEMA = [
      new_name TEXT NOT NULL,
      created_at INTEGER NOT NULL)`,
   `CREATE INDEX IF NOT EXISTS name_changes_by_old ON name_changes (old_name, created_at DESC)`,
-  `CREATE INDEX IF NOT EXISTS name_changes_by_user ON name_changes (user_id, created_at DESC)`
+  `CREATE INDEX IF NOT EXISTS name_changes_by_user ON name_changes (user_id, created_at DESC)`,
+  `CREATE TABLE IF NOT EXISTS rings (
+     user_id INTEGER PRIMARY KEY,
+     ring TEXT NOT NULL,
+     updated_at INTEGER NOT NULL)`
 ];
 
 class HttpError extends Error {
@@ -364,6 +373,7 @@ export async function onRequest({ request, env }){
     if((m = path.match(/^wiki\/pages\/([a-z0-9-]{1,80})\/history$/)) && method === 'GET') return await wikiHistory(ctx, m[1]);
     if((m = path.match(/^wiki\/pages\/([a-z0-9-]{1,80})\/restore$/)) && method === 'POST') return await restoreWikiRevision(ctx, m[1]);
     if((m = path.match(/^wiki\/revisions\/(\d+)$/)) && method === 'GET') return await getWikiRevision(ctx, Number(m[1]));
+    if(path === 'account/ring' && method === 'PUT') return await setRing(ctx);
     if(path === 'account/banner' && method === 'PUT') return await setBanner(ctx);
     if(path === 'account/banner' && method === 'DELETE') return await removeBanner(ctx);
     if(path === 'posts' && method === 'GET') return await listPosts(ctx);
@@ -454,6 +464,7 @@ async function deleteAccount(ctx){
     ctx.db.prepare('DELETE FROM roles WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM favorites WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM name_changes WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('DELETE FROM rings WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM avatars WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM profiles WHERE user_id = ?').bind(user.id),
@@ -616,7 +627,8 @@ async function exportAccount(ctx){
       description: profile ? profile.bio : '',
       picture: avatar ? `data:${avatar.mime};base64,${avatar.data}` : null,
       banner: banner ? (banner.preset || `data:${banner.mime};base64,${banner.data}`) : null,
-      savedShownOnProfile: (fav && readFavorites(fav.ids)) || []
+      savedShownOnProfile: (fav && readFavorites(fav.ids)) || [],
+      ring: ringFor(ctx, account.username, ((await one('SELECT ring FROM rings WHERE user_id = ?')) || {}).ring)
     },
     posts: (await all('SELECT id, category, title, body, created_at FROM posts WHERE user_id = ? AND deleted = 0 ORDER BY id'))
       .map(p => ({ id:p.id, category:p.category, title:p.title, body:p.body, posted:when(p.created_at) })),
@@ -671,14 +683,28 @@ async function removeAvatar(ctx){
 
 /* ---------- Profile banners ---------- */
 // What a profile shows: null, { preset:'name' }, or { image:version } for an uploaded picture
+// ({ image:version, video:true } for a video)
 function bannerJson(row){
   if(!row || !row.banner_v) return null;
-  return row.banner_preset ? { preset:row.banner_preset } : { image:row.banner_v };
+  if(row.banner_preset) return { preset:row.banner_preset };
+  return /^video\//.test(row.banner_mime || '') ? { image:row.banner_v, video:true } : { image:row.banner_v };
+}
+
+// Checks an uploaded video banner (a data: URL) by its file signature: MP4 has "ftyp" at byte 4, WebM starts 1A 45 DF A3
+function readVideo(video){
+  const m = /^data:(video\/(?:mp4|webm));base64,([A-Za-z0-9+\/]+={0,2})$/.exec(String(video || ''));
+  if(!m) throw new HttpError(400, 'Please choose an MP4 or WebM video.');
+  let bytes;
+  try{ bytes = Uint8Array.from(atob(m[2]), c => c.charCodeAt(0)); }catch(err){ throw new HttpError(400, 'That video couldn’t be read.'); }
+  if(bytes.length > VIDEO_MAX_BYTES) throw new HttpError(413, 'That video is too large. Please choose a shorter one.');
+  const ok = m[1] === 'video/mp4' ? String.fromCharCode(...bytes.slice(4, 8)) === 'ftyp' : [0x1A, 0x45, 0xDF, 0xA3].every((b, i) => bytes[i] === b);
+  if(bytes.length < 16 || !ok) throw new HttpError(400, 'That file isn’t a valid video.');
+  return { mime:m[1], data:m[2] };
 }
 
 async function setBanner(ctx){
   const user = requireUser(ctx);
-  const body = await readBody(ctx, 450000);
+  const body = await readBody(ctx, 1900000);
   await limit(ctx, 'banner:' + user.id, 15, 60 * 60 * 1000, 'You’ve changed your banner several times recently. Please try again later.');
   if(body.preset !== undefined){
     if(!BANNER_PRESETS.includes(body.preset)) throw new HttpError(400, 'Please choose one of the banner designs.');
@@ -686,10 +712,32 @@ async function setBanner(ctx){
       .bind(user.id, body.preset, ctx.now).run();
     return json({ banner:{ preset:body.preset } });
   }
-  const pic = readPicture(body.image, BANNER_MAX_BYTES);
+  const pic = body.video !== undefined ? readVideo(body.video) : readPicture(body.image, BANNER_MAX_BYTES);
   await ctx.db.prepare('INSERT INTO banners (user_id, preset, mime, data, updated_at) VALUES (?, NULL, ?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET preset = NULL, mime = excluded.mime, data = excluded.data, updated_at = excluded.updated_at')
     .bind(user.id, pic.mime, pic.data, ctx.now).run();
-  return json({ banner:{ image:ctx.now } });
+  return json({ banner:bannerJson({ banner_v:ctx.now, banner_mime:pic.mime }) });
+}
+
+/* ---------- Profile rings ---------- */
+function ownerName(ctx){ return String(ctx.env.ADMINS || '').split(',').map(x => x.trim()).filter(Boolean)[0] || ''; }
+function isOwner(ctx, name){ return !!name && ownerName(ctx).toLowerCase() === String(name).toLowerCase(); }
+function ringFor(ctx, name, key){
+  if(!name || key === 'none') return null;
+  if(isOwner(ctx, name)) return key && RINGS.includes(key) ? key : 'owner';
+  return key && RINGS.includes(key) ? key : null;
+}
+
+async function setRing(ctx){
+  const user = requireUser(ctx);
+  const { ring } = await readBody(ctx, 1000);
+  const key = String(ring || 'none');
+  if(key !== 'none' && !RINGS.includes(key) && !(key === 'owner' && isOwner(ctx, user.username))) throw new HttpError(400, 'Please choose one of the rings.');
+  await limit(ctx, 'ring:' + user.id, 40, 60 * 60 * 1000, 'You’ve changed your ring several times recently. Please try again later.');
+  // The owner's ring is what they wear with nothing chosen, so choosing it clears the choice
+  if(key === 'owner' || (key === 'none' && !isOwner(ctx, user.username))) await ctx.db.prepare('DELETE FROM rings WHERE user_id = ?').bind(user.id).run();
+  else await ctx.db.prepare('INSERT INTO rings (user_id, ring, updated_at) VALUES (?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET ring = excluded.ring, updated_at = excluded.updated_at')
+    .bind(user.id, key, ctx.now).run();
+  return json({ ring:ringFor(ctx, user.username, key === 'owner' ? null : key) });
 }
 
 async function removeBanner(ctx){
@@ -703,10 +751,18 @@ async function getBanner(ctx, name){
   const row = await ctx.db.prepare('SELECT b.mime, b.data FROM banners b JOIN users u ON u.id = b.user_id WHERE u.username = ? AND b.data IS NOT NULL').bind(name).first();
   if(!row) return new Response('Not found', { status:404, headers:{ 'Cache-Control':'no-store', 'X-Content-Type-Options':'nosniff' } });
   const bytes = Uint8Array.from(atob(row.data), c => c.charCodeAt(0));
-  return new Response(bytes, { status:200, headers:{
-    'Content-Type':row.mime, 'Cache-Control':'public, max-age=86400', 'X-Content-Type-Options':'nosniff',
-    'Content-Security-Policy':"default-src 'none'; sandbox", 'Content-Disposition':'inline'
-  }});
+  const headers = { 'Content-Type':row.mime, 'Cache-Control':'public, max-age=86400', 'X-Content-Type-Options':'nosniff',
+    'Content-Security-Policy':"default-src 'none'; sandbox", 'Content-Disposition':'inline', 'Accept-Ranges':'bytes' };
+  // Safari plays a video only from a server that answers for a part of it (a Range request)
+  const range = /^bytes=(\d*)-(\d*)$/.exec(ctx.request.headers.get('Range') || '');
+  if(range && (range[1] || range[2])){
+    const size = bytes.length;
+    const start = range[1] === '' ? Math.max(0, size - Number(range[2])) : Number(range[1]);
+    const end = range[1] !== '' && range[2] !== '' ? Math.min(Number(range[2]), size - 1) : size - 1;
+    if(start >= size || start > end) return new Response(null, { status:416, headers:{ ...headers, 'Content-Range':`bytes */${size}` } });
+    return new Response(bytes.slice(start, end + 1), { status:206, headers:{ ...headers, 'Content-Range':`bytes ${start}-${end}/${size}` } });
+  }
+  return new Response(bytes, { status:200, headers });
 }
 
 /* ---------- The description on a member's profile ---------- */
@@ -775,9 +831,9 @@ async function listPosts(ctx){
   }
   const { results } = await ctx.db.prepare(
     `SELECT p.id, p.category, p.title, substr(p.body, 1, 240) AS excerpt, p.created_at, p.last_activity,
-            p.reply_count, p.prayer_count, u.username, a.updated_at AS avatar_v, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked,
+            p.reply_count, p.prayer_count, u.username, a.updated_at AS avatar_v, rg.ring, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked,
             (mp.user_id IS NOT NULL) AS prayed
-       FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id LEFT JOIN post_flags f ON f.post_id = p.id
+       FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id LEFT JOIN rings rg ON rg.user_id = p.user_id LEFT JOIN post_flags f ON f.post_id = p.id
             LEFT JOIN prayers mp ON mp.post_id = p.id AND mp.user_id = ?
       WHERE ${where.join(' AND ')}
       ORDER BY COALESCE(f.pinned, 0) DESC, p.last_activity DESC, p.id DESC
@@ -785,7 +841,7 @@ async function listPosts(ctx){
   ).bind(ctx.user ? ctx.user.id : 0, ...args, PAGE_SIZE + 1, page * PAGE_SIZE).all();
   return json({
     posts:results.slice(0, PAGE_SIZE).map(r => ({
-      id:r.id, category:r.category, title:r.title, excerpt:r.excerpt, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null,
+      id:r.id, category:r.category, title:r.title, excerpt:r.excerpt, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null, authorRing:ringFor(ctx, r.username, r.ring),
       createdAt:r.created_at, lastActivity:r.last_activity, replies:r.reply_count, prayers:r.prayer_count, prayed:!!r.prayed, pinned:!!r.pinned, locked:!!r.locked
     })),
     more:results.length > PAGE_SIZE
@@ -794,15 +850,15 @@ async function listPosts(ctx){
 
 async function getPost(ctx, id){
   const post = await ctx.db.prepare(
-    `SELECT p.*, u.username, a.updated_at AS avatar_v, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked
+    `SELECT p.*, u.username, a.updated_at AS avatar_v, rg.ring, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked
             , e.edited_at
-       FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id LEFT JOIN post_flags f ON f.post_id = p.id
+       FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id LEFT JOIN rings rg ON rg.user_id = p.user_id LEFT JOIN post_flags f ON f.post_id = p.id
             LEFT JOIN edits e ON e.kind = 'post' AND e.target_id = p.id
       WHERE p.id = ? AND p.deleted = 0`
   ).bind(id).first();
   if(!post) throw new HttpError(404, 'This post doesn’t exist or has been removed.');
   const { results } = await ctx.db.prepare(
-    `SELECT r.id, r.user_id, r.body, r.created_at, u.username, a.updated_at AS avatar_v, e.edited_at FROM replies r LEFT JOIN users u ON u.id = r.user_id LEFT JOIN avatars a ON a.user_id = r.user_id
+    `SELECT r.id, r.user_id, r.body, r.created_at, u.username, a.updated_at AS avatar_v, rg.ring, e.edited_at FROM replies r LEFT JOIN users u ON u.id = r.user_id LEFT JOIN avatars a ON a.user_id = r.user_id LEFT JOIN rings rg ON rg.user_id = r.user_id
        LEFT JOIN edits e ON e.kind = 'reply' AND e.target_id = r.id
       WHERE r.post_id = ? AND r.deleted = 0 ORDER BY r.created_at ASC, r.id ASC LIMIT 500`
   ).bind(id).all();
@@ -817,14 +873,14 @@ async function getPost(ctx, id){
   const canRemove = ownerId => !!user && (user.id === ownerId || user.admin);
   return json({
     post:{
-      id:post.id, category:post.category, title:post.title, body:post.body, author:post.username || null, authorAvatar:post.username ? post.avatar_v || null : null,
+      id:post.id, category:post.category, title:post.title, body:post.body, author:post.username || null, authorAvatar:post.username ? post.avatar_v || null : null, authorRing:ringFor(ctx, post.username, post.ring),
       createdAt:post.created_at, replies:post.reply_count, prayers:post.prayer_count, prayed,
       mine:!!user && user.id === post.user_id, canRemove:canRemove(post.user_id),
       pinned:!!post.pinned, locked:!!post.locked, canModerate:!!user && !!user.admin, editedAt:post.edited_at || null,
       authorBadges:(shown[post.user_id] || []).slice(0, 3)
     },
     replies:results.map(r => ({
-      id:r.id, body:r.body, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null, createdAt:r.created_at,
+      id:r.id, body:r.body, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null, authorRing:ringFor(ctx, r.username, r.ring), createdAt:r.created_at,
       mine:!!user && user.id === r.user_id, canRemove:canRemove(r.user_id), editedAt:r.edited_at || null,
       authorBadges:(shown[r.user_id] || []).slice(0, 3)
     }))
@@ -1081,16 +1137,19 @@ async function markNotificationsSeen(ctx){
 }
 
 async function getProfile(ctx, name){
-  const u = await ctx.db.prepare(`SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, pr.bio, bn.preset AS banner_preset, bn.updated_at AS banner_v, ro.role, fv.ids AS favorites
-     FROM users u LEFT JOIN roles ro ON ro.user_id = u.id LEFT JOIN favorites fv ON fv.user_id = u.id LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN profiles pr ON pr.user_id = u.id LEFT JOIN banners bn ON bn.user_id = u.id WHERE u.username = ?`).bind(name).first();
+  const u = await ctx.db.prepare(`SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, pr.bio, bn.preset AS banner_preset, bn.mime AS banner_mime, bn.updated_at AS banner_v, ro.role, fv.ids AS favorites, rg.ring
+     FROM users u LEFT JOIN roles ro ON ro.user_id = u.id LEFT JOIN favorites fv ON fv.user_id = u.id LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN profiles pr ON pr.user_id = u.id LEFT JOIN banners bn ON bn.user_id = u.id LEFT JOIN rings rg ON rg.user_id = u.id WHERE u.username = ?`).bind(name).first();
   if(!u) throw new HttpError(404, 'There’s no member by that name.');
   const counts = await ctx.db.prepare(
     'SELECT (SELECT COUNT(*) FROM posts WHERE user_id = ? AND deleted = 0) AS posts, (SELECT COUNT(*) FROM replies WHERE user_id = ? AND deleted = 0) AS replies, (SELECT COUNT(*) FROM prayers WHERE user_id = ?) AS prayers'
   ).bind(u.id, u.id, u.id).first();
+  const profile = { id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, banner:bannerJson(u), bio:u.bio || '', posts:counts.posts, replies:counts.replies, prayers:counts.prayers,
+    administrator:siteAdmin(ctx, u.username), owner:isOwner(ctx, u.username), moderator:u.role === 'moderator', ring:ringFor(ctx, u.username, u.ring), badges:await badgesFor(ctx, u.id), favorites:readFavorites(u.favorites) };
+  // The small card shown on hovering over a name needs only the profile itself
+  if(ctx.url.searchParams.get('card')) return json({ profile });
   const { results } = await ctx.db.prepare(
     `SELECT id, category, title, substr(body, 1, 200) AS excerpt, created_at, reply_count, prayer_count FROM posts WHERE user_id = ? AND deleted = 0 ORDER BY created_at DESC LIMIT 20`
   ).bind(u.id).all();
-  const badges = await badgesFor(ctx, u.id);
   const replies = (await ctx.db.prepare(
     `SELECT r.id, r.post_id, p.title, substr(r.body, 1, 200) AS excerpt, r.created_at FROM replies r JOIN posts p ON p.id = r.post_id AND p.deleted = 0
       WHERE r.user_id = ? AND r.deleted = 0 ORDER BY r.created_at DESC LIMIT 20`).bind(u.id).all()).results;
@@ -1105,8 +1164,8 @@ async function getProfile(ctx, name){
     replies:replies.map(r => ({ id:r.id, postId:r.post_id, postTitle:r.title, excerpt:r.excerpt, createdAt:r.created_at })),
     wiki:{ edits:wikiCounts.edits, pages:wikiCounts.pages, touched:wikiCounts.touched,
       recent:wikiEdits.map(r => ({ id:r.id, slug:r.slug, title:r.title, summary:r.summary, delta:r.delta, createdAt:r.created_at, created:!!r.created })) },
-    profile:{ id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, banner:bannerJson(u), bio:u.bio || '', posts:counts.posts, replies:counts.replies, prayers:counts.prayers, administrator:siteAdmin(ctx, u.username), moderator:u.role === 'moderator', badges, favorites:readFavorites(u.favorites) },
-    posts:results.map(p => ({ id:p.id, category:p.category, title:p.title, excerpt:p.excerpt, createdAt:p.created_at, lastActivity:p.created_at, replies:p.reply_count, prayers:p.prayer_count, author:u.username, authorAvatar:u.avatar_v || null }))
+    profile,
+    posts:results.map(p => ({ id:p.id, category:p.category, title:p.title, excerpt:p.excerpt, createdAt:p.created_at, lastActivity:p.created_at, replies:p.reply_count, prayers:p.prayer_count, author:u.username, authorAvatar:u.avatar_v || null, authorRing:profile.ring }))
   });
 }
 
@@ -1561,7 +1620,7 @@ async function modUser(ctx, id){
   const warnings = (await ctx.db.prepare('SELECT w.id, w.message, w.created_at, w.seen_at, u.username FROM warnings w LEFT JOIN users u ON u.id = w.by_user WHERE w.user_id = ? ORDER BY w.created_at DESC LIMIT 30').bind(id).all()).results;
   const notes = (await ctx.db.prepare('SELECT n.id, n.note, n.created_at, u.username FROM mod_notes n LEFT JOIN users u ON u.id = n.by_user WHERE n.user_id = ? ORDER BY n.created_at DESC LIMIT 50').bind(id).all()).results;
   const profile = await ctx.db.prepare('SELECT bio FROM profiles WHERE user_id = ?').bind(id).first();
-  const banner = await ctx.db.prepare('SELECT preset AS banner_preset, updated_at AS banner_v FROM banners WHERE user_id = ?').bind(id).first();
+  const banner = await ctx.db.prepare('SELECT preset AS banner_preset, mime AS banner_mime, updated_at AS banner_v FROM banners WHERE user_id = ?').bind(id).first();
   const names = (await ctx.db.prepare('SELECT old_name, created_at FROM name_changes WHERE user_id = ? ORDER BY created_at DESC LIMIT 20').bind(id).all()).results;
   return json({
     user:modUserJson(ctx, row),

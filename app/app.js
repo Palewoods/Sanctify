@@ -3707,6 +3707,77 @@ function stillShowing(seq, cat){ return seq === viewSeq && activeCategory === ca
 function avatarImg(name, v){
   return v ? `<img class="av-img" src="/api/avatar/${encodeURIComponent(name)}?v=${Number(v)}" alt="" loading="lazy" decoding="async">` : '';
 }
+function reducedMotion(){ return store.get('motion', '') === 'reduced' || (!!window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches); }
+
+/* ---------- Profile rings: a decoration around a member's picture (the server keeps the same list) ---------- */
+const RING_KEYS = ['halo', 'rosary', 'prayer-rope', 'stars', 'roses', 'stained-glass', 'laurel', 'flame', 'pearls'];
+const RING_NAMES = { halo:'Halo', rosary:'Rosary', 'prayer-rope':'Prayer Rope', stars:'Crown of Twelve Stars', roses:'Rose Garland',
+  'stained-glass':'Stained Glass', laurel:'Laurel Wreath', flame:'Tongues of Fire', pearls:'Byzantine Pearls', owner:'Light of Tabor' };
+const ringCache = {};
+// Drawn on a 100 × 100 picture, with room around it; 0° is the top and angles go clockwise
+function ringSvg(key){
+  if(ringCache[key]) return ringCache[key];
+  const at = (r, deg) => [50 + r * Math.sin(deg * Math.PI / 180), 50 - r * Math.cos(deg * Math.PI / 180)].map(n => +n.toFixed(2));
+  const around = (n, from, to) => Array.from({ length:n }, (_, i) => from + (to - from) * i / (n - (to - from >= 360 ? 0 : 1)));
+  const star = (x, y, R, rot = 0) => 'M' + Array.from({ length:10 }, (_, i) => { const a = (rot + i * 36) * Math.PI / 180, r = i % 2 ? R * 0.45 : R; return [x + r * Math.sin(a), y - r * Math.cos(a)].map(n => n.toFixed(2)).join(','); }).join('L') + 'Z';
+  const arc = (r, a, b) => { const [x1, y1] = at(r, a), [x2, y2] = at(r, b); return `M${x1},${y1}A${r},${r} 0 ${b - a > 180 ? 1 : 0} 1 ${x2},${y2}`; };
+  const cross = (x, y, s, fill) => `<path d="M${x - s * 0.18},${y}h${s * 0.36}v${s * 0.3}h${s * 0.32}v${s * 0.34}h-${s * 0.32}v${s * 0.86}h-${s * 0.36}v-${s * 0.86}h-${s * 0.32}v-${s * 0.34}h${s * 0.32}z" fill="${fill}"/>`;
+  let g = '';
+  if(key === 'halo'){
+    g = `<circle cx="50" cy="50" r="54.5" fill="none" stroke="#e8c25a" stroke-width="4"/><circle cx="50" cy="50" r="59.5" fill="none" stroke="#f3dc95" stroke-width="1" opacity=".75"/>`
+      + around(36, 0, 360).map((d, i) => { const [x1, y1] = at(61.5, d), [x2, y2] = at(i % 2 ? 64 : 67.5, d); return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#f3dc95" stroke-width="1.3" stroke-linecap="round" opacity=".85"/>`; }).join('');
+  } else if(key === 'rosary' || key === 'prayer-rope'){
+    // Five decades with an Our Father bead between each (a prayer rope: knots with a bead after every ten), and a cross below
+    const rope = key === 'prayer-rope';
+    const beads = [];
+    for(let d = 0; d < 5; d++){ for(let i = 0; i < 10; i++) beads.push(0); if(d < 4) beads.push(1); }
+    g = `<circle cx="50" cy="50" r="55.5" fill="none" stroke="${rope ? '#3a2f28' : '#8a7a5a'}" stroke-width=".8"/>`
+      + around(beads.length, 196, 524).map((d, i) => { const [x, y] = at(55.5, d); return beads[i]
+        ? `<circle cx="${x}" cy="${y}" r="3" fill="${rope ? '#8e2330' : '#c9a24a'}" stroke="${rope ? '#4a1018' : '#7a5c1c'}" stroke-width=".6"/>`
+        : `<circle cx="${x}" cy="${y}" r="${rope ? 2.5 : 2}" fill="${rope ? '#2b2420' : '#efe6cf'}" stroke="${rope ? '#6d5a48' : '#6a5638'}" stroke-width=".6"/>`; }).join('')
+      + (rope ? `<circle cx="50" cy="105.5" r="3" fill="#8e2330" stroke="#4a1018" stroke-width=".6"/><path d="M47.5 108h5l1.5 6h-8z" fill="#2b2420"/>`
+        : `<ellipse cx="50" cy="105.5" rx="3" ry="3.6" fill="#c9a24a" stroke="#7a5c1c" stroke-width=".6"/>${cross(50, 108.6, 8, '#c9a24a')}`);
+  } else if(key === 'stars'){
+    g = `<circle cx="50" cy="50" r="56" fill="none" stroke="#2a5aa8" stroke-width="6.5"/><circle cx="50" cy="50" r="59.6" fill="none" stroke="#8fb0e8" stroke-width=".8"/>`
+      + around(12, 0, 360).map(d => { const [x, y] = at(56, d); return `<path d="${star(x, y, 4.4, d)}" fill="#f4d35e" stroke="#b8902a" stroke-width=".4"/>`; }).join('');
+  } else if(key === 'roses'){
+    g = around(12, 15, 375).map(d => { const [x, y] = at(56, d), [lx, ly] = at(57, d + 15); return `<ellipse cx="${lx}" cy="${ly}" rx="4.2" ry="1.7" transform="rotate(${(d + 15 + 60).toFixed(1)} ${lx} ${ly})" fill="#4f7a3a"/>`; }).join('')
+      + around(12, 0, 360).map((d, i) => { const [x, y] = at(56, d), white = i % 2;
+        return `<circle cx="${x}" cy="${y}" r="4.6" fill="${white ? '#efe7d6' : '#a8203f'}"/><circle cx="${x}" cy="${y}" r="3" fill="${white ? '#fffaf0' : '#cf3a5c'}"/><circle cx="${x}" cy="${y}" r="1.3" fill="${white ? '#e2d4b4' : '#f08aa2'}"/>`; }).join('');
+  } else if(key === 'stained-glass'){
+    const colors = ['#b8263c', '#e8a83a', '#2f8a5b', '#2f5fc6', '#7a3fb0', '#d8662a'];
+    g = `<circle cx="50" cy="50" r="56" fill="none" stroke="#1c1622" stroke-width="9"/>`
+      + around(12, 0, 360).map((d, i) => `<path d="${arc(56, d + 2, d + 28)}" fill="none" stroke="${colors[i % colors.length]}" stroke-width="6"/>`).join('')
+      + around(4, 45, 405).map(d => { const [x, y] = at(56, d); return `<circle cx="${x}" cy="${y}" r="2" fill="#f3dc95"/>`; }).join('');
+  } else if(key === 'laurel'){
+    g = `<path d="${arc(57, 200, 345)}" fill="none" stroke="#4f6b2c" stroke-width="1"/><path d="${arc(57, 15, 160)}" fill="none" stroke="#4f6b2c" stroke-width="1"/>`
+      + [...around(12, 200, 340), ...around(12, 20, 160)].map((d, i) => { const out = i % 2, [x, y] = at(out ? 60 : 54, d), left = d > 180;
+        return `<ellipse cx="${x}" cy="${y}" rx="4.6" ry="1.9" transform="rotate(${(d + (left ? 120 : 60)).toFixed(1)} ${x} ${y})" fill="${out ? '#6c9a3e' : '#557f30'}"/>`; }).join('')
+      + `<circle cx="50" cy="107" r="2.6" fill="#c9a24a"/>`;
+  } else if(key === 'flame'){
+    const flame = s => `M0,0C${-3 * s},${-3 * s} ${-2.6 * s},${-7.5 * s} 0,${-12 * s}C${2.6 * s},${-7.5 * s} ${3 * s},${-3 * s} 0,0Z`;
+    g = `<circle cx="50" cy="50" r="52.6" fill="none" stroke="#e0482c" stroke-width="1.6"/>`
+      + around(16, 0, 360).map(d => { const [x, y] = at(53, d); return `<g transform="translate(${x} ${y}) rotate(${d.toFixed(1)})"><path d="${flame(1)}" fill="#ef6a22"/><path d="${flame(0.55)}" fill="#ffd35c"/></g>`; }).join('');
+  } else if(key === 'pearls'){
+    g = `<circle cx="50" cy="50" r="56" fill="none" stroke="#c99a3a" stroke-width="5.5"/><circle cx="50" cy="50" r="59.2" fill="none" stroke="#7a5418" stroke-width=".7"/>`
+      + around(32, 0, 360).filter((_, i) => i % 4).map(d => { const [x, y] = at(56, d); return `<circle cx="${x}" cy="${y}" r="1.7" fill="#fff8e6" stroke="#b89a60" stroke-width=".3"/>`; }).join('')
+      + around(8, 0, 360).map((d, i) => { const [x, y] = at(56, d); return `<rect x="${x - 2.6}" y="${y - 2.6}" width="5.2" height="5.2" transform="rotate(45 ${x} ${y})" fill="${i % 2 ? '#2a4f9a' : '#a51f2c'}" stroke="#f0d28a" stroke-width=".7"/>`; }).join('');
+  } else if(key === 'owner'){
+    // The owner's ring: the light of Tabor turning around the picture (drawn in CSS), with rays and a crown above
+    g = `<circle cx="50" cy="50" r="59.8" fill="none" stroke="#f3e0aa" stroke-width=".8" opacity=".9"/>`
+      + around(16, 0, 360).filter(d => d > 30 && d < 330).map(d => { const [x1, y1] = at(61.5, d), [x2, y2] = at(66, d); return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#fbefcb" stroke-width="1.2" stroke-linecap="round" opacity=".8"/>`; }).join('')
+      + `<path d="M36,-1 L34,-12 L42,-5 L50,-14 L58,-5 L66,-12 L64,-1Z" fill="#f0d36a" stroke="#8a6a1c" stroke-width=".9" stroke-linejoin="round"/>`
+      + `<circle cx="50" cy="-14" r="1.6" fill="#fff6d8"/><circle cx="34" cy="-12" r="1.2" fill="#fff6d8"/><circle cx="66" cy="-12" r="1.2" fill="#fff6d8"/><rect x="36" y="-3.4" width="28" height="2.4" fill="#c99a3a"/>`;
+  } else return '';
+  return (ringCache[key] = `<svg class="ring-svg" viewBox="-14 -14 128 128" aria-hidden="true" focusable="false">${g}</svg>`);
+}
+// A picture with its ring, if the member wears one
+function ringed(html, key){
+  const svg = key ? ringSvg(key) : '';
+  return svg ? `<span class="ringed ring-${key}">${html}${svg}</span>` : html;
+}
+// A picture that shows the member's hover card
+function avatarHover(name, html){ return name ? `<span class="av-hover" data-card="${escapeHtml(name)}">${html}</span>` : html; }
 function avatarColor(name){
   let h = 0;
   for(const ch of String(name).toLowerCase()) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
@@ -3736,7 +3807,10 @@ const BANNER_PRESETS = {
   'lily':['Lily White', `${svgUrl(`<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5 9h3v6h6v3h-6v10h-3V18h-6v-3h6z' fill='#b8963e' fill-opacity='.18'/></svg>`)}, linear-gradient(135deg, #fffdf6, #f3e8c8 60%, #e3cb86)`]
 };
 function bannerHtml(name, banner, extra = ''){
-  if(banner && banner.image) return `<div class="profile-banner${extra}"><img src="/api/banner/${encodeURIComponent(name)}?v=${Number(banner.image)}" alt=""></div>`;
+  const src = banner && banner.image ? `/api/banner/${encodeURIComponent(name)}?v=${Number(banner.image)}` : '';
+  // A video banner loops silently; with reduced motion it stays on its first frame
+  if(src && banner.video) return `<div class="profile-banner video-banner${extra}"><video src="${src}" muted loop playsinline preload="auto"${reducedMotion() ? '' : ' autoplay'} aria-hidden="true" tabindex="-1" disablepictureinpicture></video></div>`;
+  if(src) return `<div class="profile-banner${extra}"><img src="${src}" alt=""></div>`;
   const preset = banner && BANNER_PRESETS[banner.preset];
   return preset ? `<div class="profile-banner${extra}" style="background:${escapeHtml(preset[1])}"></div>` : '';
 }
@@ -3744,6 +3818,57 @@ function bannerHtml(name, banner, extra = ''){
 // Opens a picture in the editor: drag to move it, zoom to frame it in the circle (or, for a banner,
 // the wide strip). Resolves with a JPEG ready to upload, or null if the member cancels.
 const BIO_MAX = 300;
+
+// A video banner: the first seconds of a video, framed to the banner's shape and made small enough to keep.
+// The browser plays it into a canvas and records that, so any video it can play will do.
+const VIDEO_BANNER_SECONDS = 6, VIDEO_BANNER_MAX = 1300 * 1000;
+function makeVideoBanner(file, progress){
+  return new Promise((resolve, reject) => {
+    const unsupported = 'This browser can’t make video banners. Please try a recent Chrome, Edge, Firefox, or Safari.';
+    if(!window.MediaRecorder || !HTMLCanvasElement.prototype.captureStream) return reject(new Error(unsupported));
+    const type = ['video/mp4;codecs=avc1.42E01E', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'].find(t => MediaRecorder.isTypeSupported(t));
+    if(!type) return reject(new Error(unsupported));
+    const mime = type.split(';')[0];
+    const url = URL.createObjectURL(file), v = document.createElement('video');
+    const fail = msg => { URL.revokeObjectURL(url); reject(new Error(msg)); };
+    v.muted = true; v.playsInline = true; v.preload = 'auto';
+    v.onerror = () => fail('That video couldn’t be opened. Please try an MP4 or WebM video.');
+    v.onloadedmetadata = async () => {
+      if(!v.videoWidth) return fail('That file has no picture to use.');
+      const W = 960, H = 320, canvas = document.createElement('canvas');
+      canvas.width = W; canvas.height = H;
+      const g = canvas.getContext('2d');
+      const k = Math.max(W / v.videoWidth, H / v.videoHeight), dw = v.videoWidth * k, dh = v.videoHeight * k;
+      const draw = () => g.drawImage(v, (W - dw) / 2, (H - dh) / 2, dw, dh);
+      const length = Math.min(VIDEO_BANNER_SECONDS, Number.isFinite(v.duration) && v.duration > 0 ? v.duration : VIDEO_BANNER_SECONDS);
+      const stream = canvas.captureStream(30);
+      const rec = new MediaRecorder(stream, { mimeType:type, videoBitsPerSecond:Math.min(1400000, Math.floor(VIDEO_BANNER_MAX * 8 * 0.8 / length)) });
+      const chunks = [];
+      rec.ondataavailable = e => { if(e.data && e.data.size) chunks.push(e.data); };
+      rec.onstop = () => {
+        URL.revokeObjectURL(url);
+        const blob = new Blob(chunks, { type:mime });
+        if(!blob.size) return reject(new Error('That video couldn’t be recorded. Please try another.'));
+        if(blob.size > VIDEO_BANNER_MAX) return reject(new Error('That video came out too large. Please try a calmer or shorter one.'));
+        const fr = new FileReader();
+        fr.onload = () => resolve('data:' + mime + ';base64,' + String(fr.result).split(',')[1]);
+        fr.onerror = () => reject(new Error('That video couldn’t be read.'));
+        fr.readAsDataURL(blob);
+      };
+      try{ await v.play(); }catch(err){ return fail('That video couldn’t be played here. Please try another.'); }
+      draw();
+      rec.start(250);
+      const tick = () => {
+        draw();
+        if(progress) progress(Math.min(1, v.currentTime / length));
+        if(v.currentTime >= length || v.ended){ v.pause(); stream.getTracks().forEach(t => t.stop()); rec.stop(); }
+        else requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    v.src = url;
+  });
+}
 function openAvatarEditor(src, opts = {}){
   const wide = !!opts.banner;
   return new Promise((resolve, reject) => {
@@ -4104,7 +4229,7 @@ function forumPostCard(p){
   el.dataset.route = 'community/post/' + p.id;
   el.style.setProperty('--cat', (FORUM_CATS[p.category] || FORUM_CATS.general).color);
   el.innerHTML = `
-    ${avatarFor(p.author, p.authorAvatar, 'fp-avatar')}
+    ${avatarHover(p.author, ringed(avatarFor(p.author, p.authorAvatar, 'fp-avatar'), p.authorRing))}
     <div class="fp-main">
       <div class="forum-post-top"><span class="forum-meta"><strong>${authorHtml(p.author)}</strong> · ${timeAgo(p.createdAt)}</span><span class="fp-tags">${p.pinned ? '<span class="forum-tag forum-pin" style="--tag-color:var(--gold)">Pinned</span>' : ''}${p.locked ? '<span class="forum-tag" style="--tag-color:var(--ink-soft)">Locked</span>' : ''}${forumTag(p.category)}</span></div>
       <h3>${escapeHtml(p.title)}</h3>
@@ -4308,7 +4433,7 @@ function meCardHtml(u, prof){
   return `<div class="cx-me" style="--av:${avatarColor(u.username)}">
       ${banner || '<div class="cx-me-banner"></div>'}
       <div class="cx-me-body">
-        <div class="cx-me-avatar">${avatarFor(u.username, u.avatar, 'avatar-big')}</div>
+        <div class="cx-me-avatar">${ringed(avatarFor(u.username, u.avatar, 'avatar-big'), prof && prof.ring)}</div>
         <h3 class="notranslate" translate="no">${escapeHtml(u.username)}</h3>
         ${prof ? `<p class="cx-me-stats"><span><strong>${prof.posts}</strong> ${prof.posts === 1 ? 'post' : 'posts'}</span><span><strong>${prof.replies}</strong> ${prof.replies === 1 ? 'reply' : 'replies'}</span><span><strong>${earned}</strong> ${earned === 1 ? 'badge' : 'badges'}</span></p>` : ''}
         <div class="cx-me-actions">
@@ -5014,6 +5139,102 @@ async function modLogView(body, still){
 }
 
 /* ---------- Member profiles (#/community/user/NAME) ---------- */
+function profileRoles(p){
+  return [p.owner && ['Owner', 'gold'], p.administrator && !p.owner && ['Site administrator', 'teal'], p.moderator && !p.administrator && ['Moderator', 'indigo']].filter(Boolean);
+}
+function earnedBadges(p){ const keys = [...p.badges.earned, ...communityBadgeKeys(p)]; return BADGES.filter(b => keys.includes(b.key)); }
+// The little tray of badge icons beside a profile picture
+function badgeTrayIcons(p, earned, max){
+  return `${p.administrator ? adminIcon() : ''}${badgePills(p.badges.appointed)}${earned.slice(0, max).map(b => `<span class="badge-ic" style="--b:var(--${b.color})" title="${escapeHtml(badgeName(b))}">${navIcon(badgeIcon(b))}</span>`).join('')}${earned.length > max ? `<span class="dprof-more">+${earned.length - max}</span>` : ''}`;
+}
+
+/* ---------- Hover cards: a small version of a member's profile, on resting the mouse over their name or picture ---------- */
+const HOVER_TARGETS = '.author-link, [data-card], .credits-person';
+const hoverCards = new Map();
+let hoverEl = null, hoverFor = null, hoverTimer = 0, hideTimer = 0;
+function cardProfile(name){
+  const k = name.toLowerCase(), hit = hoverCards.get(k);
+  if(hit && Date.now() - hit.at < 120000) return hit.promise;
+  const promise = api('users/' + encodeURIComponent(name) + '?card=1').then(r => r.profile);
+  promise.catch(() => hoverCards.delete(k));
+  hoverCards.set(k, { at:Date.now(), promise });
+  return promise;
+}
+function hoverCardHtml(p){
+  const earned = earnedBadges(p), roles = profileRoles(p);
+  const tray = earned.length || p.badges.appointed.length || p.administrator;
+  return `${bannerHtml(p.username, p.banner, ' hc-banner') || '<div class="profile-banner hc-banner plain"></div>'}
+    <div class="hc-top">
+      <div class="hc-avatar">${ringed(avatarFor(p.username, p.avatar, 'avatar-big'), p.ring)}</div>
+      ${tray ? `<div class="hc-badges">${badgeTrayIcons(p, earned, 6)}</div>` : ''}
+    </div>
+    <div class="hc-body">
+      <strong class="hc-name notranslate" translate="no">${escapeHtml(p.username)}</strong>
+      ${roles.length ? `<div class="hc-roles">${roles.map(([r, c]) => `<span class="dprof-role" style="--b:var(--${c})">${escapeHtml(r)}</span>`).join('')}</div>` : ''}
+      ${p.bio ? `<p class="hc-bio">${escapeHtml(p.bio)}</p>` : ''}
+      <dl class="hc-facts">
+        <div><dt>Member since</dt><dd>${escapeHtml(new Date(p.createdAt).toLocaleDateString(undefined, { month:'short', year:'numeric' }))}</dd></div>
+        <div><dt>Posts</dt><dd>${p.posts.toLocaleString()}</dd></div>
+        <div><dt>Replies</dt><dd>${p.replies.toLocaleString()}</dd></div>
+      </dl>
+      <button class="btn primary pill hc-open" data-route="community/user/${encodeURIComponent(p.username)}">View profile</button>
+    </div>`;
+}
+function hideHoverCard(){
+  clearTimeout(hoverTimer);
+  hoverFor = null;
+  if(hoverEl){ hoverEl.classList.remove('open'); hoverEl.hidden = true; hoverEl.innerHTML = ''; }
+}
+async function showHoverCard(target, name){
+  hoverFor = target;
+  let p;
+  try{ p = await cardProfile(name); }catch(err){ return; }
+  if(hoverFor !== target || !target.isConnected) return;
+  if(!hoverEl){
+    hoverEl = document.createElement('div');
+    hoverEl.className = 'hover-card';
+    hoverEl.addEventListener('click', ev => { if(ev.target.closest('[data-route]')) setTimeout(hideHoverCard); });
+    document.body.appendChild(hoverEl);
+  }
+  hoverEl.style.setProperty('--av', avatarColor(p.username));
+  hoverEl.setAttribute('aria-label', p.username + '’s profile');
+  hoverEl.innerHTML = hoverCardHtml(p);
+  hoverEl.hidden = false;
+  // Below the name when there's room, otherwise above it, and always on the screen
+  const r = target.getBoundingClientRect(), w = hoverEl.offsetWidth, h = hoverEl.offsetHeight, gap = 8;
+  const top = r.bottom + gap + h <= innerHeight - 8 ? r.bottom + gap : Math.max(8, r.top - gap - h);
+  hoverEl.style.left = Math.round(Math.min(Math.max(8, r.left), innerWidth - w - 8)) + 'px';
+  hoverEl.style.top = Math.round(top) + 'px';
+  requestAnimationFrame(() => hoverEl && hoverEl.classList.add('open'));
+}
+function hoverName(t){
+  if(t.dataset.card) return t.dataset.card;
+  const m = /^community\/user\/(.+)$/.exec(t.dataset.route || '');
+  return m ? decodeURIComponent(m[1]) : '';
+}
+document.addEventListener('pointerover', ev => {
+  if(ev.pointerType !== 'mouse' || !ev.target.closest) return;
+  if(hoverEl && hoverEl.contains(ev.target)){ clearTimeout(hideTimer); return; }
+  const t = ev.target.closest(HOVER_TARGETS), name = t && hoverName(t);
+  if(!name) return;
+  clearTimeout(hideTimer);
+  if(t === hoverFor) return;
+  clearTimeout(hoverTimer);
+  hoverTimer = setTimeout(() => showHoverCard(t, name), 450);
+});
+document.addEventListener('pointerout', ev => {
+  if(ev.pointerType !== 'mouse' || !ev.target.closest) return;
+  const from = ev.target.closest(HOVER_TARGETS) || (hoverEl && hoverEl.contains(ev.target) ? hoverEl : null);
+  if(!from) return;
+  const to = ev.relatedTarget;
+  if(to && (from.contains(to) || (hoverEl && hoverEl.contains(to)) || (hoverFor && hoverFor.contains(to)))) return;
+  clearTimeout(hoverTimer);
+  if(hoverFor !== from && from !== hoverEl) return;
+  hideTimer = setTimeout(hideHoverCard, 250);
+});
+window.addEventListener('scroll', () => { if(hoverFor) hideHoverCard(); }, { passive:true, capture:true });
+window.addEventListener('hashchange', hideHoverCard);
+document.addEventListener('keydown', ev => { if(ev.key === 'Escape' && hoverFor) hideHoverCard(); });
 let profileTab = 'about', profileTabFor = '';
 async function renderMemberProfile(){
   const seq = ++viewSeq;
@@ -5033,10 +5254,10 @@ async function renderMemberProfile(){
   const p = data.profile, me = Community.user;
   const self = !!me && me.username.toLowerCase() === p.username.toLowerCase();
   const saved = (p.favorites || []).map(id => library.find(e => e.id === id)).filter(Boolean);
-  const earned = BADGES.filter(b => [...p.badges.earned, ...communityBadgeKeys(p)].includes(b.key));
+  const earned = earnedBadges(p);
   const badgeCount = earned.length + p.badges.appointed.length;
   const joined = new Date(p.createdAt).toLocaleDateString(undefined, { month:'long', day:'numeric', year:'numeric' });
-  const roles = [p.administrator && ['Site administrator', 'teal'], p.moderator && !p.administrator && ['Moderator', 'indigo']].filter(Boolean);
+  const roles = profileRoles(p);
   sectionTitleEl.textContent = p.username;
   sectionDescEl.textContent = 'Member since ' + new Date(p.createdAt).toLocaleDateString(undefined, { month:'long', year:'numeric' });
   document.title = p.username + ' — Sanctify';
@@ -5051,9 +5272,9 @@ async function renderMemberProfile(){
       <article class="dprof-card">
         ${bannerHtml(p.username, p.banner, ' dprof-banner') || '<div class="profile-banner dprof-banner plain"></div>'}
         <div class="dprof-top">
-          <div class="dprof-avatar">${avatarFor(p.username, p.avatar, 'avatar-xl')}</div>
+          <div class="dprof-avatar">${ringed(avatarFor(p.username, p.avatar, 'avatar-xl'), p.ring)}</div>
           ${badgeCount || p.administrator ? `<button class="dprof-badges" data-ptab-go="badges" aria-label="See ${escapeHtml(p.username)}’s badges">
-            ${p.administrator ? adminIcon() : ''}${badgePills(p.badges.appointed)}${earned.slice(0, 8).map(b => `<span class="badge-ic" style="--b:var(--${b.color})" title="${escapeHtml(badgeName(b))}">${navIcon(badgeIcon(b))}</span>`).join('')}${earned.length > 8 ? `<span class="dprof-more">+${earned.length - 8}</span>` : ''}
+            ${badgeTrayIcons(p, earned, 8)}
           </button>` : ''}
         </div>
         <div class="dprof-body">
@@ -5616,7 +5837,7 @@ async function renderThread(){
   wrap.className = 'forum-thread';
   wrap.innerHTML = `
     <article class="forum-op">
-      <div class="forum-op-head">${avatarFor(post.author, post.authorAvatar)}<div><strong>${authorHtml(post.author)}</strong>${badgePills(post.authorBadges)}<span class="forum-meta">${escapeHtml(fullDate(post.createdAt))}${post.editedAt ? ` · <span title="${escapeHtml(fullDate(post.editedAt))}">edited</span>` : ''}</span></div></div>
+      <div class="forum-op-head">${avatarHover(post.author, ringed(avatarFor(post.author, post.authorAvatar), post.authorRing))}<div><strong>${authorHtml(post.author)}</strong>${badgePills(post.authorBadges)}<span class="forum-meta">${escapeHtml(fullDate(post.createdAt))}${post.editedAt ? ` · <span title="${escapeHtml(fullDate(post.editedAt))}">edited</span>` : ''}</span></div></div>
       <div class="forum-body" id="opBody">${forumText(post.body)}</div>
       <div class="forum-actions">
         ${post.category === 'prayer' ? `<button class="read-action${post.prayed ? ' on' : ''}" data-act="pray" aria-pressed="${post.prayed}">${prayLabel(post)}</button>` : ''}
@@ -5633,7 +5854,7 @@ async function renderThread(){
     <h3 class="forum-replies-head">${replies.length ? plural(replies.length, 'reply', 'replies') : 'No replies yet'}</h3>
     <div class="forum-replies">${replies.map(r => `
       <div class="forum-reply" id="reply-${r.id}">
-        ${avatarFor(r.author, r.authorAvatar)}
+        ${avatarHover(r.author, ringed(avatarFor(r.author, r.authorAvatar), r.authorRing))}
         <div class="forum-reply-main">
           <div class="forum-reply-head">
             <strong>${authorHtml(r.author)}</strong>${badgePills(r.authorBadges)}<span class="forum-meta" title="${escapeHtml(fullDate(r.createdAt))}">${timeAgo(r.createdAt)}${r.editedAt ? ' · edited' : ''}</span>
@@ -6077,17 +6298,25 @@ function renderProfile(){
           <p class="forum-error" id="avatarError" hidden></p>
         </div>
       </section>
+      <section class="bio-panel ring-panel">
+        <h3>Profile ring</h3>
+        <p class="forum-meta">A decoration around your picture, on your profile and next to your posts and replies.</p>
+        <div class="ring-picker" id="ringPicker" role="radiogroup" aria-label="Profile ring"><div class="forum-loading">Loading…</div></div>
+        <p class="forum-error" id="ringError" hidden></p>
+      </section>
       <section class="banner-panel">
         <h3>Profile banner</h3>
-        <p class="forum-meta">The wide strip across the top of your public profile. Choose a design, or use a picture of your own.</p>
+        <p class="forum-meta">The wide strip across the top of your public profile. Choose a design, or use a picture or a short video of your own. A video plays its first ${VIDEO_BANNER_SECONDS} seconds over and over, without sound.</p>
         <div id="bannerPreview"><div class="profile-banner banner-empty">Loading…</div></div>
         <div class="banner-presets" role="group" aria-label="Banner designs">${Object.entries(BANNER_PRESETS).map(([k, [label, bg]]) =>
           `<button class="banner-preset" type="button" data-banner="${k}" aria-pressed="false"><span style="background:${escapeHtml(bg)}"></span><span>${escapeHtml(label)}</span></button>`).join('')}</div>
         <div class="avatar-actions">
           <label class="btn quiet banner-upload">Use a picture<input type="file" id="bannerFile" accept="image/jpeg,image/png,image/webp,image/gif" hidden></label>
+          <label class="btn quiet banner-upload">Use a video<input type="file" id="bannerVideo" accept="video/mp4,video/webm,video/quicktime" hidden></label>
           <button class="btn quiet" id="bannerAdjust" type="button" hidden>Adjust</button>
           <button class="btn quiet" id="bannerRemove" type="button" hidden>Remove</button>
         </div>
+        <p class="forum-meta" id="bannerStatus" aria-live="polite" hidden></p>
         <p class="forum-error" id="bannerError" hidden></p>
       </section>
       <section class="bio-panel">
@@ -6226,6 +6455,7 @@ function renderProfile(){
     shareBox.disabled = false;
     store.set('shareSaved', shareBox.checked);
     showBanner(res.profile.banner);
+    showRings(res.profile);
     bioSaved = res.profile.bio || '';
     bioText.value = bioSaved;
     bioText.disabled = false;
@@ -6233,8 +6463,36 @@ function renderProfile(){
   }).catch(err => { showFormError(bioError, err.message); });
   bioText.addEventListener('input', bioState);
 
+  // The ring around your picture; the site's owner also has the Light of Tabor, and wears it unless they choose another
+  const ringPicker = entryListEl.querySelector('#ringPicker'), ringError = entryListEl.querySelector('#ringError');
+  let ringProfile = null;
+  const showRings = prof => {
+    ringProfile = prof;
+    const current = prof.ring || 'none';
+    ringPicker.innerHTML = [...(prof.owner ? ['owner'] : []), ...RING_KEYS, 'none'].map(k => `
+      <button type="button" class="ring-choice" role="radio" aria-checked="${k === current}" data-ring="${k}">
+        <span class="ring-preview">${ringed(avatarFor(u.username, u.avatar, 'avatar-ring'), k === 'none' ? null : k)}</span>
+        <span class="ring-name">${k === 'none' ? 'No ring' : escapeHtml(RING_NAMES[k])}</span>
+      </button>`).join('');
+    const pic = entryListEl.querySelector('.avatar-panel > .forum-avatar, .avatar-panel > .ringed');
+    if(pic) pic.outerHTML = ringed(avatarFor(u.username, u.avatar, 'avatar-big'), prof.ring);
+  };
+  ringPicker.addEventListener('click', async ev => {
+    const b = ev.target.closest('[data-ring]');
+    if(!b || !ringProfile || b.getAttribute('aria-checked') === 'true') return;
+    showFormError(ringError, '');
+    ringPicker.classList.add('busy');
+    try{
+      const res = await api('account/ring', { method:'PUT', body:{ ring:b.dataset.ring } });
+      hoverCards.delete(u.username.toLowerCase());
+      showRings({ ...ringProfile, ring:res.ring });
+      toast(res.ring ? `You’re wearing the ${RING_NAMES[res.ring]}` : 'Your ring was taken off');
+    }catch(err){ showFormError(ringError, err.message); }
+    ringPicker.classList.remove('busy');
+  });
+
   // The banner across the top of your public profile
-  const bannerError = entryListEl.querySelector('#bannerError');
+  const bannerError = entryListEl.querySelector('#bannerError'), bannerStatus = entryListEl.querySelector('#bannerStatus');
   let banner = null;
   const showBanner = b => {
     banner = b;
@@ -6271,6 +6529,25 @@ function renderProfile(){
     const url = URL.createObjectURL(file);
     await frameBanner(url);
     URL.revokeObjectURL(url);
+  });
+  entryListEl.querySelector('#bannerVideo').addEventListener('change', async ev => {
+    const file = ev.target.files && ev.target.files[0];
+    ev.target.value = '';
+    if(!file) return;
+    showFormError(bannerError, '');
+    if(!/^video\//.test(file.type)){ showFormError(bannerError, 'Please choose a video file.'); return; }
+    if(file.size > 200 * 1024 * 1024){ showFormError(bannerError, 'That video is very large. Please choose one under 200 MB.'); return; }
+    const labels = entryListEl.querySelectorAll('.banner-upload');
+    labels.forEach(l => l.classList.add('busy'));
+    bannerStatus.hidden = false;
+    bannerStatus.textContent = 'Making your video banner…';
+    try{
+      const video = await makeVideoBanner(file, f => { bannerStatus.textContent = `Making your video banner… ${Math.round(f * 100)}%`; });
+      bannerStatus.textContent = 'Saving…';
+      await saveBanner({ video }, 'Your video banner was saved.');
+    }catch(err){ showFormError(bannerError, err.message || 'That video couldn’t be used.'); }
+    bannerStatus.hidden = true;
+    labels.forEach(l => l.classList.remove('busy'));
   });
   entryListEl.querySelector('#bannerAdjust').addEventListener('click', () => frameBanner(`/api/banner/${encodeURIComponent(u.username)}?v=${Number(banner.image)}`));
   entryListEl.querySelector('#bannerRemove').addEventListener('click', () => saveBanner(null, 'Your banner was removed.'));
@@ -12708,23 +12985,24 @@ function switchRow(id, name, note, on, disabled){
   return `<div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">${name}</span><span class="shine-row-note">${note}</span></span>
     <button type="button" class="shine-switch" id="${id}" role="switch" aria-checked="${on}" aria-label="${name}"${disabled ? ' disabled' : ''}></button></div>`;
 }
-const SANCTIFY_VERSION = '0.9';
+const SANCTIFY_VERSION = '1.0';
 const RELEASE_NOTES = () => [
-  'A Community home: write a post from the top of the page, pray for one another’s intentions, and see the forum, wiki, and news at a glance.',
-  'Moderators chosen by the site administrators, and an easier sign-up that checks your username as you type.',
-  'A Community Wiki laid out like an encyclopedia, with an A to Z index, tabs to read, edit, and see a page’s history, and a random page.',
-  'Themes of your own: pick a background, an accent, and a text color, and Sanctify works out the rest.',
-  'Share any saint, prayer, quote, or the Verse of the Day as an image.',
-  'Read aloud in the most natural voice your device has, with a voice and speed of your choosing.',
-  'Feasts, saints’ names, patronages, the 1962 calendar, the Community, and every theme in all eight languages.',
-  'Show the things you’ve saved on your profile, if you like.',
-  'A simpler menu, and a Credits page.'
+  'New profiles: a banner with your picture over its edge, your badges beside it, and tabs for About, Badges, posts, replies, and wiki edits.',
+  'Rest the mouse on anyone’s name or picture to see a small version of their profile.',
+  'Profile rings to wear around your picture, from a halo or a rosary to a crown of twelve stars, and video banners that loop silently.',
+  'Change your username from your account, once a week.',
+  'A new Community: your own card on the Community home, and the forum’s categories down the side like channels.',
+  'Accounts ready for everyone: change your password, get back in with a reset code from an administrator, download your data, and read the Privacy and Terms of Use pages.',
+  'Report a problem from any page, straight to the moderators.',
+  'A short welcome tour on your first visit, and a tab icon that follows the season of the Church’s year.',
+  'Faster loading, and a fuller offline copy in Settings.',
+  'The theology and history pages, the introductions to the books of the Bible, the classic books, and nearly 200 saints’ lives in all eight languages.'
 ];
 // Shown once on Home after an update, until it is opened or dismissed
 function releaseBannerHtml(){
   if(store.get('release', '') === SANCTIFY_VERSION) return '';
   return `<section class="rite-banner release-banner"><span class="rite-banner-cross">${navIcon('star')}</span>
-    <div><strong class="notranslate" translate="no">Sanctify ${SANCTIFY_VERSION}</strong> <span>A Community home, an encyclopedia wiki, themes of your own, and sharing as an image.</span></div>
+    <div><strong class="notranslate" translate="no">Sanctify ${SANCTIFY_VERSION}</strong> <span>New profiles with rings, video banners, and hover cards, a new Community, and faster loading.</span></div>
     <button class="btn quiet" type="button" data-release-open>See what’s new</button>
     <button class="release-close" type="button" data-release-dismiss aria-label="Dismiss">×</button></section>`;
 }
