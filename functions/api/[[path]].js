@@ -53,7 +53,7 @@ const EARNED_KEYS = new Set([
   'mass-10', 'mass-52', 'confession-1', 'confession-12', 'examen-7', 'scripture-10', 'angelus-30', 'streak-7', 'streak-30', 'streak-100', 'streak-365',
   'days-100', 'novena-1', 'novena-5', 'bible-1', 'bible-50', 'bible-260', 'bible-1000', 'saints-10', 'saints-100', 'saints-500', 'books-10', 'books-100', 'quiz-10'
 ]);
-const RESERVED_NAMES = new Set(['admin', 'administrator', 'moderator', 'mod', 'sanctify', 'staff', 'support', 'system', 'pope', 'vatican']);
+const RESERVED_NAMES = new Set(['admin', 'administrator', 'moderator', 'mod', 'staff', 'support', 'system', 'pope', 'vatican']);
 
 const SCHEMA = [
   `CREATE TABLE IF NOT EXISTS users (
