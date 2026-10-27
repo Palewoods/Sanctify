@@ -3433,15 +3433,20 @@
     -webkit-mask:radial-gradient(farthest-side, transparent 84%, #000 86%); mask:radial-gradient(farthest-side, transparent 84%, #000 86%);
     filter:drop-shadow(0 0 6px rgba(240,220,160,0.55)); animation:ringTurn 9s linear infinite;}
   @keyframes ringTurn{to{transform:rotate(1turn);}}
-  /* The City of God: firelight glowing behind the walls, and embers flickering */
-  .ring-city-of-god::before{content:''; position:absolute; inset:-22%; border-radius:50%; z-index:1; pointer-events:none;
-    background:radial-gradient(closest-side, transparent 64%, rgba(232,116,42,0.7) 74%, rgba(160,70,30,0.3) 86%, transparent 100%);
+  /* The City of God, in the colors of Cole's "Destruction": storm, smoke, marble, and firelight turning slowly,
+     with a soft glow of fire behind and embers flickering */
+  .ring-city-of-god::before{content:''; position:absolute; inset:-10%; border-radius:50%; z-index:1; pointer-events:none;
+    background:conic-gradient(from 20deg, #5d6458, #8a8f80, #e8e0cc, #8a8f80, #3a3530, #e8742a, #f5b04a, #e8742a, #3a3530, #5d6458);
+    -webkit-mask:radial-gradient(farthest-side, transparent 84%, #000 85.5%); mask:radial-gradient(farthest-side, transparent 84%, #000 85.5%);
+    animation:ringTurn 16s linear infinite;}
+  .ring-city-of-god::after{content:''; position:absolute; inset:-22%; border-radius:50%; z-index:0; pointer-events:none;
+    background:radial-gradient(closest-side, transparent 66%, rgba(232,116,42,0.45) 76%, rgba(93,100,88,0.25) 88%, transparent 100%);
     animation:cityGlow 3.4s ease-in-out infinite alternate;}
   .ring-city-of-god .ember{animation:ember 2.8s ease-in-out infinite;}
-  @keyframes cityGlow{from{opacity:0.55;} to{opacity:1;}}
+  @keyframes cityGlow{from{opacity:0.5;} to{opacity:1;}}
   @keyframes ember{0%, 100%{opacity:0.25;} 50%{opacity:1;}}
-  @media (prefers-reduced-motion:reduce){ .ring-owner::before, .ring-city-of-god::before, .ring-city-of-god .ember{animation:none;} }
-  :root[data-motion="reduced"] .ring-owner::before, :root[data-motion="reduced"] .ring-city-of-god::before, :root[data-motion="reduced"] .ring-city-of-god .ember{animation:none;}
+  @media (prefers-reduced-motion:reduce){ .ring-owner::before, .ring-city-of-god::before, .ring-city-of-god::after, .ring-city-of-god .ember{animation:none;} }
+  :root[data-motion="reduced"] .ring-owner::before, :root[data-motion="reduced"] .ring-city-of-god::before, :root[data-motion="reduced"] .ring-city-of-god::after, :root[data-motion="reduced"] .ring-city-of-god .ember{animation:none;}
   .forum-post > .av-hover, .forum-op-head > .av-hover, .forum-reply > .av-hover{display:inline-flex; align-self:start; flex:0 0 auto;}
   .forum-reply > .av-hover .ringed, .forum-op-head > .av-hover .ringed{margin:4px;}
   .profile-banner.video-banner video{display:block; width:100%; height:100%; object-fit:cover;}

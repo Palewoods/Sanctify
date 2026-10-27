@@ -3765,24 +3765,12 @@ function ringSvg(key){
       + around(32, 0, 360).filter((_, i) => i % 4).map(d => { const [x, y] = at(56, d); return `<circle cx="${x}" cy="${y}" r="1.7" fill="#fff8e6" stroke="#b89a60" stroke-width=".3"/>`; }).join('')
       + around(8, 0, 360).map((d, i) => { const [x, y] = at(56, d); return `<rect x="${x - 2.6}" y="${y - 2.6}" width="5.2" height="5.2" transform="rotate(45 ${x} ${y})" fill="${i % 2 ? '#2a4f9a' : '#a51f2c'}" stroke="#f0d28a" stroke-width=".7"/>`; }).join('');
   } else if(key === 'city-of-god'){
-    // The City of God (Augustine wrote it after Rome fell): bronze battlements in the firelight of a falling city,
-    // with the Chi-Rho of Constantine's shield above and embers drifting round
-    let wall = '';
-    for(let i = 0; i < 24; i++){
-      const a = i * 15, [x1, y1] = at(61, a), [x2, y2] = at(61, a + 7.5), [x3, y3] = at(57.2, a + 7.5), [x4, y4] = at(57.2, a + 15);
-      wall += `${i ? 'L' : 'M'}${x1},${y1}A61,61 0 0 1 ${x2},${y2}L${x3},${y3}A57.2,57.2 0 0 1 ${x4},${y4}`;
-    }
-    const [i1, i2] = [at(52.4, 0), at(52.4, 180)];
-    wall += `ZM${i1[0]},${i1[1]}A52.4,52.4 0 1 0 ${i2[0]},${i2[1]}A52.4,52.4 0 1 0 ${i1[0]},${i1[1]}Z`;
-    const embers = [[22, 64.5, 1.4], [48, 67.5, 0.9], [75, 63.5, 1.6], [101, 66.5, 1], [128, 65, 1.3], [156, 68, 0.8], [183, 64, 1.5], [207, 67, 1.1],
-      [236, 64.5, 1.4], [262, 67.5, 0.9], [289, 64, 1.2], [318, 66.5, 1], [339, 65, 1.5]];
-    g = `<circle cx="50" cy="50" r="61" fill="none" stroke="#5d6458" stroke-width="10" opacity=".25"/><circle cx="50" cy="50" r="64" fill="none" stroke="#e8742a" stroke-width="3" opacity=".2"/>`
-      + `<path d="${wall}" fill="#86692e" fill-rule="evenodd" stroke="#c9a65a" stroke-width=".7" stroke-linejoin="round"/>`
-      + around(24, 11.25, 371.25).map(d => { const [x1, y1] = at(52.5, d), [x2, y2] = at(57.1, d); return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#4e3c18" stroke-width=".7"/>`; }).join('')
-      + `<circle cx="50" cy="50" r="54.8" fill="none" stroke="#4e3c18" stroke-width=".6" opacity=".7"/><circle cx="50" cy="50" r="52.2" fill="none" stroke="#e8dfc8" stroke-width="1" opacity=".8"/>`
-      + embers.map(([d, r, s], i) => { const [x, y] = at(r, d); return `<circle class="ember" cx="${x}" cy="${y}" r="${s}" fill="${i % 3 ? '#ff9a3c' : '#ffd27a'}" style="animation-delay:-${(i * 0.37).toFixed(2)}s"/>`; }).join('')
-      + `<circle cx="50" cy="-6" r="8.6" fill="#6e5220" stroke="#d8b860" stroke-width="1.3"/><circle cx="50" cy="-6" r="6.9" fill="none" stroke="#a88a44" stroke-width=".5"/>`
-      + `<g stroke="#f3e3b0" stroke-width="1.35" stroke-linecap="round" fill="none"><path d="M46,-10L54,-2M54,-10L46,-2"/><path d="M50,-11.6V-0.4M50,-11.6h1.4a2.4,2.4 0 0 1 0,4.8H50"/></g>`;
+    // In the colors of Cole's "Destruction": a band of storm, smoke, and firelight turning slowly (drawn in CSS),
+    // edged in bronze, with the cross above and a few embers drifting round
+    const embers = [[28, 64.5, 1.3], [70, 66.5, 0.9], [112, 64, 1.4], [150, 67, 0.8], [192, 64.5, 1.2], [235, 66.5, 1], [276, 64, 1.4], [318, 66.5, 0.9]];
+    g = `<circle cx="50" cy="50" r="51" fill="none" stroke="#b8924a" stroke-width="1"/><circle cx="50" cy="50" r="59.6" fill="none" stroke="#b8924a" stroke-width="1.1"/>`
+      + embers.map(([d, r, z], i) => { const [x, y] = at(r, d); return `<circle class="ember" cx="${x}" cy="${y}" r="${z}" fill="${i % 3 ? '#ff9a3c' : '#ffd27a'}" style="animation-delay:-${(i * 0.41).toFixed(2)}s"/>`; }).join('')
+      + `<circle cx="50" cy="-4.5" r="8" fill="#3a3530" stroke="#c9a65a" stroke-width="1.2"/>${cross(50, -10.5, 8, '#f5d79a')}`;
   } else if(key === 'owner'){
     // The owner's ring: the light of Tabor turning around the picture (drawn in CSS), with rays and a crown above
     g = `<circle cx="50" cy="50" r="59.8" fill="none" stroke="#f3e0aa" stroke-width=".8" opacity=".9"/>`
