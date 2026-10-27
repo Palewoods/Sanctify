@@ -3712,7 +3712,9 @@ function reducedMotion(){ return store.get('motion', '') === 'reduced' || (!!win
 /* ---------- Profile rings: a decoration around a member's picture (the server keeps the same list) ---------- */
 const RING_KEYS = ['halo', 'rosary', 'prayer-rope', 'stars', 'roses', 'stained-glass', 'laurel', 'flame', 'pearls'];
 const RING_NAMES = { halo:'Halo', rosary:'Rosary', 'prayer-rope':'Prayer Rope', stars:'Crown of Twelve Stars', roses:'Rose Garland',
-  'stained-glass':'Stained Glass', laurel:'Laurel Wreath', flame:'Tongues of Fire', pearls:'Byzantine Pearls', owner:'Light of Tabor' };
+  'stained-glass':'Stained Glass', laurel:'Laurel Wreath', flame:'Tongues of Fire', pearls:'Byzantine Pearls', owner:'Light of Tabor', 'city-of-god':'City of God' };
+// The rings only the site's owner can wear; they wear the first unless they choose another
+const OWNER_RING_KEYS = ['city-of-god', 'owner'];
 const ringCache = {};
 // Drawn on a 100 × 100 picture, with room around it; 0° is the top and angles go clockwise
 function ringSvg(key){
@@ -3762,6 +3764,25 @@ function ringSvg(key){
     g = `<circle cx="50" cy="50" r="56" fill="none" stroke="#c99a3a" stroke-width="5.5"/><circle cx="50" cy="50" r="59.2" fill="none" stroke="#7a5418" stroke-width=".7"/>`
       + around(32, 0, 360).filter((_, i) => i % 4).map(d => { const [x, y] = at(56, d); return `<circle cx="${x}" cy="${y}" r="1.7" fill="#fff8e6" stroke="#b89a60" stroke-width=".3"/>`; }).join('')
       + around(8, 0, 360).map((d, i) => { const [x, y] = at(56, d); return `<rect x="${x - 2.6}" y="${y - 2.6}" width="5.2" height="5.2" transform="rotate(45 ${x} ${y})" fill="${i % 2 ? '#2a4f9a' : '#a51f2c'}" stroke="#f0d28a" stroke-width=".7"/>`; }).join('');
+  } else if(key === 'city-of-god'){
+    // The City of God (Augustine wrote it after Rome fell): bronze battlements in the firelight of a falling city,
+    // with the Chi-Rho of Constantine's shield above and embers drifting round
+    let wall = '';
+    for(let i = 0; i < 24; i++){
+      const a = i * 15, [x1, y1] = at(61, a), [x2, y2] = at(61, a + 7.5), [x3, y3] = at(57.2, a + 7.5), [x4, y4] = at(57.2, a + 15);
+      wall += `${i ? 'L' : 'M'}${x1},${y1}A61,61 0 0 1 ${x2},${y2}L${x3},${y3}A57.2,57.2 0 0 1 ${x4},${y4}`;
+    }
+    const [i1, i2] = [at(52.4, 0), at(52.4, 180)];
+    wall += `ZM${i1[0]},${i1[1]}A52.4,52.4 0 1 0 ${i2[0]},${i2[1]}A52.4,52.4 0 1 0 ${i1[0]},${i1[1]}Z`;
+    const embers = [[22, 64.5, 1.4], [48, 67.5, 0.9], [75, 63.5, 1.6], [101, 66.5, 1], [128, 65, 1.3], [156, 68, 0.8], [183, 64, 1.5], [207, 67, 1.1],
+      [236, 64.5, 1.4], [262, 67.5, 0.9], [289, 64, 1.2], [318, 66.5, 1], [339, 65, 1.5]];
+    g = `<circle cx="50" cy="50" r="61" fill="none" stroke="#5d6458" stroke-width="10" opacity=".25"/><circle cx="50" cy="50" r="64" fill="none" stroke="#e8742a" stroke-width="3" opacity=".2"/>`
+      + `<path d="${wall}" fill="#86692e" fill-rule="evenodd" stroke="#c9a65a" stroke-width=".7" stroke-linejoin="round"/>`
+      + around(24, 11.25, 371.25).map(d => { const [x1, y1] = at(52.5, d), [x2, y2] = at(57.1, d); return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#4e3c18" stroke-width=".7"/>`; }).join('')
+      + `<circle cx="50" cy="50" r="54.8" fill="none" stroke="#4e3c18" stroke-width=".6" opacity=".7"/><circle cx="50" cy="50" r="52.2" fill="none" stroke="#e8dfc8" stroke-width="1" opacity=".8"/>`
+      + embers.map(([d, r, s], i) => { const [x, y] = at(r, d); return `<circle class="ember" cx="${x}" cy="${y}" r="${s}" fill="${i % 3 ? '#ff9a3c' : '#ffd27a'}" style="animation-delay:-${(i * 0.37).toFixed(2)}s"/>`; }).join('')
+      + `<circle cx="50" cy="-6" r="8.6" fill="#6e5220" stroke="#d8b860" stroke-width="1.3"/><circle cx="50" cy="-6" r="6.9" fill="none" stroke="#a88a44" stroke-width=".5"/>`
+      + `<g stroke="#f3e3b0" stroke-width="1.35" stroke-linecap="round" fill="none"><path d="M46,-10L54,-2M54,-10L46,-2"/><path d="M50,-11.6V-0.4M50,-11.6h1.4a2.4,2.4 0 0 1 0,4.8H50"/></g>`;
   } else if(key === 'owner'){
     // The owner's ring: the light of Tabor turning around the picture (drawn in CSS), with rays and a crown above
     g = `<circle cx="50" cy="50" r="59.8" fill="none" stroke="#f3e0aa" stroke-width=".8" opacity=".9"/>`
@@ -6463,13 +6484,13 @@ function renderProfile(){
   }).catch(err => { showFormError(bioError, err.message); });
   bioText.addEventListener('input', bioState);
 
-  // The ring around your picture; the site's owner also has the Light of Tabor, and wears it unless they choose another
+  // The ring around your picture; the site's owner also has the City of God and the Light of Tabor, and wears the first unless they choose another
   const ringPicker = entryListEl.querySelector('#ringPicker'), ringError = entryListEl.querySelector('#ringError');
   let ringProfile = null;
   const showRings = prof => {
     ringProfile = prof;
     const current = prof.ring || 'none';
-    ringPicker.innerHTML = [...(prof.owner ? ['owner'] : []), ...RING_KEYS, 'none'].map(k => `
+    ringPicker.innerHTML = [...(prof.owner ? OWNER_RING_KEYS : []), ...RING_KEYS, 'none'].map(k => `
       <button type="button" class="ring-choice" role="radio" aria-checked="${k === current}" data-ring="${k}">
         <span class="ring-preview">${ringed(avatarFor(u.username, u.avatar, 'avatar-ring'), k === 'none' ? null : k)}</span>
         <span class="ring-name">${k === 'none' ? 'No ring' : escapeHtml(RING_NAMES[k])}</span>

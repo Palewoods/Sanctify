@@ -40,9 +40,11 @@ const BIO_MAX = 300;
 const BANNER_MAX_BYTES = 300 * 1024;
 // A video banner is a short silent loop made in the browser; D1 keeps a value of up to 2 MB, and base64 adds a third
 const VIDEO_MAX_BYTES = 1300 * 1000;
-// The rings members can wear around their picture (the browser keeps the same list). "owner" is only for the
-// site's owner, the first name in ADMINS, who wears it unless they choose another; "none" takes a ring off.
+// The rings members can wear around their picture (the browser keeps the same list); "none" takes a ring off.
+// OWNER_RINGS are only for the site's owner, the first name in ADMINS, who wears the first of them
+// (the City of God) unless they choose another.
 const RINGS = ['halo', 'rosary', 'prayer-rope', 'stars', 'roses', 'stained-glass', 'laurel', 'flame', 'pearls'];
+const OWNER_RINGS = ['city-of-god', 'owner'];
 // The preset banner designs (kept in step with BANNER_PRESETS in index.html)
 const BANNER_PRESETS = ['stained-glass', 'starry-mantle', 'gold-leaf', 'easter-dawn', 'roses', 'cloister', 'advent', 'stella-maris', 'byzantine', 'ordinary-time', 'pentecost', 'lily'];
 const AVATAR_TYPES = { 'image/jpeg':[0xFF, 0xD8, 0xFF], 'image/png':[0x89, 0x50, 0x4E, 0x47], 'image/webp':[0x52, 0x49, 0x46, 0x46] };
@@ -723,21 +725,21 @@ function ownerName(ctx){ return String(ctx.env.ADMINS || '').split(',').map(x =>
 function isOwner(ctx, name){ return !!name && ownerName(ctx).toLowerCase() === String(name).toLowerCase(); }
 function ringFor(ctx, name, key){
   if(!name || key === 'none') return null;
-  if(isOwner(ctx, name)) return key && RINGS.includes(key) ? key : 'owner';
+  if(isOwner(ctx, name)) return key && (RINGS.includes(key) || OWNER_RINGS.includes(key)) ? key : OWNER_RINGS[0];
   return key && RINGS.includes(key) ? key : null;
 }
 
 async function setRing(ctx){
   const user = requireUser(ctx);
   const { ring } = await readBody(ctx, 1000);
-  const key = String(ring || 'none');
-  if(key !== 'none' && !RINGS.includes(key) && !(key === 'owner' && isOwner(ctx, user.username))) throw new HttpError(400, 'Please choose one of the rings.');
+  const key = String(ring || 'none'), owner = isOwner(ctx, user.username);
+  if(key !== 'none' && !RINGS.includes(key) && !(owner && OWNER_RINGS.includes(key))) throw new HttpError(400, 'Please choose one of the rings.');
   await limit(ctx, 'ring:' + user.id, 40, 60 * 60 * 1000, 'You’ve changed your ring several times recently. Please try again later.');
-  // The owner's ring is what they wear with nothing chosen, so choosing it clears the choice
-  if(key === 'owner' || (key === 'none' && !isOwner(ctx, user.username))) await ctx.db.prepare('DELETE FROM rings WHERE user_id = ?').bind(user.id).run();
+  // The owner's first ring is what they wear with nothing chosen, so choosing it clears the choice
+  if(key === OWNER_RINGS[0] || (key === 'none' && !owner)) await ctx.db.prepare('DELETE FROM rings WHERE user_id = ?').bind(user.id).run();
   else await ctx.db.prepare('INSERT INTO rings (user_id, ring, updated_at) VALUES (?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET ring = excluded.ring, updated_at = excluded.updated_at')
     .bind(user.id, key, ctx.now).run();
-  return json({ ring:ringFor(ctx, user.username, key === 'owner' ? null : key) });
+  return json({ ring:ringFor(ctx, user.username, key === OWNER_RINGS[0] ? null : key) });
 }
 
 async function removeBanner(ctx){
