@@ -11664,23 +11664,6 @@ document.addEventListener('keydown', ev => {
   else if(ev.key === 'ArrowLeft'){ const b = box.querySelector('[data-tour="back"]'); if(b) b.click(); }
 });
 
-// The icon at the top of Home, for the season or the feast: Advent, Our Lady of the Sign; Christmas, the Nativity;
-// Lent, the cross of San Damiano; Easter, the Anastasis; the Transfiguration, the Dormition, and the Trinity on their days;
-// otherwise Christ Pantocrator. Seasons are matched by name, so the Eastern and 1962 calendars work too.
-function seasonIconKey(season, obs){
-  const feast = obs.map(o => o.name).join(' ').toLowerCase();
-  if(/transfiguration/.test(feast)) return 'transfiguration';
-  if(/assumption|dormition/.test(feast)) return 'dormition';
-  if(/holy trinity|trinity sunday/.test(feast)) return 'trinity';
-  const name = ((season.key || '') + ' ' + (season.name || '')).toLowerCase();
-  if(/after pentecost|after epiphany|ordinary/.test(name)) return 'pantocrator';
-  if(/advent|nativity fast|philip/.test(name)) return 'sign';
-  if(/christmas|nativity|epiphany|theophany/.test(name)) return 'nativity';
-  if(/lent|passion|triduum|holy week|septuagesima|great fast/.test(name)) return 'damiano';
-  if(/easter|pascha|paschal|pentecost/.test(name)) return 'anastasis';
-  if(/dormition/.test(name)) return 'dormition';
-  return 'pantocrator';
-}
 // A large picture tile on Home: one of the great icons, with what it opens written over it
 function homeTile(route, img, title, sub, d){
   const src = FAMOUS_IMG[img] ? FAMOUS_IMG[img].img : img;
@@ -11716,7 +11699,6 @@ function renderHome(){
   const newcomer = !store.get('recent', []).length && !Object.keys(trackerLog()).length;
   if(newcomer && !store.get('tour', 0) && !store.get('release', '')) setTimeout(() => { if(currentRoute === 'home') openTour(); }, 700);
 
-  const heroIcon = FAMOUS_ICONS.find(x => x.key === seasonIconKey(season, obs));
   const wrap = document.createElement('div');
   wrap.className = 'home';
   wrap.innerHTML = `
@@ -11732,11 +11714,7 @@ function renderHome(){
           <button class="text-link hero-link" data-route="pray/rosary">${isEastern() ? 'Pray the Jesus Prayer' : 'Pray the ' + escapeHtml(mysteries.name)} →</button>
         </div>
       </div>
-      <button class="hx-saint hx-in" style="--d:2" data-hero-icon="${heroIcon.key}">
-        <span class="hx-halo" aria-hidden="true">${heroRosette()}</span>
-        <span class="hx-frame"><img src="${escapeHtml(FAMOUS_IMG[heroIcon.key].img)}" alt="" decoding="async" fetchpriority="high"></span>
-        <span class="hx-caption"><span class="daily-kicker">Icon of the season</span><strong>${escapeHtml(heroIcon.title)}</strong><span class="hx-more">About this icon →</span></span>
-      </button>
+      <div class="hx-cross hx-in" style="--d:2">${heroRosette()}</div>
     </section>
     ${releaseBannerHtml()}
 
@@ -11858,7 +11836,6 @@ function renderHome(){
   });
   wrap.querySelectorAll('.dash-card[data-route]').forEach(c => c.addEventListener('keydown', ev => { if(ev.target === c && (ev.key === 'Enter' || ev.key === ' ')){ ev.preventDefault(); navigate(c.dataset.route); } }));
   wrap.querySelectorAll('.saint-portrait[data-sid]').forEach(observePortrait);
-  wrap.querySelector('[data-hero-icon]').addEventListener('click', ev => { famousOpen = ev.currentTarget.dataset.heroIcon; navigate('history/icons'); });
   loadHomeCommunity(wrap.querySelector('#homeCommunity'));
   loadHomeNews(wrap.querySelector('#homeNews'));
   bindHomePrayer(wrap);
