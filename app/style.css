@@ -3649,3 +3649,17 @@
   .hx-in{animation:hxIn .6s cubic-bezier(.2, .7, .3, 1) backwards; animation-delay:calc(var(--d, 0) * 70ms);}
   @media (prefers-reduced-motion:reduce){ .hx-in{animation:none !important;} .hx-tile, .hx-tile-img img, .hx-more-card, .hx-more-img img{transition:none;} }
   :root[data-motion="reduced"] .hx-in{animation:none !important;}
+
+  /* The cross at the top of Home: rays turning both ways, a ring of points, a breathing light, twinkling sparkles */
+  .hr .hr-rays-a, .hr .hr-rays-b, .hr .hr-dots{transform-box:view-box; transform-origin:50% 50%;}
+  .hr .hr-rays-a{animation:heroTurn 120s linear infinite;}
+  .hr .hr-rays-b{animation:heroTurn 90s linear infinite reverse;}
+  .hr .hr-dots{animation:heroTurn 200s linear infinite reverse;}
+  .hr .hr-glow{animation:hrBreathe 6s ease-in-out infinite;}
+  .hr .hr-spark{opacity:0; animation:hrTwinkle 6s ease-in-out infinite;}
+  .hr .hero-cross path{fill:var(--wine);}
+  @keyframes hrBreathe{0%, 100%{opacity:.55;} 50%{opacity:1;}}
+  @keyframes hrTwinkle{0%, 70%, 100%{opacity:0;} 80%{opacity:.9;}}
+  @media (prefers-reduced-motion:reduce){ .hr .hr-rays-a, .hr .hr-rays-b, .hr .hr-dots, .hr .hr-glow, .hr .hr-spark{animation:none !important;} .hr .hr-spark{opacity:.5;} }
+  :root[data-motion="reduced"] .hr .hr-rays-a, :root[data-motion="reduced"] .hr .hr-rays-b, :root[data-motion="reduced"] .hr .hr-dots, :root[data-motion="reduced"] .hr .hr-glow, :root[data-motion="reduced"] .hr .hr-spark{animation:none !important;}
+  :root[data-motion="reduced"] .hr .hr-spark{opacity:.5;}

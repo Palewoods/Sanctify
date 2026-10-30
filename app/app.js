@@ -11575,17 +11575,31 @@ function renderHub(key){
    HOME
    ========================================================= */
 function heroRosette(){
-  let rays = '';
-  for(let i = 0; i < 24; i++){
-    const a = i * Math.PI / 12, r1 = i % 2 ? 62 : 58, r2 = i % 2 ? 84 : 96;
-    rays += `M${(110 + r1 * Math.cos(a)).toFixed(1)} ${(110 + r1 * Math.sin(a)).toFixed(1)}L${(110 + r2 * Math.cos(a)).toFixed(1)} ${(110 + r2 * Math.sin(a)).toFixed(1)}`;
-  }
-  const cross = document.querySelector('.brand .mark path').getAttribute('d');
-  return `<svg class="hero-rosette" viewBox="0 0 220 220" aria-hidden="true">
-    <circle cx="110" cy="110" r="104" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.35"/>
-    <circle cx="110" cy="110" r="52" fill="none" stroke="currentColor" stroke-width="1" opacity="0.55"/>
-    <path class="hero-rays" d="${rays}" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity="0.6"/>
-    <g class="hero-cross" transform="translate(68.4 68.4) scale(1.3)"><path fill-rule="evenodd" d="${cross}"/></g>
+  // Two layers of tapered rays turning slowly in opposite directions, a ring of points turning the other way,
+  // a soft light breathing behind the cross, a double circle, the edition's cross with a fine gold edge,
+  // and a few small sparkles. Drawn without filters, so it stays crisp in the flat style.
+  const C = 110, P = (r, deg) => [C + r * Math.cos(deg * Math.PI / 180), C + r * Math.sin(deg * Math.PI / 180)].map(n => n.toFixed(2)).join(' ');
+  const ray = (deg, r1, r2, w) => `M${P(r1, deg - w)}L${P(r2, deg)}L${P(r1, deg + w)}Z`;
+  let raysA = '', raysB = '';
+  for(let i = 0; i < 24; i++){ const deg = i * 15, long = i % 2 === 0; raysA += ray(deg, 58, long ? 100 : 86, long ? 1.6 : 1.2); }
+  for(let i = 0; i < 24; i++){ raysB += ray(i * 15 + 7.5, 60, 78, 1); }
+  let dots = '';
+  for(let i = 0; i < 48; i++){ const [x, y] = P(94, i * 7.5).split(' '); dots += `<circle cx="${x}" cy="${y}" r="${i % 4 === 0 ? 1.5 : 0.8}"/>`; }
+  const spark = (x, y, r, d) => `<path class="hr-spark" style="animation-delay:${d}s" d="M${x} ${y - r}L${x + r * 0.22} ${y - r * 0.22}L${x + r} ${y}L${x + r * 0.22} ${y + r * 0.22}L${x} ${y + r}L${x - r * 0.22} ${y + r * 0.22}L${x - r} ${y}L${x - r * 0.22} ${y - r * 0.22}Z"/>`;
+  return `<svg class="hero-rosette hr" viewBox="0 0 220 220" aria-hidden="true">
+    <defs>
+      <radialGradient id="hrRay" cx="110" cy="110" r="100" gradientUnits="userSpaceOnUse"><stop offset=".5" stop-color="currentColor" stop-opacity=".85"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></radialGradient>
+      <radialGradient id="hrGlow"><stop offset="0" stop-color="currentColor" stop-opacity=".55"/><stop offset=".55" stop-color="currentColor" stop-opacity=".18"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></radialGradient>
+    </defs>
+    <circle cx="110" cy="110" r="106" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.35"/>
+    <g class="hr-dots" fill="currentColor" opacity="0.55">${dots}</g>
+    <path class="hr-rays-a" d="${raysA}" fill="url(#hrRay)"/>
+    <path class="hr-rays-b" d="${raysB}" fill="url(#hrRay)" opacity="0.6"/>
+    <circle class="hr-glow" cx="110" cy="110" r="64" fill="url(#hrGlow)"/>
+    <circle cx="110" cy="110" r="54" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.6"/>
+    <circle cx="110" cy="110" r="50" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.45"/>
+    <g class="hero-cross" transform="translate(68.4 68.4) scale(1.3)"><path fill-rule="evenodd" d="${crossPath()}" stroke="currentColor" stroke-width="0.9" stroke-linejoin="round" paint-order="stroke"/></g>
+    <g class="hr-sparks" fill="currentColor">${spark(46, 52, 5, 0)}${spark(178, 70, 4, 1.6)}${spark(160, 176, 5, 3.1)}${spark(58, 168, 3.5, 4.4)}</g>
   </svg>`;
 }
 
