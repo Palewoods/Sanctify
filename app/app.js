@@ -3044,6 +3044,7 @@ const THEMES = [
   { key:'akita-dark', mode:'dark', name:'Akita at Night', desc:'A snowy winter night in northern Japan', swatch:['#191c21','#e08a80'] },
   { key:'zarvanytsia', mode:'light', name:'Zarvanytsia', desc:'The wonder-working icon by the spring, beloved of Ukrainian Greek Catholics', swatch:['#fefaf5','#9e2a22'] },
   { key:'zarvanytsia-dark', mode:'dark', name:'Zarvanytsia by Candlelight', desc:'The pilgrims’ night vigil at the holy spring', swatch:['#1e1611','#e8b65a'] },
+  { key:'desert', mode:'light', name:'Desert Fathers', desc:'Sand and sun-bleached stone, where Anthony and the Abbas and Ammas prayed', swatch:['#f8f0de','#9a4a24'] },
   { key:'cole', mode:'dark', name:'The Course of Empire', desc:'Storm, smoke, and firelight from Thomas Cole’s Destruction, darkened', swatch:['#1c1d19','#c97b4c'] },
   { key:'sanctify-wine', mode:'dark', name:'Sanctify Wine', desc:'The colors of the Sanctify emblem: white on deep wine', swatch:['#8e2b2d','#fdf6e8'] }
 ];
@@ -3053,12 +3054,12 @@ const THEME_GROUPS = [
   ['The liturgical year', ['liturgical', 'liturgical-dark', 'advent-light', 'advent', 'noel-light', 'noel', 'theophany', 'theophany-dark', 'lily', 'lily-dark', 'pascha', 'pascha-dark', 'tabor-light', 'tabor', 'matins-light', 'matins', 'compline-light', 'compline', 'tenebrae-light', 'tenebrae']],
   ['Our Lord and Our Lady', ['sacred-heart-light', 'sacred-heart', 'marian', 'marian-dark', 'stella-maris-light', 'stella-maris', 'rose-window', 'rose-window-dark']],
   ['Apparitions of Our Lady', ['lourdes', 'lourdes-night', 'fatima', 'cova-da-iria', 'tepeyac', 'guadalupe', 'rue-du-bac', 'rue-du-bac-dark', 'knock', 'knock-dark', 'la-salette', 'la-salette-dark', 'banneux', 'banneux-dark', 'pontmain-light', 'pontmain', 'beauraing-light', 'beauraing', 'laus', 'laus-dark', 'walsingham', 'walsingham-dark', 'siluva', 'siluva-dark', 'la-vang', 'la-vang-dark', 'champion', 'champion-dark', 'kibeho', 'kibeho-dark', 'akita', 'akita-dark', 'zarvanytsia', 'zarvanytsia-dark']],
-  ['Monasteries & saints', ['cloister', 'cloister-dark', 'carmel', 'carmel-dark', 'assisi', 'assisi-dark', 'senanque', 'senanque-dark', 'iona', 'iona-dark', 'mission', 'mission-dark', 'hermitage-light', 'hermitage', 'ember-light', 'ember']],
+  ['Monasteries & saints', ['desert', 'cloister', 'cloister-dark', 'carmel', 'carmel-dark', 'assisi', 'assisi-dark', 'senanque', 'senanque-dark', 'iona', 'iona-dark', 'mission', 'mission-dark', 'hermitage-light', 'hermitage', 'ember-light', 'ember']],
   ['Sacred art & great churches', ['manuscript', 'manuscript-dark', 'ivory', 'ivory-dark', 'fresco', 'fresco-dark', 'sistine', 'sistine-dark', 'vatican', 'vatican-dark', 'stained-glass-light', 'stained-glass', 'sainte-chapelle-light', 'sainte-chapelle', 'cathedral-light', 'cathedral', 'gilded-light', 'gilded']],
   ['Great paintings', ['cole']],
   ['The Christian East', ['byzantine-light', 'byzantine', 'iconostasis-light', 'iconostasis', 'hagia-sophia', 'hagia-sophia-dark', 'ravenna-light', 'ravenna', 'lapis-light', 'lapis', 'porphyry-light', 'porphyry', 'athos-light', 'athos', 'kyiv', 'kyiv-dark', 'vyshyvanka', 'vyshyvanka-dark']]
 ];
-const GOLD_THEMES = new Set(['cole', 'ivory', 'manuscript', 'cathedral', 'byzantine', 'sacred-heart', 'obsidian', 'athos', 'lapis', 'gilded', 'ravenna', 'guadalupe', 'porphyry', 'sistine', 'vatican', 'kyiv', 'advent', 'tabor', 'sainte-chapelle', 'iconostasis', 'hagia-sophia', 'manuscript-dark', 'ivory-dark', 'sistine-dark', 'vatican-dark', 'kyiv-dark', 'hagia-sophia-dark', 'lourdes-night', 'fatima', 'cova-da-iria', 'tepeyac', 'rue-du-bac', 'pontmain', 'beauraing', 'rue-du-bac-dark', 'cathedral-light', 'byzantine-light', 'sacred-heart-light', 'obsidian-light', 'athos-light', 'lapis-light', 'gilded-light', 'ravenna-light', 'porphyry-light', 'advent-light', 'tabor-light', 'sainte-chapelle-light', 'iconostasis-light', 'pontmain-light', 'beauraing-light', 'laus-dark', 'walsingham-dark', 'siluva-dark', 'la-vang-dark', 'champion', 'champion-dark', 'zarvanytsia', 'zarvanytsia-dark']);
+const GOLD_THEMES = new Set(['desert', 'cole', 'ivory', 'manuscript', 'cathedral', 'byzantine', 'sacred-heart', 'obsidian', 'athos', 'lapis', 'gilded', 'ravenna', 'guadalupe', 'porphyry', 'sistine', 'vatican', 'kyiv', 'advent', 'tabor', 'sainte-chapelle', 'iconostasis', 'hagia-sophia', 'manuscript-dark', 'ivory-dark', 'sistine-dark', 'vatican-dark', 'kyiv-dark', 'hagia-sophia-dark', 'lourdes-night', 'fatima', 'cova-da-iria', 'tepeyac', 'rue-du-bac', 'pontmain', 'beauraing', 'rue-du-bac-dark', 'cathedral-light', 'byzantine-light', 'sacred-heart-light', 'obsidian-light', 'athos-light', 'lapis-light', 'gilded-light', 'ravenna-light', 'porphyry-light', 'advent-light', 'tabor-light', 'sainte-chapelle-light', 'iconostasis-light', 'pontmain-light', 'beauraing-light', 'laus-dark', 'walsingham-dark', 'siluva-dark', 'la-vang-dark', 'champion', 'champion-dark', 'zarvanytsia', 'zarvanytsia-dark']);
 
 const themeToggleBtn = document.getElementById('themeToggle');
 const themeMenu = document.getElementById('themeMenu');
@@ -8823,8 +8824,21 @@ function watchReadOverlay(){
 const QUOTE_THEMES = {
   prayer:'Prayer', love:'Love & charity', faith:'Faith & reason', christ:'Christ & the Eucharist', church:'The Church',
   mary:'Mary', cross:'Suffering & the Cross', humility:'Humility', holiness:'Holiness', trust:'Joy & trust',
-  mercy:'Mercy & repentance', heaven:'Death & heaven', poor:'The poor', courage:'Courage'
+  mercy:'Mercy & repentance', heaven:'Death & heaven', poor:'The poor', courage:'Courage',
+  peace:'Worry & peace', anger:'Anger & patience', speech:'Words & silence', struggle:'Temptation & failure',
+  work:'Work & rest', friends:'Friendship & family'
 };
+// Advice for life: the saints on everyday struggles, each opening one theme of the quotes
+const QUOTE_ADVICE = [
+  ['peace', 'When you’re anxious', 'Worry, fear, and the future'],
+  ['anger', 'When you’re angry', 'Patience, grudges, and forgiveness'],
+  ['speech', 'Before you speak', 'Words, silence, and judging others'],
+  ['struggle', 'When you fall', 'Temptation, failure, and beginning again'],
+  ['work', 'At work and at rest', 'Daily work, busyness, and rest'],
+  ['friends', 'With other people', 'Friendship, family, and difficult people'],
+  ['cross', 'When you suffer', 'Sorrow, illness, and the Cross'],
+  ['prayer', 'When prayer is hard', 'Distraction, dryness, and simple prayer']
+];
 const QUOTES = [
   { saint:'Pope St. Clement I', text:'Let us fix our eyes on the blood of Christ and understand how precious it is to his Father.', source:'Letter to the Corinthians, 7', themes:['christ', 'mercy'] },
   { saint:'St. Ignatius of Antioch', text:'I am the wheat of God, and am ground by the teeth of wild beasts, that I may be found the pure bread of Christ.', source:'Letter to the Romans, 4', themes:['courage', 'christ'] },
@@ -8962,6 +8976,91 @@ QUOTES.push(
   { saint:'St. Josemaría Escrivá', text:'Don’t let your life be barren. Be useful. Make yourself felt.', source:'The Way, 1', themes:['holiness', 'courage'] },
   { saint:'St. Kuriakose Elias Chavara', text:'A good Christian family is the image of heaven.', source:'Testament of a Loving Father', themes:['love', 'heaven'], attributed:true }
 );
+// Life advice from the saints: the Desert Fathers and Mothers, the Rule of St. Benedict, St. Francis de Sales
+// (from the public-domain McMahon translation in the library), and others; each with its source.
+// Saints without a library entry carry the year they died, for the oldest-first order.
+QUOTES.push(
+  { saint:'St. Moses the Black', text:'Go, sit in your cell, and your cell will teach you everything.', source:'Sayings of the Desert Fathers, Moses 6', themes:['prayer', 'peace'] },
+  { saint:'St. Moses the Black', text:'My sins run out behind me, and I do not see them, and today I am coming to judge the faults of another.', source:'Sayings of the Desert Fathers, Moses 2 (carrying a leaking jug of water to a brother’s trial)', themes:['anger', 'humility', 'mercy'] },
+  { saint:'St. Anthony the Great', text:'Our life and our death are with our neighbor. If we gain our brother, we have gained God; but if we cause our brother to stumble, we have sinned against Christ.', source:'Sayings of the Desert Fathers, Antony 9', themes:['friends', 'love'] },
+  { saint:'St. Anthony the Great', text:'Whoever you may be, always have God before your eyes; whatever you do, do it by the witness of the holy Scriptures; and wherever you live, do not be quick to leave it. Keep these three things, and you will be saved.', source:'Sayings of the Desert Fathers, Antony 3', themes:['holiness', 'work'] },
+  { saint:'St. Anthony the Great', text:'This is the great work of a man: always to take the blame for his own sins before God, and to expect temptation to his last breath.', source:'Sayings of the Desert Fathers, Antony 4', themes:['struggle', 'humility'] },
+  { saint:'St. Anthony the Great', text:'If we stretch the brothers beyond measure, they will soon break. Sometimes we must come down to meet their needs.', source:'Sayings of the Desert Fathers, Antony 13 (to a hunter who was shocked to find him at ease with the brothers, after he had told him to keep his bow always drawn)', themes:['work', 'friends'] },
+  { saint:'St. Arsenius the Great', text:'Arsenius, flee, be silent, pray always: for these are the sources of sinlessness.', source:'Sayings of the Desert Fathers, Arsenius 2', themes:['prayer', 'speech'] },
+  { saint:'St. Arsenius the Great', text:'I have often been sorry for having spoken, but never for having kept silent.', source:'Sayings of the Desert Fathers, Arsenius 40', themes:['speech'] },
+  { saint:'St. Macarius the Great', text:'If you rebuke someone and are moved to anger, you are satisfying your own passion. Do not lose yourself in order to save another.', source:'Sayings of the Desert Fathers, Macarius the Great 17', themes:['anger', 'speech'] },
+  { saint:'Abba Agathon', text:'For three years I carried a stone in my mouth, until I had learned to keep silent.', source:'Sayings of the Desert Fathers, Agathon 15', themes:['speech'], year:390 },
+  { saint:'Abba Poemen', text:'Do not give your heart to that which does not satisfy your heart.', source:'Sayings of the Desert Fathers, Poemen 80', themes:['peace', 'holiness'], year:450 },
+  { saint:'Abba Poemen', text:'A man may seem to be silent, and yet if his heart is condemning others, he is babbling without ceasing. Another may talk from morning till night and yet keep silence, for he says nothing that is not helpful.', source:'Sayings of the Desert Fathers, Poemen 27', themes:['speech', 'anger'], year:450 },
+  { saint:'Abba Pambo', text:'If you have a heart, you can be saved.', source:'Sayings of the Desert Fathers, Pambo 10', themes:['mercy', 'trust'], year:375 },
+  { saint:'Abba Sisoes', text:'Truly, I do not think I have even made a beginning yet.', source:'Sayings of the Desert Fathers, Sisoes 14 (on his deathbed, when the brothers said he had no need to repent)', themes:['humility', 'heaven'], year:429 },
+  { saint:'Abba Joseph of Panephysis', text:'If you will, you can become all flame.', source:'Sayings of the Desert Fathers, Joseph of Panephysis 7 (stretching his hands toward heaven, his fingers like ten lamps of fire)', themes:['holiness', 'prayer'], year:400 },
+  { saint:'Amma Syncletica', text:'In the beginning there are many battles and much toil for those who come to God, but afterward there is joy beyond words.', source:'Sayings of the Desert Fathers, Syncletica 1', themes:['struggle', 'trust'], year:350 },
+  { saint:'Amma Syncletica', text:'It is possible to be a solitary in one’s mind while living in a crowd, and it is possible for one who lives alone to live in the crowd of his own thoughts.', source:'Sayings of the Desert Fathers, Syncletica 19', themes:['peace', 'prayer'], year:350 },
+  { saint:'Amma Theodora', text:'Neither fasting, nor vigils, nor any kind of hardship is able to save us; only true humility can do that.', source:'Sayings of the Desert Fathers, Theodora 6', themes:['humility'], year:400 },
+  { saint:'Abba Mius', text:'Tell me, my friend, if your cloak is torn, do you throw it away? No, you mend it and use it again. If you take such care of your cloak, will not God take care of his own creature?', source:'Sayings of the Desert Fathers, Mius 3 (to a soldier who asked whether God accepts repentance)', themes:['mercy', 'struggle'], year:400 },
+  { saint:'Abba Bessarion', text:'A monk ought to be like the cherubim and seraphim: all eye.', source:'Sayings of the Desert Fathers, Bessarion 11', themes:['prayer'], year:400 },
+  { saint:'St. John Climacus', text:'Do not be surprised that you fall every day; do not give up, but stand your ground with courage.', source:'Traditionally attributed to The Ladder of Divine Ascent', themes:['struggle', 'courage'], attributed:true },
+  { saint:'St. Ephrem the Syrian', text:'O Lord and Master of my life, take from me the spirit of sloth, despair, lust for power, and idle talk. But give to me, your servant, a spirit of chastity, humility, patience, and love. Yes, O Lord and King, grant me to see my own faults and not to judge my brother.', source:'The Prayer of St. Ephrem, prayed through Lent in the Byzantine Churches', themes:['prayer', 'humility', 'speech'], attributed:true },
+  { saint:'St. Ignatius of Antioch', text:'It is better to keep silence and to be, than to talk and not to be.', source:'Letter to the Ephesians, 15', themes:['speech', 'holiness'] },
+  { saint:'St. John Chrysostom', text:'It is possible to offer fervent prayer even while walking in public or strolling alone, or seated in your shop, while buying or selling, or even while cooking.', source:'On Prayer, 2 (quoted in the Catechism, 2743)', themes:['prayer', 'work'] },
+  { saint:'St. John Chrysostom', text:'Whether or not our prayer is heard depends not on the number of words, but on the fervor of our souls.', source:'On Prayer, 2 (quoted in the Catechism, 2700)', themes:['prayer'] },
+  { saint:'St. Gregory of Nyssa', text:'He who climbs never stops going from beginning to beginning, through beginnings that have no end.', source:'Homilies on the Song of Songs, 8 (quoted in the Catechism, 2015)', themes:['struggle', 'holiness'] },
+  { saint:'St. Jerome', text:'Always have some work in hand, so that the devil may always find you busy.', source:'Letter 125, to Rusticus, 11', themes:['work'] },
+  { saint:'St. Augustine of Hippo', text:'To talk and jest together, to do kind offices by turns; to read together honied books; to play the fool or be earnest together.', source:'Confessions, IV.8 (on the joys of his friends)', themes:['friends', 'love'] },
+  { saint:'St. Augustine of Hippo', text:'Do you wish to be great? Then begin by being least. Are you planning to raise a great and lofty building? Think first of the foundation of humility.', source:'Sermon 69, 2', themes:['humility'] },
+  { saint:'St. Augustine of Hippo', text:'God created us without us: but he did not will to save us without us.', source:'Sermon 169, 11.13 (quoted in the Catechism, 1847)', themes:['mercy', 'holiness'] },
+  { saint:'St. Augustine of Hippo', text:'With love for the person and hatred of the sin.', source:'Letter 211, 11', themes:['love', 'anger'] },
+  { saint:'St. Augustine of Hippo', text:'Sing as travelers sing along the road: sing, but keep walking.', source:'Sermon 256, 3', themes:['trust', 'struggle'] },
+  { saint:'St. Augustine of Hippo', text:'God thirsts that we may thirst for him.', source:'Eighty-three Questions, 64.4 (quoted in the Catechism, 2560)', themes:['prayer'] },
+  { saint:'St. Benedict of Nursia', text:'Not to give way to anger. Not to nurse a grudge.', source:'Rule of St. Benedict, 4 (the tools of good works)', themes:['anger'] },
+  { saint:'St. Benedict of Nursia', text:'To make peace with an adversary before the sun sets.', source:'Rule of St. Benedict, 4 (the tools of good works)', themes:['anger', 'friends'] },
+  { saint:'St. Benedict of Nursia', text:'To keep death daily before one’s eyes.', source:'Rule of St. Benedict, 4 (the tools of good works)', themes:['heaven'] },
+  { saint:'St. Benedict of Nursia', text:'Let them bear with the greatest patience one another’s weaknesses of body or of character.', source:'Rule of St. Benedict, 72', themes:['friends', 'love', 'anger'] },
+  { saint:'St. Benedict of Nursia', text:'Let him look upon all the tools and goods of the monastery as if they were the sacred vessels of the altar.', source:'Rule of St. Benedict, 31 (on the cellarer)', themes:['work'] },
+  { saint:'St. Bernard of Clairvaux', text:'You will find something more in woods than in books. Trees and stones will teach you what you can never learn from masters.', source:'Letter 106, to Henry Murdac', themes:['peace', 'prayer'] },
+  { saint:'St. Francis of Assisi', text:'Where there is patience and humility, there is neither anger nor annoyance. Where there is rest and meditation, there is neither anxiety nor restlessness.', source:'Admonitions, 27', themes:['anger', 'peace'] },
+  { saint:'St. Thomas Aquinas', text:'Sorrow is assuaged by sleep and baths.', source:'Summa Theologiae, I-II, q. 38, a. 5', themes:['peace', 'cross'] },
+  { saint:'St. Thomas Aquinas', text:'Sorrow is assuaged by the sympathy of friends.', source:'Summa Theologiae, I-II, q. 38, a. 3', themes:['friends', 'cross'] },
+  { saint:'St. Thomas More', text:'Nothing can come but that that God will. And I make me very sure that whatsoever that be, seem it never so bad in sight, it shall indeed be the best.', source:'Letter to his daughter Margaret, from the Tower of London, 1534', themes:['trust', 'peace', 'cross'] },
+  { saint:'St. Ignatius of Loyola', text:'In time of desolation we should never make a change, but stand firm and constant in the resolutions and decision we held on the day before the desolation.', source:'Spiritual Exercises, 318', themes:['struggle', 'peace'] },
+  { saint:'St. Ignatius of Loyola', text:'Every good Christian ought to be more ready to put a good interpretation on another’s statement than to condemn it.', source:'Spiritual Exercises, 22', themes:['speech', 'friends'] },
+  { saint:'St. Teresa of Ávila', text:'The Lord walks among the pots and pans.', source:'The Book of the Foundations, 5.8', themes:['work', 'prayer'] },
+  { saint:'St. Teresa of Ávila', text:'The important thing is not to think much but to love much.', source:'The Interior Castle, IV.1.7', themes:['prayer', 'love'] },
+  { saint:'St. John of the Cross', text:'It makes little difference whether a bird is held by a thin thread or by a cord; for even if it is thin, the bird will be held by it as surely as by a cord, for as long as it does not break it and fly away.', source:'The Ascent of Mount Carmel, I.11.4', themes:['struggle', 'holiness'] },
+  { saint:'St. Philip Neri', text:'Cheerfulness strengthens the heart and makes us persevere in a good life.', source:'Traditional', themes:['trust', 'peace'], attributed:true },
+  { saint:'St. Charles Borromeo', text:'Are you in charge of a parish? Then do not neglect the parish of your own soul; do not give yourself to others so completely that you have nothing left for yourself.', source:'Sermon at his last synod (read in the Liturgy of the Hours on his feast)', themes:['work', 'prayer'] },
+  { saint:'St. Charles Borromeo', text:'If a tiny spark of God’s love already burns within you, do not expose it to the wind.', source:'Sermon at his last synod (read in the Liturgy of the Hours on his feast)', themes:['prayer', 'holiness'] },
+  { saint:'St. Francis de Sales', text:'Anxiety is the greatest evil that can befall a soul, except sin.', source:'Introduction to the Devout Life, IV.11', themes:['peace'] },
+  { saint:'St. Francis de Sales', text:'Do not think of what may happen tomorrow, for the same eternal Father who cares for you today will care for you tomorrow and always; either He will not send you trouble, or, if He does, He will give you invincible courage to bear it.', source:'Maxims and Counsels, 24 (tr. Ella McMahon)', themes:['peace', 'trust'] },
+  { saint:'St. Francis de Sales', text:'I recommend simplicity to you; look before you, and not at the dangers which you behold in the distance.', source:'Maxims and Counsels, 5 (tr. Ella McMahon)', themes:['peace'] },
+  { saint:'St. Francis de Sales', text:'We shall soon be in eternity, and then we shall see how unimportant are all the things of this world, and how little it mattered whether they were accomplished or not. Yet we are as anxious about them now as if they were affairs of great importance.', source:'Maxims and Counsels, 220 (tr. Ella McMahon)', themes:['peace', 'heaven', 'work'] },
+  { saint:'St. Francis de Sales', text:'When your heart is distracted in prayer, bring it gently back to the point from which it has wandered, and lay it tenderly at the feet of its Master. If you do but this your hour will be well employed.', source:'Maxims and Counsels, 147 (tr. Ella McMahon)', themes:['prayer', 'struggle'] },
+  { saint:'St. Francis de Sales', text:'Do not be troubled about not making acts of virtue well; for they do not cease to be very good, even when made languidly and wearily as if by force. You can only give God what you have.', source:'Maxims and Counsels, 236 (tr. Ella McMahon)', themes:['prayer', 'struggle'] },
+  { saint:'St. Francis de Sales', text:'We should never be astonished at imperfection or let it sadden us; for we cannot fail to find ourselves imperfect in this life, and there is no remedy for it save humility.', source:'Maxims and Counsels, 214 (tr. Ella McMahon)', themes:['struggle', 'humility'] },
+  { saint:'St. Francis de Sales', text:'The heavenly goodness does not permit you to fall in order to abandon you, but to humble you, and teach you to keep a firmer and closer hold of the hand of his mercy.', source:'Maxims and Counsels, 290 (tr. Ella McMahon)', themes:['struggle', 'mercy', 'trust'] },
+  { saint:'St. Francis de Sales', text:'If some sudden outburst of impatience escape you, bring your heart back to sweetness and peace.', source:'Maxims and Counsels, 165 (tr. Ella McMahon)', themes:['anger', 'peace'] },
+  { saint:'St. Francis de Sales', text:'Our heart must be kind and gentle towards our neighbour, and full of affection for him, particularly when he is wearisome and displeasing to us.', source:'Maxims and Counsels, 321 (tr. Ella McMahon)', themes:['friends', 'love', 'anger'] },
+  { saint:'St. Francis de Sales', text:'I am sad and will not speak; this is what parrots do. I am sad, but I speak because charity requires it; thus do spiritual persons.', source:'Maxims and Counsels, 222 (tr. Ella McMahon)', themes:['speech', 'friends'] },
+  { saint:'St. Vincent de Paul', text:'Let us love God, but let it be with the strength of our arms and the sweat of our brows.', source:'Conference to the Congregation of the Mission, on the love of God', themes:['work', 'love', 'poor'] },
+  { saint:'St. Alphonsus Liguori', text:'Acquire the habit of speaking to God as if you were alone with him, familiarly and with confidence and love, as to the dearest and most loving of friends.', source:'How to Converse Continually and Familiarly with God', themes:['prayer', 'friends'] },
+  { saint:'St. John Bosco', text:'Do not try to excuse your faults; try to correct them.', source:'Traditional', themes:['struggle', 'humility'], attributed:true },
+  { saint:'St. John Henry Newman', text:'Keep Thou my feet; I do not ask to see the distant scene; one step enough for me.', source:'Lead, Kindly Light (The Pillar of the Cloud), 1833', themes:['peace', 'trust'] },
+  { saint:'St. Thérèse of Lisieux', text:'Everything is grace.', source:'Last Conversations, 1897', themes:['trust', 'peace'] },
+  { saint:'St. Thérèse of Lisieux', text:'I want to seek out a means of going to heaven by a little way, a way that is very straight, very short, and totally new.', source:'Story of a Soul, Manuscript C', themes:['holiness', 'humility'] },
+  { saint:'St. Damien of Molokai', text:'I make myself a leper with the lepers, to gain all to Jesus Christ.', source:'From his letters', themes:['poor', 'love', 'courage'], attributed:true },
+  { saint:'St. Junípero Serra', text:'Always go forward, and never turn back.', source:'His motto (“Siempre adelante, nunca atrás”)', themes:['courage', 'struggle'], attributed:true },
+  { saint:'Pope St. John XXIII', text:'Only for today, I will seek to live the day positively, without wishing to solve all the problems of my life at once.', source:'The Decalogue of Serenity', themes:['peace', 'trust'], attributed:true },
+  { saint:'St. Teresa of Calcutta', text:'If you judge people, you have no time to love them.', source:'Traditional', themes:['speech', 'love', 'anger'], attributed:true },
+  { saint:'St. Teresa of Calcutta', text:'Not all of us can do great things. But we can do small things with great love.', source:'Traditional', themes:['work', 'love'], attributed:true },
+  { saint:'St. John Paul II', text:'Put out into the deep! These words invite us to remember the past with gratitude, to live the present with enthusiasm, and to look forward to the future with confidence.', source:'Novo Millennio Ineunte, 1', themes:['courage', 'trust', 'peace'] }
+);
+// Older sayings that also speak to life's everyday struggles
+[['Let nothing disturb you', 'peace'], ['Pray, hope, and don’t worry', 'peace'], ['Father, I abandon myself', 'peace'], ['Idleness is the enemy', 'work'],
+ ['Let all guests who arrive', 'friends'], ['I have taken you in my arms', 'friends'], ['See everything; overlook', 'anger'], ['Never despair of God’s mercy', 'struggle'],
+ ['Hatred is not creative', 'anger'], ['I forgive him', 'anger'], ['The first end I propose in our daily work', 'work'], ['It is an error, or rather a heresy', 'work'],
+ ['A good Christian family', 'friends'], ['Don’t let your life be barren', 'work'], ['Let us always meet each other with a smile', 'friends'], ['Prayer purifies us', 'work']
+].forEach(([start, theme]) => QUOTES.filter(q => q.text.startsWith(start)).forEach(q => { if(!q.themes.includes(theme)) q.themes.push(theme); }));
 // Link each saying to its saint's entry in the library
 QUOTES.forEach(q => { const e = library.find(x => x.title === q.saint); q.id = e ? e.id : null; });
 let quoteTheme = 'all';
@@ -9000,7 +9099,7 @@ function quoteCard(q, i, big){
 function renderQuotes(){
   const today = quoteOfDay(quoteOffset);
   const q = quoteQuery.trim().toLowerCase();
-  const order = x => { const info = x.id ? saintInfo(x.id) : null; return info && info.year !== null ? info.year : 9999; };
+  const order = x => { if(x.year) return x.year; const info = x.id ? saintInfo(x.id) : null; return info && info.year !== null ? info.year : 9999; };
   const shown = QUOTES
     .filter(x => quoteTheme === 'all' || x.themes.includes(quoteTheme))
     .filter(x => !quoteSaint || x.saint === quoteSaint)
@@ -9013,6 +9112,12 @@ function renderQuotes(){
         <div class="daily-kicker">Quote of the day</div>
         ${quoteCard(today, QUOTES.indexOf(today), true)}
         <button class="text-link" data-act="another">Show another →</button>
+      </section>
+      <section class="quote-advice" aria-labelledby="quoteAdviceHead">
+        <div class="home-heading"><h3 id="quoteAdviceHead">Advice for life</h3></div>
+        <p class="quote-advice-intro">What the saints said about the struggles of every day.</p>
+        <div class="quote-advice-grid">${QUOTE_ADVICE.map(([k, title, sub]) => `<button class="quote-advice-card${quoteTheme === k ? ' active' : ''}" data-advice="${k}" aria-pressed="${quoteTheme === k}">
+          <strong>${escapeHtml(title)}</strong><span>${escapeHtml(sub)}</span><span class="view-count">${plural(QUOTES.filter(x => x.themes.includes(k)).length, 'saying', 'sayings')}</span></button>`).join('')}</div>
       </section>
       <div class="quote-tools">
         <div class="sf-patron-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
@@ -9037,6 +9142,12 @@ function renderQuotes(){
   }));
   root.querySelector('[data-act="another"]').addEventListener('click', () => { quoteOffset++; renderQuotes(); });
   root.querySelectorAll('[data-qtheme]').forEach(b => b.addEventListener('click', () => { quoteTheme = b.dataset.qtheme; renderQuotes(); }));
+  root.querySelectorAll('[data-advice]').forEach(b => b.addEventListener('click', () => {
+    quoteTheme = quoteTheme === b.dataset.advice ? 'all' : b.dataset.advice; quoteSaint = ''; quoteQuery = '';
+    renderQuotes();
+    const list = document.querySelector('.quotes .view-count:not(.quote-advice-card .view-count)');
+    if(list && quoteTheme !== 'all') list.scrollIntoView({ behavior:'smooth', block:'start' });
+  }));
   root.querySelector('#quoteSaint').addEventListener('change', ev => { quoteSaint = ev.target.value; renderQuotes(); });
   const clear = root.querySelector('[data-act="clear"]');
   if(clear) clear.addEventListener('click', () => { quoteTheme = 'all'; quoteSaint = ''; quoteQuery = ''; renderQuotes(); });

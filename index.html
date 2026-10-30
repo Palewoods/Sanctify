@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="app/style.css?v=373a0594">
+<link rel="stylesheet" href="app/style.css?v=c4d19324">
 <script>
   try{
     // A language chosen on another address (?lang=es) is remembered; Spanish or Polish loads its words before the page is built
@@ -41,7 +41,7 @@
     // A theme of your own: its colors were worked out when it was chosen
     var customVars = t === 'custom' ? localStorage.getItem('sanctify.customVars') : null;
     if(customVars) document.documentElement.style.cssText += ';' + customVars;
-    else if(['light','dark','candlelight','marian','cloister','liturgical','contrast','liturgical-dark','midnight','stained-glass','ivory','manuscript','compline','cathedral','byzantine','sacred-heart','stella-maris','hermitage','ember','tenebrae','obsidian','lily','rose-window','fresco','mono','gray','mono-dark','graphite','pascha','vyshyvanka','athos','lapis','gilded','ravenna','guadalupe','porphyry','sistine','assisi','carmel','vatican','kyiv','advent','tabor','sainte-chapelle','iconostasis','noel','matins','senanque','theophany','mission','hagia-sophia','iona','carmel-dark','manuscript-dark','ivory-dark','marian-dark','cloister-dark','lily-dark','rose-window-dark','fresco-dark','pascha-dark','vyshyvanka-dark','sistine-dark','assisi-dark','vatican-dark','kyiv-dark','senanque-dark','theophany-dark','mission-dark','hagia-sophia-dark','iona-dark','lourdes','lourdes-night','fatima','cova-da-iria','tepeyac','rue-du-bac','knock','la-salette','banneux','pontmain','beauraing','rue-du-bac-dark','knock-dark','la-salette-dark','banneux-dark','contrast-dark','candlelight-light','midnight-light','stained-glass-light','compline-light','cathedral-light','byzantine-light','sacred-heart-light','stella-maris-light','hermitage-light','ember-light','tenebrae-light','obsidian-light','athos-light','lapis-light','gilded-light','ravenna-light','porphyry-light','advent-light','tabor-light','sainte-chapelle-light','iconostasis-light','noel-light','matins-light','pontmain-light','beauraing-light','laus','laus-dark','walsingham','walsingham-dark','siluva','siluva-dark','la-vang','la-vang-dark','champion','champion-dark','kibeho','kibeho-dark','akita','akita-dark','zarvanytsia','zarvanytsia-dark','sanctify-wine','cole'].indexOf(t) < 0){
+    else if(['light','dark','candlelight','marian','cloister','liturgical','contrast','liturgical-dark','midnight','stained-glass','ivory','manuscript','compline','cathedral','byzantine','sacred-heart','stella-maris','hermitage','ember','tenebrae','obsidian','lily','rose-window','fresco','mono','gray','mono-dark','graphite','pascha','vyshyvanka','athos','lapis','gilded','ravenna','guadalupe','porphyry','sistine','assisi','carmel','vatican','kyiv','advent','tabor','sainte-chapelle','iconostasis','noel','matins','senanque','theophany','mission','hagia-sophia','iona','carmel-dark','manuscript-dark','ivory-dark','marian-dark','cloister-dark','lily-dark','rose-window-dark','fresco-dark','pascha-dark','vyshyvanka-dark','sistine-dark','assisi-dark','vatican-dark','kyiv-dark','senanque-dark','theophany-dark','mission-dark','hagia-sophia-dark','iona-dark','lourdes','lourdes-night','fatima','cova-da-iria','tepeyac','rue-du-bac','knock','la-salette','banneux','pontmain','beauraing','rue-du-bac-dark','knock-dark','la-salette-dark','banneux-dark','contrast-dark','candlelight-light','midnight-light','stained-glass-light','compline-light','cathedral-light','byzantine-light','sacred-heart-light','stella-maris-light','hermitage-light','ember-light','tenebrae-light','obsidian-light','athos-light','lapis-light','gilded-light','ravenna-light','porphyry-light','advent-light','tabor-light','sainte-chapelle-light','iconostasis-light','noel-light','matins-light','pontmain-light','beauraing-light','laus','laus-dark','walsingham','walsingham-dark','siluva','siluva-dark','la-vang','la-vang-dark','champion','champion-dark','kibeho','kibeho-dark','akita','akita-dark','zarvanytsia','zarvanytsia-dark','sanctify-wine','cole','desert'].indexOf(t) < 0){
       t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
     }
     document.documentElement.setAttribute('data-theme', t);
@@ -49,7 +49,7 @@
     if(isDark) document.documentElement.setAttribute('data-mode', 'dark');
     try{ localStorage.setItem('sanctify.mode', isDark ? 'dark' : 'light'); }catch(e){}
     if(localStorage.getItem('sanctify.glow') === '1') document.documentElement.setAttribute('data-glow', '');
-    if(localStorage.getItem('sanctify.shine') === '1' && ['cole','ivory','manuscript','cathedral','byzantine','sacred-heart','obsidian','athos','lapis','gilded','ravenna','guadalupe','porphyry','sistine','vatican','kyiv','advent','tabor','sainte-chapelle','iconostasis','hagia-sophia','manuscript-dark','ivory-dark','sistine-dark','vatican-dark','kyiv-dark','hagia-sophia-dark','lourdes-night','fatima','cova-da-iria','tepeyac','rue-du-bac','pontmain','beauraing','rue-du-bac-dark','cathedral-light','byzantine-light','sacred-heart-light','obsidian-light','athos-light','lapis-light','gilded-light','ravenna-light','porphyry-light','advent-light','tabor-light','sainte-chapelle-light','iconostasis-light','pontmain-light','beauraing-light','laus-dark','walsingham-dark','siluva-dark','la-vang-dark','champion','champion-dark','zarvanytsia','zarvanytsia-dark'].indexOf(t) >= 0) document.documentElement.setAttribute('data-shine', '');
+    if(localStorage.getItem('sanctify.shine') === '1' && ['desert','cole','ivory','manuscript','cathedral','byzantine','sacred-heart','obsidian','athos','lapis','gilded','ravenna','guadalupe','porphyry','sistine','vatican','kyiv','advent','tabor','sainte-chapelle','iconostasis','hagia-sophia','manuscript-dark','ivory-dark','sistine-dark','vatican-dark','kyiv-dark','hagia-sophia-dark','lourdes-night','fatima','cova-da-iria','tepeyac','rue-du-bac','pontmain','beauraing','rue-du-bac-dark','cathedral-light','byzantine-light','sacred-heart-light','obsidian-light','athos-light','lapis-light','gilded-light','ravenna-light','porphyry-light','advent-light','tabor-light','sainte-chapelle-light','iconostasis-light','pontmain-light','beauraing-light','laus-dark','walsingham-dark','siluva-dark','la-vang-dark','champion','champion-dark','zarvanytsia','zarvanytsia-dark'].indexOf(t) >= 0) document.documentElement.setAttribute('data-shine', '');
     var size = JSON.parse(localStorage.getItem('sanctify.textsize') || '"md"');
     if(size === 'lg' || size === 'xl') document.documentElement.setAttribute('data-textsize', size);
     var rite = new URLSearchParams(location.search).get('rite');
@@ -59,7 +59,7 @@
   }catch(e){}
 </script>
 <script src="app/data.js?v=6a24f0b7" defer></script>
-<script src="app/app.js?v=2f16428d" defer></script>
+<script src="app/app.js?v=51fd1f97" defer></script>
 </head>
 <body>
 
