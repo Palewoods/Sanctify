@@ -1277,6 +1277,91 @@ function observancesFor(d){
   return list.sort((a, b) => (CAL_TYPE_RANK[a.type] ?? 9) - (CAL_TYPE_RANK[b.type] ?? 9));
 }
 
+/* ---------- The wheel of the year ----------
+   The whole year as a ring colored by the seasons of the edition's calendar, with a handle on the chosen day.
+   Drag the handle around the ring (or use the arrow keys) to turn to any day; the middle shows the day as you go. */
+function yearWheelDays(y){
+  const n = new Date(y, 1, 29).getDate() === 29 ? 366 : 365;
+  return Array.from({ length:n }, (_, i) => new Date(y, 0, 1 + i));
+}
+function yearWheelHtml(d){
+  const y = d.getFullYear(), days = yearWheelDays(y), n = days.length;
+  const at = (r, i) => { const a = (i / n) * 2 * Math.PI - Math.PI / 2; return [(100 + r * Math.cos(a)).toFixed(2), (100 + r * Math.sin(a)).toFixed(2)]; };
+  // runs of days that share a season and a color (so Gaudete and Laetare Sundays show as slivers of rose)
+  const runs = [];
+  days.forEach((day, i) => {
+    const s = liturgicalSeason(day), last = runs[runs.length - 1];
+    if(last && last.key === s.key && last.color === s.color) last.end = i + 1;
+    else runs.push({ key:s.key, color:s.color, name:s.name, start:i, end:i + 1 });
+  });
+  const arc = (a, b) => {
+    const [x1, y1] = at(88, a), [x2, y2] = at(88, b), large = (b - a) / n > 0.5 ? 1 : 0;
+    return `M${x1} ${y1}A88 88 0 ${large} 1 ${x2} ${y2}`;
+  };
+  const months = MONTH_NAMES.map((m, k) => {
+    const i = Math.round((new Date(y, k, 1) - new Date(y, 0, 1)) / 864e5);
+    const [tx1, ty1] = at(97, i), [tx2, ty2] = at(101, i), [lx, ly] = at(110, i + 15);
+    return `<line x1="${tx1}" y1="${ty1}" x2="${tx2}" y2="${ty2}"/><text x="${lx}" y="${ly}">${m[0]}</text>`;
+  }).join('');
+  const today = startOfToday(), ti = today.getFullYear() === y ? Math.round((today - new Date(y, 0, 1)) / 864e5) : -1;
+  const di = Math.round((d - new Date(y, 0, 1)) / 864e5);
+  const [hx, hy] = at(88, di + 0.5);
+  return `<div class="yw" role="slider" tabindex="0" aria-label="Choose a day of ${y}" aria-valuemin="1" aria-valuemax="${n}" aria-valuenow="${di + 1}" aria-valuetext="${escapeHtml(dayLabel(d))}">
+    <svg viewBox="-24 -24 248 248" aria-hidden="true">
+      <circle cx="100" cy="100" r="88" class="yw-track"/>
+      ${runs.map(r => `<path class="yw-run" d="${arc(r.start, r.end)}" style="stroke:${r.color}"><title>${escapeHtml(r.name)}</title></path>`).join('')}
+      <g class="yw-months">${months}</g>
+      ${ti >= 0 ? `<circle class="yw-today" cx="${at(73, ti + 0.5)[0]}" cy="${at(73, ti + 0.5)[1]}" r="2.6"><title>Today</title></circle>` : ''}
+      <circle class="yw-handle" cx="${hx}" cy="${hy}" r="9"/>
+    </svg>
+    <div class="yw-mid"><strong>${escapeHtml(MONTH_NAMES[d.getMonth()].slice(0, 3) + ' ' + d.getDate())}</strong><span>${escapeHtml(liturgicalSeason(d).name)}</span></div>
+  </div>`;
+}
+function bindYearWheel(el, d, go){
+  if(!el) return;
+  const y = d.getFullYear(), n = yearWheelDays(y).length, svg = el.querySelector('svg');
+  const handle = el.querySelector('.yw-handle'), mid = el.querySelector('.yw-mid');
+  let cur = Math.round((d - new Date(y, 0, 1)) / 864e5), start = cur, timer = null;
+  const show = i => {
+    cur = (i + n) % n;
+    const day = new Date(y, 0, 1 + cur), a = ((cur + 0.5) / n) * 2 * Math.PI - Math.PI / 2;
+    handle.setAttribute('cx', (100 + 88 * Math.cos(a)).toFixed(2));
+    handle.setAttribute('cy', (100 + 88 * Math.sin(a)).toFixed(2));
+    const obs = observancesFor(day).filter(o => o.type !== 'Season');
+    mid.innerHTML = `<strong>${escapeHtml(MONTH_NAMES[day.getMonth()].slice(0, 3) + ' ' + day.getDate())}</strong><span>${escapeHtml(obs.length && obs[0].type !== 'Saint' ? obs[0].name : liturgicalSeason(day).name)}</span>`;
+    el.setAttribute('aria-valuenow', cur + 1);
+    el.setAttribute('aria-valuetext', dayLabel(day));
+  };
+  const commit = () => { if(cur !== start){ start = cur; go(new Date(y, 0, 1 + cur)); } };
+  const fromPoint = ev => {
+    const r = svg.getBoundingClientRect();
+    // the svg spans -24..224 in each direction, so its middle is the wheel's middle
+    const a = Math.atan2(ev.clientY - (r.top + r.height / 2), ev.clientX - (r.left + r.width / 2)) + Math.PI / 2;
+    return Math.floor(((a < 0 ? a + 2 * Math.PI : a) / (2 * Math.PI)) * n) % n;
+  };
+  svg.addEventListener('pointerdown', ev => {
+    if(ev.button) return;
+    ev.preventDefault();
+    svg.setPointerCapture(ev.pointerId);
+    el.classList.add('dragging');
+    show(fromPoint(ev));
+  });
+  svg.addEventListener('pointermove', ev => { if(el.classList.contains('dragging')){ const i = fromPoint(ev); if(i !== cur) show(i); } });
+  const end = () => { if(!el.classList.contains('dragging')) return; el.classList.remove('dragging'); commit(); };
+  svg.addEventListener('pointerup', end);
+  svg.addEventListener('pointercancel', end);
+  el.addEventListener('keydown', ev => {
+    const step = { ArrowRight:1, ArrowUp:1, ArrowLeft:-1, ArrowDown:-1, PageUp:7, PageDown:-7 }[ev.key];
+    if(step) show(cur + step);
+    else if(ev.key === 'Home') show(0);
+    else if(ev.key === 'End') show(n - 1);
+    else return;
+    ev.preventDefault();
+    clearTimeout(timer);
+    timer = setTimeout(() => { commit(); const w = entryListEl.querySelector('.yw'); if(w) w.focus({ preventScroll:true }); }, 600);
+  });
+}
+
 function dayNotes(d, obs){
   if(isEastern()) return easternDayNotes(d, obs);
   if(isTraditional()) return tradDayNotes(d, obs);
@@ -1841,9 +1926,10 @@ function renderDaily(){
   entryListEl.appendChild(head);
 
   const feast = document.createElement('div');
-  feast.className = 'daily-feast';
+  feast.className = 'daily-feast has-wheel';
   feast.style.setProperty('--season', season.color);
   feast.innerHTML = `
+    ${yearWheelHtml(d)}
     <div class="daily-kicker">The Church celebrates</div>
     ${obs.length
       ? obs.map(o => `<div class="daily-feast-item"><span class="dot" style="background:${CAL_TYPE_COLOR[o.type] || 'var(--wine)'}"></span><strong>${escapeHtml(o.name)}</strong> <span class="today-type">${escapeHtml(o.type)}</span></div>`).join('')
@@ -1858,6 +1944,7 @@ function renderDaily(){
       <a class="daily-link" href="https://masstimes.org/" target="_blank" rel="noopener">Find Mass and Confession times near you ↗</a>`}
     </div>`;
   entryListEl.appendChild(feast);
+  bindYearWheel(feast.querySelector('.yw'), d, day => { dailyDate = day; renderDaily(); });
 
   const grid = document.createElement('div');
   grid.className = 'daily-grid';
@@ -11842,9 +11929,13 @@ const HUBS = {
   }
 };
 
+// The icon that opens each section page: Our Lady praying with raised hands for Pray, Christ with the Gospel book for
+// the Library, the open Gospel of Cefalù for Learn, the Ladder of Divine Ascent for the saints, and Hagia Sophia's Deësis for History
+const HUB_ART = { pray:'sign', library:'pantocrator', learn:'cefalu', saints:'ladder', history:'deesis' };
 function renderHub(key){
   entryListEl.innerHTML = '';
   const hub = HUBS[key];
+  const art = FAMOUS_ICONS.find(x => x.key === HUB_ART[key]);
   const cards = hub.cards();
   const sec = SECTIONS['hub-' + key];
   const verse = dailyPick(DAILY_VERSES, { pray:61, library:73, learn:89, history:97, saints:53 }[key], startOfToday());
@@ -11853,18 +11944,24 @@ function renderHub(key){
   wrap.style.setProperty('--hub-color', sec.color);
   const cardTitle = c => c.title || routeName(c.route);
   wrap.innerHTML = `
-    <section class="hub-head">
-      <div class="hub-eyebrow">${escapeHtml(hub.eyebrow)}</div>
-      <h1 class="hub-title">${escapeHtml(hub.title)}<span>.</span></h1>
-      <p class="hub-intro">${escapeHtml(hub.intro)}</p>
+    <section class="hub-head${art ? ' hub-has-art' : ''}">
+      ${art ? `<button class="hub-art hx-in" style="--d:2" data-icon="${art.key}" aria-label="${escapeHtml('About the icon: ' + art.title)}">
+        <span class="hub-art-frame"><img src="${escapeHtml(FAMOUS_IMG[art.key].img)}" alt="" decoding="async" fetchpriority="high"></span>
+        <span class="hub-art-cap">${escapeHtml(art.title)}</span>
+      </button>` : ''}
+      <div class="hub-text">
+        <div class="hub-eyebrow hx-in" style="--d:0">${escapeHtml(hub.eyebrow)}</div>
+        <h1 class="hub-title hx-in" style="--d:1">${escapeHtml(hub.title)}<span>.</span></h1>
+        <p class="hub-intro hx-in" style="--d:2">${escapeHtml(hub.intro)}</p>
+      </div>
     </section>
     <div class="hub-label">Where to begin</div>
-    <div class="bento">${cards.map(c => {
+    <div class="bento">${cards.map((c, i) => {
       const s = c.route ? SECTIONS[ROUTES[c.route].cat] : null;
       const color = c.color || (s && s.color) || 'var(--wine)';
       const icon = c.icon || (s && s.icon) || 'all';
       const target = c.route ? `data-route="${c.route}"` : c.open ? `data-open="${c.open}"` : `data-action="${c.action}"`;
-      return `<article class="bento-card${c.big ? ' big' : ''}" ${target} tabindex="0" style="--tile-color:${color}">
+      return `<article class="bento-card hx-in${c.big ? ' big' : ''}" ${target} tabindex="0" style="--tile-color:${color}; --d:${Math.min(i, 8) + 3}">
         <div class="bento-top"><span class="tile-icon">${navIcon(icon)}</span>${c.kicker ? `<span class="daily-kicker">${escapeHtml(c.kicker)}</span>` : ''}</div>
         <h3>${escapeHtml(cardTitle(c))}</h3>
         <p>${escapeHtml(c.desc)}</p>
@@ -11880,6 +11977,7 @@ function renderHub(key){
   entryListEl.appendChild(wrap);
 
   wrap.querySelectorAll('[data-action="surprise"]').forEach(el => el.addEventListener('click', e => { e.stopPropagation(); surpriseMe(); }));
+  wrap.querySelectorAll('.hub-art').forEach(el => el.addEventListener('click', () => { famousOpen = el.dataset.icon; navigate('history/icons'); }));
   wrap.querySelectorAll('[data-open]').forEach(el => el.addEventListener('click', e => { e.stopPropagation(); openReadModal(el.dataset.open); }));
   wrap.querySelectorAll('.bento-card').forEach(card => card.addEventListener('keydown', e => {
     if(e.target !== card || (e.key !== 'Enter' && e.key !== ' ')) return;
@@ -13278,10 +13376,17 @@ document.addEventListener('keydown', e => {
 const backToTop = document.createElement('button');
 backToTop.className = 'back-to-top';
 backToTop.setAttribute('aria-label', 'Back to top');
-backToTop.innerHTML = '↑';
-backToTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+// a ring around the arrow fills as you read down the page
+backToTop.innerHTML = '<svg viewBox="0 0 44 44" aria-hidden="true"><circle class="btt-track" cx="22" cy="22" r="19" pathLength="100"/><circle class="btt-fill" cx="22" cy="22" r="19" pathLength="100"/><path class="btt-arrow" d="M22 29V15M16 20.5l6-6 6 6"/></svg>';
+backToTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:reducedMotion() ? 'auto' : 'smooth' }));
 document.body.appendChild(backToTop);
-window.addEventListener('scroll', () => { backToTop.classList.toggle('show', window.scrollY > 900); document.body.classList.toggle('scrolled', window.scrollY > 4); }, { passive:true });
+const bttFill = backToTop.querySelector('.btt-fill');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('show', window.scrollY > 900);
+  document.body.classList.toggle('scrolled', window.scrollY > 4);
+  const room = document.documentElement.scrollHeight - window.innerHeight;
+  bttFill.style.strokeDashoffset = String(100 - (room > 0 ? Math.min(1, window.scrollY / room) : 0) * 100);
+}, { passive:true });
 
 /* ---------- Text size ---------- */
 // Read aloud: the voice and speed used by every Listen button
