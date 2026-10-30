@@ -11664,6 +11664,38 @@ document.addEventListener('keydown', ev => {
   else if(ev.key === 'ArrowLeft'){ const b = box.querySelector('[data-tour="back"]'); if(b) b.click(); }
 });
 
+// The icon at the top of Home, for the season or the feast: Advent, Our Lady of the Sign; Christmas, the Nativity;
+// Lent, the cross of San Damiano; Easter, the Anastasis; the Transfiguration, the Dormition, and the Trinity on their days;
+// otherwise Christ Pantocrator. Seasons are matched by name, so the Eastern and 1962 calendars work too.
+function seasonIconKey(season, obs){
+  const feast = obs.map(o => o.name).join(' ').toLowerCase();
+  if(/transfiguration/.test(feast)) return 'transfiguration';
+  if(/assumption|dormition/.test(feast)) return 'dormition';
+  if(/holy trinity|trinity sunday/.test(feast)) return 'trinity';
+  const name = ((season.key || '') + ' ' + (season.name || '')).toLowerCase();
+  if(/after pentecost|after epiphany|ordinary/.test(name)) return 'pantocrator';
+  if(/advent|nativity fast|philip/.test(name)) return 'sign';
+  if(/christmas|nativity|epiphany|theophany/.test(name)) return 'nativity';
+  if(/lent|passion|triduum|holy week|septuagesima|great fast/.test(name)) return 'damiano';
+  if(/easter|pascha|paschal|pentecost/.test(name)) return 'anastasis';
+  if(/dormition/.test(name)) return 'dormition';
+  return 'pantocrator';
+}
+// A large picture tile on Home: one of the great icons, with what it opens written over it
+function homeTile(route, img, title, sub, d){
+  const src = FAMOUS_IMG[img] ? FAMOUS_IMG[img].img : img;
+  return `<button class="hx-tile hx-in" style="--d:${d}" data-route="${route}">
+    <span class="hx-tile-img"><img src="${escapeHtml(src)}" alt="" loading="lazy" decoding="async"></span>
+    <span class="hx-tile-text"><strong>${escapeHtml(title)}</strong><span>${escapeHtml(sub)}</span></span>
+  </button>`;
+}
+function homeMore(route, img, title, sub){
+  const im = FAMOUS_IMG[img];
+  return `<button class="hx-more-card" data-route="${route}">
+    <span class="hx-more-img"><img src="${escapeHtml(im.img)}" alt="" loading="lazy" decoding="async"></span>
+    <span><strong>${escapeHtml(title)}</strong><span>${escapeHtml(sub)}</span></span>
+  </button>`;
+}
 function renderHome(){
   entryListEl.innerHTML = '';
   const d = startOfToday();
@@ -11683,35 +11715,46 @@ function renderHome(){
   const greeting = hour < 5 ? 'Peace be with you' : hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
   const newcomer = !store.get('recent', []).length && !Object.keys(trackerLog()).length;
   if(newcomer && !store.get('tour', 0) && !store.get('release', '')) setTimeout(() => { if(currentRoute === 'home') openTour(); }, 700);
-  const pillar = (icon, color, title, text, route) => `
-    <button class="pillar" data-route="${route}" style="--tile-color:${color}">
-      <span class="pillar-icon">${navIcon(icon)}</span>
-      <span class="pillar-title">${title}</span>
-      <span class="pillar-text">${text}</span>
-      <span class="bento-cta">Explore →</span>
-    </button>`;
 
+  const heroIcon = FAMOUS_ICONS.find(x => x.key === seasonIconKey(season, obs));
   const wrap = document.createElement('div');
   wrap.className = 'home';
   wrap.innerHTML = `
-    <section class="home-hero dash-hero" style="--season:${season.color}">
-      <div class="hero-text">
-        <div class="hero-date">${dayLabel(d)}
+    <section class="hx-hero" style="--season:${season.color}">
+      <div class="hx-text">
+        <div class="hero-date hx-in" style="--d:0">${dayLabel(d)}
           <span class="cal-pill"><span class="dot" style="background:${season.color}"></span>${escapeHtml(season.name)}</span>${isEastern() ? '<span class="rite-pill">Eastern Catholic edition</span>' : ''}</div>
-        <h1 class="dash-greet">${greeting}.</h1>
-        <p class="dash-feast">${feastLine}</p>
-        ${newcomer ? '<p class="dash-intro">Prayers, saints, Scripture, and two thousand years of Church history, gathered in one place. Free, with no ads, and no account needed to read or pray.</p>' : ''}
-        <div class="hero-actions">
+        <h1 class="dash-greet hx-in" style="--d:1">${greeting}.</h1>
+        <p class="dash-feast hx-in" style="--d:2">${feastLine}</p>
+        ${newcomer ? '<p class="dash-intro hx-in" style="--d:3">Prayers, saints, Scripture, and two thousand years of Church history, gathered in one place. Free, with no ads, and no account needed to read or pray.</p>' : ''}
+        <div class="hero-actions hx-in" style="--d:4">
           <button class="btn primary pill" data-route="today">Open today</button>
           <button class="text-link hero-link" data-route="pray/rosary">${isEastern() ? 'Pray the Jesus Prayer' : 'Pray the ' + escapeHtml(mysteries.name)} →</button>
         </div>
       </div>
-      ${heroRosette()}
+      <button class="hx-saint hx-in" style="--d:2" data-hero-icon="${heroIcon.key}">
+        <span class="hx-halo" aria-hidden="true">${heroRosette()}</span>
+        <span class="hx-frame"><img src="${escapeHtml(FAMOUS_IMG[heroIcon.key].img)}" alt="" decoding="async" fetchpriority="high"></span>
+        <span class="hx-caption"><span class="daily-kicker">Icon of the season</span><strong>${escapeHtml(heroIcon.title)}</strong><span class="hx-more">About this icon →</span></span>
+      </button>
     </section>
     ${releaseBannerHtml()}
 
     <div id="homeNews"></div>
-    <div class="dash-grid">
+    <section class="hx-start" aria-labelledby="hxStartHead">
+      <h2 class="hx-head" id="hxStartHead">Start here</h2>
+      <div class="hx-tiles">
+        ${homeTile('pray', 'vladimir', 'Pray', isEastern() ? 'The Jesus Prayer, the Akathist, and prayers for every day' : 'The Rosary, prayers on illustrated cards, and the Stations of the Cross', 5)}
+        ${homeTile('library/bible', SAINT_ICONS.s72, 'Read the Bible', 'All 73 books, chapter by chapter, with reading plans', 6)}
+        ${homeTile('saints', 'ladder', 'Meet the saints', `${byCat('saint').length} lives, with their prayers and their own words`, 7)}
+        ${homeTile('community', 'trinity', 'Pray together', 'Prayer requests and questions in the Community', 8)}
+      </div>
+    </section>
+
+    <section class="home-continue" id="homeContinue"></section>
+
+    <div class="home-heading hx-today-head"><h3>Today</h3><button class="text-link" data-route="today">Open today →</button></div>
+    <div class="dash-grid hx-dash">
       <article class="feature-card feature-saint" data-open="${saint.id}" tabindex="0">
         <div class="saint-portrait" data-sid="${saint.id}">${portraitPlaceholder(saint.title)}</div>
         <div>
@@ -11744,45 +11787,13 @@ function renderHome(){
       </article>
     </div>
 
-    <section class="home-continue" id="homeContinue"></section>
-
-    <section class="home-section home-pillars">
-      <div class="section-eyebrow">Explore</div>
-      <h2 class="section-title">Everything in Sanctify.</h2>
-      <div class="pillars">
-        ${pillar('prayer', 'var(--wine)', 'Pray', isEastern() ? `${byCat('prayer').length} prayers as illustrated cards, the Jesus Prayer on a prayer rope, the Trisagion Prayers, and the Prayer of St. Ephrem.` : `${byCat('prayer').length} prayers as illustrated cards, the Rosary, the Stations of the Cross, and the Divine Mercy Chaplet.`, 'pray')}
-        ${pillar('saint', 'var(--rose)', 'Saints', `${byCat('saint').length} saints with their lives and prayers, ${QUOTES.length} quotes in their own words, and a patron finder.`, 'saints')}
-        ${pillar('history', 'var(--gold)', 'History', `${byCat('history').length} events of Church history, every pope, the religious orders, the great icons, and the Eastern Churches.`, 'history')}
-        ${pillar('book', 'var(--indigo)', 'Library', `The whole Bible, ${byCat('book').length} books from the Church Fathers to today, and reading plans.`, 'library')}
-        ${pillar('theology', 'var(--purple)', 'Learn', `${byCat('theology').length} teachings with Scripture and the Catechism, ${isEastern() ? 'the Divine Liturgy' : 'the Mass'} explained, and a glossary.`, 'learn')}
-        ${pillar('calendar', 'var(--green)', 'Calendar', isEastern() ? 'The Byzantine year of feasts and fasts, with the saints of each day.' : 'Every feast and season, with the saint of the day and the liturgical color.', 'calendar')}
-        ${pillar('community', 'var(--teal)', 'Community', 'Share prayer requests and talk about the faith with other members, here and on Discord.', 'community')}
-        ${pillar('daily', 'var(--amber)', 'Today', 'A saint, a verse, a prayer, and the Rosary mysteries for today, fresh every morning.', 'today')}
-      </div>
-    </section>
-
-    <section class="home-section home-paths">
-      <div class="section-eyebrow">Paths to walk</div>
-      <h2 class="section-title">Where would you like to begin?</h2>
-      <div class="paths">
-        <article class="path-card" data-route="library/plans" tabindex="0" style="--tile-color:var(--teal)">
-          <div class="daily-kicker">30-day journey</div>
-          <h3>Read the four Gospels</h3>
-          <p>Walk with Jesus through Matthew, Mark, Luke, and John in a month, about three chapters a day, with your progress saved.</p>
-          <span class="bento-cta">Begin →</span>
-        </article>
-        <article class="path-card" data-route="pray/examination" tabindex="0" style="--tile-color:var(--purple)">
-          <div class="daily-kicker">Before Confession</div>
-          <h3>Examine your conscience</h3>
-          <p>A gentle, private guide through the Ten Commandments, with the steps of Confession and an Act of Contrition.</p>
-          <span class="bento-cta">Begin →</span>
-        </article>
-        <article class="path-card" data-route="saints/all" tabindex="0" style="--tile-color:var(--gold)">
-          <div class="daily-kicker">Nine days of prayer</div>
-          <h3>Pray a novena with a saint</h3>
-          <p>Choose a patron from the saints, open their page, and start a novena. Sanctify keeps track of all nine days.</p>
-          <span class="bento-cta">Begin →</span>
-        </article>
+    <section class="hx-more-sec" aria-labelledby="hxMoreHead">
+      <h2 class="hx-head" id="hxMoreHead">More to explore</h2>
+      <div class="hx-more-grid">
+        ${homeMore('calendar', 'nativity', 'The calendar', isEastern() ? 'The Byzantine year of feasts and fasts' : 'Every feast and season of the year')}
+        ${homeMore('history', 'cefalu', 'Church history', 'Two thousand years, every pope, and the great icons')}
+        ${homeMore('learn', 'anastasis', 'Learn the faith', `${byCat('theology').length} teachings, ${isEastern() ? 'the Divine Liturgy' : 'the Mass'} explained, and a glossary`)}
+        ${homeMore('saints/quotes', 'transfiguration', 'Words of the saints', `${QUOTES.length} sayings, and advice for life`)}
       </div>
     </section>
 
@@ -11845,8 +11856,9 @@ function renderHome(){
     el.addEventListener('click', () => openReadModal(el.dataset.open));
     el.addEventListener('keydown', ev => { if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); openReadModal(el.dataset.open); } });
   });
-  wrap.querySelectorAll('.path-card, .dash-card[data-route]').forEach(c => c.addEventListener('keydown', ev => { if(ev.target === c && (ev.key === 'Enter' || ev.key === ' ')){ ev.preventDefault(); navigate(c.dataset.route); } }));
+  wrap.querySelectorAll('.dash-card[data-route]').forEach(c => c.addEventListener('keydown', ev => { if(ev.target === c && (ev.key === 'Enter' || ev.key === ' ')){ ev.preventDefault(); navigate(c.dataset.route); } }));
   wrap.querySelectorAll('.saint-portrait[data-sid]').forEach(observePortrait);
+  wrap.querySelector('[data-hero-icon]').addEventListener('click', ev => { famousOpen = ev.currentTarget.dataset.heroIcon; navigate('history/icons'); });
   loadHomeCommunity(wrap.querySelector('#homeCommunity'));
   loadHomeNews(wrap.querySelector('#homeNews'));
   bindHomePrayer(wrap);
