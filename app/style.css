@@ -315,9 +315,6 @@
     animation:goldShine 8s ease-in-out infinite;
   }
   :root[data-shine] .hub-title span{-webkit-text-fill-color:transparent;}
-  :root[data-shine] #sectionTitle.drop-in, :root[data-shine] .hub-title.drop-in, :root[data-shine] .home-heading h3.drop-in, :root[data-shine] .bk-title.drop-in{
-    animation:dropIn 0.6s cubic-bezier(0.25, 0.8, 0.3, 1) both, goldShine 8s ease-in-out infinite !important;
-  }
   @keyframes goldShine{0%, 100%{background-position:100% 0;} 50%{background-position:0% 0;}}
   :root[data-shine] .brand .mark{color:var(--shine-2); filter:drop-shadow(0 0 5px rgba(var(--glow-rgb), 0.6));}
   :root[data-shine] .g-card:hover, :root[data-shine] .pf-card:hover, :root[data-shine] .bible-tile:hover, :root[data-shine] .fi-card:hover, :root[data-shine] .entry-row:hover{
@@ -326,6 +323,7 @@
   @media (prefers-reduced-motion: reduce){
     :root[data-shine] .brand span, :root[data-shine] #sectionTitle, :root[data-shine] .hub-title, :root[data-shine] .home-heading h3, :root[data-shine] .bk-title{animation:none !important; background-position:50% 0;}
   }
+  .shine-row[hidden]{display:none;}
   .shine-row{display:flex; align-items:center; gap:10px; margin:2px 0 6px; padding:10px 8px; border-radius:10px; background:rgba(var(--tint-rgb),0.1);}
   .shine-row-text{flex:1; min-width:0; line-height:1.25;}
   .shine-row-name{display:block; font-weight:600; font-size:0.93rem;}
@@ -424,14 +422,6 @@
   .pope-facts strong{display:block; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.35rem; color:var(--wine-dark); line-height:1.2;}
   .pope-facts span{font-size:0.8rem; color:var(--ink-soft);}
   .pope-badge{margin-left:auto; font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--gold); white-space:nowrap;}
-  /* Page entrance: each element on screen drops into place on its own, top to bottom */
-  @keyframes dropIn{
-    0%{opacity:0; transform:translateY(-18px);}
-    70%{opacity:1; transform:translateY(2px);}
-    100%{opacity:1; transform:none;}
-  }
-  .drop-in{animation:dropIn 0.6s cubic-bezier(0.25, 0.8, 0.3, 1) both !important;}
-  @media (prefers-reduced-motion: reduce){ .drop-in{animation:none !important;} }
   /* Profile pictures */
   .forum-avatar, .top-avatar{position:relative; overflow:hidden;}
   .av-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:inherit;}
@@ -1950,9 +1940,9 @@
     border-radius:12px; border:1px solid transparent; background:none; color:var(--ink); font-family:'Source Serif 4', serif;
   }
   .upcoming-item:hover{border-color:var(--line); background:var(--parchment-light);}
-  .up-date{flex:0 0 52px; height:52px; border-radius:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:var(--parchment-light); border:1px solid var(--line);}
-  .up-date span{font-size:0.66rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--wine);}
-  .up-date strong{font-family:'Cormorant Garamond', serif; font-size:1.45rem; line-height:1;}
+  .up-date{flex:0 0 52px; height:54px; border-radius:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; background:var(--parchment-light); border:1px solid var(--line);}
+  .up-date span{font-size:0.62rem; line-height:1; text-transform:uppercase; letter-spacing:0.1em; color:var(--wine);}
+  .up-date strong{font-family:'Cormorant Garamond', serif; font-size:1.4rem; line-height:1; font-variant-numeric:lining-nums tabular-nums;}
   .up-text{display:flex; flex-direction:column; min-width:0;}
   .up-name{font-weight:600; font-size:0.97rem;}
   .up-type{font-size:0.78rem;}
@@ -2951,7 +2941,7 @@
   }
 
   /* ---------- Type ---------- */
-  body{-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility; font-feature-settings:'kern' 1, 'liga' 1;}
+  body{-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility; font-feature-settings:'kern' 1, 'liga' 1; font-variant-numeric:lining-nums;}
   h1, h2, h3, .hub-title, .home-hero h1{text-wrap:balance;}
   p, .hub-intro, .hero-tagline{text-wrap:pretty;}
   .main-head h2{letter-spacing:-0.01em;}
@@ -3098,19 +3088,19 @@
   nav.sidebar button.navlink{transition:background 0.2s var(--ease), color 0.2s var(--ease), padding 0.25s var(--ease);}
   nav.sidebar button.navlink:hover{padding-left:16px;}
 
-  /* ---------- Page entrance: a soft rise, staggered; content further down rises as it scrolls in ---------- */
-  @keyframes riseIn{
-    from{opacity:0; transform:translateY(14px); filter:blur(3px);}
-    to{opacity:1; transform:none; filter:none;}
+  /* ---------- Page entrance: the whole page fades in at once, crisp and quick ----------
+     It moves with the "translate" property, which adds to an element's own transform instead of replacing it,
+     so anything centered with a transform stays centered while it fades in. */
+  @keyframes pageIn{
+    from{opacity:0; translate:0 8px;}
+    to{opacity:1; translate:0 0;}
   }
-  .drop-in{animation:riseIn 0.65s var(--ease) both !important;}
-  .reveal-wait{opacity:0; transform:translateY(18px);}
-  .reveal-in{animation:riseIn 0.7s var(--ease) both;}
+  .page-in{animation:pageIn 0.32s cubic-bezier(0.2, 0.7, 0.3, 1) both;}
   @media (prefers-reduced-motion: reduce){
-    .drop-in, .reveal-in, .overlay.open, .overlay.open .modal, .hero-rays, .hero-cross{animation:none !important;}
-    .reveal-wait{opacity:1; transform:none;}
+    .page-in, .overlay.open, .overlay.open .modal, .hero-rays, .hero-cross{animation:none !important;}
     *{transition-duration:0.01ms !important;}
   }
+  :root[data-motion="reduced"] .page-in{animation:none !important;}
 
   /* ---------- Footer-ish breathing room ---------- */
   .layout{padding-top:40px;}
@@ -3167,7 +3157,7 @@
     .toast{bottom:calc(var(--tabbar-room) + 16px);}
     .br-copybar, .pf-jump{bottom:calc(var(--tabbar-room) + 10px);}
   }
-  @media print{ .tabbar{display:none !important;} .reveal-wait{opacity:1 !important; transform:none !important;} }
+  @media print{ .tabbar{display:none !important;} }
 
   /* ---------- iPhone: room for the home bar, the notch, and Safari's toolbars ---------- */
   body{min-height:100vh; min-height:100dvh; padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right);}
@@ -3259,8 +3249,8 @@
   .dash-mysteries{margin:4px 0 0; padding-left:18px; font-size:0.88rem; line-height:1.55; color:var(--ink-soft);}
   .dash-upcoming .home-upcoming{gap:2px; margin-top:2px;}
   .dash-upcoming .upcoming-item{padding:5px 6px 5px 4px; gap:10px;}
-  .dash-upcoming .up-date{flex-basis:40px; height:40px;}
-  .dash-upcoming .up-date strong{font-size:1.15rem;}
+  .dash-upcoming .up-date{flex-basis:46px; height:48px; gap:2px;}
+  .dash-upcoming .up-date strong{font-size:1.2rem;}
   .dash-upcoming .up-name{font-size:0.9rem;}
   .dash-card[data-route]{cursor:pointer; transition:transform 0.35s var(--ease), box-shadow 0.35s var(--ease);}
   .dash-card[data-route]:hover{transform:translateY(-3px); box-shadow:var(--elev-2);}
@@ -3474,6 +3464,14 @@
   .ring-choice[aria-checked="true"]{border-color:var(--gold); background:color-mix(in srgb, var(--gold) 10%, var(--parchment));}
   .forum-avatar.avatar-ring{width:52px; height:52px; flex:0 0 52px; font-size:1.3rem;}
   .ring-preview{display:inline-flex; padding:6px;}
+  .ring-choice.locked{cursor:default; background:transparent; border-style:dashed;}
+  .ring-choice.locked .ring-preview{filter:grayscale(1); opacity:.45;}
+  .ring-choice.locked .ring-name{color:var(--ink-soft);}
+  .ring-lock{display:inline-flex; align-items:center; gap:4px; font-size:0.7rem; color:var(--ink-soft); line-height:1.2;}
+  .ring-lock svg{width:11px; height:11px; flex:0 0 auto;}
+  .ring-group-head{grid-column:1 / -1; display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 10px; margin:12px 0 0; padding-top:12px; border-top:1px solid var(--line);}
+  .ring-group-head strong{font-family:'Cormorant Garamond', Georgia, serif; font-size:1.2rem;}
+  .ring-group-head span{font-size:0.85rem; color:var(--ink-soft);}
 
   /* The hover card: a small profile beside a name */
   .hover-card{position:fixed; z-index:400; width:300px; max-width:calc(100vw - 16px); border:1px solid var(--line); border-radius:16px; background:var(--parchment-light); color:var(--ink);

@@ -3153,12 +3153,14 @@ function applyShine(){
   const key = document.documentElement.getAttribute('data-theme'), allowed = GOLD_THEMES.has(key), on = allowed && shineWanted();
   if(on) document.documentElement.setAttribute('data-shine', '');
   else document.documentElement.removeAttribute('data-shine');
+  // The switch only appears on themes that have gold in them
   const sw = document.getElementById('shineSwitch');
   if(sw){
-    sw.disabled = !allowed;
     sw.setAttribute('aria-checked', String(on));
-    document.getElementById('shineNote').textContent = allowed ? 'A soft gold sheen on titles and cards' : 'Choose a theme marked ✦ to use it';
+    sw.closest('.shine-row').hidden = !allowed;
   }
+  const row = document.getElementById('setShine');
+  if(row) row.closest('.shine-row').hidden = !allowed;
 }
 
 function setThemeMenuOpen(open){
@@ -3192,7 +3194,7 @@ function buildThemeMenu(){
   const more = THEME_GROUPS.map(([name, keys]) => [name, keys.filter(k => !FEATURED_THEMES.includes(k))]).filter(([, keys]) => keys.length);
   const moreCount = more.reduce((n, [, keys]) => n + keys.length, 0);
   const mine = customThemes();
-  themeMenu.innerHTML = `<div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">✦ Gold shine</span><span class="shine-row-note" id="shineNote"></span></span><button type="button" class="shine-switch" id="shineSwitch" role="switch" aria-checked="false" aria-label="Gold shine"></button></div>`
+  themeMenu.innerHTML = `<div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">✦ Gold shine</span><span class="shine-row-note">A soft gold sheen on titles and cards</span></span><button type="button" class="shine-switch" id="shineSwitch" role="switch" aria-checked="false" aria-label="Gold shine"></button></div>`
     + `<div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">Background glow</span><span class="shine-row-note">Soft light behind pages and banners</span></span><button type="button" class="shine-switch" id="glowSwitch" role="switch" aria-checked="false" aria-label="Background glow"></button></div>`
     + `<div class="theme-menu-label theme-menu-sep">Themes</div>`
     + FEATURED_THEMES.map(k => THEMES.find(t => t.key === k)).filter(Boolean).map(themeOption).join('')
@@ -3716,9 +3718,13 @@ function reducedMotion(){ return store.get('motion', '') === 'reduced' || (!!win
 /* ---------- Profile rings: a decoration around a member's picture (the server keeps the same list) ---------- */
 const RING_KEYS = ['halo', 'rosary', 'prayer-rope', 'stars', 'roses', 'stained-glass', 'laurel', 'flame', 'pearls'];
 const RING_NAMES = { halo:'Halo', rosary:'Rosary', 'prayer-rope':'Prayer Rope', stars:'Crown of Twelve Stars', roses:'Rose Garland',
-  'stained-glass':'Stained Glass', laurel:'Laurel Wreath', flame:'Tongues of Fire', pearls:'Byzantine Pearls', owner:'Light of Tabor', 'city-of-god':'City of God', parchment:'Desert Parchment' };
+  'stained-glass':'Stained Glass', laurel:'Laurel Wreath', flame:'Tongues of Fire', pearls:'Byzantine Pearls', owner:'Light of Tabor', 'city-of-god':'City of God', parchment:'Desert Parchment', shepherd:'Good Shepherd',
+  lamps:'Vigil Lamps', 'golden-rosary':'Golden Rosary', haloes:'Communion of Saints', gospels:'The Four Gospels', candles:'Intercessor’s Candles', 'year-of-grace':'A Year of Grace' };
+const ringName = k => isEastern() && k === 'golden-rosary' ? 'Golden Prayer Rope' : RING_NAMES[k];
 // The rings only the moderation team (the moderators and site administrators) can wear
-const STAFF_RING_KEYS = ['parchment'];
+const STAFF_RING_KEYS = ['parchment', 'shepherd'];
+// Rings unlocked by a badge (the server keeps the same list and checks it)
+const EARNED_RINGS = { lamps:'streak-30', 'golden-rosary':'rosary-50', haloes:'saints-100', gospels:'bible-260', candles:'pray-100', 'year-of-grace':'member-365' };
 // The rings only the site's owner can wear; they wear the first unless they choose another
 const OWNER_RING_KEYS = ['city-of-god', 'owner'];
 const ringCache = {};
@@ -3777,6 +3783,50 @@ function ringSvg(key){
     g = `<circle cx="50" cy="50" r="51" fill="none" stroke="#b8924a" stroke-width="1"/><circle cx="50" cy="50" r="59.6" fill="none" stroke="#b8924a" stroke-width="1.1"/>`
       + embers.map(([d, r, z], i) => { const [x, y] = at(r, d); return `<circle class="ember" cx="${x}" cy="${y}" r="${z}" fill="${i % 3 ? '#ff9a3c' : '#ffd27a'}" style="animation-delay:-${(i * 0.41).toFixed(2)}s"/>`; }).join('')
       + `<circle cx="50" cy="-4.5" r="8" fill="#3a3530" stroke="#c9a65a" stroke-width="1.2"/>${cross(50, -10.5, 8, '#f5d79a')}`;
+  } else if(key === 'shepherd'){
+    // For the moderation team: a teal band edged in gold, with the shepherd's crook above
+    g = `<circle cx="50" cy="50" r="56" fill="none" stroke="#2f6f6a" stroke-width="6.5"/>`
+      + `<circle cx="50" cy="50" r="59.6" fill="none" stroke="#d6b45e" stroke-width="1"/><circle cx="50" cy="50" r="52.4" fill="none" stroke="#d6b45e" stroke-width="1"/>`
+      + around(12, 15, 375).map(d => { const [x, y] = at(56, d); return `<circle cx="${x}" cy="${y}" r="1" fill="#f0d88a"/>`; }).join('')
+      + `<path d="M50 6V-6.5a5 5 0 1 1 6.4 4.8" fill="none" stroke="#e6c46a" stroke-width="2.6" stroke-linecap="round"/>`
+      + `<path d="M50 6V-6.5a5 5 0 1 1 6.4 4.8" fill="none" stroke="#8a6418" stroke-width=".6" stroke-linecap="round" opacity=".6"/>`;
+  } else if(key === 'lamps'){
+    // Vigil Lamps (a 30-day prayer streak): small oil lamps burning around a bronze ring
+    g = `<circle cx="50" cy="50" r="54.6" fill="none" stroke="#9c7a3c" stroke-width="2.8"/><circle cx="50" cy="50" r="56.6" fill="none" stroke="#d6b45e" stroke-width=".6"/>`
+      + around(8, 22.5, 382.5).map(d => { const [x, y] = at(57.2, d);
+        return `<g transform="translate(${x} ${y}) rotate(${d.toFixed(1)}) scale(1.55)"><circle cy="-2" r="3.6" fill="#ffcf6a" opacity=".3"/><path d="M-3.2 .6Q0 3.4 3.2 .6L2.2 -.4H-2.2Z" fill="#b8893e" stroke="#6e5220" stroke-width=".4"/><path d="M0 -1C-1.1 -2.4 -.7 -3.9 0 -5.2C.7 -3.9 1.1 -2.4 0 -1Z" fill="#ffb347"/><path d="M0 -1.4C-.5 -2.3 -.3 -3.1 0 -3.8C.3 -3.1 .5 -2.3 0 -1.4Z" fill="#fff0b0"/></g>`; }).join('');
+  } else if(key === 'golden-rosary'){
+    // The Golden Rosary (fifty Rosaries, or fifty prayer ropes in the Eastern edition): gold beads and a gold cross
+    const beads = [];
+    for(let d = 0; d < 5; d++){ for(let i = 0; i < 10; i++) beads.push(0); if(d < 4) beads.push(1); }
+    g = `<circle cx="50" cy="50" r="55.5" fill="none" stroke="#a07a2a" stroke-width=".8"/>`
+      + around(beads.length, 196, 524).map((d, i) => { const [x, y] = at(55.5, d); return beads[i]
+        ? `<circle cx="${x}" cy="${y}" r="3" fill="#d9a72e" stroke="#7a5512" stroke-width=".6"/>`
+        : `<circle cx="${x}" cy="${y}" r="2.1" fill="#f2cf63" stroke="#8a6418" stroke-width=".5"/><circle cx="${x - .6}" cy="${y - .6}" r=".6" fill="#fff6d0"/>`; }).join('')
+      + `<ellipse cx="50" cy="105.5" rx="3" ry="3.6" fill="#e2b84a" stroke="#7a5512" stroke-width=".6"/>${cross(50, 108.6, 8, '#e2b84a')}`;
+  } else if(key === 'haloes'){
+    // The Communion of Saints (the lives of a hundred saints): a ring of golden haloes
+    g = `<circle cx="50" cy="50" r="56" fill="none" stroke="#c9a24a" stroke-width="1.2"/>`
+      + around(12, 0, 360).map(d => { const [x, y] = at(56, d);
+        return `<circle cx="${x}" cy="${y}" r="4.3" fill="#f6e3a6" stroke="#b8902e" stroke-width=".7"/><circle cx="${x}" cy="${y}" r="2.6" fill="none" stroke="#d9b45a" stroke-width=".5"/><circle cx="${x}" cy="${y}" r="1.2" fill="#fff8e0"/>`; }).join('');
+  } else if(key === 'gospels'){
+    // The Four Gospels (260 chapters of the Bible): a deep red band edged in gold, with four open books
+    const book = (x, y) => `<g transform="translate(${x} ${y})"><path d="M-4.2 -2.4Q-2 -3.4 0 -2.2Q2 -3.4 4.2 -2.4V2.6Q2 1.6 0 2.8Q-2 1.6 -4.2 2.6Z" fill="#f3e3b5" stroke="#8a6418" stroke-width=".55"/><path d="M0 -2.2V2.8" stroke="#8a6418" stroke-width=".45"/></g>`;
+    g = `<circle cx="50" cy="50" r="56" fill="none" stroke="#8e2330" stroke-width="6.5"/>`
+      + `<circle cx="50" cy="50" r="59.6" fill="none" stroke="#d6b45e" stroke-width="1"/><circle cx="50" cy="50" r="52.4" fill="none" stroke="#d6b45e" stroke-width="1"/>`
+      + around(16, 22.5, 382.5).filter((_, i) => i % 4 !== 3).map(d => { const [x, y] = at(56, d); return `<circle cx="${x}" cy="${y}" r=".9" fill="#e6c46a"/>`; }).join('')
+      + around(4, 0, 360).map(d => { const [x, y] = at(56, d); return book(x, y); }).join('');
+  } else if(key === 'candles'){
+    // Intercessor's Candles (praying for a hundred requests): tall candles burning around the ring
+    g = `<circle cx="50" cy="50" r="53.4" fill="none" stroke="#b8902e" stroke-width="2"/>`
+      + around(10, 18, 378).map(d => { const [x, y] = at(53.6, d);
+        return `<g transform="translate(${x} ${y}) rotate(${d.toFixed(1)}) scale(1.3)"><circle cy="-8.6" r="3.4" fill="#ffd27a" opacity=".3"/><rect x="-1.2" y="-6.6" width="2.4" height="6.6" rx=".5" fill="#f6ead0" stroke="#8a7448" stroke-width=".5"/><path d="M0 -6.8C-1 -8 -.7 -9.4 0 -10.6C.7 -9.4 1 -8 0 -6.8Z" fill="#ffb347"/><path d="M0 -7.1C-.4 -7.8 -.3 -8.5 0 -9.1C.3 -8.5 .4 -7.8 0 -7.1Z" fill="#fff3c0"/></g>`; }).join('');
+  } else if(key === 'year-of-grace'){
+    // A Year of Grace (a year in the Community): the colors of the Church's year, violet, white, green, and red, between gold
+    const parts = [['#5b3f86', -40, 50], ['#f4ecd8', 50, 140], ['#3e6b3a', 140, 230], ['#9b1c1f', 230, 320]];
+    g = `<circle cx="50" cy="50" r="56" fill="none" stroke="#2a2118" stroke-width="7.5" opacity=".25"/>`
+      + parts.map(([c, a, b]) => `<path d="${arc(56, a + 3, b - 3)}" fill="none" stroke="${c}" stroke-width="6"/>`).join('')
+      + parts.map(([, a]) => { const [x, y] = at(56, a); return `<circle cx="${x}" cy="${y}" r="2.6" fill="#e6c46a" stroke="#8a6418" stroke-width=".5"/>`; }).join('');
   } else if(key === 'parchment'){
     // For the moderation team, in the colors of the Desert Fathers theme: a band of light parchment edged in ochre,
     // small terracotta crosses around it like an illuminated border, and the cross above in a sandstone medallion
@@ -4571,7 +4621,7 @@ async function renderCredits(){
   let members = [];
   try{ if(Community.available) members = (await api('team')).members; }catch(err){ /* shown below */ }
   if(seq !== viewSeq || !box.isConnected) return;
-  const role = m => m.founder ? 'Founder' : m.admin ? 'Administrator' : m.team ? 'Sanctify Team' : 'Moderator';
+  const role = m => m.founder ? 'Founder' : m.admin ? 'Administrator' : 'Moderator';
   box.innerHTML = members.length
     ? `<p>Sanctify is made and looked after by a small team, and kept friendly by its moderators.</p>
        <div class="credits-people">${members.map(m => `<button class="credits-person" data-route="community/user/${encodeURIComponent(m.username)}">${avatarFor(m.username, m.avatar)}<span><strong>${escapeHtml(m.username)}</strong><span class="forum-meta">${role(m)}</span></span></button>`).join('')}</div>`
@@ -6494,24 +6544,30 @@ function renderProfile(){
   const showRings = prof => {
     ringProfile = prof;
     const current = prof.ring || 'none';
-    ringPicker.innerHTML = [...(prof.owner ? OWNER_RING_KEYS : []), ...(prof.administrator || prof.moderator ? STAFF_RING_KEYS : []), ...RING_KEYS, 'none'].map(k => `
-      <button type="button" class="ring-choice" role="radio" aria-checked="${k === current}" data-ring="${k}">
+    const have = new Set([...prof.badges.earned, ...communityBadgeKeys(prof), ...store.get('badges.earned', [])]);
+    const choice = (k, locked) => `
+      <button type="button" class="ring-choice${locked ? ' locked' : ''}" role="radio" aria-checked="${k === current}" data-ring="${k}"${locked ? ` aria-disabled="true" title="${escapeHtml('Earn “' + badgeName(BADGES.find(b => b.key === EARNED_RINGS[k])) + '” to unlock')}"` : ''}>
         <span class="ring-preview">${ringed(avatarFor(u.username, u.avatar, 'avatar-ring'), k === 'none' ? null : k)}</span>
-        <span class="ring-name">${k === 'none' ? 'No ring' : escapeHtml(RING_NAMES[k])}</span>
-      </button>`).join('');
+        <span class="ring-name">${k === 'none' ? 'No ring' : escapeHtml(ringName(k))}</span>
+        ${locked ? `<span class="ring-lock">${navIcon('lock')}${escapeHtml(badgeName(BADGES.find(b => b.key === EARNED_RINGS[k])))}</span>` : ''}
+      </button>`;
+    ringPicker.innerHTML = [...(prof.owner ? OWNER_RING_KEYS : []), ...(prof.administrator || prof.moderator ? STAFF_RING_KEYS : []), ...RING_KEYS, 'none'].map(k => choice(k, false)).join('')
+      + `<div class="ring-group-head"><strong>Earned rings</strong><span>Unlocked by badges. <button class="text-link" type="button" data-route="account/badges">See your badges →</button></span></div>`
+      + Object.keys(EARNED_RINGS).map(k => choice(k, !have.has(EARNED_RINGS[k]))).join('');
     const pic = entryListEl.querySelector('.avatar-panel > .forum-avatar, .avatar-panel > .ringed');
     if(pic) pic.outerHTML = ringed(avatarFor(u.username, u.avatar, 'avatar-big'), prof.ring);
   };
   ringPicker.addEventListener('click', async ev => {
     const b = ev.target.closest('[data-ring]');
     if(!b || !ringProfile || b.getAttribute('aria-checked') === 'true') return;
+    if(b.classList.contains('locked')){ toast(b.title); return; }
     showFormError(ringError, '');
     ringPicker.classList.add('busy');
     try{
       const res = await api('account/ring', { method:'PUT', body:{ ring:b.dataset.ring } });
       hoverCards.delete(u.username.toLowerCase());
       showRings({ ...ringProfile, ring:res.ring });
-      toast(res.ring ? `You’re wearing the ${RING_NAMES[res.ring]}` : 'Your ring was taken off');
+      toast(res.ring ? `You’re wearing the ${ringName(res.ring)}` : 'Your ring was taken off');
     }catch(err){ showFormError(ringError, err.message); }
     ringPicker.classList.remove('busy');
   });
@@ -11209,10 +11265,11 @@ const NAV_ICONS = {
   community:'<circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.5"/><path d="M2.8 20c.6-3.8 3.1-5.9 6.2-5.9s5.6 2.1 6.2 5.9"/><path d="M15.4 14.4c.5-.2 1-.3 1.6-.3 2.3 0 4 1.5 4.4 4.4"/>',
   account:'<circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c.9-4 3.9-6.3 7.5-6.3s6.6 2.3 7.5 6.3"/>',
   reply:'<path d="M5.5 4h13A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H10l-4.5 4v-4A1.5 1.5 0 0 1 4 14.5v-9A1.5 1.5 0 0 1 5.5 4z"/>',
-  gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2.8l1.6 2.3 2.7-.7.4 2.8 2.6 1.1-1.2 2.5 1.2 2.5-2.6 1.1-.4 2.8-2.7-.7L12 21.2l-1.6-2.3-2.7.7-.4-2.8-2.6-1.1L5.9 12 4.7 9.5l2.6-1.1.4-2.8 2.7.7z"/>',
+  gear:'<circle cx="12" cy="12" r="3"/><path d="M10.43 5.18L10.66 2.49L13.34 2.49L13.57 5.18A7.0 7.0 0 0 1 15.71 6.06L17.78 4.33L19.67 6.22L17.94 8.29A7.0 7.0 0 0 1 18.82 10.43L21.51 10.66L21.51 13.34L18.82 13.57A7.0 7.0 0 0 1 17.94 15.71L19.67 17.78L17.78 19.67L15.71 17.94A7.0 7.0 0 0 1 13.57 18.82L13.34 21.51L10.66 21.51L10.43 18.82A7.0 7.0 0 0 1 8.29 17.94L6.22 19.67L4.33 17.78L6.06 15.71A7.0 7.0 0 0 1 5.18 13.57L2.49 13.34L2.49 10.66L5.18 10.43A7.0 7.0 0 0 1 6.06 8.29L4.33 6.22L6.22 4.33L8.29 6.06A7.0 7.0 0 0 1 10.43 5.18Z"/>',
   globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/>',
   dice:'<rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><circle cx="8.5" cy="8.5" r="1" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1" fill="currentColor"/>',
   wiki:'<path d="M4 4.5h11.5L20 9v10.5H4z"/><path d="M15.5 4.5V9H20"/><path d="M7 12.5l1.5 4.5 1.8-4 1.8 4 1.5-4.5"/>',
+  lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/>',
   link:'<path d="M10 14a4 4 0 0 0 5.7.3l3-3a4 4 0 0 0-5.7-5.6l-1.5 1.4"/><path d="M14 10a4 4 0 0 0-5.7-.3l-3 3a4 4 0 0 0 5.7 5.6l1.5-1.4"/>'
 };
 function navIcon(key){
@@ -11961,67 +12018,26 @@ function applyRoute(path){
   startDropIn();
 }
 
-/* ---------- Page entrance: each element drops in on its own ---------- */
-// Headings, paragraphs, buttons, and cards are animated as single pieces; larger containers are opened up
-const DROP_ATOMIC = /^(H1|H2|H3|H4|H5|H6|P|LI|IMG|FIGURE|BLOCKQUOTE|BUTTON|A|INPUT|SELECT|TEXTAREA|LABEL|DT|DD|svg|CANVAS|DETAILS|TABLE|FORM|ARTICLE)$/;
-const DROP_CARD = /(^|[\s-])(card|entry-row|history-row|cal-row|chip|pope|tile|btn|banner|avatar|search|facts|panel|hero-art|rosette)\b/;
-let dropDone = new WeakSet();
+/* ---------- Page entrance: the page fades in as a whole, everything visible at once ---------- */
 let dropUntil = 0;
-function dropTargets(root, out){
-  for(const el of root.children){
-    if(out.length >= 70) break;
-    if(el.hidden || dropDone.has(el) || /^(SCRIPT|STYLE|TEMPLATE)$/.test(el.tagName)) continue;
-    // Buttons that float over the page (such as the patron finder's) keep their own position and fading
-    if(getComputedStyle(el).position === 'fixed') continue;
-    const cls = typeof el.className === 'string' ? el.className : '';
-    if(DROP_ATOMIC.test(el.tagName) || DROP_CARD.test(cls) || !el.firstElementChild) out.push(el);
-    else dropTargets(el, out);
-  }
-  return out;
-}
-const revealer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => entries.forEach(en => {
-  if(!en.isIntersecting) return;
-  const el = en.target;
-  revealer.unobserve(el);
-  el.classList.remove('reveal-wait');
-  el.classList.add('reveal-in');
-  const done = ev => { if(ev.target === el){ el.classList.remove('reveal-in'); el.removeEventListener('animationend', done); } };
-  el.addEventListener('animationend', done);
-}), { rootMargin:'0px 0px -6% 0px' }) : null;
-function dropIn(roots){
-  const limit = window.innerHeight + 40;
-  const items = [];
-  roots.forEach(r => dropTargets(r, items));
-  let n = 0;
-  for(const el of items){
-    dropDone.add(el);
-    const box = el.getBoundingClientRect();
-    if(!box.height || box.bottom < 0) continue;
-    if(box.top > limit){   // further down: wait until it scrolls into view
-      if(revealer){ el.classList.add('reveal-wait'); revealer.observe(el); }
-      continue;
-    }
-    el.style.animationDelay = Math.min(n++ * 45, 700) + 'ms';
-    el.classList.add('drop-in');
-    const done = ev => {
-      if(ev.target !== el) return;
-      el.classList.remove('drop-in');
-      el.style.animationDelay = '';
-      el.removeEventListener('animationend', done);
-    };
-    el.addEventListener('animationend', done);
-  }
+function pageIn(el){
+  if(!el) return;
+  el.classList.remove('page-in');
+  void el.offsetWidth;   // restart the animation
+  el.classList.add('page-in');
 }
 function startDropIn(){
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if(document.documentElement.getAttribute('data-motion') === 'reduced') return;
-  dropDone = new WeakSet();   // the page header is reused, so forget what was animated on the last page
-  if(revealer) revealer.disconnect();
-  dropUntil = Date.now() + 2500;   // content that arrives a moment later (the Community, an account) drops in too
-  dropIn([document.getElementById('mainHead'), entryListEl]);
+  dropUntil = Date.now() + 2500;
+  pageIn(document.getElementById('mainHead'));
+  pageIn(entryListEl);
 }
-new MutationObserver(() => { if(Date.now() < dropUntil) dropIn([entryListEl]); }).observe(entryListEl, { childList:true, subtree:true });
-
+// A page that shows "Loading…" first fades in again when its content arrives
+new MutationObserver(list => {
+  if(Date.now() > dropUntil) return;
+  if(list.some(m => [...m.removedNodes].some(n => n.nodeType === 1 && (n.matches('.forum-loading') || n.querySelector && n.querySelector(':scope > .forum-loading'))))) pageIn(entryListEl);
+}).observe(entryListEl, { childList:true });
 function navigate(route){
   const target = '#/' + route;
   // drop any ?q= search from the address once the visitor moves on to a page
@@ -13177,7 +13193,7 @@ function renderSettings(){
         <div class="settings-theme"><span class="theme-swatch" style="--sw-bg:${theme.swatch[0]}; --sw-accent:${theme.swatch[1]}"></span>
           <span><small>Current theme</small><strong>${escapeHtml(theme.name)}</strong></span>
           <button class="btn quiet" type="button" data-open-themes>Choose a theme</button></div>
-        ${switchRow('setShine', 'Gold shine', gold ? 'A metallic sheen on titles and cards, on themes with gold in them.' : 'Only on themes marked ✦', gold && shineWanted(), !gold)}
+        ${gold ? switchRow('setShine', 'Gold shine', 'A metallic sheen on titles and cards, on themes with gold in them.', shineWanted(), false) : ''}
         ${switchRow('setGlow', 'Background glow', 'A soft light behind pages and banners.', glowWanted(), false)}
         ${switchRow('setMotion', 'Reduce motion', 'Pages appear without sliding or fading in.', motion, false)}
         ${switchRow('setTabIcon', 'Seasonal tab icon', 'The cross on the browser tab takes the color of the liturgical season. Off, it takes your theme’s colors.', store.get('tabIcon', 'season') !== 'theme', false)}
@@ -13213,7 +13229,8 @@ function renderSettings(){
   bindOfflineSettings(root);
   root.querySelectorAll('[data-set-rite]').forEach(b => b.addEventListener('click', () => { setRite(b.dataset.setRite); renderSettings(); }));
   root.querySelector('[data-open-themes]').addEventListener('click', ev => { ev.stopPropagation(); setThemeMenuOpen(true); });
-  root.querySelector('#setShine').addEventListener('click', () => { try{ localStorage.setItem('sanctify.shine', shineWanted() ? '0' : '1'); }catch(e){} applyShine(); renderSettings(); });
+  const setShine = root.querySelector('#setShine');
+  if(setShine) setShine.addEventListener('click', () => { try{ localStorage.setItem('sanctify.shine', shineWanted() ? '0' : '1'); }catch(e){} applyShine(); renderSettings(); });
   root.querySelector('#setGlow').addEventListener('click', () => { try{ localStorage.setItem('sanctify.glow', glowWanted() ? '0' : '1'); }catch(e){} applyGlow(); renderSettings(); });
   root.querySelector('#setMotion').addEventListener('click', () => {
     const on = store.get('motion', '') !== 'reduced';
@@ -15440,14 +15457,14 @@ document.addEventListener('play', e => {
    appoint badges. The keys are kept in step with functions/api/[[path]].js.
    ========================================================= */
 const APPOINTED_BADGES = {
-  founder:['Founder', 'gold'], team:['Sanctify Team', 'wine'], moderator:['Moderator', 'teal'], helper:['Community Helper', 'green'],
+  founder:['Founder', 'gold'], moderator:['Moderator', 'teal'], helper:['Community Helper', 'green'],
   clergy:['Clergy', 'purple'], religious:['Religious', 'indigo'], catechist:['Catechist', 'amber'], scholar:['Scholar', 'indigo'],
-  artist:['Artist', 'rose'], musician:['Musician', 'rose'], contributor:['Contributor', 'green'], supporter:['Supporter', 'gold']
+  artist:['Artist', 'rose'], musician:['Musician', 'rose'], contributor:['Contributor', 'green']
 };
 const BADGE_COLORS = ['gold', 'wine', 'teal', 'green', 'purple', 'indigo', 'amber', 'rose'];
 // The icon each appointed badge wears beside a member's name (custom badges wear the medal)
-const APPOINTED_ICONS = { founder:'star', team:'cross', moderator:'shield', helper:'community', clergy:'stole', religious:'orders',
-  catechist:'catechism', scholar:'book', artist:'palette', musician:'music', contributor:'pen', supporter:'heart' };
+const APPOINTED_ICONS = { founder:'star', moderator:'shield', helper:'community', clergy:'stole', religious:'orders',
+  catechist:'catechism', scholar:'book', artist:'palette', musician:'music', contributor:'pen' };
 // [key, group, icon, color, need, metric, name, description, Eastern name, Eastern description, Eastern icon]
 const BADGE_ROWS = [
   ['rosary-1', 'prayer', 'rosary', 'rose', 1, m => m.habit.rosary, 'First Rosary', 'Pray the Rosary.', 'First Prayer Rope', 'Pray the Jesus Prayer on the prayer rope.', 'rope'],

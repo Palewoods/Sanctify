@@ -46,15 +46,17 @@ const VIDEO_MAX_BYTES = 1300 * 1000;
 const RINGS = ['halo', 'rosary', 'prayer-rope', 'stars', 'roses', 'stained-glass', 'laurel', 'flame', 'pearls'];
 const OWNER_RINGS = ['city-of-god', 'owner'];
 // STAFF_RINGS are for the moderation team: the moderators and the site administrators
-const STAFF_RINGS = ['parchment'];
+const STAFF_RINGS = ['parchment', 'shepherd'];
+// EARNED_RINGS are unlocked by a badge (the browser keeps the same list)
+const EARNED_RINGS = { lamps:'streak-30', 'golden-rosary':'rosary-50', haloes:'saints-100', gospels:'bible-260', candles:'pray-100', 'year-of-grace':'member-365' };
 // The preset banner designs (kept in step with BANNER_PRESETS in index.html)
 const BANNER_PRESETS = ['stained-glass', 'starry-mantle', 'gold-leaf', 'easter-dawn', 'roses', 'cloister', 'advent', 'stella-maris', 'byzantine', 'ordinary-time', 'pentecost', 'lily'];
 const AVATAR_TYPES = { 'image/jpeg':[0xFF, 0xD8, 0xFF], 'image/png':[0x89, 0x50, 0x4E, 0x47], 'image/webp':[0x52, 0x49, 0x46, 0x46] };
 // Badges a site administrator can give, and badges members earn on their own devices (kept in step with index.html)
 const APPOINTED = {
-  founder:['Founder', 'gold'], team:['Sanctify Team', 'wine'], moderator:['Moderator', 'teal'], helper:['Community Helper', 'green'],
+  founder:['Founder', 'gold'], moderator:['Moderator', 'teal'], helper:['Community Helper', 'green'],
   clergy:['Clergy', 'purple'], religious:['Religious', 'indigo'], catechist:['Catechist', 'amber'], scholar:['Scholar', 'indigo'],
-  artist:['Artist', 'rose'], musician:['Musician', 'rose'], contributor:['Contributor', 'green'], supporter:['Supporter', 'gold']
+  artist:['Artist', 'rose'], musician:['Musician', 'rose'], contributor:['Contributor', 'green']
 };
 const BADGE_COLORS = ['gold', 'wine', 'teal', 'green', 'purple', 'indigo', 'amber', 'rose'];
 const EARNED_KEYS = new Set([
@@ -274,6 +276,7 @@ const SCHEMA = [
      created_at INTEGER NOT NULL)`,
   `CREATE INDEX IF NOT EXISTS name_changes_by_old ON name_changes (old_name, created_at DESC)`,
   `CREATE INDEX IF NOT EXISTS name_changes_by_user ON name_changes (user_id, created_at DESC)`,
+  `DELETE FROM user_badges WHERE badge IN ('team', 'supporter')`,
   `CREATE TABLE IF NOT EXISTS rings (
      user_id INTEGER PRIMARY KEY,
      ring TEXT NOT NULL,
@@ -723,13 +726,20 @@ async function setBanner(ctx){
 }
 
 /* ---------- Profile rings ---------- */
+// Whether a member has the badge that unlocks a ring: prayer and reading badges come from their devices,
+// the Community ones are counted here
+async function ringEarned(ctx, user, badge){
+  if(badge === 'pray-100') return ((await ctx.db.prepare('SELECT COUNT(*) AS n FROM prayers WHERE user_id = ?').bind(user.id).first()) || {}).n >= 100;
+  if(badge === 'member-365') return ctx.now - user.created_at >= 365 * 86400000;
+  return !!await ctx.db.prepare('SELECT 1 FROM earned_badges WHERE user_id = ? AND badge = ?').bind(user.id, badge).first();
+}
 function ownerName(ctx){ return String(ctx.env.ADMINS || '').split(',').map(x => x.trim()).filter(Boolean)[0] || ''; }
 function isOwner(ctx, name){ return !!name && ownerName(ctx).toLowerCase() === String(name).toLowerCase(); }
 // The ring a member wears: their choice if they may still wear it (a moderator who steps down loses the staff ring)
 function ringFor(ctx, name, key, role){
   if(!name || key === 'none') return null;
   const owner = isOwner(ctx, name), staff = siteAdmin(ctx, name) || role === 'moderator';
-  const allowed = k => RINGS.includes(k) || (staff && STAFF_RINGS.includes(k)) || (owner && OWNER_RINGS.includes(k));
+  const allowed = k => RINGS.includes(k) || k in EARNED_RINGS || (staff && STAFF_RINGS.includes(k)) || (owner && OWNER_RINGS.includes(k));
   if(owner) return key && allowed(key) ? key : OWNER_RINGS[0];
   return key && allowed(key) ? key : null;
 }
@@ -738,8 +748,9 @@ async function setRing(ctx){
   const user = requireUser(ctx);
   const { ring } = await readBody(ctx, 1000);
   const key = String(ring || 'none'), owner = isOwner(ctx, user.username);
-  if(key !== 'none' && !RINGS.includes(key) && !(owner && OWNER_RINGS.includes(key)) && !(user.admin && STAFF_RINGS.includes(key))) throw new HttpError(400, 'Please choose one of the rings.');
-  await limit(ctx, 'ring:' + user.id, 40, 60 * 60 * 1000, 'You’ve changed your ring several times recently. Please try again later.');
+  if(key !== 'none' && !RINGS.includes(key) && !(key in EARNED_RINGS) && !(owner && OWNER_RINGS.includes(key)) && !(user.admin && STAFF_RINGS.includes(key))) throw new HttpError(400, 'Please choose one of the rings.');
+  if(key in EARNED_RINGS && !await ringEarned(ctx, user, EARNED_RINGS[key])) throw new HttpError(403, 'Earn its badge first to wear this ring.');
+  await limit(ctx, 'ring:' + user.id, 120, 10 * 60 * 1000, 'You’ve changed your ring a lot in the last few minutes. Please try again shortly.');
   // The owner's first ring is what they wear with nothing chosen, so choosing it clears the choice
   if(key === OWNER_RINGS[0] || (key === 'none' && !owner)) await ctx.db.prepare('DELETE FROM rings WHERE user_id = ?').bind(user.id).run();
   else await ctx.db.prepare('INSERT INTO rings (user_id, ring, updated_at) VALUES (?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET ring = excluded.ring, updated_at = excluded.updated_at')
@@ -1838,19 +1849,18 @@ async function deleteNews(ctx, id){
 }
 
 /* ---------- The team, for the Credits page ---------- */
-// The site administrators, the moderators, and members with the Founder or Sanctify Team badge
+// The site administrators, the moderators, and members with the Founder badge
 async function getTeam(ctx){
   const admins = String(ctx.env.ADMINS || '').split(',').map(x => x.trim()).filter(Boolean).slice(0, 20);
   const { results } = await ctx.db.prepare(
     `SELECT u.username, u.created_at, a.updated_at AS avatar_v, r.role,
-            EXISTS (SELECT 1 FROM user_badges b WHERE b.user_id = u.id AND b.badge = 'founder') AS founder,
-            EXISTS (SELECT 1 FROM user_badges b WHERE b.user_id = u.id AND b.badge = 'team') AS team
+            EXISTS (SELECT 1 FROM user_badges b WHERE b.user_id = u.id AND b.badge = 'founder') AS founder
        FROM users u LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN roles r ON r.user_id = u.id
       WHERE r.role = 'moderator' ${admins.length ? `OR u.username IN (${admins.map(() => '?').join(', ')})` : ''}
-         OR EXISTS (SELECT 1 FROM user_badges b WHERE b.user_id = u.id AND b.badge IN ('founder', 'team'))
+         OR EXISTS (SELECT 1 FROM user_badges b WHERE b.user_id = u.id AND b.badge = 'founder')
       ORDER BY u.created_at LIMIT 60`).bind(...admins).all();
   return json({ members:results.map(r => ({
-    username:r.username, avatar:r.avatar_v || null, admin:siteAdmin(ctx, r.username), moderator:r.role === 'moderator', founder:!!r.founder, team:!!r.team
+    username:r.username, avatar:r.avatar_v || null, admin:siteAdmin(ctx, r.username), moderator:r.role === 'moderator', founder:!!r.founder
   })) });
 }
 
