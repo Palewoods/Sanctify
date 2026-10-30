@@ -1464,6 +1464,8 @@ function renderCalendar(){
     <span><i style="background:var(--rose)"></i>Gaudete &amp; Laetare</span>
     <span class="cal-hint">Tip: use the arrow keys to move between days.</span>`;
   entryListEl.appendChild(key);
+  entryListEl.insertAdjacentHTML('beforeend', yearStripHtml(calYear));
+  bindYearStrip(entryListEl, calYear);
 
   entryListEl.appendChild(buildCalDetail(calSelected));
   entryListEl.appendChild(buildCalUpcoming());
@@ -2823,6 +2825,7 @@ const HISTORY_ERAS = [
   { key:'modern', name:'Revolution & the Modern Church', span:'1789–present' }
 ];
 let activeEra = 'all';
+let historyFrom = null, historyTo = null;   // the span of years shown on the timeline (null: all)
 let historyMarianOnly = false;
 let historyCrusadesOnly = false;
 
@@ -2853,6 +2856,43 @@ function renderHistory(){
   chips.querySelector('#crusadesToggle').addEventListener('click', () => navigate(historyCrusadesOnly ? 'history/timeline' : 'history/timeline/crusades'));
   entryListEl.appendChild(chips);
 
+  // Only these years: a slider with two handles (the apparitions map follows it too)
+  let apDrawn = null, apPoints = [], apSpan = null;
+  const apShow = () => { if(!apDrawn || !apSpan) return; apPoints.forEach((pt, k) => { const on = pt.year >= apSpan[0] && pt.year <= apSpan[1], m = apDrawn.markers[k];
+    if(on && !apDrawn.map.hasLayer(m)) m.addTo(apDrawn.map); if(!on && apDrawn.map.hasLayer(m)) apDrawn.map.removeLayer(m); }); };
+  const years = all.map(e => e.year).filter(y => typeof y === 'number');
+  const yMin = Math.min(...years), yMax = Math.max(...years);
+  if(years.length > 1){
+    const from = Math.max(yMin, Math.min(historyFrom ?? yMin, yMax)), to = Math.min(yMax, Math.max(historyTo ?? yMax, yMin));
+    const span = document.createElement('div');
+    span.className = 'sx-span';
+    span.innerHTML = `<div class="sx-slider-head"><span class="patron-filters-label">Years: <strong id="hySpan"></strong></span><button class="text-link" type="button" id="hyReset">All years</button></div>
+      ${dualRangeHtml('hyRange', yMin, yMax, from, to, 'Years shown')}`;
+    entryListEl.appendChild(span);
+    span.querySelector('#hyReset').addEventListener('click', () => { historyFrom = historyTo = null; renderHistory(); });
+    setTimeout(() => bindDualRange(span.querySelector('#hyRange'), (a, b) => {
+      historyFrom = a === yMin ? null : a; historyTo = b === yMax ? null : b;
+      span.querySelector('#hySpan').textContent = `${a < 0 ? -a + ' BC' : a} to ${b}`;
+      let n = 0;
+      entryListEl.querySelectorAll('.history-era').forEach(g => {
+        let any = false;
+        g.querySelectorAll('.history-row').forEach(r => { const y = Number(r.dataset.year); const on = isNaN(y) || (y >= a && y <= b); r.hidden = !on; if(on){ any = true; n++; } });
+        g.hidden = !any;
+      });
+      const none = entryListEl.querySelector('#hyNone');
+      if(none) none.hidden = n > 0;
+      apSpan = [a, b]; apShow();
+    }));
+  }
+  if(historyMarianOnly){
+    const mapSec = document.createElement('section');
+    mapSec.className = 'sx-card sx-plain';
+    mapSec.innerHTML = `<h3 class="list-heading">Where Our Lady appeared</h3>${mapBoxHtml('apMap', 'Map of Marian apparitions')}`;
+    entryListEl.appendChild(mapSec);
+    apPoints = apparitionPoints();
+    drawMap(mapSec.querySelector('#apMap'), apPoints, { maxZoom:5, pad:0.1 }).then(d => { apDrawn = d; apShow(); });
+  }
+
   const eras = HISTORY_ERAS.filter(er => activeEra === 'all' || er.key === activeEra);
   let shown = 0;
   eras.forEach(er => {
@@ -2865,6 +2905,7 @@ function renderHistory(){
     items.forEach(e => {
       const row = document.createElement('div');
       row.className = 'cal-row history-row';
+      if(typeof e.year === 'number') row.dataset.year = e.year;
       row.innerHTML = `
         <div class="cal-date">${escapeHtml(e.author || '')}</div>
         <div class="cal-dot" style="--row-color:${(e.tags || []).includes('apparition') ? 'var(--rose)' : 'var(--green)'}"></div>
@@ -2883,6 +2924,10 @@ function renderHistory(){
     entryListEl.appendChild(group);
   });
 
+  const none = document.createElement('div');
+  none.className = 'empty-state'; none.id = 'hyNone'; none.hidden = true;
+  none.textContent = 'Nothing in these years. Try a wider span.';
+  entryListEl.appendChild(none);
   if(!shown){
     const div = document.createElement('div');
     div.className = 'empty-state';
@@ -4566,7 +4611,7 @@ function renderPrivacy(){
     ['shield', 'var(--teal)', 'One cookie, for signing in', `<p>When you sign in, Sanctify sets a single cookie that keeps you signed in for up to 30 days. There are no advertising or tracking cookies.</p>`],
     ['globe', 'var(--indigo)', 'Your network address', `<p>To stop spam and guessing at passwords, Sanctify counts sign-ups, sign-ins, and a few other actions from each network for a short time. It stores a scrambled form of the network address, not the address itself, and the counts are cleared when they expire.</p>
       <p>Sanctify is hosted by Cloudflare, which handles every visit to the site and may keep short-term technical logs of its own.</p>`],
-    ['link', 'var(--green)', 'Other services', `<p>Some parts of Sanctify load things from other sites as you use them: fonts from Google Fonts, pictures of saints, icons, and books and the hymn recordings from Wikipedia and Wikimedia Commons, and Google Translate if you choose a language Sanctify isn’t translated into. Those sites can see that your browser asked them for something, under their own privacy policies.</p>
+    ['link', 'var(--green)', 'Other services', `<p>Some parts of Sanctify load things from other sites as you use them: fonts from Google Fonts, pictures of saints, icons, and books and the hymn recordings from Wikipedia and Wikimedia Commons, maps (the code from cdnjs, and the map pictures from OpenStreetMap) only when a page with a map is open, and Google Translate if you choose a language Sanctify isn’t translated into. Those sites can see that your browser asked them for something, under their own privacy policies.</p>
       <p>Read aloud uses the voices on your device; some of them are provided online by your browser or system. Links to shops, resources, and the Discord take you to those sites.</p>`],
     ['gear', 'var(--purple)', 'Your choices', `<p>On your account page you can change your password, download everything the Community keeps about you as one file, and delete your account at any time.</p>
       <p>Deleting your account signs you out everywhere and removes your profile, picture, banner, description, badges, the posts you prayed for, and your saved pages. Your posts, replies, and wiki edits stay so conversations still make sense, shown as written by a “Former member.” If you’d like any of them gone, delete them first.</p>
@@ -11002,18 +11047,269 @@ function renderEasternChurches(){
   const total = EASTERN_CHURCHES.reduce((n, g) => n + g.list.length, 0);
   wrap.innerHTML = `
     <p class="ec-intro">The Catholic Church is a communion of ${total + 1} Churches: the Latin Church and ${total} Eastern Catholic Churches, each with its own liturgy, spirituality, and laws, all in full communion with the Bishop of Rome. Catholics may attend the liturgy of any of them and receive the sacraments there. <button class="text-link" data-open="t58">Read more</button></p>
+    ${mapBoxHtml('ecMap', 'Map of the Eastern Catholic Churches')}
+    <p class="sx-legend">${EASTERN_CHURCHES.map((g, gi) => `<span><i style="background:${CHURCH_COLORS[gi % CHURCH_COLORS.length]}"></i>${escapeHtml(g.trad.replace(/ tradition$/, ''))}</span>`).join('')}</p>
     ${EASTERN_CHURCHES.map(g => `
       <section class="ec-group">
         <h3 class="list-heading">${escapeHtml(g.trad)} <span class="ec-count">${g.list.length}</span></h3>
         <p class="theology-group-desc">${escapeHtml(g.desc)}</p>
         <div class="ec-grid">${g.list.map(([name, head, where, lang, note]) => `
-          <article class="ec-card">
+          <article class="ec-card" id="ec-${churchSlug(name)}">
             <h4>${escapeHtml(name)}</h4>
             <dl><div><dt>Head</dt><dd>${escapeHtml(head)}</dd></div><div><dt>Where</dt><dd>${escapeHtml(where)}</dd></div><div><dt>Liturgical languages</dt><dd>${escapeHtml(lang)}</dd></div></dl>
             <p>${escapeHtml(note)}</p>
           </article>`).join('')}</div>
       </section>`).join('')}`;
   entryListEl.appendChild(wrap);
+  bindChurchMap(wrap);
+}
+
+/* =========================================================
+   MAPS AND SLIDERS
+   ---------------------------------------------------------
+   Maps use Leaflet (from cdnjs) with map pictures from OpenStreetMap, tinted to the theme. They're loaded only
+   when a map comes on screen, and the Privacy page says so.
+   ========================================================= */
+const LEAFLET_URL = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/';
+let leafletPromise = null;
+function loadLeaflet(){
+  if(window.L && window.L.map) return Promise.resolve(window.L);
+  if(!leafletPromise) leafletPromise = new Promise((resolve, reject) => {
+    const css = document.createElement('link');
+    css.rel = 'stylesheet'; css.href = LEAFLET_URL + 'leaflet.min.css';
+    document.head.appendChild(css);
+    const js = document.createElement('script');
+    js.src = LEAFLET_URL + 'leaflet.min.js';
+    js.onload = () => resolve(window.L);
+    js.onerror = () => { leafletPromise = null; js.remove(); reject(new Error('The map couldn’t load.')); };
+    document.head.appendChild(js);
+  });
+  return leafletPromise;
+}
+function mapBoxHtml(id, label){
+  return `<div class="sx-map" id="${id}" role="region" aria-label="${escapeHtml(label)}"><div class="sx-map-wait">Loading the map…</div></div>`;
+}
+// points: [{ lat, lng, title, sub, html, color, radius }]. Resolves with the map and its markers, in order.
+async function drawMap(el, points, opts = {}){
+  let L;
+  try{ L = await loadLeaflet(); }
+  catch(err){ if(el.isConnected) el.innerHTML = '<div class="sx-map-wait">The map couldn’t load. Please check your connection and try again.</div>'; return null; }
+  if(!el.isConnected) return null;
+  el.innerHTML = '';
+  const dark = document.documentElement.dataset.mode === 'dark';
+  // on phones one finger scrolls the page, not the map; pinch and the buttons still zoom
+  const map = L.map(el, { scrollWheelZoom:false, worldCopyJump:true, minZoom:2, dragging:!L.Browser.mobile, tap:false });
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom:18, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  el.classList.toggle('sx-map-dark', dark);
+  const css = getComputedStyle(document.documentElement);
+  const color = c => !c ? (css.getPropertyValue('--wine').trim() || '#7a2426') : c.startsWith('var(') ? css.getPropertyValue(c.slice(4, -1)).trim() : c;
+  const markers = points.map(pt => {
+    const m = L.circleMarker([pt.lat, pt.lng], { radius:pt.radius || 8, color:dark ? '#111' : '#fff', weight:2, fillColor:color(pt.color), fillOpacity:0.92 });
+    m.bindPopup(`<div class="sx-pop"><strong>${escapeHtml(pt.title)}</strong>${pt.sub ? `<span>${escapeHtml(pt.sub)}</span>` : ''}${pt.html || ''}</div>`, { maxWidth:280 });
+    m.bindTooltip(escapeHtml(pt.title), { direction:'top', offset:[0, -8] });
+    return m.addTo(map);
+  });
+  if(points.length) map.fitBounds(L.latLngBounds(points.map(pt => [pt.lat, pt.lng])).pad(opts.pad || 0.2), { maxZoom:opts.maxZoom || 6 });
+  el.addEventListener('click', ev => {
+    const b = ev.target.closest('[data-open]');
+    if(b && el.contains(b)){ ev.stopPropagation(); openReadModal(b.dataset.open); }
+  });
+  return { L, map, markers };
+}
+function scrollToEl(el){
+  if(!el) return;
+  el.scrollIntoView({ behavior:'smooth', block:'center' });
+  el.classList.remove('sx-flash'); void el.offsetWidth; el.classList.add('sx-flash');
+}
+
+/* ---------- Where the ecumenical councils met ---------- */
+const COUNCIL_PLACES = {
+  'Nicaea':[40.4297, 29.7211], 'Constantinople':[41.0086, 28.9802], 'Ephesus':[37.9395, 27.3417], 'Chalcedon':[40.9906, 29.0280],
+  'Rome':[41.8941, 12.4800], 'Lyon':[45.7623, 4.8274], 'Vienne':[45.5257, 4.8746], 'Constance':[47.6603, 9.1758],
+  'Florence':[43.7731, 11.2560], 'Trent':[46.0670, 11.1214]
+};
+const councilPlace = c => /^Nicaea/.test(c.name) ? 'Nicaea' : /^Constantinople/.test(c.name) ? 'Constantinople' : /^(Lateran|Vatican)/.test(c.name) ? 'Rome' : /^Lyon/.test(c.name) ? 'Lyon' : c.name;
+const councilYear = c => parseInt(c.year, 10);
+function bindCouncilMap(root){
+  const el = root.querySelector('#cnMap'), range = root.querySelector('#cnYear'), out = root.querySelector('#cnYearOut'), latest = root.querySelector('#cnLatest'), play = root.querySelector('#cnPlay');
+  const places = Object.keys(COUNCIL_PLACES).map(name => ({ name, list:COUNCILS.map((c, i) => ({ c, i })).filter(x => councilPlace(x.c) === name) }));
+  const points = places.map(pl => ({ lat:COUNCIL_PLACES[pl.name][0], lng:COUNCIL_PLACES[pl.name][1], title:pl.name,
+    color:pl.list.some(x => x.i < 7) ? 'var(--gold)' : 'var(--wine)', radius:6 + 2 * pl.list.length,
+    sub:pl.list.length === 1 ? '1 council' : pl.list.length + ' councils',
+    html:`<ul>${pl.list.map(x => `<li><button class="text-link" data-cn="${x.i}">${escapeHtml(x.c.name)}</button> <span>${escapeHtml(x.c.year)}${pl.name === 'Rome' ? ', ' + (/^Vatican/.test(x.c.name) ? 'St. Peter’s' : 'the Lateran') : ''}</span></li>`).join('')}</ul>${pl.name === 'Florence' ? '<p>The council also met at Basel, Ferrara, and Rome.</p>' : ''}` }));
+  let drawn = null;
+  const update = () => {
+    const y = Number(range.value);
+    out.textContent = y >= 1965 ? 'all 21' : 'to ' + y;
+    const held = COUNCILS.filter(c => councilYear(c) <= y);
+    const last = held[held.length - 1];
+    latest.innerHTML = last ? `${held.length} of 21 councils. Most recent: <strong>${escapeHtml(last.name)}</strong>, ${escapeHtml(last.year)}, at ${escapeHtml(councilPlace(last))}.` : 'No ecumenical council had met yet. The first, at Nicaea, was in 325.';
+    if(!drawn) return;
+    places.forEach((pl, k) => {
+      const n = pl.list.filter(x => councilYear(x.c) <= y).length, m = drawn.markers[k];
+      if(n && !drawn.map.hasLayer(m)) m.addTo(drawn.map);
+      if(!n && drawn.map.hasLayer(m)) drawn.map.removeLayer(m);
+      if(n) m.setRadius(6 + 2 * n);
+    });
+  };
+  drawMap(el, points, { maxZoom:5 }).then(d => { drawn = d; update(); });
+  range.addEventListener('input', update);
+  let timer = null;
+  const stop = () => { clearInterval(timer); timer = null; play.textContent = '▶ Play'; play.setAttribute('aria-pressed', 'false'); };
+  play.addEventListener('click', () => {
+    if(timer){ stop(); return; }
+    if(Number(range.value) >= Number(range.max)) range.value = range.min;
+    play.textContent = '❚❚ Pause'; play.setAttribute('aria-pressed', 'true');
+    timer = setInterval(() => {
+      if(!range.isConnected){ clearInterval(timer); return; }
+      range.value = Math.min(Number(range.max), Number(range.value) + 12);
+      update();
+      if(Number(range.value) >= Number(range.max)) stop();
+    }, 60);
+  });
+  el.addEventListener('click', ev => {
+    const b = ev.target.closest('[data-cn]');
+    if(b){ ev.stopPropagation(); scrollToEl(root.querySelectorAll('.cn-item')[Number(b.dataset.cn)]); }
+  });
+  update();
+}
+
+/* ---------- Where the Eastern Catholic Churches are ---------- */
+// The seat of each Church's head (or, for the Churches without one, their homeland)
+const CHURCH_PLACES = {
+  'Ukrainian Greek Catholic Church':[[50.4501, 30.5234, 'Kyiv']],
+  'Ruthenian Greek Catholic Church':[[48.6208, 22.2879, 'Uzhhorod (Eparchy of Mukachevo)'], [40.4406, -79.9959, 'Pittsburgh']],
+  'Melkite Greek Catholic Church':[[33.5138, 36.2765, 'Damascus']],
+  'Romanian Greek Catholic Church':[[46.1757, 23.9150, 'Blaj']],
+  'Slovak Greek Catholic Church':[[48.9985, 21.2391, 'Prešov']],
+  'Hungarian Greek Catholic Church':[[47.8167, 21.5000, 'Hajdúdorog']],
+  'Greek Catholic Church of Croatia and Serbia':[[46.0219, 16.5426, 'Križevci'], [45.5617, 19.4228, 'Ruski Krstur']],
+  'Macedonian Greek Catholic Church':[[41.4378, 22.6431, 'Strumica']],
+  'Bulgarian Greek Catholic Church':[[42.6977, 23.3219, 'Sofia']],
+  'Italo-Albanian Catholic Church':[[39.7449, 16.1213, 'Lungro'], [37.9947, 13.2829, 'Piana degli Albanesi'], [41.7867, 12.6706, 'Grottaferrata']],
+  'Greek Byzantine Catholic Church':[[37.9838, 23.7275, 'Athens']],
+  'Belarusian Greek Catholic Church':[[53.9006, 27.5590, 'Belarus']],
+  'Russian Greek Catholic Church':[[55.7558, 37.6173, 'Russia']],
+  'Albanian Greek Catholic Church':[[40.4667, 19.4897, 'Vlorë']],
+  'Maronite Church':[[33.9504, 35.6366, 'Bkerke']],
+  'Syriac Catholic Church':[[33.8938, 35.5018, 'Beirut']],
+  'Syro-Malankara Catholic Church':[[8.5241, 76.9366, 'Thiruvananthapuram (Trivandrum)']],
+  'Chaldean Catholic Church':[[33.3152, 44.3661, 'Baghdad']],
+  'Syro-Malabar Catholic Church':[[9.9816, 76.2999, 'Ernakulam']],
+  'Armenian Catholic Church':[[33.8800, 35.5300, 'Beirut']],
+  'Coptic Catholic Church':[[30.0444, 31.2357, 'Cairo']],
+  'Ethiopian Catholic Church':[[9.0300, 38.7400, 'Addis Ababa']],
+  'Eritrean Catholic Church':[[15.3229, 38.9251, 'Asmara']]
+};
+const CHURCH_COLORS = ['var(--gold)', 'var(--teal)', 'var(--wine)', 'var(--purple)', 'var(--indigo)'];
+const churchSlug = name => name.toLowerCase().replace(/[^a-z]+/g, '-');
+function bindChurchMap(root){
+  const points = [];
+  EASTERN_CHURCHES.forEach((g, gi) => g.list.forEach(([name, head]) => (CHURCH_PLACES[name] || []).forEach(([lat, lng, place]) => points.push({
+    lat, lng, title:name, sub:place + ' · ' + head, color:CHURCH_COLORS[gi % CHURCH_COLORS.length],
+    html:`<button class="text-link" data-church="${churchSlug(name)}">Read about it →</button>` }))));
+  const el = root.querySelector('#ecMap');
+  drawMap(el, points, { maxZoom:4, pad:0.1 });
+  el.addEventListener('click', ev => {
+    const b = ev.target.closest('[data-church]');
+    if(b){ ev.stopPropagation(); scrollToEl(document.getElementById('ec-' + b.dataset.church)); }
+  });
+}
+
+/* ---------- Where Our Lady appeared (the apparitions in Church history) ---------- */
+// Medjugorje is left off: the Church has not declared its apparitions supernatural.
+const APPARITION_PLACES = {
+  h43:[39.6317, -8.6731, 'Fátima, Portugal'], h50:[41.6566, -0.8784, 'Zaragoza, Spain'], h51:[52.8930, 0.8750, 'Walsingham, England'],
+  h53:[19.4848, -99.1173, 'Tepeyac, Mexico City'], h54:[44.5290, 6.1480, 'Le Laus, France'], h55:[48.8510, 2.3239, 'Rue du Bac, Paris'],
+  h56:[44.8590, 5.9790, 'La Salette, France'], h57:[43.0975, -0.0581, 'Lourdes, France'], h58:[44.6640, -87.7900, 'Champion, Wisconsin'],
+  h59:[48.4300, -1.0600, 'Pontmain, France'], h60:[53.7920, -8.9190, 'Knock, Ireland'], h61:[50.1100, 4.9560, 'Beauraing, Belgium'],
+  h62:[50.5360, 5.7360, 'Banneux, Belgium'], h63:[39.7200, 140.1000, 'Akita, Japan'], h64:[-2.6378, 29.5510, 'Kibeho, Rwanda']
+};
+function apparitionPoints(){
+  return Object.entries(APPARITION_PLACES).map(([id, [lat, lng, place]]) => {
+    const e = library.find(x => x.id === id);
+    return e ? { lat, lng, year:e.year, title:e.title, sub:place + (e.author ? ' · ' + e.author : ''), color:'var(--rose)', html:`<button class="text-link" data-open="${id}">Read the story →</button>` } : null;
+  }).filter(Boolean);
+}
+
+/* ---------- Year sliders ---------- */
+// The years a pope reigned, from the reign as written ("c. 30 – c. 64", "174/5 – 189", "8 May 2025 – present")
+function popeYears(p){
+  const [a, b] = p[2].replace(/\[\d+\]/g, '').split('–');
+  const nums = t => (t || '').match(/\d{2,4}/g) || [];
+  // the year is the last number on each side (the day of the month comes first)
+  const start = Number(nums(a).slice(-1)[0]), end = /present/.test(b || '') ? new Date().getFullYear() : Number(nums(b).slice(-1)[0] || start);
+  return [start, end];
+}
+function popeInYear(y){
+  const now = POPES.filter(p => { const [a, b] = popeYears(p); return a <= y && y <= b; });
+  if(now.length) return { now };
+  const before = [...POPES].reverse().find(p => popeYears(p)[1] < y), after = POPES.find(p => popeYears(p)[0] > y);
+  return { now:[], before, after };
+}
+// A slider with two handles, for a span of years
+function dualRangeHtml(id, min, max, from, to, label){
+  return `<div class="sx-dual" id="${id}" style="--a:${(from - min) / (max - min) * 100}%; --b:${(to - min) / (max - min) * 100}%">
+    <div class="sx-dual-track" aria-hidden="true"></div>
+    <input type="range" min="${min}" max="${max}" value="${from}" aria-label="${escapeHtml(label)}: from">
+    <input type="range" min="${min}" max="${max}" value="${to}" aria-label="${escapeHtml(label)}: to">
+  </div>`;
+}
+function bindDualRange(el, onChange){
+  const [a, b] = el.querySelectorAll('input'), min = Number(a.min), max = Number(a.max);
+  const set = () => {
+    let x = Number(a.value), y = Number(b.value);
+    if(x > y){ if(document.activeElement === a) a.value = x = y; else b.value = y = x; }
+    el.style.setProperty('--a', (x - min) / (max - min) * 100 + '%');
+    el.style.setProperty('--b', (y - min) / (max - min) * 100 + '%');
+    onChange(x, y);
+  };
+  a.addEventListener('input', set); b.addEventListener('input', set);
+  set();
+}
+
+/* ---------- The year at a glance, on the Calendar ---------- */
+function yearStripHtml(y){
+  const days = [], first = new Date(y, 0, 1);
+  for(let d = first; d.getFullYear() === y; d = addDays(d, 1)) days.push(d);
+  // one band per run of the same liturgical color
+  const stops = []; let run = null;
+  days.forEach((d, i) => {
+    const c = liturgicalSeason(d).color;
+    if(!run || run.c !== c){ run = { c, a:i, b:i }; stops.push(run); } else run.b = i;
+  });
+  const pct = i => (i / days.length * 100).toFixed(3) + '%';
+  const grad = stops.map(r => `${r.c} ${pct(r.a)} ${pct(r.b + 1)}`).join(', ');
+  // start on the selected day of the calendar, or today, if either falls in this year
+  const pick = [calSelected, startOfToday()].find(d => d && d.getFullYear() === y);
+  const start = pick ? Math.round((new Date(y, pick.getMonth(), pick.getDate()) - first) / 86400000) : 0;
+  const months = MONTH_NAMES.map((m, i) => `<span style="left:${pct(Math.round((new Date(y, i, 1) - first) / 86400000))}">${escapeHtml(pageLang() === 'en' ? m.slice(0, 3) : new Date(y, i, 1).toLocaleDateString(pageLang(), { month:'short' }))}</span>`).join('');
+  return `<section class="sx-year" aria-labelledby="sxYearHead">
+    <div class="sx-year-head"><h3 id="sxYearHead">The year at a glance</h3><span class="forum-meta">Drag through ${y} to see each day’s season and feast</span></div>
+    <div class="sx-year-strip" style="background:linear-gradient(90deg, ${grad})"><span class="sx-year-mark" id="sxYearMark" style="left:${pct(start)}"></span>
+      <input type="range" class="sx-year-range" id="sxYearRange" min="0" max="${days.length - 1}" value="${start}" aria-label="Day of ${y}"></div>
+    <div class="sx-year-months" aria-hidden="true">${months}</div>
+    <div class="sx-year-out" id="sxYearOut" aria-live="polite"></div>
+  </section>`;
+}
+function bindYearStrip(root, y){
+  const range = root.querySelector('#sxYearRange'), out = root.querySelector('#sxYearOut'), mark = root.querySelector('#sxYearMark');
+  if(!range) return;
+  const total = Number(range.max) + 1;
+  const show = () => {
+    const d = addDays(new Date(y, 0, 1), Number(range.value));
+    const season = liturgicalSeason(d), obs = observancesFor(d).filter(o => o.type !== 'Season'), top = obs[0];
+    mark.style.left = (Number(range.value) / total * 100) + '%';
+    mark.style.setProperty('--c', season.color);
+    out.innerHTML = `<span class="sx-year-dot" style="background:${season.color}"></span>
+      <span><strong>${escapeHtml(dayLabel(d))}</strong><span class="forum-meta">${escapeHtml(season.name)}${top ? ' · ' + escapeHtml(top.name) + (top.type && top.type !== 'Saint' ? ' (' + escapeHtml(top.type) + ')' : '') : ''}</span></span>
+      <button class="btn quiet" type="button" data-year-go>Open this day</button>`;
+    out.querySelector('[data-year-go]').addEventListener('click', () => { calView = 'month'; selectCalDay(d, true); });
+  };
+  range.addEventListener('input', show);
+  show();
 }
 
 /* ---------- Discord ---------- */
@@ -11139,6 +11435,7 @@ function ordinalCentury(c){
   return c + s + ' century';
 }
 let popeQuery = '';
+let popeYearPick = 1500;
 function renderPopes(){
   entryListEl.innerHTML = '';
   // saints of the library who were popes, matched by name
@@ -11169,6 +11466,12 @@ function renderPopes(){
       <div><strong>13 days</strong><span>shortest reign: Urban VII, 1590</span></div>
       <div><strong>${common.map(c => c[0]).join(', ')}</strong><span>most common names (${common.map(c => c[1]).join(', ')} popes)</span></div>
     </div>
+    <section class="sx-card sx-pope">
+      <div class="sx-slider-head"><label for="popeYear">Who was pope in <strong id="popeYearOut"></strong>?</label></div>
+      <input type="range" id="popeYear" min="33" max="${new Date().getFullYear()}" step="1" value="${popeYearPick}">
+      <div class="sx-ticks" aria-hidden="true"><span>33</span><span>500</span><span>1000</span><span>1500</span><span>${new Date().getFullYear()}</span></div>
+      <div class="sx-pope-out" id="popeYearResult" aria-live="polite"></div>
+    </section>
     <div class="patron-filters-row" role="group" aria-label="Show">
       ${[['all', 'All popes'], ['holy', 'Saints & blesseds'], ['notes', 'Highlights']].map(([k, n]) => `<button class="patron-chip${popeView === k ? ' active' : ''}" data-pv="${k}" aria-pressed="${popeView === k}">${n}</button>`).join('')}
     </div>
@@ -11185,12 +11488,29 @@ function renderPopes(){
           const link = sid ? `<button class="text-link pope-name" data-open="${sid}">${escapeHtml(name)}</button>`
             : `<a class="pope-name" href="https://en.wikipedia.org/wiki/${encodeURIComponent(p[3].replace(/ /g, '_'))}" target="_blank" rel="noopener">${escapeHtml(name)}</a>`;
           const note = POPE_NOTES[p[0]];
-          return `<li class="pope${holy ? ' holy-' + holy : ''}${note ? ' has-note' : ''}"><span class="pope-num">${p[0]}</span><span class="pope-main">${link}<span class="pope-reign">${escapeHtml(p[2])}</span>${note ? `<span class="pope-note">${escapeHtml(note)}</span>` : ''}</span>${holy ? `<span class="pope-badge">${holy === 'st' ? 'Saint' : 'Blessed'}</span>` : ''}</li>`;
+          return `<li class="pope${holy ? ' holy-' + holy : ''}${note ? ' has-note' : ''}" data-pope="${p[0]}"><span class="pope-num">${p[0]}</span><span class="pope-main">${link}<span class="pope-reign">${escapeHtml(p[2])}</span>${note ? `<span class="pope-note">${escapeHtml(note)}</span>` : ''}</span>${holy ? `<span class="pope-badge">${holy === 'st' ? 'Saint' : 'Blessed'}</span>` : ''}</li>`;
         }).join('')}</ol>
       </section>`).join('')}
     <p class="fi-note">Dates of the earliest popes are traditional and approximate. List and dates from the Annuario Pontificio as given by Wikipedia; names without a Sanctify page link to Wikipedia.</p>`;
   entryListEl.appendChild(wrap);
   wrap.querySelectorAll('[data-pv]').forEach(b => b.addEventListener('click', () => { popeView = b.dataset.pv; renderPopes(); }));
+  const yr = wrap.querySelector('#popeYear'), yrOut = wrap.querySelector('#popeYearOut'), yrRes = wrap.querySelector('#popeYearResult');
+  const popeLine = p => `<button class="sx-pope-pick" type="button" data-goto-pope="${p[0]}"><span class="pope-num">${p[0]}</span><span><strong>${escapeHtml(p[1].replace(/^St /, 'St. ').replace(/^Bl /, 'Bl. '))}</strong><span class="forum-meta">${escapeHtml(p[2].replace(/\[\d+\]/g, ''))}</span></span></button>`;
+  const showYear = () => {
+    popeYearPick = Number(yr.value);
+    yrOut.textContent = yr.value;
+    const r = popeInYear(popeYearPick);
+    yrRes.innerHTML = r.now.length ? r.now.map(popeLine).join('')
+      : `<p class="forum-meta">The see of Rome was vacant that year${r.before && r.after ? `, between ${escapeHtml(r.before[1])} and ${escapeHtml(r.after[1])}` : ''}.</p>`;
+  };
+  yr.addEventListener('input', showYear);
+  yrRes.addEventListener('click', ev => {
+    const b = ev.target.closest('[data-goto-pope]');
+    if(!b) return;
+    if(popeQuery || popeView !== 'all'){ popeQuery = ''; popeView = 'all'; renderPopes(); }
+    scrollToEl(entryListEl.querySelector(`[data-pope="${b.dataset.gotoPope}"]`));
+  });
+  showYear();
   const box = wrap.querySelector('#popeSearch');
   box.addEventListener('input', () => {
     const pos = box.selectionStart;
@@ -15291,6 +15611,17 @@ function renderCouncils(){
         ${east ? '<p>The Orthodox Churches receive the first seven, the Seven Ecumenical Councils, which shaped the Byzantine liturgy and its feasts. The Eastern Catholic Churches, in full communion with Rome, accept all twenty-one, as do Latin Catholics.</p>' : '<p>The first seven are shared with the Orthodox Churches, who call them the Seven Ecumenical Councils. The Catholic Church counts twenty-one in all.</p>'}
         <button class="text-link dv-link" data-open="h7">The Council of Jerusalem →</button>
       </section>
+      <section class="dv-card sx-card" style="--dv:var(--gold)">
+        <header class="dv-head"><span class="dv-icon">${navIcon('globe')}</span><div><div class="daily-kicker">Map</div><h3>Where the councils met</h3></div></header>
+        ${mapBoxHtml('cnMap', 'Map of where the ecumenical councils met')}
+        <p class="sx-legend"><span><i style="background:var(--gold)"></i>The first seven, shared with the Orthodox</span><span><i style="background:var(--wine)"></i>The later councils</span></p>
+        <div class="sx-slider">
+          <div class="sx-slider-head"><label for="cnYear">Through the centuries: <strong id="cnYearOut">all 21</strong></label><button class="btn quiet" type="button" id="cnPlay" aria-pressed="false">▶ Play</button></div>
+          <input type="range" id="cnYear" min="300" max="1965" step="1" value="1965">
+          <div class="sx-ticks" aria-hidden="true"><span>300</span><span>800</span><span>1300</span><span>1965</span></div>
+          <p class="sx-note" id="cnLatest" aria-live="polite"></p>
+        </div>
+      </section>
       <ol class="cn-list">
         ${COUNCILS.map((c, i) => `
         <li class="cn-item${i < 7 ? ' cn-seven' : ''}">
@@ -15307,7 +15638,8 @@ function renderCouncils(){
       </ol>
       ${east ? '<p class="dv-note">The Byzantine calendar also keeps the Sunday of the Fathers of the Seventh Council in October, and of the Fathers of the first six councils in July.</p>' : ''}
     </div>`;
-  entryListEl.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openReadModal(b.dataset.open)));
+  entryListEl.querySelectorAll('.cn-page > .dv-card [data-open], .cn-list [data-open]').forEach(b => b.addEventListener('click', () => openReadModal(b.dataset.open)));
+  bindCouncilMap(entryListEl);
 }
 
 /* =========================================================
