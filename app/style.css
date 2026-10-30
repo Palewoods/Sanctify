@@ -3809,3 +3809,53 @@
     .yw{float:none; width:min(240px, 76%); margin:4px auto 14px;}
   }
   @media (prefers-reduced-motion:reduce){ .yw-handle{transition:none;} }
+
+  /* =========================================================
+     THE BIBLE AT A GLANCE
+     ========================================================= */
+  .bm{margin:0 0 26px; padding:18px 20px; border:1px solid var(--line); border-radius:18px; background:var(--parchment-light);}
+  .bm-head{display:flex; align-items:baseline; justify-content:space-between; gap:8px 14px; flex-wrap:wrap; margin-bottom:12px;}
+  .bm-head h3{margin:0; font-size:1.3rem;}
+  .bm-row{display:grid; grid-template-columns:7.5em minmax(0, 1fr); align-items:center; gap:12px; margin-top:8px;}
+  .bm-label{font-size:0.72rem; text-transform:uppercase; letter-spacing:0.14em; font-weight:600; color:var(--ink-soft);}
+  .bm-bars{display:flex; gap:2px; height:54px; touch-action:pan-y;}
+  .bm-bar{position:relative; flex-basis:0; min-width:3px; padding:0; border:0; border-radius:3px; cursor:pointer; overflow:hidden;
+    background:color-mix(in srgb, var(--c) 24%, var(--parchment-dark)); transition:translate .15s ease, filter .15s ease;}
+  .bm-bar span{position:absolute; left:0; right:0; bottom:0; height:calc(var(--p) * 100%); background:var(--c);}
+  .bm-bar:hover, .bm-bar.on{translate:0 -4px; background:color-mix(in srgb, var(--c) 46%, var(--parchment-dark));}
+  .bm-bar:focus-visible{outline:2px solid var(--ink); outline-offset:2px;}
+  .bm-read{display:flex; align-items:center; gap:4px 10px; flex-wrap:wrap; min-height:2.2em; margin:12px 0 8px; font-size:0.92rem;}
+  .bm-read strong{font-family:'Cormorant Garamond', Georgia, serif; font-size:1.25rem;}
+  .bm-read > span:not(.bm-dot){color:var(--ink-soft);}
+  .bm-read .text-link{margin-left:auto;}
+  .bm-dot{width:10px; height:10px; border-radius:50%; flex:0 0 auto;}
+  .bm-hint{font-style:italic;}
+  .bm-legend{margin:0;}
+  @media (max-width:600px){
+    .bm{padding:16px 14px;}
+    .bm-row{grid-template-columns:1fr; gap:6px;}
+    .bm-bars{height:46px; gap:1px;}
+    .bm-bar{min-width:2px; border-radius:2px;}
+  }
+  @media (prefers-reduced-motion:reduce){ .bm-bar{transition:none;} }
+  /* a thin line on each book tile, and the chapters already read */
+  .bible-tile{position:relative;}
+  .bt-read{position:absolute; left:12px; right:12px; bottom:7px; height:3px; border-radius:2px; background:var(--line); overflow:hidden;}
+  .bt-read::after{content:''; position:absolute; inset:0 auto 0 0; width:calc(var(--p) * 100%); background:var(--gold);}
+  .bb-heading-row{display:flex; align-items:baseline; justify-content:space-between; gap:8px 14px; flex-wrap:wrap;}
+  .bb-progress{display:inline-flex; align-items:center; gap:10px; font-size:0.86rem; color:var(--ink-soft);}
+  .bb-progress-bar{position:relative; width:110px; height:5px; border-radius:3px; background:var(--line); overflow:hidden;}
+  .bb-progress-bar::after{content:''; position:absolute; inset:0 auto 0 0; width:calc(var(--p) * 100%); background:var(--gold);}
+  .bb-ch.read{background:color-mix(in srgb, var(--gold) 16%, var(--parchment-light)); border-color:color-mix(in srgb, var(--gold) 55%, var(--line)); position:relative;}
+  .bb-ch.read::after{content:''; position:absolute; top:6px; right:7px; width:5px; height:5px; border-radius:50%; background:var(--gold);}
+
+  /* =========================================================
+     FAMOUS ICONS: the lens
+     ========================================================= */
+  .fi-zoom{position:relative; display:block; cursor:zoom-in;}
+  .fi-lens{position:absolute; left:0; top:0; width:180px; height:180px; border-radius:50%; translate:-50% -50%; pointer-events:none;
+    border:3px solid var(--gold); box-shadow:0 0 0 1px rgba(0,0,0,.35), 0 14px 30px -10px rgba(0,0,0,.6) !important; background-color:var(--parchment-dark); background-repeat:no-repeat;
+    opacity:0; scale:.85; transition:opacity .18s ease, scale .18s ease;}
+  .fi-zoom:hover .fi-lens{opacity:1; scale:1;}
+  .fi-lens-hint{margin:6px 0 0; font-size:0.8rem; font-style:italic; color:var(--ink-soft);}
+  @media (prefers-reduced-motion:reduce){ .fi-lens{transition:none;} }

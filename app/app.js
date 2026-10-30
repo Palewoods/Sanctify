@@ -1066,6 +1066,8 @@ function renderBible(entries){
     if(ref) navigate(bibleRoute(ref));
   });
   entryListEl.appendChild(top);
+  entryListEl.appendChild(bibleMap());
+  const readCh = store.get('read.bible', {});
   BIBLE_SECTIONS.forEach(([testament, parts]) => {
     const inTestament = entries.filter(e => (e.author || '').startsWith(testament));
     const sec = document.createElement('section');
@@ -1081,8 +1083,10 @@ function renderBible(entries){
       books.forEach(b => {
         const t = document.createElement('button');
         t.className = 'bible-tile';
-        t.innerHTML = `<span class="bt-title">${escapeHtml(b.title)}</span><span class="bt-note">${escapeHtml(excerptOf(b.content, 90))}</span>`;
         const book = BIBLE_BOOKS.find(x => x[1] === b.id);
+        const got = book ? Object.keys(readCh).filter(k => k.startsWith(book[0] + '/')).length : 0;
+        t.innerHTML = `<span class="bt-title">${escapeHtml(b.title)}</span><span class="bt-note">${escapeHtml(excerptOf(b.content, 90))}</span>`
+          + (got ? `<span class="bt-read" style="--p:${Math.min(1, got / book[4])}" title="${got} of ${book[4]} chapters read"></span>` : '');
         t.addEventListener('click', () => book ? navigate('library/bible/' + book[0]) : openReadModal(b.id));
         tiles.appendChild(t);
       });
@@ -1090,6 +1094,60 @@ function renderBible(entries){
     });
     entryListEl.appendChild(sec);
   });
+}
+
+// Each book of the Bible as a bar as wide as its chapters, colored by its part of the canon and filled as its chapters are read.
+// Point at a bar (or drag along the bars on a phone) to see the book; select it to open it.
+const BIBLE_PART_COLORS = {
+  'Old Testament, Pentateuch':'var(--wine)', 'Old Testament, Historical':'var(--gold)', 'Old Testament, Wisdom':'var(--green)', 'Old Testament, Prophetic':'var(--purple)',
+  'New Testament, Gospel':'var(--rose)', 'New Testament, History':'var(--teal)', 'New Testament, Pauline Epistle':'var(--indigo)', 'New Testament, Epistle':'var(--indigo)',
+  'New Testament, Catholic Epistle':'var(--teal)', 'New Testament, Apocalyptic':'var(--wine)'
+};
+function bibleMap(){
+  const read = store.get('read.bible', {});
+  const partOf = b => { const e = library.find(x => x.id === b[1]); return e ? e.author : ''; };
+  const count = b => Object.keys(read).filter(k => k.startsWith(b[0] + '/')).length;
+  const total = BIBLE_BOOKS.reduce((n, b) => n + b[4], 0), done = BIBLE_BOOKS.reduce((n, b) => n + Math.min(count(b), b[4]), 0);
+  const row = (testament, books) => `<div class="bm-row"><span class="bm-label">${testament}</span><div class="bm-bars">${books.map(b => {
+    const got = Math.min(count(b), b[4]);
+    return `<button class="bm-bar" data-slug="${b[0]}" style="flex-grow:${b[4]}; --c:${BIBLE_PART_COLORS[partOf(b)] || 'var(--wine)'}; --p:${got / b[4]}" aria-label="${escapeHtml(`${b[2]}: ${got} of ${b[4]} chapters read`)}"><span></span></button>`;
+  }).join('')}</div></div>`;
+  const ot = BIBLE_BOOKS.filter(b => partOf(b).startsWith('Old')), nt = BIBLE_BOOKS.filter(b => partOf(b).startsWith('New'));
+  const names = BIBLE_SECTIONS.flatMap(([, parts]) => parts).filter(([label]) => label !== 'New Testament, Epistle');
+  const sec = document.createElement('section');
+  sec.className = 'bm';
+  sec.innerHTML = `
+    <div class="bm-head"><h3>The whole Bible at a glance</h3><span class="view-count">${done ? `${done.toLocaleString()} of ${total.toLocaleString()} chapters read` : `${total.toLocaleString()} chapters in ${BIBLE_BOOKS.length} books`}</span></div>
+    ${row('Old Testament', ot)}${row('New Testament', nt)}
+    <div class="bm-read" aria-live="polite"><span class="bm-hint">Point at a book to see it${done ? ', and how much of it you have read' : ''}.</span></div>
+    <div class="sx-legend bm-legend">${names.map(([label, name]) => `<span><i style="background:${BIBLE_PART_COLORS[label]}"></i>${escapeHtml(name)}</span>`).join('')}</div>`;
+  const out = sec.querySelector('.bm-read');
+  let picked = null;
+  const show = bar => {
+    if(!bar || bar === picked) return;
+    sec.querySelectorAll('.bm-bar.on').forEach(x => x.classList.remove('on'));
+    bar.classList.add('on');
+    picked = bar;
+    const b = BIBLE_BY_SLUG[bar.dataset.slug], got = Math.min(count(b), b[4]);
+    const part = (names.find(([label]) => label === partOf(b)) || BIBLE_SECTIONS[1][1].find(([label]) => label === partOf(b)) || ['', ''])[1];
+    out.innerHTML = `<span class="bm-dot" style="background:${BIBLE_PART_COLORS[partOf(b)]}"></span><strong>${escapeHtml(b[2])}</strong><span>${escapeHtml(part)} · ${plural(b[4], 'chapter', 'chapters')}${got ? ` · ${got} read` : ''}</span><button class="text-link" data-route="library/bible/${b[0]}">Open →</button>`;
+  };
+  const bars = sec.querySelectorAll('.bm-bar');
+  bars.forEach(bar => {
+    bar.addEventListener('pointerenter', ev => { if(ev.pointerType === 'mouse') show(bar); });
+    bar.addEventListener('focus', () => show(bar));
+    // a mouse opens the book at once; a finger first shows it, and the Open button (or a second tap) opens it
+    bar.addEventListener('click', () => { if(bar === picked && (bar.dataset.tapped || matchMedia('(hover:hover)').matches)) navigate('library/bible/' + bar.dataset.slug); else { show(bar); bar.dataset.tapped = 1; } });
+  });
+  sec.querySelectorAll('.bm-bars').forEach(strip => {
+    strip.addEventListener('pointermove', ev => {
+      if(ev.pointerType === 'mouse') return;
+      const el = document.elementFromPoint(ev.clientX, ev.clientY);
+      const bar = el && el.closest('.bm-bar');
+      if(bar && strip.contains(bar)) show(bar);
+    });
+  });
+  return sec;
 }
 
 /* ---------- Prayers, with illustrated cards and topics ---------- */
@@ -8567,15 +8625,18 @@ function renderBibleReader(){
 }
 
 function renderBibleBook(book, entry){
+  const read = store.get('read.bible', {}), isRead = i => !!read[book[0] + '/' + i];
+  const got = Array.from({ length:book[4] }, (_, i) => i + 1).filter(isRead).length;
+  const nextUp = got && got < book[4] ? Array.from({ length:book[4] }, (_, i) => i + 1).find(i => !isRead(i)) : 0;
   sectionTitleEl.textContent = book[2];
   sectionDescEl.textContent = book[3] !== book[2] ? `Called ${book[3]} in the Douay-Rheims Bible.` : (entry ? entry.author.replace(/,\s*/, ' · ') : '');
   document.title = `${book[2]} — Sanctify`;
   entryListEl.innerHTML = `
     <div class="bb">
       ${entry ? `<p class="bb-intro">${escapeHtml(entry.content)}</p>` : ''}
-      <button class="btn bb-start" data-route="library/bible/${book[0]}/1">Begin reading ${escapeHtml(book[0] === 'psalms' ? 'the Psalms' : book[2])} →</button>
-      <h3 class="bb-heading">${book[0] === 'psalms' ? 'Psalms' : 'Chapters'}</h3>
-      <div class="bb-chapters">${Array.from({ length:book[4] }, (_, i) => `<button class="bb-ch" data-route="library/bible/${book[0]}/${i + 1}">${i + 1}</button>`).join('')}</div>
+      <button class="btn bb-start" data-route="library/bible/${book[0]}/${nextUp || 1}">${nextUp ? `Continue with ${escapeHtml(bibleChapterName(book, nextUp))}` : `${got ? 'Read again from the beginning' : 'Begin reading'} ${escapeHtml(book[0] === 'psalms' ? 'the Psalms' : book[2])}`} →</button>
+      <div class="bb-heading-row"><h3 class="bb-heading">${book[0] === 'psalms' ? 'Psalms' : 'Chapters'}</h3>${got ? `<span class="bb-progress"><span class="bb-progress-bar" style="--p:${got / book[4]}"></span>${got} of ${book[4]} read</span>` : ''}</div>
+      <div class="bb-chapters">${Array.from({ length:book[4] }, (_, i) => `<button class="bb-ch${isRead(i + 1) ? ' read' : ''}" data-route="library/bible/${book[0]}/${i + 1}"${isRead(i + 1) ? ` aria-label="${i + 1}, read"` : ''}>${i + 1}</button>`).join('')}</div>
       ${book[0] === 'psalms' ? '<p class="shop-note">The Psalms follow the numbering of the Latin Vulgate, usually one lower than in modern Bibles from Psalm 10 to 147. Each psalm shows its modern number too.</p>' : ''}
     </div>`;
 }
@@ -11065,6 +11126,7 @@ function renderFamousIcons(){
         </div>
       </article>`;
     wrap.querySelector('.fi-back').addEventListener('click', () => { famousOpen = null; renderFamousIcons(); window.scrollTo({ top:0 }); });
+    bindIconLens(wrap.querySelector('.fi-figure'));
   } else {
     const order = FAMOUS_KINDS.map(k => k[0]);
     const list = FAMOUS_ICONS.filter(ic => famousKind === 'all' || ic.kind === famousKind)
@@ -11073,9 +11135,9 @@ function renderFamousIcons(){
       <div class="patron-filters-row fi-kinds" role="group" aria-label="Kinds of icons">
         ${FAMOUS_KINDS.map(([k, n]) => `<button class="patron-chip${famousKind === k ? ' active' : ''}" data-kind="${k}" aria-pressed="${famousKind === k}">${n}</button>`).join('')}
       </div>
-      <div class="fi-grid">${list.map(ic => {
+      <div class="fi-grid">${list.map((ic, i) => {
         const img = FAMOUS_IMG[ic.key];
-        return `<button class="fi-card" type="button" data-icon="${ic.key}">
+        return `<button class="fi-card hx-in" type="button" data-icon="${ic.key}" style="--d:${Math.min(i, 12)}">
           <span class="fi-thumb">${img ? `<img src="${escapeHtml(img.img)}" alt="" loading="lazy" decoding="async">` : ''}</span>
           <span class="fi-title">${escapeHtml(ic.title)}</span>
           <span class="fi-date">${escapeHtml(ic.date)}</span>
@@ -11086,6 +11148,38 @@ function renderFamousIcons(){
     wrap.querySelectorAll('[data-icon]').forEach(b => b.addEventListener('click', () => { famousOpen = b.dataset.icon; renderFamousIcons(); window.scrollTo({ top:0 }); }));
   }
   entryListEl.appendChild(wrap);
+}
+
+// With a mouse, a round lens follows the pointer over an icon and shows it two and a half times larger,
+// from a sharper copy of the picture when Wikimedia has one (1280 pixels wide, or 960, instead of 500)
+function bindIconLens(fig){
+  const img = fig && fig.querySelector('img');
+  if(!img || !matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  const Z = 2.5, lens = document.createElement('span');
+  lens.className = 'fi-lens';
+  lens.setAttribute('aria-hidden', 'true');
+  const box = document.createElement('span');
+  box.className = 'fi-zoom';
+  img.replaceWith(box);
+  box.append(img, lens);
+  fig.insertAdjacentHTML('beforeend', '<p class="fi-lens-hint">Move over the icon to look closer.</p>');
+  let src = img.src;
+  lens.style.backgroundImage = `url("${src}")`;
+  const tryBig = sizes => {
+    if(!sizes.length || !/\/thumb\/.*\/500px-/.test(img.src)) return;
+    const big = img.src.replace(/\/500px-/, `/${sizes[0]}px-`), pre = new Image();
+    pre.onload = () => { src = big; lens.style.backgroundImage = `url("${big}")`; };
+    pre.onerror = () => tryBig(sizes.slice(1));
+    pre.src = big;
+  };
+  box.addEventListener('pointerenter', () => tryBig([1280, 960]), { once:true });
+  box.addEventListener('pointermove', ev => {
+    const r = img.getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top, half = lens.offsetWidth / 2;
+    lens.style.left = x + 'px';
+    lens.style.top = y + 'px';
+    lens.style.backgroundSize = `${r.width * Z}px ${r.height * Z}px`;
+    lens.style.backgroundPosition = `${half - x * Z}px ${half - y * Z}px`;
+  });
 }
 
 /* =========================================================
