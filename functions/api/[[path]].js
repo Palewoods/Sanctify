@@ -45,6 +45,8 @@ const VIDEO_MAX_BYTES = 1300 * 1000;
 // (the City of God) unless they choose another.
 const RINGS = ['halo', 'rosary', 'prayer-rope', 'stars', 'roses', 'stained-glass', 'laurel', 'flame', 'pearls'];
 const OWNER_RINGS = ['city-of-god', 'owner'];
+// STAFF_RINGS are for the moderation team: the moderators and the site administrators
+const STAFF_RINGS = ['parchment'];
 // The preset banner designs (kept in step with BANNER_PRESETS in index.html)
 const BANNER_PRESETS = ['stained-glass', 'starry-mantle', 'gold-leaf', 'easter-dawn', 'roses', 'cloister', 'advent', 'stella-maris', 'byzantine', 'ordinary-time', 'pentecost', 'lily'];
 const AVATAR_TYPES = { 'image/jpeg':[0xFF, 0xD8, 0xFF], 'image/png':[0x89, 0x50, 0x4E, 0x47], 'image/webp':[0x52, 0x49, 0x46, 0x46] };
@@ -630,7 +632,7 @@ async function exportAccount(ctx){
       picture: avatar ? `data:${avatar.mime};base64,${avatar.data}` : null,
       banner: banner ? (banner.preset || `data:${banner.mime};base64,${banner.data}`) : null,
       savedShownOnProfile: (fav && readFavorites(fav.ids)) || [],
-      ring: ringFor(ctx, account.username, ((await one('SELECT ring FROM rings WHERE user_id = ?')) || {}).ring)
+      ring: ringFor(ctx, account.username, ((await one('SELECT ring FROM rings WHERE user_id = ?')) || {}).ring, user.role)
     },
     posts: (await all('SELECT id, category, title, body, created_at FROM posts WHERE user_id = ? AND deleted = 0 ORDER BY id'))
       .map(p => ({ id:p.id, category:p.category, title:p.title, body:p.body, posted:when(p.created_at) })),
@@ -723,23 +725,26 @@ async function setBanner(ctx){
 /* ---------- Profile rings ---------- */
 function ownerName(ctx){ return String(ctx.env.ADMINS || '').split(',').map(x => x.trim()).filter(Boolean)[0] || ''; }
 function isOwner(ctx, name){ return !!name && ownerName(ctx).toLowerCase() === String(name).toLowerCase(); }
-function ringFor(ctx, name, key){
+// The ring a member wears: their choice if they may still wear it (a moderator who steps down loses the staff ring)
+function ringFor(ctx, name, key, role){
   if(!name || key === 'none') return null;
-  if(isOwner(ctx, name)) return key && (RINGS.includes(key) || OWNER_RINGS.includes(key)) ? key : OWNER_RINGS[0];
-  return key && RINGS.includes(key) ? key : null;
+  const owner = isOwner(ctx, name), staff = siteAdmin(ctx, name) || role === 'moderator';
+  const allowed = k => RINGS.includes(k) || (staff && STAFF_RINGS.includes(k)) || (owner && OWNER_RINGS.includes(k));
+  if(owner) return key && allowed(key) ? key : OWNER_RINGS[0];
+  return key && allowed(key) ? key : null;
 }
 
 async function setRing(ctx){
   const user = requireUser(ctx);
   const { ring } = await readBody(ctx, 1000);
   const key = String(ring || 'none'), owner = isOwner(ctx, user.username);
-  if(key !== 'none' && !RINGS.includes(key) && !(owner && OWNER_RINGS.includes(key))) throw new HttpError(400, 'Please choose one of the rings.');
+  if(key !== 'none' && !RINGS.includes(key) && !(owner && OWNER_RINGS.includes(key)) && !(user.admin && STAFF_RINGS.includes(key))) throw new HttpError(400, 'Please choose one of the rings.');
   await limit(ctx, 'ring:' + user.id, 40, 60 * 60 * 1000, 'You’ve changed your ring several times recently. Please try again later.');
   // The owner's first ring is what they wear with nothing chosen, so choosing it clears the choice
   if(key === OWNER_RINGS[0] || (key === 'none' && !owner)) await ctx.db.prepare('DELETE FROM rings WHERE user_id = ?').bind(user.id).run();
   else await ctx.db.prepare('INSERT INTO rings (user_id, ring, updated_at) VALUES (?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET ring = excluded.ring, updated_at = excluded.updated_at')
     .bind(user.id, key, ctx.now).run();
-  return json({ ring:ringFor(ctx, user.username, key === OWNER_RINGS[0] ? null : key) });
+  return json({ ring:ringFor(ctx, user.username, key === OWNER_RINGS[0] ? null : key, user.role) });
 }
 
 async function removeBanner(ctx){
@@ -833,9 +838,9 @@ async function listPosts(ctx){
   }
   const { results } = await ctx.db.prepare(
     `SELECT p.id, p.category, p.title, substr(p.body, 1, 240) AS excerpt, p.created_at, p.last_activity,
-            p.reply_count, p.prayer_count, u.username, a.updated_at AS avatar_v, rg.ring, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked,
+            p.reply_count, p.prayer_count, u.username, a.updated_at AS avatar_v, rg.ring, ro.role, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked,
             (mp.user_id IS NOT NULL) AS prayed
-       FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id LEFT JOIN rings rg ON rg.user_id = p.user_id LEFT JOIN post_flags f ON f.post_id = p.id
+       FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id LEFT JOIN rings rg ON rg.user_id = p.user_id LEFT JOIN roles ro ON ro.user_id = p.user_id LEFT JOIN post_flags f ON f.post_id = p.id
             LEFT JOIN prayers mp ON mp.post_id = p.id AND mp.user_id = ?
       WHERE ${where.join(' AND ')}
       ORDER BY COALESCE(f.pinned, 0) DESC, p.last_activity DESC, p.id DESC
@@ -843,7 +848,7 @@ async function listPosts(ctx){
   ).bind(ctx.user ? ctx.user.id : 0, ...args, PAGE_SIZE + 1, page * PAGE_SIZE).all();
   return json({
     posts:results.slice(0, PAGE_SIZE).map(r => ({
-      id:r.id, category:r.category, title:r.title, excerpt:r.excerpt, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null, authorRing:ringFor(ctx, r.username, r.ring),
+      id:r.id, category:r.category, title:r.title, excerpt:r.excerpt, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null, authorRing:ringFor(ctx, r.username, r.ring, r.role),
       createdAt:r.created_at, lastActivity:r.last_activity, replies:r.reply_count, prayers:r.prayer_count, prayed:!!r.prayed, pinned:!!r.pinned, locked:!!r.locked
     })),
     more:results.length > PAGE_SIZE
@@ -852,15 +857,15 @@ async function listPosts(ctx){
 
 async function getPost(ctx, id){
   const post = await ctx.db.prepare(
-    `SELECT p.*, u.username, a.updated_at AS avatar_v, rg.ring, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked
+    `SELECT p.*, u.username, a.updated_at AS avatar_v, rg.ring, ro.role, COALESCE(f.pinned, 0) AS pinned, COALESCE(f.locked, 0) AS locked
             , e.edited_at
-       FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id LEFT JOIN rings rg ON rg.user_id = p.user_id LEFT JOIN post_flags f ON f.post_id = p.id
+       FROM posts p LEFT JOIN users u ON u.id = p.user_id LEFT JOIN avatars a ON a.user_id = p.user_id LEFT JOIN rings rg ON rg.user_id = p.user_id LEFT JOIN roles ro ON ro.user_id = p.user_id LEFT JOIN post_flags f ON f.post_id = p.id
             LEFT JOIN edits e ON e.kind = 'post' AND e.target_id = p.id
       WHERE p.id = ? AND p.deleted = 0`
   ).bind(id).first();
   if(!post) throw new HttpError(404, 'This post doesn’t exist or has been removed.');
   const { results } = await ctx.db.prepare(
-    `SELECT r.id, r.user_id, r.body, r.created_at, u.username, a.updated_at AS avatar_v, rg.ring, e.edited_at FROM replies r LEFT JOIN users u ON u.id = r.user_id LEFT JOIN avatars a ON a.user_id = r.user_id LEFT JOIN rings rg ON rg.user_id = r.user_id
+    `SELECT r.id, r.user_id, r.body, r.created_at, u.username, a.updated_at AS avatar_v, rg.ring, ro.role, e.edited_at FROM replies r LEFT JOIN users u ON u.id = r.user_id LEFT JOIN avatars a ON a.user_id = r.user_id LEFT JOIN rings rg ON rg.user_id = r.user_id LEFT JOIN roles ro ON ro.user_id = r.user_id
        LEFT JOIN edits e ON e.kind = 'reply' AND e.target_id = r.id
       WHERE r.post_id = ? AND r.deleted = 0 ORDER BY r.created_at ASC, r.id ASC LIMIT 500`
   ).bind(id).all();
@@ -875,14 +880,14 @@ async function getPost(ctx, id){
   const canRemove = ownerId => !!user && (user.id === ownerId || user.admin);
   return json({
     post:{
-      id:post.id, category:post.category, title:post.title, body:post.body, author:post.username || null, authorAvatar:post.username ? post.avatar_v || null : null, authorRing:ringFor(ctx, post.username, post.ring),
+      id:post.id, category:post.category, title:post.title, body:post.body, author:post.username || null, authorAvatar:post.username ? post.avatar_v || null : null, authorRing:ringFor(ctx, post.username, post.ring, post.role),
       createdAt:post.created_at, replies:post.reply_count, prayers:post.prayer_count, prayed,
       mine:!!user && user.id === post.user_id, canRemove:canRemove(post.user_id),
       pinned:!!post.pinned, locked:!!post.locked, canModerate:!!user && !!user.admin, editedAt:post.edited_at || null,
       authorBadges:(shown[post.user_id] || []).slice(0, 3)
     },
     replies:results.map(r => ({
-      id:r.id, body:r.body, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null, authorRing:ringFor(ctx, r.username, r.ring), createdAt:r.created_at,
+      id:r.id, body:r.body, author:r.username || null, authorAvatar:r.username ? r.avatar_v || null : null, authorRing:ringFor(ctx, r.username, r.ring, r.role), createdAt:r.created_at,
       mine:!!user && user.id === r.user_id, canRemove:canRemove(r.user_id), editedAt:r.edited_at || null,
       authorBadges:(shown[r.user_id] || []).slice(0, 3)
     }))
@@ -1146,7 +1151,7 @@ async function getProfile(ctx, name){
     'SELECT (SELECT COUNT(*) FROM posts WHERE user_id = ? AND deleted = 0) AS posts, (SELECT COUNT(*) FROM replies WHERE user_id = ? AND deleted = 0) AS replies, (SELECT COUNT(*) FROM prayers WHERE user_id = ?) AS prayers'
   ).bind(u.id, u.id, u.id).first();
   const profile = { id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, banner:bannerJson(u), bio:u.bio || '', posts:counts.posts, replies:counts.replies, prayers:counts.prayers,
-    administrator:siteAdmin(ctx, u.username), owner:isOwner(ctx, u.username), moderator:u.role === 'moderator', ring:ringFor(ctx, u.username, u.ring), badges:await badgesFor(ctx, u.id), favorites:readFavorites(u.favorites) };
+    administrator:siteAdmin(ctx, u.username), owner:isOwner(ctx, u.username), moderator:u.role === 'moderator', ring:ringFor(ctx, u.username, u.ring, u.role), badges:await badgesFor(ctx, u.id), favorites:readFavorites(u.favorites) };
   // The small card shown on hovering over a name needs only the profile itself
   if(ctx.url.searchParams.get('card')) return json({ profile });
   const { results } = await ctx.db.prepare(

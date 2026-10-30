@@ -3716,7 +3716,9 @@ function reducedMotion(){ return store.get('motion', '') === 'reduced' || (!!win
 /* ---------- Profile rings: a decoration around a member's picture (the server keeps the same list) ---------- */
 const RING_KEYS = ['halo', 'rosary', 'prayer-rope', 'stars', 'roses', 'stained-glass', 'laurel', 'flame', 'pearls'];
 const RING_NAMES = { halo:'Halo', rosary:'Rosary', 'prayer-rope':'Prayer Rope', stars:'Crown of Twelve Stars', roses:'Rose Garland',
-  'stained-glass':'Stained Glass', laurel:'Laurel Wreath', flame:'Tongues of Fire', pearls:'Byzantine Pearls', owner:'Light of Tabor', 'city-of-god':'City of God' };
+  'stained-glass':'Stained Glass', laurel:'Laurel Wreath', flame:'Tongues of Fire', pearls:'Byzantine Pearls', owner:'Light of Tabor', 'city-of-god':'City of God', parchment:'Desert Parchment' };
+// The rings only the moderation team (the moderators and site administrators) can wear
+const STAFF_RING_KEYS = ['parchment'];
 // The rings only the site's owner can wear; they wear the first unless they choose another
 const OWNER_RING_KEYS = ['city-of-god', 'owner'];
 const ringCache = {};
@@ -3775,6 +3777,16 @@ function ringSvg(key){
     g = `<circle cx="50" cy="50" r="51" fill="none" stroke="#b8924a" stroke-width="1"/><circle cx="50" cy="50" r="59.6" fill="none" stroke="#b8924a" stroke-width="1.1"/>`
       + embers.map(([d, r, z], i) => { const [x, y] = at(r, d); return `<circle class="ember" cx="${x}" cy="${y}" r="${z}" fill="${i % 3 ? '#ff9a3c' : '#ffd27a'}" style="animation-delay:-${(i * 0.41).toFixed(2)}s"/>`; }).join('')
       + `<circle cx="50" cy="-4.5" r="8" fill="#3a3530" stroke="#c9a65a" stroke-width="1.2"/>${cross(50, -10.5, 8, '#f5d79a')}`;
+  } else if(key === 'parchment'){
+    // For the moderation team, in the colors of the Desert Fathers theme: a band of light parchment edged in ochre,
+    // small terracotta crosses around it like an illuminated border, and the cross above in a sandstone medallion
+    g = `<circle cx="50" cy="50" r="56.2" fill="none" stroke="#7a5a2a" stroke-width="8.4" opacity=".35"/>`
+      + `<circle cx="50" cy="50" r="56.2" fill="none" stroke="#f1e4c6" stroke-width="7"/>`
+      + `<circle cx="50" cy="50" r="59.7" fill="none" stroke="#a97d34" stroke-width="1.1"/><circle cx="50" cy="50" r="52.7" fill="none" stroke="#a97d34" stroke-width="1.1"/>`
+      + `<circle cx="50" cy="50" r="58.3" fill="none" stroke="#c9a66a" stroke-width=".4" stroke-dasharray="1.2 1.6" opacity=".9"/>`
+      + around(8, 45, 405).map(d => { const [x, y] = at(56.2, d); return cross(x, y - 2.6, 3.5, '#9a4a24'); }).join('')
+      + around(16, 22.5, 382.5).filter((_, i) => i % 2 === 0).map(d => { const [x, y] = at(56.2, d); return `<circle cx="${x}" cy="${y}" r=".9" fill="#a97d34"/>`; }).join('')
+      + `<circle cx="50" cy="-5" r="8.2" fill="#e8d3a6" stroke="#a97d34" stroke-width="1.2"/><circle cx="50" cy="-5" r="6.6" fill="none" stroke="#c9a66a" stroke-width=".4"/>${cross(50, -10.8, 7.6, '#9a4a24')}`;
   } else if(key === 'owner'){
     // The owner's ring: the light of Tabor turning around the picture (drawn in CSS), with rays and a crown above
     g = `<circle cx="50" cy="50" r="59.8" fill="none" stroke="#f3e0aa" stroke-width=".8" opacity=".9"/>`
@@ -6482,7 +6494,7 @@ function renderProfile(){
   const showRings = prof => {
     ringProfile = prof;
     const current = prof.ring || 'none';
-    ringPicker.innerHTML = [...(prof.owner ? OWNER_RING_KEYS : []), ...RING_KEYS, 'none'].map(k => `
+    ringPicker.innerHTML = [...(prof.owner ? OWNER_RING_KEYS : []), ...(prof.administrator || prof.moderator ? STAFF_RING_KEYS : []), ...RING_KEYS, 'none'].map(k => `
       <button type="button" class="ring-choice" role="radio" aria-checked="${k === current}" data-ring="${k}">
         <span class="ring-preview">${ringed(avatarFor(u.username, u.avatar, 'avatar-ring'), k === 'none' ? null : k)}</span>
         <span class="ring-name">${k === 'none' ? 'No ring' : escapeHtml(RING_NAMES[k])}</span>
