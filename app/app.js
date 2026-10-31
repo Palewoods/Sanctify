@@ -8569,9 +8569,9 @@ function bibleFetchText(path){
   }
   return bibleMemo.get(path);
 }
-// The Psalms are numbered as in modern Bibles since the files were renumbered; the ?v=2 keeps a device from
+// The Psalms are numbered as in modern Bibles since the files were renumbered; the ?v=3 keeps a device from
 // using a psalm it saved under the old Vulgate numbering
-const biblePath = (slug, n, notes) => `bible/${slug}/${n}.${notes ? 'notes.txt' : 'txt'}${slug === 'psalms' ? '?v=2' : ''}`;
+const biblePath = (slug, n, notes) => `bible/${slug}/${n}.${notes ? 'notes.txt' : 'txt'}${slug === 'psalms' ? '?v=3' : ''}`;
 // The first line is the chapter's summary (starting with * when it has notes), then, after tabs, any superscription
 // of a psalm ("Unto the end, a psalm for David."), which modern Bibles leave unnumbered; then one verse per line.
 async function bibleChapter(slug, n){
