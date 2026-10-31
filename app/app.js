@@ -13662,24 +13662,25 @@ function switchRow(id, name, note, on, disabled){
   return `<div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">${name}</span><span class="shine-row-note">${note}</span></span>
     <button type="button" class="shine-switch" id="${id}" role="switch" aria-checked="${on}" aria-label="${name}"${disabled ? ' disabled' : ''}></button></div>`;
 }
-const SANCTIFY_VERSION = '1.0';
+const SANCTIFY_VERSION = '1.1';
 const RELEASE_NOTES = () => [
-  'New profiles: a banner with your picture over its edge, your badges beside it, and tabs for About, Badges, posts, replies, and wiki edits.',
-  'Rest the mouse on anyone’s name or picture to see a small version of their profile.',
-  'Profile rings to wear around your picture, from a halo or a rosary to a crown of twelve stars, and video banners that loop silently.',
-  'Change your username from your account, once a week.',
-  'A new Community: your own card on the Community home, and the forum’s categories down the side like channels.',
-  'Accounts ready for everyone: change your password, get back in with a reset code from an administrator, download your data, and read the Privacy and Terms of Use pages.',
-  'Report a problem from any page, straight to the moderators.',
-  'A short welcome tour on your first visit, and a tab icon that follows the season of the Church’s year.',
-  'Faster loading, and a fuller offline copy in Settings.',
-  'The theology and history pages, the introductions to the books of the Bible, the classic books, and nearly 200 saints’ lives in all eight languages.'
+  'A clearer Home: four picture tiles to start, the cross in a turning circle of light, and gentle motion throughout.',
+  'Each section opens with one of the great icons, and pictures fade in and darken softly toward their words.',
+  'Maps of where the ecumenical councils met, the seats of the Eastern Catholic Churches, and the places of Our Lady’s apparitions.',
+  'Date sliders: play through the councils, narrow Church history to any span of years, see who was pope in any year, and drag through the calendar year.',
+  'A wheel of the year on Today: drag around the seasons to turn to any day.',
+  'The whole Bible at a glance, filling in as you read, with the chapters you have read marked in each book.',
+  'A lens to look closer at the famous icons.',
+  'Advice for life from the saints, and more than seventy new sayings.',
+  'New themes: The Course of Empire, after Thomas Cole, and the Desert Fathers by day and by night.',
+  'Profile rings earned by praying, reading, and keeping a streak, and rings for the moderators.',
+  'Crisper page changes, centered calendar dates, a proper gear for Settings, and a Back to top button that shows how far you have read.'
 ];
 // Shown once on Home after an update, until it is opened or dismissed
 function releaseBannerHtml(){
   if(store.get('release', '') === SANCTIFY_VERSION) return '';
   return `<section class="rite-banner release-banner"><span class="rite-banner-cross">${navIcon('star')}</span>
-    <div><strong class="notranslate" translate="no">Sanctify ${SANCTIFY_VERSION}</strong> <span>New profiles with rings, video banners, and hover cards, a new Community, and faster loading.</span></div>
+    <div><strong class="notranslate" translate="no">Sanctify ${SANCTIFY_VERSION}</strong> <span>Maps, date sliders, a wheel of the year, a clearer Home, and new themes.</span></div>
     <button class="btn quiet" type="button" data-release-open>See what’s new</button>
     <button class="release-close" type="button" data-release-dismiss aria-label="Dismiss">×</button></section>`;
 }

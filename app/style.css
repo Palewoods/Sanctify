@@ -3888,3 +3888,13 @@
   :is(.hx-tile-img, .hx-more-img, .hub-art-frame, .fi-thumb, .fi-zoom) img.img-in{opacity:1;}
   @media (prefers-reduced-motion:reduce){ .saint-portrait.loaded img{animation:none;} :is(.hx-tile-img, .hx-more-img, .hub-art-frame, .fi-thumb, .fi-zoom) img{transition:none;} }
   :root[data-motion="reduced"] .saint-portrait.loaded img{animation:none;}
+
+  /* =========================================================
+     SMALL FINISHING TOUCHES
+     ========================================================= */
+  /* a jump to a heading or a card lands below the sticky top bar, not under it */
+  html{scroll-padding-top:84px;}
+  /* the typing cursor in the theme's color */
+  input, textarea, [contenteditable]{caret-color:var(--wine);}
+  /* gold markers on the lists in readings */
+  .fi-look li::marker, .body-text li::marker{color:var(--gold);}
