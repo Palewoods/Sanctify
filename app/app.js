@@ -5425,6 +5425,56 @@ function cardProfile(name){
   hoverCards.set(k, { at:Date.now(), promise });
   return promise;
 }
+/* ---------- A member's faith, on their profile ----------
+   A patron saint, a favorite verse (shown from the Douay-Rheims), their Church, a favorite prayer and book,
+   and a color for the profile. The server keeps only addresses and a verse reference. */
+const FAITH_ACCENTS = [['wine', 'Wine'], ['gold', 'Gold'], ['green', 'Green'], ['indigo', 'Indigo'], ['purple', 'Purple'], ['teal', 'Teal'], ['rose', 'Rose']];
+const FAITH_VERSES_MAX = 6;
+function faithChurches(){
+  return [['latin', 'Roman Catholic (Latin Church)'], ...EASTERN_CHURCHES.flatMap(t => t.list.map(c => [churchSlug(c[0]), c[0]])), ['inquirer', 'Learning about the Catholic faith']];
+}
+function profileAccent(p){ return p.faith && FAITH_ACCENTS.some(([k]) => k === p.faith.accent) ? `var(--${p.faith.accent})` : avatarColor(p.username); }
+function faithVerseRef(text){ const r = parseBibleRef(text || ''); return r && r.chapter && r.verse ? r : null; }
+function faithRefLabel(r){ return `${bibleChapterName(BIBLE_BY_SLUG[r.slug], r.chapter)}:${r.verse}${r.verseEnd > r.verse ? '–' + r.verseEnd : ''}`; }
+function faithEntry(id, cat){ return id ? library.find(e => e.id === id && e.category === cat) || null : null; }
+function faithHtml(p, self){
+  const f = p.faith || {};
+  const saint = faithEntry(f.patron, 'saint'), prayer = faithEntry(f.prayer, 'prayer'), book = faithEntry(f.book, 'book');
+  const church = f.church && faithChurches().find(c => c[0] === f.church), ref = faithVerseRef(f.verse);
+  if(!saint && !prayer && !book && !church && !ref) return self
+    ? '<div class="dprof-box"><h4>Faith</h4><p class="forum-meta">Add your patron saint, a favorite verse, your Church, and more. <button class="text-link" data-route="account">Edit profile</button></p></div>' : '';
+  return `<div class="dprof-faith">
+    ${saint ? `<button class="pfa-saint" data-open="${saint.id}"><span class="saint-portrait" data-sid="${saint.id}">${portraitPlaceholder(saint.title)}</span>
+      <span class="pfa-saint-text"><span class="daily-kicker">Patron saint</span><strong>${escapeHtml(saint.title)}</strong><span class="forum-meta">${escapeHtml(feastLabel(saint))}</span></span></button>` : ''}
+    ${ref ? `<figure class="pfa-verse" data-verse="${escapeHtml(f.verse)}"><span class="daily-kicker">Favorite verse</span><blockquote class="pfa-verse-text"><span class="forum-meta">Opening the verse…</span></blockquote>
+      <figcaption><button class="text-link" data-route="${bibleRoute(ref)}">${escapeHtml(faithRefLabel(ref))}</button> · Douay-Rheims</figcaption></figure>` : ''}
+    ${church || prayer || book ? `<dl class="pfa-facts">
+      ${church ? `<div><dt>Church</dt><dd>${escapeHtml(church[1])}</dd></div>` : ''}
+      ${prayer ? `<div><dt>Favorite prayer</dt><dd><button class="text-link" data-open="${prayer.id}">${escapeHtml(prayer.title)}</button></dd></div>` : ''}
+      ${book ? `<div><dt>Favorite book</dt><dd><button class="text-link" data-open="${book.id}">${escapeHtml(book.title)}</button></dd></div>` : ''}
+    </dl>` : ''}
+  </div>`;
+}
+// The words of a favorite verse, from the site's Bible
+function faithVerseText(ref){
+  return bibleChapter(ref.slug, ref.chapter).then(d => {
+    const end = Math.min(Math.max(ref.verseEnd || 0, ref.verse), ref.verse + FAITH_VERSES_MAX - 1);
+    return d.verses.slice(ref.verse - 1, end).filter(Boolean).join(' ');
+  });
+}
+function fillFaithVerses(root){
+  root.querySelectorAll('.pfa-verse[data-verse]').forEach(fig => {
+    const ref = faithVerseRef(fig.dataset.verse), q = fig.querySelector('.pfa-verse-text');
+    faithVerseText(ref).then(t => { if(t) q.textContent = '“' + t + '”'; else fig.remove(); }).catch(() => { q.innerHTML = '<span class="forum-meta">The verse couldn’t be opened just now.</span>'; });
+  });
+}
+// One line on the hover card: the patron saint and the favorite verse
+function faithLine(p){
+  const f = p.faith || {}, saint = faithEntry(f.patron, 'saint'), ref = faithVerseRef(f.verse);
+  if(!saint && !ref) return '';
+  return `<p class="hc-faith">${saint ? `<span>${navIcon('saint')}${escapeHtml(saint.title)}</span>` : ''}${ref ? `<span>${navIcon('bible')}${escapeHtml(faithRefLabel(ref))}</span>` : ''}</p>`;
+}
+
 function hoverCardHtml(p){
   const earned = earnedBadges(p), roles = profileRoles(p);
   const tray = earned.length || p.badges.appointed.length || p.administrator;
@@ -5437,6 +5487,7 @@ function hoverCardHtml(p){
       <strong class="hc-name notranslate" translate="no">${escapeHtml(p.username)}</strong>
       ${roles.length ? `<div class="hc-roles">${roles.map(([r, c]) => `<span class="dprof-role" style="--b:var(--${c})">${escapeHtml(r)}</span>`).join('')}</div>` : ''}
       ${p.bio ? `<p class="hc-bio">${escapeHtml(p.bio)}</p>` : ''}
+      ${faithLine(p)}
       <dl class="hc-facts">
         <div><dt>Member since</dt><dd>${escapeHtml(new Date(p.createdAt).toLocaleDateString(undefined, { month:'short', year:'numeric' }))}</dd></div>
         <div><dt>Posts</dt><dd>${p.posts.toLocaleString()}</dd></div>
@@ -5461,7 +5512,7 @@ async function showHoverCard(target, name){
     hoverEl.addEventListener('click', ev => { if(ev.target.closest('[data-route]')) setTimeout(hideHoverCard); });
     document.body.appendChild(hoverEl);
   }
-  hoverEl.style.setProperty('--av', avatarColor(p.username));
+  hoverEl.style.setProperty('--av', profileAccent(p));
   hoverEl.setAttribute('aria-label', p.username + '’s profile');
   hoverEl.innerHTML = hoverCardHtml(p);
   hoverEl.hidden = false;
@@ -5532,7 +5583,7 @@ async function renderMemberProfile(){
     ['wiki', 'Wiki', data.wiki ? data.wiki.edits : 0], ...(saved.length ? [['saved', 'Saved', saved.length]] : [])];
   if(!tabs.some(t => t[0] === profileTab)) profileTab = 'about';
   entryListEl.innerHTML = `
-    <div class="dprof" style="--av:${avatarColor(p.username)}">
+    <div class="dprof" style="--av:${profileAccent(p)}">
       <button class="dprof-back" data-route="community">← Community</button>
       <article class="dprof-card">
         ${bannerHtml(p.username, p.banner, ' dprof-banner') || '<div class="profile-banner dprof-banner plain"></div>'}
@@ -5562,6 +5613,7 @@ async function renderMemberProfile(){
           <section class="dprof-panel" role="tabpanel" id="ppanel-about" aria-labelledby="ptab-about" data-ppanel="about">
             <div class="dprof-box"><h4>About me</h4>
               ${p.bio ? `<p class="member-bio">${inlineHtml(p.bio)}</p>` : `<p class="forum-meta">${self ? 'You haven’t written a description yet. <button class="text-link" data-route="account">Add one</button>' : `${escapeHtml(p.username)} hasn’t written a description yet.`}</p>`}</div>
+            ${faithHtml(p, self)}
             <div class="dprof-box"><h4>Member since</h4><p class="dprof-since">${navIcon('calendar')}${escapeHtml(joined)}</p></div>
             ${roles.length ? `<div class="dprof-box"><h4>${roles.length === 1 ? 'Role' : 'Roles'}</h4><div class="dprof-roles">${roles.map(([r, c]) => `<span class="dprof-role-pill" style="--b:var(--${c})">${escapeHtml(r)}</span>`).join('')}</div></div>` : ''}
           </section>
@@ -5585,6 +5637,8 @@ async function renderMemberProfile(){
       </article>
     </div>`;
   entryListEl.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openReadModal(b.dataset.open)));
+  entryListEl.querySelectorAll('.dprof-faith .saint-portrait[data-sid]').forEach(observePortrait);
+  fillFaithVerses(entryListEl);
   const list = entryListEl.querySelector('#ppanel-posts');
   if(data.posts.length) data.posts.forEach(x => list.appendChild(forumPostCard(x)));
   else list.innerHTML = '<div class="forum-empty">No posts yet.</div>';
@@ -6591,6 +6645,28 @@ function renderProfile(){
         <div class="bio-row"><span class="forum-meta" id="bioCount"></span><button class="btn primary pill" id="bioSave" type="button" disabled>Save</button></div>
         <p class="forum-error" id="bioError" hidden></p>
       </section>
+      <section class="bio-panel faith-panel">
+        <h3>Your faith</h3>
+        <p class="forum-meta">Shown on your public profile. Fill in as many as you like, and leave the rest empty.</p>
+        <div class="faith-form">
+          <label class="fa-field"><span>Patron saint</span><input id="faPatron" list="faSaints" autocomplete="off" placeholder="Start typing a name: Francis, Thérèse, Joseph…" disabled></label>
+          <label class="fa-field"><span>Favorite verse</span><input id="faVerse" autocomplete="off" placeholder="John 3:16, or Psalm 22:1-5" disabled></label>
+          <p class="fa-preview forum-meta" id="faVersePreview" aria-live="polite" hidden></p>
+          <label class="fa-field"><span>Your Church</span><select id="faChurch" disabled><option value="">Choose…</option>${faithChurches().map(([k, n]) => `<option value="${k}">${escapeHtml(n)}</option>`).join('')}</select></label>
+          <label class="fa-field"><span>Favorite prayer</span><select id="faPrayer" disabled><option value="">Choose…</option>${library.filter(e => e.category === 'prayer').sort((a, b) => a.title.localeCompare(b.title)).map(e => `<option value="${e.id}">${escapeHtml(e.title)}</option>`).join('')}</select></label>
+          <label class="fa-field"><span>Favorite book</span><input id="faBook" list="faBooks" autocomplete="off" placeholder="Confessions, The Imitation of Christ…" disabled></label>
+          <div class="fa-field"><span id="faAccentLabel">Profile color</span>
+            <div class="fa-swatches" role="radiogroup" aria-labelledby="faAccentLabel">
+              <button type="button" class="fa-swatch" role="radio" data-accent="" aria-checked="true" title="Your picture’s color" style="--sw:${avatarColor(u.username)}"><span class="sr-only">Your picture’s color</span></button>
+              ${FAITH_ACCENTS.map(([k, n]) => `<button type="button" class="fa-swatch" role="radio" data-accent="${k}" aria-checked="false" title="${n}" style="--sw:var(--${k})"><span class="sr-only">${n}</span></button>`).join('')}
+            </div>
+          </div>
+        </div>
+        <datalist id="faSaints">${library.filter(e => e.category === 'saint').sort((a, b) => saintSortName(a).localeCompare(saintSortName(b))).map(e => `<option value="${escapeHtml(e.title)}"></option>`).join('')}</datalist>
+        <datalist id="faBooks">${library.filter(e => e.category === 'book').sort((a, b) => a.title.localeCompare(b.title)).map(e => `<option value="${escapeHtml(e.title)}"></option>`).join('')}</datalist>
+        <div class="bio-row"><span class="forum-meta" id="faStatus"></span><button class="btn primary pill" id="faSave" type="button" disabled>Save</button></div>
+        <p class="forum-error" id="faError" hidden></p>
+      </section>
       <section class="bio-panel">
         <h3>Your saved pages</h3>
         <p class="forum-meta">The prayers, saints, and readings you save are kept on this device. You can also show them on your public profile, for others to discover.</p>
@@ -6714,8 +6790,82 @@ function renderProfile(){
     }catch(err){ shareBox.checked = !show; toast(err.message); }
     shareBox.disabled = false;
   });
+  // Your faith: a patron saint, a favorite verse, your Church, a favorite prayer and book, and a color
+  const faEl = id => entryListEl.querySelector('#' + id);
+  const faPatron = faEl('faPatron'), faVerse = faEl('faVerse'), faChurch = faEl('faChurch'), faPrayer = faEl('faPrayer'), faBook = faEl('faBook');
+  const faSave = faEl('faSave'), faError = faEl('faError'), faPreview = faEl('faVersePreview');
+  const faSwatches = [...entryListEl.querySelectorAll('.fa-swatch')];
+  let faSaved = '{}', faAccent = '', faTyping = null;
+  const titleOf = (id, cat) => { const e = faithEntry(id, cat); return e ? e.title : ''; };
+  const idOf = (title, cat) => {
+    const t = title.trim().toLowerCase();
+    if(!t) return '';
+    const e = library.find(x => x.category === cat && x.title.toLowerCase() === t);
+    return e ? e.id : null;
+  };
+  // What the form says now, or the first thing that needs fixing
+  const faRead = () => {
+    const patron = idOf(faPatron.value, 'saint'), book = idOf(faBook.value, 'book');
+    if(patron === null) return { problem:'Please choose your patron saint from the list: start typing a name and pick one.' };
+    if(book === null) return { problem:'Please choose your favorite book from the list: start typing a title and pick one.' };
+    let verse = '';
+    if(faVerse.value.trim()){
+      const ref = faithVerseRef(faVerse.value);
+      if(!ref) return { problem:'Please write the verse as a book, a chapter, and a verse, like John 3:16.' };
+      if(ref.verseEnd && ref.verseEnd - ref.verse >= FAITH_VERSES_MAX) return { problem:`Please choose up to ${FAITH_VERSES_MAX} verses.` };
+      verse = `${BIBLE_BY_SLUG[ref.slug][2]} ${ref.chapter}:${ref.verse}${ref.verseEnd > ref.verse ? '-' + ref.verseEnd : ''}`;
+    }
+    const data = { patron, verse, church:faChurch.value, prayer:faPrayer.value, book, accent:faAccent };
+    Object.keys(data).forEach(k => { if(!data[k]) delete data[k]; });
+    return { data };
+  };
+  const faState = () => { const r = faRead(); faSave.disabled = !r.data || JSON.stringify(r.data) === faSaved; };
+  const faShowVerse = () => {
+    clearTimeout(faTyping);
+    const ref = faithVerseRef(faVerse.value);
+    if(!faVerse.value.trim() || !ref){ faPreview.hidden = true; return; }
+    faTyping = setTimeout(() => faithVerseText(ref).then(t => {
+      if(faithVerseRef(faVerse.value) && faithRefLabel(faithVerseRef(faVerse.value)) === faithRefLabel(ref)){
+        faPreview.textContent = t ? `${faithRefLabel(ref)}: “${t}”` : 'That verse isn’t in this chapter.';
+        faPreview.hidden = false;
+      }
+    }).catch(() => { faPreview.hidden = true; }), 350);
+  };
+  const faSetAccent = k => { faAccent = k; faSwatches.forEach(b => b.setAttribute('aria-checked', String(b.dataset.accent === k))); };
+  const showFaith = f => {
+    f = f || {};
+    faPatron.value = titleOf(f.patron, 'saint');
+    faBook.value = titleOf(f.book, 'book');
+    faVerse.value = f.verse || '';
+    faChurch.value = faithChurches().some(c => c[0] === f.church) ? f.church : '';
+    faPrayer.value = faithEntry(f.prayer, 'prayer') ? f.prayer : '';
+    faSetAccent(FAITH_ACCENTS.some(([k]) => k === f.accent) ? f.accent : '');
+    [faPatron, faVerse, faChurch, faPrayer, faBook].forEach(x => { x.disabled = false; });
+    const r = faRead();
+    faSaved = JSON.stringify(r.data || {});
+    faShowVerse();
+    faState();
+  };
+  [faPatron, faVerse, faBook].forEach(x => x.addEventListener('input', faState));
+  [faChurch, faPrayer].forEach(x => x.addEventListener('change', faState));
+  faVerse.addEventListener('input', faShowVerse);
+  faSwatches.forEach(b => b.addEventListener('click', () => { faSetAccent(b.dataset.accent); faState(); }));
+  faSave.addEventListener('click', async () => {
+    const r = faRead();
+    showFormError(faError, r.problem || '');
+    if(!r.data) return;
+    faSave.disabled = true;
+    try{
+      const res = await api('account/faith', { method:'PUT', body:r.data });
+      showFaith(res.faith);
+      hoverCards.delete(u.username.toLowerCase());
+      toast('Your profile was saved.');
+    }catch(err){ showFormError(faError, err.message); faState(); }
+  });
+
   api('users/' + encodeURIComponent(u.username)).then(res => {
     if(!bioText.isConnected) return;
+    showFaith(res.profile.faith);
     shareBox.checked = Array.isArray(res.profile.favorites);
     shareBox.disabled = false;
     store.set('shareSaved', shareBox.checked);

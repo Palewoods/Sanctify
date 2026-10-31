@@ -280,6 +280,10 @@ const SCHEMA = [
   `CREATE TABLE IF NOT EXISTS rings (
      user_id INTEGER PRIMARY KEY,
      ring TEXT NOT NULL,
+     updated_at INTEGER NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS faith (
+     user_id INTEGER PRIMARY KEY,
+     data TEXT NOT NULL,
      updated_at INTEGER NOT NULL)`
 ];
 
@@ -369,6 +373,7 @@ export async function onRequest({ request, env }){
     if(path === 'account/avatar' && method === 'PUT') return await setAvatar(ctx);
     if(path === 'account/avatar' && method === 'DELETE') return await removeAvatar(ctx);
     if(path === 'account/profile' && method === 'PUT') return await setProfile(ctx);
+    if(path === 'account/faith' && method === 'PUT') return await setFaith(ctx);
     if(path === 'account/favorites' && method === 'PUT') return await setFavorites(ctx);
     if(path === 'wiki' && method === 'GET') return await listWiki(ctx);
     if(path === 'wiki/changes' && method === 'GET') return await wikiChanges(ctx);
@@ -472,6 +477,7 @@ async function deleteAccount(ctx){
     ctx.db.prepare('DELETE FROM favorites WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM name_changes WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM rings WHERE user_id = ?').bind(user.id),
+    ctx.db.prepare('DELETE FROM faith WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM avatars WHERE user_id = ?').bind(user.id),
     ctx.db.prepare('DELETE FROM profiles WHERE user_id = ?').bind(user.id),
@@ -635,7 +641,8 @@ async function exportAccount(ctx){
       picture: avatar ? `data:${avatar.mime};base64,${avatar.data}` : null,
       banner: banner ? (banner.preset || `data:${banner.mime};base64,${banner.data}`) : null,
       savedShownOnProfile: (fav && readFavorites(fav.ids)) || [],
-      ring: ringFor(ctx, account.username, ((await one('SELECT ring FROM rings WHERE user_id = ?')) || {}).ring, user.role)
+      ring: ringFor(ctx, account.username, ((await one('SELECT ring FROM rings WHERE user_id = ?')) || {}).ring, user.role),
+      faith: readFaith(((await one('SELECT data FROM faith WHERE user_id = ?')) || {}).data)
     },
     posts: (await all('SELECT id, category, title, body, created_at FROM posts WHERE user_id = ? AND deleted = 0 ORDER BY id'))
       .map(p => ({ id:p.id, category:p.category, title:p.title, body:p.body, posted:when(p.created_at) })),
@@ -798,6 +805,39 @@ async function setProfile(ctx){
     .bind(user.id, bio, ctx.now).run();
   else await ctx.db.prepare('DELETE FROM profiles WHERE user_id = ?').bind(user.id).run();
   return json({ bio });
+}
+
+/* ---------- A member's faith, on their profile ----------
+   A patron saint, a favorite verse, their Church, a favorite prayer and book, and a color for the profile.
+   Everything but the verse is the address of a page of Sanctify or one of a fixed list, so nothing here
+   needs moderating; the verse is only a reference ("John 3:16"), and the site shows its text. */
+const FAITH_ACCENTS = ['wine', 'gold', 'green', 'indigo', 'purple', 'teal', 'rose'];
+function cleanFaith(d){
+  d = d && typeof d === 'object' ? d : {};
+  const pick = (v, re) => typeof v === 'string' && re.test(v) ? v : '';
+  const out = {
+    patron:pick(d.patron, /^s\d{1,4}$/),
+    verse:pick(cleanLine(typeof d.verse === 'string' ? d.verse : '').slice(0, 40), /^[\p{L}\d][\p{L}\d .:,\-–]{1,39}$/u),
+    church:pick(d.church, /^[a-z][a-z-]{1,60}$/),
+    prayer:pick(d.prayer, /^p\d{1,4}$/),
+    book:pick(d.book, /^b\d{1,4}$/),
+    accent:FAITH_ACCENTS.includes(d.accent) ? d.accent : ''
+  };
+  Object.keys(out).forEach(k => { if(!out[k]) delete out[k]; });
+  return out;
+}
+function readFaith(text){
+  if(!text) return null;
+  try{ const f = cleanFaith(JSON.parse(text)); return Object.keys(f).length ? f : null; }catch(err){ return null; }
+}
+async function setFaith(ctx){
+  const user = requireUser(ctx);
+  const faith = cleanFaith(await readBody(ctx, 2000));
+  await limit(ctx, 'faith:' + user.id, 30, 60 * 60 * 1000, 'You’ve changed your profile several times recently. Please try again later.');
+  if(Object.keys(faith).length) await ctx.db.prepare('INSERT INTO faith (user_id, data, updated_at) VALUES (?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET data = excluded.data, updated_at = excluded.updated_at')
+    .bind(user.id, JSON.stringify(faith), ctx.now).run();
+  else await ctx.db.prepare('DELETE FROM faith WHERE user_id = ?').bind(user.id).run();
+  return json({ faith:Object.keys(faith).length ? faith : null });
 }
 
 // Serves a member's picture; the ?v= version in the URL changes whenever the picture does
@@ -1155,14 +1195,14 @@ async function markNotificationsSeen(ctx){
 }
 
 async function getProfile(ctx, name){
-  const u = await ctx.db.prepare(`SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, pr.bio, bn.preset AS banner_preset, bn.mime AS banner_mime, bn.updated_at AS banner_v, ro.role, fv.ids AS favorites, rg.ring
-     FROM users u LEFT JOIN roles ro ON ro.user_id = u.id LEFT JOIN favorites fv ON fv.user_id = u.id LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN profiles pr ON pr.user_id = u.id LEFT JOIN banners bn ON bn.user_id = u.id LEFT JOIN rings rg ON rg.user_id = u.id WHERE u.username = ?`).bind(name).first();
+  const u = await ctx.db.prepare(`SELECT u.id, u.username, u.created_at, a.updated_at AS avatar_v, pr.bio, bn.preset AS banner_preset, bn.mime AS banner_mime, bn.updated_at AS banner_v, ro.role, fv.ids AS favorites, rg.ring, fa.data AS faith
+     FROM users u LEFT JOIN roles ro ON ro.user_id = u.id LEFT JOIN favorites fv ON fv.user_id = u.id LEFT JOIN avatars a ON a.user_id = u.id LEFT JOIN profiles pr ON pr.user_id = u.id LEFT JOIN banners bn ON bn.user_id = u.id LEFT JOIN rings rg ON rg.user_id = u.id LEFT JOIN faith fa ON fa.user_id = u.id WHERE u.username = ?`).bind(name).first();
   if(!u) throw new HttpError(404, 'There’s no member by that name.');
   const counts = await ctx.db.prepare(
     'SELECT (SELECT COUNT(*) FROM posts WHERE user_id = ? AND deleted = 0) AS posts, (SELECT COUNT(*) FROM replies WHERE user_id = ? AND deleted = 0) AS replies, (SELECT COUNT(*) FROM prayers WHERE user_id = ?) AS prayers'
   ).bind(u.id, u.id, u.id).first();
   const profile = { id:u.id, username:u.username, createdAt:u.created_at, avatar:u.avatar_v || null, banner:bannerJson(u), bio:u.bio || '', posts:counts.posts, replies:counts.replies, prayers:counts.prayers,
-    administrator:siteAdmin(ctx, u.username), owner:isOwner(ctx, u.username), moderator:u.role === 'moderator', ring:ringFor(ctx, u.username, u.ring, u.role), badges:await badgesFor(ctx, u.id), favorites:readFavorites(u.favorites) };
+    administrator:siteAdmin(ctx, u.username), owner:isOwner(ctx, u.username), moderator:u.role === 'moderator', ring:ringFor(ctx, u.username, u.ring, u.role), badges:await badgesFor(ctx, u.id), favorites:readFavorites(u.favorites), faith:readFaith(u.faith) };
   // The small card shown on hovering over a name needs only the profile itself
   if(ctx.url.searchParams.get('card')) return json({ profile });
   const { results } = await ctx.db.prepare(
