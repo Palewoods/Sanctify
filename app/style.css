@@ -3628,7 +3628,8 @@
     color:#fff; font:inherit; text-align:left; cursor:pointer; transition:translate .25s ease, box-shadow .25s ease;}
   .hx-tile-img, .hx-tile-img img{position:absolute; inset:0; width:100%; height:100%;}
   .hx-tile-img img{object-fit:cover; object-position:50% 22%; transition:scale .6s cubic-bezier(.2, .7, .3, 1);}
-  .hx-tile::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 38%, rgba(16, 10, 6, 0.82) 100%); pointer-events:none;}
+  .hx-tile::after{content:''; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(180deg, transparent 30%, rgba(16, 10, 6, 0.12) 46%, rgba(16, 10, 6, 0.38) 62%, rgba(16, 10, 6, 0.68) 80%, rgba(16, 10, 6, 0.9) 100%);}
   .hx-tile-text{position:absolute; left:0; right:0; bottom:0; z-index:1; display:flex; flex-direction:column; gap:4px; padding:16px;}
   .hx-tile-text strong{font-family:'Cormorant Garamond', Georgia, serif; font-size:clamp(1.35rem, 2.2vw, 1.7rem); line-height:1.1; text-shadow:0 1px 8px rgba(0,0,0,.5);}
   .hx-tile-text span{font-size:0.84rem; line-height:1.35; opacity:.9;}
@@ -3767,7 +3768,8 @@
   .hub-art-frame{position:relative; display:block; aspect-ratio:4 / 5; padding:6px; border-radius:6px;
     background:linear-gradient(145deg, color-mix(in srgb, var(--gold) 80%, #fff), var(--gold) 45%, color-mix(in srgb, var(--gold) 70%, #000));
     transition:translate .3s cubic-bezier(.2, .7, .3, 1);}
-  .hub-art-frame::after{content:''; position:absolute; inset:6px; border-radius:2px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.25); pointer-events:none;}
+  .hub-art-frame::after{content:''; position:absolute; inset:6px; border-radius:2px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.25); pointer-events:none;
+    background:linear-gradient(180deg, transparent 52%, rgba(16, 10, 6, 0.14) 70%, rgba(16, 10, 6, 0.42) 88%, rgba(16, 10, 6, 0.6) 100%);}
   .hub-art-frame img{display:block; width:100%; height:100%; object-fit:cover; object-position:50% 22%; border-radius:2px; background:var(--parchment-dark);
     transition:scale .6s cubic-bezier(.2, .7, .3, 1);}
   .hub-art-frame{overflow:hidden;}
@@ -3859,3 +3861,30 @@
   .fi-zoom:hover .fi-lens{opacity:1; scale:1;}
   .fi-lens-hint{margin:6px 0 0; font-size:0.8rem; font-style:italic; color:var(--ink-soft);}
   @media (prefers-reduced-motion:reduce){ .fi-lens{transition:none;} }
+
+  /* =========================================================
+     IMAGES FADE TOWARD THEIR WORDS
+     Each picture darkens gently on the side where its title or text sits (below it, or beside it),
+     and fades in once it has loaded instead of popping in.
+     ========================================================= */
+  .fi-thumb, .hx-more-img{position:relative;}
+  .g-card .saint-portrait.loaded::after, .fi-thumb::after,
+  .feature-saint .saint-portrait.loaded::after, .daily-saint .saint-portrait.loaded::after, .bento-feature .saint-portrait.loaded::after, .hx-more-img::after{
+    content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none;}
+  /* words below the picture */
+  .g-card .saint-portrait.loaded::after, .fi-thumb::after{
+    background:linear-gradient(180deg, transparent 50%, rgba(16, 10, 6, 0.1) 66%, rgba(16, 10, 6, 0.32) 84%, rgba(16, 10, 6, 0.55) 100%);}
+  /* words beside it, to the right */
+  .feature-saint .saint-portrait.loaded::after, .daily-saint .saint-portrait.loaded::after, .bento-feature .saint-portrait.loaded::after, .hx-more-img::after{
+    background:linear-gradient(90deg, transparent 45%, rgba(16, 10, 6, 0.1) 64%, rgba(16, 10, 6, 0.3) 84%, rgba(16, 10, 6, 0.5) 100%);}
+  @media (max-width:700px){
+    /* on a phone the Saint of the Day stacks, with its words below the picture */
+    .daily-saint .saint-portrait.loaded::after{background:linear-gradient(180deg, transparent 50%, rgba(16, 10, 6, 0.1) 66%, rgba(16, 10, 6, 0.32) 84%, rgba(16, 10, 6, 0.55) 100%);}
+  }
+  /* fading in */
+  @keyframes imgIn{from{opacity:0;} to{opacity:1;}}
+  .saint-portrait.loaded img{animation:imgIn .5s ease both;}
+  :is(.hx-tile-img, .hx-more-img, .hub-art-frame, .fi-thumb, .fi-zoom) img{opacity:0; transition:opacity .5s ease, scale .6s cubic-bezier(.2, .7, .3, 1);}
+  :is(.hx-tile-img, .hx-more-img, .hub-art-frame, .fi-thumb, .fi-zoom) img.img-in{opacity:1;}
+  @media (prefers-reduced-motion:reduce){ .saint-portrait.loaded img{animation:none;} :is(.hx-tile-img, .hx-more-img, .hub-art-frame, .fi-thumb, .fi-zoom) img{transition:none;} }
+  :root[data-motion="reduced"] .saint-portrait.loaded img{animation:none;}

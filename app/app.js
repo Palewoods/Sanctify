@@ -13467,6 +13467,10 @@ document.addEventListener('keydown', e => {
   }
 });
 
+// Pictures fade in once they have loaded (see "Images fade toward their words" in the stylesheet);
+// one that fails still gets the class, so nothing waits on it
+['load', 'error'].forEach(type => document.addEventListener(type, ev => { if(ev.target.tagName === 'IMG') ev.target.classList.add('img-in'); }, true));
+
 const backToTop = document.createElement('button');
 backToTop.className = 'back-to-top';
 backToTop.setAttribute('aria-label', 'Back to top');
