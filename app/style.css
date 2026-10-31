@@ -3941,3 +3941,8 @@
   .fa-field input, .fa-field select{padding:9px 12px; border:1px solid var(--line); border-radius:10px; background:var(--parchment); color:var(--ink); font:inherit;}
   .fa-field input:focus, .fa-field select:focus{outline:2px solid color-mix(in srgb, var(--wine) 50%, transparent); outline-offset:1px;}
   .fa-field input:disabled, .fa-field select:disabled{opacity:.6;}
+
+  /* a psalm's superscription, unnumbered as in modern Bibles */
+  .br-title{margin:0 0 0.6em; font-style:italic; font-size:0.9em; color:var(--ink-soft);}
+  /* profile pictures sit above the banner's fade */
+  .dprof-avatar, .hc-avatar, .profile-banner + .avatar-panel > .forum-avatar, .profile-banner + .avatar-panel > .ringed{position:relative; z-index:2;}

@@ -8569,26 +8569,30 @@ function bibleFetchText(path){
   }
   return bibleMemo.get(path);
 }
+// The Psalms are numbered as in modern Bibles since the files were renumbered; the ?v=2 keeps a device from
+// using a psalm it saved under the old Vulgate numbering
+const biblePath = (slug, n, notes) => `bible/${slug}/${n}.${notes ? 'notes.txt' : 'txt'}${slug === 'psalms' ? '?v=2' : ''}`;
+// The first line is the chapter's summary (starting with * when it has notes), then, after tabs, any superscription
+// of a psalm ("Unto the end, a psalm for David."), which modern Bibles leave unnumbered; then one verse per line.
 async function bibleChapter(slug, n){
-  const lines = (await bibleFetchText(`bible/${slug}/${n}.txt`)).replace(/\r?\n$/, '').split(/\r?\n/);
-  const head = lines[0] || '';
-  return { hasNotes:head.startsWith('*'), summary:head.replace(/^\*/, ''), verses:lines.slice(1) };
+  const lines = (await bibleFetchText(biblePath(slug, n))).replace(/\r?\n$/, '').split(/\r?\n/);
+  const [summary, ...titles] = (lines[0] || '').split('\t');
+  return { hasNotes:summary.startsWith('*'), summary:summary.replace(/^\*/, ''), titles, verses:lines.slice(1) };
 }
 async function bibleNotes(slug, n){
   const notes = {};
-  (await bibleFetchText(`bible/${slug}/${n}.notes.txt`)).split(/\r?\n/).forEach(line => {
+  (await bibleFetchText(biblePath(slug, n, true))).split(/\r?\n/).forEach(line => {
     const tab = line.indexOf('\t');
     if(tab > 0) (notes[line.slice(0, tab)] = notes[line.slice(0, tab)] || []).push(line.slice(tab + 1));
   });
   return notes;
 }
 
-// Psalms follow the Vulgate numbering; this gives the number used by most modern Bibles
-function hebrewPsalm(n){
-  if(n <= 8 || n >= 148) return String(n);
-  if(n === 9) return '9–10';
-  if(n <= 112 || (n >= 116 && n <= 145)) return String(n + 1);
-  return { 113:'114–115', 114:'116:1–9', 115:'116:10–19', 146:'147:1–11', 147:'147:12–20' }[n];
+// The Psalms are numbered as in modern Bibles; this is where a psalm stands in the Douay-Rheims, which follows the Vulgate
+function vulgatePsalm(n){
+  if(n <= 8 || n >= 148) return '';
+  return { 9:'the first part of Psalm 9', 10:'the second part of Psalm 9', 114:'the first part of Psalm 113', 115:'the second part of Psalm 113',
+    116:'Psalms 114 and 115', 147:'Psalms 146 and 147' }[n] || `Psalm ${n - 1}`;
 }
 const bibleChapterName = (book, n) => book[0] === 'psalms' ? `Psalm ${n}` : `${book[2]} ${n}`;
 
@@ -8650,8 +8654,8 @@ function renderBibleReader(){
   if(!ref.chapter){ renderBibleBook(book, entry); return; }
   const n = ref.chapter;
   sectionTitleEl.textContent = bibleChapterName(book, n);
-  sectionDescEl.textContent = book[0] === 'psalms' && hebrewPsalm(n) !== String(n)
-    ? `Psalm ${hebrewPsalm(n)} in most modern Bibles. The Douay-Rheims follows the numbering of the Latin Vulgate.`
+  sectionDescEl.textContent = book[0] === 'psalms' && vulgatePsalm(n)
+    ? `In the Douay-Rheims, which follows the numbering of the Latin Vulgate, this is ${vulgatePsalm(n)}.`
     : book[3] !== book[2] ? `Called ${book[3]} in the Douay-Rheims Bible.` : 'The Douay-Rheims Bible.';
   crumbs.insertAdjacentHTML('beforeend', `<span aria-hidden="true">›</span><button data-route="library/bible/${book[0]}">${escapeHtml(book[2])}</button>`);
   document.title = `${bibleChapterName(book, n)} — Sanctify`;
@@ -8740,7 +8744,7 @@ function renderBibleReader(){
       const notes = await bibleNotes(book[0], n);
       if(currentRoute !== 'library/bible/read' || bibleRef.slug !== book[0] || bibleRef.chapter !== n) return;
       Object.entries(notes).forEach(([v, list]) => {
-        const after = textEl.querySelector(`.br-v[data-v="${v}"]`);
+        const after = v === '0' ? [...textEl.querySelectorAll('.br-title')].pop() : textEl.querySelector(`.br-v[data-v="${v}"]`);
         if(!after) return;
         after.insertAdjacentHTML('afterend', list.map(t => {
           const m = /^(.{1,120}?)\.\.\.\.\s*(.*)$/.exec(t);
@@ -8761,7 +8765,8 @@ function renderBibleReader(){
     chapterData = data;
     root.querySelector('.br-summary').textContent = data.summary;
     notesBtn.hidden = !data.hasNotes;
-    textEl.innerHTML = data.verses.map((t, i) => t ? `<p class="br-v" id="v${i + 1}" data-v="${i + 1}"><sup>${i + 1}</sup><span class="br-vt">${escapeHtml(t)}</span></p>` : '').join('');
+    textEl.innerHTML = data.titles.map(t => `<p class="br-title">${escapeHtml(t)}</p>`).join('')
+      + data.verses.map((t, i) => t ? `<p class="br-v" id="v${i + 1}" data-v="${i + 1}"><sup>${i + 1}</sup><span class="br-vt">${escapeHtml(t)}</span></p>` : '').join('');
     if(ref.verse){
       const hi = Math.max(ref.verse, ref.verseEnd || 0);
       for(let v = ref.verse; v <= hi; v++){ const el = textEl.querySelector(`.br-v[data-v="${v}"]`); if(el) el.classList.add('hl'); }
@@ -8787,7 +8792,7 @@ function renderBibleBook(book, entry){
       <button class="btn bb-start" data-route="library/bible/${book[0]}/${nextUp || 1}">${nextUp ? `Continue with ${escapeHtml(bibleChapterName(book, nextUp))}` : `${got ? 'Read again from the beginning' : 'Begin reading'} ${escapeHtml(book[0] === 'psalms' ? 'the Psalms' : book[2])}`} →</button>
       <div class="bb-heading-row"><h3 class="bb-heading">${book[0] === 'psalms' ? 'Psalms' : 'Chapters'}</h3>${got ? `<span class="bb-progress"><span class="bb-progress-bar" style="--p:${got / book[4]}"></span>${got} of ${book[4]} read</span>` : ''}</div>
       <div class="bb-chapters">${Array.from({ length:book[4] }, (_, i) => `<button class="bb-ch${isRead(i + 1) ? ' read' : ''}" data-route="library/bible/${book[0]}/${i + 1}"${isRead(i + 1) ? ` aria-label="${i + 1}, read"` : ''}>${i + 1}</button>`).join('')}</div>
-      ${book[0] === 'psalms' ? '<p class="shop-note">The Psalms follow the numbering of the Latin Vulgate, usually one lower than in modern Bibles from Psalm 10 to 147. Each psalm shows its modern number too.</p>' : ''}
+      ${book[0] === 'psalms' ? '<p class="shop-note">The Psalms are numbered as in most modern Bibles. The Douay-Rheims follows the Latin Vulgate, whose numbers are usually one lower from Psalm 10 to 147, and each psalm notes its number there.</p>' : ''}
     </div>`;
 }
 
@@ -13748,7 +13753,7 @@ function offlineFiles(){
 }
 async function saveOffline(withBible, progress){
   const files = offlineFiles();
-  const chapters = withBible ? BIBLE_BOOKS.flatMap(b => Array.from({ length:b[4] }, (x, i) => `bible/${b[0]}/${i + 1}.txt`)) : [];
+  const chapters = withBible ? BIBLE_BOOKS.flatMap(b => Array.from({ length:b[4] }, (x, i) => biblePath(b[0], i + 1))) : [];
   const total = files.length + chapters.length;
   let done = 0, failed = 0;
   const queue = [...files, ...chapters];
@@ -13760,7 +13765,7 @@ async function saveOffline(withBible, progress){
         if(!res.ok) failed++;
         // A chapter with notes starts with *; its notes are a file of their own
         else if(path.startsWith('bible/') && (await res.text()).startsWith('*')){
-          const notes = await fetch(path.replace(/\.txt$/, '.notes.txt'));
+          const notes = await fetch(path.replace(/\.txt(\?|$)/, '.notes.txt$1'));
           if(!notes.ok) failed++;
         }
       }catch(e){ failed++; }
