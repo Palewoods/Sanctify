@@ -153,6 +153,10 @@
     border:1px solid var(--line); border-radius:16px; background:var(--parchment);
   }
   .links a:hover{border-color:var(--gold); color:var(--wine-dark);}
+  .game{margin-top:26px; padding-top:20px; border-top:1px solid var(--line);}
+  .game h2{font-size:1.35rem; margin:0 0 4px;}
+  .game > p{margin:0 0 12px; font-size:0.9rem; color:var(--ink-soft);}
+  .game .more{display:inline-block; margin-top:10px; font-size:0.9rem;}
   .prayer{margin-top:26px; padding-top:18px; border-top:1px solid var(--line); font-size:0.9rem; color:var(--ink-soft);}
   .prayer strong{display:block; font-family:'Cormorant Garamond', serif; font-size:1.05rem; color:var(--wine-dark); margin-bottom:4px;}
   .prayer em{font-family:'Cormorant Garamond', serif; font-size:1.12rem; color:var(--ink);}
@@ -220,7 +224,15 @@
       <strong data-t="anthony">A little prayer to St. Anthony, finder of lost things</strong>
       <em data-t="rhyme">“Dear St. Anthony, please come around; something is lost and cannot be found.”</em>
     </div>
+
+    <section class="game" aria-labelledby="gameHead">
+      <h2 id="gameHead" data-t="gameHead">While you’re here</h2>
+      <p data-t="gameLede">St. Christopher carried the Christ Child across a river. Help him across.</p>
+      <div id="runner"></div>
+      <a class="more" href="/#/games" data-home="#/games" data-t="moreGames">More games →</a>
+    </section>
   </main>
+  <script src="/app/games.js?v=42e29e6e" defer></script>
 
 <script>
   // Where the site's home page lives. If Sanctify is hosted in a subfolder
@@ -247,6 +259,8 @@
 
   // The Eastern edition's three-bar cross, and the Traditional edition's cross bottony
   var crosses = { eastern:'M29 3L35 3L35 10L41.5 10L41.5 14.5L35 14.5L35 20L53 20L53 26L35 26L35 44.34L44.5 47.8L44.5 53.3L35 49.84L35 61L29 61L29 47.66L19.5 44.2L19.5 38.7L29 42.16L29 26L11 26L11 20L29 20L29 14.5L22.5 14.5L22.5 10L29 10z', traditional:'M28.9 19.9L28.9 14.93A3.8 3.8 0 1 1 28.3 7.69A3.8 3.8 0 1 1 35.7 7.69A3.8 3.8 0 1 1 35.1 14.93L35.1 19.9L42.07 19.9A3.8 3.8 0 1 1 49.31 19.3A3.8 3.8 0 1 1 49.31 26.7A3.8 3.8 0 1 1 42.07 26.1L35.1 26.1L35.1 49.07A3.8 3.8 0 1 1 35.7 56.31A3.8 3.8 0 1 1 28.3 56.31A3.8 3.8 0 1 1 28.9 49.07L28.9 26.1L21.93 26.1A3.8 3.8 0 1 1 14.69 26.7A3.8 3.8 0 1 1 14.69 19.3A3.8 3.8 0 1 1 21.93 19.9z' };
+  // A game while you're here (app/games.js)
+  addEventListener('DOMContentLoaded', function(){ if(window.SanctifyGames) SanctifyGames.christopher(document.getElementById('runner')); });
   var riteCross = crosses[document.documentElement.getAttribute('data-rite')];
   if(riteCross) document.querySelectorAll('.mark path').forEach(function(p){ p.setAttribute('d', riteCross); });
   // The page in the language chosen on the main site

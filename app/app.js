@@ -10,6 +10,7 @@ const CAT_DESC = {
   news: 'Announcements and updates from the Sanctify team.',
   credits: 'The people who make Sanctify, and the sources it is built on.',
   privacy: 'What Sanctify keeps, where it keeps it, and the choices you have.',
+  games: 'A few little games, hidden away: St. Christopher, Noah’s ark, and the loaves and fishes.',
   terms: 'The plain-language rules for using Sanctify and its Community.',
   badges: 'Badges for prayer, reading, and the Community, with your progress toward each.',
   moderate: 'Reports, accounts, bans, and the moderation log.',
@@ -853,7 +854,7 @@ function render(){
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
       tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, lists:renderLists, church:renderChurchGuide, councils:renderCouncils, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, badges:renderBadges, devotions:renderDevotions, littleoffice:renderLittleOffice, vocations:renderVocations, hymns:renderHymns, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
       'hub-pray':() => renderHub('pray'), 'hub-library':() => renderHub('library'), 'hub-learn':() => renderHub('learn'), 'hub-history':() => renderHub('history'), 'hub-saints':() => renderHub('saints'),
-      'hub-community':renderCommunityHome, credits:renderCredits, privacy:renderPrivacy, terms:renderTerms
+      'hub-community':renderCommunityHome, credits:renderCredits, privacy:renderPrivacy, terms:renderTerms, games:renderGames
     };
     const needsNoSearch = new Set(['home', 'daily', 'theology', 'hub-pray', 'hub-library', 'hub-learn']);
     if(special[activeCategory] && !(searching && needsNoSearch.has(activeCategory))){
@@ -11648,6 +11649,125 @@ function bindYearStrip(root, y){
   show();
 }
 
+/* ---------- The games room, and other small surprises ----------
+   Nothing in the menus leads here. Searching for "games" finds it, and so does the 404 page. The games themselves
+   are in app/games.js, which loads only when they're opened. */
+const GAMES = [
+  ['christopher', 'St. Christopher’s Crossing', 'Carry the Child across the river. He grows heavier as you go.'],
+  ['ark', 'Two by Two', 'Find the pairs, and lead the animals into Noah’s ark.'],
+  ['baskets', 'Twelve Baskets', 'Gather the loaves and fishes left over, and leave the stones.']
+];
+let gameOpen = 'christopher', gamesLoading = null;
+function loadGames(){
+  if(window.SanctifyGames) return Promise.resolve(window.SanctifyGames);
+  if(!gamesLoading) gamesLoading = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = document.querySelector('meta[name="sanctify-games"]').content;
+    s.onload = () => resolve(window.SanctifyGames);
+    s.onerror = () => { gamesLoading = null; s.remove(); reject(new Error('offline')); };
+    document.head.appendChild(s);
+  });
+  return gamesLoading;
+}
+function renderGames(){
+  entryListEl.innerHTML = `
+    <div class="games">
+      <p class="games-intro">You found the games room. Three little games, for a quiet minute.</p>
+      <div class="games-pick" role="group" aria-label="Choose a game">${GAMES.map(([k, name, desc]) =>
+        `<button class="games-card" type="button" data-game="${k}" aria-pressed="${k === gameOpen}"><strong>${escapeHtml(name)}</strong><span>${escapeHtml(desc)}</span></button>`).join('')}</div>
+      <div class="games-stage" id="gameStage"><div class="forum-loading">Opening the game…</div></div>
+    </div>`;
+  entryListEl.querySelectorAll('[data-game]').forEach(b => b.addEventListener('click', () => { gameOpen = b.dataset.game; renderGames(); }));
+  const stage = entryListEl.querySelector('#gameStage');
+  loadGames().then(G => { if(stage.isConnected) G[gameOpen](stage); })
+    .catch(() => { if(stage.isConnected) stage.innerHTML = '<div class="forum-empty">The games couldn’t be opened. Check your connection and try again.</div>'; });
+}
+
+// Searching for a few words brings a surprise: "games" opens the way to the games room,
+// "Habemus Papam" sends up white smoke, and "Fiat lux" lets there be light
+function searchEggs(q){
+  const t = q.trim().toLowerCase().replace(/[!.]+$/, '');
+  if(/^(games?|play|easter eggs?)$/.test(t) && !entryListEl.querySelector('.egg-hint'))
+    entryListEl.insertAdjacentHTML('afterbegin', `<button class="egg-hint" type="button" data-route="games">${navIcon('star')}<span><strong>You found the games room</strong><span>St. Christopher’s Crossing, Two by Two, and Twelve Baskets →</span></span></button>`);
+  if(t === searchEggs.last) return;
+  searchEggs.last = t;
+  if(t === 'habemus papam') whiteSmoke();
+  else if(t === 'fiat lux') fiatLux();
+}
+function eggLayer(cls, ms){
+  const layer = document.createElement('div');
+  layer.className = 'egg-layer ' + cls;
+  layer.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(layer);
+  setTimeout(() => layer.remove(), ms);
+  return layer;
+}
+function whiteSmoke(){
+  toast('Habemus Papam! White smoke rises over the Sistine Chapel.');
+  if(reducedMotion()) return;
+  const layer = eggLayer('egg-smoke', 7000);
+  for(let i = 0; i < 18; i++){
+    const p = document.createElement('span');
+    p.style.cssText = `--x:${(Math.random() * 16 - 8).toFixed(1)}vw; --drift:${(Math.random() * 30 - 15).toFixed(1)}vw; --s:${(60 + Math.random() * 90).toFixed(0)}px; animation-delay:${(i * 0.18).toFixed(2)}s`;
+    layer.appendChild(p);
+  }
+}
+function fiatLux(){
+  toast('“Let there be light”; and there was light. (Genesis 1:3)');
+  if(!reducedMotion()) eggLayer('egg-light', 2200);
+}
+// The Konami code brings St. Thérèse's shower of roses
+function showerOfRoses(){
+  const q = QUOTES.find(x => x.saint === 'St. Thérèse of Lisieux' && /spend my heaven/.test(x.text));
+  toast(q ? `“${q.text}” (St. Thérèse of Lisieux)` : 'A shower of roses, from St. Thérèse of Lisieux.');
+  if(reducedMotion()) return;
+  const layer = eggLayer('egg-roses', 9000);
+  const petal = '<svg viewBox="0 0 20 20"><path d="M10 1C5 5 3 9 5 14c1 3 4 5 5 5s4-2 5-5c2-5 0-9-5-13z"/></svg>';
+  for(let i = 0; i < 46; i++){
+    const p = document.createElement('span');
+    p.innerHTML = petal;
+    p.style.cssText = `left:${(Math.random() * 100).toFixed(1)}vw; --sway:${(Math.random() * 60 - 30).toFixed(0)}px; --spin:${(Math.random() * 720 - 360).toFixed(0)}deg; --s:${(12 + Math.random() * 14).toFixed(0)}px; --hue:${Math.random() < 0.7 ? 'var(--rose, #c46a7a)' : 'var(--wine)'}; animation-duration:${(4 + Math.random() * 3).toFixed(1)}s; animation-delay:${(Math.random() * 2.5).toFixed(2)}s`;
+    layer.appendChild(p);
+  }
+}
+const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let konamiAt = 0;
+document.addEventListener('keydown', ev => {
+  if(ev.target.closest && ev.target.closest('input, textarea, select, [contenteditable]')) return;
+  const key = ev.key.length === 1 ? ev.key.toLowerCase() : ev.key;
+  konamiAt = key === KONAMI[konamiAt] ? konamiAt + 1 : key === KONAMI[0] ? 1 : 0;
+  if(konamiAt === KONAMI.length){ konamiAt = 0; showerOfRoses(); }
+});
+// Three quick taps on the cross by the name ring the Sanctus bells
+let brandTaps = [];
+function sanctusBells(){
+  const Ctx = window.AudioContext || window.webkitAudioContext;
+  const brand = document.getElementById('brandHome');
+  brand.classList.remove('egg-ring'); void brand.offsetWidth; brand.classList.add('egg-ring');
+  if(!Ctx) return;
+  const ac = sanctusBells.ac || (sanctusBells.ac = new Ctx());
+  // three rings of a little cluster of bells, each a few bright partials that fade
+  [0, 0.75, 1.5].forEach(at => [1568, 1976, 2349, 2637].forEach((f, j) => {
+    const start = ac.currentTime + at + j * 0.035;
+    [1, 2.4, 3.9].forEach((m, n) => {
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type = 'sine'; o.frequency.value = f * m;
+      g.gain.setValueAtTime(0.0001, start);
+      g.gain.exponentialRampToValueAtTime([0.05, 0.016, 0.006][n], start + 0.008);
+      g.gain.exponentialRampToValueAtTime(0.0001, start + [1.6, 0.7, 0.35][n]);
+      o.connect(g).connect(ac.destination);
+      o.start(start); o.stop(start + 1.7);
+    });
+  }));
+}
+document.getElementById('brandHome').addEventListener('click', () => {
+  const now = Date.now();
+  brandTaps = [...brandTaps.filter(x => now - x < 1200), now];
+  if(brandTaps.length >= 3){ brandTaps = []; sanctusBells(); }
+});
+// For anyone who opens the browser's console
+try{ console.log('%c✝  Pax tecum.\n%cYou found the back room. Try searching for “games”, or the Konami code.', 'font:600 18px Georgia, serif; color:#7a2426', 'font:13px Georgia, serif; color:#5a4d3c'); }catch(e){}
+
 /* ---------- Discord ---------- */
 const DISCORD_URL = '/api/discord';
 const DISCORD_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.11 13.11 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>';
@@ -11947,6 +12067,7 @@ const SECTIONS = {
   'hub-community':{ name:'Community', icon:'community', color:'var(--indigo)' },
   credits:{ name:'Credits', icon:'star', color:'var(--gold)' },
   privacy:{ name:'Privacy', icon:'shield', color:'var(--teal)' },
+  games:{ name:'Games', icon:'star', color:'var(--gold)' },
   terms:{ name:'Terms of Use', icon:'list', color:'var(--indigo)' },
   thread:{ name:'Discussion', group:'Community', icon:'community', color:'var(--indigo)' },
   'forum-new':{ name:'New Post', group:'Community', icon:'community', color:'var(--indigo)' },
@@ -12548,6 +12669,7 @@ const ROUTES = {
   'settings':                    { cat:'settings' },
   'credits':                     { cat:'credits' },
   'privacy':                     { cat:'privacy' },
+  'games':                       { cat:'games', parent:'home' },
   'terms':                       { cat:'terms' },
   'account/badges':              { cat:'badges', parent:'account' },
   'pray':                        { cat:'hub-pray' },
@@ -12740,7 +12862,7 @@ document.addEventListener('click', e => {
 
 const searchInput = document.getElementById('searchInput');
 function syncSearchUI(){ searchInput.closest('.searchbar').classList.toggle('has-text', !!searchInput.value); }
-searchInput.addEventListener('input', () => { searchTerm = searchInput.value; syncSearchUI(); render(); });
+searchInput.addEventListener('input', () => { searchTerm = searchInput.value; syncSearchUI(); render(); searchEggs(searchTerm); });
 document.getElementById('searchClear').addEventListener('click', () => {
   searchInput.value=''; searchTerm=''; syncSearchUI(); searchInput.focus(); render();
 });
