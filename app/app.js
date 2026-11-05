@@ -11937,6 +11937,49 @@ function bindYearStrip(root, y){
   show();
 }
 
+/* ---------- The Learn pages, each opening with one of the great icons ----------
+   Theology with Rublev's Trinity, the Mass with the Last Supper, living the faith with the Baptism of Christ, the lists
+   with the Ascension, the church with the Entry into Jerusalem, the glossary with Christ's open Gospel at Cefalù, and
+   the quiz with the Transfiguration. Each page's own drawing is wrapped so the header comes back whenever it redraws. */
+const LEARN_ART = { theology:'trinity', mass:'lastsupper', vocations:'baptism', lists:'ascension', church:'entry', glossary:'cefalu', quiz:'transfiguration' };
+let learnHeroShown = '';
+function addLearnHero(){
+  const key = LEARN_ART[activeCategory], art = key && FAMOUS_ICONS.find(x => x.key === key);
+  if(!art || !FAMOUS_IMG[key] || searchTerm.trim() || entryListEl.querySelector('.lx-hero')) return;
+  document.getElementById('mainHead').hidden = true;
+  // the header arrives with a gentle entrance the first time, and stays still when the page redraws (a search, a tab)
+  const anim = learnHeroShown !== activeCategory ? ' hx-in' : '';
+  learnHeroShown = activeCategory;
+  const sec = SECTIONS[activeCategory] || {};
+  const el = document.createElement('section');
+  el.className = 'hub-head hub-has-art lx-hero';
+  el.style.setProperty('--hub-color', sec.color || 'var(--wine)');
+  el.innerHTML = `
+    <button class="hub-art${anim}" style="--d:2" data-icon="${art.key}" aria-label="${escapeHtml('About the icon: ' + art.title)}">
+      <span class="hub-art-frame"><img src="${escapeHtml(FAMOUS_IMG[art.key].img)}" alt="" decoding="async"></span>
+      <span class="hub-art-cap">${escapeHtml(art.title)}</span>
+    </button>
+    <div class="hub-text">
+      <nav class="lx-crumbs${anim}" style="--d:0" aria-label="Breadcrumb">${document.getElementById('sectionEyebrow').innerHTML}</nav>
+      <h1 class="hub-title${anim}" style="--d:1">${escapeHtml(sectionTitleEl.textContent)}<span>.</span></h1>
+      <p class="hub-intro${anim}" style="--d:2">${escapeHtml(sectionDescEl.textContent)}</p>
+    </div>`;
+  el.querySelector('.hub-art').addEventListener('click', () => { famousOpen = art.key; navigate('history/icons'); });
+  entryListEl.prepend(el);
+}
+const withLearnHero = fn => function(...args){
+  const r = fn.apply(this, args);
+  if(r && typeof r.then === 'function') r.then(addLearnHero); else addLearnHero();
+  return r;
+};
+renderTheology = withLearnHero(renderTheology);
+renderMass = withLearnHero(renderMass);
+renderVocations = withLearnHero(renderVocations);
+renderLists = withLearnHero(renderLists);
+renderChurchGuide = withLearnHero(renderChurchGuide);
+renderGlossary = withLearnHero(renderGlossary);
+renderQuiz = withLearnHero(renderQuiz);
+
 /* ---------- The games room, and other small surprises ----------
    Nothing in the menus leads here. Searching for "games" finds it, and so does the 404 page. The games themselves
    are in app/games.js, which loads only when they're opened. */

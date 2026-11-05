@@ -4081,3 +4081,87 @@
     .g-intro{-webkit-line-clamp:4;}
   }
   @media (prefers-reduced-motion:reduce){ .g-row, .g-row .saint-portrait img{transition:none;} }
+
+  /* =========================================================
+     LEARN, REMASTERED: picture headers, gilded icon boxes, gold medallions, cards that lift and arrive in turn
+     ========================================================= */
+  .lx-hero{padding-top:6px;}
+  .lx-crumbs{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-bottom:8px; font-size:0.78rem; color:var(--ink-soft);}
+  .lx-crumbs button{padding:0; border:none; background:none; color:var(--hub-color); font:inherit; font-weight:600; letter-spacing:0.04em; cursor:pointer;}
+  .lx-crumbs button:hover{text-decoration:underline;}
+
+  /* guide and list cards (Living the Faith, the Lists, Inside a Church, and Devotions) */
+  .dv-jump{gap:8px; margin-bottom:26px;}
+  .dv-chip{padding:7px 14px; border-color:color-mix(in srgb, var(--dv, var(--gold)) 35%, var(--line)); background:var(--parchment-light); transition:border-color .2s ease, translate .2s ease, background .2s ease;}
+  .dv-chip:hover{translate:0 -2px; border-color:var(--dv, var(--gold)); background:color-mix(in srgb, var(--dv, var(--gold)) 10%, var(--parchment-light));}
+  .dv-card{padding:28px 30px 24px; margin-bottom:20px; border-radius:20px; border-top:3px solid color-mix(in srgb, var(--dv) 70%, var(--line));
+    transition:border-color .25s ease, translate .25s ease; animation:hxIn .6s cubic-bezier(.2, .7, .3, 1) backwards;}
+  .dv-card:nth-of-type(2){animation-delay:70ms;} .dv-card:nth-of-type(3){animation-delay:140ms;} .dv-card:nth-of-type(4){animation-delay:210ms;}
+  .dv-head{gap:16px; margin-bottom:16px;}
+  /* the icon in a small gilded box */
+  .dv-icon{flex:0 0 58px; width:58px; height:58px; padding:14px; border-radius:16px; color:var(--dv);
+    background:linear-gradient(160deg, color-mix(in srgb, var(--dv) 16%, var(--parchment-light)), color-mix(in srgb, var(--dv) 6%, var(--parchment-light)));
+    box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--gold) 60%, transparent), 0 0 0 3px var(--parchment-light), 0 0 0 4px color-mix(in srgb, var(--gold) 35%, transparent) !important;}
+  .dv-head h3{font-size:1.65rem; line-height:1.1;}
+  .dv-head .daily-kicker{color:var(--gold);}
+  .dv-card > p{font-size:1.02rem; line-height:1.7;}
+  .dv-card h4{margin:20px 0 8px; font-size:0.74rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);}
+  /* numbered items as gold medallions */
+  .ls-items li{padding:12px 0 12px 44px;}
+  .ls-items li::before{top:10px; width:30px; height:30px; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.05rem; font-weight:700; color:var(--parchment-light);
+    background:radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--dv, var(--gold)) 70%, #fff), var(--dv, var(--gold)) 60%, color-mix(in srgb, var(--dv, var(--gold)) 70%, #000));}
+  .ls-items.plain li::before{background:color-mix(in srgb, var(--dv) 16%, transparent); color:var(--ink);}
+  .ls-term{font-family:'Cormorant Garamond', Georgia, serif; font-size:1.2rem; line-height:1.25;}
+  .ls-items li:hover{background:linear-gradient(90deg, color-mix(in srgb, var(--dv) 6%, transparent), transparent 70%);}
+  .dv-steps{padding-left:0; list-style:none; counter-reset:dv;}
+  .dv-steps li{counter-increment:dv; position:relative; padding:4px 0 6px 40px; margin-bottom:8px;}
+  .dv-steps li::before{content:counter(dv); position:absolute; left:0; top:2px; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:'Cormorant Garamond', Georgia, serif; font-weight:700; color:var(--dv); border:1.5px solid color-mix(in srgb, var(--dv) 60%, var(--line));}
+  .dv-note{padding:12px 16px; border-left:3px solid var(--gold); border-radius:0 10px 10px 0; background:color-mix(in srgb, var(--gold) 7%, transparent); font-style:italic;}
+  @media (max-width:600px){ .dv-card{padding:22px 18px 18px;} .dv-icon{flex-basis:48px; width:48px; height:48px; padding:12px;} }
+
+  /* theology: each teaching a card with its emblem in a gilded box */
+  .theology-grid{gap:16px;}
+  .theology-grid .theology-row{padding:18px 20px; border-radius:18px; transition:border-color .25s ease, translate .25s ease;}
+  .theology-grid .theology-row:hover{translate:0 -3px;}
+  .theology-grid .theology-row h3{display:flex; align-items:center; gap:12px; font-size:1.35rem; line-height:1.15;}
+  .theology-grid .row-art{flex:0 0 46px; width:46px; height:46px; margin:0; padding:9px; border-radius:13px; vertical-align:0;
+    background:color-mix(in srgb, var(--accent, var(--purple)) 10%, var(--parchment-light)); box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent) !important;}
+  .theology-grid .theology-row:nth-child(-n+8){animation:hxIn .6s cubic-bezier(.2, .7, .3, 1) backwards;}
+  .theology-grid .theology-row:nth-child(2){animation-delay:50ms;} .theology-grid .theology-row:nth-child(3){animation-delay:100ms;} .theology-grid .theology-row:nth-child(4){animation-delay:150ms;}
+  .theology-grid .theology-row:nth-child(5){animation-delay:200ms;} .theology-grid .theology-row:nth-child(6){animation-delay:250ms;}
+
+  /* the Mass: gilded medallions for the parts and the numbered moments */
+  .mass-section-title{font-size:1.8rem; margin:38px 0 12px;}
+  .mass-roman{width:46px; height:46px; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.15rem; font-weight:700;
+    background:radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--wine) 70%, #fff), var(--wine) 60%, color-mix(in srgb, var(--wine) 70%, #000));
+    box-shadow:0 0 0 3px var(--parchment), 0 0 0 4px color-mix(in srgb, var(--gold) 60%, transparent) !important;}
+  .mass-part{padding:18px 14px; margin:0 -14px; border-radius:14px; transition:background .2s ease;}
+  .mass-part:hover{background:color-mix(in srgb, var(--gold) 6%, transparent);}
+  .mass-num{flex-basis:34px; height:34px; font-family:'Cormorant Garamond', Georgia, serif; font-size:1rem; border-color:color-mix(in srgb, var(--gold) 70%, var(--line));}
+  .mass-head h3, .mass-part h3{font-size:1.3rem;}
+  .mass-strip-seg{transition:translate .2s ease, background .2s ease;}
+  .mass-strip-seg:hover{translate:0 -2px;}
+
+  /* the glossary: a manuscript initial for each letter, and the words as cards */
+  .glossary-letters{gap:5px;}
+  .glossary-letters a{min-width:32px; padding:5px 0; font-family:'Cormorant Garamond', Georgia, serif; font-size:1.05rem; transition:translate .15s ease, background .15s ease;}
+  .glossary-letters a:not(.off):hover{translate:0 -2px; background:color-mix(in srgb, var(--gold) 14%, var(--parchment-light));}
+  .glossary-group{scroll-margin-top:86px;}
+  .glossary-letter{display:flex; align-items:center; gap:14px; margin:34px 0 14px; border-bottom:none; font-size:2.8rem; line-height:1; color:var(--wine);}
+  .glossary-letter::after{content:''; flex:1; height:1px; background:linear-gradient(90deg, color-mix(in srgb, var(--gold) 60%, transparent), transparent);}
+  .glossary dl{display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px;}
+  @media (max-width:700px){ .glossary dl{grid-template-columns:1fr;} }
+  .glossary-item{padding:14px 16px; border:1px solid var(--line); border-radius:14px; background:var(--parchment-light); transition:border-color .2s ease;}
+  .glossary-item:hover{border-color:color-mix(in srgb, var(--gold) 60%, var(--line));}
+  .glossary-item dt{font-family:'Cormorant Garamond', Georgia, serif; font-size:1.25rem; font-weight:700; color:var(--ink); margin-bottom:4px;}
+  .glossary-item dd{margin:0; font-size:0.93rem; line-height:1.55; color:var(--ink-soft);}
+
+  /* the quiz: the invitation as a gilded card */
+  .quiz-intro{max-width:560px; margin:6px auto 0; padding:30px 28px; border:1px solid color-mix(in srgb, var(--gold) 45%, var(--line)); border-radius:22px;
+    background:radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--gold) 14%, transparent), transparent 70%), var(--parchment-light); animation:hxIn .6s cubic-bezier(.2, .7, .3, 1) .1s backwards;}
+  .quiz-intro p{font-size:1.05rem; line-height:1.65;}
+  .quiz-intro .btn.primary{padding:12px 30px; font-size:1.02rem;}
+
+  @media (prefers-reduced-motion:reduce){ .dv-card, .theology-grid .theology-row, .quiz-intro{animation:none;} .dv-chip, .dv-card, .theology-grid .theology-row, .mass-part, .mass-strip-seg, .glossary-letters a{transition:none;} }
+  :root[data-motion="reduced"] .dv-card, :root[data-motion="reduced"] .theology-grid .theology-row, :root[data-motion="reduced"] .quiz-intro{animation:none;}
