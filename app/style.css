@@ -4046,36 +4046,33 @@
   #readOverlay{z-index:58;}
 
   /* =========================================================
-     SAINT CARDS: a gilded arch, a wax seal with the feast day, a label beneath
+     SAINT TILES: the picture fills a square, the name and dates over a dark fade, the feast day on a seal
      ========================================================= */
-  .gallery:has(.g-saint){grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:34px 22px; overflow-x:clip;}
-  @media (max-width:520px){ .gallery:has(.g-saint){grid-template-columns:repeat(2, minmax(0, 1fr)); gap:26px 14px;} }
-  .g-saint{gap:12px;}
-  .g-frame{position:relative; display:block; width:100%; padding:6px; isolation:isolate;
-    border-radius:50% 50% 12px 12px / 37.5% 37.5% 12px 12px;
-    background:linear-gradient(150deg, color-mix(in srgb, var(--gold) 75%, #fff), var(--gold) 45%, color-mix(in srgb, var(--gold) 65%, #000));
-    transition:translate .3s cubic-bezier(.2, .7, .3, 1);}
-  /* a halo of light behind the arch, kindled on hover */
-  .g-frame::before{content:''; position:absolute; left:50%; top:40%; width:120%; aspect-ratio:1; translate:-50% -50%; z-index:-1; pointer-events:none;
-    background:radial-gradient(circle, color-mix(in srgb, var(--gold) 38%, transparent), transparent 62%); opacity:0; transition:opacity .35s ease;}
-  .g-saint .g-frame .saint-portrait.g-portrait{width:100%; max-width:none; margin:0; border:none; aspect-ratio:3 / 4;
-    border-radius:50% 50% 8px 8px / 37.5% 37.5% 8px 8px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.25);}
-  .g-saint .g-frame .saint-portrait img{transition:scale .6s cubic-bezier(.2, .7, .3, 1);}
-  .g-saint:hover .g-frame, .g-saint:focus-visible .g-frame{translate:0 -4px;}
-  .g-saint:hover .g-frame::before, .g-saint:focus-visible .g-frame::before{opacity:1;}
-  .g-saint:hover .saint-portrait img, .g-saint:focus-visible .saint-portrait img{scale:1.05;}
-  .g-saint:focus-visible .g-frame{outline:3px solid var(--wine); outline-offset:3px;}
-  /* the wax seal with the feast day */
-  .g-seal{position:absolute; right:6px; bottom:-10px; z-index:2; width:50px; height:50px; border-radius:50%;
+  .gallery:has(.g-square){grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); gap:16px;}
+  @media (max-width:520px){ .gallery:has(.g-square){grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px;} }
+  .g-square{position:relative; display:block; aspect-ratio:1; padding:0; overflow:hidden; isolation:isolate; border-radius:18px;
+    border:1px solid color-mix(in srgb, var(--gold) 45%, var(--line)); background:var(--parchment-dark); text-align:left;
+    transition:border-color .25s ease, translate .25s ease;}
+  .g-square .saint-portrait.g-portrait{position:absolute; inset:0; width:100%; height:100%; max-width:none; aspect-ratio:auto; margin:0; border:none; border-radius:0; box-shadow:none;}
+  .g-square .saint-portrait img{object-position:50% 18%; transition:scale .6s cubic-bezier(.2, .7, .3, 1);}
+  .g-square .saint-portrait .portrait-initial{width:70px; height:70px; font-size:2.6rem; margin-bottom:22%;}
+  /* the fade that carries the words */
+  .g-square::after{content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(180deg, transparent 38%, rgba(12, 8, 4, 0.18) 55%, rgba(12, 8, 4, 0.66) 78%, rgba(12, 8, 4, 0.9) 100%);}
+  .g-square .saint-portrait.loaded::after{display:none;}
+  .g-sq-text{position:absolute; left:0; right:0; bottom:0; z-index:2; display:flex; flex-direction:column; gap:2px; padding:12px 14px 13px; color:#fbf4e6;}
+  .g-square .g-title{font-family:'Cormorant Garamond', Georgia, serif; font-size:1.22rem; font-weight:700; line-height:1.12; text-shadow:0 1px 6px rgba(0,0,0,.6);
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+  .g-square .g-meta{font-size:0.8rem; color:#f0e2c4; opacity:.92; font-variant-numeric:lining-nums; text-shadow:0 1px 4px rgba(0,0,0,.6);}
+  .g-square:hover, .g-square:focus-visible{border-color:var(--gold); translate:0 -3px;}
+  .g-square:hover .saint-portrait img, .g-square:focus-visible .saint-portrait img{scale:1.06;}
+  .g-square:focus-visible{outline:3px solid var(--wine); outline-offset:3px;}
+  /* the feast day on a small wax seal in the corner */
+  .g-seal{position:absolute; top:10px; right:10px; z-index:2; width:44px; height:44px; border-radius:50%;
     display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1;
     background:radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--wine) 75%, #fff), var(--wine) 55%, color-mix(in srgb, var(--wine) 70%, #000));
-    color:#fff4e6; box-shadow:0 0 0 3px var(--parchment), 0 6px 14px -6px rgba(0,0,0,.6) !important;}
-  .g-seal span{font-size:0.56rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; opacity:.9;}
-  .g-seal b{font-family:'Cormorant Garamond', Georgia, serif; font-size:1.3rem; font-weight:700; margin-top:1px;}
-  .g-label{display:flex; flex-direction:column; align-items:center; gap:3px; padding:0 4px;}
-  .g-saint .g-title{font-size:1.28rem; line-height:1.15;}
-  .g-saint .g-meta{font-size:0.82rem; font-variant-numeric:lining-nums;}
-  .g-saint .g-patron{font-size:0.78rem;}
-  .g-saint:hover .g-title{color:var(--wine);}
-  @media (max-width:520px){ .g-saint .g-title{font-size:1.1rem;} .g-seal{width:42px; height:42px;} .g-seal b{font-size:1.1rem;} }
-  @media (prefers-reduced-motion:reduce){ .g-frame, .g-frame::before, .g-saint .g-frame .saint-portrait img{transition:none;} }
+    color:#fff4e6; box-shadow:0 0 0 2px rgba(255,244,230,.55), 0 4px 10px -4px rgba(0,0,0,.6) !important;}
+  .g-seal span{font-size:0.52rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; opacity:.9;}
+  .g-seal b{font-family:'Cormorant Garamond', Georgia, serif; font-size:1.15rem; font-weight:700; margin-top:1px;}
+  @media (max-width:520px){ .g-square .g-title{font-size:1.02rem;} .g-sq-text{padding:9px 10px 10px;} .g-square .g-meta{font-size:0.72rem;} .g-seal{width:36px; height:36px; top:7px; right:7px;} .g-seal b{font-size:0.95rem;} }
+  @media (prefers-reduced-motion:reduce){ .g-square, .g-square .saint-portrait img{transition:none;} }

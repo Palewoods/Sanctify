@@ -655,6 +655,12 @@ function patronMatches(e, term){
 
 function renderSaintFinder(everyone){
   const all = everyone.filter(e => patronMatches(e, saintPatron));
+  if(!SAINT_ERAS.some(x => x.key === saintEra)) saintEra = store.get('saintEra', SAINT_ERAS[0].key);
+  const fits = e => saintRole === 'all' || saintInfo(e.id).roles.includes(saintRole);
+  if(saintPatron && !all.some(e => saintInfo(e.id).era === saintEra && fits(e))){
+    const best = SAINT_ERAS.map(x => [x.key, all.filter(e => saintInfo(e.id).era === x.key && fits(e)).length]).sort((a, b) => b[1] - a[1])[0];
+    if(best[1]) saintEra = best[0];
+  }
   const inEra = all.filter(e => saintEra === 'all' || saintInfo(e.id).era === saintEra);
   const shown = inEra.filter(e => saintRole === 'all' || saintInfo(e.id).roles.includes(saintRole));
   const order = store.get('saintOrder', 'timeline');
@@ -675,7 +681,6 @@ function renderSaintFinder(everyone){
     <div class="sf-section">
       <div class="sf-label">When they lived</div>
       <div class="sf-eras" role="group" aria-label="Era">
-        ${eraTile('all', 'All of history', 'Every era')}
         ${SAINT_ERAS.map(x => eraTile(x.key, x.years, x.name)).join('')}
       </div>
     </div>
@@ -705,7 +710,7 @@ function renderSaintFinder(everyone){
   entryListEl.appendChild(panel);
   entryListEl.appendChild(buildFeastFinder());
 
-  const filtered = saintEra !== 'all' || saintRole !== 'all' || !!saintPatron;
+  const filtered = saintRole !== 'all' || !!saintPatron;
   const pick = PATRON_FILTERS.find(f => f.term === saintPatron);
   const describe = [saintEra !== 'all' ? SAINT_ERAS.find(x => x.key === saintEra).name : '', saintRole !== 'all' ? SAINT_ROLE_NAME[saintRole] : '',
     saintPatron ? 'Patron of ' + (pick ? pick.label.toLowerCase() : '“' + saintPatron + '”') : ''].filter(Boolean);
@@ -732,7 +737,7 @@ function renderSaintFinder(everyone){
     const strip = entryListEl.querySelector('.sf-eras');
     if(strip) strip.scrollLeft = left;
   };
-  panel.querySelectorAll('[data-era]').forEach(b => b.addEventListener('click', () => { saintEra = b.dataset.era; redraw(); }));
+  panel.querySelectorAll('[data-era]').forEach(b => b.addEventListener('click', () => { saintEra = b.dataset.era; store.set('saintEra', saintEra); redraw(); }));
   panel.querySelectorAll('[data-role]').forEach(b => b.addEventListener('click', () => { saintRole = saintRole === b.dataset.role ? 'all' : b.dataset.role; redraw(); }));
   panel.querySelectorAll('[data-term]').forEach(b => b.addEventListener('click', () => { saintPatron = saintPatron === b.dataset.term ? '' : b.dataset.term; redraw(); }));
   let typing = null;
@@ -749,11 +754,11 @@ function renderSaintFinder(everyone){
   bar.querySelectorAll('[data-order]').forEach(b => b.addEventListener('click', () => { store.set('saintOrder', b.dataset.order); redraw(); }));
   bar.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => { store.set('view.saint', b.dataset.view); redraw(); }));
   const clear = bar.querySelector('[data-act="clear"]');
-  if(clear) clear.addEventListener('click', () => { saintEra = 'all'; saintRole = 'all'; saintPatron = ''; redraw(); });
+  if(clear) clear.addEventListener('click', () => { saintRole = 'all'; saintPatron = ''; redraw(); });
 
   if(!shown.length){
     entryListEl.insertAdjacentHTML('beforeend', '<div class="empty-state">No saints match these filters.<br><button class="btn" data-act="clear-empty">Clear filters</button></div>');
-    entryListEl.querySelector('[data-act="clear-empty"]').addEventListener('click', () => { saintEra = 'all'; saintRole = 'all'; saintPatron = ''; redraw(); });
+    entryListEl.querySelector('[data-act="clear-empty"]').addEventListener('click', () => { saintRole = 'all'; saintPatron = ''; redraw(); });
     return;
   }
   const draw = (list, container) => view === 'grid' ? renderGallery(list, 'saint', container) : renderRows(list, container);
@@ -1030,18 +1035,16 @@ function renderGallery(entries, cat, container){
         <span class="g-title">${escapeHtml(e.title)}</span>
         <span class="g-meta">${escapeHtml((e.author || '').split(',')[0])}</span>${BOOK_TEXTS[e.id] ? '<span class="g-read">Read on Sanctify</span>' : ''}`;
     } else {
-      // a saint's card: their picture in a gilded arch, a wax seal with the feast day, and a label beneath
-      const feast = /feast days? ([A-Z][a-z]+) (\d{1,2})/.exec(e.author || '');
-      card.classList.add('g-saint', 'hx-in');
+      // a saint's tile: the picture fills the square, with the name and dates over it and the feast day on a seal
+      const feast = /feast(?: days?)? ([A-Z][a-z]+) (\d{1,2})/.exec(e.author || '');
+      const dates = (e.author || '').split(/(?:^|,|\s·)\s*(?:traditional\s+)?feast/)[0].trim();
+      card.classList.add('g-saint', 'g-square', 'hx-in');
       card.style.setProperty('--d', Math.min(grid.children.length, 16));
+      if(e.patron) card.title = 'Patron of ' + patronOf(e.patron);
       card.innerHTML = `
-        <span class="g-frame"><span class="saint-portrait g-portrait" data-sid="${e.id}">${portraitPlaceholder(e.title)}</span>
-          ${feast ? `<span class="g-seal" title="${escapeHtml('Feast day: ' + feast[1] + ' ' + feast[2])}"><span>${escapeHtml(feast[1].slice(0, 3))}</span><b>${feast[2]}</b></span>` : ''}</span>
-        <span class="g-label">
-          <span class="g-title">${escapeHtml(e.title)}</span>
-          <span class="g-meta">${escapeHtml((e.author || '').split(/,\s*feast/)[0])}</span>
-          ${e.patron ? `<span class="g-patron" title="${escapeHtml(patronOf(e.patron))}">${escapeHtml(patronOf(e.patron))}</span>` : ''}
-        </span>`;
+        <span class="saint-portrait g-portrait" data-sid="${e.id}">${portraitPlaceholder(e.title)}</span>
+        ${feast ? `<span class="g-seal" aria-label="${escapeHtml('Feast day: ' + feast[1] + ' ' + feast[2])}"><span>${escapeHtml(feast[1].slice(0, 3))}</span><b>${feast[2]}</b></span>` : ''}
+        <span class="g-sq-text"><span class="g-title">${escapeHtml(e.title)}</span>${dates ? `<span class="g-meta">${escapeHtml(dates)}</span>` : ''}</span>`;
     }
     card.addEventListener('click', () => openReadModal(e.id));
     grid.appendChild(card);
@@ -13133,7 +13136,7 @@ let currentReadId = null;
 // and a few saints of the same age to go on to
 function saintSide(e){
   const info = saintInfo(e.id), era = SAINT_ERAS.find(x => x.key === info.era);
-  const feast = /feast days? ([A-Z][a-z]+) (\d{1,2})/.exec(e.author || '');
+  const feast = /feast(?: days?)? ([A-Z][a-z]+) (\d{1,2})/.exec(e.author || '');
   const roles = info.roles.map(r => SAINT_ROLE_NAME[r]).filter(Boolean);
   const shared = x => saintInfo(x.id).roles.filter(r => info.roles.includes(r)).length;
   const peers = library.filter(x => x.category === 'saint' && x.id !== e.id && saintInfo(x.id).era === info.era)
