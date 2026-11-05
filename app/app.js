@@ -1023,11 +1023,28 @@ function fauxCover(e){
     <span class="fc-title">${escapeHtml(e.title)}</span><span class="fc-rule"></span><span class="fc-author">${escapeHtml((e.author || '').split(',')[0])}</span></span>`;
 }
 
+// The books and prayers on Sanctify written by each saint, found by their name in the author line
+// ("St. Augustine of Hippo, c. 397", "attributed to St. Bernard of Clairvaux"); a one-word name must match in full
+let saintWorksMap = null;
+function saintWorks(s){
+  if(!saintWorksMap){
+    saintWorksMap = {};
+    const works = library.filter(x => (x.category === 'book' || x.category === 'prayer') && x.author && !/approved|promulgated|added by/i.test(x.author));   // written by them, not only approved or added to
+    library.filter(x => x.category === 'saint').forEach(saint => {
+      const core = saint.title.replace(/\s*\(.*?\)/g, '').replace(/^(Pope\s+)?(Sts?\.|Bl\.|Ven\.)\s+/, '').trim();
+      const names = [saint.title, ...(core.includes(' ') ? [core] : [])];
+      const found = works.filter(w => names.some(n => new RegExp('(^|[^\\p{L}])' + n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '($|[^\\p{L}])', 'u').test(w.author)));
+      if(found.length) saintWorksMap[saint.id] = found;
+    });
+  }
+  return saintWorksMap[s.id] || [];
+}
+
 function renderGallery(entries, cat, container){
   const grid = document.createElement('div');
   grid.className = cat === 'book' ? 'shelf' : 'gallery';
   entries.forEach(e => {
-    const card = document.createElement('button');
+    const card = document.createElement(cat === 'book' ? 'button' : 'article');
     card.className = 'g-card';
     if(cat === 'book'){
       card.innerHTML = `
@@ -1035,16 +1052,26 @@ function renderGallery(entries, cat, container){
         <span class="g-title">${escapeHtml(e.title)}</span>
         <span class="g-meta">${escapeHtml((e.author || '').split(',')[0])}</span>${BOOK_TEXTS[e.id] ? '<span class="g-read">Read on Sanctify</span>' : ''}`;
     } else {
-      // a saint's tile: the picture fills the square, with the name and dates over it and the feast day on a seal
+      // a saint's card: the picture in a box to the left; beside it the name, dates, feast day,
+      // a short introduction, patronages, and the books and prayers of theirs on Sanctify
       const feast = /feast(?: days?)? ([A-Z][a-z]+) (\d{1,2})/.exec(e.author || '');
       const dates = (e.author || '').split(/(?:^|,|\s·)\s*(?:traditional\s+)?feast/)[0].trim();
-      card.classList.add('g-saint', 'g-square', 'hx-in');
-      card.style.setProperty('--d', Math.min(grid.children.length, 16));
-      if(e.patron) card.title = 'Patron of ' + patronOf(e.patron);
+      const works = saintWorks(e);
+      card.classList.add('g-saint', 'g-row', 'hx-in');
+      card.style.setProperty('--d', Math.min(grid.children.length, 12));
+      card.tabIndex = 0;
+      card.setAttribute('aria-label', e.title);
       card.innerHTML = `
         <span class="saint-portrait g-portrait" data-sid="${e.id}">${portraitPlaceholder(e.title)}</span>
-        ${feast ? `<span class="g-seal" aria-label="${escapeHtml('Feast day: ' + feast[1] + ' ' + feast[2])}"><span>${escapeHtml(feast[1].slice(0, 3))}</span><b>${feast[2]}</b></span>` : ''}
-        <span class="g-sq-text"><span class="g-title">${escapeHtml(e.title)}</span>${dates ? `<span class="g-meta">${escapeHtml(dates)}</span>` : ''}</span>`;
+        <span class="g-info">
+          <span class="g-title">${escapeHtml(e.title)}</span>
+          <span class="g-facts">${dates ? `<span>${escapeHtml(dates)}</span>` : ''}${feast ? `<span class="g-feast">${navIcon('calendar')}Feast day ${escapeHtml(feast[1] + ' ' + feast[2])}</span>` : ''}</span>
+          <span class="g-intro">${escapeHtml(excerptOf(e.content || '', 170))}</span>
+          ${e.patron ? `<span class="g-patron"><b>Patron of</b> ${escapeHtml(patronOf(e.patron).replace(/^Patron (saint )?of\s+/i, ''))}</span>` : ''}
+          ${works.length ? `<span class="g-works"><b>On Sanctify</b>${works.slice(0, 3).map(w => `<button class="g-work" type="button" data-work="${w.id}">${escapeHtml(w.title)}</button>`).join('')}${works.length > 3 ? `<span class="g-more">+${works.length - 3}</span>` : ''}</span>` : ''}
+        </span>`;
+      card.querySelectorAll('[data-work]').forEach(w => w.addEventListener('click', ev => { ev.stopPropagation(); openReadModal(w.dataset.work); }));
+      card.addEventListener('keydown', ev => { if(ev.target === card && (ev.key === 'Enter' || ev.key === ' ')){ ev.preventDefault(); openReadModal(e.id); } });
     }
     card.addEventListener('click', () => openReadModal(e.id));
     grid.appendChild(card);
