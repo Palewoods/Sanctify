@@ -640,7 +640,7 @@ Object.entries(SAINT_META).forEach(([id, value]) => {
   const [era, year, ...roles] = value.split(' ');
   SAINT_INFO[id] = { era, year:year === '' ? null : Number(year), roles };
 });
-let saintEra = 'all';
+let saintEra = null;   // the age chosen last (remembered), the Apostolic Age the first time, or 'all'
 let saintRole = 'all';
 let saintPatron = '';     // text or a quick pick such as 'physician|nurse'
 
@@ -655,9 +655,9 @@ function patronMatches(e, term){
 
 function renderSaintFinder(everyone){
   const all = everyone.filter(e => patronMatches(e, saintPatron));
-  if(!SAINT_ERAS.some(x => x.key === saintEra)) saintEra = store.get('saintEra', SAINT_ERAS[0].key);
+  if(saintEra !== 'all' && !SAINT_ERAS.some(x => x.key === saintEra)) saintEra = store.get('saintEra', SAINT_ERAS[0].key);
   const fits = e => saintRole === 'all' || saintInfo(e.id).roles.includes(saintRole);
-  if(saintPatron && !all.some(e => saintInfo(e.id).era === saintEra && fits(e))){
+  if(saintPatron && saintEra !== 'all' && !all.some(e => saintInfo(e.id).era === saintEra && fits(e))){
     const best = SAINT_ERAS.map(x => [x.key, all.filter(e => saintInfo(e.id).era === x.key && fits(e)).length]).sort((a, b) => b[1] - a[1])[0];
     if(best[1]) saintEra = best[0];
   }
@@ -681,6 +681,7 @@ function renderSaintFinder(everyone){
     <div class="sf-section">
       <div class="sf-label">When they lived</div>
       <div class="sf-eras" role="group" aria-label="Era">
+        ${eraTile('all', 'All of history', 'Every era')}
         ${SAINT_ERAS.map(x => eraTile(x.key, x.years, x.name)).join('')}
       </div>
     </div>
