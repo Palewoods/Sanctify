@@ -4,7 +4,7 @@
 
 Visit it at **https://sanctify.pages.dev/**. It is free, has no ads, and works on phones. You can also install it like an app.
 
-The current version is **Sanctify 1.1**.
+The current version is **Sanctify 1.2**.
 
 ## What’s inside
 

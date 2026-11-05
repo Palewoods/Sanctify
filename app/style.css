@@ -4165,3 +4165,22 @@
 
   @media (prefers-reduced-motion:reduce){ .dv-card, .theology-grid .theology-row, .quiz-intro{animation:none;} .dv-chip, .dv-card, .theology-grid .theology-row, .mass-part, .mass-strip-seg, .glossary-letters a{transition:none;} }
   :root[data-motion="reduced"] .dv-card, :root[data-motion="reduced"] .theology-grid .theology-row, :root[data-motion="reduced"] .quiz-intro{animation:none;}
+
+  /* =========================================================
+     1.2 TOUCHES: feast today, the word of the day
+     ========================================================= */
+  .g-row{position:relative;}
+  .g-row.is-today{border-color:var(--gold); background:radial-gradient(ellipse at 0% 0%, color-mix(in srgb, var(--gold) 12%, transparent), transparent 60%), var(--parchment-light);}
+  .g-today{position:absolute; top:-9px; left:18px; z-index:1; padding:3px 10px; border-radius:999px; background:var(--gold); color:var(--parchment-light);
+    font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;}
+  .ss-today{display:inline-block; margin-top:2px; padding:2px 9px; border-radius:999px; background:var(--gold); color:var(--parchment-light); font-size:0.72rem; font-weight:700;}
+  .gl-today{margin:0 0 18px; padding:18px 22px; border:1px solid color-mix(in srgb, var(--gold) 50%, var(--line)); border-radius:18px;
+    background:radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--gold) 14%, transparent), transparent 65%), var(--parchment-light);}
+  .gl-today .daily-kicker{color:var(--gold);}
+  .gl-today h3{margin:4px 0 6px; font-size:1.8rem;}
+  .gl-today p{margin:0; font-size:1rem; line-height:1.6;}
+
+  /* long lists: cards off screen are not laid out or painted until they come near */
+  .g-row{content-visibility:auto; contain-intrinsic-size:auto 190px;}
+  .glossary-item{content-visibility:auto; contain-intrinsic-size:auto 110px;}
+  .theology-grid .theology-row:nth-child(n+9){content-visibility:auto; contain-intrinsic-size:auto 220px;}

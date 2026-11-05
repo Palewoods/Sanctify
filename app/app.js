@@ -723,6 +723,7 @@ function renderSaintFinder(everyone){
       <div class="cal-viewtoggle" role="group" aria-label="Order">
         <button data-order="timeline" class="${order === 'timeline' ? 'active' : ''}" aria-pressed="${order === 'timeline'}">Timeline</button>
         <button data-order="az" class="${order === 'az' ? 'active' : ''}" aria-pressed="${order === 'az'}">A–Z</button>
+        <button data-order="feast" class="${order === 'feast' ? 'active' : ''}" aria-pressed="${order === 'feast'}">Feast day</button>
       </div>
       <div class="cal-viewtoggle" role="group" aria-label="Layout">
         <button data-view="grid" class="${view === 'grid' ? 'active' : ''}" aria-pressed="${view === 'grid'}">Gallery</button>
@@ -763,6 +764,12 @@ function renderSaintFinder(everyone){
     return;
   }
   const draw = (list, container) => view === 'grid' ? renderGallery(list, 'saint', container) : renderRows(list, container);
+  if(order === 'feast'){
+    // through the calendar year from January 1; those without a feast day yet come last
+    const key = e => { const f = saintFeast(e); return f ? f.month * 32 + f.day : 999; };
+    draw([...shown].sort((a, b) => key(a) - key(b) || saintSortName(a).localeCompare(saintSortName(b))), entryListEl);
+    return;
+  }
   if(order === 'az'){
     draw([...shown].sort((a, b) => saintSortName(a).localeCompare(saintSortName(b))), entryListEl);
     return;
@@ -1024,6 +1031,14 @@ function fauxCover(e){
     <span class="fc-title">${escapeHtml(e.title)}</span><span class="fc-rule"></span><span class="fc-author">${escapeHtml((e.author || '').split(',')[0])}</span></span>`;
 }
 
+// A saint's feast from their byline ("…, feast day October 4", "… · traditional feast December 10"), or null
+function saintFeast(e){
+  const m = /feast(?: days?)? ([A-Z][a-z]+) (\d{1,2})/.exec(e.author || '');
+  const month = m ? MONTH_NAMES.indexOf(m[1]) : -1;
+  return month < 0 ? null : { month, day:Number(m[2]), label:m[1] + ' ' + m[2] };
+}
+const isFeastToday = f => { const t = new Date(); return !!f && f.month === t.getMonth() && f.day === t.getDate(); };
+
 // The books and prayers on Sanctify written by each saint, found by their name in the author line
 // ("St. Augustine of Hippo, c. 397", "attributed to St. Bernard of Clairvaux"); a one-word name must match in full
 let saintWorksMap = null;
@@ -1034,7 +1049,11 @@ function saintWorks(s){
     library.filter(x => x.category === 'saint').forEach(saint => {
       const core = saint.title.replace(/\s*\(.*?\)/g, '').replace(/^(Pope\s+)?(Sts?\.|Bl\.|Ven\.)\s+/, '').trim();
       const names = [saint.title, ...(core.includes(' ') ? [core] : [])];
-      const found = works.filter(w => names.some(n => new RegExp('(^|[^\\p{L}])' + n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '($|[^\\p{L}])', 'u').test(w.author)));
+      // a plain search for the name, then a check that it stands as whole words (far quicker than a pattern per pair)
+      const found = works.filter(w => names.some(n => {
+        const i = w.author.indexOf(n);
+        return i >= 0 && !/\p{L}/u.test(w.author[i - 1] || '') && !/\p{L}/u.test(w.author[i + n.length] || '');
+      }));
       if(found.length) saintWorksMap[saint.id] = found;
     });
   }
@@ -1059,11 +1078,13 @@ function renderGallery(entries, cat, container){
       const dates = (e.author || '').split(/(?:^|,|\s·)\s*(?:traditional\s+)?feast/)[0].trim();
       const works = saintWorks(e);
       card.classList.add('g-saint', 'g-row', 'hx-in');
+      if(isFeastToday(saintFeast(e))) card.classList.add('is-today');
       card.style.setProperty('--d', Math.min(grid.children.length, 12));
       card.tabIndex = 0;
       card.setAttribute('aria-label', e.title);
       card.innerHTML = `
         <span class="saint-portrait g-portrait" data-sid="${e.id}">${portraitPlaceholder(e.title)}</span>
+        ${card.classList.contains('is-today') ? '<span class="g-today">Feast today</span>' : ''}
         <span class="g-info">
           <span class="g-title">${escapeHtml(e.title)}</span>
           <span class="g-facts">${dates ? `<span>${escapeHtml(dates)}</span>` : ''}${feast ? `<span class="g-feast">${navIcon('calendar')}Feast day ${escapeHtml(feast[1] + ' ' + feast[2])}</span>` : ''}</span>
@@ -8428,6 +8449,7 @@ function renderGlossary(){
           <input id="glossarySearch" type="search" placeholder="Look up a word…" aria-label="Search the glossary" value="${escapeHtml(glossaryQuery)}" autocomplete="off"></div>
         <nav class="glossary-letters" aria-label="Jump to a letter">${letters.map(l => `<a href="#gl-${l}" class="${groups[l] ? '' : 'off'}">${l}</a>`).join('')}</nav>
       </div>
+      ${q ? '' : (() => { const [w, d] = dailyPick(GLOSSARY, 113, startOfToday()); return `<section class="gl-today"><div class="daily-kicker">Word of the day</div><h3>${escapeHtml(w)}</h3><p>${escapeHtml(d)}</p></section>`; })()}
       <p class="view-count">${plural(terms.length, 'term', 'terms')}</p>
       ${terms.length ? Object.keys(groups).map(l => `
         <section class="glossary-group" id="gl-${l}">
@@ -13218,7 +13240,7 @@ function saintSide(e){
   side.className = 'saint-side';
   side.innerHTML = `
     <section class="ss-card ss-glance"><h3>At a glance</h3><dl>
-      ${feast ? `<div><dt>Feast day</dt><dd>${escapeHtml(feast[1] + ' ' + feast[2])}<button class="text-link" type="button" data-ss-feast>See it on the calendar →</button></dd></div>` : ''}
+      ${feast ? `<div><dt>Feast day</dt><dd>${escapeHtml(feast[1] + ' ' + feast[2])}${isFeastToday(saintFeast(e)) ? '<span class="ss-today">Today is their feast</span>' : ''}<button class="text-link" type="button" data-ss-feast>See it on the calendar →</button></dd></div>` : ''}
       ${era ? `<div><dt>Lived in</dt><dd>${escapeHtml(era.name)} <span class="ss-soft">${escapeHtml(era.years)}</span></dd></div>` : ''}
       ${roles.length ? `<div><dt>Walk of life</dt><dd>${roles.map(escapeHtml).join(', ')}</dd></div>` : ''}
     </dl></section>
@@ -14311,25 +14333,24 @@ function switchRow(id, name, note, on, disabled){
   return `<div class="shine-row"><span class="shine-row-text"><span class="shine-row-name">${name}</span><span class="shine-row-note">${note}</span></span>
     <button type="button" class="shine-switch" id="${id}" role="switch" aria-checked="${on}" aria-label="${name}"${disabled ? ' disabled' : ''}></button></div>`;
 }
-const SANCTIFY_VERSION = '1.1';
+const SANCTIFY_VERSION = '1.2';
 const RELEASE_NOTES = () => [
-  'A clearer Home: four picture tiles to start, the cross in a turning circle of light, and gentle motion throughout.',
-  'Each section opens with one of the great icons, and pictures fade in and darken softly toward their words.',
-  'Maps of where the ecumenical councils met, the seats of the Eastern Catholic Churches, and the places of Our Lady’s apparitions.',
-  'Date sliders: play through the councils, narrow Church history to any span of years, see who was pope in any year, and drag through the calendar year.',
-  'A wheel of the year on Today: drag around the seasons to turn to any day.',
-  'The whole Bible at a glance, filling in as you read, with the chapters you have read marked in each book.',
-  'A lens to look closer at the famous icons.',
-  'Advice for life from the saints, and more than seventy new sayings.',
-  'New themes: The Course of Empire, after Thomas Cole, and the Desert Fathers by day and by night.',
-  'Profile rings earned by praying, reading, and keeping a streak, and rings for the moderators.',
-  'Crisper page changes, centered calendar dates, a proper gear for Settings, and a Back to top button that shows how far you have read.'
+  'More than a thousand saints: two hundred more, among them Church Fathers, Desert Fathers and Mothers, monks, and saints and blesseds of our own time.',
+  'Each saint has a page of their own: a large portrait in a gilded frame, their life, their feast and age at a glance, their prayer and their own words, and saints of the same age.',
+  'Browse the saints by age, as cards with their picture, dates, feast day, a short introduction, their patronages, and their writings on Sanctify; order them by feast day too.',
+  'A gold ribbon on the saints whose feast is today.',
+  'Forty more saints shown in traditional icons, frescoes, and mosaics.',
+  'The Learn pages remastered: each opens with a great icon, with gilded cards, gold medallions, and a word of the day in the Glossary.',
+  'The Psalms numbered as in modern Bibles, verse by verse, with Psalm 10 restored.',
+  'Profiles with your patron saint, a favorite verse, your Church, a favorite prayer and book, and a color of your own.',
+  'The simple and clear themes in the main list, and a darker White on Black.',
+  'A few small surprises hidden around Sanctify.'
 ];
 // Shown once on Home after an update, until it is opened or dismissed
 function releaseBannerHtml(){
   if(store.get('release', '') === SANCTIFY_VERSION) return '';
   return `<section class="rite-banner release-banner"><span class="rite-banner-cross">${navIcon('star')}</span>
-    <div><strong class="notranslate" translate="no">Sanctify ${SANCTIFY_VERSION}</strong> <span>Maps, date sliders, a wheel of the year, a clearer Home, and new themes.</span></div>
+    <div><strong class="notranslate" translate="no">Sanctify ${SANCTIFY_VERSION}</strong> <span>More than a thousand saints, each with a page of their own, and the Learn pages remastered.</span></div>
     <button class="btn quiet" type="button" data-release-open>See what’s new</button>
     <button class="release-close" type="button" data-release-dismiss aria-label="Dismiss">×</button></section>`;
 }
