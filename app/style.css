@@ -3945,7 +3945,7 @@
   /* a psalm's superscription, unnumbered as in modern Bibles */
   .br-title{margin:0 0 0.6em; font-style:italic; font-size:0.9em; color:var(--ink-soft);}
   /* profile pictures sit above the banner's fade */
-  .dprof-avatar, .hc-avatar, .profile-banner + .avatar-panel > .forum-avatar, .profile-banner + .avatar-panel > .ringed{position:relative; z-index:2;}
+  .dprof-avatar, .hc-avatar, .cx-me-avatar, .profile-banner + .avatar-panel > .forum-avatar, .profile-banner + .avatar-panel > .ringed{position:relative; z-index:2;}
 
   /* =========================================================
      THE GAMES ROOM AND SMALL SURPRISES
