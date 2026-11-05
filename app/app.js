@@ -1030,11 +1030,18 @@ function renderGallery(entries, cat, container){
         <span class="g-title">${escapeHtml(e.title)}</span>
         <span class="g-meta">${escapeHtml((e.author || '').split(',')[0])}</span>${BOOK_TEXTS[e.id] ? '<span class="g-read">Read on Sanctify</span>' : ''}`;
     } else {
+      // a saint's card: their picture in a gilded arch, a wax seal with the feast day, and a label beneath
+      const feast = /feast days? ([A-Z][a-z]+) (\d{1,2})/.exec(e.author || '');
+      card.classList.add('g-saint', 'hx-in');
+      card.style.setProperty('--d', Math.min(grid.children.length, 16));
       card.innerHTML = `
-        <div class="saint-portrait g-portrait" data-sid="${e.id}">${portraitPlaceholder(e.title)}</div>
-        <span class="g-title">${escapeHtml(e.title)}</span>
-        <span class="g-meta">${escapeHtml(feastLabel(e))}</span>
-        ${e.patron ? `<span class="g-patron" title="${escapeHtml(patronOf(e.patron))}">${escapeHtml(patronOf(e.patron))}</span>` : ''}`;
+        <span class="g-frame"><span class="saint-portrait g-portrait" data-sid="${e.id}">${portraitPlaceholder(e.title)}</span>
+          ${feast ? `<span class="g-seal" title="${escapeHtml('Feast day: ' + feast[1] + ' ' + feast[2])}"><span>${escapeHtml(feast[1].slice(0, 3))}</span><b>${feast[2]}</b></span>` : ''}</span>
+        <span class="g-label">
+          <span class="g-title">${escapeHtml(e.title)}</span>
+          <span class="g-meta">${escapeHtml((e.author || '').split(/,\s*feast/)[0])}</span>
+          ${e.patron ? `<span class="g-patron" title="${escapeHtml(patronOf(e.patron))}">${escapeHtml(patronOf(e.patron))}</span>` : ''}
+        </span>`;
     }
     card.addEventListener('click', () => openReadModal(e.id));
     grid.appendChild(card);
