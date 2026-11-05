@@ -3420,7 +3420,7 @@ const THEMES = [
   { key:'fresco', mode:'light', name:'Fresco', desc:'Warm plaster, terracotta, and sky blue', swatch:['#f9f1e5','#b5552f'] },
   { key:'mono', mode:'light', name:'Black & White', desc:'Near-black ink on white, no color at all', swatch:['#ffffff','#121212'] },
   { key:'gray', mode:'light', name:'Gray & White', desc:'Soft grays on white, calm and plain', swatch:['#fafafa','#4a4a4a'] },
-  { key:'mono-dark', mode:'dark', name:'White on Black', desc:'White on near-black, no color at all', swatch:['#0e0e0e','#ffffff'] },
+  { key:'mono-dark', mode:'dark', name:'White on Black', desc:'White on near-black, no color at all', swatch:['#080808','#ffffff'] },
   { key:'graphite', mode:'dark', name:'Graphite', desc:'Charcoal and silver grays', swatch:['#2a2a2a','#d4d4d4'] },
   { key:'pascha', mode:'light', name:'Pascha', desc:'Paschal white and red: Christ is risen!', swatch:['#ffffff','#b3161b'] },
   { key:'vyshyvanka', mode:'light', name:'Vyshyvanka', desc:'White linen with red and black embroidery', swatch:['#fffdf8','#bf141c'] },
@@ -3551,7 +3551,8 @@ function currentTheme(){
 /* ---------- Your own themes ----------
    A theme of your own is a background, an accent, and a text color. Everything else (card and page shades,
    softer text, lines, the glow) is worked out from those, and light or dark follows the background. */
-const FEATURED_THEMES = ['light', 'graphite', 'dark', 'sanctify-wine', 'liturgical', 'liturgical-dark', 'marian', 'midnight', 'ivory', 'byzantine', 'obsidian', 'contrast'];
+const FEATURED_THEMES = ['light', 'dark', 'sanctify-wine', 'liturgical', 'liturgical-dark', 'marian', 'midnight', 'ivory', 'byzantine', 'obsidian',
+  'contrast', 'contrast-dark', 'mono', 'mono-dark', 'gray', 'graphite'];   // the simple and clear themes, together at the end
 const CUSTOM_VARS = ['--parchment', '--parchment-light', '--parchment-dark', '--ink', '--ink-soft', '--wine', '--wine-dark', '--gold', '--gold-light', '--green', '--indigo', '--purple', '--teal', '--rose', '--amber', '--ink-rgb', '--line', '--shadow', '--glow-rgb', '--tint-rgb'];
 const CUSTOM_MAX = 12;
 const hexRgb = h => { h = String(h).replace('#', ''); if(h.length === 3) h = h.split('').map(c => c + c).join(''); const n = parseInt(h, 16) || 0; return [n >> 16 & 255, n >> 8 & 255, n & 255]; };
