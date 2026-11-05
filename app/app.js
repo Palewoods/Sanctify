@@ -13122,6 +13122,42 @@ document.getElementById('searchClear').addEventListener('click', () => {
 const readOverlay = document.getElementById('readOverlay');
 let currentReadId = null;
 
+// The column beside a saint's life: their feast, era, and walk of life; their prayer and their own words;
+// and a few saints of the same age to go on to
+function saintSide(e){
+  const info = saintInfo(e.id), era = SAINT_ERAS.find(x => x.key === info.era);
+  const feast = /feast days? ([A-Z][a-z]+) (\d{1,2})/.exec(e.author || '');
+  const roles = info.roles.map(r => SAINT_ROLE_NAME[r]).filter(Boolean);
+  const shared = x => saintInfo(x.id).roles.filter(r => info.roles.includes(r)).length;
+  const peers = library.filter(x => x.category === 'saint' && x.id !== e.id && saintInfo(x.id).era === info.era)
+    .map(x => [x, shared(x) * 1000 - Math.abs((saintInfo(x.id).year || 0) - (info.year || 0))]).sort((a, b) => b[1] - a[1]).slice(0, 4).map(a => a[0]);
+  const side = document.createElement('aside');
+  side.id = 'saintSide';
+  side.className = 'saint-side';
+  side.innerHTML = `
+    <section class="ss-card ss-glance"><h3>At a glance</h3><dl>
+      ${feast ? `<div><dt>Feast day</dt><dd>${escapeHtml(feast[1] + ' ' + feast[2])}<button class="text-link" type="button" data-ss-feast>See it on the calendar →</button></dd></div>` : ''}
+      ${era ? `<div><dt>Lived in</dt><dd>${escapeHtml(era.name)} <span class="ss-soft">${escapeHtml(era.years)}</span></dd></div>` : ''}
+      ${roles.length ? `<div><dt>Walk of life</dt><dd>${roles.map(escapeHtml).join(', ')}</dd></div>` : ''}
+    </dl></section>
+    ${peers.length ? `<section class="ss-card ss-peers"><h3>${era && era.key !== 'angels' ? 'Saints of the same age' : 'Related'}</h3>${peers.map(x => `
+      <button class="ss-peer" type="button" data-ss-open="${x.id}"><span class="saint-portrait" data-sid="${x.id}">${portraitPlaceholder(x.title)}</span><span><strong>${escapeHtml(x.title)}</strong><span class="ss-soft">${escapeHtml((x.author || '').split(',')[0])}</span></span></button>`).join('')}</section>` : ''}`;
+  // the prayer and the saint's own words move into the column, after the facts
+  const glance = side.querySelector('.ss-glance');
+  ['readQuotes', 'readNotable', 'readIntercession'].forEach(id => { const el = document.getElementById(id); if(el) glance.insertAdjacentElement('afterend', el); });
+  const f = side.querySelector('[data-ss-feast]');
+  if(f) f.addEventListener('click', () => {
+    readOverlay.classList.remove('open');
+    const d = new Date(new Date().getFullYear(), MONTH_NAMES.indexOf(feast[1]), Number(feast[2]));
+    calView = 'month';
+    navigate('calendar');
+    setTimeout(() => selectCalDay(d), 0);
+  });
+  side.querySelectorAll('[data-ss-open]').forEach(b => b.addEventListener('click', () => { openReadModal(b.dataset.ssOpen); readOverlay.scrollTo({ top:0 }); }));
+  side.querySelectorAll('.saint-portrait[data-sid]').forEach(observePortrait);
+  return side;
+}
+
 function openReadModal(id, fetched){
   const e = library.find(x => x.id === id);
   if(!e) return;
@@ -13196,6 +13232,11 @@ function openReadModal(id, fetched){
   const card = PRAYER_CARDS[e.id];
   const modalEl = readOverlay.querySelector('.read-modal');
   modalEl.classList.toggle('card-mode', !!card);
+  // A saint has a page of their own: a large portrait in a gilded frame, and a column beside the life
+  const staleSide = document.getElementById('saintSide');
+  if(staleSide) staleSide.remove();
+  modalEl.classList.toggle('saint-mode', e.category === 'saint');
+  if(e.category === 'saint') bodyEl.insertAdjacentElement('afterend', saintSide(e));
   modalEl.style.setProperty('--accent', card ? card.accent : 'var(--wine)');
   document.getElementById('readArt').innerHTML = card ? cardArt(card.art) : '';
   document.getElementById('readCat').textContent = card ? 'Prayer Card' : (CAT_LABEL[e.category] || e.category);
