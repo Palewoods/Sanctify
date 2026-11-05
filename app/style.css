@@ -4182,5 +4182,6 @@
 
   /* long lists: cards off screen are not laid out or painted until they come near */
   .g-row{content-visibility:auto; contain-intrinsic-size:auto 190px;}
+  .g-row.is-today{content-visibility:visible;}   /* paint containment would clip its ribbon */
   .glossary-item{content-visibility:auto; contain-intrinsic-size:auto 110px;}
   .theology-grid .theology-row:nth-child(n+9){content-visibility:auto; contain-intrinsic-size:auto 220px;}
