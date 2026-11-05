@@ -11963,11 +11963,42 @@ function bindYearStrip(root, y){
    Theology with Rublev's Trinity, the Mass with the Last Supper, living the faith with the Baptism of Christ, the lists
    with the Ascension, the church with the Entry into Jerusalem, the glossary with Christ's open Gospel at Cefalù, and
    the quiz with the Transfiguration. Each page's own drawing is wrapped so the header comes back whenever it redraws. */
-const LEARN_ART = { theology:'trinity', mass:'lastsupper', vocations:'baptism', lists:'ascension', church:'entry', glossary:'cefalu', quiz:'transfiguration' };
+// The picture at the top of a page: a famous icon (its key), or a saint tied to what the page is for ([id, why])
+const PAGE_PICS = {   // saints chosen for pages who have no icon in SAINT_ICONS: the picture their own page shows
+  s4:'https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/St-thomas-aquinasFXD.jpg/330px-St-thomas-aquinasFXD.jpg',
+  s5:'https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Santa_Teresa_de_Jes%C3%BAs_%28Museo_del_Prado%29.jpg/330px-Santa_Teresa_de_Jes%C3%BAs_%28Museo_del_Prado%29.jpg',
+  s96:'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Isidor_von_Sevilla.jpeg/330px-Isidor_von_Sevilla.jpeg',
+  s98:'https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/E-codices_bke-0047_001v_medium_%28cropped%29.jpg/330px-E-codices_bke-0047_001v_medium_%28cropped%29.jpg',
+  s738:'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BC%D0%B0_14%D0%B2.jpg/330px-%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BC%D0%B0_14%D0%B2.jpg'
+};
+const PRAY_ART = () => isEastern() ? ['s738', 'teacher of the Jesus Prayer'] : ['s5', 'Doctor of the Church and teacher of prayer'];
+const LEARN_ART = () => ({
+  theology:['s87', 'called the Theologian'],
+  mass:isEastern() ? ['s88', 'whose Divine Liturgy is prayed each Sunday'] : 'lastsupper',
+  vocations:['s11', 'patron of the universal Church, of families, and of workers'],
+  lists:['s430', 'who received the Ten Commandments'],
+  church:['s68', 'patron of architects and builders'],
+  glossary:['s96', 'who explained the words of his age in his Etymologies'],
+  quiz:['s4', 'whose Summa is written as questions and answers']
+});
+function pageArt(spec){
+  if(!spec) return null;
+  if(typeof spec === 'string'){
+    const a = FAMOUS_ICONS.find(x => x.key === spec);
+    return a && FAMOUS_IMG[spec] ? { img:FAMOUS_IMG[spec].img, cap:a.title, label:'About the icon: ' + a.title, icon:spec } : null;
+  }
+  const [id, why] = spec, s = library.find(x => x.id === id), img = SAINT_ICONS[id] || PAGE_PICS[id];
+  return s && img ? { img, cap:`${s.title}, ${why}`, label:`${s.title}, ${why}. Open their page`, saint:id } : null;
+}
+const pageArtButton = (art, cls, prio = '') => `<button class="hub-art${cls}" style="--d:2" ${art.icon ? `data-icon="${art.icon}"` : `data-saint="${art.saint}"`} aria-label="${escapeHtml(art.label)}">
+      <span class="hub-art-frame"><img src="${escapeHtml(art.img)}" alt="" decoding="async"${prio}></span>
+      <span class="hub-art-cap">${escapeHtml(art.cap)}</span>
+    </button>`;
+function openPageArt(el){ if(el.dataset.saint) openReadModal(el.dataset.saint); else { famousOpen = el.dataset.icon; navigate('history/icons'); } }
 let learnHeroShown = '';
 function addLearnHero(){
-  const key = LEARN_ART[activeCategory], art = key && FAMOUS_ICONS.find(x => x.key === key);
-  if(!art || !FAMOUS_IMG[key] || searchTerm.trim() || entryListEl.querySelector('.lx-hero')) return;
+  const art = pageArt(LEARN_ART()[activeCategory]);
+  if(!art || searchTerm.trim() || entryListEl.querySelector('.lx-hero')) return;
   document.getElementById('mainHead').hidden = true;
   // the header arrives with a gentle entrance the first time, and stays still when the page redraws (a search, a tab)
   const anim = learnHeroShown !== activeCategory ? ' hx-in' : '';
@@ -11977,16 +12008,13 @@ function addLearnHero(){
   el.className = 'hub-head hub-has-art lx-hero';
   el.style.setProperty('--hub-color', sec.color || 'var(--wine)');
   el.innerHTML = `
-    <button class="hub-art${anim}" style="--d:2" data-icon="${art.key}" aria-label="${escapeHtml('About the icon: ' + art.title)}">
-      <span class="hub-art-frame"><img src="${escapeHtml(FAMOUS_IMG[art.key].img)}" alt="" decoding="async"></span>
-      <span class="hub-art-cap">${escapeHtml(art.title)}</span>
-    </button>
+    ${pageArtButton(art, anim)}
     <div class="hub-text">
       <nav class="lx-crumbs${anim}" style="--d:0" aria-label="Breadcrumb">${document.getElementById('sectionEyebrow').innerHTML}</nav>
       <h1 class="hub-title${anim}" style="--d:1">${escapeHtml(sectionTitleEl.textContent)}<span>.</span></h1>
       <p class="hub-intro${anim}" style="--d:2">${escapeHtml(sectionDescEl.textContent)}</p>
     </div>`;
-  el.querySelector('.hub-art').addEventListener('click', () => { famousOpen = art.key; navigate('history/icons'); });
+  el.querySelector('.hub-art').addEventListener('click', ev => openPageArt(ev.currentTarget));
   entryListEl.prepend(el);
 }
 const withLearnHero = fn => function(...args){
@@ -12652,13 +12680,14 @@ const HUBS = {
   }
 };
 
-// The icon that opens each section page: Our Lady praying with raised hands for Pray, Christ with the Gospel book for
-// the Library, the open Gospel of Cefalù for Learn, the Ladder of Divine Ascent for the saints, and Hagia Sophia's Deësis for History
-const HUB_ART = { pray:'sign', library:'pantocrator', learn:'cefalu', saints:'ladder', history:'deesis' };
+// The picture that opens each section page: a teacher of prayer for Pray, the patron of librarians for the Library, the patron
+// of students for Learn, the Ladder of Divine Ascent for the saints, and the historian Bede for History
+const HUB_ART = () => ({ pray:PRAY_ART(), library:['s80', 'patron of librarians'], learn:['s165', 'patron of students and scholars'],
+  saints:'ladder', history:['s98', 'who wrote the history of the English Church'] });
 function renderHub(key){
   entryListEl.innerHTML = '';
   const hub = HUBS[key];
-  const art = FAMOUS_ICONS.find(x => x.key === HUB_ART[key]);
+  const art = pageArt(HUB_ART()[key]);
   const cards = hub.cards();
   const sec = SECTIONS['hub-' + key];
   const verse = dailyPick(DAILY_VERSES, { pray:61, library:73, learn:89, history:97, saints:53 }[key], startOfToday());
@@ -12668,10 +12697,7 @@ function renderHub(key){
   const cardTitle = c => c.title || routeName(c.route);
   wrap.innerHTML = `
     <section class="hub-head${art ? ' hub-has-art' : ''}">
-      ${art ? `<button class="hub-art hx-in" style="--d:2" data-icon="${art.key}" aria-label="${escapeHtml('About the icon: ' + art.title)}">
-        <span class="hub-art-frame"><img src="${escapeHtml(FAMOUS_IMG[art.key].img)}" alt="" decoding="async" fetchpriority="high"></span>
-        <span class="hub-art-cap">${escapeHtml(art.title)}</span>
-      </button>` : ''}
+      ${art ? pageArtButton(art, ' hx-in', ' fetchpriority="high"') : ''}
       <div class="hub-text">
         <div class="hub-eyebrow hx-in" style="--d:0">${escapeHtml(hub.eyebrow)}</div>
         <h1 class="hub-title hx-in" style="--d:1">${escapeHtml(hub.title)}<span>.</span></h1>
@@ -12700,7 +12726,7 @@ function renderHub(key){
   entryListEl.appendChild(wrap);
 
   wrap.querySelectorAll('[data-action="surprise"]').forEach(el => el.addEventListener('click', e => { e.stopPropagation(); surpriseMe(); }));
-  wrap.querySelectorAll('.hub-art').forEach(el => el.addEventListener('click', () => { famousOpen = el.dataset.icon; navigate('history/icons'); }));
+  wrap.querySelectorAll('.hub-art').forEach(el => el.addEventListener('click', () => openPageArt(el)));
   wrap.querySelectorAll('[data-open]').forEach(el => el.addEventListener('click', e => { e.stopPropagation(); openReadModal(el.dataset.open); }));
   wrap.querySelectorAll('.bento-card').forEach(card => card.addEventListener('keydown', e => {
     if(e.target !== card || (e.key !== 'Enter' && e.key !== ' ')) return;
@@ -12820,15 +12846,15 @@ document.addEventListener('keydown', ev => {
 });
 
 // A large picture tile on Home: one of the great icons, with what it opens written over it
-function homeTile(route, img, title, sub, d){
-  const src = FAMOUS_IMG[img] ? FAMOUS_IMG[img].img : img;
+function homeTile(route, spec, title, sub, d){
+  const src = pageArt(spec).img;
   return `<button class="hx-tile hx-in" style="--d:${d}" data-route="${route}">
     <span class="hx-tile-img"><img src="${escapeHtml(src)}" alt="" loading="lazy" decoding="async"></span>
     <span class="hx-tile-text"><strong>${escapeHtml(title)}</strong><span>${escapeHtml(sub)}</span></span>
   </button>`;
 }
-function homeMore(route, img, title, sub){
-  const im = FAMOUS_IMG[img];
+function homeMore(route, spec, title, sub){
+  const im = pageArt(spec);
   return `<button class="hx-more-card" data-route="${route}">
     <span class="hx-more-img"><img src="${escapeHtml(im.img)}" alt="" loading="lazy" decoding="async"></span>
     <span><strong>${escapeHtml(title)}</strong><span>${escapeHtml(sub)}</span></span>
@@ -12877,8 +12903,8 @@ function renderHome(){
     <section class="hx-start" aria-labelledby="hxStartHead">
       <h2 class="hx-head" id="hxStartHead">Start here</h2>
       <div class="hx-tiles">
-        ${homeTile('pray', 'vladimir', 'Pray', isEastern() ? 'The Jesus Prayer, the Akathist, and prayers for every day' : 'The Rosary, prayers on illustrated cards, and the Stations of the Cross', 5)}
-        ${homeTile('library/bible', SAINT_ICONS.s72, 'Read the Bible', 'All 73 books, chapter by chapter, with reading plans', 6)}
+        ${homeTile('pray', PRAY_ART(), 'Pray', isEastern() ? 'The Jesus Prayer, the Akathist, and prayers for every day' : 'The Rosary, prayers on illustrated cards, and the Stations of the Cross', 5)}
+        ${homeTile('library/bible', ['s21', 'who translated the Bible'], 'Read the Bible', 'All 73 books, chapter by chapter, with reading plans', 6)}
         ${homeTile('saints', 'ladder', 'Meet the saints', `${byCat('saint').length} lives, with their prayers and their own words`, 7)}
         ${homeTile('community', 'trinity', 'Pray together', 'Prayer requests and questions in the Community', 8)}
       </div>
@@ -12924,9 +12950,9 @@ function renderHome(){
       <h2 class="hx-head" id="hxMoreHead">More to explore</h2>
       <div class="hx-more-grid">
         ${homeMore('calendar', 'nativity', 'The calendar', isEastern() ? 'The Byzantine year of feasts and fasts' : 'Every feast and season of the year')}
-        ${homeMore('history', 'cefalu', 'Church history', 'Two thousand years, every pope, and the great icons')}
-        ${homeMore('learn', 'anastasis', 'Learn the faith', `${byCat('theology').length} teachings, ${isEastern() ? 'the Divine Liturgy' : 'the Mass'} explained, and a glossary`)}
-        ${homeMore('saints/quotes', 'transfiguration', 'Words of the saints', `${QUOTES.length} sayings, and advice for life`)}
+        ${homeMore('history', HUB_ART().history, 'Church history', 'Two thousand years, every pope, and the great icons')}
+        ${homeMore('learn', HUB_ART().learn, 'Learn the faith', `${byCat('theology').length} teachings, ${isEastern() ? 'the Divine Liturgy' : 'the Mass'} explained, and a glossary`)}
+        ${homeMore('saints/quotes', ['s88', 'the Golden Mouth'], 'Words of the saints', `${QUOTES.length} sayings, and advice for life`)}
       </div>
     </section>
 
