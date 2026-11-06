@@ -3455,7 +3455,7 @@ const THEMES = [
   { key:'graphite', mode:'dark', name:'Graphite', desc:'Charcoal and silver grays', swatch:['#2a2a2a','#d4d4d4'] },
   { key:'pascha', mode:'light', name:'Pascha', desc:'Paschal white and red: Christ is risen!', swatch:['#ffffff','#b3161b'] },
   { key:'vyshyvanka', mode:'light', name:'Vyshyvanka', desc:'White linen with red and black embroidery', swatch:['#fffdf8','#bf141c'] },
-  { key:'athos', mode:'dark', name:'Monte Cassino', desc:'Dark olive wood and beeswax candlelight (default)', swatch:['#14150e','#d8a948'] },
+  { key:'athos', mode:'dark', name:'Monte Cassino', desc:'Dark olive wood and beeswax candlelight (default)', swatch:['#10110a','#d8a948'] },
   { key:'lapis', mode:'dark', name:'Lapis', desc:'Deep icon blue and burnished gold', swatch:['#111b40','#e3bd5f'] },
   { key:'gilded', mode:'dark', name:'Gilded Altar', desc:'Black walnut and burnished gold', swatch:['#1b140b','#e2b44f'] },
   { key:'ravenna', mode:'dark', name:'Ravenna', desc:'Mosaic blue-green with gold tesserae', swatch:['#0e2127','#dcb24e'] },
