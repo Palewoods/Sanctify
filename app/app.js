@@ -3425,7 +3425,7 @@ function todaysLiturgicalColor(){
 }
 
 const THEMES = [
-  { key:'light', mode:'light', name:'Parchment', desc:'Warm light pages (default)', swatch:['#f6f0dc','#7a2426'] },
+  { key:'light', mode:'light', name:'Parchment', desc:'Warm light pages', swatch:['#f6f0dc','#7a2426'] },
   { key:'liturgical', mode:'light', name:'Liturgical Season', desc:'Accent follows today’s liturgical color', get swatch(){ return ['#f6f0dc', SEASON_ACCENT[todaysLiturgicalColor()] || '#3e6b3a']; } },
   { key:'manuscript', mode:'light', name:'Illuminated Manuscript', desc:'Vellum, vermilion, and lapis blue', swatch:['#f7eed8','#ad2f1d'] },
   { key:'ivory', mode:'light', name:'Ivory & Gold', desc:'Bright, formal, and gilded', swatch:['#fffdf8','#b8963e'] },
@@ -3455,7 +3455,7 @@ const THEMES = [
   { key:'graphite', mode:'dark', name:'Graphite', desc:'Charcoal and silver grays', swatch:['#2a2a2a','#d4d4d4'] },
   { key:'pascha', mode:'light', name:'Pascha', desc:'Paschal white and red: Christ is risen!', swatch:['#ffffff','#b3161b'] },
   { key:'vyshyvanka', mode:'light', name:'Vyshyvanka', desc:'White linen with red and black embroidery', swatch:['#fffdf8','#bf141c'] },
-  { key:'athos', mode:'dark', name:'Athos', desc:'Dark olive wood and beeswax candlelight', swatch:['#1b1c13','#d8a948'] },
+  { key:'athos', mode:'dark', name:'Monte Cassino', desc:'Dark olive wood and beeswax candlelight (default)', swatch:['#1b1c13','#d8a948'] },
   { key:'lapis', mode:'dark', name:'Lapis', desc:'Deep icon blue and burnished gold', swatch:['#111b40','#e3bd5f'] },
   { key:'gilded', mode:'dark', name:'Gilded Altar', desc:'Black walnut and burnished gold', swatch:['#1b140b','#e2b44f'] },
   { key:'ravenna', mode:'dark', name:'Ravenna', desc:'Mosaic blue-green with gold tesserae', swatch:['#0e2127','#dcb24e'] },
@@ -3524,7 +3524,7 @@ const THEMES = [
   { key:'ember-light', mode:'light', name:'Abbey Bakehouse', desc:'Terracotta and fresh bread', swatch:['#fef9f4','#9f4316'] },
   { key:'tenebrae-light', mode:'light', name:'Ashes', desc:'Quiet gray and violet for days of penance', swatch:['#fbfafc','#5d4687'] },
   { key:'obsidian-light', mode:'light', name:'Alabaster', desc:'Bright white and gold, crisp and clean', swatch:['#ffffff','#806010'] },
-  { key:'athos-light', mode:'light', name:'Athos by Day', desc:'Olive wood and sunlit stone', swatch:['#fcfaf2','#7a5a12'] },
+  { key:'athos-light', mode:'light', name:'Monte Cassino by Day', desc:'Olive wood and sunlit stone', swatch:['#fcfaf2','#7a5a12'] },
   { key:'lapis-light', mode:'light', name:'Lapis & Gold Leaf', desc:'Icon blue and gold on a pale ground', swatch:['#fbfcff','#24409a'] },
   { key:'gilded-light', mode:'light', name:'Gilt & Linen', desc:'Burnished gold on altar linen', swatch:['#fffcf4','#87600e'] },
   { key:'ravenna-light', mode:'light', name:'Ravenna by Day', desc:'Blue-green mosaic glinting in the sun', swatch:['#fafdfc','#0e6a5a'] },
@@ -3559,7 +3559,7 @@ const THEMES = [
   { key:'sanctify-wine', mode:'dark', name:'Sanctify Wine', desc:'The colors of the Sanctify emblem: white on deep wine', swatch:['#8e2b2d','#fdf6e8'] }
 ];
 const THEME_GROUPS = [
-  ['Everyday', ['light', 'dark', 'sanctify-wine', 'candlelight-light', 'candlelight', 'midnight-light', 'midnight', 'obsidian-light', 'obsidian']],
+  ['Everyday', ['athos', 'athos-light', 'light', 'dark', 'sanctify-wine', 'candlelight-light', 'candlelight', 'midnight-light', 'midnight', 'obsidian-light', 'obsidian']],
   ['Simple & clear', ['contrast', 'contrast-dark', 'mono', 'mono-dark', 'gray', 'graphite']],
   ['The liturgical year', ['liturgical', 'liturgical-dark', 'advent-light', 'advent', 'noel-light', 'noel', 'theophany', 'theophany-dark', 'lily', 'lily-dark', 'pascha', 'pascha-dark', 'tabor-light', 'tabor', 'matins-light', 'matins', 'compline-light', 'compline', 'tenebrae-light', 'tenebrae']],
   ['Our Lord and Our Lady', ['sacred-heart-light', 'sacred-heart', 'marian', 'marian-dark', 'stella-maris-light', 'stella-maris', 'rose-window', 'rose-window-dark']],
@@ -3567,7 +3567,7 @@ const THEME_GROUPS = [
   ['Monasteries & saints', ['desert', 'desert-dark', 'cloister', 'cloister-dark', 'carmel', 'carmel-dark', 'assisi', 'assisi-dark', 'senanque', 'senanque-dark', 'iona', 'iona-dark', 'mission', 'mission-dark', 'hermitage-light', 'hermitage', 'ember-light', 'ember']],
   ['Sacred art & great churches', ['manuscript', 'manuscript-dark', 'ivory', 'ivory-dark', 'fresco', 'fresco-dark', 'sistine', 'sistine-dark', 'vatican', 'vatican-dark', 'stained-glass-light', 'stained-glass', 'sainte-chapelle-light', 'sainte-chapelle', 'cathedral-light', 'cathedral', 'gilded-light', 'gilded']],
   ['Great paintings', ['cole']],
-  ['The Christian East', ['byzantine-light', 'byzantine', 'iconostasis-light', 'iconostasis', 'hagia-sophia', 'hagia-sophia-dark', 'ravenna-light', 'ravenna', 'lapis-light', 'lapis', 'porphyry-light', 'porphyry', 'athos-light', 'athos', 'kyiv', 'kyiv-dark', 'vyshyvanka', 'vyshyvanka-dark']]
+  ['The Christian East', ['byzantine-light', 'byzantine', 'iconostasis-light', 'iconostasis', 'hagia-sophia', 'hagia-sophia-dark', 'ravenna-light', 'ravenna', 'lapis-light', 'lapis', 'porphyry-light', 'porphyry', 'kyiv', 'kyiv-dark', 'vyshyvanka', 'vyshyvanka-dark']]
 ];
 const GOLD_THEMES = new Set(['desert', 'desert-dark', 'cole', 'ivory', 'manuscript', 'cathedral', 'byzantine', 'sacred-heart', 'obsidian', 'athos', 'lapis', 'gilded', 'ravenna', 'guadalupe', 'porphyry', 'sistine', 'vatican', 'kyiv', 'advent', 'tabor', 'sainte-chapelle', 'iconostasis', 'hagia-sophia', 'manuscript-dark', 'ivory-dark', 'sistine-dark', 'vatican-dark', 'kyiv-dark', 'hagia-sophia-dark', 'lourdes-night', 'fatima', 'cova-da-iria', 'tepeyac', 'rue-du-bac', 'pontmain', 'beauraing', 'rue-du-bac-dark', 'cathedral-light', 'byzantine-light', 'sacred-heart-light', 'obsidian-light', 'athos-light', 'lapis-light', 'gilded-light', 'ravenna-light', 'porphyry-light', 'advent-light', 'tabor-light', 'sainte-chapelle-light', 'iconostasis-light', 'pontmain-light', 'beauraing-light', 'laus-dark', 'walsingham-dark', 'siluva-dark', 'la-vang-dark', 'champion', 'champion-dark', 'zarvanytsia', 'zarvanytsia-dark']);
 
@@ -3576,13 +3576,13 @@ const themeMenu = document.getElementById('themeMenu');
 
 function currentTheme(){
   const t = document.documentElement.getAttribute('data-theme');
-  return THEMES.some(x => x.key === t) || (t === 'custom' && activeCustomTheme()) ? t : 'light';
+  return THEMES.some(x => x.key === t) || (t === 'custom' && activeCustomTheme()) ? t : 'athos';
 }
 
 /* ---------- Your own themes ----------
    A theme of your own is a background, an accent, and a text color. Everything else (card and page shades,
    softer text, lines, the glow) is worked out from those, and light or dark follows the background. */
-const FEATURED_THEMES = ['light', 'dark', 'sanctify-wine', 'liturgical', 'liturgical-dark', 'marian', 'midnight', 'ivory', 'byzantine', 'obsidian',
+const FEATURED_THEMES = ['athos', 'athos-light', 'light', 'dark', 'sanctify-wine', 'liturgical', 'liturgical-dark', 'marian', 'midnight', 'ivory', 'byzantine', 'obsidian',
   'contrast', 'contrast-dark', 'mono', 'mono-dark', 'gray', 'graphite'];   // the simple and clear themes, together at the end
 const CUSTOM_VARS = ['--parchment', '--parchment-light', '--parchment-dark', '--ink', '--ink-soft', '--wine', '--wine-dark', '--gold', '--gold-light', '--green', '--indigo', '--purple', '--teal', '--rose', '--amber', '--ink-rgb', '--line', '--shadow', '--glow-rgb', '--tint-rgb'];
 const CUSTOM_MAX = 12;
@@ -3810,7 +3810,7 @@ function openThemeMaker(existing){
   const close = restore => {
     ov.classList.remove('open');
     document.removeEventListener('keydown', onKey);
-    if(restore){ if(prev.theme === 'custom' && prev.custom) applyCustomTheme(prev.custom, false); else applyTheme(prev.theme || 'light', false); }
+    if(restore){ if(prev.theme === 'custom' && prev.custom) applyCustomTheme(prev.custom, false); else applyTheme(prev.theme || 'athos', false); }
     themeToggleBtn.focus();
   };
   const onKey = e => { if(e.key === 'Escape') close(true); };
@@ -3833,7 +3833,7 @@ function openThemeMaker(existing){
     const wasActive = prev.theme === 'custom' && prev.custom && prev.custom.id === existing.id;
     ov.classList.remove('open');
     document.removeEventListener('keydown', onKey);
-    if(wasActive) applyTheme('light', true); else if(prev.theme === 'custom' && prev.custom) applyCustomTheme(prev.custom, false); else applyTheme(prev.theme || 'light', false);
+    if(wasActive) applyTheme('athos', true); else if(prev.theme === 'custom' && prev.custom) applyCustomTheme(prev.custom, false); else applyTheme(prev.theme || 'athos', false);
     buildThemeMenu();
     toast('Theme deleted');
   });

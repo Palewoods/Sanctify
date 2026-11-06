@@ -17,6 +17,12 @@
     --gold:#a6824a; --gold-light:#c7a565; --ink-rgb:42,33,24;
     --line:rgba(42,33,24,0.18); --shadow:0 2px 14px rgba(42,33,24,0.18);
   }
+  :root[data-theme="athos"]{
+    --parchment:#13140d; --parchment-light:#1b1c13; --parchment-dark:#27281c;
+    --ink:#ece5cf; --ink-soft:#a9a185; --wine:#d8a948; --wine-dark:#ecc878;
+    --gold:#c79a45; --gold-light:#e2c07a; --ink-rgb:236,229,207;
+    --line:rgba(236,229,207,0.13); --shadow:0 2px 20px rgba(0,0,0,0.6);
+  }
   :root[data-theme="dark"]{
     --parchment:#181410; --parchment-light:#211c16; --parchment-dark:#2e2619;
     --ink:#e9e0cb; --ink-soft:#a89b80; --wine:#c15759; --wine-dark:#e2989a;
@@ -166,9 +172,10 @@
   try{
     var t = localStorage.getItem('sanctify.theme');
     // Themes without their own colors here fall back to Vespers (dark) or Parchment (light)
-    if(['liturgical-dark','compline','cathedral','byzantine','sacred-heart','stella-maris','hermitage','ember','tenebrae','obsidian','athos','lapis'].indexOf(t) >= 0) t = 'dark';
+    if(['liturgical-dark','compline','cathedral','byzantine','sacred-heart','stella-maris','hermitage','ember','tenebrae','obsidian','lapis'].indexOf(t) >= 0) t = 'dark';
     if(['lily','rose-window','fresco','pascha','vyshyvanka'].indexOf(t) >= 0) t = 'light';
-    if(['dark','candlelight','marian','cloister','contrast','midnight','stained-glass','ivory','manuscript','mono','gray','mono-dark','graphite'].indexOf(t) < 0){
+    if(!t) t = 'athos';   // Monte Cassino, the default
+    if(['athos','dark','candlelight','marian','cloister','contrast','midnight','stained-glass','ivory','manuscript','mono','gray','mono-dark','graphite'].indexOf(t) < 0){
       // Any other theme: its light or dark look, as remembered by the site, else the device's setting
       var mode = localStorage.getItem('sanctify.mode');
       t = (t === 'light' || t === 'liturgical') ? 'light'

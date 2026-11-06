@@ -3,8 +3,8 @@
   "short_name": "Sanctify",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#e9ddc0",
-  "theme_color": "#7a2426",
+  "background_color": "#13140d",
+  "theme_color": "#13140d",
   "icons": [
     {
       "src": "icon-192.png",

@@ -9,7 +9,7 @@
 <link rel="alternate icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<meta name="theme-color" content="#7a2426">
+<meta name="theme-color" content="#13140d">
 <meta name="description" content="Prayers, the Rosary, the saints, the Bible, the Catechism, hymns, and Church history, for Roman and Eastern Catholics. Free, with no ads.">
 <link rel="canonical" href="https://sanctify.pages.dev/">
 <meta property="og:type" content="website">
@@ -34,7 +34,7 @@
     var ui = JSON.parse(localStorage.getItem('sanctify.lang') || '"en"');
     if(/^(es|pl|fr|pt|it|de|ru|uk)$/.test(ui) && !/\.translate\.goog$/.test(location.hostname)){
       document.documentElement.lang = ui;
-      document.write('<script src="lang/' + ui + '.js?v=3867fd8f"><\/script>');
+      document.write('<script src="lang/' + ui + '.js?v=eb851e88"><\/script>');
     }
     if(JSON.parse(localStorage.getItem('sanctify.motion') || '""') === 'reduced') document.documentElement.setAttribute('data-motion', 'reduced');
     var t = localStorage.getItem('sanctify.theme');
@@ -42,7 +42,7 @@
     var customVars = t === 'custom' ? localStorage.getItem('sanctify.customVars') : null;
     if(customVars) document.documentElement.style.cssText += ';' + customVars;
     else if(['light','dark','candlelight','marian','cloister','liturgical','contrast','liturgical-dark','midnight','stained-glass','ivory','manuscript','compline','cathedral','byzantine','sacred-heart','stella-maris','hermitage','ember','tenebrae','obsidian','lily','rose-window','fresco','mono','gray','mono-dark','graphite','pascha','vyshyvanka','athos','lapis','gilded','ravenna','guadalupe','porphyry','sistine','assisi','carmel','vatican','kyiv','advent','tabor','sainte-chapelle','iconostasis','noel','matins','senanque','theophany','mission','hagia-sophia','iona','carmel-dark','manuscript-dark','ivory-dark','marian-dark','cloister-dark','lily-dark','rose-window-dark','fresco-dark','pascha-dark','vyshyvanka-dark','sistine-dark','assisi-dark','vatican-dark','kyiv-dark','senanque-dark','theophany-dark','mission-dark','hagia-sophia-dark','iona-dark','lourdes','lourdes-night','fatima','cova-da-iria','tepeyac','rue-du-bac','knock','la-salette','banneux','pontmain','beauraing','rue-du-bac-dark','knock-dark','la-salette-dark','banneux-dark','contrast-dark','candlelight-light','midnight-light','stained-glass-light','compline-light','cathedral-light','byzantine-light','sacred-heart-light','stella-maris-light','hermitage-light','ember-light','tenebrae-light','obsidian-light','athos-light','lapis-light','gilded-light','ravenna-light','porphyry-light','advent-light','tabor-light','sainte-chapelle-light','iconostasis-light','noel-light','matins-light','pontmain-light','beauraing-light','laus','laus-dark','walsingham','walsingham-dark','siluva','siluva-dark','la-vang','la-vang-dark','champion','champion-dark','kibeho','kibeho-dark','akita','akita-dark','zarvanytsia','zarvanytsia-dark','sanctify-wine','cole','desert','desert-dark'].indexOf(t) < 0){
-      t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      t = 'athos';   // Monte Cassino, the default
     }
     document.documentElement.setAttribute('data-theme', t);
     var isDark = customVars ? localStorage.getItem('sanctify.mode') === 'dark' : ['dark','candlelight','liturgical-dark','midnight','stained-glass','compline','cathedral','byzantine','sacred-heart','stella-maris','hermitage','ember','tenebrae','obsidian','mono-dark','graphite','athos','lapis','gilded','ravenna','guadalupe','porphyry','advent','tabor','sainte-chapelle','iconostasis','noel','matins','carmel-dark','manuscript-dark','ivory-dark','marian-dark','cloister-dark','lily-dark','rose-window-dark','fresco-dark','pascha-dark','vyshyvanka-dark','sistine-dark','assisi-dark','vatican-dark','kyiv-dark','senanque-dark','theophany-dark','mission-dark','hagia-sophia-dark','iona-dark','lourdes-night','cova-da-iria','pontmain','beauraing','rue-du-bac-dark','knock-dark','la-salette-dark','banneux-dark','contrast-dark','laus-dark','walsingham-dark','siluva-dark','la-vang-dark','champion-dark','kibeho-dark','akita-dark','zarvanytsia-dark','sanctify-wine','cole','desert-dark'].indexOf(t) >= 0;
@@ -60,7 +60,7 @@
 </script>
 <script src="app/data.js?v=bab39327" defer></script>
 <meta name="sanctify-games" content="app/games.js?v=42e29e6e">
-<script src="app/app.js?v=60252353" defer></script>
+<script src="app/app.js?v=e31ee735" defer></script>
 </head>
 <body>
 
