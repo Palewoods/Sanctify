@@ -38,6 +38,7 @@ const CAT_DESC = {
   glossary: 'Clear, short definitions of the words of the Catholic faith, from Absolution to the Vulgate.',
   quotes: 'The words of the saints, from the Church Fathers to our own day, each with its source. Search them, browse by theme, and share your favorites.',
   patronfinder: 'Pick as many answers as you like: your name, your work, your needs, and what you love in a saint. Sanctify suggests friends in heaven who fit.',
+  scrolls: 'Ancient Jewish writings found in caves by the Dead Sea, beginning in 1947. They are not part of the Bible.',
   resources: 'Trusted places to keep learning about the faith: Church documents, Scripture and prayer, podcasts, video, courses, and more.',
   community: 'Share prayer requests, ask questions about the faith, and talk about the saints and good books with other Sanctify members.',
   'forum-new': 'Start a new conversation in the Community.',
@@ -862,7 +863,7 @@ function render(){
       home:renderHome, calendar:renderCalendar, rosary:renderRosary, shop:renderShop, stations:renderStations,
       chaplet:renderChaplet, sacredheart:renderSacredHeart, history:renderHistory, daily:renderDaily, theology:renderTheology,
       mine:renderMine, timer:renderTimer, quiz:renderQuiz, exam:renderExam, plan:renderPlan,
-      community:renderCommunity, resources:renderResources, settings:renderSettings,
+      community:renderCommunity, resources:renderResources, scrolls:renderScrolls, settings:renderSettings,
       wiki:renderWiki, wikipage:renderWikiPage, wikiedit:renderWikiEdit, wikihistory:renderWikiHistory, wikirev:renderWikiRevision,
       examen:() => renderGuided(isEastern() ? 'evening' : 'examen'), angelus:() => renderGuided(isEastern() ? 'theotokos' : 'angelus'), lectio:() => renderGuided('lectio'),
       tracker:renderTracker, mass:renderMass, glossary:renderGlossary, icons:renderFamousIcons, popes:renderPopes, orders:renderOrders, easternchurches:renderEasternChurches, lists:renderLists, church:renderChurchGuide, councils:renderCouncils, patronfinder:renderPatronFinder, biblereader:renderBibleReader, bookreader:renderBookReader, catechism:renderCatechism, news:renderNews, moderate:renderModerate, profile:renderMemberProfile, badges:renderBadges, devotions:renderDevotions, littleoffice:renderLittleOffice, vocations:renderVocations, hymns:renderHymns, quotes:renderQuotes, thread:renderThread, 'forum-new':renderForumNew, account:renderAccount,
@@ -1154,6 +1155,15 @@ function renderBible(entries){
     });
     entryListEl.appendChild(sec);
   });
+  const apart = document.createElement('section');
+  apart.className = 'dss-apart';
+  apart.innerHTML = `
+    <div class="home-heading"><h3>Not part of the Bible</h3></div>
+    <button class="dss-link" data-route="library/dead-sea-scrolls">
+      <span class="dss-link-name">The Dead Sea Scrolls</span>
+      <span class="dss-link-note">Ancient Jewish writings found in caves by the Dead Sea: what they are, the best-known scrolls, and 1 Enoch to read in full. They are not Scripture, and they are kept apart from the 73 books of the Bible.</span>
+    </button>`;
+  entryListEl.appendChild(apart);
 }
 
 // Each book of the Bible as a bar as wide as its chapters, colored by its part of the canon and filled as its chapters are read.
@@ -7593,6 +7603,91 @@ function resourceCard(r){
   </a>`;
 }
 
+/* ---------- The Dead Sea Scrolls: not part of the Bible ---------- */
+const SCROLLS = [
+  { group:'read', name:'1 Enoch', aka:'The Book of Enoch; Aramaic fragments 4Q201–212', found:'Cave 4, 1952', route:'library/books/1-enoch',
+    about:'Visions told in the name of Enoch, the great-grandfather of Noah: the fall of the Watchers, Enoch’s journeys through heaven and earth, the history of Israel told as a dream of animals, and an epistle of warning and comfort. Fragments of several Aramaic copies were found in Cave 4, though not the Book of Parables (chapters 37–71). The whole book survives only in Ge’ez (Ethiopic). The Letter of Jude (verses 14–15) quotes a line of it; quoting a book does not make it Scripture, just as St. Paul quotes Greek poets in Acts 17:28.' },
+  { group:'community', name:'The Community Rule', aka:'1QS, the Manual of Discipline', found:'Cave 1, 1947',
+    about:'One of the first scrolls to be found. It sets out how the community lived: how new members were admitted over two years, how they shared their property, ate and prayed together, and were corrected. It also teaches that two spirits, of truth and of falsehood, struggle within every person. About ten more copies came from Cave 4.' },
+  { group:'community', name:'The Rule of the Congregation and the Rule of Blessings', aka:'1QSa and 1QSb', found:'Cave 1, 1947',
+    about:'Two short works copied on the same scroll as the Community Rule. The first is a rule for all Israel “in the last days,” ending with a meal at which the priest blesses the bread and wine first, and then the Messiah of Israel. The second gives blessings for the faithful, the high priest, and the Prince of the Congregation.' },
+  { group:'community', name:'The Damascus Document', aka:'CD; 4Q266–273', found:'Cairo, 1896–97; Caves 4, 5, and 6',
+    about:'Known before the scrolls were found, from two medieval copies in the storeroom of a Cairo synagogue, published by Solomon Schechter in 1910. Copies then turned up at Qumran. It tells how God raised up a remnant and sent them a Teacher of Righteousness, and gives rules for members living in “camps” among the towns, with families of their own.' },
+  { group:'community', name:'The War Scroll', aka:'1QM, the War of the Sons of Light against the Sons of Darkness', found:'Cave 1, 1947',
+    about:'Plans for a final forty-year war between the Sons of Light and the Sons of Darkness, with their battle lines, the words written on their trumpets and banners, and their prayers. Angels fight beside the faithful, and after the battle swings back and forth, God’s own hand wins the victory.' },
+  { group:'community', name:'The Thanksgiving Hymns', aka:'1QHa, the Hodayot', found:'Cave 1, 1947',
+    about:'Dozens of hymns, many beginning “I thank you, O Lord.” Some speak in the voice of a persecuted teacher whom God has made a channel of knowledge for others, and many scholars hear the Teacher of Righteousness in them. Others praise God for raising a frail creature of clay to stand with the angels.' },
+  { group:'community', name:'The Habakkuk Commentary', aka:'1QpHab, Pesher Habakkuk', found:'Cave 1, 1947',
+    about:'Explains the first two chapters of Habakkuk line by line as prophecies of the community’s own day: the Teacher of Righteousness, his enemy the Wicked Priest, the Man of the Lie, and the Kittim, a fearsome foreign army, probably the Romans. It is one of the best-preserved scrolls.' },
+  { group:'community', name:'The Nahum Commentary', aka:'4Q169, Pesher Nahum', found:'Cave 4, 1952',
+    about:'Reads the prophet Nahum as speaking of recent events, and is unusual in naming real people: “Demetrius king of Greece” and Antiochus. It speaks of the “Lion of Wrath” who hanged men alive, and of the “Seekers of Smooth Things,” a group most scholars identify with the Pharisees.' },
+  { group:'community', name:'Some Works of the Law', aka:'4QMMT, 4Q394–399', found:'Cave 4, 1952',
+    about:'A letter-like work of about twenty points of law on the Temple, sacrifice, and purity, on which the writers differed from others. They say they have “separated” from the rest of the people over these matters, and urge the reader to see that they are right. Six copies survive.' },
+  { group:'community', name:'The Songs of the Sabbath Sacrifice', aka:'4Q400–407, 11Q17, and a copy from Masada', found:'Caves 4 and 11, and Masada',
+    about:'Thirteen songs for the first thirteen Sabbaths of the year, describing the worship of the angels in the heavenly temple and the throne-chariot of God. A copy found at Masada shows they were read beyond Qumran.' },
+  { group:'community', name:'The Temple Scroll', aka:'11Q19', found:'Cave 11, 1956',
+    about:'The longest of the scrolls, about eight meters. God speaks in the first person, giving plans for a vast temple, the feasts and their sacrifices, laws of purity, and a law for the king. It came to light in 1967, when the archaeologist Yigael Yadin obtained it.' },
+  { group:'community', name:'The Copper Scroll', aka:'3Q15', found:'Cave 3, 1952',
+    about:'Not a scroll of leather but of thin copper, so stiff that it was cut into strips in Manchester in 1955–56 to be read. It lists some sixty-four hiding places of gold, silver, and other treasures. No treasure has been found from it. It is kept in the Jordan Museum in Amman.' },
+  { group:'community', name:'The Florilegium and the Testimonia', aka:'4Q174 and 4Q175', found:'Cave 4, 1952',
+    about:'Two collections of passages of Scripture read as promises of the last days. The first explains God’s promise to David in 2 Samuel 7 as the coming of the “branch of David.” The second strings together a prophet like Moses, the star that comes forth from Jacob, and the blessing of Levi.' },
+  { group:'community', name:'Melchizedek', aka:'11Q13', found:'Cave 11, 1956',
+    about:'Presents Melchizedek, the priest-king of Genesis 14, as a heavenly figure who will proclaim liberty to captives and carry out God’s judgment at the end of days, on a Day of Atonement. It draws on Leviticus 25, Isaiah 61, and Psalm 82. Christians may think of the Letter to the Hebrews, which calls Christ a priest after the order of Melchizedek.' },
+  { group:'other', name:'Jubilees', aka:'4Q216 and other copies', found:'Caves 1, 2, 3, 4, and 11',
+    about:'Retells Genesis and the beginning of Exodus as revealed to Moses on Mount Sinai by an angel, dating every event in “jubilees” of forty-nine years, and following a calendar of 364 days. More than a dozen Hebrew copies were found. The whole book survives only in Ge’ez (Ethiopic).' },
+  { group:'other', name:'The Genesis Apocryphon', aka:'1QapGen ar', found:'Cave 1, 1947',
+    about:'An Aramaic retelling of Genesis, so brittle it was not unrolled until 1956. Lamech fears that his son Noah was fathered by one of the Watchers; Abram dreams of a cedar and a palm tree; and Sarai’s beauty is praised at length.' },
+  { group:'other', name:'The Book of Giants', aka:'4Q203, 4Q530–533, and others', found:'Caves 1, 2, 4, and 6',
+    about:'An Aramaic tale of the giants born to the Watchers, as 1 Enoch tells it. Troubled by dreams of their coming judgment, they send to Enoch to explain them. One of the giants is named Gilgamesh. The book was later reworked by the Manichaeans.' },
+  { group:'other', name:'The Aramaic Levi Document', aka:'1Q21, 4Q213–214', found:'Caves 1 and 4',
+    about:'Levi, the son of Jacob, prays, sees himself raised to the priesthood in a vision, and is taught the rites of sacrifice by his grandfather Isaac. Parts of it were already known from a Cairo synagogue and from a Greek manuscript on Mount Athos.' },
+  { group:'other', name:'The Prayer of Nabonidus', aka:'4Q242', found:'Cave 4, 1952',
+    about:'Nabonidus, the last king of Babylon, tells how he was struck with an evil disease for seven years at Teima, until a Jewish exile forgave his sins and told him to give glory to the Most High God. It is often compared with the story of Nebuchadnezzar in Daniel 4.' },
+  { group:'other', name:'The New Jerusalem', aka:'Aramaic copies from five caves', found:'Caves 1, 2, 4, 5, and 11',
+    about:'A guide leads the seer through a vast city and temple of the future, measuring its walls, gates, streets, and houses, much as in the last chapters of Ezekiel and in Revelation 21.' },
+  { group:'other', name:'The Messianic Apocalypse', aka:'4Q521', found:'Cave 4, 1952',
+    about:'Begins “heaven and earth will listen to his Messiah” and says that the Lord will heal the wounded, give life to the dead, and bring good news to the poor. Christians may recall Jesus’ answer to the disciples of John the Baptist (Matthew 11:5, Luke 7:22).' },
+  { group:'other', name:'Instruction', aka:'4QInstruction, 4Q415–418 and others', found:'Caves 1 and 4',
+    about:'Wisdom for a student, on money and debt, work, marriage, and family, set beside a call to ponder “the mystery that is to be,” God’s plan for all that happens. Several copies survive, which shows it was well read.' },
+  { group:'other', name:'The Great Psalms Scroll', aka:'11Q5, 11QPsa', found:'Cave 11, 1956',
+    about:'Psalms from the last part of the Psalter in an order of its own, mixed with other poems: Psalm 151 in Hebrew, two more psalms known from the Syriac (154 and 155), the poem that ends Sirach, and a note that David wrote 4,050 psalms and songs. Psalm 151 is also in the Greek Bible of the Byzantine Churches, printed after the Psalter, but it is not part of the Catholic canon.' }
+];
+const SCROLL_GROUPS = [
+  ['read', 'To read in full on Sanctify', 'In R. H. Charles’s translation of 1917, which is in the public domain.'],
+  ['community', 'The community’s own writings', 'Rules, hymns, and commentaries that tell of a community set apart, waiting for the end of days. No public-domain English translations of these exist yet, so Sanctify describes them instead.'],
+  ['other', 'Other ancient writings', 'Retellings of the stories of Genesis, visions, prayers, and wisdom, some known before the scrolls were found and some not.']
+];
+function renderScrolls(){
+  entryListEl.innerHTML = `
+    <div class="dss-page">
+      <aside class="dss-warn dss-warn-big" role="note">
+        <b>None of these writings are part of the Bible.</b>
+        <p>The Catholic Church receives seventy-three books as Holy Scripture, a list set out at the Council of Florence in 1442 and solemnly defined at the Council of Trent in 1546. None of the writings on this page are among them. They are ancient Jewish writings, valuable for understanding the world in which Jesus lived and in which the Scriptures were copied and handed on, but they do not have the authority of Scripture. (The Ethiopian and Eritrean Orthodox Churches count 1 Enoch and Jubilees as Scripture; the Catholic Church does not.)</p>
+        <button class="btn quiet" data-route="library/bible">Read the 73 books of the Bible →</button>
+      </aside>
+      <section class="dss-about">
+        <h3>What the Dead Sea Scrolls are</h3>
+        <p>In 1946 or 1947, Bedouin shepherds found jars holding ancient scrolls in a cave near Qumran, on the northwest shore of the Dead Sea. By 1956, eleven caves had given up the remains of about nine hundred manuscripts, most of them in small fragments. They were copied between about the third century before Christ and the first century after, and most scholars link them with a Jewish community at Qumran, often identified with the Essenes, which was destroyed by the Romans around AD 68.</p>
+        <p>More than two hundred of the scrolls are copies of books of the Bible, of every book of the Hebrew Bible except Esther. The most famous, the Great Isaiah Scroll, holds all sixty-six chapters of Isaiah and was copied more than a century before Christ. Fragments of Tobit, Sirach, and the Letter of Jeremiah (Baruch 6) were found too. These belong to the Bible, and you can read them with the rest of it. This page is about the other writings, which are not Scripture.</p>
+        <p class="dss-src">You can see the scrolls themselves, photographed in high detail, at the <a href="https://www.deadseascrolls.org.il/" target="_blank" rel="noopener">Leon Levy Dead Sea Scrolls Digital Library ↗</a> of the Israel Antiquities Authority.</p>
+      </section>
+      ${SCROLL_GROUPS.map(([key, title, note]) => `
+        <section class="dss-group">
+          <div class="home-heading"><h3>${escapeHtml(title)}</h3><span class="view-count">${SCROLLS.filter(s => s.group === key).length}</span></div>
+          <p class="dss-note">${escapeHtml(note)}</p>
+          <div class="dss-grid">${SCROLLS.filter(s => s.group === key).map(s => `
+            <article class="dss-card${s.route ? ' dss-readable' : ''}">
+              <span class="dss-tag">Not Scripture</span>
+              <h4>${escapeHtml(s.name)}</h4>
+              <p class="dss-meta">${escapeHtml(s.aka)} · ${escapeHtml(s.found)}</p>
+              <p>${escapeHtml(s.about)}</p>
+              ${s.route ? `<button class="btn" data-route="${s.route}">Read 1 Enoch →</button>` : ''}
+            </article>`).join('')}</div>
+        </section>`).join('')}
+      <p class="shop-note">The caves held hundreds of other works, most of them known only from fragments. These are the best known.</p>
+    </div>`;
+}
+
 function renderResources(){
   const groupIcon = g => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${g.icon}</svg>`;
   const shown = RESOURCE_GROUPS.filter(g => resourceGroup === 'all' || g.key === resourceGroup);
@@ -9164,6 +9259,7 @@ const BOOK_TEXTS = {   // library entry -> [address, edition]
   b70:['roman-catechism', 'Translated by Jeremiah Donovan (1829), via Wikisource'], b270:['complete-catechism-deharbe', 'Translated by John Fander, 1912 edition, via Wikisource'],
   b271:['baltimore-catechism-1', 'Baltimore Catechism No. 1, approved in 1885'], b272:['baltimore-catechism-3', 'Baltimore Catechism No. 3, supplemented by Rev. Thomas L. Kinkead, in an edition revised for the 1917 Code of Canon Law'],
   b273:['explanation-of-the-baltimore-catechism', 'First published in 1891; this edition was approved in 1921, and its review questions and index are left out'],
+  b274:['1-enoch', 'Translated by R. H. Charles (1917), via Wikisource, with his marks for restored and doubtful words left out'],
   b16:['didache', 'From the Ante-Nicene Fathers (1885–1896), via Wikisource'], b17:['letters-of-st-ignatius', 'Translated by William Wake (1693), via Wikisource'],
   b94:['against-heresies', 'From the Ante-Nicene Fathers (1885–1896), via Wikisource'], b168:['letter-to-diognetus', 'From the Ante-Nicene Fathers (1885–1896), via Wikisource'],
   b188:['hexaemeron', 'From the Nicene and Post-Nicene Fathers, Second Series (1890–1900), via Wikisource'], b18:['on-the-incarnation', 'From the Nicene and Post-Nicene Fathers, Second Series (1890–1900), via Wikisource'],
@@ -9199,6 +9295,9 @@ const BOOK_TEXTS = {   // library entry -> [address, edition]
 };
 const BOOK_BY_SLUG = Object.fromEntries(Object.entries(BOOK_TEXTS).map(([id, [slug, credit]]) => [slug, { id, slug, credit }]));
 const BOOK_ROUTE = /^library\/books\/([a-z0-9-]+)(?:\/(\d+))?$/;
+// Books found among the Dead Sea Scrolls, which are read here like any other book but are not Scripture
+const NOT_SCRIPTURE = new Set(['b274']);
+const notScriptureNote = book => NOT_SCRIPTURE.has(book.id) ? `<aside class="dss-warn" role="note"><b>Not part of the Bible.</b> This is an ancient Jewish writing found among the Dead Sea Scrolls. It is not Scripture: the Catholic Church has never counted it among the books of the Bible. <button class="text-link" data-route="library/dead-sea-scrolls">About the Dead Sea Scrolls →</button></aside>` : '';
 let bookRef = null;
 
 async function bookIndex(slug){
@@ -9249,6 +9348,7 @@ function renderBookReader(){
           <button class="br-opt" data-size="1" aria-label="Larger text">A+</button>
         </div>
       </div>
+      ${notScriptureNote(book)}
       <article class="br-page bk-page">
         <h3 class="bk-title"></h3>
         <div class="bk-text" aria-live="polite"><p class="br-loading">Opening…</p></div>
@@ -9293,6 +9393,7 @@ function renderBookContents(book, entry){
   const at = store.get('book.at.' + book.slug, 0);
   entryListEl.innerHTML = `
     <div class="bb">
+      ${notScriptureNote(book)}
       <p class="bb-intro bk-summary">${escapeHtml(entry.content)}</p>
       <p class="bk-credit-line">${escapeHtml(book.credit)}.</p>
       <div class="bk-actions">
@@ -12501,6 +12602,7 @@ const SECTIONS = {
   plan:{ name:'Bible Reading Plans', group:'Explore', icon:'plan', color:'var(--teal)' },
   quiz:{ name:'Quiz', group:'Explore', icon:'quiz', color:'var(--amber)' },
   resources:{ name:'Learning Resources', group:'Learn', icon:'resources', color:'var(--teal)' },
+  scrolls:{ name:'The Dead Sea Scrolls', group:'Library', icon:'book', color:'var(--amber)' },
   shop:{ name:'Catholic Shops', group:'Explore', icon:'shop', color:'var(--amber)' }
 };
 const LIBRARY_CATS = new Set(['prayer', 'saint', 'theology', 'history', 'book', 'bible', 'all']);
@@ -13074,6 +13176,7 @@ const ROUTES = {
   'library/catechism':           { cat:'catechism', parent:'library' },
   'library/plans':               { cat:'plan', parent:'library' },
   'library/resources':           { cat:'resources', parent:'library' },
+  'library/dead-sea-scrolls':    { cat:'scrolls', parent:'library' },
   'library/shop':                { cat:'shop', parent:'library' },
   'library/all':                 { cat:'all', parent:'library' },
   'learn':                       { cat:'hub-learn' },
