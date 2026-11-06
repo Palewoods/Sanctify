@@ -43,7 +43,7 @@ const VIDEO_MAX_BYTES = 1300 * 1000;
 // The rings members can wear around their picture (the browser keeps the same list); "none" takes a ring off.
 // OWNER_RINGS are only for the site's owner, the first name in ADMINS, who wears the first of them
 // (the City of God) unless they choose another.
-const RINGS = ['halo', 'rosary', 'prayer-rope', 'stars', 'roses', 'stained-glass', 'laurel', 'flame', 'pearls'];
+const RINGS = ['monte-cassino', 'halo', 'rosary', 'prayer-rope', 'stars', 'roses', 'stained-glass', 'laurel', 'flame', 'pearls'];
 const OWNER_RINGS = ['city-of-god', 'owner'];
 // STAFF_RINGS are for the moderation team: the moderators and the site administrators
 const STAFF_RINGS = ['parchment', 'shepherd'];

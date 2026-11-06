@@ -4226,8 +4226,8 @@ function avatarImg(name, v){
 function reducedMotion(){ return store.get('motion', '') === 'reduced' || (!!window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches); }
 
 /* ---------- Profile rings: a decoration around a member's picture (the server keeps the same list) ---------- */
-const RING_KEYS = ['halo', 'rosary', 'prayer-rope', 'stars', 'roses', 'stained-glass', 'laurel', 'flame', 'pearls'];
-const RING_NAMES = { halo:'Halo', rosary:'Rosary', 'prayer-rope':'Prayer Rope', stars:'Crown of Twelve Stars', roses:'Rose Garland',
+const RING_KEYS = ['monte-cassino', 'halo', 'rosary', 'prayer-rope', 'stars', 'roses', 'stained-glass', 'laurel', 'flame', 'pearls'];
+const RING_NAMES = { 'monte-cassino':'Monte Cassino', halo:'Halo', rosary:'Rosary', 'prayer-rope':'Prayer Rope', stars:'Crown of Twelve Stars', roses:'Rose Garland',
   'stained-glass':'Stained Glass', laurel:'Laurel Wreath', flame:'Tongues of Fire', pearls:'Byzantine Pearls', owner:'Light of Tabor', 'city-of-god':'City of God', parchment:'Desert Parchment', shepherd:'Good Shepherd',
   lamps:'Vigil Lamps', 'golden-rosary':'Golden Rosary', haloes:'Communion of Saints', gospels:'The Four Gospels', candles:'Intercessor’s Candles', 'year-of-grace':'A Year of Grace' };
 const ringName = k => isEastern() && k === 'golden-rosary' ? 'Golden Prayer Rope' : RING_NAMES[k];
@@ -4286,6 +4286,16 @@ function ringSvg(key){
     g = `<circle cx="50" cy="50" r="56" fill="none" stroke="#c99a3a" stroke-width="5.5"/><circle cx="50" cy="50" r="59.2" fill="none" stroke="#7a5418" stroke-width=".7"/>`
       + around(32, 0, 360).filter((_, i) => i % 4).map(d => { const [x, y] = at(56, d); return `<circle cx="${x}" cy="${y}" r="1.7" fill="#fff8e6" stroke="#b89a60" stroke-width=".3"/>`; }).join('')
       + around(8, 0, 360).map((d, i) => { const [x, y] = at(56, d); return `<rect x="${x - 2.6}" y="${y - 2.6}" width="5.2" height="5.2" transform="rotate(45 ${x} ${y})" fill="${i % 2 ? '#2a4f9a' : '#a51f2c'}" stroke="#f0d28a" stroke-width=".7"/>`; }).join('');
+  } else if(key === 'monte-cassino'){
+    // In the colors of the Monte Cassino theme: an olive-wood band edged in beeswax gold, with gold studs,
+    // and above, a medallion bearing PAX, the motto of St. Benedict's monks
+    g = `<circle cx="50" cy="50" r="56" fill="none" stroke="#27281c" stroke-width="7"/>`
+      + `<circle cx="50" cy="50" r="59.8" fill="none" stroke="#d8a948" stroke-width="1.1"/><circle cx="50" cy="50" r="52.2" fill="none" stroke="#d8a948" stroke-width="1.1"/>`
+      + around(24, 15, 375).filter(d => d > 30 && d < 330).map((d, i) => { const [x, y] = at(56, d); return i % 2
+        ? `<circle cx="${x}" cy="${y}" r=".9" fill="#c79a45"/>`
+        : `<rect x="${x - 1.5}" y="${y - 1.5}" width="3" height="3" transform="rotate(45 ${x} ${y})" fill="#d8a948"/>`; }).join('')
+      + `<circle cx="50" cy="-6" r="10.5" fill="#1b1c13" stroke="#d8a948" stroke-width="1.4"/><circle cx="50" cy="-6" r="8.4" fill="none" stroke="#c79a45" stroke-width=".5"/>`
+      + `<text x="50" y="-3.6" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="7.4" font-weight="700" letter-spacing=".4" fill="#ecc878">PAX</text>`;
   } else if(key === 'city-of-god'){
     // In the colors of Cole's "Destruction": a band of storm, smoke, and firelight turning slowly (drawn in CSS),
     // edged in bronze, with the cross above and a few embers drifting round
