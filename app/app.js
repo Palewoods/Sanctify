@@ -10779,9 +10779,10 @@ function applyRite(){
   Object.keys(guidedState).forEach(k => { guidedState[k] = null; });
 }
 
-// The favicon is the edition's cross on a parchment tile, in the color of today's liturgical season
+// The favicon is the edition's cross in the chosen theme's colors (gold on olive-black in Monte Cassino, the default).
+// In Settings it can instead sit on a parchment tile in the color of today's liturgical season
 // (violet in Advent and Lent, rose on Gaudete and Laetare, black on Good Friday in the 1962 calendar,
-// blue in the Dormition Fast, and so on). In Settings it can wear the chosen theme's colors instead.
+// blue in the Dormition Fast, and so on).
 const SEASON_ICON_COLORS = { green:'#3e6b3a', violet:'#5b3f86', purple:'#5b3f86', white:'#94701a', gold:'#94701a',
   rose:'#b04a73', red:'#9b1c1f', black:'#2a2118', dark:'#3b2c4d', blue:'#2f5597' };
 function seasonIconColor(){
@@ -10794,7 +10795,7 @@ function seasonIconColor(){
 function setSeasonFavicon(){
   const css = getComputedStyle(document.documentElement);
   const v = (name, fallback) => (css.getPropertyValue(name) || '').trim() || fallback;
-  const byTheme = store.get('tabIcon', 'season') === 'theme';
+  const byTheme = store.get('tabIcon', 'theme') === 'theme';
   const tile = byTheme ? v('--parchment-light', '#f6f0dc') : '#f6f0dc', edge = byTheme ? v('--gold', '#a6824a') : '#a6824a';
   const color = byTheme ? v('--wine', '#7a2426') : seasonIconColor();
   const path = crossPath();
@@ -14532,7 +14533,7 @@ function renderSettings(){
         ${gold ? switchRow('setShine', 'Gold shine', 'A metallic sheen on titles and cards, on themes with gold in them.', shineWanted(), false) : ''}
         ${switchRow('setGlow', 'Background glow', 'A soft light behind pages and banners.', glowWanted(), false)}
         ${switchRow('setMotion', 'Reduce motion', 'Pages appear without sliding or fading in.', motion, false)}
-        ${switchRow('setTabIcon', 'Seasonal tab icon', 'The cross on the browser tab takes the color of the liturgical season. Off, it takes your theme’s colors.', store.get('tabIcon', 'season') !== 'theme', false)}
+        ${switchRow('setTabIcon', 'Seasonal tab icon', 'The cross on the browser tab takes the color of the liturgical season. Off, it takes your theme’s colors.', store.get('tabIcon', 'theme') !== 'theme', false)}
         <div class="settings-sub">Text size</div>
         <div class="settings-choices">${TEXT_SIZES.map(([k, l, name], i) => `<button class="settings-choice textsize-choice" type="button" data-set-size="${k}" aria-pressed="${size === k}" aria-label="${name}" style="font-size:${0.85 + i * 0.2}rem">${l}</button>`).join('')}</div>
       </section>
@@ -14575,7 +14576,7 @@ function renderSettings(){
     renderSettings();
   });
   root.querySelector('#setTabIcon').addEventListener('click', () => {
-    store.set('tabIcon', store.get('tabIcon', 'season') === 'theme' ? 'season' : 'theme');
+    store.set('tabIcon', store.get('tabIcon', 'theme') === 'theme' ? 'season' : 'theme');
     setSeasonFavicon();
     renderSettings();
   });

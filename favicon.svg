@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <style>
-    .tile{fill:#f6f0dc;stroke:#a6824a}
-    .cross{fill:#7a2426}
+    .tile{fill:#10110a;stroke:#c79a45}
+    .cross{fill:#d8a948}
   </style>
   <rect class="tile" x="2" y="2" width="60" height="60" rx="13" stroke-width="2.5"/>
   <path class="cross" transform="translate(32 32) scale(0.86) translate(-32 -32)" fill-rule="evenodd" d="M28.5 3h7v14h-7zM12 17h40v7H12zM28.5 24h7v37h-7z"/>
